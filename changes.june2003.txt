@@ -1,0 +1,333 @@
+
+
+
+    NBODY6++   New Release as of June 2003, Cambridge UK / Heidelberg
+   -------------------------------------------------------------------
+                   (R. Spurzem, with Sverre, many thanks!)
+
+
+    This new NBODY6++ variant incorporates all changes reported by Sverre
+    for NBODY6 from summer 2002 until now. 
+
+    Furthermore it includes changes genuine to NBODY6++, as reported below.
+
+    NOTE: the variants called
+    ``massless'' (with massless particles or planets), ``Nbody6tid''
+    (massive galactic particle moving towards the cluster), and
+    ``Nbody6_BH''  (system with external grav. and drag forces) will
+    be updated by me soon too. If you are using one of these variants
+    please wait until I have the new standard ready in a few days.
+    Also those who received an NBODY4+ version for the GRAPE from my
+    side have been added to this mailing just in case you may be interested.
+    (NBODY4+: slim variant of Sverres NBODY4).
+
+    Furthermore it includes changes genuine to NBODY6++, as reported below.
+
+    As there are many changes, there are two options:
+
+    i) you just take all the new routines and include your personal stuff 
+       once again.
+    ii) you only make sure the most important routine changes 1-12 as follows
+        are done. I recommend to do these as soon as possible. They
+        are either very simple to do, or they are crucially important.
+        After the list of 12 essential updates there follows a detailed
+        report the others, they are mostly reported by Sverre and
+        useful for difficult systems (many binaries etc, see below).
+
+  (thanks go to Eliani Ardi, Shawfeng Dong, Patrick Glaschke,
+   Chingis Omarov, Kap-Soo Oh and several others for reporting and testing...)
+    
+---------------------------------------------------------------------------
+
+ Here are the ESSENTIAL changes, please do them asap, copy routines or
+ make sure your routines are accordingly changed:
+
+ (note: I have also changed the little in1000.comment and in1000r.comment
+        input files, you should easily be able to make two runs, single
+        and restart with it.)
+
+1. Makefile  complete revision includes now use of proper mpif.h
+             new targets / old target names logically reordered
+             Automatic generation of flush.f routine on CRAY systems.
+             Automatic generation of proper mpif.h .
+
+2. steps.f   bug re GO TO 18 fixed
+             use TCR0 instead of TCR see comment below
+
+3. events.f  too long line for write after added if(rank.eq.0)
+
+4. gntage.f  new routine giant age taken from Nbody4 called by cmbody
+5. himax2.f  new routine max ecc taken from Nbody6 called by impact
+6. mdot.f    diagnostics error in M0 cleared
+
+7. file_init.F  the open statement was changed to ACCESS='APPEND' for
+                file units 3,4,7,8,9,11,12,13,15  
+                file names conf.3 bdat.4 lagr.7 bdat.8 bdat.9
+                           esc.11 hia.12 hid.13 per.15
+                will now automatically be appended at restarts.
+
+8. modify.F     slightly improved the order of output and redetermination
+9. nbody6.F     of TCRIT (termination time) in case of KSTART = 2.
+
+10. intgrt.F   Improved definition of STEPM (only relevant for N > 1024). 
+              Bad Bug (full prediction not done at regular blocks corrected,
+              see Sverres comments below)
+
+11. regint.f  some improvement to call FPCORR, only for primordial binaries
+             important. (see comment below)
+
+12. start.F:  The loops DO 60 and DO 80 near the end should be IFIRST,NTOT  OK
+             This may only affect some computers but is more correct.
+
+=============================================================================
+-----------------------------------------------------------------------------
+
+ That was the end of the easy corrections. Those who are interested may
+ have a look into the original comments by Sverre, which follow here.
+ All the routines and changes are only relevant if you have systems with
+ very difficult dynamics (i.e. many or very hard binaries, hierarchies,
+ very dense systems etc).  I would recommend to take over all these
+ routines too, but it is no immediate danger using the previous version
+ ones. The errors or not nice things usually only show up in extremely 
+ rare cases.
+
+  --------------------------------------------------------------------------
+
+   many many routines captured writes by if(rank.eq.0)
+
+   file_init.F   In all these routines the logical condition
+   ksin2.f       KZ(8).GT.0  was changed into
+   ksinit.f      KZ(8).GT.0 .OR. NBIN0.GT.0
+   ksterm.f      because if primordial binaries are read
+   lagr.F        with full phase info from file (and not initialised
+   levels.f      at apocentre by binpop) only the second condition
+   output.F      provides diagnostic output. In other words: we
+                 can have primordial binaries with KZ(8) = 0 but
+   nblist.f      NBIN0 > 0 ! This is concerning diagnostics ONLY
+                 except routine nblist.f where it is significant
+                 for the run.
+
+   many many routines captured writes by if(rank.eq.0)
+
+
+
+   zero.f    bug in KVEC for large KMAX
+
+
+  June 23
+  -------
+Here are the latest NBODY6 updates.           
+
+1. intgrt.F   Improved definition of STEPM (only relevant for N > 1024). OK
+
+2. invert.f   Possible problem after 100 WARNING messages (long runs). OK
+
+3. steps.f    Wrong GO TO for small regular steps (rare; just in case).  OK
+
+4. ksinit.f   New way to ensure quantized time after setting orbit to  OK
+              apocentre. The code is correct as it stands. However,
+              Rainer (who is here) found a problem for primordial binaries
+              distributed at arbitrary phase (binpop.f specifies apocentre).
+
+
+
+  May 26
+  ------
+
+1. setsys.f: set JCOMP = 0 just before CALL KSTERM. This takes care of  OK
+   a rare case of binary being included in chain regularization after the
+   first step, but it did happen with disasterous consequences.
+
+2. new routines impact.f and chstab.f, which should be included together. OK OK
+   A more careful distinction between use of chain regularization for
+   strongly perturbed triples with large outer eccentricity satisfying
+   the stability criterion. This requires termination of stable triples
+   to be delayed until positive radial velocity at a safe distance.
+
+3. chmod.f: an extra test to prevent 6 chain members due to addition of  OK
+   a binary when NCH = 4. Once again, this happened to me.
+
+4. kick.f and mdot.f: a safe way to identify the mass-losing component. OK OK
+   There is also a bug fix in mdot.f (looping for quadruple system).
+   Several other improvements made by Jarrod Hurley after comparing with
+   recent changes in NBODY4.
+
+5. ksapo.f: perturbed binaries not assigned random phase for mass loss. OK
+
+6. histab.f: current coordinates needed for unperturbed binary; updating  OK
+   also needed if component coordinates are equal to prevent NaN.
+
+
+
+
+  May 5
+  ------
+
+Subject: LSHORT
+
+I did not notice the routine at first. If you call this routine at
+every new block-step you will not catch particles having time-step
+twice the smallest. Hence such candidates will not be selected.
+However, they will probably be selected the next time at twice the
+previous block-step. So you may still be OK. Right now it occurs to
+me that a good way would be to call the routine if the new block-step           
+is comparable to SMIN (or DTMIN), but not much smaller or bigger.
+Maybe you are already doing this.             
+
+
+   Apr 10  2003
+  -------
+
+Here is a small list of bugs for NBODY6. Some also applies to NBODY4.
+
+1. start.F:  The loops DO 60 and DO 80 near the end should be IFIRST,NTOT  OK
+             This may only affect some computers but is more correct.      
+
+2. ksapo.f:  At line 18 insert  IF (LIST(1,2*IPAIR-1).GT.0) THETA = 0.0D0  OK
+             Thus it is not good to advance a perturbed binary by an
+             arbitrary phase angle - only necessary for unperturbed case.
+
+3. kstide.f  A typo in final semi-major axis (routine will be sent).    OK
+             This was fixed for workstation tests described in the book,
+             but not in the official laptop version.
+
+4. impact.f  There is nothing seriously wrong here. Several small changes  OK
+             prevents rare cases and treatment of large outer eccentricity
+             now agrees with criterion in the book.
+
+5. hmdot.f   It appears that the official version is not consistent, whereas OK
+             the workstation test version is OK. Please check that line 45
+             should read:
+             IF (ABS(DMS/M1).LT.0.01.AND.... instead of 0.0001.
+             I did not see any comments about this routine since April 2002.
+
+
+
+   Jan. 6
+  --------
+
+Happy New Year!
+
+Here are more changes and bug fixes; some dating back to October.
+The routines are mostly listed in chronological order. There are
+other known problems but time does not allow a full investigation.
+
+
+chterm.f  One more determination of the new time (difficult problem!).      OK 
+          A second improvement (2 months later!) takes care to avoid         
+          zero value of DT8. This can happen after escape from 4-body        
+          chain followed by immediate termination of stable triple.
+
+resolv.f  Missing initialization of X0. Done elsewhere in some cases.  OK
+
+subint.f  Previous version seems to be May 2001 but there could have  OK
+          been others. So not clear what the changes are.
+
+tchain.f  Safety check in case large c.m. step exceeds block-step.   OK
+
+kstide.f  A subtle mistake for tidal circularization. An inconsistent way  OK
+          of using angular momentum conservation in some cases was coded.
+qpmod.f   The same bug.                                                  OK
+
+steps.f   The safety criterion of using crossing time gave trouble   OK
+          during final stage because TCR was factor of 10 larger.
+          Hence safer to use initial value since this routine is
+          used after KS termination (problem is connected with rare
+          cases of too small FDOT due to cancellation from perturber).
+          There is also a safety factor of 0.5 to be consistent with
+          NBODY4 and the book.
+
+unpert.f  Need to exclude a triple from tidal circularization.   OK
+
+impact.f  Need to exclude a triple or chain c.m. from chain regularization.  OK
+          (also other likely changes.)
+
+mdot.f    Small correction for single particle ghost and other improvements. OK
+
+reset2.f  Improved treatment for new polynomials of close perturbers (< 10*R).OK
+          Bug fix: restoring second c.m. (JCOMP1) in neighbour lists instead 
+          of second KS component. Original bug led to case of looping.       
+
+cmbody.f  Small improvement to ensure actual pericentre for some cases.   OK
+
+ksterm.f  Small but important change to ensure pericentre for collisions. OK
+
+chmod.f   Reduction of block-step since c.m. step may be very small. This   OK
+          also has implications for the internal chain steps (fewer needed).
+
+ksres.f   Avoid expansion by 1/R for collisions.   OK
+
+Please let me know if something is not working.
+
+
+   Oct. 1   2002
+  --------
+
+Here are a few more changes for NBODY6.                         
+
+ksinit.f   Repairing a bad feature of initializing primordial binaries.  OK
+kspoly.f                                                                 OK
+merge.f    Another version to replace a rare case of wrong velocity copy. OK
+mdot.f     Avoids lots of warning messages for circularized binaries.   OK
+
+In addition it would be formally correct to include the lines            OK
+
+      NBPREV = 0
+      NNTB = 0
+
+in routine zero.f, just in case different types of computers are used.       
+
+
+
+   Sep. 9
+   ------
+
+When checking a book algorithm I found a small bug in NB4 & NB6.     OK
+It is not worth circulating all users but you may wish to have a
+the correct version in the official NB6++. One small refinement
+in HDOT3 had not been included in KSPOLY.                    
+
+
+   Aug. 29
+  ---------
+During my recent holiday in the mountains several improvements and
+bugs were noted in NBODY6 and also for GRAPE-6. Modified routines to
+be sent are as follows:
+
+merge2.f                                                                  OK
+reset2.f                                                                  OK
+escape.f  These still suffered some problems of identifying quintuplets.
+
+impact.f  Perturbation of 0.001 can be allowed for outer binary.         OK
+kepler.f  The factor 0.14 should be 0.10 to avoid using ETA < 0.02.      OK
+intgrt.F  A small change which avoids misleading value of STEP(I) for reg.
+          search.                                                        OK
+chstab.f  It is recommended to change the limit of 10000 steps near      OK
+          the end to for example 50000 (10000 was not enough).
+chterm.f  The NBODY6 version (only) is still not correct and caused      OK
+          trouble in rare case. Hence change to GRAPE-6 version.
+          (It has to do with no particles advanced to TBLOCK yet.)
+
+merge.f                                                                  OK
+reset.f   Bug fix cancels old bug fix which became evident after tests.  OK
+intgrt.F  By an amazing oversight, no test was made for regular force   OK
+          updating in case of small block size (<=10). Hence no full
+          X & V prediction was made. Since small block size also implies
+          unlikely commensurability for regular steps (especially for
+          large N), this is not serious since there will have been a
+          very recent prediction. A quick test has now been included.
+
+
+regint.f  The following lines may replace the test on KZ(38). This is   OK
+          not a bug fix but small improvement for primordial binaries.
+
+*       Correct force polynomials due to neighbour changes (KZ(38) or I > N).
+      IF (KZ(38).GT.0) THEN
+          CALL FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT)
+      ELSE IF (I.GT.N) THEN
+          IF (GAMMA(I-N).GT.GMAX) THEN
+              CALL FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT)
+          END IF
+      END IF
+*
+

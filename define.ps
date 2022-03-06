@@ -1,0 +1,951 @@
+%!PS-Adobe-3.0
+%%Title: define.f
+%%For: Rainer Spurzem
+%%Creator: a2ps version 4.13
+%%CreationDate: Fri Jul  2 15:10:42 2004
+%%BoundingBox: 42 40 564 828
+%%DocumentData: Clean7Bit
+%%Orientation: Portrait
+%%Pages: 4
+%%PageOrder: Ascend
+%%DocumentMedia: A4kyo 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 842 def
+/sw 595 def
+/llx 42 def
+/urx 564 def
+/ury 828 def
+/lly 40 def
+/#copies 1 def
+/th 20.000000 def
+/fnfs 15 def
+/bfs 10.000000 def
+/cw 6.000000 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   767.000000 th add
+def
+/pmw 0 def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+] def
+/y [
+  pmh ph add 0 mul ph add
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(SUBROUTINE) K
+( ) p
+(DEFINE) L n
+(*) c n
+(*) N
+(*       Definition of input parameters, options & counters. \(NB6++\)) N
+(*       ---------------------------------------------------) N
+(*) N
+(* ********** NOTE: Contents of [] to be removed with time.*************) N
+(* ********** Not read by nb6++                            *************) N
+(*) N
+(*       Input parameters) N
+(*       ****************) N
+(*) N
+(*       ---------------------------------------------------------------------) N
+(*       KSTART  Control index \(1: new run; >1: restart; 3, 4, 5: new params\).) N
+(*       TCOMP   Maximum computing time in minutes \(saved in CPU\).) N
+(*       TCRITp  Termination time in Myrs.) N
+(*       isernb  Max size of sequential irr blocks on parallel machine ) N
+(*               for single CPU dummy) N
+(*       iserreg as isernb for reg blocks) N
+(*               for single CPU dummy) N
+(*--------) p n
+(*       N       Total number of centre of masses \(<NMAX - 2\).) c n
+(*               e.g: N=100 binaries = NBIN0=NBIN below for f=1) N
+(*                    N=100, and NBIN0=NBIN=50 for f=0.5) N
+(*       NFIX    Output frequency of data save or binaries \(options 3 & 6\).) N
+(*       NCRIT   Final particle number \(alternative termination criterion\).) N
+(*       NRAND   Random number seed; any positive integer) N
+(*               [ NNBMAX  Maximum neighb.numb. \(= MIN\(N/2,LMAX-3\) set in input.F].) N
+(*       NNBOPT  Desired optimal neighbour number \(R.Sp.\)) N
+(*       NRUN    Run identification index.) N
+(*--------) p n
+(*       ETAI    Time-step parameter for irregular force polynomial.) c n
+(*       ETAR    Time-step parameter for regular force polynomial.) N
+(*       RS0     Initial radius of neighbour sphere.) N
+(*       DTADJ   Time interval for parameter adjustment.) N
+(*       DELTAT  Output time interval.) N
+(*->             NFIX=1 and DTADJ=DELTAT ) p
+(\336) sy
+( OUT3 written every adjust time) p n
+(*       TCRIT   Termination time.) c n
+(*->             The _earlier_ termination criterion becomes active) p n
+(*       QE      Energy tolerance \(restart if DE/E > 5*QE & KZ\(2\) > 1\).) c n
+(*       RBAR    Virial cluster radius in pc \(set = 0 for isolated cluster\).) N
+(*       ZMBAR   Mean mass in solar units \(1.0 assumed if 0\).) N
+(*--------) p n
+(*       KZ\(J\)   Non-zero options for alternative paths \(see table below\).) c n
+(*       BK\(J\)   Non-zero options for binpop_4new routine \(see table below\).) N
+(*--------) p n
+(*       DTMIN   Time-step criterion for regularization search.) c n
+(*       RMIN    Distance criterion for regularization search.) N
+(*       ETAU    Regularized time-step parameter \(6.28/ETAU steps/orbit\).) N
+(*       ECLOSE  Binding energy per unit mass for hard binary \(positive\).) N
+(*       GMIN    Relative two-body perturbation for unperturbed motion.) N
+(*       GMAX    Secondary termination parameter for soft KS binaries.) N
+(*--------) p n
+(*       DELTAS  Output interval for binary search \(#35=0: in TCR; option 4\).) c n
+(*       ORBITS  Minimum periods for binary output \(level 1\).) N
+(*       GPRINT  Perturbation thresholds for binary output \(9 levels\).) N
+(*--------) p n
+(*       ALPHAS  Power-law index for initial mass function \(routine DATA\).) c n
+(*       BODY1   Maximum particle mass before scaling \(KZ\(20\): solar mass\).) N
+(*       BODYN   Minimum particle mass before scaling \(KZ\(20\): solar mass\).) N
+(*       NBIN0   Number of primordial binaries \(for IMF2 with KZ\(20\) > 2\).) N
+(*       ZMET    Metal abundance \(in range 0.03 - 0.0001\).) N
+(*       EPOCH0  Evolutionary epoch \(in 10**6 yrs\).) N
+(*--------) p n
+(*       Q       Virial ratio \(routine SCALE; Q = 0.5 for equilibrium\).) c n
+(*       VXROT   XY-velocity scaling factor \(> 0 for solid-body rotation\).) N
+(*       VZROT   Z-velocity scaling factor \(not used if VXROT = 0\).) N
+(*       RSPH2   Radius of reflecting sphere \(option 29; units of RSCALE\).) N
+(*--------) p n
+(*       NCL     Number of interstellar clouds \(routine CLOUD0; option 13\).) c n
+(*       RB2     Radius of cloud boundary in pc \(square is saved\).) N
+(*       VCL     Mean cloud velocity in km/sec.) N
+(*       SIGMA   Gaussian velocity dispersion of clouds in km/sec.) N
+(*       CLM     Individual cloud masses in solar masses \(maximum is MCL\).) N
+(*       RCL2    Half-mass radii of clouds in pc \(square is saved\).) N
+(*--------) p n
+(define.f) (Page 1/4) (Aug 06, 01 16:21) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (2) 2
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*       SIGMA0  Hot initial velocities in km/sec \(routine HOTSYS; option 29\).) c n
+(*--------) p n
+(*       NBIN    Number of initial binaries \(routine BINPOP; option 8\).) c n
+(*       SEMI    Initial semi-major axis \(= 0 for range of energies\).) N
+(*       ECC     Initial eccentricity \(for BINPOP_4NEW\)) N
+(*               <=1 AND >=0 for one particular fixed ecc. for all systems) N
+(*               < 0 for thermal distribution,) N
+(*               =20 for uniform distribution,) N
+(*               =30 for f\(e\)=0.1765/\(e*e\)) N
+(*               =40 for general f\(e\)=a*e^b, e0<=e<=1 with a=\(1+b\)/\(1-e0^\(1+b\)\)) N
+(*                   e0 and b must be defined in binpop routine) N
+(*       RATIO   Mass ratio M1/\(M1 + M2\); \(= 1.0: M1 = M2 = <M>\).) N
+(*       NBGR    Number of binaries in fixed energy groups.) N
+(*       REDUCE  Reduction factor in semi-major axis for each group.) N
+(*       RANGE   Energy range for uniform logarithmic distribution.) N
+(*       NSKIP   Binary frequency of mass spectrum \(starting from body #1\).) N
+(*       IDORM   Indicator for dormant binaries \(>0: merged components\).) N
+(*       ICIRC   Eigenevolution & period distribution \(RANGE: minimum period\).) N
+(*--------) p n
+(*       NHI     Number of primordial hierarchies \(routine HIPOP; #11 > 1\).) c n
+(*       SEMI    Semi-major axis in model units \(all equal if RANGE = 0\).) N
+(*       ECC     Initial eccentricity \(< 0 for thermal distribution\).) N
+(*       RATIO   Mass ratio \(= 1.0: M1 = M2; random in [0.5-0.9]\).) N
+(*       RANGE   Range in SEMI for uniform logarithmic distribution \(> 0\).) N
+(*       ICIRC   Circularization & collision check \(not implemented yet\).) N
+(*--------) p n
+(*       RSTAR   Size of typical star in A.U. \(routine INTIDE; option 27\).) c n
+(*       IMS     # idealized main-sequence stars \(routine INTIDE; option 27\).) N
+(*       IEV     # idealized evolved stars.) N
+(*       RMS     Scale factor for main-sequence radii \(>0: fudge factor\).) N
+(*       REV     Scale factor for evolved radii \(initial size RSTAR\).) N
+(*       ---------------------------------------------------------------------) N
+(*) N
+(*) N
+(*       Options KZ\(J\)) N
+(*       *************) N
+(*) N
+(*       ---------------------------------------------------------------------) N
+(*       1  COMMON save on unit 1 at end of run \(=2: every 100*NMAX steps\).) N
+(*       2  COMMON save on unit 2 at output \(=1\); restart if DE/E > 5*QE \(=2\).) N
+(*       3  Basic data on unit 3 at output time \(frequency NFIX\).) N
+(*       4  Binary diagnostics on unit 4 \(# threshold levels = KZ\(4\) < 10\).) N
+(*       5  Initial conditions \(#22 =0; =0: uniform & isotropic; =1: Plummer\).) N
+(*       6  Output of significant & regularized binaries \(=1, 2, 3 & 4\).) N
+(*       7  Lagrangian radii \(>0: RSCALE; =2, 3, 4: output on unit 6 & 7\).) N
+(*       8  Primordial binaries \(=1 & 3; >0: BINOUT; >2: BINDAT; >3: HIDAT\).) N
+(*       9  Individual bodies printed at output time \(MIN\(5**KZ9,NTOT\)\).) N
+(*      10  Diagnostic KS output \(>0: begin; >1: end; >=3: each step\).) N
+(*      11  Hierarchical systems \(=1: diagnostics; =2: primordial; =3: both\).) N
+(*      12  HR diagnostics of evolving stars \(interval DTPLOT\).) N
+(*      13  Interstellar clouds \(=1: constant velocity; >1: Gaussian\).) N
+(*      14  External force \(=1: standard tidal field; =2: not implemented\).) N
+(*      15  Triple, quad, chain \(#30 > 0\) or merger search \(>1: full output\).) N
+(*      16  Updating of regularization parameters \(RMIN, DTMIN & ECLOSE\).) N
+(*      17  Modification of ETAI, ETAR \(>=1\) and ETAU \(>1\) by tolerance QE.) N
+(*      18  Neighbour additions in CHECKL \(>0: high-velocity; >1: all types\).) N
+(*      19  Mass loss \(=1: supernova scheme; =3: Eggleton, Tout & Hurley\).) N
+(*      20  Initial mass function \(=1: Tout; =2,4: Kroupa; =3,5: Eggleton\).) N
+(*          >3 => mass ratio distr. as defined in imf2.f) N
+(*          =2 for KTG93 IMF with random pairing \(imf2.f\)) N
+(*      21  Extra output line \(MODEL #, TCOMP, DMIN, AMIN, RMAX & RSMIN\).) N
+(*      22  Initial m,r,v on #10 \(=1: output; >=2: input; >2: no scaling\).) N
+(*                               \(=4: starlab input format\)) N
+(*      23  Removal of escapers \(=1: isolated cluster; =2: diag; ) N
+(*                               =3: tidal cut       ; =4: diag\).) N
+(*      24  Initial conditions for subsystem \(routine SCALE; KZ\(24\) = #\).) N
+(*      25  Partial reflection of KS binary orbit \(GAMMA < GMIN; suppressed\).) N
+(*      26  Slow-down of two-body motion \(>=1: KS binary; =2: chain binary\).) N
+(*      27  Two-body tidal interaction \(n = 1.5: type 3 & 5; n = 3: others\).) N
+(*      27  Tidal circularization & collisions \(R_coll = 0.75*\(R_1 + R_2\)\).) N
+(*      28  Magnetic braking and gravitational radiation \(options 19 & 27\).) N
+(*      29  Boundary reflection for hot system \(suppressed\).) N
+(*      30  Chain regularization \(>=2: main output; >2: diagnostic output\).) N
+(*      31  Centre of mass correction after energy check.) N
+(*      32  Increase of output intervals \(based on single particle energy\).) N
+(*      33  Block-step diagnostics at main output \(>=1: STEP; =2: STEPR\).) N
+(define.f) (Page 2/4) (Aug 06, 01 16:21) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 3
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*      34  Roche lobe overflow \(not implemented yet\).) c n
+(*      35  Time offset \(global time from TTOT = TIME + DTOFF\).) N
+(*      36  Step reduction for hierarchical systems.) N
+(*      37  Fast time-step criterion \(>0: STEP; >1: STEPR\).) N
+(*      38  No force polynomial corrections \(I <= N; block-step version\).) N
+(*      39  shape analysis by routine ellan \(=2\) with Ch. Theis) N
+(*      40  adjust neighbour number to optimal neighbour number.) N
+(*       ---------------------------------------------------------------------) N
+(*) N
+(*) N
+(*       Options BK\(J\)   \(for binpop_4new.f\)) N
+(*       *************) N
+(*) N
+(*       ---------------------------------------------------------------------) N
+(*       1  =0: no proto-star evolution                                       ) N
+(*          =1:"proto-star" evol. of ecc,period in binpop_4new.f           ) N
+(*       2  = -1: use NBGR and REDUCE in binpop_pk.f) N
+(*          =0:flat distr. in semi-major axis                                 ) N
+(*          =1:f=0.034388logP                                                 ) N
+(*          =2:f=3.5logP/[100+\(logP\)**2]                                      ) N
+(*             KZ\(40\)=1,2 are 1st and 2nd iterations                          ) N
+(*          =3:f=2.3\(logP-1\)/[45+\(logP-1\)**2]                                 ) N
+(*          =4:f=2.5\(logP-1\)/[45+\(logP-1\)**2] -- derived in K2) N
+(*               NOTE: in routine adjust.f KZ\(40\)>0 is used to adjust         ) N
+(*                     neighbour number                                       ) N
+(*          =5:f = Duquennoy&Mayor \(1991\), i.e. Gaussian in logP ) N
+(*       3  =0: only single precission output on "unit3" \(i.e. "OUT3" in nb5\)) N
+(*              written in fort.3000+rank.) N
+(*          =1: only double precission output on "unit 3",) N
+(*              but written in fort.4000+rank. ) N
+(*              Necessary for full binary star analysis.) N
+(*          =2: both, sngl & dbl, files above are written) N
+(*       4  =1: file peri_hyperbol.dat opened and written to \(see ksint.f\)) N
+(*          =0: not opened) N
+(*       ---------------------------------------------------------------------) N
+(*) N
+(*) N
+(*       Output counters) N
+(*       ***************) N
+(*) N
+(*       ---------------------------------------------------------------------) N
+(*       NSTEPI  Irregular integration steps.) N
+(*       NSTEPR  Regular integration steps.) N
+(*       NSTEPU  Regularized integration steps.) N
+(*       NNPRED  Coordinate & velocity predictions of all particles.) N
+(*       NBPRED  Coordinate & velocity prediction of neighbours \(NNB counted\).) N
+(*       NBCORR  Force polynomial corrections.) N
+(*       NBFULL  Too many neighbours with standard criterion.) N
+(*       NBVOID  No neighbours inside 1.26 times the basic sphere radius.) N
+(*       NICONV  Irregular step reduction \(force convergence test\).) N
+(*       NRCONV  Regular step reduction \(Hermite\) or increase \(block-steps\).) N
+(*       NBSMIN  Retained neighbours inside 2*RS \(STEP < SMIN\).) N
+(*       NLSMIN  Small step neighbours selected from other neighbour lists.) N
+(*       NBDIS   Second component of recent KS pair added as neighbour \(#18\).) N
+(*       NBDIS2  Second component of old KS pair added as neighbour \(#18 > 1\).) N
+(*       NCMDER  C.m. values for force derivatives of KS component.) N
+(*       NBDER   Large F3DOT corrections not included in D3 & D3R.) N
+(*       NFAST   Fast particle included in LISTV \(option 18\).) N
+(*       NBFAST  Fast particle included in neighbour list \(option 18\).) N
+(*       NBREF   Boundary reflections \(option 29; suppressed\).) N
+(*       NBLOCK  Number of irregular blocks \(block-step version\).) N
+(*       NBLCKR  Number of regular blocks \(block-step version\) \(R.Sp.\)) N
+(*       NMDOT   Mass loss events \(option 19\).) N
+(*       NBSTAT  Diagnostic data on binary interactions \(option 4\).) N
+(*       NKSTRY  Two-body regularization attempts.) N
+(*       NKSREG  Total KS regularizations.) N
+(*       NKSHYP  Hyperbolic KS regularizations.) N
+(*       NKSPER  Unperturbed KS binary orbits.) N
+(*       NPRECT  Initialization of NKSPER after exceeding 2*10**9.) N
+(*       NKSREF  Partial reflections of KS binary \(option 25; suppressed\).) N
+(*       NKSMOD  Slow KS motion restarts \(option 26\).) N
+(*       NTTRY   Search for triple, quad & chain regularization or mergers.) N
+(*       NTRIP   Three-body regularizations \(option 15\).) N
+(*       NQUAD   Four-body regularizations \(option 15\).) N
+(*       NCHAIN  Chain regularizations \(options 15 & 30\).) N
+(*       NMERG   Mergers of stable triples or quadruples \(option 15\).) N
+(define.f) (Page 3/4) (Aug 06, 01 16:21) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (4) 4
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*       NSTEPT  Triple regularization integration steps \(option 15\).) c n
+(*       NSTEPQ  Quadruple regularization integration steps \(option 15\).) N
+(*       NSTEPC  Chain regularization steps \(# DIFSY calls\).) N
+(*       NDISS   Tidal dissipation at pericentre \(option 27\).) N
+(*       NTIDE   Tidal captures from hyperbolic motion \(option 27\).) N
+(*       NSYNC   Number of synchronous binaries \(a < RSYNC; option 27\).) N
+(*       NCOLL   Stellar collisions \(option 27\).) N
+(*       NSESC   Escaped single particles \(option 23\).) N
+(*       NBESC   Escaped binaries \(option 23\).) N
+(*       NMESC   Escaped mergers \(options 15 & 23\).) N
+(*       ---------------------------------------------------------------------) N
+(*) N
+(*) N
+(*       Stellar evolution types) N
+(*       ***********************) N
+(*) N
+(*       ---------------------------------------------------------------------) N
+(*       0       Low main sequence \(M < 0.7\).) N
+(*       1       Main sequence.) N
+(*       2       Hertzsprung gap \(HG\).) N
+(*       3       Red giant.) N
+(*       4       Core Helium burning.) N
+(*       5       First AGB.) N
+(*       6       Second AGB.) N
+(*       7       Helium main sequence.) N
+(*       8       Helium HG.) N
+(*       9       Helium GB.) N
+(*      10       Helium white dwarf.) N
+(*      11       Carbon-Oxygen white dwarf.) N
+(*      12       Oxygen-Neon white dwarf.) N
+(*      13       Neutron star.) N
+(*      14       Black hole.) N
+(*      15       Massless supernova remnant.) N
+(*      20       Circularized binary \(c.m. value\).) N
+(*       ---------------------------------------------------------------------) N
+(*) N
+(      ) p
+(RETURN) K n
+(*) c n
+(      ) p
+(END) K n
+(define.f) (Page 4/4) (Aug 06, 01 16:21) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

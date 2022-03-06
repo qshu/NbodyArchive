@@ -1,0 +1,7 @@
+
+
+
+   cmbody.f ksin2.f ksinit.f    STEPR()=1.D6
+   nbody6.F                     CALL FILE_INIT moved
+   lagr.F                       Rotation and Print Format
+   Makefile                     ACCESS=APPEND to change for CRAY ORIGIN
