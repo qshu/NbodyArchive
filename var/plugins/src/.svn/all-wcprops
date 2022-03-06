@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/var/plugins/src
+END
+demo_plugin
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/var/plugins/src/demo_plugin
+END
+plugin_template.sh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/var/plugins/src/plugin_template.sh
+END

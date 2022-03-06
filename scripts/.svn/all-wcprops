@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/nbody/!svn/ver/38/deployment/branches/0.2.x/scripts
+END
+common.sh
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/scripts/common.sh
+END
+jobdescription.sh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/nbody/!svn/ver/38/deployment/branches/0.2.x/scripts/jobdescription.sh
+END

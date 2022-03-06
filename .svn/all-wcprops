@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/nbody/!svn/ver/38/deployment/branches/0.2.x
+END
+monitor.sh
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/monitor.sh
+END
+kill.sh
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/kill.sh
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/CHANGES
+END
+status.sh
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/status.sh
+END
+submit.sh
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/submit.sh
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/README
+END

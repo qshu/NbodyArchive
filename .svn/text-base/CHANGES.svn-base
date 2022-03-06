@@ -1,0 +1,20 @@
+Nbody6++ deployment package changes
+-------------------------------------------------
+
+Version 0.2.0pre
+
+* Restructuring:
+  - Shell functions (includes) now under scripts/
+  - Scripts intended to be used on the execution
+    host now under libexec/
+* Restart/Checkpointing support (submit.sh, option -fr)
+* Staging of initial data file (submit.sh, option -fd)
+* Improved output 
+* Possibility to specify a queue (submit.sh, option -q)
+* New monitor.sh script to watch stdout/stderr of a running job
+* User can select different verbosity levels (not fully implemented)
+
+TODO:
+  * Force termination of Nbody6++ jobs using a STOP file 
+  * Extended support for job metadata/statistics
+

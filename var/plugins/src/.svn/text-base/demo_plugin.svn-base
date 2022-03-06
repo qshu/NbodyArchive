@@ -1,0 +1,202 @@
+#!/bin/sh
+
+# Template for a script-plugin.
+# Thomas Bruesemeister <tbruese@ari.uni-heidelberg.de>
+
+# Configuration hints:
+
+# @CREDENTIAL_DELEGATE
+
+
+plugin_name=demo_plugin
+
+outfile=snap.f
+executable=snap
+source_starts_at_line=#SET_SOURCE_LINE
+check_files=conf.3
+
+####################
+# FUNCTIONS
+####################
+
+function pecho()
+{
+  echo "$plugin_name: $@"
+}
+
+function check_program()
+{
+  type $1 &>/dev/null
+
+  if [ $? -ne 0 ]; then
+    pecho "Error: Program $1 is not installed or is not in PATH"
+    exit 1
+  fi
+}
+
+function check_prerequisites()
+{
+  for i in $check_files; do
+  
+  if [ ! -f $i ]; then
+    pecho "$0: $i is missing. EXIT."
+    exit 1
+  fi
+  done
+
+  check_program gnuplot
+}
+
+function extract_source()
+{
+  tail -n +${source_starts_at_line} $0 > $outfile
+}
+
+function compile_source()
+{
+  if [ -f $outfile ]; then
+    f77 -o $executable $outfile
+  else
+    pecho "$0: Can not find $outfile. EXIT"
+    exit 1
+  fi 
+}
+
+function execute()
+{
+ # snap <snapshot time> <conf.3 file> <output file>
+ if [ -x $executable ]; then
+   ./${executable} 1.0 conf.3 snap.out
+ else
+   pecho "$0: $executable does not exist or has no executable permissisons. EXIT"
+   exit 1
+ fi
+
+ if [ ! -f snap.out ]; then
+   pecho "No snap.out created."
+   exit 1
+ fi
+}
+
+function plot()
+{
+  cat > snap.plt <<EOF  
+  set terminal postscript
+  set output "snap.ps"
+  set title "Snapshot demo from $(hostname -f) at $(date)"
+  plot "snap.out" using 2:3 title "Snapshot"  
+
+EOF
+
+  gnuplot "snap.plt"
+
+  if [ -f snap.ps ]; then
+    # Transfer the file
+    pecho "Plot output available."
+    if [ ! -z ${NB6_STAGE_OUT_URL} ]; then
+      GCP="globus-url-copy file://$(pwd)/snap.ps ${NB6_STAGE_OUT_URL}/snap.ps"
+      pecho $GCP
+      $GCP
+    else
+      pecho "Can not stage-out results: NB6_STAGE_OUT_URL is not set."
+    fi
+  else
+    pecho "Could not find snap.ps. No output produced."
+  fi
+
+} 
+
+
+####################
+# MAIN
+####################
+case $1 in
+
+  'pre_execution')
+    pecho "Called pre_execution hook!"
+  ;;
+
+  'post_execution')
+    pecho "Called post_execution hook!"
+    check_prerequisites
+    extract_source
+    compile_source
+    execute
+    plot
+  ;;
+
+  *)
+    pecho "Invalid script-plugin argument"
+  ;;
+
+esac
+exit 0
+* #SOURCE_LINE_MARKER
+**********************************************
+*
+* snap.f
+*
+* Reads the conf.3 output file from nbody6++ and
+* produces a snapshot of positions/velocities
+* at a certain time 
+*
+* written by Andreas Ernst (October 11, 2006)
+*
+**********************************************
+
+      PROGRAM SNAP
+
+      PARAMETER (TILLMAX=4000, NMAX=125000)
+      CHARACTER INFILE*80, OUTFILE*80
+      CHARACTER TIMESTR*8
+      REAL*4 TIME
+      INTEGER*4 IS, NTOT, MODEL, NRUN, NK
+      REAL*4 AS(20),BODYS(NMAX),RHOS(NMAX),PHI(NMAX)
+      REAL*4 XNS(NMAX),XS(3,NMAX),VS(3,NMAX)
+      INTEGER*4 NAME(NMAX)
+
+* Usage and read command line arguments
+      
+      IF(IARGC( ) .LT. 3) THEN
+        WRITE(UNIT=*, FMT=*) 'snap - reads conf.3 file from ',
+     &    'nbody6 and produces a snapshot in N-body format at ',
+     &    'a certain time.'
+        WRITE(UNIT=*, FMT=*) 'Usage: snapshot ',
+     &    '<snapshot time> <conf.3 file> <output file>'
+        STOP
+      ENDIF
+      CALL GETARG(1, TIMESTR)
+      CALL GETARG(2, INFILE)
+      CALL GETARG(3, OUTFILE)
+      READ(TIMESTR, '(F8.1)') TIME
+
+* Read conf.3 file
+
+      AS(1) = 0.
+      WRITE(*,*) 'Reading ', INFILE, '...'
+      OPEN (UNIT=1, FILE=INFILE, STATUS='OLD', FORM='UNFORMATTED')
+      DO WHILE (AS(1).LT.TIME)
+        READ (1)  NTOT, MODEL, NRUN, NK
+        READ (1)  (AS(K),K=1,NK),
+     &         (BODYS(J),J=1,NTOT),(RHOS(J),J=1,NTOT),(XNS(J),J=1,NTOT),
+     &         ((XS(K,J),K=1,3),J=1,NTOT), ((VS(K,J),K=1,3),J=1,NTOT),
+     &         (PHI(J),J=1,NTOT),(NAME(J),J=1,NTOT)
+      WRITE(*,*) "Read time unit ",AS(1),"..."
+      ENDDO !WHILE
+      CLOSE(UNIT=1)
+
+* Write snapshot of initial values to file in N-body format
+
+      WRITE(*,*) 'Writing ', NTOT, ' bodies to file ', 
+     &      OUTFILE, ' at time ', AS(1)
+      OPEN(UNIT=2, FILE=OUTFILE, STATUS='NEW')
+*      WRITE (2,*) NTOT
+*      WRITE (2,*) 3
+*      WRITE (2,*) AS(1)
+      DO J=1, NTOT
+        WRITE(2,10) BODYS(J),(XS(K,J),K=1,3),(VS(K,J),K=1,3)
+10      FORMAT (7(3X,E20.10))
+      ENDDO
+      CLOSE(UNIT=2)
+
+      END

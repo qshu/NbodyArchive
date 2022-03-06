@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/var/plugins
+END
+install_plugins.sh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/nbody/!svn/ver/36/deployment/branches/0.2.x/var/plugins/install_plugins.sh
+END
