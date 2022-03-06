@@ -1,0 +1,44 @@
+126c126
+< C 900             FORMAT('BRAKE2 MERGER TERM:    K* NAME(ICM) Time[NB] ',
+---
+> C 900             FORMAT('BRAKE2 MERGER TERM:  K* NAME(ICM) Time[NB] ',
+201c201
+<  902             FORMAT(' WARNING   MDOT NO ROCHE ',3i6,i4,1x,1p,2e13.4)
+---
+>  902             FORMAT(' WARNING MDOT NO ROCHE ',3i6,i4,1x,1p,2e13.4)
+271c271
+<  904             FORMAT(' WARNING!    MDOT    I K* D(TEV) ',2I5,1P,E9.1)
+---
+>  904             FORMAT(' WARNING!  MDOT  I K* D(TEV) ',2I5,1P,E11.3)
+575,578c575,580
+<                 WRITE (6,190)  I, NAME(I), KSTAR(I), KW, MASS(K), M0,
+<      &              RADIUS(I)*SU, VI, RI, RCC, MC
+<   190           FORMAT (' NS/BH FORMATION  ',2I10,2I4,' M new/old[*]',
+<      &     1P,2E9.1,' RAD[*]',E9.1,' R,V=',2E9.1,' RCC,MC=',2E9.1)
+---
+>                 WRITE (6,190) I, NAME(I), KSTAR(I), KW, MASS(K), M0,
+>      &              RADIUS(I)*SU, VI, RI, RCC, MC, TTOT, TPHYS
+>   190           FORMAT ('NS/BH FORMATION ',2I10,2I4,' M new/old[*]',
+>      &     1P,2E11.3,' RAD[*]',E11.3,' R,V=',2E11.3,
+>      &     ' RCC,MC=',2E11.3,' Time[NB] =',1pe11.3,
+>      &     ' Time[Myr] =',1pe11.3)
+848c850
+<      &                                   I6,I4,F7.3,1P,2E9.1)
+---
+>      &                                   I6,I4,F7.3,1P,2E11.3)
+876c878
+<      &                                            2I6,F7.3,I4,E9.1)
+---
+>      &                                            2I6,F7.3,I4,E11.3)
+1522c1524
+<  932           FORMAT(' DANGER!  MDOT   I K* M0 M R ',2I5,2F7.2,1P,E9.1)
+---
+>  932           FORMAT(' DANGER! MDOT I K* M0 M R ',2I5,2F7.2,1P,E11.3)
+1547c1549
+<  940              FORMAT(' DEGEN SPIRAL    NAM K* DMR ',I5,2I4,1P,E9.1)
+---
+>  940              FORMAT(' DEGEN SPIRAL NAM K* DMR ',I5,2I4,1P,E11.3)
+1591c1593
+<   944          FORMAT (' GR CHECK   T NAM K* DTGR ',F8.2,I6,I4,1P,E9.1)
+---
+>   944          FORMAT ('GR CHECK T NAM K* DTGR ',F8.2,I6,I4,1P,E11.3)
