@@ -1,0 +1,24 @@
+SUBROUTINE COMENV(M01,M1,MC1,AJ1,JSPIN1,KW1,
+      SUBROUTINE deltat(kw,age,tm,tn,tscls,dt,dtr)
+      SUBROUTINE dgcore(kw1,kw2,kw3,m1,m2,m3,ebinde)
+      SUBROUTINE evolv1b(kw,mass,mt,r,lum,mc,rc,menv,renv,ospin,
+      SUBROUTINE evolv1(kw,mass,mt,r,lum,mc,rc,menv,renv,ospin,
+      SUBROUTINE evolv2b(kstar,mass0,mass,rad,lumin,massc,radc,
+      SUBROUTINE gntage(mc,mt,kw,zpars,m0,aj)
+      SUBROUTINE hrdiag(mass,aj,mt,tm,tn,tscls,lums,GB,zpars,
+      SUBROUTINE instar
+!! Subroutine written by Arkadiusz Hypki (ahypki@camk.edu.pl) - 13.03.2009
+!! This subroutine presents approach from:
+      SUBROUTINE kickv(kw,m1,m1n,m2,ecc,sep,jorb,oVx)
+        subroutine buildRotMat(JVec, rotMat)
+      subroutine carth_coord_of_rel_vel_pos(em,e,sep,m1,m2,rVec,vrVec)
+!! in the case if kickv subroutine is called for one star
+        subroutine mTranspose(iMatrix, oMatrix)
+        subroutine debug(m1)
+c      SUBROUTINE kickv(kw,m1,m1n,m2,ecc,sep,jorb,vs)
+      SUBROUTINE MIX(M0,M,AJ,KS,ZPARS)
+      SUBROUTINE mrenv(kw,mass,mt,mc,lum,rad,rc,aj,tm,ltms,lbgb,lhei,
+*   mc = core mass (not really needed, can also be done outside subroutine)
+      SUBROUTINE star(kw,mass,mt,tm,tn,tscls,lums,GB,zpars)
+      SUBROUTINE zcnsts(z,zpars)
+
