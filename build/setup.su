@@ -1,0 +1,6 @@
+setup.F:449:0:gasdev	80	static
+setup.F:560:0:vfunc2	80	static
+setup.F:524:0:vdisp2	288	static
+setup.F:513:0:vfunc	64	static
+setup.F:476:0:vdisp	288	static
+setup.F:1:0:setup	992	static

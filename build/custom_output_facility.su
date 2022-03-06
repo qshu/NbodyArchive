@@ -1,0 +1,10 @@
+custom_output_facility.F:10:0:hdf5_init	8	static
+custom_output_facility.F:51:0:hdf5_close	8	static
+custom_output_facility.F:88:0:hdf5_write_real_vector_as_dset	8	static
+custom_output_facility.F:194:0:hdf5_write_integer_vector_as_dset	8	static
+custom_output_facility.F:289:0:hdf5_write_attribute_scalar_real	8	static
+custom_output_facility.F:318:0:hdf5_write_attribute_scalar_integer	8	static
+custom_output_facility.F:348:0:custom_update_file	8	static
+custom_output_facility.F:374:0:output_single	1248	static
+custom_output_facility.F:559:0:output_binary	1264	static
+custom_output_facility.F:865:0:output_merger	1248	static

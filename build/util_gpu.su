@@ -1,0 +1,2 @@
+util_gpu.F:54:0:calc_reg_on_gpu_._omp_fn.0	80	static
+util_gpu.F:1:0:calc_reg_on_gpu	2581536	dynamic,bounded

@@ -1,0 +1,4 @@
+custom_output.F:737:0:sev_one_star	688	dynamic,bounded
+custom_output.F:772:0:custom_store_single	32	dynamic,bounded
+custom_output.F:819:0:custom_store_binary	128	dynamic,bounded
+custom_output.F:1:0:custom_output	1568	dynamic,bounded

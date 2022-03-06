@@ -1,0 +1,5 @@
+lagr.f:107:0:lagr_._omp_fn.2	48	static
+lagr.f:98:0:lagr_._omp_fn.1	48	static
+lagr.f:86:0:lagr_._omp_fn.0	48	static
+lagr.f:140:0:lagr_._omp_fn.3	48	static
+lagr.f:1:0:lagr	96689824	static

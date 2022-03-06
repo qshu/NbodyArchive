@@ -1,0 +1,7 @@
+global_output.F:1082:0:lagr_sig_average	8	static
+global_output.F:1059:0:lagr_sig_empty_fill	48	static
+global_output.F:1016:0:lagr_sig_fill	752	static
+global_output.F:989:0:lagr_average	8	static
+global_output.F:958:0:lagr_empty_fill	64	static
+global_output.F:885:0:lagr_fill	128	static
+global_output.F:1:0:global_output	48357200	dynamic,bounded

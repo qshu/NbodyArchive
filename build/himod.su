@@ -1,0 +1,5 @@
+himod.f:134:0:transform2	256	static
+himod.f:123:0:dot	8	static
+himod.f:110:0:cross	8	static
+himod.f:202:0:transform4	272	static
+himod.f:1:0:himod	912	static

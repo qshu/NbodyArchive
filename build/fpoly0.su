@@ -1,0 +1,5 @@
+fpoly0.F:279:0:fpoly0_._omp_fn.2	176	static
+fpoly0.F:200:0:fpoly0_._omp_fn.1	96	static
+fpoly0.F:369:0:fpoly0_._omp_fn.3	48	static
+fpoly0.F:61:0:fpoly0_._omp_fn.0	48	static
+fpoly0.F:1:0:fpoly0	82944	dynamic,bounded

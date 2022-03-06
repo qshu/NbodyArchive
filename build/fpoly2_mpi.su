@@ -1,0 +1,2 @@
+fpoly2_mpi.f:153:0:fpoly2_mpi_._omp_fn.0	256	static
+fpoly2_mpi.f:1:0:fpoly2_mpi	8592	dynamic,bounded

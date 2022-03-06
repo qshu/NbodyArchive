@@ -1,0 +1,11 @@
+intgrt.F:198:0:intgrt_._omp_fn.0	128	dynamic,bounded
+intgrt.F:586:0:intgrt_._omp_fn.2	48	static
+intgrt.F:801:0:intgrt_._omp_fn.4	48	static
+intgrt.F:1045:0:intgrt_._omp_fn.6	112	static
+intgrt.F:1259:0:intgrt_._omp_fn.8	112	dynamic,bounded
+intgrt.F:568:0:intgrt_._omp_fn.1	96	static
+intgrt.F:705:0:intgrt_._omp_fn.3	112	static
+intgrt.F:959:0:intgrt_._omp_fn.5	128	static
+intgrt.F:1182:0:intgrt_._omp_fn.7	160	static
+intgrt.F:1358:0:intgrt_._omp_fn.9	96	static
+intgrt.F:1:0:intgrt	332415504	dynamic,bounded

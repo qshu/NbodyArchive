@@ -1,0 +1,7 @@
+host_runtime.h:256:21:void __cudaUnregisterBinaryUtil()	16	static
+helper_cuda.h:577:1:void check(T, const char*, const char*, int) [with T = cudaError]	64	dynamic,bounded
+tmpxft_00003393_00000000-5_gpupot.gpu.cudafe1.stub.c:13:6:void __device_stub__Z10pot_kerneliiP8ParticleP6float2(int, int, Particle*, float2*)	192	dynamic,bounded
+gpupot.gpu.cu:32:6:void pot_kernel(int, int, Particle*, float2*)	16	static
+gpupot.gpu.cu:61:6:void gpupot(int*, int, int, int, double*, double (*)[3], double*)	272	static
+gpupot.gpu.cu:117:6:void gpupot_(int*, int*, int*, int*, double*, double (*)[3], double*)	16	static
+tmpxft_00003393_00000000-5_gpupot.gpu.cudafe1.stub.c:2:13:void __sti____cudaRegisterAll()	64	dynamic,bounded

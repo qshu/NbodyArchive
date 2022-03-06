@@ -1,0 +1,35 @@
+gpunb.velocity.cu:608:9:_Z13GPUNB_deviniti._omp_fn.1	32	static
+gpunb.velocity.cu:601:9:_Z13GPUNB_deviniti._omp_fn.0	16	static
+gpunb.velocity.cu:823:9:_Z10GPUNB_regfiPdS_PA3_dS1_S1_S1_S_iiPii._omp_fn.6	48	static
+gpunb.velocity.cu:847:9:_Z10GPUNB_regfiPdS_PA3_dS1_S1_S1_S_iiPii._omp_fn.7	144	static
+host_runtime.h:256:21:void __cudaUnregisterBinaryUtil()	16	static
+gpunb.velocity.cu:575:6:void GPUNB_devinit(int)	1024	dynamic,bounded
+helper_cuda.h:577:1:void check(T, const char*, const char*, int) [with T = cudaError]	64	dynamic,bounded
+gpunb.velocity.cu:717:9:_Z10GPUNB_sendiPdPA3_dS1_._omp_fn.4	48	static
+gpunb.velocity.cu:676:9:_Z11GPUNB_closev._omp_fn.3	96	static
+gpunb.velocity.cu:649:9:_Z10GPUNB_openii._omp_fn.2	144	static
+gpunb.velocity.cu:163:30:void dev_gravity(int, const Iparticle&, const Jparticle&, Force&, uint16*)	32	static
+gpunb.velocity.cu:212:30:void dev_gravity_m(int, const Iparticle&, const Jparticle&, Force&, uint16*)	32	static
+gpunb.velocity.cu:575:6:void GPUNB_devinit(int)	48	static
+gpunb.velocity.cu:629:6:void GPUNB_open(int, int)	48	static
+gpunb.velocity.cu:669:6:void GPUNB_close()	32	static
+gpunb.velocity.cu:704:6:void GPUNB_send(int, double*, double (*)[3], double (*)[3])	128	static
+gpunb.velocity.cu:732:6:void GPUNB_regf(int, double*, double*, double (*)[3], double (*)[3], double (*)[3], double (*)[3], double*, int, int, int*, int)	192	static
+gpunb.velocity.cu:883:6:void GPUNB_profile(int)	96	static
+gpunb.velocity.cu:906:6:void gpunb_devinit_(int*)	16	static
+gpunb.velocity.cu:909:6:void gpunb_open_(int*, int*)	16	static
+gpunb.velocity.cu:912:6:void gpunb_close_()	16	static
+gpunb.velocity.cu:915:6:void gpunb_send_(int*, double*, double (*)[3], double (*)[3])	16	static
+gpunb.velocity.cu:922:6:void gpunb_regf_(int*, double*, double*, double (*)[3], double (*)[3], double (*)[3], double (*)[3], double*, int*, int*, int*, int*)	16	static
+gpunb.velocity.cu:937:6:void gpunb_profile_(int*)	16	static
+tmpxft_00003391_00000000-5_gpunb.velocity.cudafe1.stub.c:16:6:void __device_stub__Z14gravity_kerneliPK9IparticlePK9JparticlePA28_5ForcePA28_A256_t(int, const Iparticle*, const Jparticle*, Force (*)[28], uint16 (*)[28][256])	208	dynamic,bounded
+gpunb.velocity.cu:260:6:void gravity_kernel(int, const Iparticle*, const Jparticle*, Force (*)[28], uint16 (*)[28][256])	16	static
+tmpxft_00003391_00000000-5_gpunb.velocity.cudafe1.stub.c:1:6:void __device_stub__Z16gravity_kernel_miPK9IparticlePK9JparticlePA28_5ForcePA28_A256_t(int, const Iparticle*, const Jparticle*, Force (*)[28], uint16 (*)[28][256])	208	dynamic,bounded
+gpunb.velocity.cu:331:6:void gravity_kernel_m(int, const Iparticle*, const Jparticle*, Force (*)[28], uint16 (*)[28][256])	16	static
+tmpxft_00003391_00000000-5_gpunb.velocity.cudafe1.stub.c:1:6:void __device_stub__Z19force_reduce_kerneliPA28_K5ForcePS_(int, const Force (*)[28], Force*)	176	dynamic,bounded
+gpunb.velocity.cu:442:6:void force_reduce_kernel(int, const Force (*)[28], Force*)	16	static
+tmpxft_00003391_00000000-5_gpunb.velocity.cudafe1.stub.c:1:6:void __device_stub__Z16gather_nb_kerneliiiPA28_K5ForcePS0_PKiPA28_A256_KtPi(int, int, int, const Force (*)[28], const Force*, const int*, const uint16 (*)[28][256], int*)	256	dynamic,bounded
+gpunb.velocity.cu:499:6:void gather_nb_kernel(int, int, int, const Force (*)[28], const Force*, const int*, const uint16 (*)[28][256], int*)	16	static
+gpunb.velocity.cu:754:9:_Z10GPUNB_regfiPdS_PA3_dS1_S1_S1_S_iiPii._omp_fn.5	176	dynamic,bounded
+tmpxft_00003391_00000000-5_gpunb.velocity.cudafe1.stub.c:2:13:void __sti____cudaRegisterAll()	80	dynamic,bounded
+tmpxft_00003391_00000000-5_gpunb.velocity.cudafe1.stub.c:4:27:c)	8	static

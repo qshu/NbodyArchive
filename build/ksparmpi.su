@@ -1,0 +1,2 @@
+ksparmpi.F:340:0:delay_bcast	80	static
+ksparmpi.F:1:0:ksparmpi	12305248	dynamic,bounded

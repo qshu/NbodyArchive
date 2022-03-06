@@ -1,0 +1,10 @@
+irr.sse.cpp:374:9:_ZL13irr_simd_openiii._omp_fn.0	8	static
+irr.sse.cpp:470:13:void irr_simd_firr(int, double*, double*, int&)	352	static
+irr.sse.cpp:520:9:_ZL17irr_simd_firr_vecdiPKiPA3_dS2_Pi._omp_fn.1	192	static
+irr.sse.cpp:534:10:void irr_simd_open_(int*, int*, int*)	112	static
+irr.sse.cpp:537:7:void irr_simd_close_(int*)	64	static
+irr.sse.cpp:540:10:void irr_simd_profile_(int*)	48	static
+irr.sse.cpp:544:7:void irr_simd_set_jp_(int*, double*, double*, double*, double*, double*, double*)	8	static
+irr.sse.cpp:555:7:void irr_simd_set_list_(int*, int*)	32	static
+irr.sse.cpp:561:7:void irr_simd_firr_vec_(double*, int*, int*, double (*)[3], double (*)[3], int*)	160	static
+irr.sse.cpp:571:1:cpp)	32	static
