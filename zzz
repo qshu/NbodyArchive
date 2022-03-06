@@ -1,0 +1,42 @@
+apt-get install libhdf5-openmpi-dev
+apt-get install libhdf5-dev
+
+./configure --enable-simd=avx 
+
+--enable-hdf5 --disable-mpi --enable-tools
+
+apt-get install libhdf5-openmpi-dev
+
+apt-get install libhdf5-dev
+
+./configure --enable-simd=sse --enable-hdf5 --disable-mpi
+
+./configure --enable-simd=avx --with-par=512k
+
+configure: ----------------------Configure Summary--------------------
+configure: --Features:
+configure:      Using MPI:      yes
+configure:      Using GPU:      yes
+configure:      CUDA version:   9.1
+configure:      Using SIMD:     avx
+configure:      mcmodel:        medium
+configure:      OpenMP option:  -fopenmp
+configure:      Debug mode:     no
+configure:      HDF5 format:    no
+configure:      TT package:     no
+configure: --Compilers:
+configure:      C++ compiler:      g++
+configure:      Fortran compiler:  mpif77
+configure:      CUDA compiler:     nvcc
+configure: --Targets:
+configure:      Program name:   nbody6++.avx.gpu.mpi
+configure:      Extra tools:    no
+configure:      Install path:   NONE
+configure: --Parameters:
+configure:      NMAX:           1048576
+configure:      KMAX:           65536
+configure:      LMAX:           600
+configure:      MMAX:           1024
+configure: -----------------------------------------------------------
+
+
