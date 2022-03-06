@@ -1,0 +1,1222 @@
+%!PS-Adobe-3.0
+%%Title: gpunb.gpu.cu
+%%For: spurzem
+%%Creator: a2ps version 4.13
+%%CreationDate: Thu Oct  6 15:08:01 2011
+%%BoundingBox: 24 24 588 768
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 4
+%%PageOrder: Ascend
+%%DocumentMedia: letter 612 792 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont exch pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 612 def
+/sw 792 def
+/llx 24 def
+/urx 768 def
+/ury 588 def
+/lly 24 def
+/#copies 1 def
+/th 15.000000 def
+/fnfs 11 def
+/bfs 7.493857 def
+/cw 4.496314 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 81.400000 mul
+def
+/ph
+   522.321860 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1-2) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(// #include <iostream>) p n
+(#include <stdio.h>) N
+(// #include <vector>) N
+(#include <cmath>) N
+(#include <cassert>) N
+(#include <cutil.h>) N
+(#include <omp.h>) N
+(#include "cuda_pointer.h") N
+() N
+(#define NTHREAD 64 // 64, 96, 128 or 192) N
+(#define NJBLOCK 16 // 8800GTS/512 has 16) N
+(#define NIBLOCK 16 // 16 or 32 ) N
+(#define NIMAX \(NTHREAD * NIBLOCK\) // 1024) N
+() N
+(#define NBMAX 128 // NNB per block) N
+() N
+(template <class T>) N
+(struct myvector{) N
+() S 8 T (int num;) N
+() S 8 T (T *val;) N
+() S 8 T (myvector\(\){) N
+() S 8 T () S 16 T (num = 0;) N
+() S 8 T () S 16 T (val = NULL;) N
+() S 8 T (}) N
+() S 8 T (~myvector\(\){) N
+() S 8 T () S 16 T (delete [] val;) N
+() S 8 T (}) N
+() S 8 T (void clear\(\){) N
+() S 8 T () S 16 T (num = 0;) N
+() S 8 T (}) N
+() S 8 T (void reserve\(size_t count\){) N
+() S 8 T () S 16 T (val = new T[count];) N
+() S 8 T (}) N
+() S 8 T (void free\(\){) N
+() S 8 T () S 16 T (delete [] val;) N
+() S 8 T (}) N
+() S 8 T (void push_back\(const T &t\){) N
+() S 8 T () S 16 T (val[num++] = t;) N
+() S 8 T (}) N
+() S 8 T (size_t size\(\){) N
+() S 8 T () S 16 T (return num;) N
+() S 8 T (}) N
+() S 8 T (T &operator[]\(int i\){) N
+() S 8 T () S 16 T (return val[i];) N
+() S 8 T (}) N
+(};) N
+() N
+(#define PROFILE) N
+(#ifdef PROFILE) N
+(#include <sys/time.h>) N
+(static double get_wtime\(\){) N
+() S 8 T (struct timeval tv;) N
+() S 8 T (gettimeofday\(&tv, NULL\);) N
+() S 8 T (return tv.tv_sec + 1.e-6 * tv.tv_usec;) N
+(}) N
+(#else) N
+(static double get_wtime\(\){) N
+() S 8 T (return 0.0;) N
+(}) N
+(#endif) N
+() N
+(static double time_send, time_grav;) N
+(static long long numInter;) N
+() N
+(struct Jparticle{) N
+() S 8 T (float3 pos;) N
+() S 8 T (float  mass;) N
+() S 8 T (float3 vel;) N
+() S 8 T (float  pad;) N
+(gpunb.gpu.cu) (Page 1/8) (Nov 17, 10 17:46) title
+border
+/v 1 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T (Jparticle\(\) {}) N
+() S 8 T (Jparticle\(double mj, double xj[3], double vj[3]\){) N
+() S 8 T () S 16 T (pos.x = xj[0];) N
+() S 8 T () S 16 T (pos.y = xj[1];) N
+() S 8 T () S 16 T (pos.z = xj[2];) N
+() S 8 T () S 16 T (mass  = mj;) N
+() S 8 T () S 16 T (vel.x = vj[0];) N
+() S 8 T () S 16 T (vel.y = vj[1];) N
+() S 8 T () S 16 T (vel.z = vj[2];) N
+() S 8 T (}) N
+(};) N
+(struct Iparticle{) N
+() S 8 T (float3 pos;) N
+() S 8 T (float  h2;) N
+() S 8 T (float3 vel;) N
+() S 8 T (float  pad;) N
+() S 8 T (Iparticle\(\) {}) N
+() S 8 T (Iparticle\(double h2i, double xi[3], double vi[3]\){) N
+() S 8 T () S 16 T (pos.x = xi[0];) N
+() S 8 T () S 16 T (pos.y = xi[1];) N
+() S 8 T () S 16 T (pos.z = xi[2];) N
+() S 8 T () S 16 T (h2    = h2i;) N
+() S 8 T () S 16 T (vel.x = vi[0];) N
+() S 8 T () S 16 T (vel.y = vi[1];) N
+() S 8 T () S 16 T (vel.z = vi[2];) N
+() S 8 T (}) N
+(};) N
+(struct Force{) N
+() S 8 T (float3 acc;) N
+() S 8 T (float  pot;) N
+() S 8 T (float3 jrk;) N
+() S 8 T (int    nnb;          //  8 words) N
+() S 8 T (unsigned short  neib[NBMAX]; // 24 words) N
+() S 8 T (__device__  Force\(\){) N
+() S 8 T () S 16 T (acc.x = acc.y = acc.z = 0.f;) N
+() S 8 T () S 16 T (jrk.x = jrk.y = jrk.z = 0.f;) N
+() S 8 T () S 16 T (pot = 0.f;) N
+() S 8 T () S 16 T (nnb = 0;) N
+() S 8 T (}) N
+(};) N
+() N
+(__device__ float rsqrtfNR\(float x\){) N
+() S 8 T (float y = rsqrtf\(x\);) N
+() S 8 T (return \(-0.5f * y\) * \(x*y*y - 3.0f\);) N
+(}) N
+() N
+(#if 0) N
+(struct force1{) N
+() S 8 T (float dx, dy, dz;) N
+() S 8 T (float dvx, dvy, dvz;) N
+() S 8 T (float r2;) N
+() S 8 T (float rv;) N
+() S 8 T (// __device__ force1\(\){}) N
+() S 8 T (__device__ void calc\() N
+() S 8 T () S 16 T () S 24 T (const Iparticle &ip,) N
+() S 8 T () S 16 T () S 24 T (const Jparticle &jp\){) N
+() S 8 T () S 16 T (dx = jp.pos.x - ip.pos.x;) N
+() S 8 T () S 16 T (dy = jp.pos.y - ip.pos.y;) N
+() S 8 T () S 16 T (dz = jp.pos.z - ip.pos.z;) N
+() S 8 T () S 16 T (dvx = jp.vel.x - ip.vel.x;) N
+() S 8 T () S 16 T (dvy = jp.vel.y - ip.vel.y;) N
+() S 8 T () S 16 T (dvz = jp.vel.z - ip.vel.z;) N
+() S 8 T () S 16 T (r2 = dx*dx + dy*dy + dz*dz;) N
+() S 8 T () S 16 T (rv = dx*dvx + dy*dvy + dz*dvz;) N
+() S 8 T (}) N
+(};) N
+(struct force2{) N
+() S 8 T (float rinv1;) N
+() S 8 T (// __device__ force2\(\){}) N
+(gpunb.gpu.cu) (Page 2/8) (Nov 17, 10 17:46) title
+border
+grestore
+(Printed by spurzem) rhead
+(gpunb.gpu.cu) (1/4) (Thursday October 06, 2011) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T (__device__ void calc\() N
+() S 8 T () S 16 T () S 24 T (const int j,) N
+() S 8 T () S 16 T () S 24 T (const Iparticle &ip,) N
+() S 8 T () S 16 T () S 24 T (const force1 &f1,) N
+() S 8 T () S 16 T () S 24 T (Force &fo\){) N
+() S 8 T () S 16 T (rinv1 = rsqrtf\(f1.r2\);) N
+() S 8 T () S 16 T (if\(f1.r2 < ip.h2\){) N
+() S 8 T () S 16 T () S 24 T (fo.neib[fo.nnb++ % NBMAX] = j;) N
+() S 8 T () S 16 T () S 24 T (rinv1 = 0.f;) N
+() S 8 T () S 16 T (}) N
+() S 8 T (}) N
+(};) N
+(struct force3{) N
+() S 8 T (float rinv1, rinv2, rinv3;) N
+() S 8 T (float rv;) N
+() S 8 T (// __device__ force3\(\){}) N
+() S 8 T (__device__ void calc\() N
+() S 8 T () S 16 T () S 24 T (const Jparticle &jp,) N
+() S 8 T () S 16 T () S 24 T (const force1 &f1,) N
+() S 8 T () S 16 T () S 24 T (const force2 &f2,) N
+() S 8 T () S 16 T () S 24 T (Force &fo\){) N
+() S 8 T () S 16 T (rinv1 = f2.rinv1;) N
+() S 8 T () S 16 T (rinv2 = rinv1 * rinv1;) N
+() S 8 T () S 16 T (rinv1 *= jp.mass;) N
+() S 8 T () S 16 T (rinv3 = rinv1 * rinv2;) N
+() S 8 T () S 16 T (rv = f1.rv * -3.f * rinv2;) N
+() N
+() S 8 T () S 16 T (fo.pot += rinv1;) N
+() S 8 T () S 16 T (fo.acc.x += rinv3 * f1.dx;) N
+() S 8 T () S 16 T (fo.acc.y += rinv3 * f1.dy;) N
+() S 8 T () S 16 T (fo.acc.z += rinv3 * f1.dz;) N
+() S 8 T () S 16 T (fo.jrk.x += rinv3 * \(f1.dvx + rv * f1.dx\);) N
+() S 8 T () S 16 T (fo.jrk.y += rinv3 * \(f1.dvy + rv * f1.dy\);) N
+() S 8 T () S 16 T (fo.jrk.z += rinv3 * \(f1.dvz + rv * f1.dz\);) N
+() S 8 T (}) N
+(};) N
+(#endif) N
+() N
+(__device__ void h4_kernel\() N
+() S 8 T () S 16 T (const int j,) N
+() S 8 T () S 16 T (const Iparticle &ip, ) N
+() S 8 T () S 16 T (const Jparticle &jp, ) N
+() S 8 T () S 16 T (Force &fo\){) N
+() S 8 T (float dx = jp.pos.x - ip.pos.x;) N
+() S 8 T (float dy = jp.pos.y - ip.pos.y;) N
+() S 8 T (float dz = jp.pos.z - ip.pos.z;) N
+() S 8 T (float dvx = jp.vel.x - ip.vel.x;) N
+() S 8 T (float dvy = jp.vel.y - ip.vel.y;) N
+() S 8 T (float dvz = jp.vel.z - ip.vel.z;) N
+() N
+() S 8 T (float r2 = dx*dx + dy*dy + dz*dz;) N
+() S 8 T (float rv = dx*dvx + dy*dvy + dz*dvz;) N
+() S 8 T (float rinv1 = rsqrtf\(r2\);) N
+() S 8 T (if\(r2 < ip.h2\){) N
+() S 8 T () S 16 T (// fo.neib[fo.nnb++ % NBMAX] = j;) N
+() S 8 T () S 16 T (fo.neib[fo.nnb & \(NBMAX-1\)] = \(unsigned\)j;) N
+() S 8 T () S 16 T (fo.nnb++;) N
+() S 8 T () S 16 T (rinv1 = 0.f;) N
+() S 8 T (}) N
+() S 8 T (float rinv2 = rinv1 * rinv1;) N
+() S 8 T (float mrinv1 = jp.mass * rinv1;) N
+() S 8 T (float mrinv3 = mrinv1 * rinv2;) N
+() S 8 T (rv *= -3.f * rinv2;) N
+() S 8 T () N
+(#ifdef POTENTIAL) N
+() S 8 T (fo.pot += mrinv1;) N
+(#endif) N
+() S 8 T (fo.acc.x += mrinv3 * dx;) N
+() S 8 T (fo.acc.y += mrinv3 * dy;) N
+(gpunb.gpu.cu) (Page 3/8) (Nov 17, 10 17:46) title
+border
+/v 1 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T (fo.acc.z += mrinv3 * dz;) N
+() S 8 T (// fo.acc.z += 1.0;) N
+() S 8 T (fo.jrk.x += mrinv3 * \(dvx + rv * dx\);) N
+() S 8 T (fo.jrk.y += mrinv3 * \(dvy + rv * dy\);) N
+() S 8 T (fo.jrk.z += mrinv3 * \(dvz + rv * dz\);) N
+(}) N
+(__global__ void h4_gravity\() N
+() S 8 T () S 16 T (int nbody,) N
+() S 8 T () S 16 T (Iparticle ipbuf[],) N
+() S 8 T () S 16 T (Jparticle jpbuf[],) N
+() S 8 T () S 16 T (Force fobuf[][NJBLOCK]\){) N
+() S 8 T (int ibid = blockIdx.x;) N
+() S 8 T (int jbid = blockIdx.y;) N
+() S 8 T (int tid = threadIdx.x;) N
+() S 8 T (int iaddr = tid + NTHREAD * ibid;) N
+() S 8 T (int jstart = \(nbody * \(jbid  \)\) / NJBLOCK;) N
+() S 8 T (int jend   = \(nbody * \(jbid+1\)\) / NJBLOCK;) N
+() N
+() S 8 T (Iparticle ip = ipbuf[iaddr];) N
+() S 8 T (Force fo;) N
+() S 8 T (for\(int j=jstart; j<jend; j+=NTHREAD\){) N
+() S 8 T () S 16 T (__shared__ Jparticle jpshare[NTHREAD];) N
+() S 8 T () S 16 T (__syncthreads\(\);) N
+(#if 0) N
+() S 8 T () S 16 T (jpshare[tid] = jpbuf[j+tid];) N
+(#else) N
+() S 8 T () S 16 T (float4 *src = \(float4 *\)&jpbuf[j];) N
+() S 8 T () S 16 T (float4 *dst = \(float4 *\)jpshare;) N
+() S 8 T () S 16 T (dst[        tid] = src[        tid];) N
+() S 8 T () S 16 T (dst[NTHREAD+tid] = src[NTHREAD+tid];) N
+(#endif) N
+() S 8 T () S 16 T (__syncthreads\(\);) N
+() N
+() S 8 T () S 16 T (if\(jend-j < NTHREAD\){) N
+() S 8 T () S 16 T () S 24 T (for\(int jj=0; jj<jend-j; jj++\){) N
+() S 8 T () S 16 T () S 24 T () S 32 T (Jparticle jp = jpshare[jj];) N
+() S 8 T () S 16 T () S 24 T () S 32 T (h4_kernel\(j+jj, ip, jp, fo\);) N
+() S 8 T () S 16 T () S 24 T (}) N
+() S 8 T () S 16 T (}else{) N
+(#pragma unroll) N
+() S 8 T () S 16 T () S 24 T (for\(int jj=0; jj<NTHREAD; jj++\){) N
+() S 8 T () S 16 T () S 24 T () S 32 T (Jparticle jp = jpshare[jj];) N
+() S 8 T () S 16 T () S 24 T () S 32 T (h4_kernel\(j+jj, ip, jp, fo\);) N
+() S 8 T () S 16 T () S 24 T (}) N
+() S 8 T () S 16 T (}) N
+() S 8 T (}) N
+() S 8 T (fobuf[iaddr][jbid] = fo;) N
+(}) N
+() N
+(#if 0) N
+(static Jparticle *jp_host, *jp_dev;) N
+(static Iparticle *ip_host, *ip_dev;) N
+(static Force \(*fo_host\)[NJBLOCK], \(*fo_dev\)[NJBLOCK]; ) N
+(#else) N
+(static cudaPointer <Jparticle> jpbuf;) N
+(static cudaPointer <Iparticle> ipbuf;) N
+(static cudaPointer <Force[NJBLOCK]> fobuf;) N
+(#endif) N
+(#define MAX_CPU 1) N
+(static myvector<int> nblist[MAX_CPU];) N
+(static int nbody, nbodymax;) N
+(// static int *nblist;) N
+() N
+(void GPUNB_open\(int nbmax\){) N
+() S 8 T (time_send = time_grav = 0.0;) N
+() S 8 T (numInter = 0;) N
+(    // CUT_DEVICE_INIT\(\);) N
+() S 8 T (// size_t jpsize = nbmax * sizeof\(Jparticle\);) N
+() S 8 T (// size_t ipsize = NIMAX * sizeof\(Iparticle\);) N
+(gpunb.gpu.cu) (Page 4/8) (Nov 17, 10 17:46) title
+border
+grestore
+(Printed by spurzem) rhead
+(gpunb.gpu.cu) (2/4) (Thursday October 06, 2011) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5-6) 3
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T (// size_t fosize = NIBLOCK * NJBLOCK * NTHREAD * sizeof\(Force\);) N
+() S 8 T (// cudaMallocHost\(\(void **\)&jp_host, jpsize\);) N
+() S 8 T (// jpsize += NTHREAD * sizeof\(Jparticle\);) N
+() S 8 T (// cudaMalloc    \(\(void **\)&jp_dev , jpsize\);) N
+() S 8 T (// cudaMallocHost\(\(void **\)&ip_host, ipsize\);) N
+() S 8 T (// cudaMalloc    \(\(void **\)&ip_dev , ipsize\);) N
+() S 8 T (// cudaMallocHost\(\(void **\)&fo_host, fosize\);) N
+() S 8 T (// cudaMalloc    \(\(void **\)&fo_dev , fosize\);) N
+() S 8 T (jpbuf.allocate\(nbmax + NTHREAD\);) N
+() S 8 T (ipbuf.allocate\(NIMAX\);) N
+() S 8 T (fobuf.allocate\(NIMAX\);) N
+() S 8 T (nbodymax = nbmax;) N
+(#pragma omp parallel) N
+() S 8 T ({) N
+(/* int tid = omp_get_thread_num\(\);   */) N
+(                int tid = 0;) N
+() S 8 T () S 16 T (nblist[tid].reserve\(nbmax\);) N
+() S 8 T (}) N
+(}) N
+(void GPUNB_close\(\){) N
+() S 8 T (// cudaFreeHost\(jp_host\);) N
+() S 8 T (// cudaFree    \(jp_dev\);) N
+() S 8 T (// cudaFreeHost\(ip_host\);) N
+() S 8 T (// cudaFree    \(ip_dev\);) N
+() S 8 T (// cudaFreeHost\(fo_host\);) N
+() S 8 T (// cudaFree    \(fo_dev\);) N
+() S 8 T (jpbuf.free\(\);) N
+() S 8 T (ipbuf.free\(\);) N
+() S 8 T (fobuf.free\(\);) N
+() S 8 T (nbodymax = 0;) N
+() N
+(#ifdef PROFILE) N
+(#if 0) N
+() S 8 T (std::cerr << "***********************" << std::endl;) N
+() S 8 T (std::cerr << "time send : " << time_send << " sec " << std::endl;) N
+() S 8 T (std::cerr << "time grav : " << time_grav << " sec " << std::endl;) N
+() S 8 T (std::cerr << 60.e-9 * numInter / time_grav << " Gflops \(gravity part onl) N
+(y\)" << std::endl;) N
+() S 8 T (std::cerr << "***********************" << std::endl;) N
+(#else) N
+() S 8 T (fprintf\(stderr, "***********************\\n"\);) N
+() S 8 T (fprintf\(stderr, "time send : %f sec\\n", time_send\);) N
+() S 8 T (fprintf\(stderr, "time grav : %f sec\\n", time_grav\);) N
+() S 8 T (fprintf\(stderr, "%f Gflops \(gravity part only\)\\n", 60.e-9 * numInter / t) N
+(ime_grav\);) N
+() S 8 T (fprintf\(stderr, "***********************\\n"\);) N
+(#endif) N
+(#endif) N
+(}) N
+(void GPUNB_send\() N
+() S 8 T () S 16 T (int nj,) N
+() S 8 T () S 16 T (double mj[],) N
+() S 8 T () S 16 T (double xj[][3],) N
+() S 8 T () S 16 T (double vj[][3]\){) N
+() S 8 T (time_send -= get_wtime\(\);) N
+() S 8 T (nbody = nj;) N
+() S 8 T (assert\(nbody <= nbodymax\);) N
+() S 8 T (for\(int j=0; j<nj; j++\){) N
+() S 8 T () S 16 T (// jp_host[j] = Jparticle\(mj[j], xj[j], vj[j]\);) N
+() S 8 T () S 16 T (jpbuf[j] = Jparticle\(mj[j], xj[j], vj[j]\);) N
+() S 8 T (}) N
+() S 8 T (// size_t jpsize = nj * sizeof\(Jparticle\);) N
+() S 8 T (// cudaMemcpy\(jp_dev, jp_host, jpsize, cudaMemcpyHostToDevice\);) N
+() S 8 T (jpbuf.htod\(nj\);) N
+() S 8 T (time_send += get_wtime\(\);) N
+(}) N
+(void GPUNB_regf\() N
+() S 8 T () S 16 T (int ni,) N
+() S 8 T () S 16 T (double h2[],) N
+(gpunb.gpu.cu) (Page 5/8) (Nov 17, 10 17:46) title
+border
+/v 1 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T (double xi[][3],) N
+() S 8 T () S 16 T (double vi[][3],) N
+() S 8 T () S 16 T (double acc[][3],) N
+() S 8 T () S 16 T (double jrk[][3],) N
+() S 8 T () S 16 T (double pot[],) N
+() S 8 T () S 16 T (int lmax,) N
+() S 8 T () S 16 T (int nbmax,) N
+() S 8 T () S 16 T (int *listbase\){) N
+() S 8 T (time_grav -= get_wtime\(\);) N
+() S 8 T (numInter += ni * nbody;) N
+() S 8 T (assert\(0 < ni && ni <= NIMAX\);) N
+(   ) N
+(/*        printf\(" ni lm %d %d %d \\t %e %e %e\\n",ni, lmax, nbmax, h2[0], xi[0][0) N
+(], vi[0][0]\);*/) N
+() N
+() S 8 T (for\(int i=0; i<ni; i++\){) N
+() S 8 T () S 16 T (// ip_host[i] = Iparticle\(h2[i], xi[i], vi[i]\);) N
+() S 8 T () S 16 T (ipbuf[i] = Iparticle\(h2[i], xi[i], vi[i]\);) N
+() S 8 T (}) N
+() S 8 T (// set i-particles) N
+() S 8 T (// size_t ipsize = ni * sizeof\(Iparticle\);) N
+() S 8 T (// cudaMemcpy\(ip_dev, ip_host, ipsize, cudaMemcpyHostToDevice\);) N
+() S 8 T (ipbuf.htod\(ni\);) N
+() N
+() S 8 T (// gravity kernel) N
+() S 8 T (int niblock = 1 + \(ni-1\) / NTHREAD;) N
+() S 8 T (dim3 grid\(niblock, NJBLOCK, 1\);) N
+() S 8 T (dim3 threads\(NTHREAD, 1, 1\);) N
+(#if 0) N
+() S 8 T (int sharedMemSize = NTHREAD * sizeof\(Jparticle\);) N
+() S 8 T (h4_gravity <<< grid, threads, sharedMemSize >>> ) N
+() S 8 T () S 16 T (\(nbody, ip_dev, jp_dev, fo_dev\);) N
+(#else) N
+() S 8 T (// h4_gravity <<< grid, threads >>> ) N
+() S 8 T (//) S 16 T (\(nbody, ip_dev, jp_dev, fo_dev\);) N
+() S 8 T (h4_gravity <<< grid, threads >>> ) N
+() S 8 T () S 16 T (\(nbody, ipbuf, jpbuf, fobuf\);) N
+(#endif) N
+() N
+() S 8 T (// recieve force) N
+() S 8 T (// size_t fosize = ni * NJBLOCK * sizeof\(Force\);) N
+() S 8 T (// cudaMemcpy\(fo_host, fo_dev, fosize, cudaMemcpyDeviceToHost\);) N
+() S 8 T (fobuf.dtoh\(ni\);) N
+() N
+() S 8 T (// reduction phase) N
+(#pragma omp parallel for) N
+() S 8 T (for\(int i=0; i<ni; i++\){) N
+(/* int tid = omp_get_thread_num\(\);   */) N
+(                int tid = 0;) N
+() S 8 T () S 16 T (double ax=0, ay=0, az=0;) N
+() S 8 T () S 16 T (double jx=0, jy=0, jz=0;) N
+(#ifdef POTENTIAL) N
+() S 8 T () S 16 T (double poti=0;) N
+(#endif) N
+() S 8 T () S 16 T (for\(int jb=0; jb<NJBLOCK; jb++\){) N
+() S 8 T () S 16 T () S 24 T (// Force &fo = fo_host[i][jb];) N
+() S 8 T () S 16 T () S 24 T (Force &fo = fobuf[i][jb];) N
+() S 8 T () S 16 T () S 24 T (ax += fo.acc.x;) N
+() S 8 T () S 16 T () S 24 T (ay += fo.acc.y;) N
+() S 8 T () S 16 T () S 24 T (az += fo.acc.z;) N
+() S 8 T () S 16 T () S 24 T (jx += fo.jrk.x;) N
+() S 8 T () S 16 T () S 24 T (jy += fo.jrk.y;) N
+() S 8 T () S 16 T () S 24 T (jz += fo.jrk.z;) N
+(#ifdef POTENTIAL) N
+() S 8 T () S 16 T () S 24 T (poti += fo.pot;) N
+(#endif) N
+() S 8 T () S 16 T (}) N
+() S 8 T () S 16 T (acc[i][0] = ax;) N
+() S 8 T () S 16 T (acc[i][1] = ay;) N
+(gpunb.gpu.cu) (Page 6/8) (Nov 17, 10 17:46) title
+border
+grestore
+(Printed by spurzem) rhead
+(gpunb.gpu.cu) (3/4) (Thursday October 06, 2011) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (7-8) 4
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T (acc[i][2] = az;) N
+() S 8 T () S 16 T (jrk[i][0] = jx;) N
+() S 8 T () S 16 T (jrk[i][1] = jy;) N
+() S 8 T () S 16 T (jrk[i][2] = jz;) N
+() S 8 T () S 16 T (// fprintf\(stderr, "%f %f %f %f %f %f\\n", ax, ay, az, jx, jy, jz) N
+(\);) N
+() S 8 T () S 16 T (// exit\(0\);) N
+(#ifdef POTENTIAL) N
+() S 8 T () S 16 T (pot[i] = poti;) N
+(#endif) N
+() S 8 T () S 16 T (bool overflow = false;) N
+() S 8 T () S 16 T (nblist[tid].clear\(\);) N
+() S 8 T () S 16 T (for\(int jb=0; jb<NJBLOCK; jb++\){) N
+() S 8 T () S 16 T () S 24 T (// Force &fo = fo_host[i][jb];) N
+() S 8 T () S 16 T () S 24 T (Force &fo = fobuf[i][jb];) N
+() S 8 T () S 16 T () S 24 T (int jstart = \(nbody * jb\) / NJBLOCK;) N
+() S 8 T () S 16 T () S 24 T (if\(fo.nnb <= NBMAX\){) N
+() S 8 T () S 16 T () S 24 T () S 32 T (for\(int k=0; k<fo.nnb; k++\){) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (int nb = fo.neib[k];) N
+(/*                       printf\(" 1 %d %d %d %d %d %d %d %d\\n",tid,k,nb, jb, jst) N
+(art,nbody,fo.nnb,fo.neib[k]\); */) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (while\(nb < jstart\) nb += \(1<<16\);) N
+(/*                       printf\(" 2 %d %d %d %d\\n",nb, jb, jstart,nbody\); */) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (nblist[tid].push_back\(nb\);) N
+(/*                       printf\(" 3 %d %d %d %d\\n",nb, jb, jstart,nbody\); */) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (// nblist.push_back\(fo.neib[k]\);) N
+() S 8 T () S 16 T () S 24 T () S 32 T (}) N
+() S 8 T () S 16 T () S 24 T (}else{) N
+() S 8 T () S 16 T () S 24 T () S 32 T (overflow = true;) N
+() S 8 T () S 16 T () S 24 T (}) N
+() S 8 T () S 16 T (}) N
+() S 8 T () S 16 T (int *nnbp = listbase + lmax * i;) N
+() S 8 T () S 16 T (int *nblistp = nnbp + 1;) N
+() S 8 T () S 16 T (int nnb = nblist[tid].size\(\);) N
+() S 8 T () S 16 T (if\(nnb > nbmax\) overflow = true;) N
+() S 8 T () S 16 T (// assert\(!overflow\);) N
+() S 8 T () S 16 T (if\(overflow\){) N
+() S 8 T () S 16 T () S 24 T (*nnbp = -1;) N
+() S 8 T () S 16 T (}else{) N
+() S 8 T () S 16 T () S 24 T (*nnbp = nnb;) N
+() S 8 T () S 16 T () S 24 T (for\(int k=0; k<nnb; k++\){) N
+() S 8 T () S 16 T () S 24 T () S 32 T (nblistp[k] = nblist[tid][k];) N
+() S 8 T () S 16 T () S 24 T (}) N
+() S 8 T () S 16 T (}) N
+() S 8 T (}) N
+(#if 0) N
+() S 8 T (if\(ni > 0\){) N
+() S 8 T () S 16 T (FILE *fp = fopen\("Force.gpu", "w"\);) N
+() S 8 T () S 16 T (assert\(fp\);) N
+() S 8 T () S 16 T (for\(int i=0; i<ni; i++\){) N
+() S 8 T () S 16 T () S 24 T (int nnb =  listbase[i*lmax];) N
+() S 8 T () S 16 T () S 24 T (fprintf\(fp, "%d %9.2e %9.2e %9.2e %9.2e %9.2e %9.2e %d\\n) N
+(",) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (i, acc[i][0], acc[i][1], acc[i][2], ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (   jrk[i][0], jrk[i][1], jrk[i][2], nnb\)) N
+(;) N
+() S 8 T () S 16 T (}) N
+() S 8 T () S 16 T (fprintf\(fp, "\\n"\);) N
+() S 8 T () S 16 T (fclose\(fp\);) N
+() S 8 T () S 16 T (exit\(1\);) N
+() S 8 T (}) N
+(#endif) N
+() S 8 T (time_grav += get_wtime\(\);) N
+(}) N
+() N
+(extern "C" {) N
+() S 8 T (void gpunb_open_\(int *nbmax\){) N
+() S 8 T () S 16 T (GPUNB_open\(*nbmax\);) N
+() S 8 T (}) N
+(gpunb.gpu.cu) (Page 7/8) (Nov 17, 10 17:46) title
+border
+/v 1 store
+/x0 x v get 3.147420 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T (void gpunb_close_\(\){) N
+() S 8 T () S 16 T (GPUNB_close\(\);) N
+() S 8 T (}) N
+() S 8 T (void gpunb_send_\() N
+() S 8 T () S 16 T () S 24 T (int *nj,) N
+() S 8 T () S 16 T () S 24 T (double mj[],) N
+() S 8 T () S 16 T () S 24 T (double xj[][3],) N
+() S 8 T () S 16 T () S 24 T (double vj[][3]\){) N
+() S 8 T () S 16 T (GPUNB_send\(*nj, mj, xj, vj\);) N
+() S 8 T (}) N
+() S 8 T (void gpunb_regf_\() N
+() S 8 T () S 16 T () S 24 T (int *ni,) N
+() S 8 T () S 16 T () S 24 T (double h2[],) N
+() S 8 T () S 16 T () S 24 T (double xi[][3],) N
+() S 8 T () S 16 T () S 24 T (double vi[][3],) N
+() S 8 T () S 16 T () S 24 T (double acc[][3],) N
+() S 8 T () S 16 T () S 24 T (double jrk[][3],) N
+() S 8 T () S 16 T () S 24 T (double pot[],) N
+() S 8 T () S 16 T () S 24 T (int *lmax,) N
+() S 8 T () S 16 T () S 24 T (int *nbmax,) N
+() S 8 T () S 16 T () S 24 T (int *list\){ // list[][lmax]) N
+() S 8 T () S 16 T (GPUNB_regf\(*ni, h2, xi, vi, acc, jrk, pot, *lmax, *nbmax, list\);) N
+() S 8 T (}) N
+(}) N
+(gpunb.gpu.cu) (Page 8/8) (Nov 17, 10 17:46) title
+border
+grestore
+(Printed by spurzem) rhead
+(gpunb.gpu.cu) (4/4) (Thursday October 06, 2011) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF
