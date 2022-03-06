@@ -1,0 +1,76 @@
+# GPU initialization - rank: 1; HOST leia; NGPU 1; device: -1 ÿÿÿÿÿÿÿÿs
+# GPU initialization - rank: 0; HOST leia; NGPU 1; device: -1 ÿÿÿÿÿÿÿÿ
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.397509
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.398881
+# Open GPU regular force - rank: 0; nbmax: 16010
+# Open GPU regular force - rank: 1; nbmax: 16010
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004802
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004958
+[R.0 GPU Reg.F ] Nsend 1  Ngrav 30  <Ni> 29952   send(s) 0.000213 grav(s) 0.013178  nb(s) 0.000520  out(s) 0.000000  Perf.(Gflops) 2182.024600
+[R.1 GPU Reg.F ] Nsend 1  Ngrav 31  <Ni> 31168   send(s) 0.000209 grav(s) 0.013226  nb(s) 0.000744  out(s) 0.000000  Perf.(Gflops) 2262.302058
+# Open GPU regular force - rank: 0; nbmax: 16010
+# Opening IRR_simd lib. AVX ver. - rank: 0; nmax: 16100, lmax: 400
+# Open GPU regular force - rank: 1; nbmax: 16010
+# Opening IRR_simd lib. AVX ver. - rank: 1; nmax: 16100, lmax: 400
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004302
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004346
+[R.1 GPU Reg.F ] Nsend 423  Ngrav 693  <Ni> 809   send(s) 0.092273 grav(s) 0.207546  nb(s) 0.012957  out(s) 0.000000  Perf.(Gflops) 1583.513813
+[R.1 AVX Irr.F ] Ncall: 21375 <NI>: 9729 <NB>: 66.241214 grav: 0.542219 s, 23.012469 Gflops, 25.366978 usec
+[R.0 GPU Reg.F ] Nsend 423  Ngrav 693  <Ni> 809   send(s) 0.093710 grav(s) 0.216901  nb(s) 0.014561  out(s) 0.000000  Perf.(Gflops) 1515.502915
+[R.0 AVX Irr.F ] Ncall: 21375 <NI>: 9733 <NB>: 66.248901 grav: 0.541173 s, 23.066918 Gflops, 25.318034 usec
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004284
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004327
+[R.1 GPU Reg.F ] Nsend 350  Ngrav 585  <Ni> 860   send(s) 0.077147 grav(s) 0.184385  nb(s) 0.012896  out(s) 0.000000  Perf.(Gflops) 1567.167583
+[R.1 AVX Irr.F ] Ncall: 20505 <NI>: 11671 <NB>: 76.670801 grav: 0.587906 s, 24.424764 Gflops, 28.671343 usec
+[R.0 GPU Reg.F ] Nsend 350  Ngrav 585  <Ni> 860   send(s) 0.078494 grav(s) 0.189632  nb(s) 0.013721  out(s) 0.000000  Perf.(Gflops) 1524.102737
+[R.0 AVX Irr.F ] Ncall: 20505 <NI>: 11645 <NB>: 76.477968 grav: 0.588130 s, 24.362026 Gflops, 28.682261 usec
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004281
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004323
+[R.1 GPU Reg.F ] Nsend 388  Ngrav 632  <Ni> 767   send(s) 0.085348 grav(s) 0.188195  nb(s) 0.013438  out(s) 0.000000  Perf.(Gflops) 1519.974353
+[R.1 AVX Irr.F ] Ncall: 19773 <NI>: 11901 <NB>: 75.936519 grav: 0.581702 s, 24.273093 Gflops, 29.419030 usec
+[R.0 GPU Reg.F ] Nsend 388  Ngrav 632  <Ni> 768   send(s) 0.085805 grav(s) 0.194431  nb(s) 0.014533  out(s) 0.000000  Perf.(Gflops) 1471.551141
+[R.0 AVX Irr.F ] Ncall: 19773 <NI>: 11926 <NB>: 76.070611 grav: 0.589199 s, 24.014395 Gflops, 29.798138 usec
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004282
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004407
+[R.1 GPU Reg.F ] Nsend 396  Ngrav 641  <Ni> 768   send(s) 0.113300 grav(s) 0.200589  nb(s) 0.014438  out(s) 0.000000  Perf.(Gflops) 1456.089947
+[R.1 AVX Irr.F ] Ncall: 20581 <NI>: 11584 <NB>: 76.420869 grav: 0.622710 s, 22.973216 Gflops, 30.256558 usec
+[R.0 GPU Reg.F ] Nsend 396  Ngrav 641  <Ni> 768   send(s) 0.115202 grav(s) 0.205212  nb(s) 0.014504  out(s) 0.000000  Perf.(Gflops) 1423.598106
+[R.0 AVX Irr.F ] Ncall: 20581 <NI>: 11552 <NB>: 76.185233 grav: 0.635469 s, 22.449927 Gflops, 30.876486 usec
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004241
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.005246
+[R.1 GPU Reg.F ] Nsend 398  Ngrav 645  <Ni> 761   send(s) 0.115128 grav(s) 0.196120  nb(s) 0.013382  out(s) 0.000000  Perf.(Gflops) 1483.454173
+[R.1 AVX Irr.F ] Ncall: 20676 <NI>: 11324 <NB>: 75.294254 grav: 0.617912 s, 22.735398 Gflops, 29.885462 usec
+[R.0 GPU Reg.F ] Nsend 398  Ngrav 645  <Ni> 761   send(s) 0.115950 grav(s) 0.202691  nb(s) 0.015561  out(s) 0.000000  Perf.(Gflops) 1435.698200
+[R.0 AVX Irr.F ] Ncall: 20676 <NI>: 11303 <NB>: 75.134863 grav: 0.616358 s, 22.751453 Gflops, 29.810325 usec
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004183
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004294
+[R.1 GPU Reg.F ] Nsend 422  Ngrav 650  <Ni> 691   send(s) 0.101017 grav(s) 0.202903  nb(s) 0.014260  out(s) 0.000000  Perf.(Gflops) 1381.387353
+[R.1 AVX Irr.F ] Ncall: 20243 <NI>: 11411 <NB>: 75.219201 grav: 0.606408 s, 22.856557 Gflops, 29.956412 usec
+[R.0 GPU Reg.F ] Nsend 422  Ngrav 650  <Ni> 691   send(s) 0.103000 grav(s) 0.203482  nb(s) 0.013367  out(s) 0.000000  Perf.(Gflops) 1377.715345
+[R.0 AVX Irr.F ] Ncall: 20243 <NI>: 11406 <NB>: 75.161333 grav: 0.609478 s, 22.730468 Gflops, 30.108075 usec
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004002
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004109
+[R.1 GPU Reg.F ] Nsend 443  Ngrav 649  <Ni> 645   send(s) 0.096148 grav(s) 0.190059  nb(s) 0.014131  out(s) 0.000000  Perf.(Gflops) 1444.264067
+[R.1 AVX Irr.F ] Ncall: 19748 <NI>: 11641 <NB>: 74.957304 grav: 0.564548 s, 24.433143 Gflops, 28.587617 usec
+[R.0 GPU Reg.F ] Nsend 443  Ngrav 649  <Ni> 645   send(s) 0.097082 grav(s) 0.191454  nb(s) 0.013254  out(s) 0.000000  Perf.(Gflops) 1434.094993
+[R.0 AVX Irr.F ] Ncall: 19748 <NI>: 11635 <NB>: 74.904234 grav: 0.573317 s, 24.048091 Gflops, 29.031651 usec
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004074
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004223
+[R.1 GPU Reg.F ] Nsend 442  Ngrav 674  <Ni> 675   send(s) 0.096654 grav(s) 0.197522  nb(s) 0.013141  out(s) 0.000000  Perf.(Gflops) 1450.866231
+[R.1 AVX Irr.F ] Ncall: 20440 <NI>: 11536 <NB>: 75.935115 grav: 0.599700 s, 23.592800 Gflops, 29.339541 usec
+[R.0 GPU Reg.F ] Nsend 442  Ngrav 674  <Ni> 675   send(s) 0.097554 grav(s) 0.202825  nb(s) 0.015703  out(s) 0.000000  Perf.(Gflops) 1413.225058
+[R.0 AVX Irr.F ] Ncall: 20440 <NI>: 11564 <NB>: 76.097145 grav: 0.584681 s, 24.257939 Gflops, 28.604759 usec
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004172
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004257
+[R.1 GPU Reg.F ] Nsend 470  Ngrav 709  <Ni> 631   send(s) 0.103058 grav(s) 0.205080  nb(s) 0.013965  out(s) 0.000000  Perf.(Gflops) 1389.404190
+[R.1 AVX Irr.F ] Ncall: 21108 <NI>: 10922 <NB>: 74.624590 grav: 0.589041 s, 23.484328 Gflops, 27.906054 usec
+[R.0 GPU Reg.F ] Nsend 470  Ngrav 709  <Ni> 631   send(s) 0.102588 grav(s) 0.207908  nb(s) 0.013491  out(s) 0.000000  Perf.(Gflops) 1370.772271
+[R.0 AVX Irr.F ] Ncall: 21108 <NI>: 10975 <NB>: 74.964297 grav: 0.594075 s, 23.398214 Gflops, 28.144529 usec
+[R.1 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004301
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.004339
+[R.1 GPU Reg.F ] Nsend 470  Ngrav 705  <Ni> 641   send(s) 0.102770 grav(s) 0.205296  nb(s) 0.015669  out(s) 0.000000  Perf.(Gflops) 1409.541223
+[R.1 AVX Irr.F ] Ncall: 21421 <NI>: 10744 <NB>: 74.500031 grav: 0.604016 s, 22.863270 Gflops, 28.197357 usec
+[R.0 GPU Reg.F ] Nsend 470  Ngrav 705  <Ni> 641   send(s) 0.104437 grav(s) 0.213663  nb(s) 0.021415  out(s) 0.000000  Perf.(Gflops) 1354.676081
+[R.0 AVX Irr.F ] Ncall: 21421 <NI>: 10810 <NB>: 74.930458 grav: 0.585317 s, 23.737422 Gflops, 27.324443 usec
+Closing IRR_simd lib. CPU ver. - rank: 1
+Closing IRR_simd lib. CPU ver. - rank: 0
