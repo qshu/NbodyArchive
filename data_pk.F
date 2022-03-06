@@ -1,0 +1,211 @@
+      SUBROUTINE DATA
+*
+*
+*       Initial conditions.
+*       -------------------
+*
+      INCLUDE 'common6.h'
+      REAL*8  A(8)
+      REAL  RAN2
+*
+#ifdef PARALLEL
+#define MPIINIT 1
+#else
+#ifdef ENSEMBLE
+#define MPIINIT 1
+#else
+#define MPIINIT 0
+#endif
+#endif
+*
+*       Initialize the portable random number generator (range: 0 to 1).
+C Old version: (following nb5, aug.1998, P.Kroupa)
+c      KDUM = -1
+c      A(1) = RAN2(KDUM)
+c*       Skip the first random numbers (IDUM1 specified at input).
+c      DO 1 K = 1,IDUM1
+c          A(1) = RAN2(KDUM)
+c    1 CONTINUE
+C New version:
+      KDUM = IDUM1
+*
+*
+*       Check option for reading initial conditions from input file.
+#ifdef PARALLEL
+      if(rank.eq.0)then
+#endif
+      IF (KZ(22).EQ.2) THEN
+          DO 5 I = 1,N
+              READ (10,*)  BODY(I), (X(K,I),K=1,3), (XDOT(K,I),K=1,3)
+    5     CONTINUE
+*       Read tidal radius if cutoff required
+      IF (KZ(23).GE.3) READ (10,*) RTIDE
+          PRINT*,' rank ',rank,N,' body data read from unit 10 ',
+     *    ' RTIDE =',RTIDE
+      END IF
+#ifdef PARALLEL
+      end if
+#endif
+*
+*        Read TREE input format
+*     if(rank.eq.0)then
+      IF (KZ(22).EQ.3) THEN
+          READ(10,*) N
+          READ(10,*) DUMDY
+          READ(10,*) DUMDY
+          PRINT*,' N=',N
+          DO 51 I = 1,N
+          READ(10,*)BODY(I)
+   51     CONTINUE
+          PRINT*,' masses read ',BODY(1),BODY(N)
+          DO 52 I = 1,N
+   52     READ(10,*)(X(K,I),K=1,3)
+          DO 53 I = 1,N
+   53     READ(10,*)(XDOT(K,I),K=1,3)
+          PRINT*,' rank ',rank,N,' body data read from unit 10 '
+          CALL FLUSH(6)
+*#if MPIINIT
+*     CALL MPI_BCAST(N,1,MPI_INTEGER,0,MPI_COMM_WORLD,ierr)
+*     CALL MPI_BCAST(BODY(1),N,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+*     CALL MPI_BCAST(X(1,1),3*N,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+*     CALL MPI_BCAST(XDOT(1,1),3*N,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+*     CALL mpi_barrier(MPI_COMM_WORLD,ierr)
+*#endif
+      END IF
+*     end if
+*
+*       Read mass function parameters.
+       if(rank.eq.0)then
+       READ (5,*)  ALPHAS, BODY1, BODYN, NBIN0
+       end if
+#if MPIINIT
+      CALL MPI_BCAST(ALPHAS,1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+      CALL MPI_BCAST(BODY1,1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+      CALL MPI_BCAST(BODYN,1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+#endif
+*
+*       Include the case of equal masses (ALPHAS = 1 or BODY1 = BODYN).
+      IF (ALPHAS.EQ.1.0.OR.BODY1.EQ.BODYN) THEN
+          DO 10 I = 1,N
+              BODY(I) = 1.0
+   10     CONTINUE
+          ZMASS = FLOAT(N)
+          GO TO 25
+      END IF
+*
+*       Choose between three realistic IMF's and standard Salpeter function.
+      IF (KZ(20).GT.0) THEN
+          IDUM1 = KDUM
+          IF (KZ(20).EQ.1) CALL IMF(BODY1,BODYN)
+          IF (KZ(20).GE.2) CALL IMF2(BODY1,BODYN)
+          IF (KZ(22).GE.2) GO TO 90
+          GO TO 20
+      END IF
+*
+      IF (KZ(22).GE.2) GO TO 90
+*
+      if(rank.eq.0)WRITE (6,15)  ALPHAS, BODY1, BODYN
+   15 FORMAT (/,12X,'STANDARD MASS FUNCTION:','   ALPHAS =',F5.2,
+     &                                '  BODY1 =',F5.1,'  BODYN =',F5.2)
+*
+*       Generate a power-law mass function with exponent ALPHAS.
+      ALPHA1 = ALPHAS - 1.0
+      FM1 = 1.0/BODY1**ALPHA1
+      FMN = (FM1 - 1.0/BODYN**ALPHA1)/(FLOAT(N) - 1.0)
+      ZMASS = 0.0
+      CONST = 1.0/ALPHA1
+*
+      DO 18 I = 1,N
+          FMI = FM1 - FLOAT(I - 1)*FMN
+          BODY(I) = 1.0/FMI**CONST
+          ZMASS = ZMASS + BODY(I)
+   18 CONTINUE
+*
+*       First scale the masses to <M> = 1.
+   20 ZMBAR1 = ZMASS/FLOAT(N)
+      DO 22 I = 1,N
+          BODY(I) = BODY(I)/ZMBAR1
+   22 CONTINUE
+      ZMASS = FLOAT(N)
+*
+   25 IF (KZ(5).GT.0) GO TO 80
+*
+*       Set up a uniform spherical system.
+      DO 40 I = 1,N
+   32     A(1) = 0.0D0
+          DO 33 K = 1,3
+              A(K+1) = 2.0*RAN2(KDUM) - 1.0
+              A(1) = A(1) + A(K+1)**2
+   33     CONTINUE
+          IF (A(1).GT.1.0) GO TO 32
+   34     A(5) = 0.0D0
+          DO 35 K = 1,3
+              A(K+5) = 2.0*RAN2(KDUM) - 1.0
+              A(5) = A(5) + A(K+5)**2
+   35     CONTINUE
+          IF (A(5).GT.1.0) GO TO 34
+          DO 36 K = 1,3
+*             X(K,I) = A(1)*A(K+1)
+*       Density proportional to 1/R**2.
+              X(K,I) = A(K+1)
+*       Constant density.
+              XDOT(K,I) = A(K+5)
+*       Isotropic velocities (magnitude randomized; no radial dependence).
+   36     CONTINUE
+   40 CONTINUE
+*
+      GO TO 90
+*
+   80 DO 81 K = 1,3
+          CMR(K) = 0.0D0
+          CMRDOT(K) = 0.0D0
+   81 CONTINUE
+*
+*       Generate initial conditions from Plummer model (A & A 37, 183).
+      DO 85 I = 1,N
+   82     A(1) = RAN2(KDUM)
+          IF (A(1).LT.1.0D-10) GO TO 82
+          RI = (A(1)**(-0.6666667) - 1.0)**(-0.5)
+*       Reject distant particles.
+          IF (RI.GT.10.0) GO TO 82
+          A(2) = RAN2(KDUM)
+          A(3) = RAN2(KDUM)
+          X(3,I) = (1.0 - 2.0*A(2))*RI
+          X(1,I) = SQRT(RI**2 - X(3,I)**2)*COS(TWOPI*A(3))
+          X(2,I) = SQRT(RI**2 - X(3,I)**2)*SIN(TWOPI*A(3))
+   83     A(4) = RAN2(KDUM)
+          A(5) = RAN2(KDUM)
+          A(6) = A(4)**2*(1.0 - A(4)**2)**3.5
+          IF (0.1*A(5).GT.A(6)) GO TO 83
+          A(8) = A(4)*SQRT(2.0)/(1.0 + RI**2)**0.25
+          A(6) = RAN2(KDUM)
+          A(7) = RAN2(KDUM)
+          XDOT(3,I) = (1.0 - 2.0*A(6))*A(8)
+          XDOT(1,I) = SQRT(A(8)**2 - XDOT(3,I)**2)*COS(TWOPI*A(7))
+          XDOT(2,I) = SQRT(A(8)**2 - XDOT(3,I)**2)*SIN(TWOPI*A(7))
+*
+*       Accumulate the centre of mass terms.
+          DO 84 K = 1,3
+              CMR(K) = CMR(K) + BODY(I)*X(K,I)
+              CMRDOT(K) = CMRDOT(K) + BODY(I)*XDOT(K,I)
+   84     CONTINUE
+   85 CONTINUE
+*
+*       Scale coordinates & velocities to analytical expectation values.
+      SX = 1.5*TWOPI/16.0
+      SV = SQRT(ZMASS/SX)
+      DO 88 I = 1,N
+          DO 86 K = 1,3
+              X(K,I) = X(K,I) - CMR(K)/ZMASS
+              XDOT(K,I) = XDOT(K,I) - CMRDOT(K)/ZMASS
+              X(K,I) = SX*X(K,I)
+              XDOT(K,I) = SV*XDOT(K,I)
+   86     CONTINUE
+   88 CONTINUE
+*
+*       Save random number sequence for future use.
+   90 IDUM1 = KDUM
+*
+      RETURN
+*
+      END
