@@ -1,0 +1,1371 @@
+hrdiag
+21a22,26
+> *       Revised 21st January 2011 by A. D. Railton
+> *       to include pre-mainsequence evolution for 0.1-8.0 Msun
+> *       with solar metallicity. Note KW=-1 for preMS evolution.
+> *       Use negative aj for preMS.
+> *
+26,27c31,33
+<       parameter(wdflag=1,nsflag=1)
+<       common /fall/fallback
+---
+>       parameter(wdflag=1,nsflag=2)
+>       integer ecflag
+>       parameter (ecflag=1)
+30c36
+<       real*8 r,lum,mc,rc,menv,renv,k2,fallback
+---
+>       real*8 r,lum,mc,rc,menv,renv,k2
+34c40
+<       parameter(mxns0=1.8d0,mxns1=3.d0)
+---
+>       parameter(mxns0=1.8d0,mxns1=2.5d0)
+44a51,52
+>       real*8 tprems,pre1,pre2,pre3,pre4
+> *
+69c77
+< *       KW      Classification type (0 - 15).
+---
+> *       KW      Classification type (-1 -> 15).
+71d78
+< *       fallback Belczynski's Prescription for fallback on black holes
+74d80
+<       fallback = 0.d0
+77c83
+<       if(nsflag.eq.1) mxns = mxns1
+---
+>       if(nsflag.ge.1) mxns = mxns1
+80c86
+< c      if(mass0.gt.100.d0) mass = 100.d0
+---
+> *     if(mass0.gt.100.d0) mass = 100.d0
+82c88
+< c      if(mt0.gt.100.d0) mt = 100.d0
+---
+> *     if(mt0.gt.100.d0) mt = 100.d0
+94c100,155
+<       if(aj.lt.tscls(1))then
+---
+>       if(aj.ge.0.d0.and.kw.eq.-1)then
+>          if(mass.le.0.7d0)then
+>             kw = 0
+>          else
+>             kw = 1
+>          endif
+>       endif
+> *
+>       if(aj.lt.0.d0)then
+> *
+> *        PreMS evolution (valid for 0.1<=M<=8.0).
+> *
+>          kw = -1
+>          tprems = -1.d0*aj/tscls(15)
+> * Note: tprems cannot exceed 1 - if it does, start at top of Hayashi track.
+>          if(tprems.gt.1.d0)then
+>             tprems = 1.d0
+>          endif
+> *
+>          if(mass.le.1.d0)then
+>             pre1 = 0.d0
+>             pre2 = 0.d0
+>             pre3 = 7.432d-02 - 9.43d-02*mass + 7.439d-02*mass**2
+>          endif
+>          if(mass.gt.1.d0.and.mass.lt.2.d0)then
+>             pre1 = -4.00772d0 + 4.00772d0*mass
+>             pre2 = 8.5656d0 - 8.5656d0*mass
+>             pre3 = -4.50678d0 + 4.56118d0*mass
+>          endif
+>          if(mass.ge.2.d0)then
+>             pre1 = 1.60324d0 + 2.20401d0*mass - 0.60433d0*mass**2 +
+>      &         5.172d-02*mass**3
+>             pre2 = -4.56878d0 - 4.05305d0*mass + 1.24575*mass**2 -
+>      &         0.10922d0*mass**3
+>             pre3 = 3.01153 + 1.85745*mass -0.64290d0*mass**2 +
+>      &         5.759d-02*mass**3
+>          endif
+> *
+>          rzams = rzamsf(mass)
+>          r = rzams*10.d0**((pre1*tprems**3 + pre2*tprems**4 +
+>      &     pre3*tprems**5)/(1.05d0-tprems))
+> *
+>          pre1 = -2.63181d0 + 3.16607d0*mass - 3.30223d0*mass**2 +
+>      &     0.83556d0*mass**3 - 0.06356d0*mass**4
+>          pre2 = -11.70230d0 + 16.60510d0*mass - 9.69755d0*mass**2 +
+>      &     2.42426d0*mass**3 - 0.27213d0*mass**4 + 0.01134d0*mass**5
+>          pre3 = 26.19360d0 - 35.09590d0*mass + 20.64280d0*mass**2 -
+>      &     5.18601d0*mass**3 + 0.58360d0*mass**4 - 0.02434d0*mass**5
+>          pre4 = -14.64590d0 + 18.55660d0*mass - 10.95070d0*mass**2 +
+>      &     2.75979d0*mass**3 - 0.31103d0*mass**4 + 0.01298d0*mass**5
+> *
+>          lum = lums(1)*10.d0**((exp(pre1*tprems**2) - 1.d0)*
+>      &     (pre2*tprems + pre3*tprems**2 + pre4*tprems**3)/
+>      &     (1.05d0-tprems))
+> *
+>       elseif(aj.lt.tscls(1))then
+269c330
+<          end if
+---
+>          endif
+387c448
+<          mcmax = MAX(MAX(mch,0.773d0*mcbagb-0.35d0),1.05d0*mcx)
+---
+>          mcmax = MAX(MAX(mch,0.773d0*mcbagb-0.35d0),1.02d0*mcx)
+419,420c480,482
+< * This next is a brute force fix to allow negative epochs to work
+< * for SAGB stars (Jarrod, 2014)
+---
+> * Guard against age going out of range for a slightly negative epoch. 
+>             if(aj.ge.tscls(11)-2.d0*tiny) aj = tscls(14) +
+>      &                                    0.95d0*(tscls(11)-tscls(14))
+422,423d483
+<             if(aj.ge.tscls(11)-2.d0*tiny) aj = tscls(14) + 
+<      &           0.95d0*(tscls(11)-tscls(14))
+426c486
+< *            
+---
+> *
+472c532,533
+<                   if(nsflag.eq.0)then
+---
+>                   if(nsflag.le.0)then
+> * Use the original SSE NS/BH mass.
+474,477c535,536
+<                   elseif(nsflag.ge.1)then
+< *
+< * Use NS/BH mass given by Belczynski et al. 2002, ApJ, 572, 407.
+< *
+---
+>                   elseif(nsflag.eq.1)then
+> * Use FeNi core mass given by Belczynski et al. 2002, ApJ, 572, 407.
+482a542,564
+>                   elseif(nsflag.eq.2)then
+> * Use FeNi mass given by Belczynski et al. 2008, ApJSS, 174, 223. 
+>                      if(mc.lt.4.82d0)then
+>                         mcx = 1.5d0
+>                      elseif(mc.lt.6.31d0)then
+>                         mcx = 2.11d0
+>                      elseif(mc.lt.6.75d0)then
+>                         mcx = 0.69255d0*mc - 2.26d0
+>                      else
+>                         mcx = 0.37d0*mc - 0.0828d0
+>                      endif
+>                   elseif(nsflag.ge.3)then
+> * Use remnant masses based on Eldridge & Tout 2004, MNRAS, 353, 87.
+>                      if(mc.lt.6.d0)then
+>                         mcx = 1.44d0
+>                      else
+>                         mcx = 1.4512017d0*mc - 6.5913737d-03*mc*mc
+>      &                        - 6.1073371d0
+>                      endif
+>                      mt = mcx
+>                   endif
+>                   if(nsflag.eq.1.or.nsflag.eq.2)then
+> * For Belczynski methods calculate the remnant mass from the FeNi core. 
+485d566
+<                         fallback = 0.d0
+488d568
+<                         fallback = (mc - 5.d0)/2.6d0
+490c570,581
+<                      if(mc.gt.7.60) fallback = 1.d0
+---
+>                   endif
+>                   if(nsflag.ge.2)then
+> * Reduce the mass to the gravitational mass for the relevant cases. 
+>                      mcx = (-1.d0 + SQRT(1.d0 + 0.3d0*mt))/0.15d0
+>                      if(mcx.le.mxns)then
+>                         mt = mcx
+>                      elseif(mcx.le.mxns+1.0d0)then
+>                         mc = 1.d0/(0.075d0*mxns + 1.d0)
+>                         mt = (0.9d0 - (mxns+1.d0-mcx)*(0.9d0-mc))*mt
+>                      else
+>                         mt = 0.9d0*mt
+>                      endif
+492a584
+> *
+503d594
+< *       print*,' HRDIAG BH mc, mt, mxns, fallback ',mc,mt,mxns,fallback
+504a596,605
+> *
+>                endif
+>             endif
+>          else
+> * Check for an electron-capture collapse of an ONe core. 
+>             if(mcbagb.ge.1.6d0.and.mcbagb.le.2.25d0)then
+>                if(ecflag.gt.0.and.mcx.ge.1.372d0)then
+>                   mt = 1.26d0
+>                   mc = mt
+>                   kw = 13
+580c681
+<                      if(nsflag.eq.0)then
+---
+>                      if(nsflag.le.0)then
+582c683
+<                      elseif(nsflag.ge.1)then
+---
+>                      elseif(nsflag.eq.1)then
+587a689,708
+>                      elseif(nsflag.eq.2)then
+>                         if(mc.lt.4.82d0)then
+>                            mcx = 1.5d0
+>                         elseif(mc.lt.6.31d0)then
+>                            mcx = 2.11d0
+>                         elseif(mc.lt.6.75d0)then
+>                            mcx = 0.69255d0*mc - 2.26d0
+>                         else
+>                            mcx = 0.37d0*mc - 0.0828d0
+>                         endif
+>                      elseif(nsflag.ge.3)then
+>                         if(mc.lt.6.d0)then
+>                            mcx = 1.44d0
+>                         else
+>                            mcx = 1.4512017d0*mc - 6.5913737d-03*mc*mc
+>      &                           - 6.1073371d0
+>                         endif
+>                         mt = mcx
+>                      endif
+>                      if(nsflag.eq.1.or.nsflag.eq.2)then
+590d710
+<                            fallback = 0.d0
+593d712
+<                            fallback = (mc - 5.d0)/2.6d0
+595c714,724
+<                         if(mc.gt.7.60) fallback = 1.d0
+---
+>                      endif
+>                      if(nsflag.ge.2)then
+>                         mcx = (-1.d0 + SQRT(1.d0 + 0.3d0*mt))/0.15d0
+>                         if(mcx.le.mxns)then
+>                            mt = mcx
+>                         elseif(mcx.le.mxns+1.0d0)then
+>                            mc = 1.d0/(0.075d0*mxns + 1.d0)
+>                            mt = (0.9d0 - (mxns+1.d0-mcx)*(0.9d0-mc))*mt
+>                         else
+>                            mt = 0.9d0*mt
+>                         endif
+608d736
+< *                     print*,' HRDIAG BH T ',mc,mt,mxns,fallback
+624c752,753
+< * unless WD is ONe.
+---
+> * unless WD is ONe in which case we assume a NS 
+> * of minimum mass is the remnant.
+627,628c756,757
+<             mt = 1.3d0
+< *           mt = 1.17d0 + 0.09d0*mc
+---
+>             aj = 0.d0
+>             mt = 1.26d0
+780c909
+<       if(kw.lt.10)then
+---
+>       if(kw.ge.0.and.kw.lt.10)then
+785,790c914,919
+<       if(mass.gt.99.99d0)then
+<          mass = mass0
+<       endif
+<       if(mt.gt.99.99d0)then
+<          mt = mt0
+<       endif
+---
+> *     if(mass.gt.99.99d0)then
+> *        mass = mass0
+> *     endif
+> *     if(mt.gt.99.99d0)then
+> *        mt = mt0
+> *     endif
+bsetid
+binev
+8d7
+< *     Safe for parallel! used variables: CM, HM, UM
+14d12
+< *     Unsafe for parallel!
+20,21c18,19
+<       IF (rank.eq.0.and.FIRST.AND.KSTART.EQ.1) THEN
+< *          OPEN (UNIT=17,STATUS='UNKNOWN',FORM='FORMATTED',FILE='BINEV')
+---
+>       IF (FIRST) THEN
+>           OPEN (UNIT=17,STATUS='NEW',FORM='FORMATTED',FILE='BINEV')
+24,30c22,23
+<     5     FORMAT ('Time[Myr]                 NAME(I1)    NAME(I2)    ',
+<      &         'K*(I1)      K*(I2)      K*(ICM)     ',
+<      &         'M(I1)[M*]                 M(I2)[M*]                 ',
+<      &         'RS(I1)[R*]                RS(I2)[R*]                ',
+<      &         'RI[PC]                    ECC                       ',
+<      &         'SEMI[R*]                  P[days]                   ',
+<      &         'IQCOLL      ',/)
+---
+>     5     FORMAT ('   TPHYS  NAM1  NAM2  K1  K2  KC   M1   M2     R1',
+>      &            '    R2   RI    ECC    SEMI   PERIOD  C',/)
+64,68c57,60
+< C      P = MIN(P,99999.9D0)
+< C      P = MAX(P,-1.0D0)
+<       A0 = SEMI*SU
+< C      A0 = MIN(SEMI*SU,9999.9D0)
+< C      A0 = MAX(A0,-1.0D0)
+---
+>       P = MIN(P,99999.9D0)
+>       P = MAX(P,-1.0D0)
+>       A0 = MIN(SEMI*SU,9999.9D0)
+>       A0 = MAX(A0,-1.0D0)
+71,74c63,65
+<       RI = SQRT(RI2)*RBAR
+< C      RI = MIN(SQRT(RI2),99.9D0)
+< C      R1 = MIN(R1,999.9D0)
+< C      R2 = MIN(R2,999.9D0)
+---
+>       RI = MIN(SQRT(RI2),99.9D0)
+>       R1 = MIN(R1,999.9D0)
+>       R2 = MIN(R2,999.9D0)
+77,78c68
+<       if(rank.eq.0)then
+<       WRITE (17,*)  TPHYS, NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+---
+>       WRITE (17,10)  TPHYS, NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+80c70
+< C   10 FORMAT (F8.1,2I6,3I4,2F5.1,F7.1,F6.1,F5.1,F7.3,F8.1,F9.1,I3)
+---
+>    10 FORMAT (F8.1,2I6,3I4,2F5.1,F7.1,F6.1,F5.1,F7.3,F8.1,F9.1,I3)
+82d71
+<       end if
+roche
+33d32
+<       LOGICAL FIRST
+34a34
+>       LOGICAL FIRST
+95d94
+<           IXXX = 0
+97,98c96
+< *         if(rank.eq.0)
+< *    &    write(6,*)' start roche ',name(j1),name(j2),kw1,kw2,
+---
+> *         write(6,*)' start roche ',name(j1),name(j2),kw1,kw2,
+229,230c227
+<               if(rank.eq.0)
+<      &        WRITE (6,8)  NAME(J1), NAME(J2), TPHYS, KW1, KW2,
+---
+>               WRITE (6,8)  NAME(J1), NAME(J2), TPHYS, KW1, KW2,
+234c231
+<               IF(rank.eq.0.and.KSTAR(I).EQ.50)THEN
+---
+>               IF(KSTAR(I).EQ.50)THEN
+240c237
+<               IF (KZ(9).GE.2) THEN
+---
+>               IF (KZ(8).GT.3) THEN
+244,246c241,243
+<               IF(rank.eq.0.and.FIRST.and.KSTART.eq.1)THEN
+< C                 OPEN(UNIT=85,STATUS='UNKNOWN',FORM='FORMATTED',
+< C     &                FILE='ROCHE')
+---
+>               IF(FIRST)THEN
+>                  OPEN(UNIT=85,STATUS='NEW',FORM='FORMATTED',
+>      &                FILE='ROCHE')
+254d250
+<               if(rank.eq.0)then
+261d256
+<               end if
+263,272d257
+<           
+<           if(rank.eq.0)then
+<           WRITE (6,5555)  NAME(J1), NAME(J2), KW1, KW2,
+<      &              BODY(J1)*ZMBAR, BODY(J2)*ZMBAR,
+<      &              RADIUS(J1)*SU,RADIUS(J2)*SU
+<  5555       FORMAT (' BEGIN ROCHE.F:  NAME1,2 ',2I10,
+<      &     '  KW1,2 ',2I3,' M1,2 [M*] ',1P,2E10.3,
+<      &     '  RAD1,2[*]',1P,2E10.3)  
+<           end if
+< 
+341,350d325
+< 
+<       if(rank.eq.0)then
+<           WRITE (6,5556)  NAME(J1), NAME(J2), KW1, KW2,
+<      &              BODY(J1)*ZMBAR, BODY(J2)*ZMBAR,
+<      &              RADIUS(J1)*SU,RADIUS(J2)*SU
+<  5556       FORMAT (' 2 ROCHE.F:  NAME1,2 ',2I10,
+<      &     '  KW1,2 ',2I3,' M1,2 [M*] ',1P,2E10.3,
+<      &     '  RAD1,2[*]',1P,2E10.3)  
+<       end if
+< 
+393c368,369
+<             IF(rank.eq.0.and.TM.LT.TPHYS)THEN
+---
+>             IF(TM.LT.TPHYS)THEN
+>                NBS = NBS + 1
+414c390
+< * Form a new giant envelope.
+---
+> * Form a new giant envelope (skip matrix test for preMS evolution).
+417,418d392
+< *     --02/28/13 9:51-lwang-debug--------------------------------------*
+< ***** Note:modife kst--------------------------------------------------**
+424d397
+< *     --02/28/13 9:52-lwang-end-debug----------------------------------*
+452d424
+<          IXXX = 1 
+466,467c438
+<          if(rank.eq.0)
+<      &   WRITE (6,20)  MASS, KSTAR(J1), KSTAR(J2), RAD, ROL, SEP
+---
+>          WRITE (6,20)  MASS, KSTAR(J1), KSTAR(J2), RAD, ROL, SEP
+474,476c445,446
+<          if(rank.eq.0)
+<      &   WRITE (6,25)  MASS, KW1, KW2, SEP, MASSC(1), MASSC(2)
+<    25    FORMAT (' END CE    M K A MC',2F7.3,2I3,3F9.3)
+---
+>          WRITE (6,25)  MASS, KW1, KW2, SEP
+>    25    FORMAT (' END CE    M K A ',2F7.3,2I3,F9.3)
+558,559c528
+<             if(rank.eq.0)
+<      &      WRITE (6,27)  NAME(J1), NAME(J2), KSTAR(J2), MASS(2)
+---
+>             WRITE (6,27)  NAME(J1), NAME(J2), KSTAR(J2), MASS(2)
+565d533
+<          IXXX = 2
+578d545
+<          IXXX = 3
+591d557
+<          IXXX = 4
+619,620c585
+<             if(rank.eq.0)
+<      &      WRITE (6,28)  SEP, DM1, RAD(1), ROL(1)
+---
+>             WRITE (6,28)  SEP, DM1, RAD(1), ROL(1)
+761d725
+<                IXXX = 5
+779d742
+<                      IXXX = 6
+802d764
+<                IXXX = 7
+857,858c819
+<             IF (rank.eq.0.and.MOD(IGR,10).EQ.0) 
+<      &      WRITE (6,45)  MASS, SEP, DJGR, DTM
+---
+>             IF (MOD(IGR,10).EQ.0) WRITE (6,45)  MASS, SEP, DJGR, DTM
+880,881c841
+<                   if(rank.eq.0)
+<      &            WRITE (6,40)  MASS, SEP, DJMB, DTM
+---
+>                   WRITE (6,40)  MASS, SEP, DJMB, DTM
+893,894c853
+<                   if(rank.eq.0)
+<      &            WRITE (6,40)  MASS, SEP, DJMB, DTM
+---
+>                   WRITE (6,40)  MASS, SEP, DJMB, DTM
+1013,1014c972
+< *        if(rank.eq.0)
+< *    &   WRITE (19,38)  NAME(J1), NAME(J2), KSTAR(J1), KSTAR(J2),
+---
+> *        WRITE (19,38)  NAME(J1), NAME(J2), KSTAR(J1), KSTAR(J2),
+1057,1058c1015
+<                if(rank.eq.0)
+<      &         WRITE(6,48)NAME(J2),MASS(2),DM2,SEMI*SU,TM,TPHYS,
+---
+>                WRITE(6,48)NAME(J2),MASS(2),DM2,SEMI*SU,TM,TPHYS,
+1144,1145c1101
+<           if(rank.eq.0)
+<      &    WRITE(85,95)NAME(J1),NAME(J2),KW1,KW2,KSTAR(I),
+---
+>           WRITE(85,95)NAME(J1),NAME(J2),KW1,KW2,KSTAR(I),
+1149,1161c1105
+<           if(rank.eq.0)then
+<           WRITE (6,5557)  NAME(J1), NAME(J2), KW1, KW2,
+<      &              KSTAR(J1),KSTAR(J2),
+<      &              BODY(J1)*ZMBAR, BODY(J2)*ZMBAR,
+<      &              RADIUS(J1)*SU,RADIUS(J2)*SU,RAD(1),RAD(2),IXXX
+<  5557       FORMAT (' END ROCHE.F:  NAME1,2 ',2I10,
+<      &     '  KW1,2 ',2I3,' KSTAR 1,2 ', 2I3,' M1,2 [M*] ',1P,2E10.3,
+<      &     '  RADIUS1,2[*]',1P,2E10.3,' RAD1,2 ',1P,2E10.3,
+<      &     ' IXXX= ',I3)  
+<           end if
+<                                                  
+< 
+<           CALL coal(IPAIR,KW1,MASS)
+---
+>           CALL coal(IPAIR,KW1,KW2,MASS)
+1185,1186c1129
+< *        if(rank.eq.0)
+< *    &   write(6,*)' roche star ',j,name(j),kstar(j),kw,log10(lum)
+---
+> *        write(6,*)' roche star ',j,name(j),kstar(j),kw,log10(lum)
+1242,1243c1185
+<          if(rank.eq.0)
+<      &   WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+---
+>          WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+1255,1256c1197
+<          if(rank.eq.0)
+<      &   WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+---
+>          WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+1347,1348c1288
+<                if(rank.eq.0)
+<      &         WRITE(6,710)NAME(J1),KSTAR(J1),KSTAR(J2),ECC0,FAC0,
+---
+>                WRITE(6,710)NAME(J1),KSTAR(J1),KSTAR(J2),ECC0,FAC0,
+1356,1357d1295
+< *     --02/28/13 9:54-lwang-debug--------------------------------------*
+< ***** Note:debug-------------------------------------------------------**
+1361,1362c1299
+<  81            DJORB = DJGR*DTM0
+< *     --02/28/13 9:54-lwang-end-debug----------------------------------*
+---
+>    81          DJORB = DJGR*DTM0
+1396,1398c1333
+< *     --02/28/13 9:58-lwang-add----------------------------------------*
+< ***** Note:add --------------------------------------------------------**
+< *     Impose 2.5 % limit on change of JORB (Chris Tout 1/2013).
+---
+> * Impose 2.5 % limit on change of JORB (Chris Tout 1/2013).
+1407d1341
+< *     --02/28/13 9:58-lwang-end-add------------------------------------*
+1415,1416d1348
+< *     --02/28/13 9:58-lwang-add----------------------------------------*
+< ***** Note:add---------------------------------------------------------**
+1419d1350
+<                   IXXX = 8
+1423,1424d1353
+<                   WRITE(6,*) ' IXXX=8 K(1),K(2) ', KSTAR(J1),KSTAR(J2),
+<      &            ' KW1,KW2 ',KW1,KW2,' J1, J2 ', NAME(J1), NAME(J2)     
+1427d1355
+< *     --02/28/13 9:59-lwang-end-add------------------------------------*
+1440c1368
+<                IF(rank.eq.0.and.ECC.GT.0.02D0)THEN
+---
+>                IF(ECC.GT.0.02D0)THEN
+1444,1445c1372
+<                   if(rank.eq.0)
+<      &            WRITE(6,*)' WARNING: will not synchronize'
+---
+>                   WRITE(6,*)' WARNING: will not synchronize'
+1451,1452c1378
+<             if(rank.eq.0)
+<      &      WRITE(6,711)ECC,OSPIN(1)/OORB,SEP,TK,RAD(1),ROL(1)
+---
+>             WRITE(6,711)ECC,OSPIN(1)/OORB,SEP,TK,RAD(1),ROL(1)
+1489c1415
+<                IF (rank.eq.0.and.IWARN.LT.20) THEN
+---
+>                IF (IWARN.LT.20) THEN
+1521,1522c1447
+<             if(rank.eq.0)
+<      &      WRITE (6,72)  MASS(1), MASS(2), KSTAR(J1), KSTAR(J2), SEP
+---
+>             WRITE (6,72)  MASS(1), MASS(2), KSTAR(J1), KSTAR(J2), SEP
+1533,1534c1458
+<             if(rank.eq.0)
+<      &      WRITE (6,73)  KSTAR(J1), KSTAR(J2), MASS(1), MASS(2),
+---
+>             WRITE (6,73)  KSTAR(J1), KSTAR(J2), MASS(1), MASS(2),
+1544,1545c1468
+<                   if(rank.eq.0)
+<      &            WRITE (22,58)  NAME(J1), NAME(J2),
+---
+>                   WRITE (22,58)  NAME(J1), NAME(J2),
+1549,1552c1472,1473
+<    58             FORMAT (' DEGEN ROCHE   NAME(I1) NAME(I2) K*(I1) ',
+<      &                 'K*(I2) M(I1)[M*] M(I2)[M*] Time[Myr] SEMI[R*] ',
+<      &                 'P[days] MD(I1)[M*/Myr] MD(I2)[M*/Myr] ',
+<      &                 2I6,2I4,2F6.2,F8.1,2F7.1,1P,2E9.1)
+---
+>    58             FORMAT (' DEGEN ROCHE    NAM K* M TP A P M1D M2D ',
+>      &                             2I6,2I4,2F6.2,F8.1,2F7.1,1P,2E9.1)
+1561,1562c1482
+<           if(rank.eq.0)
+<      &    WRITE (6,76)  KSTAR(J1), KSTAR(J2), MASS(1),
+---
+>           WRITE (6,76)  KSTAR(J1), KSTAR(J2), MASS(1),
+1568c1488
+<              IF(KZ(9).GE.3)THEN
+---
+>              IF(KZ(8).GT.3)THEN
+1579c1499
+<           IF (KZ(9).GE.2) THEN
+---
+>           IF (KZ(8).GT.3) THEN
+1583,1584c1503
+<           if(rank.eq.0)
+<      &    WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+---
+>           WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+1615,1616c1534
+<               if(rank.eq.0)
+<      &        WRITE (6,142)  TIME+TOFF, NAME(J1), KSTAR(J1), KSTAR(J2),
+---
+>               WRITE (6,142)  TIME+TOFF, NAME(J1), KSTAR(J1), KSTAR(J2),
+1644,1645c1562
+<           if(rank.eq.0)
+<      &    WRITE (6,145)  TIME+TOFF, BODY(J1), BODY(J2), BODY(I)
+---
+>           WRITE (6,145)  TIME+TOFF, BODY(J1), BODY(J2), BODY(I)
+1658,1659c1575
+<           if(rank.eq.0)
+<      &    WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+---
+>           WRITE(85,95)NAME(J1),NAME(J2),KSTAR(J1),KSTAR(J2),KSTAR(I),
+1663c1579
+<               CALL Jpred(I,TIME,TIME)
+---
+>               CALL xvpred(I,0)
+1666c1582
+<           CALL cmbody(2)
+---
+>           CALL cmbody(R(IPAIR),2)
+coal
+1c1
+<       SUBROUTINE COAL(IPAIR,KW1,MASS)
+---
+>       SUBROUTINE COAL(IPAIR,KW1,KW2,MASS)
+16d15
+<       call xbpredall
+24,26c23,29
+<               CALL STEPK(DT,DTN)
+<               TIME = TPREV + INT((TIME2 + DT)/DTN)*DTN
+<               TIME = MIN(TBLOCK,TIME)
+---
+>               IF (TIME2.LE.16.0*STEP(I)) THEN
+>                   CALL STEPK(DT,DTN)
+>                   TIME = TPREV + INT((TIME2 + DT)/DTN)*DTN
+>                   TIME = MIN(TBLOCK,TIME)
+>               ELSE
+>                   TIME = MIN(T0(I) + STEP(I),TBLOCK)
+>               END IF
+61c64
+<           IF (KZ(9).GE.2) THEN
+---
+>           IF (KZ(8).GT.3) THEN
+109d111
+<       VIJ = SQRT(VIJ2)
+113c115
+<       ECC = 1.0 - RCOLL/SEMI
+---
+>       ECC = MAX(1.0 - RCOLL/SEMI,0.001D0)
+147d148
+<               call jpred(JJ,TIME,TIME)
+191a193
+>          RADIUS(I2) = 0.0
+197,203c199,202
+<       T0(I2) = TADJ + DTADJ
+< *     remove from NXTLST
+<       call delay_remove_tlist(I2,STEP,DTK)
+< C      CALL DTCHCK(TIME,STEP(I2),DTK(40))
+<       STEP(I2) = 2*DTK(1)
+< *     add into GHOST LIST
+<       call add_tlist(I2,STEP,DTK)
+---
+>       T0(I2) = TADJ + DTADJ 
+>       IF (KZ(23).EQ.0.OR.RTIDE.GT.1000.0*RSCALE) T0(I2) = 1.0D+10
+> *     CALL DTCHCK(TIME,STEP(I2),DTK(40))
+>       STEP(I2) = 1.0D+06
+211c210
+< *     Set T0 = TIME for any other chain members.
+---
+> *	Set T0 = TIME for any other chain members.
+223d221
+<          if(rank.eq.0)then
+226d223
+<          end if
+266a264,272
+> *       Check removal of #I1 ghost neighbour if #I2 is first single particle.
+>       IF (LIST(2,I1).EQ.I2) THEN
+>           DO 21 L = 2,NNB
+>               LIST(L,I1) = LIST(L+1,I1)
+>    21     CONTINUE
+>           NNB = NNB - 1
+>           LIST(1,I1) = NNB
+>       END IF
+> *
+297,298d302
+< C*       remove from NXTLST (In binary, not needed)
+<           call delay_remove_tlist(I1,STEP,DTK)
+300,302c304,306
+<           CALL DTCHCK(TIME,STEP(I1),DTK(40))
+< *       add into NLSTDELAY
+<           call delay_store_tlist(I1)
+---
+>           IF (BODY(I1).GT.0.0D0) THEN
+>               CALL DTCHCK(TIME,STEP(I1),DTK(40))
+>           END IF
+319,320d322
+< *     remove from NXTLST
+<                       call delay_remove_tlist(J,STEP,DTK)
+322d323
+< *                      call jpred(j,time,time)
+324,325d324
+< *     remove from NXTLST
+<                       call delay_remove_tlist(J,STEP,DTK)
+327,329d325
+<                   ELSE
+< *     remove from NXTLST
+<                       call delay_remove_tlist(J,STEP,DTK)
+333d328
+<                       X0(K,J) = X(K,J)
+337,354c332,348
+<                       DO 26 K = 1,3
+<                          X0(K,I1) = MIN(1.0d+04 + (X(K,I1)-RDENS(K)),
+<      &                             1000.d0*RSCALE*(X(K,I1)-RDENS(K))/RI)
+<                           X(K,I1) = X0(K,I1)
+<                           X0DOT(K,I1) = SQRT(0.004d0*ZMASS/RSCALE)*
+<      &                                               XDOT(K,I1)/VI
+<                           XDOT(K,I1) = X0DOT(K,I1)
+<                           F(K,I1) = 0.d0
+<                           FDOT(K,I1) = 0.d0
+<                           D2(K,I1) = 0.d0
+<                           D3(K,I1) = 0.d0
+<    26                 CONTINUE
+<                       T0(I1) = TADJ + DTADJ
+< C                      call delay_remove_tlist(I1,STEP,DTK)
+<                       STEP(I1) = 2*DTK(1)
+<                       call add_tlist(I1,STEP,DTK)
+<                       if(rank.eq.0) WRITE (6,28)  NAME(I1), KW1
+<    28                 FORMAT (' MASSLESS PRIMARY!    NAM KW ',I8,I4)
+---
+>                      IF(J.EQ.I1)THEN
+>                         DO 26 K = 1,3
+>                            X0(K,I1) = MIN(1.0d+04 + (X(K,I1)-RDENS(K)),
+>      &                            1000.d0*RSCALE*(X(K,I1)-RDENS(K))/RI)
+>                            X(K,I1) = X0(K,I1)
+>                            X0DOT(K,I1) = SQRT(0.004d0*ZMASS/RSCALE)*
+>      &                                                XDOT(K,I1)/VI
+>                            XDOT(K,I1) = X0DOT(K,I1)
+>                            F(K,I1) = 0.d0
+>                            FDOT(K,I1) = 0.d0
+>                            D2(K,I1) = 0.d0
+>                            D3(K,I1) = 0.d0
+>    26                   CONTINUE
+>                         T0(I1) = 1.0D+06
+>                         WRITE (6,28)  NAME(I1), KW1
+>    28                   FORMAT (' MASSLESS PRIMARY!    NAM KW ',I8,I4)
+>                      ENDIF
+358d351
+<                       call delay_store_tlist(J)
+360d352
+< *     add into NLSTDELAY
+371d362
+<                   X0(K,JMIN) = X(K,JMIN)
+376d366
+<               if(rank.eq.0)then
+380d369
+<               end if
+384,386d372
+<               call delay_remove_tlist(I2,STEP,DTK)
+<               STEP(I2) = 2*DTK(1)
+<               call add_tlist(I2,STEP,DTK)
+388,389d373
+< *       remove from NXTLST
+<               call delay_remove_tlist(ICOMP,STEP,DTK)
+393,394d376
+< *     add into NLSTDELAY
+<               call delay_store_tlist(ICOMP)
+406,440c388,402
+<       IF (rank.eq.0.and.FIRST) THEN
+<          OPEN (UNIT=24,STATUS='UNKNOWN',FORM='FORMATTED',FILE='coal.24'
+<      &        ,ACCESS='APPEND')
+<          FIRST = .FALSE.
+< *     
+< *     Print cluster scaling parameters at start of the run.
+<          IF (NCOAL.EQ.1) THEN
+<             WRITE (24,40)  RBAR, BODYM*ZMBAR, BODY1*ZMBAR, TSCALE,
+<      &           NBIN0, NZERO
+<  40         FORMAT (/,6X,'MODEL:    RBAR =',1P,E26.17,'  <M> =',E26.17,
+<      &           '  M1 =',E26.17,'  TSCALE =',E26.17,0P,
+<      &           '  NB =',I12,'  N0 =',I12,//)
+<             WRITE (12,45)
+<  45         FORMAT ('          TIME[NB]        ',
+<      &           '   NAME(I1) ',
+<      &           '   NAME(I2) ',
+<      &           '    K*(I1)  ',
+<      &           '    K*(I2)  ',
+<      &           '     K*1    ',
+<      &           '   IQCOLL   ',
+<      &           '          M(I1)[M*]       ',
+<      &           '          M(I2)[M*]       ',
+<      &           '         M(INEW)[M*]      ',
+<      &           '          DM[M*]          ',
+<      &           '          RS(I1)[R*]      ',
+<      &           '          RS(I2)[R*]      ',
+<      &           '           RI/RC          ',
+<      &           '           R12[R*]        ',
+<      &           '           ECC            ',
+<      &           '           P[days]        ',
+<      &           '           RCOLL[R*]      ',
+<      &           '            EB[NB]        ',
+<      &           '            DP[NB]        ',
+<      &           '            VINF[km/s]    ')
+<          END IF
+---
+>       IF (FIRST) THEN
+>           OPEN (UNIT=12,STATUS='NEW',FORM='FORMATTED',FILE='COAL')
+>           FIRST = .FALSE.
+> *
+> *       Print cluster scaling parameters at start of the run.
+>           IF (NCOAL.EQ.1) THEN
+>               WRITE (12,40)  RBAR, BODYM*ZMBAR, BODY1*ZMBAR, TSCALE,
+>      &                       NBIN0, NZERO
+>    40         FORMAT (/,6X,'MODEL:    RBAR =',F5.1,'  <M> =',F6.2,
+>      &                     '  M1 =',F6.1,'  TSCALE =',F6.2,
+>      &                     '  NB =',I5,'  N0 =',I6,//)
+>               WRITE (12,45)
+>    45         FORMAT ('    TIME  NAME  NAME  K1  K2  IQ  M1   M2',
+>      &                '   DM    R1     R2    r/Rc   R     ECC      P',/)
+>           END IF
+443,450c405,409
+<       if(rank.eq.0)then
+<          WRITE (24,*)  TTOT, NAME1, NAME2, KSTAR(I1), KSTAR(I2), 
+<      &        KW1, IQCOLL, ZM1, ZM2, ZMNEW*ZMBAR, 
+<      &        DM*ZMBAR, RADIUS(I1)*SU, RADIUS(I2)*SU,
+<      &        RI/RC, RIJ*SU, ECC, TK, RCOLL*SU, EB, DP, VINF
+< C 50      FORMAT (1X,F7.1,2I6,3I4,3F5.1,2F7.2,F6.1,F7.2,F9.5,1P,E9.1)
+<          CALL FLUSH(12)
+<       end if
+---
+>       WRITE (12,50)  TTOT, NAME1, NAME2, KSTAR(I1), KSTAR(I2), IQCOLL,
+>      &               ZM1, ZM2, DM*ZMBAR, RADIUS(I1)*SU, RADIUS(I2)*SU,
+>      &               RI/RC, RIJ*SU, ECC, TK
+>    50 FORMAT (1X,F7.1,2I6,3I4,3F5.1,2F7.2,F6.1,F7.2,F9.5,1P,E9.1)
+>       CALL FLUSH(12)
+452d410
+<       if(rank.eq.0)then
+454,461c412,416
+<      &              KW1, ZMNEW*ZMBAR, RCOLL*SU, EB, DP, DM*ZMBAR, VINF,
+<      &              BODY(I1)*ZMBAR,BODY(I2)*ZMBAR,
+<      &              RADIUS(I1)*SU,RADIUS(I2)*SU,RIJ,VIJ
+<  55   FORMAT (/,A8,'COAL: IQCOLL',I3,' N1,2',2I10,' KW1,2,S',3I4,
+<      &     '  M(INEW)[M*]',1P,E9.2,'  RCOLL[R*]',E9.2,'  EB[NB]',E9.2,
+<      &     '  DP[NB]',E9.2,'  DM[M*]',E9.2,'  VINF[km/s]',E9.2,
+<      &     '  M1,2[*]',2E9.2,' RAD1,2[*]',2E9.2,' RI,VI=',2E9.2)
+<       end if
+---
+>      &              KW1, ZMNEW*ZMBAR, RCOLL, EB, ECC, DM*ZMBAR, VINF
+>    55 FORMAT (/,A8,'COAL    IQ =',I3,'  NAME =',2I6,'  K* =',3I3,
+>      &             '  M =',F6.2,'  RCOLL =',1P,E8.1,'  EB =',E9.1,
+>      &             '  ECC =',0P,F9.5,'  DM =',F6.2,'  VINF =',F5.1)
+>       CALL FLUSH(6)
+463a419,420
+> *       Ensure a BH does not get a smaller type (should not happen).
+>       IF (KSTAR(I2).EQ.14) KSTAR(I1) = 14
+mlwind
+4c4
+<       integer kw
+---
+>       integer kw,mdflag
+6c6,7
+<       real*8 dml,dms,dmt,p0,x,mew,lum0,kap,neta,bwind
+---
+>       real*8 teff,teff1,dml,dms,dmt,p0,x,mew,vw,t40
+>       real*8 lum0,kap,flbv
+7a9,10
+>       parameter(flbv=1.5d0)
+>       real*8 neta,bwind
+13,15c16,34
+< * Apply mass loss of Nieuwenhuijzen & de Jager, A&A, 1990, 231, 134,
+< * for massive stars over the entire HRD.
+<       if(lum.gt.4000.d0)then
+---
+> * Set mdflag to determine the mass-loss you want: 
+> *  = 1 - Hurley, Pols & Tout (2000) SSE basic rates; 
+> *  = 2 - SSE + LBV added; 
+> *  = 3 - Belczynski et al. (2010, ApJ, 714, 1217) updates. 
+> *  = 4 - Belczynski without bi-stability jump. 
+> * [Currently mdflag = 1 is recommended]
+>       mdflag = 1
+> *
+>       dms = 0.d0
+> *
+>       teff = 3.762d0 + 0.25d0*log10(lum) - 0.5d0*log10(r)
+>       teff = 10.d0**teff
+>       teff = MIN(teff,50000.d0)
+> *
+>       if(lum.gt.4000.d0.and.(mdflag.le.2.or.
+>      &                      (mdflag.ge.3.and.kw.le.6)))then
+> * Apply mass loss of Nieuwenhuijzen & de Jager (1990, A&A, 231, 134)
+> * for massive stars over the entire HRD with a metallicity factor 
+> * from Kudritzki et al. (1989, A&A, 219, 205). 
+19,20d37
+<       else
+<          dms = 0.d0
+21a39,64
+> *
+>       if(mdflag.ge.3.and.kw.le.6)then
+> * Apply mass loss for hot, massive H-rich O/B stars following 
+> * Vink et al. (2001, A&A, 369,574). 
+>          if(teff.ge.12500.0.and.teff.le.25000.0.and.mdflag.eq.3)then
+>             teff1 = MIN(teff,22500.d0)
+>             vw = 1.3d0/2.d0
+>             dml = -6.688d0 + 2.21d0*log10(lum/1.0d+05) -  
+>      &             1.339d0*log10(mt/30.d0) - 1.601d0*log10(vw) + 
+>      &             0.85d0*log10(z/0.02d0) + 1.07d0*log10(teff1/20000.d0)
+>             dml = 10.d0**dml
+>             dms = MAX(dms,dml)
+>          elseif(teff.gt.12500.0.and.teff.le.50000.1)then
+>             teff1 = teff
+>             if(mdflag.eq.3) teff1 = MAX(teff,27500.d0)
+>             vw = 2.6d0/2.d0
+>             t40 = log10(teff1/40000.d0)
+>             dml = -6.697d0 + 2.194d0*log10(lum/1.0d+05) -  
+>      &             1.313d0*log10(mt/30.d0) - 1.226d0*log10(vw) + 
+>      &             0.85d0*log10(z/0.02d0) + 
+>      &             0.933d0*t40*(1.d0 - 11.704d0*t40)
+>             dml = 10.d0**dml
+>             dms = MAX(dms,dml)
+>          endif
+>       endif
+> *
+23c66,68
+< * 'Reimers' mass loss
+---
+> *
+> * Standard 'Reimers' mass loss for giants from Kudritzki & Reimers 
+> * (1978, A&A, 70, 227). 
+26c71
+< * see Tout & Eggleton, MNRAS, 1988, 231, 823.  
+---
+> * see Tout & Eggleton (1988, MNRAS, 231, 823).  
+28,29c73
+< * Apply mass loss of Vassiliadis & Wood, ApJ, 1993, 413, 641, 
+< * for high pulsation periods on AGB.
+---
+> *
+30a75,76
+> * Apply mass loss of Vassiliadis & Wood (1993, ApJ, 413, 641) 
+> * for high pulsation periods on AGB.
+38a85,86
+> *
+>          dms = MAX(dml,dms)
+40,41c88,94
+<             dms = MAX(dml,1.0d-13*lum**(3.d0/2.d0))
+<          else
+---
+> * Apply mass loss of Hamann & Koesterke (1998, A&A, 335, 1003) 
+> * for WR (naked helium) stars. 
+>             dml = 1.0d-13*lum**(3.d0/2.d0)
+>             if(mdflag.eq.3)then
+> * Add metallicity factor from Vink & de Koter (2005, A&A, 442, 587). 
+>                dml = dml*(z/0.02d0)**0.86d0
+>             endif
+42a96
+>          else
+44c98,99
+< * reduced WR-like mass loss for small H-envelope mass
+---
+> * Apply the reduced WR-like mass loss for small H-envelope mass 
+> * as described in the Hurley, Pols & Tout (200) SSE paper. 
+48,53c103,114
+<             end if
+< * LBV-like mass loss beyond the Humphreys-Davidson limit.
+<             x = 1.0d-5*r*sqrt(lum)
+<             if(lum.gt.6.0d+05.and.x.gt.1.d0)then
+<                dml = 0.1d0*(x-1.d0)**3*(lum/6.0d+05-1.d0)
+<                dms = dms + dml
+---
+>             endif
+> * LBV-like mass loss beyond the Humphreys-Davidson limit
+> * (see Humphreys & Davidson 1994 and Belczynski et al. 2010). 
+>             x = 1.0d-5*r*SQRT(lum)
+>             if(mdflag.gt.1.and.lum.gt.6.0d+05.and.x.gt.1.d0)then
+>                if(mdflag.eq.2)then
+>                   dml = 0.1d0*(x-1.d0)**3*(lum/6.0d+05-1.d0)
+>                   dms = dms + dml
+>                else
+>                   dml = 1.0d-04*flbv
+>                   dms = MAX(dml,dms)
+>                endif
+55a117
+> *
+kick
+7c7,43
+<       Include 'kspars.h'
+---
+> * There are various choices that can be made for kicks. 
+> * Make sure you are comfortable with the choices set (see below) 
+> * as this will critically affect retention statistics. 
+> *
+> * For regular NSs the kick choice is controlled by the value of 
+> * DISP (sigma in BSE). Choices are: 
+> *    DISP < 0.0 - kick drawn randomly between 0 - ABS(DISP) km/s
+> *    DISP = 0.0 - no kick
+> *    DISP > 0.0 - kick drawn from a Maxwellian with dispersion DISP. 
+> * You may also choose to have the kick velocity distribution scaled 
+> * by VSTAR (i.e. scaled by the initial escape velocity). 
+> * To do this set VFAC to a non-zero value and VFAC*VSTAR will be 
+> * either the maximum of the flat distribution (DISP < 0) or 
+> * the dispersion of the Maxwellian (DISP > 0). 
+> *
+> * Then for an electron capture supernova or an accretion-induced 
+> * collapse the choice is determined by the value of ECSIG set 
+> * internally here. Choices are: 
+> *    ECSIG = 0.0 - no kick
+> *    ECSIG > 0.0 - kick drawn from a Maxwellian, dispersion ECSIG 
+> *    ECSIG < 0.0 - same as for the regular NSs but scaled by ABS(ECSIG).
+> * These supernova are identified by their mass of 1.26 Msun. 
+> *
+> * For BHs the kick choice is controlled by the value of BHFLAG.  
+> * Choices are: 
+> *    BHFLAG = 0 - no kick
+> *    BHFLAG = 1 - same as for the regular NSs
+> *    BHFLAG = 2 - same as for the regular NSs but scaled by fallback. 
+> *
+> * Small kicks for WDs can also be set if KZ(25) > 0 in the input file. 
+> * In this case you can distinguish: 
+> *   WDSIG1 - He and COWDs
+> *   WDSIG2 - ONeWDs 
+> * as the dispersion in a Maxwellian for the different WD types. 
+> * A limit of WDKMAX is set. 
+> * See Fellhauer et al. 2003, ApJ, 595, L53 for more on WD kicks. 
+> *
+9,10c45,46
+<       REAL*8  RAN2,VK(4)
+< *     Unsafe for parallel
+---
+>       INTEGER BHFLAG
+>       REAL*8  RAN2, VK(4)
+13,32c49,79
+< *       Reinstall the traditional kicks (March 2012)
+<       PARAMETER (VFAC=-1.0D0)
+< *       Get fallback from hrdiag.f
+< *     Safe for parallel
+<       common /fall/fallback
+< *
+< *     --03/07/14 11:30-lwang-ks-parallel--------------------------------*
+< ***** Note: Here when icase eq. -147 means for ks communication
+< *****       I will be the processer id to share data
+<       IF (ICASE.EQ.-147) THEN
+< #ifdef PARALLEL         
+<          CALL MPI_BCAST(IPAIR,1,MPI_INTEGER,I,MPI_COMM_WORLD,ierr)
+<          CALL MPI_BCAST(KC,1,MPI_INTEGER,I,MPI_COMM_WORLD,ierr)
+<          CALL MPI_BCAST(VDIS,1,MPI_REAL8,I,MPI_COMM_WORLD,ierr)
+<          CALL MPI_BCAST(RI,1,MPI_REAL8,I,MPI_COMM_WORLD,ierr)
+< #endif         
+<          RETURN
+<       END IF
+< *     --03/07/14 11:30-lwang-end-ks-parallel----------------------------*
+<       
+---
+>       REAL*8 DISP, VFAC, ECSIG, WDSIG1, WDSIG2, WDKMAX
+>       REAL*8 DISP0, VK2
+>       LOGICAL IFLAT
+> *
+> *       Choose the kick settings. 
+> *       Some suggested combinations are included: 
+> *
+> *       Adopt the Maxwellian of Hansen & Phinney (MN 291, 569, 1997) 
+> *       for regular NSs, with EC kicks from a Maxwellian with a lower 
+> *       peak and BH kicks scaled by fallback. WD kicks depend on #25. 
+> *     DISP = 190.D0
+> *     VFAC = 0.D0
+> *     ECSIG = 20.D0
+> *     WDSIG1 = 2.D0
+> *     WDSIG2 = 2.D0
+> *     WDKMAX = 6.D0
+> *     BHFLAG = 2
+> *
+> *       Take a flat distribution between 0-100 km/s for regular NSs, 
+> *       scale EC kicks down by a factor of 4 and do not give kicks 
+> *       to BHs. WD kicks depend on #25. 
+>       DISP = -100.D0
+>       VFAC = 0.D0
+>       ECSIG = -0.25D0
+>       WDSIG1 = 2.D0
+>       WDSIG2 = 2.D0
+>       WDKMAX = 6.D0
+>       BHFLAG = 0
+>       BHFLAG = 2
+>       DISP = 20.0
+> *
+37c84
+< *       Identify the correct component (KSTAR reversed in MDOT).
+---
+> *       Identify the correct component (KSTAR reversed in MDOT or EXPEL).
+39c86
+<           IF (KSTAR(I1).LT.0) THEN
+---
+>           IF (KSTAR(I1).LE.0) THEN
+41c88
+<           ELSE IF (KSTAR(I1+1).LT.0) THEN
+---
+>           ELSE IF (KSTAR(I1+1).LE.0) THEN
+45,46d91
+< *     ks MPI communication KSTAR
+<           call ksparmpi(K_store,K_int,K_KSTAR,IN,0,KSTAR(IN))
+48,55c93,98
+< *     When call expel in cmbody and WD/NS binary form after Binary CE, 
+< *     There is big energy error when DM is large. It seems here the DM 
+< *     will be set to zero and then cause the issue. Thus suppress now.
+< C      Determine mass loss and actual disruption velocity.
+< C          DM = BODY(IN) - 1.4/ZMBAR
+< C          IF (KW.LT.13) DM = 0.0
+< C          VD2 = 2.0*(BODY(N+IPAIR) - DM)/R(IPAIR)
+<           VD2 = 2.0*(BODY(N+IPAIR))/R(IPAIR)
+---
+> *       Determine mass loss and actual disruption velocity.
+> *         DM = BODY(IN) - 1.4/ZMBAR
+> *         IF (KW.LT.13) DM = 0.0
+> *         VD2 = 2.0*(BODY(N+IPAIR) - DM)/R(IPAIR)
+> *       Determine disruption velocity after mass-loss.
+>           VD2 = 2.0*BODY(N+IPAIR)/R(IPAIR)
+58d100
+< C          VP2 = 2.0*BODY(N+IPAIR)/R(IPAIR)
+63c105,110
+<           EB = BODY(I1)*BODY(I1+1)/BODY(N+IPAIR)*H(IPAIR)
+---
+> *       Skip case of massless binary.
+>           IF (BODY(N+IPAIR).GT.0.0D0) THEN
+>               EB = BODY(I1)*BODY(I1+1)/BODY(N+IPAIR)*H(IPAIR)
+>           ELSE
+>               EB = 0.0
+>           END IF
+66,67c113
+<           IF ((KW.LT.13.AND.KZ(25).EQ.0).OR.
+<      &        (KW.EQ.12.AND.KZ(25).NE.2)) GO TO 30
+---
+>           IF (KW.LT.13.AND.KZ(25).EQ.0) GO TO 30
+71,73d116
+< *     ks MPI communicaton EKICK EGRAV
+<           call ksparmpi(K_store,K_real8,K_EGRAV,0,0,EB)
+<           call ksparmpi(K_store,K_real8,K_EKICK,0,0,EB)
+75,76c118
+<           if(rank.eq.0)
+<      &    WRITE (6,1)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2), ZM1,
+---
+>           WRITE (6,1)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2), ZM1,
+78,80c120,121
+<     1     FORMAT (' BINARY KICK:    NAME(I1) NAME(I2) K*(I1) K*(I2) ',
+<      &         'M(I1)[M*] M(I2)[M*] VESC[km/s] VDIS[km/s] R12/SEMI ',
+<      &         'EB R12[NB] ',2I10,2I4,4F7.1,F6.2,F9.4,1P,E10.2)
+---
+>     1     FORMAT (' BINARY KICK:    NAM K* M1 M2 VESC VDIS R/A EB R ',
+>      &                              2I6,2I4,4F7.1,F6.2,F9.4,1P,E10.2)
+87,89d127
+< *     ks MPI communication KSTAR
+<               call ksparmpi(K_store,K_int,K_KSTAR,N+IPAIR,0,
+<      &             KSTAR(N+IPAIR))
+105,109c143,144
+< C*       Adopt the Maxwellian of Hansen & Phinney (MNRAS 291, 569, 1997).
+< C      DISP = 190.0
+< *
+< *       Adopt the Maxwellian of Hobbs (MNRAS 360, 974, 2005)
+<       DISP = 265.0
+---
+>       ZM = BODY(I)*ZMBAR
+>       VKICK = 0.D0
+111,125c146,184
+< *       Include velocity dispersion in terms of VSTAR (Parameter statement!).
+<       IF (VFAC.GT.0.0D0) THEN
+<           DISP = VFAC*VSTAR
+<       END IF
+< *
+< *       Allow for optional type-dependent WD kick.
+<       IF (KW.LT.13) THEN
+<           IF (KZ(25).EQ.1.AND.(KW.EQ.10.OR.KW.EQ.11)) THEN
+<               DISP = 5.0
+<           ELSE IF (KZ(25).GT.1.AND.KW.EQ.12) THEN
+<               DISP = 5.0
+<           ELSE
+<               DISP = 0.0
+<           END IF
+<       END IF
+---
+>       IFLAT = .FALSE.
+>       IF(DISP.LT.-0.01)THEN
+>          IF(KW.EQ.13.AND.ZM.GE.1.28) IFLAT = .TRUE.
+>          IF(KW.EQ.13.AND.ZM.LT.1.28.AND.ECSIG.LT.-0.01) IFLAT = .TRUE.
+>          IF(KW.EQ.14.AND.BHFLAG.GT.0) IFLAT = .TRUE.
+>       ENDIF
+> *
+>       IF(IFLAT)THEN
+> *
+> *       Generate the kick velocity from a flat distribution. 
+>          DISP0 = ABS(DISP)
+>          IF(VFAC.GT.0.001D0) DISP0 = VFAC*VSTAR
+>          IF(KW.EQ.13.AND.ZM.LT.1.28) DISP0 = DISP0*ABS(ECSIG)
+> *
+>          VKICK = RAN2(IDUM1)*DISP0
+>          THETA = RAN2(IDUM1)*TWOPI
+>          SPHI = RAN2(IDUM1)
+>          X1 = ASIN(SPHI)
+>          CPHI = COS(X1)
+>          VK(1) = COS(THETA)*CPHI*VKICK
+>          VK(2) = SIN(THETA)*CPHI*VKICK
+>          VK(3) = SPHI*VKICK
+>          VK2 = VKICK*VKICK
+> *
+>       ELSE
+> *
+> *       Generate the kick velocity using a Maxwellian distribution. 
+>          DISP0 = MAX(DISP,0.D0)
+>          IF(VFAC.GT.0.001D0) DISP0 = VFAC*VSTAR
+>          IF(KW.EQ.10.OR.KW.EQ.11) DISP0 = MAX(WDSIG1,0.D0)
+>          IF(KW.EQ.12) DISP0 = MAX(WDSIG2,0.D0)
+>          IF(KW.EQ.13.AND.ZM.LT.1.28)THEN
+>             IF(ECSIG.LT.-0.01)THEN
+>                DISP0 = DISP0*ABS(ECSIG)
+>             ELSE
+>                DISP0 = MAX(ECSIG,0.D0)
+>             ENDIF
+>          ENDIF
+>          IF(KW.EQ.14.AND.BHFLAG.EQ.0) DISP0 = 0.D0
+128,130c187,189
+<       DO 2 K = 1,2
+<           X1 = RAN2(IDUM1)
+<           X2 = RAN2(IDUM1)
+---
+>          DO 2 K = 1,2
+>              X1 = RAN2(IDUM1)
+>              X2 = RAN2(IDUM1)
+132,137c191,206
+<           S = DISP*SQRT(-2.0*LOG(1.0 - X1))
+<           THETA = TWOPI*X2
+<           VK(2*K-1) = S*COS(THETA)
+<           VK(2*K) = S*SIN(THETA)
+<     2 CONTINUE
+<       VKICK = SQRT(VK(1)**2 + VK(2)**2 + VK(3)**2)
+---
+>              S = DISP0*SQRT(-2.0*LOG(1.0 - X1))
+>              THETA = TWOPI*X2
+>              VK(2*K-1) = S*COS(THETA)
+>              VK(2*K) = S*SIN(THETA)
+>     2    CONTINUE
+> *
+>          IF(DISP0.GT.0.001D0)THEN
+>             VK2 = VK(1)**2 + VK(2)**2 + VK(3)**2
+>             VKICK = SQRT(VK2)
+>          ELSE
+>             VK2 = 0.D0
+>             VKICK = 0.D0
+>          ENDIF
+> *
+>       ENDIF
+> *
+139d207
+<       IF(KW.EQ.14) VKICK = VKICK*(1.D0-fallback)
+141,146c209,232
+< *       Limit kick velocity to VDIS+10*VSTAR/10*VST for binary/single stars.
+< C      IF (IPAIR.GT.0) THEN
+< C          VBF = SQRT(VDIS**2 + 100.0*VSTAR**2)
+< C          VKICK = MIN(VKICK,VBF)
+< C      ELSE
+< C          VKICK = MIN(VKICK,10.0D0*VSTAR)
+---
+> * Impose the maximum WD kick velocity. 
+> *
+>       IF(KW.GE.10.AND.KW.LE.12.AND.VKICK.GT.WDKMAX)THEN
+>          VKICK = WDKMAX
+>       ENDIF
+> *
+> * Restrict the BH kick velocity by fallback. 
+> * This could be done better but in the N-body code we only have 
+> * limited information. 
+> *
+>       IF(KW.EQ.14.AND.BHFLAG.GT.1)THEN
+>          VKICK = VK(4)*DM/(BODY(I)+DM)
+>       ENDIF
+> *
+> *       Limit kick velocity to VDIS+10*VSTAR/10*VST.
+> *       (disabled)
+>       IF (IPAIR.GT.0) THEN
+>           VBF = SQRT(VDIS**2 + 100.0*VSTAR**2)
+> *       Include large kick velocity to ensure escape of disrupted star.
+>           IF (KW.LT.10.OR.(KW.LT.13.AND.KZ(25).EQ.0)) VKICK = 1.0*VBF
+> *         VKICK = MIN(VKICK,VBF)
+> *         VKICK = MAX(VKICK,VDIS+3.0*VSTAR)
+>       ELSE
+> *         VKICK = MIN(VKICK,10.0D0*VSTAR)
+148,150c234,235
+<       IF (IPAIR.LE.0.AND.BODY(I).EQ.0.0D0) VKICK = 10.0*VSTAR
+< C      END IF
+<       VKICK = VKICK/VSTAR
+---
+>           IF (BODY(I).EQ.0.0D0) VKICK = 10.0*VSTAR
+>       END IF
+152c237,243
+<       IF (VKICK.EQ.0.0) GO TO 30
+---
+>       IF (VKICK.NE.VK(4)) THEN
+>          DO K = 1,3
+>             VK(K) = VK(K)*VKICK/VK(4)
+>          ENDDO
+>          VK2 = VKICK*VKICK
+>          VK(4) = VKICK
+>       END IF
+154,159c245,246
+< *       Randomize the velocity components.
+< *     A(4) = 0.0
+< *     DO 5 K = 1,3
+< *         A(K) = 2.0*RAN2(IDUM1) - 1.0
+< *         A(4) = A(4) + A(K)**2
+< *   5 CONTINUE
+---
+> *       Skip case of zero kick velocity.
+>       IF (VKICK.EQ.0.0D0.OR.DISP0.EQ.0.0D0) GO TO 30
+161a249
+>       VKICK = VKICK/VSTAR
+164d251
+<       CALL JPRED(I,TIME,TIME)
+167,168c254
+< *         XDOT(K,I) = XDOT(K,I) + VKICK*A(K)/SQRT(A(4))
+<           XDOT(K,I) = XDOT(K,I) + VKICK*VK(K)/VK(4)
+---
+>           XDOT(K,I) = XDOT(K,I) + VK(K)/VSTAR
+170,171d255
+< *     ks MPI communication
+<           call ksparmpi(K_store,K_real8,K_X0DOT,k,i,x0dot(k,i))
+176,179c260
+<       DETMP = - 0.5*BODY(I)*(VF2 - VI2)
+<       ECDOT = ECDOT + DETMP
+< *     ks MPI communication
+<       call ksparmpi(K_store,K_real8,K_ECDOT,0,0,DETMP)
+---
+>       ECDOT = ECDOT - 0.5*BODY(I)*(VF2 - VI2)
+182c263,264
+< *       Replace final velocity by relative velocity for binary kick.
+---
+> *       Evaluate binary kick energy from relative velocity (for
+> *       diagnostics).
+188d269
+<           CALL JPRED(J,TIME,TIME)
+193c274,279
+<           EB1 = BODY(I)*BODY(J)/(BODY(I) + BODY(J))*HNEW
+---
+> *       Exclude colliding WDs.
+>           IF (BODY(I) + BODY(J).EQ.0.0D0) THEN
+>               EB1 = 0.0
+>           ELSE
+>               EB1 = BODY(I)*BODY(J)/(BODY(I) + BODY(J))*HNEW
+>           END IF
+197,199d282
+< *     ks MPI communicaton EKICK EGRAV
+<               call ksparmpi(K_store,K_real8,K_EGRAV,0,0,-EB1)
+<               call ksparmpi(K_store,K_real8,K_EKICK,0,0,-EB1)
+204,215c287,292
+< *     IF (NKICK.LT.50.OR.NAME(I).LE.2*NBIN0.OR.
+< *    &    (KW.GE.13.AND.TTOT*TSTAR.GT.100.0)) THEN
+<           ZM = BODY(I)*ZMBAR
+<           if(rank.eq.0)
+<      &    WRITE (6,20)  I, NAME(I), (TIME+TOFF)*TSTAR, KSTAR(I), KW, KC,
+<      &         BODY0(I)*ZMBAR,ZM,SQRT(VI2)*VSTAR, VKICK*VSTAR, 
+<      &         SQRT(VF2)*VSTAR, VK(4),fallback
+<    20     FORMAT (' VELOCITY KICK: I',I10'  NAME',I10,
+<      &         '  Time[Myr]',E12.5,'  K*0',I4,
+<      &         '  K*',I4,'  K*(ICM)',I4'  M0[M*]',F9.4,'  MN[M*]',F9.4,
+<      &         '  VI[km/s]',F9.4,'  VK[km/s]',F9.4'  VF[km/s]',F9.4,
+<      &         '  VK0[km/s]',F9.4,'  FB',F9.4)
+---
+>       IF (NKICK.LT.50.OR.NAME(I).LE.2*NBIN0.OR.
+>      &    (KW.GE.13.AND.TTOT*TSTAR.GT.100.0)) THEN
+>           WRITE (6,20)  I, NAME(I), KSTAR(I), KC, BODY0(I)*ZMBAR, ZM,
+>      &                  SQRT(VI2)*VSTAR, VKICK*VSTAR, SQRT(VF2)*VSTAR
+>    20     FORMAT (' VELOCITY KICK:    I NAM K* KC* M0 M VI VK VF ',
+>      &                                2I6,2I4,2F7.2,3F7.1)
+217c294
+< *     END IF
+---
+>       END IF
+220,224c297,299
+<       IF (VKICK.LT.4.0*SQRT(0.5).AND.KW.GE.13) THEN
+<           if(rank.eq.0)
+<      &    WRITE (6,25)  I, NAME(I), KW, VKICK*VSTAR, SQRT(VF2)*VSTAR
+<    25     FORMAT (' LOW KICK:    I',I10,'  NAME',I10,'  K*',I4,
+<      &         '  VK[km/s]',F7.2,'  VF[km/s]',F7.2)
+---
+>       IF (VKICK.LT.4.0*SQRT(0.5).AND.KW.GE.13.AND.VKICK.GT.0.05) THEN
+>           WRITE (6,25)  I, NAME(I), KW, VKICK*VSTAR, SQRT(VF2)*VSTAR
+>    25     FORMAT (' LOW KICK:    I NAM K* VK VF ',2I7,I4,2F7.2)
