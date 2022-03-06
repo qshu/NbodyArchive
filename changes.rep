@@ -1,0 +1,96 @@
+
+
+
+   Significant changes:
+   --------------------
+
+    i) core.f
+
+    A divide by zero occurred if there are no neighbour of a particle,
+    which causes a crash on some computers. It was not harmful for the
+    run itself, though.
+
+   Following the lines 
+*       Obtain individual densities.
+      RHOS = 0.0
+      DO 50 L = 1,NC
+          I = JLIST(L)
+          NNB = LIST(1,I)
+   add the lines:
+*       Skip and set density to zero of there are no neighbours
+          IF (NNB.EQ.0) THEN
+          RHO(I) = 0.0D0
+          ELSE
+          ...
+ and close the If-block just before the end of do-loop 50:
+          ...
+          END IF
+   50 CONTINUE
+
+   ----------------------------
+
+    ii) lagr.F   has been changed to provide significant more information.
+        It now includes rcore writing, average mass in rcore,
+       more comprehensive output into listing and more in file fort.7
+       one more shell (99% of mass) included.
+
+
+
+   Changes less significant:
+   ----------------------------
+
+    The following changes are all minor in the sense that they have
+    been done in passing by to improve legibility of the output in
+    parallel execution or improve some output or job handling.
+    Just in case you want to know here is a detailed account:
+
+    +++  better TIME output at COMMON SAVE   (intgrt.F)
+
+    +++ modify.F: better time output in Nbody units
+                  possibility to correct NNBOPT
+
+
+    +++ scale.F   formatted output of initial model on fort.10 if KZ(22)=1
+
+
+    +++ further reduction of redundant output in parallel execution in
+        bodies.f   intgrt.F nbody6.F output.F imf2.f
+        by putting in if(rank.eq.0)
+
+    +++ data.F
+
+   40 IF (KZ(22).LE.1) THEN          (before KZ(22).EQ.0)
+          CALL SETUP
+      END IF
+
+     setup should be called to create an initial model. This is
+     the above KZ(22).LE.1 (NOT KZ(22).EQ.0 as before), because KZ(22)=1
+     just means writing a model on unit 10 not creating one. A very minor
+     correction though.
+
+ +++ imf2.f    lines
+
+*       Replace input value by actual mean mass in solar units.
+   90 ZMBAR = ZMASS/FLOAT(N)
+
+      replaced by
+
+   90 CONTINUE
+
+       because proper scaling and ZMBAR determination is done later in start.F
+
+ +++  imf.f    lines
+
+*       Replace input value by actual mean mass in solar units.
+      ZMBAR = ZMASS/FLOAT(N)
+      if(rank.eq.0)WRITE (6,20)  BODY(1), BODY(N), ZMBAR
+
+      replaced by
+
+      if(rank.eq.0)WRITE (6,20)  BODY(1), BODY(N), ZMASS/FLOAT(N)
+
+      for the same reason.
+
+
+
+      

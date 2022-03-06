@@ -1,0 +1,160 @@
+
+
+   NBODY6++ Update Report on Aug. 12, 2000 put into
+   ftp://ftp.ari.uni-heidelberg.de/pub/spurzem/nb6mpi-august2000.tar.gz
+
+   A new file as of August 2000 has been created, since there were a
+ number of small changes, which have been accumulated. So if you want to
+ check you are up to dat, take the full new file.
+
+ Minor changes occurred in the following routines:
+
+ units.f, imf2.f, lagr.F, sort1.f, intgrt.F, chmod.f
+
+ Explanations of the changes are given below, after the comments on the
+ Makefile.
+
+ Here follows an update on:
+
+
+   The Makefile
+   ------------
+
+   has been slightly improved. I use this opportunity for a little
+ tutorial about the use of the Makefile. The executable file, named nbody6 or
+   nbody6-n (parallel mode) is now created in the program file
+   directory, and does NOT anymore expect that a Run/ - subdirectory
+   exists to put it in. Take care when restarting to delete the old or
+   move the new executable file to where you want to have it.
+
+   i) a small template input file for 1000 particles for nbody6++ has
+       been added to the main directory.
+
+   ii) the structure of different targets in the Makefile has been
+        clarified. Note that the code is portable to any computer which
+        has the MPI (message passing interface) routine package implemented.
+        But you have to adapt the parallel: target in the Makefile to
+        the specific compiler and loader calls, and special options for
+        your machine. Any normal single CPU machine will be also able to
+        run the code without any changes, using the single CPU execution
+        targets in the Makefile (see below). Again, however you have to
+        check for your individual compiler command and options requirements,
+        and to revise the target in the Makefile correspondingly.
+
+
+   Special note: DO NOT DO  "make nbody6" - this is used internally.
+
+   Single CPU execution modes:
+   make                      or
+   make standard          -> Linux g77 -O6 ...
+   make pgf               -> Linux pgf77 -tp p6 -pc64
+   make sun               -> Sun f77 -O4
+   
+   Parallel Execution Modes (you have to specify nn=integer):
+
+   make parallel NPE=nn   -> CRAY T3E f90 -d p -Xnn   using shmem/MPI
+   make parallel NPE=nn   -> CRAY T3E f90 -d p -Xnn   using only MPI
+                        (for non-CRAY maybe it needs a change of FFLAGS/LFLAGS)
+   make sun_e10k          -> Sun E10K tmf77 -l mpi
+   make sun_e10k_fast     -> Sun E10K tmf77 -fast -xarch=v9a -lmpi
+   make ensemble          -> for ensemble averages (not yet supported)
+
+   (note: some parallel machines require or recommend to set the PE-Number 
+    at compile time (e.g. CRAY T3E)
+    Then the NPE=nn is necessary as a parameter for make. Others do
+    not (Sun), so it is not needed)
+
+   Some work is in progress to include IBM-SP2 machine, but not yet completed.
+   ---------------------------------------------------------------------------
+
+
+   Detailed explanation of UPDATES of routines:
+
+   i)  chmod.f   
+
+    small update received from Sverre (also for NBODY6). His comment:
+
+Crist Tout found an example which showed up an inelegant algorithm
+in chmod.f. This has now been fixed after a careful investigation,
+together with some other small matters.
+
+
+   ii)  intgrt.F
+
+   after the lines
+*       Repeat cycle until elapsed computing time exceeds the limit.
+      CALL CPUTIM(TCOMP)
+
+   add the line
+
+          TCOMP = (TCOMP-TTOT)*60.
+
+   (this was an improper timer call, which went undetected on some computers,
+    but failed on the T3E).
+
+
+
+   
+   iii)  units.f
+
+   change old lines
+
+      YRS = (RBAR*AU)**1.5/SQRT(ZMBAR)
+      DAYS = 365.24*YRS
+
+   into
+
+      IF(ZMBAR.GT.0.D0)THEN
+      YRS = (RBAR*AU)**1.5/SQRT(ZMBAR)
+      DAYS = 365.24*YRS
+      ELSE
+      YRS = 0.D0
+      DAYS = 0.D0
+      END IF
+
+  (that caused a stop of the run due to a floating point error on computers 
+   with a strict compiler,  if ZMBAR=0.D0).
+  
+
+  iv) imf2.f
+
+  change old line
+
+        REAL*4  BTMP(NMAX),RAN2
+
+  into
+
+        REAL*4 RAN2
+        REAL*8 BTMP(NMAX)
+
+  (needed for portability with 64bit CRAY machine)
+
+  v) lagr.F
+
+  change old line
+
+      REAL*4 R2
+      COMMON/WORK1/  R2(NMAX)
+
+  into
+
+      REAL*8 R2(NMAX)
+
+  (needed for portability with 64bit CRAY machine, and WORK1 Common not
+   required anymore)
+
+
+  vi) sort1.f
+
+  change old line
+
+      DIMENSION  RA(N),RB(N)
+
+  into
+
+      REAL*8 RA(N)
+      DIMENSION  RB(N)
+
+ (needed for portability with 64bit CRAY machine)
+
+

@@ -1,0 +1,17 @@
+
+   July 26, 2000
+
+  checkl.f new
+  resolv.f new
+  chlist.f new
+  zcnsts.f new
+  hidat.f new
+
+1. In routine hidat.f and himax.f remove the two local common 
+   variables  TMDIS(..) and IFLAGM(..)
+
+2. In Jarrod's routine zcnsts.f the 5th line of real*8 should have
+   the two arguments of 100 replaced by 200 to be consistent with
+   his routine zfuncs.f.
+
+

@@ -1,0 +1,3 @@
+tar cvf /work/ftpserver/pub/spurzem/nb6mpi-$1$2.tar *.[fFh] Makefile in1000
+gzip  /work/ftpserver/pub/spurzem/nb6mpi-$1$2.tar
+exit

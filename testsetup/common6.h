@@ -1,0 +1,23 @@
+*       COMMON6.
+*       -------
+*
+
+      PARAMETER  (NMAX=10100)
+      PARAMETER  (ID=3)
+*
+      IMPLICIT REAL*8  (A-H,O-Z)
+*
+      SAVE
+*
+      COMMON/NBODY/  X(ID,NMAX),X0(ID,NMAX),X0DOT(ID,NMAX),F(ID,NMAX),
+     &               XN(ID,NMAX),XNDOT(ID,NMAX),
+     &               FDOT(ID,NMAX),BODY(NMAX),RS(NMAX),XDOT(ID,NMAX),
+     &               FI(ID,NMAX),D1(ID,NMAX),D2(ID,NMAX),D3(ID,NMAX),
+     &               FR(ID,NMAX),D1R(ID,NMAX),D2R(ID,NMAX),D3R(ID,NMAX),
+     &               STEP(NMAX),T0(NMAX),STEPR(NMAX),T0R(NMAX)
+*
+      COMMON/NAMES/  N,NTOT,NPAIRS,NNBOPT,NCRIT,NFIX,NMERGE,NSUB,NCH,
+     &               IPHASE,IFIRST,ICOMP,JCOMP,ICLOSE,JCLOSE,KSPAIR
+*
+      COMMON/WORK2/RHO(NMAX),XNDBL(NMAX),PHIDBL(NMAX)
+*
