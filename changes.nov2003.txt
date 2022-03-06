@@ -1,0 +1,29 @@
+
+
+
+     ------------------Error in parallel runs with Chain------------------
+     ------------------Detected Nov. 24 2003------------------------------
+
+     Inside parallel section chain coordinates and perturber lists
+ are updated via calls to CHLIST and XCPRED  from  CHFIRR and FCHAIN. 
+ Since the last two routines are called from nbint.f they may be inside
+ parallel section. In case of CHFIRR the flag updatef() once invented by
+ Marc Hemsendorf took care about that and initiated a communication of
+ the chain common after the end of the block. However, in FCHAIN that was
+ not taken care of. 
+
+     Now the whole algorithm is changed: before starting a block we check
+ whether the chain c.m. is due, or whether one of the neighbours of the
+ particles in the current block is the chain c.m. In such a case CHLIST
+ and XCPRED are called if needed. From within nbint.f then CHFIRR and
+ FCHAIN can be called with IR=1 which prevents another call of CHLIST and
+ XCPRED from there.
+
+     Finally the parallel common block MPIDAT was not present in all
+ chain routines, which caused superfluous output. 
+
+   ----------------------------------------------------------------------------
+
+       Jan. 26, 04, included crucial barrier in adjust.F (before STOP) which
+                    prevents bad terminations of some parallel runs.
+-------------------------------------------------------------------------------
