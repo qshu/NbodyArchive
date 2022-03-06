@@ -1,0 +1,2103 @@
+1,2c1,2
+< 5377 Jun 5 08:01
+< Main-newfixes//absorb.f
+---
+> 5377 May 29 01:56
+> Main-oldpsk-rainer//absorb.f
+1,2c1,2
+< 2426 Jun 5 08:01
+< Main-newfixes//add_tlist.f
+---
+> 2426 May 29 01:56
+> Main-oldpsk-rainer//add_tlist.f
+1,2c1,2
+< 15821 Jun 5 08:01
+< Main-newfixes//adjust.F
+---
+> 15821 May 29 01:56
+> Main-oldpsk-rainer//adjust.F
+1,2c1,2
+< 2969 Jun 5 08:01
+< Main-newfixes//assess.f
+---
+> 2969 May 29 01:56
+> Main-oldpsk-rainer//assess.f
+1,2c1,2
+< 7110 Jun 5 08:01
+< Main-newfixes//bhplot.f
+---
+> 7110 May 29 01:56
+> Main-oldpsk-rainer//bhplot.f
+1,2c1,2
+< 11202 Jun 5 08:01
+< Main-newfixes//bindat.f
+---
+> 11202 May 29 01:56
+> Main-oldpsk-rainer//bindat.f
+1,2c1,2
+< 2952 Jun 5 08:01
+< Main-newfixes//binev.f
+---
+> 2952 May 29 01:56
+> Main-oldpsk-rainer//binev.f
+1,2c1,2
+< 6226 Jun 5 08:01
+< Main-newfixes//binout.f
+---
+> 6226 May 29 01:56
+> Main-oldpsk-rainer//binout.f
+1,2c1,2
+< 27175 Jun 5 08:01
+< Main-newfixes//binpop.F
+---
+> 27175 May 29 01:56
+> Main-oldpsk-rainer//binpop.F
+1,2c1,2
+< 697 Jun 5 08:01
+< Main-newfixes//block.f
+---
+> 697 May 29 01:56
+> Main-oldpsk-rainer//block.f
+1,2c1,2
+< 4553 Jun 5 08:01
+< Main-newfixes//bodies.f
+---
+> 4553 May 29 01:56
+> Main-oldpsk-rainer//bodies.f
+1,2c1,2
+< 7818 Jun 5 08:01
+< Main-newfixes//brake2.f
+---
+> 7818 May 29 01:56
+> Main-oldpsk-rainer//brake2.f
+1,2c1,2
+< 4984 Jun 5 08:01
+< Main-newfixes//brake3.f
+---
+> 4984 May 29 01:56
+> Main-oldpsk-rainer//brake3.f
+1,2c1,2
+< 4568 Jun 5 08:01
+< Main-newfixes//brake.f
+---
+> 4568 May 29 01:56
+> Main-oldpsk-rainer//brake.f
+1,2c1,2
+< 1969 Jun 5 08:11
+< Main-newfixes//bsetid.f
+---
+> 1969 May 29 01:56
+> Main-oldpsk-rainer//bsetid.f
+43c43
+<          fc = MIN(1.d0,(ttid/(2.d0*tc))**2)
+---
+>          fc = MIN(1.d0,(ttid/(2.d0*tc)**2))
+1,2c1,2
+< 1439 Jun 5 08:01
+< Main-newfixes//cfuncs.f
+---
+> 1439 May 29 01:56
+> Main-oldpsk-rainer//cfuncs.f
+1,2c1,2
+< 25486 Jun 5 08:01
+< Main-newfixes//chain.f
+---
+> 25486 May 29 01:56
+> Main-oldpsk-rainer//chain.f
+1,2c1,2
+< 2642 Jun 5 08:01
+< Main-newfixes//chaos0.f
+---
+> 2642 May 29 01:56
+> Main-oldpsk-rainer//chaos0.f
+1,2c1,2
+< 12270 Jun 5 08:01
+< Main-newfixes//chaos2.f
+---
+> 12270 May 29 01:56
+> Main-oldpsk-rainer//chaos2.f
+1,2c1,2
+< 17695 Jun 5 08:01
+< Main-newfixes//chaos.f
+---
+> 17695 May 29 01:56
+> Main-oldpsk-rainer//chaos.f
+1,2c1,2
+< 1368 Jun 5 08:01
+< Main-newfixes//chdata.f
+---
+> 1368 May 29 01:56
+> Main-oldpsk-rainer//chdata.f
+1,2c1,2
+< 4170 Jun 5 08:01
+< Main-newfixes//check.f
+---
+> 4170 May 29 01:56
+> Main-oldpsk-rainer//check.f
+1,2c1,2
+< 10409 Jun 5 08:01
+< Main-newfixes//checkl.F
+---
+> 10409 May 29 01:56
+> Main-oldpsk-rainer//checkl.F
+1,2c1,2
+< 680 Jun 5 08:01
+< Main-newfixes//chfind.f
+---
+> 680 May 29 01:56
+> Main-oldpsk-rainer//chfind.f
+1,2c1,2
+< 9765 Jun 5 08:01
+< Main-newfixes//chfirr.f
+---
+> 9765 May 29 01:56
+> Main-oldpsk-rainer//chfirr.f
+1,2c1,2
+< 8892 Jun 5 08:01
+< Main-newfixes//chinit.f
+---
+> 8892 May 29 01:56
+> Main-oldpsk-rainer//chinit.f
+1,2c1,2
+< 2805 Jun 5 08:01
+< Main-newfixes//chlist.f
+---
+> 2805 May 29 01:56
+> Main-oldpsk-rainer//chlist.f
+1,2c1,2
+< 24881 Jun 5 08:01
+< Main-newfixes//chmod_chain.f
+---
+> 24881 May 29 01:56
+> Main-oldpsk-rainer//chmod_chain.f
+1,2c1,2
+< 1476 Jun 5 08:01
+< Main-newfixes//chpot.f
+---
+> 1476 May 29 01:56
+> Main-oldpsk-rainer//chpot.f
+1,2c1,2
+< 11060 Jun 5 08:01
+< Main-newfixes//chrect.f
+---
+> 11060 May 29 01:56
+> Main-oldpsk-rainer//chrect.f
+1,2c1,2
+< 6698 Jun 5 08:01
+< Main-newfixes//chstab.f
+---
+> 6698 May 29 01:56
+> Main-oldpsk-rainer//chstab.f
+1,2c1,2
+< 19974 Jun 5 08:01
+< Main-newfixes//chterm.f
+---
+> 19974 May 29 01:56
+> Main-oldpsk-rainer//chterm.f
+1,2c1,2
+< 1675 Jun 5 08:01
+< Main-newfixes//clint.f
+---
+> 1675 May 29 01:56
+> Main-oldpsk-rainer//clint.f
+1,2c1,2
+< 2639 Jun 5 08:01
+< Main-newfixes//cloud0.f
+---
+> 2639 May 29 01:56
+> Main-oldpsk-rainer//cloud0.f
+1,2c1,2
+< 2343 Jun 5 08:01
+< Main-newfixes//cloud.f
+---
+> 2343 May 29 01:56
+> Main-oldpsk-rainer//cloud.f
+1,2c1,2
+< 26515 Jun 5 08:01
+< Main-newfixes//cmbody.f
+---
+> 26515 May 29 01:56
+> Main-oldpsk-rainer//cmbody.f
+1,2c1,2
+< 4155 Jun 5 08:01
+< Main-newfixes//cmcorr.f
+---
+> 4155 May 29 01:56
+> Main-oldpsk-rainer//cmcorr.f
+1,2c1,2
+< 4373 Jun 5 08:01
+< Main-newfixes//cmfirr_cor.f
+---
+> 4373 May 29 01:56
+> Main-oldpsk-rainer//cmfirr_cor.f
+1,2c1,2
+< 4927 Jun 5 08:01
+< Main-newfixes//cmfirr.f
+---
+> 4927 May 29 01:56
+> Main-oldpsk-rainer//cmfirr.f
+1,2c1,2
+< 3840 Jun 5 08:01
+< Main-newfixes//cmfirr_ucor.f
+---
+> 3840 May 29 01:56
+> Main-oldpsk-rainer//cmfirr_ucor.f
+1,2c1,2
+< 9380 Jun 5 08:01
+< Main-newfixes//cmfreg.f
+---
+> 9380 May 29 01:56
+> Main-oldpsk-rainer//cmfreg.f
+1,2c1,2
+< 16171 Jun 5 08:01
+< Main-newfixes//coal.f
+---
+> 16171 May 29 01:56
+> Main-oldpsk-rainer//coal.f
+1,2c1,2
+< 16072 Jun 5 08:01
+< Main-newfixes//coal-original.f
+---
+> 16072 May 29 01:56
+> Main-oldpsk-rainer//coal-original.f
+1,2c1,2
+< 14995 Jun 5 08:01
+< Main-newfixes//comenv.f
+---
+> 14995 May 29 01:56
+> Main-oldpsk-rainer//comenv.f
+1,2c1,2
+< 982 Jun 5 08:01
+< Main-newfixes//const.f
+---
+> 982 May 29 01:56
+> Main-oldpsk-rainer//const.f
+1,2c1,2
+< 4971 Jun 5 08:01
+< Main-newfixes//core.f
+---
+> 4971 May 29 01:56
+> Main-oldpsk-rainer//core.f
+1,2c1,2
+< 1259 Jun 5 08:01
+< Main-newfixes//corerd.f
+---
+> 1259 May 29 01:56
+> Main-oldpsk-rainer//corerd.f
+1,2c1,2
+< 1429 Jun 5 08:01
+< Main-newfixes//counter_reset.f
+---
+> 1429 May 29 01:56
+> Main-oldpsk-rainer//counter_reset.f
+1,2c1,2
+< 676 Jun 5 08:01
+< Main-newfixes//cputim.F
+---
+> 676 May 29 01:56
+> Main-oldpsk-rainer//cputim.F
+1,2c1,2
+< 4644 Jun 5 08:01
+< Main-newfixes//cstab2.f
+---
+> 4644 May 29 01:56
+> Main-oldpsk-rainer//cstab2.f
+1,2c1,2
+< 4736 Jun 5 08:01
+< Main-newfixes//cstab3.f
+---
+> 4736 May 29 01:56
+> Main-oldpsk-rainer//cstab3.f
+1,2c1,2
+< 4218 Jun 5 08:01
+< Main-newfixes//cstab4.f
+---
+> 4218 May 29 01:56
+> Main-oldpsk-rainer//cstab4.f
+1,2c1,2
+< 7266 Jun 5 08:01
+< Main-newfixes//cstab5.f
+---
+> 7266 May 29 01:56
+> Main-oldpsk-rainer//cstab5.f
+1,2c1,2
+< 36905 Jun 5 08:01
+< Main-newfixes//custom_output.F
+---
+> 36905 May 29 01:56
+> Main-oldpsk-rainer//custom_output.F
+1,2c1,2
+< 48291 Jun 5 08:01
+< Main-newfixes//custom_output_facility.F
+---
+> 48291 May 29 01:56
+> Main-oldpsk-rainer//custom_output_facility.F
+1,2c1,2
+< 6480 Jun 5 08:01
+< Main-newfixes//data.F
+---
+> 6480 May 29 01:56
+> Main-oldpsk-rainer//data.F
+1,2c1,2
+< 6040 Jun 5 08:01
+< Main-newfixes//decide.f
+---
+> 6040 May 29 01:56
+> Main-oldpsk-rainer//decide.f
+1,2c1,2
+< 2016 Jun 5 08:01
+< Main-newfixes//deform.f
+---
+> 2016 May 29 01:56
+> Main-oldpsk-rainer//deform.f
+1,2c1,2
+< 8801 Jun 5 08:01
+< Main-newfixes//degen.f
+---
+> 8801 May 29 01:56
+> Main-oldpsk-rainer//degen.f
+1,2c1,2
+< 1122 Jun 5 08:01
+< Main-newfixes//delay_add_tlist.f
+---
+> 1122 May 29 01:56
+> Main-oldpsk-rainer//delay_add_tlist.f
+1,2c1,2
+< 2146 Jun 5 08:01
+< Main-newfixes//delay.f
+---
+> 2146 May 29 01:56
+> Main-oldpsk-rainer//delay.f
+1,2c1,2
+< 947 Jun 5 08:01
+< Main-newfixes//delay_remove_tlist.f
+---
+> 947 May 29 01:56
+> Main-oldpsk-rainer//delay_remove_tlist.f
+1,2c1,2
+< 1030 Jun 5 08:01
+< Main-newfixes//delay_store_tlist.f
+---
+> 1030 May 29 01:56
+> Main-oldpsk-rainer//delay_store_tlist.f
+1,2c1,2
+< 7314 Jun 5 08:01
+< Main-newfixes//derqp3.f
+---
+> 7314 May 29 01:56
+> Main-oldpsk-rainer//derqp3.f
+1,2c1,2
+< 9994 Jun 5 08:01
+< Main-newfixes//derqp4.f
+---
+> 9994 May 29 01:56
+> Main-oldpsk-rainer//derqp4.f
+1,2c1,2
+< 12063 Jun 5 08:01
+< Main-newfixes//derqp.f
+---
+> 12063 May 29 01:56
+> Main-oldpsk-rainer//derqp.f
+1,2c1,2
+< 4258 Jun 5 08:01
+< Main-newfixes//dgcore.f
+---
+> 4258 May 29 01:56
+> Main-oldpsk-rainer//dgcore.f
+1,2c1,2
+< 3994 Jun 5 08:01
+< Main-newfixes//difsy1.f
+---
+> 3994 May 29 01:56
+> Main-oldpsk-rainer//difsy1.f
+1,2c1,2
+< 3222 Jun 5 08:01
+< Main-newfixes//difsy3.f
+---
+> 3222 May 29 01:56
+> Main-oldpsk-rainer//difsy3.f
+1,2c1,2
+< 3207 Jun 5 08:01
+< Main-newfixes//difsy4.f
+---
+> 3207 May 29 01:56
+> Main-oldpsk-rainer//difsy4.f
+1,2c1,2
+< 384 Jun 5 08:01
+< Main-newfixes//dtchck.f
+---
+> 384 May 29 01:56
+> Main-oldpsk-rainer//dtchck.f
+1,2c1,2
+< 4549 Jun 5 08:01
+< Main-newfixes//eccmod.f
+---
+> 4549 May 29 01:56
+> Main-oldpsk-rainer//eccmod.f
+1,2c1,2
+< 3263 Jun 5 08:01
+< Main-newfixes//ecirc.f
+---
+> 3263 May 29 01:56
+> Main-oldpsk-rainer//ecirc.f
+1,2c1,2
+< 1511 Jun 5 08:01
+< Main-newfixes//edot.f
+---
+> 1511 May 29 01:56
+> Main-oldpsk-rainer//edot.f
+1,2c1,2
+< 1503 Jun 5 08:01
+< Main-newfixes//efac2.f
+---
+> 1503 May 29 01:56
+> Main-oldpsk-rainer//efac2.f
+1,2c1,2
+< 1512 Jun 5 08:01
+< Main-newfixes//efac3.f
+---
+> 1512 May 29 01:56
+> Main-oldpsk-rainer//efac3.f
+1,2c1,2
+< 4233 Jun 5 08:01
+< Main-newfixes//eigenvalue.f
+---
+> 4233 May 29 01:56
+> Main-oldpsk-rainer//eigenvalue.f
+1,2c1,2
+< 7939 Jun 5 08:01
+< Main-newfixes//ellan.f
+---
+> 7939 May 29 01:56
+> Main-oldpsk-rainer//ellan.f
+1,2c1,2
+< 6421 Jun 5 08:01
+< Main-newfixes//encorr_mdot.F
+---
+> 6421 May 29 01:56
+> Main-oldpsk-rainer//encorr_mdot.F
+1,2c1,2
+< 2484 Jun 5 08:01
+< Main-newfixes//endreg.f
+---
+> 2484 May 29 01:56
+> Main-oldpsk-rainer//endreg.f
+1,2c1,2
+< 4272 Jun 5 08:01
+< Main-newfixes//energy.F
+---
+> 4272 May 29 01:56
+> Main-oldpsk-rainer//energy.F
+1,2c1,2
+< 9311 Jun 5 08:01
+< Main-newfixes//energy_mpi.F
+---
+> 9311 May 29 01:56
+> Main-oldpsk-rainer//energy_mpi.F
+1,2c1,2
+< 1715 Jun 5 08:01
+< Main-newfixes//erel3.f
+---
+> 1715 May 29 01:56
+> Main-oldpsk-rainer//erel3.f
+1,2c1,2
+< 1451 Jun 5 08:01
+< Main-newfixes//erel4.f
+---
+> 1451 May 29 01:56
+> Main-oldpsk-rainer//erel4.f
+1,2c1,2
+< 1523 Jun 5 08:01
+< Main-newfixes//erel.f
+---
+> 1523 May 29 01:56
+> Main-oldpsk-rainer//erel.f
+1,2c1,2
+< 22256 Jun 5 08:01
+< Main-newfixes//escape.F
+---
+> 22256 May 29 01:56
+> Main-oldpsk-rainer//escape.F
+1,2c1,2
+< 22189 Jun 5 08:01
+< Main-newfixes//escape-original.F
+---
+> 22189 May 29 01:56
+> Main-oldpsk-rainer//escape-original.F
+1,2c1,2
+< 3470 Jun 5 08:01
+< Main-newfixes//events.f
+---
+> 3470 May 29 01:56
+> Main-oldpsk-rainer//events.f
+1,2c1,2
+< 3221 Jun 5 08:01
+< Main-newfixes//exchange_tlist.f
+---
+> 3221 May 29 01:56
+> Main-oldpsk-rainer//exchange_tlist.f
+1,2c1,2
+< 1858 Jun 5 08:01
+< Main-newfixes//expand.f
+---
+> 1858 May 29 01:56
+> Main-oldpsk-rainer//expand.f
+1,2c1,2
+< 14190 Jun 5 08:01
+< Main-newfixes//expel2.f
+---
+> 14190 May 29 01:56
+> Main-oldpsk-rainer//expel2.f
+1,2c1,2
+< 16049 Jun 27 02:16
+< Main-newfixes//expel.f
+---
+> 15918 May 29 01:56
+> Main-oldpsk-rainer//expel.f
+88,91d87
+< cnew-abbas-26/07/2017
+<            KW1 = KTYPE(KSTAR(I1),KSTAR(I2))
+<            IF (KW1.GT.100) KW1 = KW1 - 100
+< cnew-abbas-26/07/2017
+1,2c1,2
+< 2492 Jun 5 08:01
+< Main-newfixes//extend.f
+---
+> 2492 May 29 01:56
+> Main-oldpsk-rainer//extend.f
+1,2c1,2
+< 789 Jun 5 08:01
+< Main-newfixes//fbulge.f
+---
+> 789 May 29 01:56
+> Main-oldpsk-rainer//fbulge.f
+1,2c1,2
+< 3352 Jun 5 08:01
+< Main-newfixes//fchain.f
+---
+> 3352 May 29 01:56
+> Main-oldpsk-rainer//fchain.f
+1,2c1,2
+< 1198 Jun 5 08:01
+< Main-newfixes//fclose.f
+---
+> 1198 May 29 01:56
+> Main-oldpsk-rainer//fclose.f
+1,2c1,2
+< 1939 Jun 5 08:01
+< Main-newfixes//fcloud.f
+---
+> 1939 May 29 01:56
+> Main-oldpsk-rainer//fcloud.f
+1,2c1,2
+< 6740 Jun 5 08:01
+< Main-newfixes//fcorr.F
+---
+> 6740 May 29 01:56
+> Main-oldpsk-rainer//fcorr.F
+1,2c1,2
+< 1204 Jun 5 08:01
+< Main-newfixes//fdisk.f
+---
+> 1204 May 29 01:56
+> Main-oldpsk-rainer//fdisk.f
+1,2c1,2
+< 655 Jun 5 08:01
+< Main-newfixes//fhalo.f
+---
+> 655 May 29 01:56
+> Main-oldpsk-rainer//fhalo.f
+1,2c1,2
+< 2667 Jun 5 08:01
+< Main-newfixes//ficorr.F
+---
+> 2667 May 29 01:56
+> Main-oldpsk-rainer//ficorr.F
+1,2c1,2
+< 12109 Jun 5 08:01
+< Main-newfixes//file_init.F
+---
+> 12109 May 29 01:56
+> Main-oldpsk-rainer//file_init.F
+1,2c1,2
+< 1712 Jun 5 08:01
+< Main-newfixes//findj.f
+---
+> 1712 May 29 01:56
+> Main-oldpsk-rainer//findj.f
+1,2c1,2
+< 3730 Jun 5 08:01
+< Main-newfixes//findm.f
+---
+> 3730 May 29 01:56
+> Main-oldpsk-rainer//findm.f
+1,2c1,2
+< 79 Jun 5 08:01
+< Main-newfixes//flush.f
+---
+> 79 May 29 01:56
+> Main-oldpsk-rainer//flush.f
+1,2c1,2
+< 3964 Jun 5 08:01
+< Main-newfixes//flyby.f
+---
+> 3964 May 29 01:56
+> Main-oldpsk-rainer//flyby.f
+1,2c1,2
+< 582 Jun 5 08:01
+< Main-newfixes//fnuc.f
+---
+> 582 May 29 01:56
+> Main-oldpsk-rainer//fnuc.f
+1,2c1,2
+< 4438 Jun 5 08:01
+< Main-newfixes//fpcorr.F
+---
+> 4438 May 29 01:56
+> Main-oldpsk-rainer//fpcorr.F
+1,2c1,2
+< 1804 Jun 5 08:01
+< Main-newfixes//fpert.f
+---
+> 1804 May 29 01:56
+> Main-oldpsk-rainer//fpert.f
+1,2c1,2
+< 13039 Jun 5 08:01
+< Main-newfixes//fpoly0.F
+---
+> 13039 May 29 01:56
+> Main-oldpsk-rainer//fpoly0.F
+1,2c1,2
+< 4892 Jun 5 08:01
+< Main-newfixes//fpoly1.f
+---
+> 4892 May 29 01:56
+> Main-oldpsk-rainer//fpoly1.f
+1,2c1,2
+< 7891 Jun 5 08:01
+< Main-newfixes//fpoly1_ks.f
+---
+> 7891 May 29 01:56
+> Main-oldpsk-rainer//fpoly1_ks.f
+1,2c1,2
+< 6754 Jun 5 08:01
+< Main-newfixes//fpoly1_mpi.f
+---
+> 6754 May 29 01:56
+> Main-oldpsk-rainer//fpoly1_mpi.f
+1,2c1,2
+< 4926 Jun 5 08:01
+< Main-newfixes//fpoly2.f
+---
+> 4926 May 29 01:56
+> Main-oldpsk-rainer//fpoly2.f
+1,2c1,2
+< 5740 Jun 5 08:01
+< Main-newfixes//fpoly2_ks.f
+---
+> 5740 May 29 01:56
+> Main-oldpsk-rainer//fpoly2_ks.f
+1,2c1,2
+< 7244 Jun 5 08:01
+< Main-newfixes//fpoly2_mpi.f
+---
+> 7244 May 29 01:56
+> Main-oldpsk-rainer//fpoly2_mpi.f
+1,2c1,2
+< 1632 Jun 5 08:01
+< Main-newfixes//gcinit.f
+---
+> 1632 May 29 01:56
+> Main-oldpsk-rainer//gcinit.f
+1,2c1,2
+< 2874 Jun 5 08:01
+< Main-newfixes//gcint.F
+---
+> 2874 May 29 01:56
+> Main-oldpsk-rainer//gcint.F
+1,2c1,2
+< 1182 Jun 5 08:01
+< Main-newfixes//ghost.f
+---
+> 1182 May 29 01:56
+> Main-oldpsk-rainer//ghost.f
+1,2c1,2
+< 3613 Jun 5 08:01
+< Main-newfixes//giant2.f
+---
+> 3613 May 29 01:56
+> Main-oldpsk-rainer//giant2.f
+1,2c1,2
+< 2362 Jun 5 08:01
+< Main-newfixes//giant3.f
+---
+> 2362 May 29 01:56
+> Main-oldpsk-rainer//giant3.f
+1,2c1,2
+< 4339 Jun 5 08:01
+< Main-newfixes//giant.f
+---
+> 4339 May 29 01:56
+> Main-oldpsk-rainer//giant.f
+1,2c1,2
+< 31364 Jun 5 08:01
+< Main-newfixes//global_output.F
+---
+> 31364 May 29 01:56
+> Main-oldpsk-rainer//global_output.F
+1,2c1,2
+< 6320 Jun 5 08:01
+< Main-newfixes//global_params_gether.f
+---
+> 6320 May 29 01:56
+> Main-oldpsk-rainer//global_params_gether.f
+1,2c1,2
+< 6787 Jun 5 08:01
+< Main-newfixes//gntage.f
+---
+> 6787 May 29 01:56
+> Main-oldpsk-rainer//gntage.f
+1,2c1,2
+< 669 Jun 5 08:01
+< Main-newfixes//grrad.f
+---
+> 669 May 29 01:56
+> Main-oldpsk-rainer//grrad.f
+1,2c1,2
+< 2593 Jun 5 08:01
+< Main-newfixes//hcorr.f
+---
+> 2593 May 29 01:56
+> Main-oldpsk-rainer//hcorr.f
+1,2c1,2
+< 9954 Jun 5 08:01
+< Main-newfixes//hiarch.f
+---
+> 9954 May 29 01:56
+> Main-oldpsk-rainer//hiarch.f
+1,2c1,2
+< 3263 Jun 5 08:01
+< Main-newfixes//hicirc.f
+---
+> 3263 May 29 01:56
+> Main-oldpsk-rainer//hicirc.f
+1,2c1,2
+< 9324 Jun 5 08:01
+< Main-newfixes//hidat.f
+---
+> 9324 May 29 01:56
+> Main-oldpsk-rainer//hidat.f
+1,2c1,2
+< 18004 Jun 5 08:01
+< Main-newfixes//higrow.f
+---
+> 18004 May 29 01:56
+> Main-oldpsk-rainer//higrow.f
+1,2c1,2
+< 4435 Jun 5 08:01
+< Main-newfixes//himax.f
+---
+> 4435 May 29 01:56
+> Main-oldpsk-rainer//himax.f
+1,2c1,2
+< 5989 Jun 5 08:01
+< Main-newfixes//himod.f
+---
+> 5989 May 29 01:56
+> Main-oldpsk-rainer//himod.f
+1,2c1,2
+< 5743 Jun 5 08:01
+< Main-newfixes//hipop.F
+---
+> 5743 May 29 01:56
+> Main-oldpsk-rainer//hipop.F
+1,2c1,2
+< 2997 Jun 5 08:01
+< Main-newfixes//hirect.f
+---
+> 2997 May 29 01:56
+> Main-oldpsk-rainer//hirect.f
+1,2c1,2
+< 3587 Jun 5 08:01
+< Main-newfixes//histab.f
+---
+> 3587 May 29 01:56
+> Main-oldpsk-rainer//histab.f
+1,2c1,2
+< 6593 Jun 5 08:01
+< Main-newfixes//hivel.f
+---
+> 6593 May 29 01:56
+> Main-oldpsk-rainer//hivel.f
+1,2c1,2
+< 6086 Jun 5 08:01
+< Main-newfixes//hmdot2.f
+---
+> 6086 May 29 01:56
+> Main-oldpsk-rainer//hmdot2.f
+1,2c1,2
+< 7108 Jun 5 08:01
+< Main-newfixes//hmdot.f
+---
+> 7108 May 29 01:56
+> Main-oldpsk-rainer//hmdot.f
+1,2c1,2
+< 1593 Jun 5 08:01
+< Main-newfixes//hotsys.f
+---
+> 1593 May 29 01:56
+> Main-oldpsk-rainer//hotsys.f
+1,2c1,2
+< 972 Jun 5 08:01
+< Main-newfixes//hpsort.f
+---
+> 972 May 29 01:56
+> Main-oldpsk-rainer//hpsort.f
+1,2c1,2
+< 23911 Jun 5 08:03
+< Main-newfixes//hrdiag.f
+---
+> 23909 May 29 01:56
+> Main-oldpsk-rainer//hrdiag.f
+80c80
+< c      if(mass0.gt.100.d0) mass = 100.d0
+---
+>       if(mass0.gt.100.d0) mass = 100.d0
+82c82
+< c      if(mt0.gt.100.d0) mt = 100.d0
+---
+>       if(mt0.gt.100.d0) mt = 100.d0
+1,2c1,2
+< 6594 Jun 5 08:01
+< Main-newfixes//hrplot.F
+---
+> 6594 May 29 01:56
+> Main-oldpsk-rainer//hrplot.F
+1,2c1,2
+< 2967 Jun 5 08:01
+< Main-newfixes//hut2.f
+---
+> 2967 May 29 01:56
+> Main-oldpsk-rainer//hut2.f
+1,2c1,2
+< 3659 Jun 5 08:01
+< Main-newfixes//hut.f
+---
+> 3659 May 29 01:56
+> Main-oldpsk-rainer//hut.f
+1,2c1,2
+< 391 Jun 5 08:01
+< Main-newfixes//iblock.f
+---
+> 391 May 29 01:56
+> Main-oldpsk-rainer//iblock.f
+1,2c1,2
+< 1903 Jun 5 08:01
+< Main-newfixes//ichain.f
+---
+> 1903 May 29 01:56
+> Main-oldpsk-rainer//ichain.f
+1,2c1,2
+< 1955 Jun 5 08:01
+< Main-newfixes//imbhinit.F
+---
+> 1955 May 29 01:56
+> Main-oldpsk-rainer//imbhinit.F
+1,2c1,2
+< 5789 Jun 5 08:01
+< Main-newfixes//imf2.f
+---
+> 5789 May 29 01:56
+> Main-oldpsk-rainer//imf2.f
+1,2c1,2
+< 20658 Jun 5 08:01
+< Main-newfixes//imfbd.f
+---
+> 20658 May 29 01:56
+> Main-oldpsk-rainer//imfbd.f
+1,2c1,2
+< 1793 Jun 5 08:01
+< Main-newfixes//imf.f
+---
+> 1793 May 29 01:56
+> Main-oldpsk-rainer//imf.f
+1,2c1,2
+< 43120 Jun 5 08:01
+< Main-newfixes//impact.f
+---
+> 43120 May 29 01:56
+> Main-oldpsk-rainer//impact.f
+1,2c1,2
+< 1068 Jun 5 08:01
+< Main-newfixes//inclin.f
+---
+> 1068 May 29 01:56
+> Main-oldpsk-rainer//inclin.f
+1,2c1,2
+< 1200 Jun 5 08:01
+< Main-newfixes//indexx.f
+---
+> 1200 May 29 01:56
+> Main-oldpsk-rainer//indexx.f
+1,2c1,2
+< 6197 Jun 5 08:01
+< Main-newfixes//induce.f
+---
+> 6197 May 29 01:56
+> Main-oldpsk-rainer//induce.f
+1,2c1,2
+< 5910 Jun 5 08:01
+< Main-newfixes//input.F
+---
+> 5910 May 29 01:56
+> Main-oldpsk-rainer//input.F
+1,2c1,2
+< 4055 Jun 5 08:01
+< Main-newfixes//insert.F
+---
+> 4055 May 29 01:56
+> Main-oldpsk-rainer//insert.F
+1,2c1,2
+< 7077 Jun 5 08:01
+< Main-newfixes//instar.F
+---
+> 7077 May 29 01:56
+> Main-oldpsk-rainer//instar.F
+1,2c1,2
+< 51784 Jun 5 08:01
+< Main-newfixes//intgrt.F
+---
+> 51784 May 29 01:56
+> Main-oldpsk-rainer//intgrt.F
+1,2c1,2
+< 8069 Jun 5 08:01
+< Main-newfixes//invert.f
+---
+> 8069 May 29 01:56
+> Main-oldpsk-rainer//invert.f
+1,2c1,2
+< 2323 Jun 5 08:01
+< Main-newfixes//isnan.f
+---
+> 2323 May 29 01:56
+> Main-oldpsk-rainer//isnan.f
+1,2c1,2
+< 3285 Jun 5 08:01
+< Main-newfixes//jacobi.F
+---
+> 3285 May 29 01:56
+> Main-oldpsk-rainer//jacobi.F
+1,2c1,2
+< 3123 Jun 5 08:01
+< Main-newfixes//jacobi_transform.f
+---
+> 3123 May 29 01:56
+> Main-oldpsk-rainer//jacobi_transform.f
+1,2c1,2
+< 3642 Jun 5 08:01
+< Main-newfixes//jpred.f
+---
+> 3642 May 29 01:56
+> Main-oldpsk-rainer//jpred.f
+1,2c1,2
+< 1420 Jun 5 08:01
+< Main-newfixes//jpred_int.f
+---
+> 1420 May 29 01:56
+> Main-oldpsk-rainer//jpred_int.f
+1,2c1,2
+< 2472 Jun 5 08:01
+< Main-newfixes//kcpert_cor.f
+---
+> 2472 May 29 01:56
+> Main-oldpsk-rainer//kcpert_cor.f
+1,2c1,2
+< 1726 Jun 5 08:01
+< Main-newfixes//kcpert.f
+---
+> 1726 May 29 01:56
+> Main-oldpsk-rainer//kcpert.f
+1,2c1,2
+< 1367 Jun 5 08:01
+< Main-newfixes//kick2.f
+---
+> 1367 May 29 01:56
+> Main-oldpsk-rainer//kick2.f
+1,2c1,2
+< 8399 Jun 5 08:01
+< Main-newfixes//kick.F
+---
+> 8399 May 29 01:56
+> Main-oldpsk-rainer//kick.F
+1,2c1,2
+< 2086 Jun 5 08:01
+< Main-newfixes//ksapo.f
+---
+> 2086 May 29 01:56
+> Main-oldpsk-rainer//ksapo.f
+1,2c1,2
+< 7248 Jun 5 08:01
+< Main-newfixes//kscorr.f
+---
+> 7248 May 29 01:56
+> Main-oldpsk-rainer//kscorr.f
+1,2c1,2
+< 7331 Jun 5 08:01
+< Main-newfixes//ksin2.f
+---
+> 7331 May 29 01:56
+> Main-oldpsk-rainer//ksin2.f
+1,2c1,2
+< 11990 Jun 5 08:01
+< Main-newfixes//ksinit.F
+---
+> 11990 May 29 01:56
+> Main-oldpsk-rainer//ksinit.F
+1,2c1,2
+< 36726 Jun 5 08:01
+< Main-newfixes//ksint.f
+---
+> 36726 May 29 01:56
+> Main-oldpsk-rainer//ksint.f
+1,2c1,2
+< 4146 Jun 5 08:01
+< Main-newfixes//kslist.f
+---
+> 4146 May 29 01:56
+> Main-oldpsk-rainer//kslist.f
+1,2c1,2
+< 3654 Jun 5 08:01
+< Main-newfixes//ksmod.f
+---
+> 3654 May 29 01:56
+> Main-oldpsk-rainer//ksmod.f
+1,2c1,2
+< 14761 Jun 5 08:01
+< Main-newfixes//ksparmpi.F
+---
+> 14761 May 29 01:56
+> Main-oldpsk-rainer//ksparmpi.F
+1,2c1,2
+< 5907 Jun 5 08:01
+< Main-newfixes//ksperi.f
+---
+> 5907 May 29 01:56
+> Main-oldpsk-rainer//ksperi.f
+1,2c1,2
+< 7006 Jun 5 08:01
+< Main-newfixes//kspert.f
+---
+> 7006 May 29 01:56
+> Main-oldpsk-rainer//kspert.f
+1,2c1,2
+< 648 Jun 5 08:01
+< Main-newfixes//ksphys.f
+---
+> 648 May 29 01:56
+> Main-oldpsk-rainer//ksphys.f
+1,2c1,2
+< 2603 Jun 5 08:01
+< Main-newfixes//kspinit.f
+---
+> 2603 May 29 01:56
+> Main-oldpsk-rainer//kspinit.f
+1,2c1,2
+< 9339 Jun 5 08:01
+< Main-newfixes//kspoly.f
+---
+> 9339 May 29 01:56
+> Main-oldpsk-rainer//kspoly.f
+1,2c1,2
+< 3357 Jun 5 08:01
+< Main-newfixes//kspred.f
+---
+> 3357 May 29 01:56
+> Main-oldpsk-rainer//kspred.f
+1,2c1,2
+< 8044 Jun 5 08:01
+< Main-newfixes//kspreg.F
+---
+> 8044 May 29 01:56
+> Main-oldpsk-rainer//kspreg.F
+1,2c1,2
+< 4198 Jun 5 08:01
+< Main-newfixes//ksrect.f
+---
+> 4198 May 29 01:56
+> Main-oldpsk-rainer//ksrect.f
+1,2c1,2
+< 5548 Jun 5 08:01
+< Main-newfixes//ksreg.F
+---
+> 5548 May 29 01:56
+> Main-oldpsk-rainer//ksreg.F
+1,2c1,2
+< 3142 Jun 5 08:01
+< Main-newfixes//ksres2.f
+---
+> 3142 May 29 01:56
+> Main-oldpsk-rainer//ksres2.f
+1,2c1,2
+< 2134 Jun 5 08:01
+< Main-newfixes//ksres.f
+---
+> 2134 May 29 01:56
+> Main-oldpsk-rainer//ksres.f
+1,2c1,2
+< 3029 Jun 5 08:01
+< Main-newfixes//ksres_op.f
+---
+> 3029 May 29 01:56
+> Main-oldpsk-rainer//ksres_op.f
+1,2c1,2
+< 699 Jun 5 08:01
+< Main-newfixes//k_step.f
+---
+> 699 May 29 01:56
+> Main-oldpsk-rainer//k_step.f
+1,2c1,2
+< 18537 Jun 5 08:01
+< Main-newfixes//ksterm.F
+---
+> 18537 May 29 01:56
+> Main-oldpsk-rainer//ksterm.F
+1,2c1,2
+< 18471 Jun 5 08:01
+< Main-newfixes//ksterm-original.F
+---
+> 18471 May 29 01:56
+> Main-oldpsk-rainer//ksterm-original.F
+1,2c1,2
+< 14386 Jun 5 08:01
+< Main-newfixes//kstide.f
+---
+> 14386 May 29 01:56
+> Main-oldpsk-rainer//kstide.f
+1,2c1,2
+< 1504 Jun 5 08:01
+< Main-newfixes//kstran.f
+---
+> 1504 May 29 01:56
+> Main-oldpsk-rainer//kstran.f
+1,2c1,2
+< 6065 Jun 5 08:01
+< Main-newfixes//lagr2.f
+---
+> 6065 May 29 01:56
+> Main-oldpsk-rainer//lagr2.f
+1,2c1,2
+< 17580 Jun 5 08:01
+< Main-newfixes//lagr.f
+---
+> 17580 May 29 01:56
+> Main-oldpsk-rainer//lagr.f
+1,2c1,2
+< 4310 Jun 5 08:01
+< Main-newfixes//levels.f
+---
+> 4310 May 29 01:56
+> Main-oldpsk-rainer//levels.f
+1,2c1,2
+< 327 Jun 5 08:01
+< Main-newfixes//magbrk.f
+---
+> 327 May 29 01:56
+> Main-oldpsk-rainer//magbrk.f
+1,2c1,2
+< 443 Jun 5 08:01
+< Main-newfixes//matrix.f
+---
+> 443 May 29 01:56
+> Main-oldpsk-rainer//matrix.f
+1,2c1,2
+< 64737 Jun 5 08:01
+< Main-newfixes//mdot.F
+---
+> 64737 May 29 01:56
+> Main-oldpsk-rainer//mdot.F
+1,2c1,2
+< 10781 Jun 5 08:01
+< Main-newfixes//merge2.f
+---
+> 10781 May 29 01:56
+> Main-oldpsk-rainer//merge2.f
+1,2c1,2
+< 10682 Jun 5 08:01
+< Main-newfixes//merge.f
+---
+> 10682 May 29 01:56
+> Main-oldpsk-rainer//merge.f
+1,2c1,2
+< 10713 Jun 5 08:01
+< Main-newfixes//mix.f
+---
+> 10713 May 29 01:56
+> Main-oldpsk-rainer//mix.f
+1,2c1,2
+< 6160 Jun 5 08:01
+< Main-newfixes//mloss.f
+---
+> 6160 May 29 01:56
+> Main-oldpsk-rainer//mloss.f
+1,2c1,2
+< 2089 Jun 5 08:01
+< Main-newfixes//mlwind.f
+---
+> 2089 May 29 01:56
+> Main-oldpsk-rainer//mlwind.f
+1,2c1,2
+< 3892 Jun 5 08:01
+< Main-newfixes//modify.F
+---
+> 3892 May 29 01:56
+> Main-oldpsk-rainer//modify.F
+1,2c1,2
+< 6229 Jun 5 08:01
+< Main-newfixes//mrenv.f
+---
+> 6229 May 29 01:56
+> Main-oldpsk-rainer//mrenv.f
+1,2c1,2
+< 20729 Jun 5 08:01
+< Main-newfixes//mydump.F
+---
+> 20729 May 29 01:56
+> Main-oldpsk-rainer//mydump.F
+1,2c1,2
+< 10337 Jun 5 08:01
+< Main-newfixes//nbint_cor.f
+---
+> 10337 May 29 01:56
+> Main-oldpsk-rainer//nbint_cor.f
+1,2c1,2
+< 2045 Jun 5 08:01
+< Main-newfixes//nbint.F
+---
+> 2045 May 29 01:56
+> Main-oldpsk-rainer//nbint.F
+1,2c1,2
+< 3401 Jun 5 08:01
+< Main-newfixes//nblist.f
+---
+> 3401 May 29 01:56
+> Main-oldpsk-rainer//nblist.f
+1,2c1,2
+< 8506 Jun 5 08:01
+< Main-newfixes//nbody6.F
+---
+> 8506 May 29 01:56
+> Main-oldpsk-rainer//nbody6.F
+1,2c1,2
+< 1686 Jun 5 08:01
+< Main-newfixes//nbpot.f
+---
+> 1686 May 29 01:56
+> Main-oldpsk-rainer//nbpot.f
+1,2c1,2
+< 1773 Jun 5 08:01
+< Main-newfixes//nbrem.f
+---
+> 1773 May 29 01:56
+> Main-oldpsk-rainer//nbrem.f
+1,2c1,2
+< 1734 Jun 5 08:01
+< Main-newfixes//nbrest.f
+---
+> 1734 May 29 01:56
+> Main-oldpsk-rainer//nbrest.f
+1,2c1,2
+< 2957 Jun 5 08:01
+< Main-newfixes//newreg.f
+---
+> 2957 May 29 01:56
+> Main-oldpsk-rainer//newreg.f
+1,2c1,2
+< 891 Jun 5 08:01
+< Main-newfixes//newsys.f
+---
+> 891 May 29 01:56
+> Main-oldpsk-rainer//newsys.f
+1,2c1,2
+< 3364 Jun 5 08:01
+< Main-newfixes//newtev.f
+---
+> 3364 May 29 01:56
+> Main-oldpsk-rainer//newtev.f
+1,2c1,2
+< 1150 Jun 5 08:01
+< Main-newfixes//next_tlist.f
+---
+> 1150 May 29 01:56
+> Main-oldpsk-rainer//next_tlist.f
+1,2c1,2
+< 8045 Jun 5 08:01
+< Main-newfixes//nstab.f
+---
+> 8045 May 29 01:56
+> Main-oldpsk-rainer//nstab.f
+1,2c1,2
+< 3013 Jun 5 08:01
+< Main-newfixes//ntint.f
+---
+> 3013 May 29 01:56
+> Main-oldpsk-rainer//ntint.f
+1,2c1,2
+< 1161 Jun 5 08:01
+< Main-newfixes//offset.f
+---
+> 1161 May 29 01:56
+> Main-oldpsk-rainer//offset.f
+1,2c1,2
+< 2845 Jun 5 08:01
+< Main-newfixes//orbit.f
+---
+> 2845 May 29 01:56
+> Main-oldpsk-rainer//orbit.f
+1,2c1,2
+< 20015 Jun 5 08:01
+< Main-newfixes//output.F
+---
+> 20015 May 29 01:56
+> Main-oldpsk-rainer//output.F
+1,2c1,2
+< 1893 Jun 5 08:01
+< Main-newfixes//peri.f
+---
+> 1893 May 29 01:56
+> Main-oldpsk-rainer//peri.f
+1,2c1,2
+< 1729 Jun 5 08:01
+< Main-newfixes//permit.f
+---
+> 1729 May 29 01:56
+> Main-oldpsk-rainer//permit.f
+1,2c1,2
+< 1313 Jun 5 08:01
+< Main-newfixes//pfac.f
+---
+> 1313 May 29 01:56
+> Main-oldpsk-rainer//pfac.f
+1,2c1,2
+< 2923 Jun 5 08:01
+< Main-newfixes//phicor.f
+---
+> 2923 May 29 01:56
+> Main-oldpsk-rainer//phicor.f
+1,2c1,2
+< 875 Jun 5 08:01
+< Main-newfixes//physks.f
+---
+> 875 May 29 01:56
+> Main-oldpsk-rainer//physks.f
+1,2c1,2
+< 881 Jun 5 08:01
+< Main-newfixes//poti.f
+---
+> 881 May 29 01:56
+> Main-oldpsk-rainer//poti.f
+1,2c1,2
+< 3639 Jun 5 08:01
+< Main-newfixes//proto_star.f
+---
+> 3639 May 29 01:56
+> Main-oldpsk-rainer//proto_star.f
+1,2c1,2
+< 400 Jun 5 08:01
+< Main-newfixes//qforce.f
+---
+> 400 May 29 01:56
+> Main-oldpsk-rainer//qforce.f
+1,2c1,2
+< 5227 Jun 5 08:01
+< Main-newfixes//qpmod3.f
+---
+> 5227 May 29 01:56
+> Main-oldpsk-rainer//qpmod3.f
+1,2c1,2
+< 4256 Jun 5 08:01
+< Main-newfixes//qpmod4.f
+---
+> 4256 May 29 01:56
+> Main-oldpsk-rainer//qpmod4.f
+1,2c1,2
+< 8981 Jun 5 08:01
+< Main-newfixes//qpmod.f
+---
+> 8981 May 29 01:56
+> Main-oldpsk-rainer//qpmod.f
+1,2c1,2
+< 5049 Jun 5 08:01
+< Main-newfixes//qtides.f
+---
+> 5049 May 29 01:56
+> Main-oldpsk-rainer//qtides.f
+1,2c1,2
+< 12002 Jun 5 08:01
+< Main-newfixes//quad.f
+---
+> 12002 May 29 01:56
+> Main-oldpsk-rainer//quad.f
+1,2c1,2
+< 812 Jun 5 08:01
+< Main-newfixes//r2sort.f
+---
+> 812 May 29 01:56
+> Main-oldpsk-rainer//r2sort.f
+1,2c1,2
+< 1370 Jun 5 08:01
+< Main-newfixes//ran2.f
+---
+> 1370 May 29 01:56
+> Main-oldpsk-rainer//ran2.f
+1,2c1,2
+< 4206 Jun 5 08:01
+< Main-newfixes//rchain.f
+---
+> 4206 May 29 01:56
+> Main-oldpsk-rainer//rchain.f
+1,2c1,2
+< 8878 Jun 5 08:01
+< Main-newfixes//recoil.f
+---
+> 8878 May 29 01:56
+> Main-oldpsk-rainer//recoil.f
+1,2c1,2
+< 742 Jun 5 08:01
+< Main-newfixes//redraw.f
+---
+> 742 May 29 01:56
+> Main-oldpsk-rainer//redraw.f
+1,2c1,2
+< 9063 Jun 5 08:01
+< Main-newfixes//reduce.f
+---
+> 9063 May 29 01:56
+> Main-oldpsk-rainer//reduce.f
+1,2c1,2
+< 29164 Jun 5 08:01
+< Main-newfixes//regcor_gpu.F
+---
+> 29164 May 29 01:56
+> Main-oldpsk-rainer//regcor_gpu.F
+1,2c1,2
+< 3533 Jun 5 08:01
+< Main-newfixes//regint.f
+---
+> 3533 May 29 01:56
+> Main-oldpsk-rainer//regint.f
+1,2c1,2
+< 2201 Jun 5 08:01
+< Main-newfixes//reinit.f
+---
+> 2201 May 29 01:56
+> Main-oldpsk-rainer//reinit.f
+1,2c1,2
+< 4073 Jun 5 08:01
+< Main-newfixes//remove.f
+---
+> 4073 May 29 01:56
+> Main-oldpsk-rainer//remove.f
+1,2c1,2
+< 3702 Jun 5 08:01
+< Main-newfixes//remove_ks.F
+---
+> 3702 May 29 01:56
+> Main-oldpsk-rainer//remove_ks.F
+1,2c1,2
+< 2730 Jun 5 08:01
+< Main-newfixes//remove_tlist.f
+---
+> 2730 May 29 01:56
+> Main-oldpsk-rainer//remove_tlist.f
+1,2c1,2
+< 8919 Jun 5 08:01
+< Main-newfixes//rename_ks.F
+---
+> 8919 May 29 01:56
+> Main-oldpsk-rainer//rename_ks.F
+1,2c1,2
+< 1935 Jun 5 08:01
+< Main-newfixes//renew.f
+---
+> 1935 May 29 01:56
+> Main-oldpsk-rainer//renew.f
+1,2c1,2
+< 1497 Jun 5 08:01
+< Main-newfixes//repair_tlist.f
+---
+> 1497 May 29 01:56
+> Main-oldpsk-rainer//repair_tlist.f
+1,2c1,2
+< 1737 Jun 5 08:01
+< Main-newfixes//replace_tlist.f
+---
+> 1737 May 29 01:56
+> Main-oldpsk-rainer//replace_tlist.f
+1,2c1,2
+< 15561 Jun 5 08:01
+< Main-newfixes//reset2.f
+---
+> 15561 May 29 01:56
+> Main-oldpsk-rainer//reset2.f
+1,2c1,2
+< 11519 Jun 5 08:01
+< Main-newfixes//reset.f
+---
+> 11519 May 29 01:56
+> Main-oldpsk-rainer//reset.f
+1,2c1,2
+< 4392 Jun 5 08:01
+< Main-newfixes//resolv.f
+---
+> 4392 May 29 01:56
+> Main-oldpsk-rainer//resolv.f
+1,2c1,2
+< 4943 Jun 5 08:01
+< Main-newfixes//rkint.f
+---
+> 4943 May 29 01:56
+> Main-oldpsk-rainer//rkint.f
+1,2c1,2
+< 197 Jun 5 08:01
+< Main-newfixes//rl.f
+---
+> 197 May 29 01:56
+> Main-oldpsk-rainer//rl.f
+1,2c1,2
+< 4558 Jun 5 08:01
+< Main-newfixes//rmesc_tlist.f
+---
+> 4558 May 29 01:56
+> Main-oldpsk-rainer//rmesc_tlist.f
+1,2c1,2
+< 58904 Jun 5 08:01
+< Main-newfixes//roche.f
+---
+> 58904 May 29 01:56
+> Main-oldpsk-rainer//roche.f
+1,2c1,2
+< 57249 Jun 5 08:01
+< Main-newfixes//roche-original.f
+---
+> 57249 May 29 01:56
+> Main-oldpsk-rainer//roche-original.f
+1,2c1,2
+< 1605 Jun 5 08:01
+< Main-newfixes//rpmax2.f
+---
+> 1605 May 29 01:56
+> Main-oldpsk-rainer//rpmax2.f
+1,2c1,2
+< 686 Jun 5 08:01
+< Main-newfixes//rpmax.f
+---
+> 686 May 29 01:56
+> Main-oldpsk-rainer//rpmax.f
+1,2c1,2
+< 945 Jun 5 08:01
+< Main-newfixes//rpmin.f
+---
+> 945 May 29 01:56
+> Main-oldpsk-rainer//rpmin.f
+1,2c1,2
+< 607 Jun 5 08:01
+< Main-newfixes//rsort.f
+---
+> 607 May 29 01:56
+> Main-oldpsk-rainer//rsort.f
+1,2c1,2
+< 10635 Jun 5 08:01
+< Main-newfixes//scale.F
+---
+> 10635 May 29 01:56
+> Main-oldpsk-rainer//scale.F
+1,2c1,2
+< 6756 Jun 5 08:01
+< Main-newfixes//search.f
+---
+> 6756 May 29 01:56
+> Main-oldpsk-rainer//search.f
+1,2c1,2
+< 1115 Jun 5 08:01
+< Main-newfixes//select.f
+---
+> 1115 May 29 01:56
+> Main-oldpsk-rainer//select.f
+1,2c1,2
+< 7132 Jun 5 08:01
+< Main-newfixes//setsys.f
+---
+> 7132 May 29 01:56
+> Main-oldpsk-rainer//setsys.f
+1,2c1,2
+< 18416 Jun 5 08:01
+< Main-newfixes//setup.F
+---
+> 18416 May 29 01:56
+> Main-oldpsk-rainer//setup.F
+1,2c1,2
+< 3109 Jun 5 08:01
+< Main-newfixes//shift_tlist.f
+---
+> 3109 May 29 01:56
+> Main-oldpsk-rainer//shift_tlist.f
+1,2c1,2
+< 1414 Jun 5 08:01
+< Main-newfixes//short.f
+---
+> 1414 May 29 01:56
+> Main-oldpsk-rainer//short.f
+1,2c1,2
+< 2889 Jun 5 08:01
+< Main-newfixes//shrink.f
+---
+> 2889 May 29 01:56
+> Main-oldpsk-rainer//shrink.f
+1,2c1,2
+< 494 Jun 5 08:01
+< Main-newfixes//shrink_tlist.f
+---
+> 494 May 29 01:56
+> Main-oldpsk-rainer//shrink_tlist.f
+1,2c1,2
+< 12030 Jun 5 08:01
+< Main-newfixes//slow.f
+---
+> 12030 May 29 01:56
+> Main-oldpsk-rainer//slow.f
+1,2c1,2
+< 2011 Jun 5 08:01
+< Main-newfixes//sort1.f
+---
+> 2011 May 29 01:56
+> Main-oldpsk-rainer//sort1.f
+1,2c1,2
+< 5111 Jun 5 08:01
+< Main-newfixes//sort_tlist.f
+---
+> 5111 May 29 01:56
+> Main-oldpsk-rainer//sort_tlist.f
+1,2c1,2
+< 27468 Jun 5 08:01
+< Main-newfixes//spiral.f
+---
+> 27468 May 29 01:56
+> Main-oldpsk-rainer//spiral.f
+1,2c1,2
+< 601 Jun 5 08:01
+< Main-newfixes//stability.f
+---
+> 601 May 29 01:56
+> Main-oldpsk-rainer//stability.f
+1,2c1,2
+< 3661 Jun 5 08:01
+< Main-newfixes//stabl3.f
+---
+> 3661 May 29 01:56
+> Main-oldpsk-rainer//stabl3.f
+1,2c1,2
+< 5522 Jun 5 08:01
+< Main-newfixes//stabl4.f
+---
+> 5522 May 29 01:56
+> Main-oldpsk-rainer//stabl4.f
+1,2c1,2
+< 5136 Jun 5 08:01
+< Main-newfixes//stablc.f
+---
+> 5136 May 29 01:56
+> Main-oldpsk-rainer//stablc.f
+1,2c1,2
+< 2223 Jun 5 08:01
+< Main-newfixes//stablz.f
+---
+> 2223 May 29 01:56
+> Main-oldpsk-rainer//stablz.f
+1,2c1,2
+< 12735 Jun 5 08:04
+< Main-newfixes//star.f
+---
+> 12734 May 29 01:56
+> Main-oldpsk-rainer//star.f
+56c56
+< c      if(mass0.gt.100.d0) mass = 100.d0
+---
+>       if(mass0.gt.100.d0) mass = 100.d0
+1,2c1,2
+< 10838 Jun 5 08:01
+< Main-newfixes//start3.f
+---
+> 10838 May 29 01:56
+> Main-oldpsk-rainer//start3.f
+1,2c1,2
+< 11339 Jun 5 08:01
+< Main-newfixes//start4.f
+---
+> 11339 May 29 01:56
+> Main-oldpsk-rainer//start4.f
+1,2c1,2
+< 8735 Jun 5 08:01
+< Main-newfixes//start.F
+---
+> 8735 May 29 01:56
+> Main-oldpsk-rainer//start.F
+1,2c1,2
+< 1768 Jun 5 08:01
+< Main-newfixes//status.f
+---
+> 1768 May 29 01:56
+> Main-oldpsk-rainer//status.f
+1,2c1,2
+< 781 Jun 5 08:01
+< Main-newfixes//stepk.f
+---
+> 781 May 29 01:56
+> Main-oldpsk-rainer//stepk.f
+1,2c1,2
+< 2149 Jun 5 08:01
+< Main-newfixes//steps2.f
+---
+> 2149 May 29 01:56
+> Main-oldpsk-rainer//steps2.f
+1,2c1,2
+< 3264 Jun 5 08:01
+< Main-newfixes//steps.f
+---
+> 3264 May 29 01:56
+> Main-oldpsk-rainer//steps.f
+1,2c1,2
+< 847 Jun 5 08:01
+< Main-newfixes//string_left.f
+---
+> 847 May 29 01:56
+> Main-oldpsk-rainer//string_left.f
+1,2c1,2
+< 1088 Jun 5 08:01
+< Main-newfixes//stumpf.f
+---
+> 1088 May 29 01:56
+> Main-oldpsk-rainer//stumpf.f
+1,2c1,2
+< 33173 Jun 5 08:01
+< Main-newfixes//subint.F
+---
+> 33173 May 29 01:56
+> Main-oldpsk-rainer//subint.F
+1,2c1,2
+< 3093 Jun 5 08:01
+< Main-newfixes//subsys.f
+---
+> 3093 May 29 01:56
+> Main-oldpsk-rainer//subsys.f
+1,2c1,2
+< 1308 Jun 5 08:01
+< Main-newfixes//swcond.f
+---
+> 1308 May 29 01:56
+> Main-oldpsk-rainer//swcond.f
+1,2c1,2
+< 4247 Jun 5 08:01
+< Main-newfixes//switch.f
+---
+> 4247 May 29 01:56
+> Main-oldpsk-rainer//switch.f
+1,2c1,2
+< 19841 Jun 5 08:01
+< Main-newfixes//synch.f
+---
+> 19841 May 29 01:56
+> Main-oldpsk-rainer//synch.f
+1,2c1,2
+< 1922 Jun 5 08:01
+< Main-newfixes//tail0.f
+---
+> 1922 May 29 01:56
+> Main-oldpsk-rainer//tail0.f
+1,2c1,2
+< 1206 Jun 5 08:01
+< Main-newfixes//tchain.f
+---
+> 1206 May 29 01:56
+> Main-oldpsk-rainer//tchain.f
+1,2c1,2
+< 5078 Jun 5 08:01
+< Main-newfixes//tcirc.f
+---
+> 5078 May 29 01:56
+> Main-oldpsk-rainer//tcirc.f
+1,2c1,2
+< 2070 Jun 5 08:01
+< Main-newfixes//tides2.f
+---
+> 2070 May 29 01:56
+> Main-oldpsk-rainer//tides2.f
+1,2c1,2
+< 1209 Jun 5 08:01
+< Main-newfixes//tides3.f
+---
+> 1209 May 29 01:56
+> Main-oldpsk-rainer//tides3.f
+1,2c1,2
+< 1469 Jun 5 08:01
+< Main-newfixes//tides.f
+---
+> 1469 May 29 01:56
+> Main-oldpsk-rainer//tides.f
+1,2c1,2
+< 771 Jun 5 08:01
+< Main-newfixes//touch.f
+---
+> 771 May 29 01:56
+> Main-oldpsk-rainer//touch.f
+1,2c1,2
+< 2436 Jun 5 08:01
+< Main-newfixes//tperi.f
+---
+> 2436 May 29 01:56
+> Main-oldpsk-rainer//tperi.f
+1,2c1,2
+< 2758 Jun 5 08:01
+< Main-newfixes//tpert.f
+---
+> 2758 May 29 01:56
+> Main-oldpsk-rainer//tpert.f
+1,2c1,2
+< 6353 Jun 5 08:01
+< Main-newfixes//trans3.f
+---
+> 6353 May 29 01:56
+> Main-oldpsk-rainer//trans3.f
+1,2c1,2
+< 2221 Jun 5 08:01
+< Main-newfixes//trans4.f
+---
+> 2221 May 29 01:56
+> Main-oldpsk-rainer//trans4.f
+1,2c1,2
+< 1864 Jun 5 08:01
+< Main-newfixes//transk.f
+---
+> 1864 May 29 01:56
+> Main-oldpsk-rainer//transk.f
+1,2c1,2
+< 1799 Jun 5 08:01
+< Main-newfixes//transq.f
+---
+> 1799 May 29 01:56
+> Main-oldpsk-rainer//transq.f
+1,2c1,2
+< 1167 Jun 5 08:01
+< Main-newfixes//transx.f
+---
+> 1167 May 29 01:56
+> Main-oldpsk-rainer//transx.f
+1,2c1,2
+< 1672 Jun 5 08:01
+< Main-newfixes//trdot2.f
+---
+> 1672 May 29 01:56
+> Main-oldpsk-rainer//trdot2.f
+1,2c1,2
+< 4306 Jun 5 08:01
+< Main-newfixes//trdot.f
+---
+> 4306 May 29 01:56
+> Main-oldpsk-rainer//trdot.f
+1,2c1,2
+< 11414 Jun 5 08:01
+< Main-newfixes//trflow.f
+---
+> 11414 May 29 01:56
+> Main-oldpsk-rainer//trflow.f
+1,2c1,2
+< 16918 Jun 5 08:01
+< Main-newfixes//triple.f
+---
+> 16918 May 29 01:56
+> Main-oldpsk-rainer//triple.f
+1,2c1,2
+< 1691 Jun 5 08:01
+< Main-newfixes//tstab.f
+---
+> 1691 May 29 01:56
+> Main-oldpsk-rainer//tstab.f
+1,2c1,2
+< 586 Jun 5 08:01
+< Main-newfixes//tstep2.f
+---
+> 586 May 29 01:56
+> Main-oldpsk-rainer//tstep2.f
+1,2c1,2
+< 678 Jun 5 08:01
+< Main-newfixes//tstep.f
+---
+> 678 May 29 01:56
+> Main-oldpsk-rainer//tstep.f
+1,2c1,2
+< 2443 Jun 5 08:01
+< Main-newfixes//ttcal.f
+---
+> 2443 May 29 01:56
+> Main-oldpsk-rainer//ttcal.f
+1,2c1,2
+< 8002 Jun 5 08:01
+< Main-newfixes//ttforce.f
+---
+> 8002 May 29 01:56
+> Main-oldpsk-rainer//ttforce.f
+1,2c1,2
+< 14079 Jun 5 08:01
+< Main-newfixes//ttgalaxy.f
+---
+> 14079 May 29 01:56
+> Main-oldpsk-rainer//ttgalaxy.f
+1,2c1,2
+< 3645 Jun 5 08:01
+< Main-newfixes//ttinit.f
+---
+> 3645 May 29 01:56
+> Main-oldpsk-rainer//ttinit.f
+1,2c1,2
+< 2261 Jun 5 08:01
+< Main-newfixes//units.f
+---
+> 2261 May 29 01:56
+> Main-oldpsk-rainer//units.f
+1,2c1,2
+< 12106 Jun 5 08:01
+< Main-newfixes//unpert.f
+---
+> 12106 May 29 01:57
+> Main-oldpsk-rainer//unpert.f
+1,2c1,2
+< 14483 Jun 5 08:01
+< Main-newfixes//update.F
+---
+> 14483 May 29 01:56
+> Main-oldpsk-rainer//update.F
+1,2c1,2
+< 6941 Jun 5 08:01
+< Main-newfixes//util_gpu.F
+---
+> 6941 May 29 01:56
+> Main-oldpsk-rainer//util_gpu.F
+1,2c1,2
+< 462 Jun 5 08:01
+< Main-newfixes//vector.f
+---
+> 462 May 29 01:56
+> Main-oldpsk-rainer//vector.f
+1,2c1,2
+< 1866 Jun 5 08:01
+< Main-newfixes//verify.f
+---
+> 1866 May 29 01:56
+> Main-oldpsk-rainer//verify.f
+1,2c1,2
+< 2777 Jun 5 08:01
+< Main-newfixes//xbpredall.f
+---
+> 2777 May 29 01:56
+> Main-oldpsk-rainer//xbpredall.f
+1,2c1,2
+< 2886 Jun 5 08:01
+< Main-newfixes//xcpred.f
+---
+> 2886 May 29 01:56
+> Main-oldpsk-rainer//xcpred.f
+1,2c1,2
+< 1677 Jun 5 08:01
+< Main-newfixes//x.f
+---
+> 1677 May 29 01:56
+> Main-oldpsk-rainer//x.f
+1,2c1,2
+< 1218 Jun 5 08:01
+< Main-newfixes//xtf.f
+---
+> 1218 May 29 01:56
+> Main-oldpsk-rainer//xtf.f
+1,2c1,2
+< 2597 Jun 5 08:01
+< Main-newfixes//xtpert.f
+---
+> 2597 May 29 01:56
+> Main-oldpsk-rainer//xtpert.f
+1,2c1,2
+< 10847 Jun 5 08:01
+< Main-newfixes//xtrnl0.F
+---
+> 10847 May 29 01:56
+> Main-oldpsk-rainer//xtrnl0.F
+1,2c1,2
+< 2233 Jun 5 08:01
+< Main-newfixes//xtrnld.f
+---
+> 2233 May 29 01:56
+> Main-oldpsk-rainer//xtrnld.f
+1,2c1,2
+< 4442 Jun 5 08:01
+< Main-newfixes//xtrnlf.F
+---
+> 4442 May 29 01:56
+> Main-oldpsk-rainer//xtrnlf.F
+1,2c1,2
+< 501 Jun 5 08:01
+< Main-newfixes//xtrnlp.f
+---
+> 501 May 29 01:56
+> Main-oldpsk-rainer//xtrnlp.f
+1,2c1,2
+< 1853 Jun 5 08:01
+< Main-newfixes//xtrnlt.F
+---
+> 1853 May 29 01:56
+> Main-oldpsk-rainer//xtrnlt.F
+1,2c1,2
+< 4480 Jun 5 08:01
+< Main-newfixes//xtrnlv.F
+---
+> 4480 May 29 01:56
+> Main-oldpsk-rainer//xtrnlv.F
+1,2c1,2
+< 6428 Jun 5 08:01
+< Main-newfixes//xvpred.f
+---
+> 6428 May 29 01:56
+> Main-oldpsk-rainer//xvpred.f
+1,2c1,2
+< 519 Jun 5 08:01
+< Main-newfixes//ycopy.f
+---
+> 519 May 29 01:56
+> Main-oldpsk-rainer//ycopy.f
+1,2c1,2
+< 515 Jun 5 08:01
+< Main-newfixes//ysave.f
+---
+> 515 May 29 01:56
+> Main-oldpsk-rainer//ysave.f
+1,2c1,2
+< 3483 Jun 5 08:01
+< Main-newfixes//zare.f
+---
+> 3483 May 29 01:56
+> Main-oldpsk-rainer//zare.f
+1,2c1,2
+< 16419 Jun 5 08:01
+< Main-newfixes//zcnsts.f
+---
+> 16419 May 29 01:56
+> Main-oldpsk-rainer//zcnsts.f
+1,2c1,2
+< 2601 Jun 5 08:01
+< Main-newfixes//zero.f
+---
+> 2601 May 29 01:56
+> Main-oldpsk-rainer//zero.f
+1,2c1,2
+< 24674 Jun 5 08:01
+< Main-newfixes//zfuncs.f
+---
+> 24674 May 29 01:56
+> Main-oldpsk-rainer//zfuncs.f

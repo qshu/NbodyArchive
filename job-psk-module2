@@ -1,0 +1,33 @@
+#PBS -N run03-nbody6gpu++
+#PBS -q ibpara
+## request a node with 8 free cpus
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l pmem=3000mb
+#PBS -o stdout.txt
+#PBS -e stderr.txt
+#PBS -m e
+
+module load mvapich2-x86_64
+
+cd $PBS_O_WORKDIR
+pwd
+#rm fb_repeatable_results
+#startSec=`date +'%s'`
+scl enable devtoolset-2 bash
+ulimit -s unlimited
+
+export OMP_NUM_THREADS=`cat $PBS_NODEFILE | wc -l`
+
+echo " OMP_NUM_THREADS=" $OMP_NUM_THREADS
+
+/opt/hydra/bin/mpiexec.hydra -n 1 ./nbody6++.avx.gpu.mpi < abbas.inp 1> abbas.out 2> abbas.err
+
+#mpirun -n 1 ./nbody6++.avx.gpu.mpi < abbas.inp 1> abbas.out 2> abbas.err
+
+#stopSec=`date +'%s'`
+#cc=$(($stopSec-$startSec))
+#echo "--------------------- TIME OF THE SIMULATION IN SECONDS: $cc" >> zzz
+
+#qstat -f $PBS_JOBID > qstat-info
+
+#mc-do-standard-plots

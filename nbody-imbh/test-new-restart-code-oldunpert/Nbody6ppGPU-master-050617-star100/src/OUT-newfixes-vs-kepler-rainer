@@ -1,0 +1,169 @@
+1,2c1,2
+< 1969 Jun 5 08:11
+< Main-newfixes//bsetid.f
+---
+> 1969 Nov 18 2016
+> Main-kepler-rainer//bsetid.f
+43c43
+<          fc = MIN(1.d0,(ttid/(2.d0*tc))**2)
+---
+>          fc = MIN(1.d0,(ttid/(2.d0*tc)**2))
+1,2c1,2
+< 6480 Jun 5 08:01
+< Main-newfixes//data.F
+---
+> 6934 May 5 20:22
+> Main-kepler-rainer//data.F
+32a33,42
+> *       Temporary reading of 10% of particles only (RS March 2017)
+> *         NREC = 0
+> *         DO 5 I = 1,N-1,2
+> *             READ (10,*)  BODY(I), (X(K,I),K=1,3), (XDOT(K,I),K=1,3)
+> *             READ (10,*) BODY(I+1),(X(K,I+1),K=1,3),(XDOT(K,I+1),K=1,3)
+> *             DO K = 1,18
+> *             READ (10,*) DDDD
+> *             END DO
+> *             NREC = NREC + 2
+> *   5     CONTINUE
+35a46,47
+> *
+>            PRINT*,' rank ',rank,NREC,' body data read from unit 10 '
+1,2c1,2
+< 22256 Jun 5 08:01
+< Main-newfixes//escape.F
+---
+> 22255 Apr 7 04:37
+> Main-kepler-rainer//escape.F
+506c506
+<       IF (NPAIRS.EQ.0) NNTB = 0 
+---
+>       IF (NPAIRS.EQ.0) NNTB = 0
+1,2c1,2
+< 16049 Jun 27 02:16
+< Main-newfixes//expel.f
+---
+> 15918 Nov 18 2016
+> Main-kepler-rainer//expel.f
+88,91d87
+< cnew-abbas-26/07/2017
+<            KW1 = KTYPE(KSTAR(I1),KSTAR(I2))
+<            IF (KW1.GT.100) KW1 = KW1 - 100
+< cnew-abbas-26/07/2017
+1,2c1,2
+< 23911 Jun 5 08:03
+< Main-newfixes//hrdiag.f
+---
+> 23909 Nov 18 2016
+> Main-kepler-rainer//hrdiag.f
+80c80
+< c      if(mass0.gt.100.d0) mass = 100.d0
+---
+>       if(mass0.gt.100.d0) mass = 100.d0
+82c82
+< c      if(mt0.gt.100.d0) mt = 100.d0
+---
+>       if(mt0.gt.100.d0) mt = 100.d0
+1,2c1,2
+< 51784 Jun 5 08:01
+< Main-newfixes//intgrt.F
+---
+> 51484 May 4 15:52
+> Main-kepler-rainer//intgrt.F
+1133,1139d1132
+< 
+< c          print*,' before do nreg=',time
+< c          print*,' x(1,1-10)=',(x(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' x0(1,1-10)=',(x0(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' xdot(1,1-10)=',(xdot(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' x0dot(1,1-10)=',(x0dot(1,nxtlst(k)),k=1,nxtlen)
+< 
+1,2c1,2
+< 20729 Jun 5 08:01
+< Main-newfixes//mydump.F
+---
+> 20907 Apr 7 03:08
+> Main-kepler-rainer//mydump.F
+18,19c18,19
+<       REAL*4  B,C,D,E,G,L,M,O,P,Q,S
+<       INTEGER K,I,NTSAVE,NPARTMP(10),KSTAR,NCOMM,IA
+---
+>       REAL*4  C,D,E,G,L,M,O,P,Q,S
+>       INTEGER K,I,NTSAVE,NPARTMP(10),KSTAR,NCOMM,IA,IB
+22c22
+<       COMMON/COUNTS/ B(NB)
+---
+>       COMMON/COUNTS/ IB(NB)
+98c98
+<             WRITE (J) ntot,npairs,nttot,ia,b,c,d,e,g,l,m,o,p,q,s
+---
+>             WRITE (J) ntot,npairs,nttot,ia,ib,c,d,e,g,l,m,o,p,q,s
+138a139,141
+>          nntb = ib(8)
+>          print*,' nntb=',nntb,' kblist10=',(kblist(k),k=1,10)
+> 
+230c233
+<            READ (J) ntot,npairs,nttot,ia,b,c,d,e,g,l,m,o,p,q,s
+---
+>            READ (J) ntot,npairs,nttot,ia,ib,c,d,e,g,l,m,o,p,q,s
+291a295,296
+>          nntb = ib(8)
+>          print*,' nntb=',nntb,' kblist10=',(kblist(k),k=1,10)
+343c348
+< *     READ ntot,npairs,nttot,a,b,c,d,e,g,l,m,o,p,q,s
+---
+> *     READ ntot,npairs,nttot,ia,ib,c,d,e,g,l,m,o,p,q,s
+352c357
+<          CALL MPI_BCAST(B(1),NB,MPI_REAL4,0,MPI_COMM_WORLD,ierr)
+---
+>          CALL MPI_BCAST(IB(1),NB,MPI_INTEGER,0,MPI_COMM_WORLD,ierr)
+1,2c1,2
+< 58904 Jun 5 08:01
+< Main-newfixes//roche.f
+---
+> 58611 Apr 6 23:20
+> Main-kepler-rainer//roche.f
+95d94
+<           IXXX = 0
+1419d1417
+<                   IXXX = 8
+1421,1424d1418
+<                   KW1 = KTYPE(KSTAR(J1),KSTAR(J2))
+<                   IF (KW1.GT.100) KW1 = KW1 - 100
+<                   WRITE(6,*) ' IXXX=8 K(1),K(2) ', KSTAR(J1),KSTAR(J2),
+<      &            ' KW1,KW2 ',KW1,KW2,' J1, J2 ', NAME(J1), NAME(J2)     
+file /work/Tux1/spurzem/Nbody/Nbody6ppGPU-master/nbody-imbh/test-new-restart-code-oldunpert/Nbody6ppGPU-master-050617-star100/src/Main-kepler-rainer//roche-original.f does not exist
+1,2c1,2
+< 12735 Jun 5 08:04
+< Main-newfixes//star.f
+---
+> 12734 Nov 18 2016
+> Main-kepler-rainer//star.f
+56c56
+< c      if(mass0.gt.100.d0) mass = 100.d0
+---
+>       if(mass0.gt.100.d0) mass = 100.d0
+1,2c1,2
+< 12106 Jun 5 08:01
+< Main-newfixes//unpert.f
+---
+> 12100 Mar 27 02:29
+> Main-kepler-rainer//unpert.f
+226,232c226,232
+< c$$$*       Obtain KS variables at pericentre before coalescence to one body.
+< c$$$              CALL KSPERI(IPAIR)
+< c$$$              KSPAIR = IPAIR
+< c$$$*       Set indicator for skipping ECOLL updating in COAL.
+< c$$$              IQCOLL = -2
+< c$$$              CALL CMBODY(2)
+< c$$$              IF (IPHASE.LT.0) GO TO 30
+---
+> *           Obtain KS variables at pericentre before coalescence to one body.
+>                   CALL KSPERI(IPAIR)
+>                   KSPAIR = IPAIR
+> *           Set indicator for skipping ECOLL updating in COAL.
+>                   IQCOLL = -2
+>                   CALL CMBODY(2)
+>                   IF (IPHASE.LT.0) GO TO 30
+326d325
+<       
+\ No newline at end of file

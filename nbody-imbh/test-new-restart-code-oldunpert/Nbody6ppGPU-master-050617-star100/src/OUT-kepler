@@ -1,0 +1,2165 @@
+1,2c1,2
+< 5377 Jun 5 08:01
+< Main/absorb.f
+---
+> 5377 Nov 18 2016
+> Main-kepler-rainer/absorb.f
+1,2c1,2
+< 2426 Jun 5 08:01
+< Main/add_tlist.f
+---
+> 2426 Nov 18 2016
+> Main-kepler-rainer/add_tlist.f
+1,2c1,2
+< 15821 Jun 5 08:01
+< Main/adjust.F
+---
+> 15821 Mar 22 19:09
+> Main-kepler-rainer/adjust.F
+1,2c1,2
+< 2969 Jun 5 08:01
+< Main/assess.f
+---
+> 2969 Nov 18 2016
+> Main-kepler-rainer/assess.f
+1,2c1,2
+< 7110 Jun 5 08:01
+< Main/bhplot.f
+---
+> 7110 Apr 4 04:45
+> Main-kepler-rainer/bhplot.f
+1,2c1,2
+< 11202 Jun 5 08:01
+< Main/bindat.f
+---
+> 11202 Nov 18 2016
+> Main-kepler-rainer/bindat.f
+1,2c1,2
+< 2952 Jun 5 08:01
+< Main/binev.f
+---
+> 2952 Nov 18 2016
+> Main-kepler-rainer/binev.f
+1,2c1,2
+< 6226 Jun 5 08:01
+< Main/binout.f
+---
+> 6226 Nov 18 2016
+> Main-kepler-rainer/binout.f
+1,2c1,2
+< 27175 Jun 5 08:01
+< Main/binpop.F
+---
+> 27175 Nov 18 2016
+> Main-kepler-rainer/binpop.F
+1,2c1,2
+< 697 Jun 5 08:01
+< Main/block.f
+---
+> 697 Nov 18 2016
+> Main-kepler-rainer/block.f
+1,2c1,2
+< 4553 Jun 5 08:01
+< Main/bodies.f
+---
+> 4553 Nov 18 2016
+> Main-kepler-rainer/bodies.f
+1,2c1,2
+< 7818 Jun 5 08:01
+< Main/brake2.f
+---
+> 7818 Nov 18 2016
+> Main-kepler-rainer/brake2.f
+1,2c1,2
+< 4984 Jun 5 08:01
+< Main/brake3.f
+---
+> 4984 Nov 18 2016
+> Main-kepler-rainer/brake3.f
+1,2c1,2
+< 4568 Jun 5 08:01
+< Main/brake.f
+---
+> 4568 Nov 18 2016
+> Main-kepler-rainer/brake.f
+1,2c1,2
+< 1969 Jun 5 08:11
+< Main/bsetid.f
+---
+> 1969 Nov 18 2016
+> Main-kepler-rainer/bsetid.f
+43c43
+<          fc = MIN(1.d0,(ttid/(2.d0*tc))**2)
+---
+>          fc = MIN(1.d0,(ttid/(2.d0*tc)**2))
+1,2c1,2
+< 1439 Jun 5 08:01
+< Main/cfuncs.f
+---
+> 1439 Nov 18 2016
+> Main-kepler-rainer/cfuncs.f
+1,2c1,2
+< 25486 Jun 5 08:01
+< Main/chain.f
+---
+> 25486 Nov 18 2016
+> Main-kepler-rainer/chain.f
+1,2c1,2
+< 2642 Jun 5 08:01
+< Main/chaos0.f
+---
+> 2642 Nov 18 2016
+> Main-kepler-rainer/chaos0.f
+1,2c1,2
+< 12270 Jun 5 08:01
+< Main/chaos2.f
+---
+> 12270 Nov 18 2016
+> Main-kepler-rainer/chaos2.f
+1,2c1,2
+< 17695 Jun 5 08:01
+< Main/chaos.f
+---
+> 17695 Nov 18 2016
+> Main-kepler-rainer/chaos.f
+1,2c1,2
+< 1368 Jun 5 08:01
+< Main/chdata.f
+---
+> 1368 Nov 18 2016
+> Main-kepler-rainer/chdata.f
+1,2c1,2
+< 4170 Jun 5 08:01
+< Main/check.f
+---
+> 4170 Nov 18 2016
+> Main-kepler-rainer/check.f
+1,2c1,2
+< 10409 Jun 5 08:01
+< Main/checkl.F
+---
+> 10409 Nov 18 2016
+> Main-kepler-rainer/checkl.F
+1,2c1,2
+< 680 Jun 5 08:01
+< Main/chfind.f
+---
+> 680 Nov 18 2016
+> Main-kepler-rainer/chfind.f
+1,2c1,2
+< 9765 Jun 5 08:01
+< Main/chfirr.f
+---
+> 9765 Apr 4 04:44
+> Main-kepler-rainer/chfirr.f
+1,2c1,2
+< 8892 Jun 5 08:01
+< Main/chinit.f
+---
+> 8892 Nov 18 2016
+> Main-kepler-rainer/chinit.f
+1,2c1,2
+< 2805 Jun 5 08:01
+< Main/chlist.f
+---
+> 2805 Nov 18 2016
+> Main-kepler-rainer/chlist.f
+1,2c1,2
+< 24881 Jun 5 08:01
+< Main/chmod_chain.f
+---
+> 24881 Nov 18 2016
+> Main-kepler-rainer/chmod_chain.f
+1,2c1,2
+< 1476 Jun 5 08:01
+< Main/chpot.f
+---
+> 1476 Nov 18 2016
+> Main-kepler-rainer/chpot.f
+1,2c1,2
+< 11060 Jun 5 08:01
+< Main/chrect.f
+---
+> 11060 Nov 18 2016
+> Main-kepler-rainer/chrect.f
+1,2c1,2
+< 6698 Jun 5 08:01
+< Main/chstab.f
+---
+> 6698 Nov 18 2016
+> Main-kepler-rainer/chstab.f
+1,2c1,2
+< 19974 Jun 5 08:01
+< Main/chterm.f
+---
+> 19974 Nov 18 2016
+> Main-kepler-rainer/chterm.f
+1,2c1,2
+< 1675 Jun 5 08:01
+< Main/clint.f
+---
+> 1675 Nov 18 2016
+> Main-kepler-rainer/clint.f
+1,2c1,2
+< 2639 Jun 5 08:01
+< Main/cloud0.f
+---
+> 2639 Nov 18 2016
+> Main-kepler-rainer/cloud0.f
+1,2c1,2
+< 2343 Jun 5 08:01
+< Main/cloud.f
+---
+> 2343 Nov 18 2016
+> Main-kepler-rainer/cloud.f
+1,2c1,2
+< 26515 Jun 5 08:01
+< Main/cmbody.f
+---
+> 26515 Nov 18 2016
+> Main-kepler-rainer/cmbody.f
+1,2c1,2
+< 4155 Jun 5 08:01
+< Main/cmcorr.f
+---
+> 4155 Nov 18 2016
+> Main-kepler-rainer/cmcorr.f
+1,2c1,2
+< 4373 Jun 5 08:01
+< Main/cmfirr_cor.f
+---
+> 4373 Apr 4 04:44
+> Main-kepler-rainer/cmfirr_cor.f
+1,2c1,2
+< 4927 Jun 5 08:01
+< Main/cmfirr.f
+---
+> 4927 Apr 4 04:43
+> Main-kepler-rainer/cmfirr.f
+1,2c1,2
+< 3840 Jun 5 08:01
+< Main/cmfirr_ucor.f
+---
+> 3840 Apr 4 04:44
+> Main-kepler-rainer/cmfirr_ucor.f
+1,2c1,2
+< 9380 Jun 5 08:01
+< Main/cmfreg.f
+---
+> 9380 Nov 18 2016
+> Main-kepler-rainer/cmfreg.f
+1,2c1,2
+< 16171 Jun 5 08:01
+< Main/coal.f
+---
+> 16171 Apr 6 23:18
+> Main-kepler-rainer/coal.f
+file /work/Tux1/spurzem/Nbody/Nbody6ppGPU-master/nbody-imbh/test-new-restart-code-oldunpert/Nbody6ppGPU-master-050617-star100/src/Main-kepler-rainer/coal-original.f does not exist
+1,2c1,2
+< 14995 Jun 5 08:01
+< Main/comenv.f
+---
+> 14995 Nov 23 2016
+> Main-kepler-rainer/comenv.f
+1,2c1,2
+< 982 Jun 5 08:01
+< Main/const.f
+---
+> 982 Nov 18 2016
+> Main-kepler-rainer/const.f
+1,2c1,2
+< 4971 Jun 5 08:01
+< Main/core.f
+---
+> 4971 Nov 18 2016
+> Main-kepler-rainer/core.f
+1,2c1,2
+< 1259 Jun 5 08:01
+< Main/corerd.f
+---
+> 1259 Nov 18 2016
+> Main-kepler-rainer/corerd.f
+1,2c1,2
+< 1429 Jun 5 08:01
+< Main/counter_reset.f
+---
+> 1429 Nov 18 2016
+> Main-kepler-rainer/counter_reset.f
+1,2c1,2
+< 676 Jun 5 08:01
+< Main/cputim.F
+---
+> 676 Nov 18 2016
+> Main-kepler-rainer/cputim.F
+1,2c1,2
+< 4644 Jun 5 08:01
+< Main/cstab2.f
+---
+> 4644 Nov 18 2016
+> Main-kepler-rainer/cstab2.f
+1,2c1,2
+< 4736 Jun 5 08:01
+< Main/cstab3.f
+---
+> 4736 Nov 18 2016
+> Main-kepler-rainer/cstab3.f
+1,2c1,2
+< 4218 Jun 5 08:01
+< Main/cstab4.f
+---
+> 4218 Nov 18 2016
+> Main-kepler-rainer/cstab4.f
+1,2c1,2
+< 7266 Jun 5 08:01
+< Main/cstab5.f
+---
+> 7266 Nov 18 2016
+> Main-kepler-rainer/cstab5.f
+1,2c1,2
+< 36905 Jun 5 08:01
+< Main/custom_output.F
+---
+> 36905 Apr 4 04:43
+> Main-kepler-rainer/custom_output.F
+1,2c1,2
+< 48291 Jun 5 08:01
+< Main/custom_output_facility.F
+---
+> 48291 Nov 18 2016
+> Main-kepler-rainer/custom_output_facility.F
+1,2c1,2
+< 6480 Jun 5 08:01
+< Main/data.F
+---
+> 6934 May 5 20:22
+> Main-kepler-rainer/data.F
+32a33,42
+> *       Temporary reading of 10% of particles only (RS March 2017)
+> *         NREC = 0
+> *         DO 5 I = 1,N-1,2
+> *             READ (10,*)  BODY(I), (X(K,I),K=1,3), (XDOT(K,I),K=1,3)
+> *             READ (10,*) BODY(I+1),(X(K,I+1),K=1,3),(XDOT(K,I+1),K=1,3)
+> *             DO K = 1,18
+> *             READ (10,*) DDDD
+> *             END DO
+> *             NREC = NREC + 2
+> *   5     CONTINUE
+35a46,47
+> *
+>            PRINT*,' rank ',rank,NREC,' body data read from unit 10 '
+1,2c1,2
+< 6040 Jun 5 08:01
+< Main/decide.f
+---
+> 6040 Nov 18 2016
+> Main-kepler-rainer/decide.f
+1,2c1,2
+< 2016 Jun 5 08:01
+< Main/deform.f
+---
+> 2016 Nov 18 2016
+> Main-kepler-rainer/deform.f
+1,2c1,2
+< 8801 Jun 5 08:01
+< Main/degen.f
+---
+> 8801 Nov 18 2016
+> Main-kepler-rainer/degen.f
+1,2c1,2
+< 1122 Jun 5 08:01
+< Main/delay_add_tlist.f
+---
+> 1122 Nov 18 2016
+> Main-kepler-rainer/delay_add_tlist.f
+1,2c1,2
+< 2146 Jun 5 08:01
+< Main/delay.f
+---
+> 2146 Nov 18 2016
+> Main-kepler-rainer/delay.f
+1,2c1,2
+< 947 Jun 5 08:01
+< Main/delay_remove_tlist.f
+---
+> 947 Nov 18 2016
+> Main-kepler-rainer/delay_remove_tlist.f
+1,2c1,2
+< 1030 Jun 5 08:01
+< Main/delay_store_tlist.f
+---
+> 1030 Nov 18 2016
+> Main-kepler-rainer/delay_store_tlist.f
+1,2c1,2
+< 7314 Jun 5 08:01
+< Main/derqp3.f
+---
+> 7314 Nov 18 2016
+> Main-kepler-rainer/derqp3.f
+1,2c1,2
+< 9994 Jun 5 08:01
+< Main/derqp4.f
+---
+> 9994 Nov 18 2016
+> Main-kepler-rainer/derqp4.f
+1,2c1,2
+< 12063 Jun 5 08:01
+< Main/derqp.f
+---
+> 12063 Nov 18 2016
+> Main-kepler-rainer/derqp.f
+1,2c1,2
+< 4258 Jun 5 08:01
+< Main/dgcore.f
+---
+> 4258 Nov 18 2016
+> Main-kepler-rainer/dgcore.f
+1,2c1,2
+< 3994 Jun 5 08:01
+< Main/difsy1.f
+---
+> 3994 Nov 18 2016
+> Main-kepler-rainer/difsy1.f
+1,2c1,2
+< 3222 Jun 5 08:01
+< Main/difsy3.f
+---
+> 3222 Nov 18 2016
+> Main-kepler-rainer/difsy3.f
+1,2c1,2
+< 3207 Jun 5 08:01
+< Main/difsy4.f
+---
+> 3207 Nov 18 2016
+> Main-kepler-rainer/difsy4.f
+1,2c1,2
+< 384 Jun 5 08:01
+< Main/dtchck.f
+---
+> 384 Nov 18 2016
+> Main-kepler-rainer/dtchck.f
+1,2c1,2
+< 4549 Jun 5 08:01
+< Main/eccmod.f
+---
+> 4549 Nov 18 2016
+> Main-kepler-rainer/eccmod.f
+1,2c1,2
+< 3263 Jun 5 08:01
+< Main/ecirc.f
+---
+> 3263 Nov 18 2016
+> Main-kepler-rainer/ecirc.f
+1,2c1,2
+< 1511 Jun 5 08:01
+< Main/edot.f
+---
+> 1511 Nov 18 2016
+> Main-kepler-rainer/edot.f
+1,2c1,2
+< 1503 Jun 5 08:01
+< Main/efac2.f
+---
+> 1503 Nov 18 2016
+> Main-kepler-rainer/efac2.f
+1,2c1,2
+< 1512 Jun 5 08:01
+< Main/efac3.f
+---
+> 1512 Nov 18 2016
+> Main-kepler-rainer/efac3.f
+1,2c1,2
+< 4233 Jun 5 08:01
+< Main/eigenvalue.f
+---
+> 4233 Nov 18 2016
+> Main-kepler-rainer/eigenvalue.f
+1,2c1,2
+< 7939 Jun 5 08:01
+< Main/ellan.f
+---
+> 7939 Nov 18 2016
+> Main-kepler-rainer/ellan.f
+1,2c1,2
+< 6421 Jun 5 08:01
+< Main/encorr_mdot.F
+---
+> 6421 Nov 18 2016
+> Main-kepler-rainer/encorr_mdot.F
+1,2c1,2
+< 2484 Jun 5 08:01
+< Main/endreg.f
+---
+> 2484 Nov 18 2016
+> Main-kepler-rainer/endreg.f
+1,2c1,2
+< 4272 Jun 5 08:01
+< Main/energy.F
+---
+> 4272 Nov 18 2016
+> Main-kepler-rainer/energy.F
+1,2c1,2
+< 9311 Jun 5 08:01
+< Main/energy_mpi.F
+---
+> 9311 Nov 18 2016
+> Main-kepler-rainer/energy_mpi.F
+1,2c1,2
+< 1715 Jun 5 08:01
+< Main/erel3.f
+---
+> 1715 Nov 18 2016
+> Main-kepler-rainer/erel3.f
+1,2c1,2
+< 1451 Jun 5 08:01
+< Main/erel4.f
+---
+> 1451 Nov 18 2016
+> Main-kepler-rainer/erel4.f
+1,2c1,2
+< 1523 Jun 5 08:01
+< Main/erel.f
+---
+> 1523 Nov 18 2016
+> Main-kepler-rainer/erel.f
+1,2c1,2
+< 22256 Jun 5 08:01
+< Main/escape.F
+---
+> 22255 Apr 7 04:37
+> Main-kepler-rainer/escape.F
+506c506
+<       IF (NPAIRS.EQ.0) NNTB = 0 
+---
+>       IF (NPAIRS.EQ.0) NNTB = 0
+file /work/Tux1/spurzem/Nbody/Nbody6ppGPU-master/nbody-imbh/test-new-restart-code-oldunpert/Nbody6ppGPU-master-050617-star100/src/Main-kepler-rainer/escape-original.F does not exist
+1,2c1,2
+< 3470 Jun 5 08:01
+< Main/events.f
+---
+> 3470 Nov 18 2016
+> Main-kepler-rainer/events.f
+1,2c1,2
+< 3221 Jun 5 08:01
+< Main/exchange_tlist.f
+---
+> 3221 Nov 18 2016
+> Main-kepler-rainer/exchange_tlist.f
+1,2c1,2
+< 1858 Jun 5 08:01
+< Main/expand.f
+---
+> 1858 Nov 18 2016
+> Main-kepler-rainer/expand.f
+1,2c1,2
+< 14190 Jun 5 08:01
+< Main/expel2.f
+---
+> 14190 Nov 18 2016
+> Main-kepler-rainer/expel2.f
+1,2c1,2
+< 15918 Jun 5 08:01
+< Main/expel.f
+---
+> 15918 Nov 18 2016
+> Main-kepler-rainer/expel.f
+1,2c1,2
+< 2492 Jun 5 08:01
+< Main/extend.f
+---
+> 2492 Nov 18 2016
+> Main-kepler-rainer/extend.f
+1,2c1,2
+< 789 Jun 5 08:01
+< Main/fbulge.f
+---
+> 789 Nov 18 2016
+> Main-kepler-rainer/fbulge.f
+1,2c1,2
+< 3352 Jun 5 08:01
+< Main/fchain.f
+---
+> 3352 Apr 4 04:42
+> Main-kepler-rainer/fchain.f
+1,2c1,2
+< 1198 Jun 5 08:01
+< Main/fclose.f
+---
+> 1198 Nov 18 2016
+> Main-kepler-rainer/fclose.f
+1,2c1,2
+< 1939 Jun 5 08:01
+< Main/fcloud.f
+---
+> 1939 Nov 18 2016
+> Main-kepler-rainer/fcloud.f
+1,2c1,2
+< 6740 Jun 5 08:01
+< Main/fcorr.F
+---
+> 6740 Nov 18 2016
+> Main-kepler-rainer/fcorr.F
+1,2c1,2
+< 1204 Jun 5 08:01
+< Main/fdisk.f
+---
+> 1204 Nov 18 2016
+> Main-kepler-rainer/fdisk.f
+1,2c1,2
+< 655 Jun 5 08:01
+< Main/fhalo.f
+---
+> 655 Nov 18 2016
+> Main-kepler-rainer/fhalo.f
+1,2c1,2
+< 2667 Jun 5 08:01
+< Main/ficorr.F
+---
+> 2667 Nov 18 2016
+> Main-kepler-rainer/ficorr.F
+1,2c1,2
+< 12109 Jun 5 08:01
+< Main/file_init.F
+---
+> 12109 Mar 21 06:19
+> Main-kepler-rainer/file_init.F
+1,2c1,2
+< 1712 Jun 5 08:01
+< Main/findj.f
+---
+> 1712 Nov 18 2016
+> Main-kepler-rainer/findj.f
+1,2c1,2
+< 3730 Jun 5 08:01
+< Main/findm.f
+---
+> 3730 Nov 18 2016
+> Main-kepler-rainer/findm.f
+1,2c1,2
+< 79 Jun 5 08:01
+< Main/flush.f
+---
+> 79 Nov 18 2016
+> Main-kepler-rainer/flush.f
+1,2c1,2
+< 3964 Jun 5 08:01
+< Main/flyby.f
+---
+> 3964 Nov 18 2016
+> Main-kepler-rainer/flyby.f
+1,2c1,2
+< 582 Jun 5 08:01
+< Main/fnuc.f
+---
+> 582 Nov 18 2016
+> Main-kepler-rainer/fnuc.f
+1,2c1,2
+< 4438 Jun 5 08:01
+< Main/fpcorr.F
+---
+> 4438 Nov 18 2016
+> Main-kepler-rainer/fpcorr.F
+1,2c1,2
+< 1804 Jun 5 08:01
+< Main/fpert.f
+---
+> 1804 Nov 18 2016
+> Main-kepler-rainer/fpert.f
+1,2c1,2
+< 13039 Jun 5 08:01
+< Main/fpoly0.F
+---
+> 13039 Nov 18 2016
+> Main-kepler-rainer/fpoly0.F
+1,2c1,2
+< 4892 Jun 5 08:01
+< Main/fpoly1.f
+---
+> 4892 Nov 18 2016
+> Main-kepler-rainer/fpoly1.f
+1,2c1,2
+< 7891 Jun 5 08:01
+< Main/fpoly1_ks.f
+---
+> 7891 Apr 5 20:48
+> Main-kepler-rainer/fpoly1_ks.f
+1,2c1,2
+< 6754 Jun 5 08:01
+< Main/fpoly1_mpi.f
+---
+> 6754 Nov 18 2016
+> Main-kepler-rainer/fpoly1_mpi.f
+1,2c1,2
+< 4926 Jun 5 08:01
+< Main/fpoly2.f
+---
+> 4926 Nov 18 2016
+> Main-kepler-rainer/fpoly2.f
+1,2c1,2
+< 5740 Jun 5 08:01
+< Main/fpoly2_ks.f
+---
+> 5740 Nov 18 2016
+> Main-kepler-rainer/fpoly2_ks.f
+1,2c1,2
+< 7244 Jun 5 08:01
+< Main/fpoly2_mpi.f
+---
+> 7244 Nov 18 2016
+> Main-kepler-rainer/fpoly2_mpi.f
+1,2c1,2
+< 1632 Jun 5 08:01
+< Main/gcinit.f
+---
+> 1632 Nov 18 2016
+> Main-kepler-rainer/gcinit.f
+1,2c1,2
+< 2874 Jun 5 08:01
+< Main/gcint.F
+---
+> 2874 Nov 18 2016
+> Main-kepler-rainer/gcint.F
+1,2c1,2
+< 1182 Jun 5 08:01
+< Main/ghost.f
+---
+> 1182 Nov 18 2016
+> Main-kepler-rainer/ghost.f
+1,2c1,2
+< 3613 Jun 5 08:01
+< Main/giant2.f
+---
+> 3613 Nov 18 2016
+> Main-kepler-rainer/giant2.f
+1,2c1,2
+< 2362 Jun 5 08:01
+< Main/giant3.f
+---
+> 2362 Nov 18 2016
+> Main-kepler-rainer/giant3.f
+1,2c1,2
+< 4339 Jun 5 08:01
+< Main/giant.f
+---
+> 4339 Nov 18 2016
+> Main-kepler-rainer/giant.f
+1,2c1,2
+< 31364 Jun 5 08:01
+< Main/global_output.F
+---
+> 31364 Nov 18 2016
+> Main-kepler-rainer/global_output.F
+1,2c1,2
+< 6320 Jun 5 08:01
+< Main/global_params_gether.f
+---
+> 6320 Nov 18 2016
+> Main-kepler-rainer/global_params_gether.f
+1,2c1,2
+< 6787 Jun 5 08:01
+< Main/gntage.f
+---
+> 6787 Nov 18 2016
+> Main-kepler-rainer/gntage.f
+1,2c1,2
+< 669 Jun 5 08:01
+< Main/grrad.f
+---
+> 669 Nov 18 2016
+> Main-kepler-rainer/grrad.f
+1,2c1,2
+< 2593 Jun 5 08:01
+< Main/hcorr.f
+---
+> 2593 Nov 18 2016
+> Main-kepler-rainer/hcorr.f
+1,2c1,2
+< 9954 Jun 5 08:01
+< Main/hiarch.f
+---
+> 9954 Nov 18 2016
+> Main-kepler-rainer/hiarch.f
+1,2c1,2
+< 3263 Jun 5 08:01
+< Main/hicirc.f
+---
+> 3263 Nov 18 2016
+> Main-kepler-rainer/hicirc.f
+1,2c1,2
+< 9324 Jun 5 08:01
+< Main/hidat.f
+---
+> 9324 Nov 18 2016
+> Main-kepler-rainer/hidat.f
+1,2c1,2
+< 18004 Jun 5 08:01
+< Main/higrow.f
+---
+> 18004 Nov 18 2016
+> Main-kepler-rainer/higrow.f
+1,2c1,2
+< 4435 Jun 5 08:01
+< Main/himax.f
+---
+> 4435 Nov 18 2016
+> Main-kepler-rainer/himax.f
+1,2c1,2
+< 5989 Jun 5 08:01
+< Main/himod.f
+---
+> 5989 Nov 18 2016
+> Main-kepler-rainer/himod.f
+1,2c1,2
+< 5743 Jun 5 08:01
+< Main/hipop.F
+---
+> 5743 Nov 18 2016
+> Main-kepler-rainer/hipop.F
+1,2c1,2
+< 2997 Jun 5 08:01
+< Main/hirect.f
+---
+> 2997 Nov 18 2016
+> Main-kepler-rainer/hirect.f
+1,2c1,2
+< 3587 Jun 5 08:01
+< Main/histab.f
+---
+> 3587 Nov 18 2016
+> Main-kepler-rainer/histab.f
+1,2c1,2
+< 6593 Jun 5 08:01
+< Main/hivel.f
+---
+> 6593 Nov 18 2016
+> Main-kepler-rainer/hivel.f
+1,2c1,2
+< 6086 Jun 5 08:01
+< Main/hmdot2.f
+---
+> 6086 Nov 18 2016
+> Main-kepler-rainer/hmdot2.f
+1,2c1,2
+< 7108 Jun 5 08:01
+< Main/hmdot.f
+---
+> 7108 Nov 18 2016
+> Main-kepler-rainer/hmdot.f
+1,2c1,2
+< 1593 Jun 5 08:01
+< Main/hotsys.f
+---
+> 1593 Nov 18 2016
+> Main-kepler-rainer/hotsys.f
+1,2c1,2
+< 972 Jun 5 08:01
+< Main/hpsort.f
+---
+> 972 Nov 18 2016
+> Main-kepler-rainer/hpsort.f
+1,2c1,2
+< 23911 Jun 5 08:03
+< Main/hrdiag.f
+---
+> 23909 Nov 18 2016
+> Main-kepler-rainer/hrdiag.f
+80c80
+< c      if(mass0.gt.100.d0) mass = 100.d0
+---
+>       if(mass0.gt.100.d0) mass = 100.d0
+82c82
+< c      if(mt0.gt.100.d0) mt = 100.d0
+---
+>       if(mt0.gt.100.d0) mt = 100.d0
+1,2c1,2
+< 6594 Jun 5 08:01
+< Main/hrplot.F
+---
+> 6594 Nov 18 2016
+> Main-kepler-rainer/hrplot.F
+1,2c1,2
+< 2967 Jun 5 08:01
+< Main/hut2.f
+---
+> 2967 Nov 18 2016
+> Main-kepler-rainer/hut2.f
+1,2c1,2
+< 3659 Jun 5 08:01
+< Main/hut.f
+---
+> 3659 Nov 18 2016
+> Main-kepler-rainer/hut.f
+1,2c1,2
+< 391 Jun 5 08:01
+< Main/iblock.f
+---
+> 391 Nov 18 2016
+> Main-kepler-rainer/iblock.f
+1,2c1,2
+< 1903 Jun 5 08:01
+< Main/ichain.f
+---
+> 1903 Nov 18 2016
+> Main-kepler-rainer/ichain.f
+1,2c1,2
+< 1955 Jun 5 08:01
+< Main/imbhinit.F
+---
+> 1955 Nov 18 2016
+> Main-kepler-rainer/imbhinit.F
+1,2c1,2
+< 5789 Jun 5 08:01
+< Main/imf2.f
+---
+> 5789 Nov 18 2016
+> Main-kepler-rainer/imf2.f
+1,2c1,2
+< 20658 Jun 5 08:01
+< Main/imfbd.f
+---
+> 20658 Nov 18 2016
+> Main-kepler-rainer/imfbd.f
+1,2c1,2
+< 1793 Jun 5 08:01
+< Main/imf.f
+---
+> 1793 Nov 18 2016
+> Main-kepler-rainer/imf.f
+1,2c1,2
+< 43120 Jun 5 08:01
+< Main/impact.f
+---
+> 43120 Nov 18 2016
+> Main-kepler-rainer/impact.f
+1,2c1,2
+< 1068 Jun 5 08:01
+< Main/inclin.f
+---
+> 1068 Nov 18 2016
+> Main-kepler-rainer/inclin.f
+1,2c1,2
+< 1200 Jun 5 08:01
+< Main/indexx.f
+---
+> 1200 Nov 18 2016
+> Main-kepler-rainer/indexx.f
+1,2c1,2
+< 6197 Jun 5 08:01
+< Main/induce.f
+---
+> 6197 Nov 18 2016
+> Main-kepler-rainer/induce.f
+1,2c1,2
+< 5910 Jun 5 08:01
+< Main/input.F
+---
+> 5910 Mar 27 20:18
+> Main-kepler-rainer/input.F
+1,2c1,2
+< 4055 Jun 5 08:01
+< Main/insert.F
+---
+> 4055 Nov 18 2016
+> Main-kepler-rainer/insert.F
+1,2c1,2
+< 7077 Jun 5 08:01
+< Main/instar.F
+---
+> 7077 Apr 5 21:25
+> Main-kepler-rainer/instar.F
+1,2c1,2
+< 51784 Jun 5 08:01
+< Main/intgrt.F
+---
+> 51484 May 4 15:52
+> Main-kepler-rainer/intgrt.F
+1133,1139d1132
+< 
+< c          print*,' before do nreg=',time
+< c          print*,' x(1,1-10)=',(x(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' x0(1,1-10)=',(x0(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' xdot(1,1-10)=',(xdot(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' x0dot(1,1-10)=',(x0dot(1,nxtlst(k)),k=1,nxtlen)
+< 
+1,2c1,2
+< 8069 Jun 5 08:01
+< Main/invert.f
+---
+> 8069 Nov 18 2016
+> Main-kepler-rainer/invert.f
+1,2c1,2
+< 2323 Jun 5 08:01
+< Main/isnan.f
+---
+> 2323 Apr 5 20:14
+> Main-kepler-rainer/isnan.f
+1,2c1,2
+< 3285 Jun 5 08:01
+< Main/jacobi.F
+---
+> 3285 Nov 18 2016
+> Main-kepler-rainer/jacobi.F
+1,2c1,2
+< 3123 Jun 5 08:01
+< Main/jacobi_transform.f
+---
+> 3123 Nov 18 2016
+> Main-kepler-rainer/jacobi_transform.f
+1,2c1,2
+< 3642 Jun 5 08:01
+< Main/jpred.f
+---
+> 3642 Nov 18 2016
+> Main-kepler-rainer/jpred.f
+1,2c1,2
+< 1420 Jun 5 08:01
+< Main/jpred_int.f
+---
+> 1420 Apr 6 20:08
+> Main-kepler-rainer/jpred_int.f
+1,2c1,2
+< 2472 Jun 5 08:01
+< Main/kcpert_cor.f
+---
+> 2472 Nov 18 2016
+> Main-kepler-rainer/kcpert_cor.f
+1,2c1,2
+< 1726 Jun 5 08:01
+< Main/kcpert.f
+---
+> 1726 Nov 18 2016
+> Main-kepler-rainer/kcpert.f
+1,2c1,2
+< 1367 Jun 5 08:01
+< Main/kick2.f
+---
+> 1367 Nov 18 2016
+> Main-kepler-rainer/kick2.f
+1,2c1,2
+< 8399 Jun 5 08:01
+< Main/kick.F
+---
+> 8399 Nov 18 2016
+> Main-kepler-rainer/kick.F
+1,2c1,2
+< 2086 Jun 5 08:01
+< Main/ksapo.f
+---
+> 2086 Nov 18 2016
+> Main-kepler-rainer/ksapo.f
+1,2c1,2
+< 7248 Jun 5 08:01
+< Main/kscorr.f
+---
+> 7248 Nov 18 2016
+> Main-kepler-rainer/kscorr.f
+1,2c1,2
+< 7331 Jun 5 08:01
+< Main/ksin2.f
+---
+> 7331 Nov 18 2016
+> Main-kepler-rainer/ksin2.f
+1,2c1,2
+< 11990 Jun 5 08:01
+< Main/ksinit.F
+---
+> 11990 Mar 28 23:28
+> Main-kepler-rainer/ksinit.F
+1,2c1,2
+< 36726 Jun 5 08:01
+< Main/ksint.f
+---
+> 36726 Nov 18 2016
+> Main-kepler-rainer/ksint.f
+1,2c1,2
+< 4146 Jun 5 08:01
+< Main/kslist.f
+---
+> 4146 Nov 18 2016
+> Main-kepler-rainer/kslist.f
+1,2c1,2
+< 3654 Jun 5 08:01
+< Main/ksmod.f
+---
+> 3654 Nov 18 2016
+> Main-kepler-rainer/ksmod.f
+1,2c1,2
+< 14761 Jun 5 08:01
+< Main/ksparmpi.F
+---
+> 14761 Nov 18 2016
+> Main-kepler-rainer/ksparmpi.F
+1,2c1,2
+< 5907 Jun 5 08:01
+< Main/ksperi.f
+---
+> 5907 Nov 18 2016
+> Main-kepler-rainer/ksperi.f
+1,2c1,2
+< 7006 Jun 5 08:01
+< Main/kspert.f
+---
+> 7006 Nov 18 2016
+> Main-kepler-rainer/kspert.f
+1,2c1,2
+< 648 Jun 5 08:01
+< Main/ksphys.f
+---
+> 648 Nov 18 2016
+> Main-kepler-rainer/ksphys.f
+1,2c1,2
+< 2603 Jun 5 08:01
+< Main/kspinit.f
+---
+> 2603 Nov 18 2016
+> Main-kepler-rainer/kspinit.f
+1,2c1,2
+< 9339 Jun 5 08:01
+< Main/kspoly.f
+---
+> 9339 Nov 18 2016
+> Main-kepler-rainer/kspoly.f
+1,2c1,2
+< 3357 Jun 5 08:01
+< Main/kspred.f
+---
+> 3357 Nov 18 2016
+> Main-kepler-rainer/kspred.f
+1,2c1,2
+< 8044 Jun 5 08:01
+< Main/kspreg.F
+---
+> 8044 Mar 28 23:28
+> Main-kepler-rainer/kspreg.F
+1,2c1,2
+< 4198 Jun 5 08:01
+< Main/ksrect.f
+---
+> 4198 Nov 18 2016
+> Main-kepler-rainer/ksrect.f
+1,2c1,2
+< 5548 Jun 5 08:01
+< Main/ksreg.F
+---
+> 5548 Nov 18 2016
+> Main-kepler-rainer/ksreg.F
+1,2c1,2
+< 3142 Jun 5 08:01
+< Main/ksres2.f
+---
+> 3142 Nov 18 2016
+> Main-kepler-rainer/ksres2.f
+1,2c1,2
+< 2134 Jun 5 08:01
+< Main/ksres.f
+---
+> 2134 Nov 18 2016
+> Main-kepler-rainer/ksres.f
+1,2c1,2
+< 3029 Jun 5 08:01
+< Main/ksres_op.f
+---
+> 3029 Nov 18 2016
+> Main-kepler-rainer/ksres_op.f
+1,2c1,2
+< 699 Jun 5 08:01
+< Main/k_step.f
+---
+> 699 Nov 18 2016
+> Main-kepler-rainer/k_step.f
+1,2c1,2
+< 18537 Jun 5 08:01
+< Main/ksterm.F
+---
+> 18537 Apr 7 04:37
+> Main-kepler-rainer/ksterm.F
+file /work/Tux1/spurzem/Nbody/Nbody6ppGPU-master/nbody-imbh/test-new-restart-code-oldunpert/Nbody6ppGPU-master-050617-star100/src/Main-kepler-rainer/ksterm-original.F does not exist
+1,2c1,2
+< 14386 Jun 5 08:01
+< Main/kstide.f
+---
+> 14386 Nov 18 2016
+> Main-kepler-rainer/kstide.f
+1,2c1,2
+< 1504 Jun 5 08:01
+< Main/kstran.f
+---
+> 1504 Nov 18 2016
+> Main-kepler-rainer/kstran.f
+1,2c1,2
+< 6065 Jun 5 08:01
+< Main/lagr2.f
+---
+> 6065 Nov 18 2016
+> Main-kepler-rainer/lagr2.f
+1,2c1,2
+< 17580 Jun 5 08:01
+< Main/lagr.f
+---
+> 17580 Apr 3 21:54
+> Main-kepler-rainer/lagr.f
+1,2c1,2
+< 4310 Jun 5 08:01
+< Main/levels.f
+---
+> 4310 Nov 18 2016
+> Main-kepler-rainer/levels.f
+1,2c1,2
+< 327 Jun 5 08:01
+< Main/magbrk.f
+---
+> 327 Nov 18 2016
+> Main-kepler-rainer/magbrk.f
+1,2c1,2
+< 443 Jun 5 08:01
+< Main/matrix.f
+---
+> 443 Nov 18 2016
+> Main-kepler-rainer/matrix.f
+1,2c1,2
+< 64737 Jun 5 08:01
+< Main/mdot.F
+---
+> 64737 Nov 18 2016
+> Main-kepler-rainer/mdot.F
+1,2c1,2
+< 10781 Jun 5 08:01
+< Main/merge2.f
+---
+> 10781 Nov 18 2016
+> Main-kepler-rainer/merge2.f
+1,2c1,2
+< 10682 Jun 5 08:01
+< Main/merge.f
+---
+> 10682 Nov 18 2016
+> Main-kepler-rainer/merge.f
+1,2c1,2
+< 10713 Jun 5 08:01
+< Main/mix.f
+---
+> 10713 Nov 18 2016
+> Main-kepler-rainer/mix.f
+1,2c1,2
+< 6160 Jun 5 08:01
+< Main/mloss.f
+---
+> 6160 Nov 18 2016
+> Main-kepler-rainer/mloss.f
+1,2c1,2
+< 2089 Jun 5 08:01
+< Main/mlwind.f
+---
+> 2089 Nov 18 2016
+> Main-kepler-rainer/mlwind.f
+1,2c1,2
+< 3892 Jun 5 08:01
+< Main/modify.F
+---
+> 3892 Nov 18 2016
+> Main-kepler-rainer/modify.F
+1,2c1,2
+< 6229 Jun 5 08:01
+< Main/mrenv.f
+---
+> 6229 Nov 18 2016
+> Main-kepler-rainer/mrenv.f
+1,2c1,2
+< 20729 Jun 5 08:01
+< Main/mydump.F
+---
+> 20907 Apr 7 03:08
+> Main-kepler-rainer/mydump.F
+18,19c18,19
+<       REAL*4  B,C,D,E,G,L,M,O,P,Q,S
+<       INTEGER K,I,NTSAVE,NPARTMP(10),KSTAR,NCOMM,IA
+---
+>       REAL*4  C,D,E,G,L,M,O,P,Q,S
+>       INTEGER K,I,NTSAVE,NPARTMP(10),KSTAR,NCOMM,IA,IB
+22c22
+<       COMMON/COUNTS/ B(NB)
+---
+>       COMMON/COUNTS/ IB(NB)
+98c98
+<             WRITE (J) ntot,npairs,nttot,ia,b,c,d,e,g,l,m,o,p,q,s
+---
+>             WRITE (J) ntot,npairs,nttot,ia,ib,c,d,e,g,l,m,o,p,q,s
+138a139,141
+>          nntb = ib(8)
+>          print*,' nntb=',nntb,' kblist10=',(kblist(k),k=1,10)
+> 
+230c233
+<            READ (J) ntot,npairs,nttot,ia,b,c,d,e,g,l,m,o,p,q,s
+---
+>            READ (J) ntot,npairs,nttot,ia,ib,c,d,e,g,l,m,o,p,q,s
+291a295,296
+>          nntb = ib(8)
+>          print*,' nntb=',nntb,' kblist10=',(kblist(k),k=1,10)
+343c348
+< *     READ ntot,npairs,nttot,a,b,c,d,e,g,l,m,o,p,q,s
+---
+> *     READ ntot,npairs,nttot,ia,ib,c,d,e,g,l,m,o,p,q,s
+352c357
+<          CALL MPI_BCAST(B(1),NB,MPI_REAL4,0,MPI_COMM_WORLD,ierr)
+---
+>          CALL MPI_BCAST(IB(1),NB,MPI_INTEGER,0,MPI_COMM_WORLD,ierr)
+1,2c1,2
+< 10337 Jun 5 08:01
+< Main/nbint_cor.f
+---
+> 10337 Apr 4 04:40
+> Main-kepler-rainer/nbint_cor.f
+1,2c1,2
+< 2045 Jun 5 08:01
+< Main/nbint.F
+---
+> 2045 Apr 6 20:07
+> Main-kepler-rainer/nbint.F
+1,2c1,2
+< 3401 Jun 5 08:01
+< Main/nblist.f
+---
+> 3401 Nov 18 2016
+> Main-kepler-rainer/nblist.f
+1,2c1,2
+< 8506 Jun 5 08:01
+< Main/nbody6.F
+---
+> 8506 Apr 6 20:06
+> Main-kepler-rainer/nbody6.F
+1,2c1,2
+< 1686 Jun 5 08:01
+< Main/nbpot.f
+---
+> 1686 Nov 18 2016
+> Main-kepler-rainer/nbpot.f
+1,2c1,2
+< 1773 Jun 5 08:01
+< Main/nbrem.f
+---
+> 1773 Nov 18 2016
+> Main-kepler-rainer/nbrem.f
+1,2c1,2
+< 1734 Jun 5 08:01
+< Main/nbrest.f
+---
+> 1734 Nov 18 2016
+> Main-kepler-rainer/nbrest.f
+1,2c1,2
+< 2957 Jun 5 08:01
+< Main/newreg.f
+---
+> 2957 Nov 18 2016
+> Main-kepler-rainer/newreg.f
+1,2c1,2
+< 891 Jun 5 08:01
+< Main/newsys.f
+---
+> 891 Nov 18 2016
+> Main-kepler-rainer/newsys.f
+1,2c1,2
+< 3364 Jun 5 08:01
+< Main/newtev.f
+---
+> 3364 Nov 18 2016
+> Main-kepler-rainer/newtev.f
+1,2c1,2
+< 1150 Jun 5 08:01
+< Main/next_tlist.f
+---
+> 1150 Nov 18 2016
+> Main-kepler-rainer/next_tlist.f
+1,2c1,2
+< 8045 Jun 5 08:01
+< Main/nstab.f
+---
+> 8045 Nov 18 2016
+> Main-kepler-rainer/nstab.f
+1,2c1,2
+< 3013 Jun 5 08:01
+< Main/ntint.f
+---
+> 3013 Nov 18 2016
+> Main-kepler-rainer/ntint.f
+1,2c1,2
+< 1161 Jun 5 08:01
+< Main/offset.f
+---
+> 1161 Nov 18 2016
+> Main-kepler-rainer/offset.f
+1,2c1,2
+< 2845 Jun 5 08:01
+< Main/orbit.f
+---
+> 2845 Nov 18 2016
+> Main-kepler-rainer/orbit.f
+1,2c1,2
+< 20015 Jun 5 08:01
+< Main/output.F
+---
+> 20015 Nov 18 2016
+> Main-kepler-rainer/output.F
+1,2c1,2
+< 1893 Jun 5 08:01
+< Main/peri.f
+---
+> 1893 Nov 18 2016
+> Main-kepler-rainer/peri.f
+1,2c1,2
+< 1729 Jun 5 08:01
+< Main/permit.f
+---
+> 1729 Nov 18 2016
+> Main-kepler-rainer/permit.f
+1,2c1,2
+< 1313 Jun 5 08:01
+< Main/pfac.f
+---
+> 1313 Nov 18 2016
+> Main-kepler-rainer/pfac.f
+1,2c1,2
+< 2923 Jun 5 08:01
+< Main/phicor.f
+---
+> 2923 Nov 18 2016
+> Main-kepler-rainer/phicor.f
+1,2c1,2
+< 875 Jun 5 08:01
+< Main/physks.f
+---
+> 875 Nov 18 2016
+> Main-kepler-rainer/physks.f
+1,2c1,2
+< 881 Jun 5 08:01
+< Main/poti.f
+---
+> 881 Nov 18 2016
+> Main-kepler-rainer/poti.f
+1,2c1,2
+< 3639 Jun 5 08:01
+< Main/proto_star.f
+---
+> 3639 Nov 18 2016
+> Main-kepler-rainer/proto_star.f
+1,2c1,2
+< 400 Jun 5 08:01
+< Main/qforce.f
+---
+> 400 Nov 18 2016
+> Main-kepler-rainer/qforce.f
+1,2c1,2
+< 5227 Jun 5 08:01
+< Main/qpmod3.f
+---
+> 5227 Nov 18 2016
+> Main-kepler-rainer/qpmod3.f
+1,2c1,2
+< 4256 Jun 5 08:01
+< Main/qpmod4.f
+---
+> 4256 Nov 18 2016
+> Main-kepler-rainer/qpmod4.f
+1,2c1,2
+< 8981 Jun 5 08:01
+< Main/qpmod.f
+---
+> 8981 Nov 18 2016
+> Main-kepler-rainer/qpmod.f
+1,2c1,2
+< 5049 Jun 5 08:01
+< Main/qtides.f
+---
+> 5049 Nov 18 2016
+> Main-kepler-rainer/qtides.f
+1,2c1,2
+< 12002 Jun 5 08:01
+< Main/quad.f
+---
+> 12002 Nov 18 2016
+> Main-kepler-rainer/quad.f
+1,2c1,2
+< 812 Jun 5 08:01
+< Main/r2sort.f
+---
+> 812 Nov 18 2016
+> Main-kepler-rainer/r2sort.f
+1,2c1,2
+< 1370 Jun 5 08:01
+< Main/ran2.f
+---
+> 1370 Nov 18 2016
+> Main-kepler-rainer/ran2.f
+1,2c1,2
+< 4206 Jun 5 08:01
+< Main/rchain.f
+---
+> 4206 Nov 18 2016
+> Main-kepler-rainer/rchain.f
+1,2c1,2
+< 8878 Jun 5 08:01
+< Main/recoil.f
+---
+> 8878 Nov 18 2016
+> Main-kepler-rainer/recoil.f
+1,2c1,2
+< 742 Jun 5 08:01
+< Main/redraw.f
+---
+> 742 Nov 18 2016
+> Main-kepler-rainer/redraw.f
+1,2c1,2
+< 9063 Jun 5 08:01
+< Main/reduce.f
+---
+> 9063 Nov 18 2016
+> Main-kepler-rainer/reduce.f
+1,2c1,2
+< 29164 Jun 5 08:01
+< Main/regcor_gpu.F
+---
+> 29164 Nov 18 2016
+> Main-kepler-rainer/regcor_gpu.F
+1,2c1,2
+< 3533 Jun 5 08:01
+< Main/regint.f
+---
+> 3533 Mar 30 22:51
+> Main-kepler-rainer/regint.f
+1,2c1,2
+< 2201 Jun 5 08:01
+< Main/reinit.f
+---
+> 2201 Nov 18 2016
+> Main-kepler-rainer/reinit.f
+1,2c1,2
+< 4073 Jun 5 08:01
+< Main/remove.f
+---
+> 4073 Nov 18 2016
+> Main-kepler-rainer/remove.f
+1,2c1,2
+< 3702 Jun 5 08:01
+< Main/remove_ks.F
+---
+> 3702 Nov 18 2016
+> Main-kepler-rainer/remove_ks.F
+1,2c1,2
+< 2730 Jun 5 08:01
+< Main/remove_tlist.f
+---
+> 2730 Nov 18 2016
+> Main-kepler-rainer/remove_tlist.f
+1,2c1,2
+< 8919 Jun 5 08:01
+< Main/rename_ks.F
+---
+> 8919 Nov 18 2016
+> Main-kepler-rainer/rename_ks.F
+1,2c1,2
+< 1935 Jun 5 08:01
+< Main/renew.f
+---
+> 1935 Nov 18 2016
+> Main-kepler-rainer/renew.f
+1,2c1,2
+< 1497 Jun 5 08:01
+< Main/repair_tlist.f
+---
+> 1497 Nov 18 2016
+> Main-kepler-rainer/repair_tlist.f
+1,2c1,2
+< 1737 Jun 5 08:01
+< Main/replace_tlist.f
+---
+> 1737 Nov 18 2016
+> Main-kepler-rainer/replace_tlist.f
+1,2c1,2
+< 15561 Jun 5 08:01
+< Main/reset2.f
+---
+> 15561 Nov 18 2016
+> Main-kepler-rainer/reset2.f
+1,2c1,2
+< 11519 Jun 5 08:01
+< Main/reset.f
+---
+> 11519 Nov 18 2016
+> Main-kepler-rainer/reset.f
+1,2c1,2
+< 4392 Jun 5 08:01
+< Main/resolv.f
+---
+> 4392 Nov 18 2016
+> Main-kepler-rainer/resolv.f
+1,2c1,2
+< 4943 Jun 5 08:01
+< Main/rkint.f
+---
+> 4943 Nov 18 2016
+> Main-kepler-rainer/rkint.f
+1,2c1,2
+< 197 Jun 5 08:01
+< Main/rl.f
+---
+> 197 Nov 18 2016
+> Main-kepler-rainer/rl.f
+1,2c1,2
+< 4558 Jun 5 08:01
+< Main/rmesc_tlist.f
+---
+> 4558 Nov 18 2016
+> Main-kepler-rainer/rmesc_tlist.f
+1,2c1,2
+< 58904 Jun 5 08:01
+< Main/roche.f
+---
+> 58611 Apr 6 23:20
+> Main-kepler-rainer/roche.f
+95d94
+<           IXXX = 0
+1419d1417
+<                   IXXX = 8
+1421,1424d1418
+<                   KW1 = KTYPE(KSTAR(J1),KSTAR(J2))
+<                   IF (KW1.GT.100) KW1 = KW1 - 100
+<                   WRITE(6,*) ' IXXX=8 K(1),K(2) ', KSTAR(J1),KSTAR(J2),
+<      &            ' KW1,KW2 ',KW1,KW2,' J1, J2 ', NAME(J1), NAME(J2)     
+file /work/Tux1/spurzem/Nbody/Nbody6ppGPU-master/nbody-imbh/test-new-restart-code-oldunpert/Nbody6ppGPU-master-050617-star100/src/Main-kepler-rainer/roche-original.f does not exist
+1,2c1,2
+< 1605 Jun 5 08:01
+< Main/rpmax2.f
+---
+> 1605 Nov 18 2016
+> Main-kepler-rainer/rpmax2.f
+1,2c1,2
+< 686 Jun 5 08:01
+< Main/rpmax.f
+---
+> 686 Nov 18 2016
+> Main-kepler-rainer/rpmax.f
+1,2c1,2
+< 945 Jun 5 08:01
+< Main/rpmin.f
+---
+> 945 Nov 18 2016
+> Main-kepler-rainer/rpmin.f
+1,2c1,2
+< 607 Jun 5 08:01
+< Main/rsort.f
+---
+> 607 Nov 18 2016
+> Main-kepler-rainer/rsort.f
+1,2c1,2
+< 10635 Jun 5 08:01
+< Main/scale.F
+---
+> 10635 Nov 18 2016
+> Main-kepler-rainer/scale.F
+1,2c1,2
+< 6756 Jun 5 08:01
+< Main/search.f
+---
+> 6756 Nov 18 2016
+> Main-kepler-rainer/search.f
+1,2c1,2
+< 1115 Jun 5 08:01
+< Main/select.f
+---
+> 1115 Nov 18 2016
+> Main-kepler-rainer/select.f
+1,2c1,2
+< 7132 Jun 5 08:01
+< Main/setsys.f
+---
+> 7132 Nov 18 2016
+> Main-kepler-rainer/setsys.f
+1,2c1,2
+< 18416 Jun 5 08:01
+< Main/setup.F
+---
+> 18416 Nov 18 2016
+> Main-kepler-rainer/setup.F
+1,2c1,2
+< 3109 Jun 5 08:01
+< Main/shift_tlist.f
+---
+> 3109 Nov 18 2016
+> Main-kepler-rainer/shift_tlist.f
+1,2c1,2
+< 1414 Jun 5 08:01
+< Main/short.f
+---
+> 1414 Nov 18 2016
+> Main-kepler-rainer/short.f
+1,2c1,2
+< 2889 Jun 5 08:01
+< Main/shrink.f
+---
+> 2889 Nov 18 2016
+> Main-kepler-rainer/shrink.f
+1,2c1,2
+< 494 Jun 5 08:01
+< Main/shrink_tlist.f
+---
+> 494 Nov 18 2016
+> Main-kepler-rainer/shrink_tlist.f
+1,2c1,2
+< 12030 Jun 5 08:01
+< Main/slow.f
+---
+> 12030 Nov 18 2016
+> Main-kepler-rainer/slow.f
+1,2c1,2
+< 2011 Jun 5 08:01
+< Main/sort1.f
+---
+> 2011 Nov 18 2016
+> Main-kepler-rainer/sort1.f
+1,2c1,2
+< 5111 Jun 5 08:01
+< Main/sort_tlist.f
+---
+> 5111 Nov 18 2016
+> Main-kepler-rainer/sort_tlist.f
+1,2c1,2
+< 27468 Jun 5 08:01
+< Main/spiral.f
+---
+> 27468 Nov 18 2016
+> Main-kepler-rainer/spiral.f
+1,2c1,2
+< 601 Jun 5 08:01
+< Main/stability.f
+---
+> 601 Nov 18 2016
+> Main-kepler-rainer/stability.f
+1,2c1,2
+< 3661 Jun 5 08:01
+< Main/stabl3.f
+---
+> 3661 Nov 18 2016
+> Main-kepler-rainer/stabl3.f
+1,2c1,2
+< 5522 Jun 5 08:01
+< Main/stabl4.f
+---
+> 5522 Nov 18 2016
+> Main-kepler-rainer/stabl4.f
+1,2c1,2
+< 5136 Jun 5 08:01
+< Main/stablc.f
+---
+> 5136 Nov 18 2016
+> Main-kepler-rainer/stablc.f
+1,2c1,2
+< 2223 Jun 5 08:01
+< Main/stablz.f
+---
+> 2223 Nov 18 2016
+> Main-kepler-rainer/stablz.f
+1,2c1,2
+< 12735 Jun 5 08:04
+< Main/star.f
+---
+> 12734 Nov 18 2016
+> Main-kepler-rainer/star.f
+56c56
+< c      if(mass0.gt.100.d0) mass = 100.d0
+---
+>       if(mass0.gt.100.d0) mass = 100.d0
+1,2c1,2
+< 10838 Jun 5 08:01
+< Main/start3.f
+---
+> 10838 Nov 18 2016
+> Main-kepler-rainer/start3.f
+1,2c1,2
+< 11339 Jun 5 08:01
+< Main/start4.f
+---
+> 11339 Nov 18 2016
+> Main-kepler-rainer/start4.f
+1,2c1,2
+< 8735 Jun 5 08:01
+< Main/start.F
+---
+> 8735 Apr 3 21:58
+> Main-kepler-rainer/start.F
+1,2c1,2
+< 1768 Jun 5 08:01
+< Main/status.f
+---
+> 1768 Nov 18 2016
+> Main-kepler-rainer/status.f
+1,2c1,2
+< 781 Jun 5 08:01
+< Main/stepk.f
+---
+> 781 Nov 18 2016
+> Main-kepler-rainer/stepk.f
+1,2c1,2
+< 2149 Jun 5 08:01
+< Main/steps2.f
+---
+> 2149 Nov 18 2016
+> Main-kepler-rainer/steps2.f
+1,2c1,2
+< 3264 Jun 5 08:01
+< Main/steps.f
+---
+> 3264 Nov 18 2016
+> Main-kepler-rainer/steps.f
+1,2c1,2
+< 847 Jun 5 08:01
+< Main/string_left.f
+---
+> 847 Nov 18 2016
+> Main-kepler-rainer/string_left.f
+1,2c1,2
+< 1088 Jun 5 08:01
+< Main/stumpf.f
+---
+> 1088 Nov 18 2016
+> Main-kepler-rainer/stumpf.f
+1,2c1,2
+< 33173 Jun 5 08:01
+< Main/subint.F
+---
+> 33173 Apr 6 20:39
+> Main-kepler-rainer/subint.F
+1,2c1,2
+< 3093 Jun 5 08:01
+< Main/subsys.f
+---
+> 3093 Nov 18 2016
+> Main-kepler-rainer/subsys.f
+1,2c1,2
+< 1308 Jun 5 08:01
+< Main/swcond.f
+---
+> 1308 Nov 18 2016
+> Main-kepler-rainer/swcond.f
+1,2c1,2
+< 4247 Jun 5 08:01
+< Main/switch.f
+---
+> 4247 Nov 18 2016
+> Main-kepler-rainer/switch.f
+1,2c1,2
+< 19841 Jun 5 08:01
+< Main/synch.f
+---
+> 19841 Nov 18 2016
+> Main-kepler-rainer/synch.f
+1,2c1,2
+< 1922 Jun 5 08:01
+< Main/tail0.f
+---
+> 1922 Nov 18 2016
+> Main-kepler-rainer/tail0.f
+1,2c1,2
+< 1206 Jun 5 08:01
+< Main/tchain.f
+---
+> 1206 Nov 18 2016
+> Main-kepler-rainer/tchain.f
+1,2c1,2
+< 5078 Jun 5 08:01
+< Main/tcirc.f
+---
+> 5078 Nov 18 2016
+> Main-kepler-rainer/tcirc.f
+1,2c1,2
+< 2070 Jun 5 08:01
+< Main/tides2.f
+---
+> 2070 Nov 18 2016
+> Main-kepler-rainer/tides2.f
+1,2c1,2
+< 1209 Jun 5 08:01
+< Main/tides3.f
+---
+> 1209 Nov 18 2016
+> Main-kepler-rainer/tides3.f
+1,2c1,2
+< 1469 Jun 5 08:01
+< Main/tides.f
+---
+> 1469 Nov 18 2016
+> Main-kepler-rainer/tides.f
+1,2c1,2
+< 771 Jun 5 08:01
+< Main/touch.f
+---
+> 771 Nov 18 2016
+> Main-kepler-rainer/touch.f
+1,2c1,2
+< 2436 Jun 5 08:01
+< Main/tperi.f
+---
+> 2436 Nov 18 2016
+> Main-kepler-rainer/tperi.f
+1,2c1,2
+< 2758 Jun 5 08:01
+< Main/tpert.f
+---
+> 2758 Nov 18 2016
+> Main-kepler-rainer/tpert.f
+1,2c1,2
+< 6353 Jun 5 08:01
+< Main/trans3.f
+---
+> 6353 Nov 18 2016
+> Main-kepler-rainer/trans3.f
+1,2c1,2
+< 2221 Jun 5 08:01
+< Main/trans4.f
+---
+> 2221 Nov 18 2016
+> Main-kepler-rainer/trans4.f
+1,2c1,2
+< 1864 Jun 5 08:01
+< Main/transk.f
+---
+> 1864 Nov 18 2016
+> Main-kepler-rainer/transk.f
+1,2c1,2
+< 1799 Jun 5 08:01
+< Main/transq.f
+---
+> 1799 Nov 18 2016
+> Main-kepler-rainer/transq.f
+1,2c1,2
+< 1167 Jun 5 08:01
+< Main/transx.f
+---
+> 1167 Nov 18 2016
+> Main-kepler-rainer/transx.f
+1,2c1,2
+< 1672 Jun 5 08:01
+< Main/trdot2.f
+---
+> 1672 Nov 18 2016
+> Main-kepler-rainer/trdot2.f
+1,2c1,2
+< 4306 Jun 5 08:01
+< Main/trdot.f
+---
+> 4306 Nov 18 2016
+> Main-kepler-rainer/trdot.f
+1,2c1,2
+< 11414 Jun 5 08:01
+< Main/trflow.f
+---
+> 11414 Nov 18 2016
+> Main-kepler-rainer/trflow.f
+1,2c1,2
+< 16918 Jun 5 08:01
+< Main/triple.f
+---
+> 16918 Nov 18 2016
+> Main-kepler-rainer/triple.f
+1,2c1,2
+< 1691 Jun 5 08:01
+< Main/tstab.f
+---
+> 1691 Nov 18 2016
+> Main-kepler-rainer/tstab.f
+1,2c1,2
+< 586 Jun 5 08:01
+< Main/tstep2.f
+---
+> 586 Nov 18 2016
+> Main-kepler-rainer/tstep2.f
+1,2c1,2
+< 678 Jun 5 08:01
+< Main/tstep.f
+---
+> 678 Nov 18 2016
+> Main-kepler-rainer/tstep.f
+1,2c1,2
+< 2443 Jun 5 08:01
+< Main/ttcal.f
+---
+> 2443 Nov 18 2016
+> Main-kepler-rainer/ttcal.f
+1,2c1,2
+< 8002 Jun 5 08:01
+< Main/ttforce.f
+---
+> 8002 Nov 18 2016
+> Main-kepler-rainer/ttforce.f
+1,2c1,2
+< 14079 Jun 5 08:01
+< Main/ttgalaxy.f
+---
+> 14079 Nov 18 2016
+> Main-kepler-rainer/ttgalaxy.f
+1,2c1,2
+< 3645 Jun 5 08:01
+< Main/ttinit.f
+---
+> 3645 Nov 18 2016
+> Main-kepler-rainer/ttinit.f
+1,2c1,2
+< 2261 Jun 5 08:01
+< Main/units.f
+---
+> 2261 Nov 18 2016
+> Main-kepler-rainer/units.f
+1,2c1,2
+< 12106 Jun 5 08:01
+< Main/unpert.f
+---
+> 12100 Mar 27 02:29
+> Main-kepler-rainer/unpert.f
+226,232c226,232
+< c$$$*       Obtain KS variables at pericentre before coalescence to one body.
+< c$$$              CALL KSPERI(IPAIR)
+< c$$$              KSPAIR = IPAIR
+< c$$$*       Set indicator for skipping ECOLL updating in COAL.
+< c$$$              IQCOLL = -2
+< c$$$              CALL CMBODY(2)
+< c$$$              IF (IPHASE.LT.0) GO TO 30
+---
+> *           Obtain KS variables at pericentre before coalescence to one body.
+>                   CALL KSPERI(IPAIR)
+>                   KSPAIR = IPAIR
+> *           Set indicator for skipping ECOLL updating in COAL.
+>                   IQCOLL = -2
+>                   CALL CMBODY(2)
+>                   IF (IPHASE.LT.0) GO TO 30
+326d325
+<       
+\ No newline at end of file
+1,2c1,2
+< 14483 Jun 5 08:01
+< Main/update.F
+---
+> 14483 Nov 18 2016
+> Main-kepler-rainer/update.F
+1,2c1,2
+< 6941 Jun 5 08:01
+< Main/util_gpu.F
+---
+> 6941 Apr 3 20:22
+> Main-kepler-rainer/util_gpu.F
+1,2c1,2
+< 462 Jun 5 08:01
+< Main/vector.f
+---
+> 462 Nov 18 2016
+> Main-kepler-rainer/vector.f
+1,2c1,2
+< 1866 Jun 5 08:01
+< Main/verify.f
+---
+> 1866 Nov 18 2016
+> Main-kepler-rainer/verify.f
+1,2c1,2
+< 2777 Jun 5 08:01
+< Main/xbpredall.f
+---
+> 2777 Apr 5 21:31
+> Main-kepler-rainer/xbpredall.f
+1,2c1,2
+< 2886 Jun 5 08:01
+< Main/xcpred.f
+---
+> 2886 Nov 18 2016
+> Main-kepler-rainer/xcpred.f
+1,2c1,2
+< 1677 Jun 5 08:01
+< Main/x.f
+---
+> 1677 Mar 30 23:02
+> Main-kepler-rainer/x.f
+1,2c1,2
+< 1218 Jun 5 08:01
+< Main/xtf.f
+---
+> 1218 Nov 18 2016
+> Main-kepler-rainer/xtf.f
+1,2c1,2
+< 2597 Jun 5 08:01
+< Main/xtpert.f
+---
+> 2597 Nov 18 2016
+> Main-kepler-rainer/xtpert.f
+1,2c1,2
+< 10847 Jun 5 08:01
+< Main/xtrnl0.F
+---
+> 10847 Nov 18 2016
+> Main-kepler-rainer/xtrnl0.F
+1,2c1,2
+< 2233 Jun 5 08:01
+< Main/xtrnld.f
+---
+> 2233 Nov 18 2016
+> Main-kepler-rainer/xtrnld.f
+1,2c1,2
+< 4442 Jun 5 08:01
+< Main/xtrnlf.F
+---
+> 4442 Nov 18 2016
+> Main-kepler-rainer/xtrnlf.F
+1,2c1,2
+< 501 Jun 5 08:01
+< Main/xtrnlp.f
+---
+> 501 Nov 18 2016
+> Main-kepler-rainer/xtrnlp.f
+1,2c1,2
+< 1853 Jun 5 08:01
+< Main/xtrnlt.F
+---
+> 1853 Nov 18 2016
+> Main-kepler-rainer/xtrnlt.F
+1,2c1,2
+< 4480 Jun 5 08:01
+< Main/xtrnlv.F
+---
+> 4480 Nov 18 2016
+> Main-kepler-rainer/xtrnlv.F
+1,2c1,2
+< 6428 Jun 5 08:01
+< Main/xvpred.f
+---
+> 6428 Apr 5 21:31
+> Main-kepler-rainer/xvpred.f
+1,2c1,2
+< 519 Jun 5 08:01
+< Main/ycopy.f
+---
+> 519 Nov 18 2016
+> Main-kepler-rainer/ycopy.f
+1,2c1,2
+< 515 Jun 5 08:01
+< Main/ysave.f
+---
+> 515 Nov 18 2016
+> Main-kepler-rainer/ysave.f
+1,2c1,2
+< 3483 Jun 5 08:01
+< Main/zare.f
+---
+> 3483 Nov 18 2016
+> Main-kepler-rainer/zare.f
+1,2c1,2
+< 16419 Jun 5 08:01
+< Main/zcnsts.f
+---
+> 16419 Nov 18 2016
+> Main-kepler-rainer/zcnsts.f
+1,2c1,2
+< 2601 Jun 5 08:01
+< Main/zero.f
+---
+> 2601 Nov 18 2016
+> Main-kepler-rainer/zero.f
+1,2c1,2
+< 24674 Jun 5 08:01
+< Main/zfuncs.f
+---
+> 24674 Nov 18 2016
+> Main-kepler-rainer/zfuncs.f
