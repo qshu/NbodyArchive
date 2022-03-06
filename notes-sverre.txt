@@ -1,0 +1,7 @@
+
+orbit.f
+
+<       IF (J.LT.IFIRST.AND.TIME.GT.0.D0) THEN
+---
+>       IF (J.LT.IFIRST.AND.TIME.GT.0) THEN
+

@@ -1,0 +1,94 @@
+
+
+
+     Changes as of March 2005
+
+
+ Item 1:
+========
+
+ The patch of August 2003 is now included in the standard tar-file,
+ compare notes in README.june2003.patch. 
+
+ Item 2:
+========
+ adjust.F
+
+ barrier before final STOP prevents bad termination of parallel runs
+  
+ Item 2:
+========
+ intgrt.F nbint.f chfirr.f
+
+ Chain predictions and chain perturber predictions have been taken
+ out of the parallel sections, and moved to intgrt.F, just after
+ the full prediction of everything at the beginning of a new block.
+ Therefore all common variables of the chain and the construction
+ with updatef is superfluous now. Inconsistencies between predicted
+ variables in parallel runs are thus avoided.
+ Routines fchain.f and chfirr.f can now be
+ called from nbint.f with IR=1. chfirr.f has now no updatef anymore.
+
+ Item 3:
+========
+
+ A bug in the bookkeeping of many counters in parallel execution
+ (such as NBFULL to NBFLUX) has been fixed by including an
+ MPI_ALLGATHER call and proper summation of values from all PE's
+
+ Item 4:
+========
+
+ The option BK(3) to write on unit 4 (bdat.4), originally by Pavel Kroupa
+ in 1998 has been taken away, there is no write on unit 4 in output.F 
+ anymore. There was a conflict with the standard write on unit 4 in evolve.f
+ for binary diagnostics. Now the binary diagnostics file unit 4 is again
+ compatible with what it was in NBODY6 and just has the name bdat.4 (rather
+ than fort.4 or similar). It is switched on by KZ(4) > 0 in various levels. 
+ Opened in file_init.F as all the other files.
+
+ Item 3:
+========
+
+ Inspired by the KyotoII experiment the option KZ(24) initial conditions
+ for subsystems has been modified.
+
+ Item 4:
+========
+ nbint.f, intgrt.F
+
+ The resolution and prediction of even unperturbed binaries has been
+wrongly placed (for the parallel code) in nbint.f. The lines
+
+
+*       Copy c.m. coordinates & velocities for rare unperturbed intruder.
+      I2 = 2*IPAIR
+      I1 = I2 - 1 
+      DO 15 K = 1,3
+          X(K,I1) = XI(K)
+          X(K,I2) = XI(K)
+          XDOT(K,I1) = XIDOT(K)
+          XDOT(K,I2) = XIDOT(K)
+   15 CONTINUE
+*
+
+ have been deleted. Instead in intgrt.F the lines after IZZ = -1 read now:
+
+          IZZ = -1
+*       Predict ALL binaries even unperturbed ones for parallel code (R.Sp.)
+          ZZ = 0.0
+          CALL KSRES2(JPAIR,J1,J2,ZZ,IZZ)
+
+
+Minor corrections 
+====================
+
+  Opening of unit 12 hia.12 only if KZ(11)=1 OR 3
+  Preventing multiprocessor output from evolve.f on bdat.4
+  Opening of units 82 83 as bev.82 and sev.83 from file_init.F
+  const.f  dimensions times 3
+  output of total mass before scaling in imf.f imf2.f
+  events.f  TPHYS = (TIME + TOFF)*TSTAR
+  data.F  DTPLOT input parameter
+  common RAND renamed to RANDO (block.f, mydump.F) to avoid compiler warnings
+
