@@ -1,0 +1,93 @@
+
+
+  Until May 3, 02
+
+  escape.F                 ZNBMAX = 0.9*FLOAT(NNBMAX)
+                                        ^^^^^
+  start.F                  went back to standard distance criterion for KSREG   
+  bindat.F
+  ksint.F                  new .F instead of .f for output prevention on parallel
+  escape.F 
+
+  nbody6.F                 central opening of all files. Take out SAVE/FIRST procedures.
+                           Take out OPEN statements for units 1,2,3,4,7,9,11,15 in 
+                                mydump,output,lagr,escape,ksint
+  many routines            save all kinds of write statements on parallel
+
+  nbody6.F                 take out redundant line setting ZMET=1.D-4 (is already done in data.F)
+
+
+
+    Routines                   Action                      Date of Mail
+
+  Consistency Check of latest routines with massless/Nbody6++-bin   Feb. 18
+  ---------------------------------------------------------------------------------------
+
+  core.f                     Division problem on CRAY settled for RINV32
+
+  nbody6.F, output.F, lagr.F mydump.F ksint.F escape.F, 
+  common6.h  (new file common)
+                             Open Files for ensemble consistency 
+
+  ksint.f                    settled for GO TO 70^
+  ksint.f                    Open Question              18. Feb. NOT.IQ -> GO TO 60 or 70
+  subint.f                   DTB>1.0                    11.Jan.02
+  cmbody.f                   Sverre (small add.changes) 30.Nov.01
+  ksint.f                    Sverre                     27.Nov  (adapted to Nb6++)
+  cstab3.f/cstab5.f          Sverre                     27.Nov. (adapted to Nb6++)
+  tchain.f                   Sverre                     27.Nov. 
+  cmbody.f                   Sverre                     27.Nov. 
+  reduce.f                   Sverre                     27.Nov. (adapted to Nb6++)
+  chterm.f                   Sverre                     27.Nov.
+  chmod.f                    Sverre                     15.Nov. (adapted to Nb6++)
+  chterm.f                   Sverre                     15.Nov.
+  kslist.f                   Sverre                     14.Nov.
+  ksint.f                    Sverre                     14.Nov  (adapted to Nb6++)
+ -----------------------------------------------------------------------------------------^
+  binout and ksmod           change GM -> GX            25.Sep
+  common6.h                  include NSTEPB             25.Sep.  was ok
+  nbint.f / intgrt.F         accumul. NSTEPB            25.Sep. was ok/intgrt.F
+  mdot.f                     comment/change TEX         25.Sep.
+  brake.f                    taken                      25.Sep.
+  hidat.f                    taken Mar 19               19.Mar / 16. Mar / 25. Sep.
+  ksint.f                    updated manually as Sep 25  30.Jul/Apr 11/25.Sep.
+  kstide.f                   taken Sep 25               Apr 11/Sep 25
+  output.f                   updated manually as Sep 25  Apr 11/Sep 25
+  reset2.f                   taken Mar 22     Apr 11/Mar 22/Jan 04/Sep 27/Sep 25
+  unpert.f                   taken Sep 25               Sep 25
+  chain.f                    updated manually as Sep 25  Sep 25
+  chmod.f                    taken Sep 25                Sep 25/Aug 12
+                         change MAX in MIN 3 times       Jan 4
+  chdata.f                  new as of Sep 25/added Makef Sep 25
+  ksin2.f                   taken Sep 27                 Sep 27
+  cmbody.f                  taken Mar 26      Jul 30/Mar 26/Mar 19/Nov 08/Oct 17
+  rename.f                  taken Oct 20                 Oct 20
+  recoil.f                  Line 193 Format Change       Nov 7
+  subint.f                  taken Dec 11 (WARN PARBIN!)  May 25/Dec 11
+  sort2.f                    leave out/take sort1        Dec 11
+                             (remember lagr.F/imf2.f ok)
+  insert.f                  taken Dec 11                 Dec 11
+  kspoly.f                  added at line 202            Dec 11
+  recoil.f                  l.214 last variable ALPHA    Jan 4
+                            (this could not be found out)
+  chterm.f                  taken Jan 4                  Jan 4 / Oct 17
+  merge2.f                  taken Mar 22                 Mar 22/ Jan 4
+  derqp.f                   taken Mar 19                 Mar 19
+  escape.f                  taken Mar 20/hand added      Apr 11/Mar 20/Jan 4
+                               tidal cut from NB6++
+  regint.f                  Apr 5 hand checked           Apr 5
+  intgrt.F                  Apr 5 hand checked           Apr 5
+  hivel.f                         DMIN->DTMIN            Apr 9
+
+
+   Aug 5
+
+
+  escape.f  and others         ZNBMIN, ZNBMAX properly determined
+  intgrt.F, regint.f, nbint.f  some small snags, checking for cause of
+                               systematic errors
+
+
+  start with April 11 changes
+
+

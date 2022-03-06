@@ -1,0 +1,1185 @@
+%!PS-Adobe-3.0
+%%Title: nbint.f
+%%For: Rainer Spurzem
+%%Creator: a2ps version 4.12
+%%CreationDate: Fri Nov  2 18:00:48 2001
+%%BoundingBox: 42 40 564 828
+%%DocumentData: Clean7Bit
+%%Orientation: Portrait
+%%Pages: 4
+%%PageOrder: Ascend
+%%DocumentMedia: A4kyo 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 842 def
+/sw 595 def
+/llx 42 def
+/urx 564 def
+/ury 828 def
+/lly 40 def
+/#copies 1 def
+/th 20.000000 def
+/fnfs 15 def
+/bfs 10.000000 def
+/cw 6.000000 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   767.000000 th add
+def
+/pmw 0 def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+] def
+/y [
+  pmh ph add 0 mul ph add
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(SUBROUTINE) K
+( ) p
+(NBINT) L
+(\(I,NBFLAG\)) p n
+(*) c n
+(*) N
+(*       Irregular integration.) N
+(*       ----------------------) N
+(*) N
+(      INCLUDE ') p
+(common6.h) str
+(') p n
+(      ) S
+(COMMON) K
+(/CHAINC/  XC\(3,NCMAX\),UC\(3,NCMAX\),BODYC\(NCMAX\),ICH,) p n
+(     &                LISTC\(LMAX\)) N
+(*       Calculate potential with little extra cost.) c n
+(      ) p
+(COMMON) K
+(/POTENT/PHII\(NMAX\),PHIR\(NMAX\),PHIR1\(NMAX\)) p n
+(      ) S
+(REAL) K
+(*8  XI\(3\),XIDOT\(3\),FIRR\(3\),FREG\(3\),FD\(3\),FDUM\(3\),DV\(3\)) p n
+(*) c n
+(          ) p
+(IF) K
+(\(NBFLAG.EQ.0\)) p
+(THEN) K n
+(*       Predict current state vector of body #I to order FDOT.) c n
+(          S = TIME - T0\(I\)) p n
+(          ) S
+(DO) K
+( 11 K = 1,3) p n
+(           X\(K,I\) = \(\(FDOT\(K,I\)*S + F\(K,I\)\)*S + X0DOT\(K,I\)\)*S + X0\(K,I\)) N
+(           XDOT\(K,I\) = \(3.0*FDOT\(K,I\)*S + 2.0*F\(K,I\)\)*S + X0DOT\(K,I\)) N
+(   11     ) S
+(CONTINUE) K n
+(*       Predict coordinates & velocities of neighbours to order FDOT \(R.Sp.\).) c n
+(          NNB1 = LIST\(1,I\) + 1) p n
+(*) c n
+(          ) p
+(DO) K
+( 1 L = 2,NNB1) p n
+(              J = LIST\(L,I\)) N
+(              S = TIME - T0\(J\)) N
+(              S1 = 1.5*S) N
+(              S2 = 2.0*S) N
+(              X\(1,J\) = \(\(FDOT\(1,J\)*S + F\(1,J\)\)*S +X0DOT\(1,J\)\)*S +X0\(1,J\)) N
+(              X\(2,J\) = \(\(FDOT\(2,J\)*S + F\(2,J\)\)*S +X0DOT\(2,J\)\)*S +X0\(2,J\)) N
+(              X\(3,J\) = \(\(FDOT\(3,J\)*S + F\(3,J\)\)*S +X0DOT\(3,J\)\)*S +X0\(3,J\)) N
+(              XDOT\(1,J\) = \(FDOT\(1,J\)*S1 + F\(1,J\)\)*S2 + X0DOT\(1,J\)) N
+(              XDOT\(2,J\) = \(FDOT\(2,J\)*S1 + F\(2,J\)\)*S2 + X0DOT\(2,J\)) N
+(              XDOT\(3,J\) = \(FDOT\(3,J\)*S1 + F\(3,J\)\)*S2 + X0DOT\(3,J\)) N
+(   1      ) S
+(CONTINUE) K n
+(*) c n
+(          ) p
+(END) K
+( ) p
+(IF) K n
+(*         call cputim\(tt2\)) c n
+(*         ttpre = ttpre + \(tt2-tt1\)*60.) N
+(*         ttnbp = ttnbp + \(tt2-tt1\)*60.) N
+(*) N
+(*       Obtain irregular force & first derivative.) N
+(      ) p
+(DO) K
+( 5 K = 1,3) p n
+(          XI\(K\) = X\(K,I\)) N
+(          XIDOT\(K\) = XDOT\(K,I\)) N
+(          FIRR\(K\) = 0.0D0) N
+(          FD\(K\) = 0.0D0) N
+(    5 ) S
+(CONTINUE) K n
+(          PHII\(I\) = 0.D0) p n
+(          NNB0 = LIST\(1,I\)) N
+(*) c n
+(*       Assume small mass at centre for special case of no neighbours.) N
+(      ) p
+(IF) K
+( \(NNB0.EQ.0\) ) p
+(THEN) K n
+(          RI2 = XI\(1\)**2 + XI\(2\)**2 + XI\(3\)**2) p n
+(          FIJ = 0.01*BODYM/\(RI2*) S
+(SQRT) K
+(\(RI2\)\)) p n
+(          RDOT = 3.0*\(XI\(1\)*XIDOT\(1\) + XI\(2\)*XIDOT\(2\) +) N
+(     &                                 XI\(3\)*XIDOT\(3\)\)/RI2) N
+(          ) S
+(DO) K
+( 10 K = 1,3) p n
+(              FIRR\(K\) = -FIJ*XI\(K\)) N
+(              FD\(K\) = -\(XIDOT\(K\) - RDOT*XI\(K\)\)*FIJ) N
+(   10     ) S
+(CONTINUE) K n
+(          ) p
+(IF) K
+( \(I.GT.N\) IPAIR = I - N) p n
+(          ) S
+(GO TO) K
+( 70) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Choose force loop for single particle or regularized c.m. body.) N
+(      ) p
+(IF) K
+( \(I.LE.N\) ) p
+(GO TO) K
+( 20) p n
+(*) c n
+(*       Set KS pair index.) N
+(      IPAIR = I - N) p n
+(*) c n
+(*       Adopt c.m. approximation for small total perturbation.) N
+(      ) p
+(IF) K
+( \(GAMMA\(IPAIR\)) p
+(\263) sy
+(GMIN\) ) p
+(THEN) K n
+(*       Obtain irregular force on perturbed c.m. body \(including any chain\).) c n
+(          ) p
+(CALL) K
+( ) p
+(CMFIRR) l
+(\(I,IPAIR,XI,XIDOT,FIRR,FD\)) p n
+(          ) S
+(GO TO) K
+( 70) p n
+(nbint.f) (Page 1/4) (Aug 15, 01 16:40) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (2) 2
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Copy c.m. coordinates & velocities for rare unperturbed intruder.) N
+(      I2 = 2*IPAIR) p n
+(      I1 = I2 - 1) N
+(      ) S
+(DO) K
+( 15 K = 1,3) p n
+(          X\(K,I1\) = XI\(K\)) N
+(          X\(K,I2\) = XI\(K\)) N
+(          XDOT\(K,I1\) = XIDOT\(K\)) N
+(          XDOT\(K,I2\) = XIDOT\(K\)) N
+(   15 ) S
+(CONTINUE) K n
+(*) c n
+(*       Set neighbour number & list index of the last single particle.) N
+(   20 NNB1 = NNB0 + 1) p n
+(      NNB2 = NNB1) N
+(   25 ) S
+(IF) K
+( \(LIST\(NNB2,I\)) p
+(\243) sy
+(N\) ) p
+(GO TO) K
+( 30) p n
+(      NNB2 = NNB2 - 1) N
+(      ) S
+(IF) K
+( \(NNB2.GT.1\) ) p
+(GO TO) K
+( 25) p n
+(*       Include special case of only c.m. neighbours.) c n
+(      ) p
+(GO TO) K
+( 40) p n
+(*) c n
+(*       Sum over single particles \(unperturbed case included\).) N
+(   30 ) p
+(DO) K
+( 35 L = 2,NNB2) p n
+(          K = LIST\(L,I\)) N
+(          A1 = X\(1,K\) - XI\(1\)) N
+(          A2 = X\(2,K\) - XI\(2\)) N
+(          A3 = X\(3,K\) - XI\(3\)) N
+(          DV\(1\) = XDOT\(1,K\) - XIDOT\(1\)) N
+(          DV\(2\) = XDOT\(2,K\) - XIDOT\(2\)) N
+(          DV\(3\) = XDOT\(3,K\) - XIDOT\(3\)) N
+(          RIJ2 = A1*A1 + A2*A2 + A3*A3) N
+(*) c n
+(          DR2I = 1.0/RIJ2) p n
+(          DR3I = BODY\(K\)*DR2I*) S
+(SQRT) K
+(\(DR2I\)) p n
+(          DRDV = 3.0*\(A1*DV\(1\) + A2*DV\(2\) + A3*DV\(3\)\)*DR2I) N
+(          FIRR\(1\) = FIRR\(1\) + A1*DR3I) N
+(          FIRR\(2\) = FIRR\(2\) + A2*DR3I) N
+(          FIRR\(3\) = FIRR\(3\) + A3*DR3I) N
+(          PHII\(I\) = PHII\(I\) - DR3I*RIJ2) N
+(          FD\(1\) = FD\(1\) + \(DV\(1\) - A1*DRDV\)*DR3I) N
+(          FD\(2\) = FD\(2\) + \(DV\(2\) - A2*DRDV\)*DR3I) N
+(          FD\(3\) = FD\(3\) + \(DV\(3\) - A3*DRDV\)*DR3I) N
+(   35 ) S
+(CONTINUE) K n
+(*) c n
+(*       See whether any c.m. neighbours should be included.) N
+(      ) p
+(IF) K
+( \(NNB2.EQ.NNB1\) ) p
+(GO TO) K
+( 60) p n
+(*) c n
+(   40 NNB3 = NNB2 + 1) p n
+(*       Set index for distinguishing c.m. or resolved components.) c n
+(      KDUM = 0) p n
+(*) c n
+(*       Sum over regularized c.m. neighbours.) N
+(      ) p
+(DO) K
+( 50 L = NNB3,NNB1) p n
+(          K = LIST\(L,I\)) N
+(          A1 = X\(1,K\) - XI\(1\)) N
+(          A2 = X\(2,K\) - XI\(2\)) N
+(          A3 = X\(3,K\) - XI\(3\)) N
+(          DV\(1\) = XDOT\(1,K\) - XIDOT\(1\)) N
+(          DV\(2\) = XDOT\(2,K\) - XIDOT\(2\)) N
+(          DV\(3\) = XDOT\(3,K\) - XIDOT\(3\)) N
+(          RIJ2 = A1*A1 + A2*A2 + A3*A3) N
+(*) c n
+(*       See whether c.m. approximation applies \(ignore unperturbed case\).) N
+(          J = K - N) p n
+(          KDUM = 2*J - 1) N
+(          ) S
+(IF) K
+( \(RIJ2.GT.CMSEP2*R\(J\)**2.OR.LIST\(1,KDUM\)) p
+(\272) sy
+(0\) ) p
+(GO TO) K
+( 48) p n
+(*) c n
+(          K = KDUM) p n
+(*       Sum over individual components of pair #J.) c n
+(   45     A1 = X\(1,K\) - XI\(1\)) p n
+(          A2 = X\(2,K\) - XI\(2\)) N
+(          A3 = X\(3,K\) - XI\(3\)) N
+(          DV\(1\) = XDOT\(1,K\) - XIDOT\(1\)) N
+(          DV\(2\) = XDOT\(2,K\) - XIDOT\(2\)) N
+(          DV\(3\) = XDOT\(3,K\) - XIDOT\(3\)) N
+(          RIJ2 = A1*A1 + A2*A2 + A3*A3) N
+(nbint.f) (Page 2/4) (Aug 15, 01 16:40) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 3
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*) c n
+(*       Adopt c.m. approximation outside the effective perturber sphere.) N
+(   48     DR2I = 1.0/RIJ2) p n
+(          DR3I = BODY\(K\)*DR2I*) S
+(SQRT) K
+(\(DR2I\)) p n
+(          DRDV = 3.0*\(A1*DV\(1\) + A2*DV\(2\) + A3*DV\(3\)\)*DR2I) N
+(*) c n
+(          FIRR\(1\) = FIRR\(1\) + A1*DR3I) p n
+(          FIRR\(2\) = FIRR\(2\) + A2*DR3I) N
+(          FIRR\(3\) = FIRR\(3\) + A3*DR3I) N
+(          FD\(1\) = FD\(1\) + \(DV\(1\) - A1*DRDV\)*DR3I) N
+(          FD\(2\) = FD\(2\) + \(DV\(2\) - A2*DRDV\)*DR3I) N
+(          FD\(3\) = FD\(3\) + \(DV\(3\) - A3*DRDV\)*DR3I) N
+(          ) S
+(IF) K
+( \(K.EQ.KDUM\) ) p
+(THEN) K n
+(              K = K + 1) p n
+(              ) S
+(GO TO) K
+( 45) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(   50 ) p
+(CONTINUE) K n
+(*) c n
+(*       Include treatment for regularized clump.) N
+(   60 ) p
+(IF) K
+( \(NCH.GT.0\) ) p
+(THEN) K n
+(*       Distinguish between chain c.m. and any other particle.) c n
+(          ) p
+(IF) K
+( \(NAME\(I\)) p
+(\272) sy
+(0\) ) p
+(THEN) K n
+(              ) p
+(CALL) K
+( ) p
+(CHFIRR) l
+(\(I,0,XI,XIDOT,FIRR,FD\)) p n
+(          ) S
+(ELSE) K n
+(*       See if chain perturber list contains body #I.) c n
+(              ) p
+(DO) K
+( 65 L = 2,NNB2) p n
+(                  J = LIST\(L,I\)) N
+(                  ) S
+(IF) K
+( \(J.GT.ICH\) ) p
+(GO TO) K
+( 70) p n
+(                  ) S
+(IF) K
+( \(J.EQ.ICH\) ) p
+(THEN) K n
+(                      ) p
+(CALL) K
+( ) p
+(FCHAIN) l
+(\(I,0,XI,XIDOT,FIRR,FD\)) p n
+(                  ) S
+(END) K
+( ) p
+(IF) K n
+(   65         ) p
+(CONTINUE) K n
+(          ) p
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Check option for external tidal field.) N
+(   70 ) p
+(IF) K
+( \(KZ\(14\)>0\) ) p
+(THEN) K n
+(          ) p
+(DO) K
+( 75 K = 1,3) p n
+(              FREG\(K\) = FR\(K,I\)) N
+(   75     ) S
+(CONTINUE) K n
+(          ) p
+(CALL) K
+( ) p
+(XTRNLF) l
+(\(I,XI,XIDOT,FIRR,FREG,FD,FDUM,0\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Include the corrector and set new F, FDOT, D1, D2 & D3.) N
+(      DT = TIME - T0\(I\)) p n
+(      DTSQ = DT**2) N
+(      DT6 = 6.0/\(DT*DTSQ\)) N
+(      DT2 = 2.0/DTSQ) N
+(      DTSQ12 = ONE12*DTSQ) N
+(      DT13 = ONE3*DT) N
+(*) c n
+(      ) p
+(DO) K
+( 80 K = 1,3) p n
+() S 8 T (  DF = FI\(K,I\) - FIRR\(K\)) N
+() S 8 T (  FID = FIDOT\(K,I\)) N
+() S 8 T (  ) S
+(SUM) K
+( = FID + FD\(K\)) p n
+() S 8 T (  AT3 = 2.0*DF + DT*) S
+(SUM) K n
+() p 8 T (  BT2 = -3.0*DF - DT*\() S
+(SUM) K
+( + FID\)) p n
+(*       Use here new variables for consistency in parallel execution \(R.Sp.\)) c n
+(          XN\(K,I\) = XI\(K\) + \(0.6*AT3 + BT2\)*DTSQ12) p n
+(          XNDOT\(K,I\) = XIDOT\(K\) + \(0.75*AT3 + BT2\)*DT13) N
+(*) c n
+(      FI\(K,I\) = FIRR\(K\)) p n
+(      FIDOT\(K,I\) = FD\(K\)) N
+(*       Use total force for irregular step \(cf. Makino & Aarseth PASJ, 1992\).) c n
+(          FDUM\(K\) = FIRR\(K\) + FR\(K,I\)) p n
+(*) c n
+(          D2\(K,I\) = \(3.0*AT3 + BT2\)*DT2) p n
+(          D3\(K,I\) = AT3*DT6) N
+(*       NOTE: These are real derivatives!) c n
+(   80 ) p
+(continue) K n
+(*) c n
+(*       Specify new time-step \(standard criterion or fast expression\).) N
+(        ) p
+(IF) K
+( \(KZ\(37\)) p
+(\272) sy
+(0\) ) p
+(THEN) K n
+(          TTMP = TSTEP\(FDUM,FD,D2\(1,I\),D3\(1,I\),ETAI\)) p n
+(        ) S
+(ELSE) K n
+(          TTMP = STEPI\(FDUM,FD,D2\(1,I\),D3\(1,I\),ETAI\)) p n
+(nbint.f) (Page 3/4) (Aug 15, 01 16:40) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (4) 4
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(        ) p
+(END) K
+( ) p
+(IF) K n
+(      DT0 = TTMP) p n
+(*) c n
+(*       Winston Sweatman's suggestion) N
+(*     DVV = \(XDOT\(1,I\)-X0DOT\(1,I\)\)**2 + \(XDOT\(2,I\)-X0DOT\(2,I\)\)**2 +) N
+(*    &     \(XDOT\(3,I\)-X0DOT\(3,I\)\)**2) N
+(*     FFD = FIRR\(1\)**2 + FIRR\(2\)**2 + FIRR\(3\)**2) N
+(*     ETAIW = ETAI) N
+(*     TTMPW = ETAIW*DVV*BODY\(I\)/FFD) N
+(*) N
+(*     PRINT*,' irr I=',I,' TTMP,TTMPW,RATIO=',) N
+(*    &  TTMP,TTMPW,TTMP/TTMPW) N
+(*) N
+(*     IF\(TTMP.GT.TTMPW\)THEN) N
+(*     IGT = IGT + 1) N
+(*     ELSE) N
+(*     ILE = ILE + 1) N
+(*     END IF) N
+(*     IF\(MOD\(IGT+ILE,100\).EQ.0\)PRINT*,' irr IGT,ILE=',IGT,ILE) N
+(*) N
+(*     TTMP = MAX\(TTMPW,TTMP\)) N
+(*     DT0 = TTMP) N
+(*) N
+(      ) p
+(IF) K
+( \(I.GT.N\) ) p
+(THEN) K n
+(*       Check for hierarchical configuration but exclude small perturbations.) c n
+(          ) p
+(IF) K
+( \(H\(IPAIR\)) p
+(.LT.) K
+(-ECLOSE.AND.KZ\(36\)>0\) ) p
+(THEN) K n
+(              ) p
+(IF) K
+( \(GAMMA\(IPAIR\)>1.0E-04\) ) p
+(THEN) K n
+(                  ) p
+(CALL) K
+( ) p
+(KEPLER) l
+(\(I,TTMP\)) p n
+(                  DT0 = TTMP) N
+(              ) S
+(END) K
+( ) p
+(IF) K n
+(          ) p
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Select discrete value \(increased by 2, decreased by 2 or unchanged\).) N
+(      ) p
+(IF) K
+( \(TTMP.GT.2.0*STEP\(I\)\) ) p
+(THEN) K n
+(          ) p
+(IF) K
+( \() p
+(DMOD) K
+(\(TIME,2.0*STEP\(I\)\)) p
+(\272) sy
+(0.0D0\) ) p
+(THEN) K n
+(              TTMP = ) p
+(MIN) K
+(\(2.0*STEP\(I\),1.D0\)) p n
+(          ) S
+(ELSE) K n
+(              TTMP = STEP\(I\)) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(ELSE) K
+( ) p
+(IF) K
+( \(TTMP.LT.STEP\(I\)\) ) p
+(THEN) K n
+(          TTMP = 0.5*STEP\(I\)) p n
+(            ) S
+(IF) K
+( \(TTMP.GT.DT0\) ) p
+(THEN) K n
+(                TTMP = 0.5*TTMP) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(ELSE) K n
+(          TTMP = STEP\(I\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(      STEP\(I\) = TTMP) p n
+(*) c n
+(      ) p
+(RETURN) K n
+(*) c n
+(      ) p
+(END) K n
+(nbint.f) (Page 4/4) (Aug 15, 01 16:40) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF
