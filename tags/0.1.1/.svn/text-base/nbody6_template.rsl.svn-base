@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job>
+  <executable>nb6_wrapper_#TASK_ID.sh</executable>
+  <!-- <directory>${GLOBUS_USER_HOME}</directory> -->
+  
+  <stdout>nb6_wrapper_stdout_#TASK_ID</stdout>
+  <stderr>nb6_wrapper_stderr_#TASK_ID</stderr>
+
+  <fileStageIn>
+
+  <transfer>
+  <sourceUrl>#THIS_URL/tmp/nb6_wrapper.sh_#TASK_ID</sourceUrl>
+  <destinationUrl>file:///${GLOBUS_USER_HOME}/nb6_wrapper_#TASK_ID.sh</destinationUrl>
+  </transfer>
+
+  <transfer>
+  <sourceUrl>#THIS_URL/tmp/nbody6_src_#TASK_ID.tar.gz</sourceUrl>
+  <destinationUrl>file:///${GLOBUS_USER_HOME}/nbody6_src_#TASK_ID.tar.gz</destinationUrl>
+  </transfer>
+
+  <transfer>
+    <sourceUrl>#THIS_URL/hosts.env</sourceUrl>
+    <destinationUrl>file:///${GLOBUS_USER_HOME}/hosts.env_#TASK_ID</destinationUrl>
+  </transfer>
+
+<!--  
+  <transfer>
+  <sourceUrl>#THIS_URL/bin/nbody6</sourceUrl>
+  <destinationUrl>file:///${GLOBUS_USER_HOME}/nbody6_#TASK_ID</destinationUrl>
+  </transfer>
+-->
+
+  <transfer>
+  <sourceUrl>#THIS_URL/#PARAMETER_INPUT_FILE</sourceUrl>
+  <destinationUrl>file:///${GLOBUS_USER_HOME}/parameter.in_#TASK_ID</destinationUrl>
+  </transfer>
+  </fileStageIn>
+
+  <fileStageOut>
+  <transfer>
+  <sourceUrl>file:///${GLOBUS_USER_HOME}/nb6_wrapper_stdout_#TASK_ID</sourceUrl>
+  <destinationUrl>#THIS_URL/outfiles/#TASK_ID/wrapper.out</destinationUrl>
+  </transfer>
+ 
+  <transfer>
+    <sourceUrl>file:///${GLOBUS_USER_HOME}/nb6_wrapper_stderr_#TASK_ID</sourceUrl>
+    <destinationUrl>#THIS_URL/outfiles/#TASK_ID/wrapper.err</destinationUrl>
+  </transfer>
+
+  <transfer>
+    <sourceUrl>file:///${GLOBUS_USER_HOME}/nbody6.out_#TASK_ID</sourceUrl>
+    <destinationUrl>#THIS_URL/outfiles/#TASK_ID/nbody6.out</destinationUrl>
+  </transfer>
+  
+  <transfer>
+    <sourceUrl>file:///${GLOBUS_USER_HOME}/comm.1_#TASK_ID</sourceUrl>
+    <destinationUrl>#THIS_URL/outfiles/#TASK_ID/comm.1</destinationUrl>
+  </transfer>
+
+   <transfer>
+    <sourceUrl>file:///${GLOBUS_USER_HOME}/comm.2_#TASK_ID</sourceUrl>
+    <destinationUrl>#THIS_URL/outfiles/#TASK_ID/comm.2</destinationUrl>
+  </transfer>
+
+   <transfer>
+    <sourceUrl>file:///${GLOBUS_USER_HOME}/conf.3_#TASK_ID</sourceUrl>
+    <destinationUrl>#THIS_URL/outfiles/#TASK_ID/conf.3</destinationUrl>
+  </transfer>
+  
+   <transfer>
+    <sourceUrl>file:///${GLOBUS_USER_HOME}/hia.12_#TASK_ID</sourceUrl>
+    <destinationUrl>#THIS_URL/outfiles/#TASK_ID/hia.12</destinationUrl>
+  </transfer>
+
+   <transfer>
+    <sourceUrl>file:///${GLOBUS_USER_HOME}/lagr.7_#TASK_ID</sourceUrl>
+    <destinationUrl>#THIS_URL/outfiles/#TASK_ID/lagr.7</destinationUrl>
+  </transfer>
+
+  </fileStageOut>
+
+  <fileCleanUp>
+  
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/nb6_wrapper_#TASK_ID.sh</file>
+  </deletion>
+ 
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/nbody6_src_#TASK_ID.tar.gz</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/hosts.env_#TASK_ID</file>
+  </deletion>
+<!--
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/nbody6_#TASK_ID</file>
+  </deletion>
+-->
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/parameter.in_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/nb6_wrapper_stdout_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/nb6_wrapper_stderr_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/nbody6.out_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/comm.1_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/comm.2_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/conf.3_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/hia.12_#TASK_ID</file>
+  </deletion>
+
+  <deletion>
+    <file>file:///${GLOBUS_USER_HOME}/lagr.7_#TASK_ID</file>
+  </deletion>
+
+  </fileCleanUp>
+
+<!--
+<extensions>
+<gw>
+HOSTNAME="gavo2.aip.de"
+</gw>
+</extensions>
+-->
+
+</job>
