@@ -1,0 +1,14 @@
+*
+*       Prepare new quantized time-step including zero or negative values.
+      DT2 = TIME - TPREV
+      DT8 = (TBLOCK - TPREV)/8.0D0
+      IF (DT2.GT.0.0.AND.DT8.GT.0.0) THEN
+          CALL STEPK(DT2,DTN2)
+      ELSE
+          DT2 = SMAX/64.0D0
+          DT8 = SMAX/256.0D0
+          CALL STEPK(DT2,DTN2)
+      END IF
+*       Obtain the joint quantized value.
+      DTN = NINT(DTN2/DT8)*DT8
+*

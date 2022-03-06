@@ -1,0 +1,304 @@
+      SUBROUTINE KSINTR(I1,KCASE,TIME1)
+*
+*
+*       Regularized integration back in time.
+*       TODO: conside what checks to exlude.
+*       ------------------------
+*
+      INCLUDE 'common6.h'
+      INCLUDE 'kscmn6.h'
+      COMMON/SLOW0/  RANGE,ISLOW(10)
+!     PARAMETER (ZZ=1.0/120.0D0)
+      REAL*8  UI(4),UIDOT(4),FP(6),FD(6),RIDOT(3),TDOT(11)
+*
+*
+*       Set second component (= 2), pair index (= 1) & c.m. index.
+      I2 = I1 + 1
+      IPAIR = KVEC(I1)
+      I = N + IPAIR
+      JPHASE = 0
+*
+*       Define perturber membership & inverse c.m. mass.
+      NNB0 = LIST(1,I1)
+      BODYIN = 1.0/BODY(I)
+*
+*       Perform KS prediction of U & UDOT.
+      DTU = DTAU(IPAIR)
+      CALL KSPRED(IPAIR,I,BODYIN,DTU,UI,UIDOT,Q1,Q2,Q3,RIDOT)
+*
+*       Obtain the perturbing force & derivative.
+      CALL KSPERT2(I1,I,NNB0,BODYIN,Q1,Q2,Q3,RIDOT,FP,FD,TIME1)
+*
+*       Save old radial velocity & relative perturbation and set new GAMMA.
+      RDOT = TDOT2(IPAIR)
+      GI = SQRT(FP(1)**2 + FP(2)**2 + FP(3)**2)*R(IPAIR)**2*BODYIN
+      GAMMA(IPAIR) = GI
+*
+*       Apply the Hermite corrector.
+      CALL KSCORR(IPAIR,UI,UIDOT,FP,FD,TDOT,TIME1)
+      TD2 = 0.5*TDOT(2)
+      ! KSPERT2 termination for PN.
+      IF (LKSINT(IPAIR)) THEN
+          IF (IPHASEX(IPAIR).LT.0) GO TO 90
+      ELSE
+          IF (IPHASE.LT.0) GO TO 90
+      END IF
+*
+*       Increase regularization time-step counter and update the time.
+      NSTEPU = NSTEPU + 1
+      T0(I1) = TIME1
+*
+*       Define useful scalars.
+      RI = R(IPAIR)
+      HI = H(IPAIR)
+      SEMI = -0.5*BODY(I)/HI
+*
+*       Choose basic regularized step using binding energy.
+      W1 = 0.5/ABS(HI)
+      W2 = RMIN*BODYIN
+      W1 = MIN(W1,W2)
+      W2 = SQRT(W1)
+*
+*       Set new regularized step and convert to physical time units.
+      DTU = 4.0*ETAU*W2
+!     IF (RI.LT.0.1*SEMI) DTU = DTU * SQRT(RI/(0.1*SEMI))
+      IF (GI.GT.1.0D-02.AND.BODY(I).GT.10.0*BODYM) DTU = 0.5*DTU
+*
+*       Include convergence criterion DH = H'*DTU + H''*DTU**2/2 = 0.001*|H|.
+      IF (GI.GT.1.0D-05) THEN
+          DH = 1.0E-03*MAX(ABS(HI),0.1D0)
+          XF = 2.0*DH/ABS(HDOT2(IPAIR))
+          YF = HDOT(IPAIR)/HDOT2(IPAIR)
+          DTU2 = SQRT(XF + YF**2) - ABS(YF)
+          DTU = MIN(DTU2,DTU)
+      END IF
+*
+*       Reduce the step for increasing PN near pericentre (GI still small).
+      IF (KSTAR(I1) + KSTAR(I2).EQ.28.AND.CLIGHT.GT.0.0) THEN
+          IF (RI.LT.0.1*SEMI) THEN
+              ECC2 = (1.0 - RI/SEMI)**2 + TDOT2(IPAIR)**2/(BODY(I)*SEMI)
+              DW = 3.0*TWOPI*BODY(I)/(SEMI*CLIGHT**2*(1.0 - ECC2))
+*             ECC = SQRT(ECC2)
+*             PM = SEMI*(1.0 - ECC)
+              IF (DW.GT.1.0D-04) DTU = 0.5*DTU
+              IF (DW.GT.5.0D-04) DTU = 0.5*DTU
+              IF (DW.GT.1.0D-03) DTU = 0.5*DTU
+*             WRITE (6,23)  TIME1, ECC, PM, DTU, DW, SEMI
+*  23         FORMAT (' REDUCE DTU    T E PM DTU DW A ',
+*    &                                F12.6,F9.5,1P,3E10.2,E14.6)
+          END IF
+      END IF
+*
+*       Convert to physical time units.
+!     ITER = 0
+!  25 STEP(I1) = (((((ZZ*TDOT6*DTU + 0.2D0*TDOT5)*DTU + 0.5D0*TDOT4)*DTU
+!    &                     + TDOT3(IPAIR))*ONE6*DTU + TD2)*DTU + RI)*DTU
+      S = 0.0
+      DO 26 K=11,1,-1
+          S = (S + TDOT(K))*DTU/K
+   26 END DO
+      STEP(I1) = S
+!*       t(tau) is required to increase monotonically, i.e. dt/dtau > 0
+!     DTDTU = ((((0.05D0*TDOT6*DTU + TDOT5)*DTU + 2.0D0*TDOT4)*DTU
+!    &              + 3.0D0*TDOT3(IPAIR))*ONE6*DTU + 2.0D0*TD2)*DTU + RI
+!     IF (STEP(I1).LT.1.0D-12.OR.DTDTU.LT.0.01*RI) THEN
+      IF (STEP(I1).LT.1.0D-12) THEN
+          WRITE (6,30)  NAME(I1), KSLOW(IPAIR), HI, RI, DTU, STEP(I1),GI
+!         WRITE (6,*) RI/SEMI
+!         WRITE (6,*) X(1:3,I1), X(1:3,I2), X(1:3,N+IPAIR)
+!         WRITE (6,*) ZZ,TDOT6,TDOT5,TDOT4,TDOT3(IPAIR),TD2,RI,R(IPAIR),
+!    &                R0(IPAIR),IPAIR
+   30     FORMAT (' KSINTR NEGATIVE STEP    NM KSL H R DTU S1 G ',
+     &                               I7,I4,1P,5E10.2)
+!         DTU = 0.5*DTU
+!         ITER = ITER + 1
+!         IF (ITER.LT.20) GO TO 25
+          STOP
+      END IF
+      DTAU(IPAIR) = DTU
+*
+*       See whether the KS slow-down procedure is activated.
+      IMOD = KSLOW(IPAIR)
+      IF (IMOD.GT.1) THEN
+          ZMOD = FLOAT(ISLOW(IMOD))
+          STEP(I1) = ZMOD*STEP(I1)
+      END IF
+*
+*       Truncate STEP to quantized value.
+      DT = STEP(I1)
+      CALL STEPK(DT,DTN)
+      STEP(I1) = DTN
+*
+      DT = MIN(DT,SMAX)
+*       Perform Newton-Raphson iteration.
+      DTU = DTU*DTN/DT
+      CALL NEWTON(TDOT,IPAIR,DTU)
+      DTAU(IPAIR) = DTU
+*
+*       Check diagnostics print option.
+      IF (KZ(10).GE.3) THEN
+          WRITE (6,40)  NSTEPU, TIME1, H(IPAIR), RI, DTAU(IPAIR), GI,
+     &                  STEP(I1), IMOD, LIST(1,I1)
+   40     FORMAT (3X,'KS MOTION',I11,F10.6,F13.6,1P,4E10.2,0P,2I4)
+      END IF
+*
+*
+*       Determine new perturbers for binary at apocentre turning point.
+      IF (RDOT*TD2.GE.0.0D0) GO TO 100
+*
+*       Check minimum two-body separation just after pericentre.
+      IF (RDOT.LT.0.0D0) THEN
+*       Obtain pericentre by Mikkola's algorithm (GAMMA < 0.001).
+          IF (GI.LT.0.001) THEN
+              CALL PERI(UI,UIDOT,RI,BODY(I1),BODY(I2),QPERI)
+          ELSE
+              QPERI = RI
+          END IF
+*         DMIN2 = MIN(DMIN2,QPERI)
+*
+*       Check optional tidal interaction or stellar collision (skip merger).
+          IF (KZ(19).GE.3.AND.KSTAR(I).LE.10.AND.NAME(I).GT.0) THEN
+              RFAC = 5.0
+              IF (KZ(27).LE.2) THEN
+                  IF (KZ(27).EQ.1) RFAC = 4.0
+                  RX1 = RFAC*MAX(RADIUS(I1),RADIUS(I2))
+              ELSE
+                  RX1 = RPMIN(BODY(I1),BODY(I2),VSTAR,HI,QPERI)
+              END IF
+              IF (QPERI.LT.RX1) THEN
+                  J1 = I1
+                  IF (RADIUS(I2).GT.RADIUS(I1)) J1 = I2
+                  FAC = 0.5*BODY(I)/BODY(J1)
+*       Set possible BH index and check disruption condition (& #43) first.
+                  J2 = 2*IPAIR + 1 - J1
+                  IF (KZ(43).GE.2.AND.KSTAR(J2).EQ.14) THEN
+                      RCOLL = (BODY(J2)/BODY(J1))**0.3333*RADIUS(J1)
+                  ELSE IF (KZ(27).LE.2) THEN
+*       Adopt collision criterion of Kochanek (Ap.J. 385, 604, 1992).
+                      RCOLL = 1.7*FAC**0.3333*RADIUS(J1)
+                  ELSE IF (CLIGHT.GT.0.0) THEN
+                      RCOLL = 6.0*BODY(I)/CLIGHT**2
+                  ELSE
+                      RCOLL = 0.0
+                  END IF
+                  IF (QPERI.LT.RCOLL) THEN
+*       Obtain KS variables at pericentre before merging into one body.
+                      CALL KSPERI(IPAIR)
+                      IF (LKSINT(IPAIR)) THEN
+                          KSPAIRX(IPAIR) = IPAIR
+                      ELSE
+                          KSPAIR = IPAIR
+                      END IF
+                      JPHASE = -1
+*                      IQCOLL = -2
+*                     CALL CMBODY(QPERI,2)
+                  ELSE IF (KSTAR(I).GE.0) THEN
+*       Distinguish between sequential, standard and GR circularization.
+                      IF (KZ(27).EQ.1) THEN
+                          ICIRC = 1
+                          TC = 0.0
+                      ELSE IF (KZ(27).EQ.2.AND.KSTAR(I).LT.10) THEN
+                          ECC2 = (1.0 - RI/SEMI)**2 +
+     &                                    TDOT2(IPAIR)**2/(BODY(I)*SEMI)
+                          ECC = SQRT(ECC2)
+                          ICIRC = 0
+                          CALL TCIRC(QPERI,ECC,I1,I2,ICIRC,TC)
+                      ELSE
+                          ICIRC = 1
+                          TC = 0.0
+                      END IF
+                      IF (KSTAR(I).GE.10) ICIRC = 0
+*       Skip tidal effects for circularization time above 100 Myr (07/08).
+                      IF (ICIRC.GT.0.AND.KZ(27).GT.0.AND.
+     &                    TC.LT.100.0) THEN
+                          CALL KSTIDE(IPAIR,KCASE,QPERI)
+                      END IF
+                  END IF
+              END IF
+*       Check for perturbed spiral or chaos case (skip collision).
+              IF (LKSINT(IPAIR)) THEN
+                  IPH = IPHASEX(IPAIR)
+              ELSE
+                  IPH = IPHASE
+              END IF
+              IF (KSTAR(I).EQ.-2.AND.IPH.EQ.0) THEN
+                  CALL SPIRAL(IPAIR)
+              ELSE IF (KSTAR(I).EQ.-1.AND.IPH.EQ.0) THEN
+                  CALL KSTIDE(IPAIR,KCASE,QPERI)
+              END IF
+*       Check options for artificial collisions.
+          ELSE IF (KZ(27).EQ.-1.AND.KZ(13).LT.0) THEN
+              RFAC = 2.0
+              IF (QPERI.LT.RFAC*MAX(RADIUS(I1),RADIUS(I2))) THEN
+                  J1 = I1
+                  IF (RADIUS(I2).GT.RADIUS(I1)) J1 = I2
+                  FAC = 0.5*BODY(I)/BODY(J1)
+*       Adopt collision criterion of Kochanek (Ap.J. 385, 604, 1992).
+                  RCOLL = 1.7*FAC**0.3333*RADIUS(J1)
+                  IF (QPERI.LT.RCOLL) THEN
+                      CALL TOUCH(IPAIR,I1,I2,RCOLL)
+                  END IF
+              END IF
+          END IF
+          GO TO 100
+      END IF
+*
+*
+*       See whether KS slow-down procedure should be (re)-checked (no Chaos).
+      IF (KZ(26).GT.0.AND.KSTAR(I).GE.0) THEN
+          KMOD = RANGE*GMIN/MAX(GI,1.0D-10)
+          IF (KMOD.GT.1.OR.IMOD.GT.1) THEN
+              CALL KSMOD(IPAIR,KMOD)
+              IF (KMOD.LT.0) GO TO 100
+              GO TO 80
+          END IF
+      END IF
+*
+*       Set approximate value of next period.
+      TK = TWOPI*SEMI*SQRT(SEMI*BODYIN)
+      IF (IMOD.GT.1) THEN
+          TK = ZMOD*TK
+      END IF
+*
+*       Use old perturber list if next apocentre is before the c.m. step.
+      IF (TIME1 + TK.LT.T0(I) + STEP(I)) THEN
+          GO TO 100
+      END IF
+*
+*       Select new perturbers (adopt unperturbed period if none found).
+   80 CALL KSLIST(IPAIR)
+*
+*       Check rectification of chaotic spiral at start of unperturbed motion.
+      IF (KSTAR(I).EQ.-2.AND.LIST(1,I1).EQ.0) THEN
+          DMR = 0.D0
+          CALL CHRECT(IPAIR,DMR)
+          IF (LKSINT(IPAIR)) THEN
+              IPH = IPHASEX(IPAIR)
+          ELSE
+              IPH = IPHASE
+          END IF
+          IF (IPH.LT.0) JPHASE = -1
+          IF (IPH.LT.0) GO TO 100
+      ELSE
+          CALL KSRECT(IPAIR)
+      END IF
+*
+      GO TO 100
+*
+*       Terminate regularization of current pair (IPAIR set in KSPAIR).
+   90 IF (LKSINT(IPAIR)) THEN
+          KSPAIRX(IPAIR) = IPAIR
+      ELSE
+          KSPAIR = IPAIR
+      END IF
+*       Set indicator for calling KSTERM in MAIN (permits phase overlay).
+      JPHASE = 2
+*       Check case of hierarchical binary.
+      IF (NAME(I).LT.0) JPHASE = 7
+*
+*       Save activity index unless already non-zero.
+  100 IF (ISTAT(KCASE).EQ.0) ISTAT(KCASE) = JPHASE
+*
+      RETURN
+*
+      END

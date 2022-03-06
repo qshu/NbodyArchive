@@ -1,0 +1,17 @@
+*
+*       Specify separate path parameters for relevant Post-Newtonian cases.
+          IJC = 0
+          IF (IPN.EQ.0.OR.IPN.EQ.1) GO TO 510  ! Continue standard ARC.
+*
+          IF (IPN.EQ.2) THEN                   ! Significant PN. 
+*
+              IF ((ECC.LT.0.3.AND.NPERT.EQ.0.AND.TZ.LT.1.0).OR.
+     &           (ECC.LT.0.01.AND.GPERT.LT.0.1.AND.TZ.LT.0.1)) IJC = 2
+          ELSE                                 ! Strong PN.
+*       Include more stringent parameters.
+              IF ((TZ.LT.0.01.AND.TKOZ.GT.10.0.AND.DW.GT.0.01).OR.
+     &           (TZ.LT.0.001.AND.TKOZ.GT.5.00.AND.DW.GT.0.10)) IJC = 3
+          END IF
+  510     CONTINUE
+          IF (IJC.EQ.0) GO TO xxx
+          

@@ -1,0 +1,117 @@
+0  5   1.d0    11290.   0.e-3    0.0   1.e0 0.e0 0.e0 5.e2  x  0 0  0.0 .70 0.3  1.e-12 0  10000 1.e-6/IWR,N,DELTAT,TMAX ,step,soft,cmet,Clight, outfile,Ixc,Nbh ,spin, EPS, ivelocity, KSMX, tiny_pertu ! AT THE END OF THIS EXAMPLE FILE THERE ARE SOME EXPLANATIONS, please take a look!
+   .5   -.5 0 0   0 -.05 0
+   .5    .5 0 0    0 .050 0
+    .5   100 0 0  0 -.5  10 
+    .5   101 0 0  0 .5 10   
+    .5  -300  0   0   0 0  -10 
+0 0 /
+0  5   1.d0    1290.   0.e-3    0.0    1. 0  0.e0 0.e4  X  0 0  0.0 .70 0.3  1.e-12 0  10000 1.e-6/IWR,N,DELTAT,TMAX ,step,soft,cmet,Clight, outfile,Ixc,Nbh ,spin, EPS, ivelocity, KSMX, tiny_pertu ! AT THE END OF THIS EXAMPLE FILE THERE ARE SOME EXPLANATIONS, please take a look!
+   .5   -.5 0 0   0 -.05 0
+   .5    .5 0 0    0 .050 0
+    .5   100 0 0  0 -.5  10
+    .5   101 0 0  0 .5 10
+    .5  -300  0   0   0 0  -10
+    0 0/  now IWR =0, N=0 and code stops at restart of a new `experiment'
+
+0  6   .1d0    2999.   0.e-3    0.0   1. 1.e-99 0.e0 0.e4  X  0 0  0.0 .70 0.3  1.e-12 0  10000 1.e-8/IWR,N,DELTAT,TMAX ,step,soft,cmet,Clight, outfile,Ixc,Nbh ,spin, EPS, ivelocity, KSMX, tiny_pertu ! AT THE END OF THIS EXAMPLE FILE THERE ARE SOME EXPLANATIONS, please take a look!
+   .55   -.5 0 0   0 -.5 0
+   .45    .5 0 0    0 .50 0
+    .25   100 0 0  0 -.5  10 
+    .75   101 0 0  0 .5 10   
+  15  1000.  1110.  11110.  0.  0.  0. 0    m x y z vx vy vz  soft (and the same for all bodies)
+  5.  39.399994  99999.299988  0. -.5800018  .97399998  0.1  
+  10.  191.  32.5  0. -.55600004  .84599991  0. 
+  10.  189. -84.700012  0.  .0033600006  .0017600002  0. 
+  10.  94.099976 -122.  0.  .90300007  .07999992  0. 
+  10.  41.799988 -13.  0.  .04699993  0.964799976  0. 
+  10. -14.3500004 -07.  0.  .081200008 -.236399993  0. 
+  10.  96.099976 -3.  0.  .075999999  .080000019  0. 
+  10.  817.599976 -601.400024  0.  .97000003  .98000002  0. 
+  10.  595.799988 -831.700012  0.  .15999985  .07999992 0 
+  10.  311.200012 -983.099976  0.  6.98000002  .62  0.
+  10. -8.73799992 -1039.  0.  .63999987 -.54339999  0.
+  10. -332.899994 -993.099976  0.  .94000006 -.43000007  0.
+  10. -629.099976 -847.700012  0.  .32000017 -.07999992  0.
+  10. -867.400024 -615.799988  0.  .78999996 -.80999994  0.
+  10. -1023. -319.200012  0.  .82000005 -.32000017  0.
+  10. -1080.  13.6199999  0. -.792299986 -.81999993  0.
+  10. -1031.  350.299988  0. -.0999999 -.1500001  0.
+  10. -878.  657.299988  0. -.23000002 -.73000002  0.
+  10. -635.900024  903.700012  0. -.51999998 -.54999995  0.
+  10. -327.100006  1064.  0. -.71000004 -.04999995  0.
+  10.  18.8600006  1122.  0. -.07000017  .02699995  0.
+  10.  368.100006  1068.  0. -.4300003  .7900009  0.
+  10.  686.099976  908.5  0. -.2000008  .4000015  0.
+  10.  940.599976  656.  0. -.3600006  .2700005  0.
+  10.  1106.  334.700012  0. -.3099995  .1699982  0.
+  10.  1163. -24.4599991  0.  .24800003  .3899994  0.
+  10.  1107. -386.5  0.  .4799995  .7700005  0.
+  0  0  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 /STOP | 
+
+ UNITS: G=1,  I usually use Solar masses, astronomical units (AU), then the time is such that:  1 Year=2 Pi, i.e. years=time/twopi
+
+ IWR =output index (the larger the more diagnostic output)
+
+ N=number of bodies
+
+ DELTAT = (approx) output interval
+
+ TMAX =maximum time
+
+ step = initial stepsize  (if step=0, the code attempts to estimate a reasonable one)
+
+ soft = softening (code works best for soft=0, but softening is not prohibited)
+
+ cmet =three-dimesional vector that defines the used time-transformation  1 0 0 may usually be the best
+         (but a small value for cmet(2) may be advisable in case of star-star near collision).
+
+ Clight= speed of light. The code system of units is such that G=1.
+
+ outfile= name of outputfile for time and coords
+
+ IXC= index that tels if exact output times are required, 
+      0 => no exact, output when t>tnext,  
+      1 => exact time (not always accureate, but faster than the exact iteration)
+      2 => exact iteration (time to tnext) (slower!)
+
+ NBH= number of black holes, (which MUST be the bodies # 1,2,.., NBH)
+
+ spin= three-dimensional vector= the (relative) spin of the BH = M1 (i.e. |psin|<1, and only the first body 
+       is allowed to be a Kerr-hole, other possible BH's are non-rotating).
+ 
+ EPS = error tolerance for the integration
+
+ ivelocity = parameter that tells if there are velocity dependebt perturbations (other than relativistic), =0 no, >0 yes 
+
+ KSMX = maximum number of steps between outputs (nomally this has no effect if it is large)
+
+ tiny_pertu = if perurbation of a binary is < this then slowdown of the binary starts affecting (approximate system, but much faster)
+
+ ABOVE WAS THE FIRS LINE EXPLANATION!!!
+
+ AFTER the first line of data there is the list of masses and initial conditions
+    m x y z  vx vy vz
+ for all the bodies.
+
+ After finishin one simulation the code attempt to read data for the next one.
+ It stops when the 1. line is zeros (actually if N<2).
+
+OUTPUT: (at the moment)
+
+The coordinates goto the OUTPUT file (coords for merged bodies get huge values for moviei/picture makingi i.e. they go out of figure)  
+        write(66,234)time,
+     & (xwr(k),xwr(k+1),xwr(k+2),k=1,3*n_ini,3)
+
+In addition orbital elements (Keplerian ones) are written to files 71, 72,.. 75 as explaned here:
+           write(71,171)time,(ai(k),k=2,N_ini) ! a   write orbital elements (with respect to M1)
+           write(72,171)time,(ei(k),k=2,N_ini) ! e
+           write(73,171)time,(unci(k),k=2,N_ini) ! i
+           write(74,171)time,(Omi(k),k=2,N_ini)  ! \Omega
+           write(75,171)time,(ooi(k),k=2,N_ini)  ! \omega
+           write(76,*)time,spin,dsp ! spin(k), k=1,3 of M1  (|spin|<1),
+                                    ! dsp is error in the length of the spin vector
+ 
+
+ One may change the main program easily to get other quantities computed from the coords/vels that 'CHAINevolve' returns.
+ Note that the number of bodies may change if the BH swollows some of them.
+  

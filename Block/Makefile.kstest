@@ -1,0 +1,43 @@
+FC = gfortran
+FFLAGS += -fPIC -fopenmp -march=native -I.
+FFLAGS += -Wall -Wextra
+#FFLAGS += -O1 -g -fbacktrace -fcheck=all -ffpe-trap=invalid,zero,overflow -finit-real=snan -finit-integer=1000000000
+
+GC = gfortran
+
+VPATH = .:../ARchain:../ARint
+
+SOURCE = \
+kstest.f \
+adjust.f assess.f \
+bindat.f binev.f binout.f bodies.f brake4.f \
+chaos.f chaos0.f chdata.f check.f chfind.f chlist.f chpot.f chrect.f circ.f cmbody.f cmcorr.f coal.f comenv.f core.f corerd.f cputim.f \
+decide.f define.f deform.f deform2.f degen.f dgcore.f dtchck.f \
+ecirc.f eccmod.f edot.f efac2.f efac3.f energy.f escape.f events.f expand.f expand2.f expel.f expel2.f \
+fbulge.f fchain.f fclose.f fcloud.f fcorr.f fdisk.f fhalo.f ficorr.f findj.f flyby.f fnuc.f fpert.f fpoly1.f fpoly2.f \
+giant.f giant3.f gntage.f \
+hiarch.f hicirc.f hidat.f higrow.f himax.f himod.f hirect.f histab.f hrdiag.f hrplot.f hut.f \
+iblock.f impact.f inclin.f induce.f \
+jacobi.f \
+kick.f kozai.f \
+ksapo.f kscorr.f ksinit.f ksin2.f ksint.f ksintr.f kslist.f ksmod.f ksperi.f ksperit.f kspert2.f ksphys.f kspoly.f kspred.f ksrect.f ksreg.f ksres.f ksrot.f ksterm.f kstide.f kstran2.f \
+lagr.f lagr2.f levels.f \
+matrix.f mix.f mrenv.f mydump.f \
+nbhist.f nblist.f nbpot.f nbpot2.f nbrem.f nbrest.f newton.f nstab.f \
+offset.f output.f \
+peri.f permit.f pfac.f physks.f plpot1.f pnpert2.f poti.f premsf.f\
+qstab.f qtides.f \
+ran2.f remove.f rename.f reset.f reset2.f resolv.f resolvt.f resolvx.f rkint.f rl.f rpmax.f rpmax2.f rpmin.f \
+sort1.f spiral.f star.f stepk.f steps.f sweep.f \
+tail0.f tcirc.f tides2.f tides3.f tperi.f tpert.f trdot.f trflow.f tstep.f tstab.f touch.f \
+unpert.f update.f \
+xcpred.f xinit.f xtrnld.f xtrnlf.f xtrnlp.f xtrnlt.f xtrnlv.f xtrnlv2.f xupdate.f xvpred.f xvpredx.f \
+zare.f zero.f zfuncs.f
+
+OBJECTS = $(SOURCE:.f=.o)
+
+all: $(OBJECTS)
+	$(GC) $(FFLAGS) $(OBJECTS) -o kstest
+
+clean:
+	rm -f *.o
