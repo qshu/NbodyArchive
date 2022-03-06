@@ -1,0 +1,4440 @@
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//adjust.f does not exist
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//bindat.f does not exist
+1,2c1,2
+< 5366 2002-02-21 19:08 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//binout.f
+< Ncode//binout.f
+---
+> 5493 2002-02-21 03:20 /work/Tux1/spurzem/Nbody/Nbody6/XXX//binout.f
+> XXX//binout.f
+94c94,95
+<               WRITE (6,35)  J, LIST(1,J1), LIST(1,J2), LIST(2,J2),
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,35)  J, LIST(1,J1), LIST(1,J2), LIST(2,J2),
+108c109,110
+<               WRITE (8,40)  TTOT, NAME(J1), NAME(J2), LIST(2,J2), K,
+---
+>               if(rank.eq.0)
+>      &        WRITE (8,40)  TTOT, NAME(J1), NAME(J2), LIST(2,J2), K,
+130c132,133
+<       WRITE (6,60)  JOR, JEX, DB, SBCOLL, BBCOLL, CHCOLL, JC,
+---
+>               if(rank.eq.0)
+>      &WRITE (6,60)  JOR, JEX, DB, SBCOLL, BBCOLL, CHCOLL, JC,
+132c135
+<    60 FORMAT (/,' OR =',I4,'  EX =',I3,'  DB =',F7.3,'  SB =',F8.4,
+---
+>    60 FORMAT (/,' OR =',I4,'  EX =',I3,'  DB =',F12.3,'  SB =',F8.4,
+138c141,142
+<       WRITE (6,65)  DISP, EMAX, (NPOP(J),J=1,8), (JEB(K),K=1,KLAST)
+---
+>               if(rank.eq.0)
+>      &WRITE (6,65)  DISP, EMAX, (NPOP(J),J=1,8), (JEB(K),K=1,KLAST)
+150c154
+<       ETOT = ETOT + ESUB + EMERGE + EMDOT + ECDOT + ECOLL
+---
+>       ETOT = ETOT + ESUB + EMERGE + EMDOT + ECOLL + ECDOT
+157,158c161,162
+<       WRITE (6,90)  (E(J),J=1,10), ETOT
+<    90 FORMAT (' ENERGIES   ',10F11.5,'  ETOT =',F12.6)
+---
+>       if(rank.eq.0) WRITE (6,90)  (E(J),J=1,10), ETOT
+>    90 FORMAT (' ENERGIES   ',10F12.5,'  ETOT =',F12.6)
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//binpop.f does not exist
+1,2c1,2
+< 708 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//block.f
+< Ncode//block.f
+---
+> 647 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//block.f
+> XXX//block.f
+9c9
+<       COMMON/RAND2/  IY,IFF,IR(97) 
+---
+>       COMMON/RAND/  IY,IFF,IR(97) 
+15d14
+<       COMMON/COUNTS/  NCOUNT(60)
+24d22
+<       DATA  NCOUNT  /60*0/
+1,2c1,2
+< 4426 2002-10-01 22:52 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//bodies.f
+< Ncode//bodies.f
+---
+> 4496 2000-08-22 03:05 /work/Tux1/spurzem/Nbody/Nbody6/XXX//bodies.f
+> XXX//bodies.f
+35c35,36
+<           WRITE (6,6)  I, NAME(I), BODY(I), STEP(I), STEPR(I), EI, RI,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,6)  I, NAME(I), BODY(I), STEP(I), STEPR(I), EI, RI,
+83c84,85
+<           WRITE (6,35)  NAME(I), NAME(JMIN), BODY(I), BODY(JMIN), EREL,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,35)  NAME(I), NAME(JMIN), BODY(I), BODY(JMIN), EREL,
+85,86c87,88
+<    35     FORMAT ('   BINARY ',2I5,2F8.4,F9.1,1P,4E10.2,0P,F7.2,2I5,
+<      &                                              1P,E10.1,0P,F7.2,I4)
+---
+>    35     FORMAT ('   BINARY ',2I5,2F8.4,F9.1,1P4E10.2,0PF7.2,2I5,
+>      &                                                1PE10.1,0PF7.2,I4)
+107c109,110
+<           WRITE (6,35)  NAME(I), NAME(JMIN), BODY(I), BODY(JMIN),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,35)  NAME(I), NAME(JMIN), BODY(I), BODY(JMIN),
+1,2c1,2
+< 6101 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//brake.f
+< Ncode//brake.f
+---
+> 6121 2001-08-05 03:22 /work/Tux1/spurzem/Nbody/Nbody6/XXX//brake.f
+> XXX//brake.f
+52a53
+>       GM = 1.3D+26
+189a191
+> 
+1,2c1,2
+< 3947 2001-04-09 00:22 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//check.f
+< Ncode//check.f
+---
+> 4180 2001-08-06 22:32 /work/Tux1/spurzem/Nbody/Nbody6/XXX//check.f
+> XXX//check.f
+22a23
+>               if(rank.eq.0)then
+25a27
+>               end if
+44a47
+>           if(rank.eq.0)then
+46a50
+>           end if
+65a70
+>       if(rank.eq.0)then
+68a74
+>       end if
+83a90
+>           if(rank.eq.0)then
+84a92
+>           end if
+94a103
+>               if(rank.eq.0)then
+95a105
+>               end if
+1,2c1,2
+< 10001 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//checkl.f
+< Ncode//checkl.f
+---
+> 10002 2000-07-26 10:59 /work/Tux1/spurzem/Nbody/Nbody6/XXX//checkl.f
+> XXX//checkl.f
+317a318
+> 
+1,2c1,2
+< 1654 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//clint.f
+< Ncode//clint.f
+---
+> 1654 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//clint.f
+> XXX//clint.f
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//cloud0.f does not exist
+1,2c1,2
+< 2357 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//cloud.f
+< Ncode//cloud.f
+---
+> 2471 2002-08-25 04:40 /work/Tux1/spurzem/Nbody/Nbody6/XXX//cloud.f
+> XXX//cloud.f
+13a14,15
+> * recover random number sequence from COMMON variable IDUM1.
+>       KDUM = IDUM1
+20,21c22
+< *       Note that IDUM1 is saved in COMMON6 for restarts.
+<           A(K+1) = 2.0*RAN2(IDUM1) - 1.0
+---
+>           A(K+1) = 2.0*RAN2(KDUM) - 1.0
+28,29c29,30
+<       RANPHI = TWOPI*RAN2(IDUM1)
+<       RANDI = SQRT(RAN2(IDUM1))
+---
+>       RANPHI = TWOPI*RAN2(KDUM)
+>       RANDI = SQRT(RAN2(KDUM))
+36c37
+<       IF (KZ(13).GE.2) THEN
+---
+>       IF (KZ(13).NE.1.AND.KZ(13).NE.2) THEN
+38,39c39,40
+<               A(5) = RAN2(IDUM1)
+<               A(6) = TWOPI*RAN2(IDUM1)
+---
+>               A(5) = RAN2(KDUM)
+>               A(6) = TWOPI*RAN2(KDUM)
+69a71,72
+> *       Save random number sequence in COMMON for future use.
+>       IDUM1 = KDUM
+1,2c1,2
+< 15336 2003-07-27 22:06 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//cmbody.f
+< Ncode//cmbody.f
+---
+> 15446 2003-07-05 01:03 /work/Tux1/spurzem/Nbody/Nbody6/XXX//cmbody.f
+> XXX//cmbody.f
+82c82,83
+<                   WRITE (6,4)  KSPAIR, NAME(J), H(KSPAIR), ECC, A0, A1,
+---
+>                   if(rank.eq.0)
+>      &            WRITE (6,4)  KSPAIR, NAME(J), H(KSPAIR), ECC, A0, A1,
+106c107,108
+<                   WRITE (6,6)  NAM1, NAM2, LISTD(K), K
+---
+>                   if(rank.eq.0)
+>      &            WRITE (6,6)  NAM1, NAM2, LISTD(K), K
+243c245,246
+<           WRITE (6,15)  NAME(I1), KSTAR(I1), TEV(I1)*TSTAR, M1, M2,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,15)  NAME(I1), KSTAR(I1), TEV(I1)*TSTAR, M1, M2,
+440c443,444
+<       WRITE (6,90)  WHICH1, NSYS, NAME1, NAME2, ZM, RCOLL, EB, VINF,
+---
+>       if(rank.eq.0)
+>      &WRITE (6,90)  WHICH1, NSYS, NAME1, NAME2, ZM, RCOLL, EB, VINF,
+448a453,454
+> 
+> 
+1,2c1,2
+< 3297 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//cmcorr.f
+< Ncode//cmcorr.f
+---
+> 3140 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//cmcorr.f
+> XXX//cmcorr.f
+55,56d54
+< *       Skip ghosts to avoid spurious prediction inside 1.0E+10.
+<               IF (BODY(I).EQ.0.0D0) GO TO 60
+63d60
+<                   FRDOT(K,I) = FRDOT(K,I) - DD
+1,2c1,2
+< 3829 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//cmfirr.f
+< Ncode//cmfirr.f
+---
+> 3827 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//cmfirr.f
+> XXX//cmfirr.f
+10d9
+< *
+1,2c1,2
+< 7829 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//cmfreg.f
+< Ncode//cmfreg.f
+---
+> 7829 2001-08-27 21:09 /work/Tux1/spurzem/Nbody/Nbody6/XXX//cmfreg.f
+> XXX//cmfreg.f
+1,2c1,2
+< 4620 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//core.f
+< Ncode//core.f
+---
+> 4837 2002-02-26 22:37 /work/Tux1/spurzem/Nbody/Nbody6/XXX//core.f
+> XXX//core.f
+8,9c8,9
+<       REAL*4  RLIST(LMAX),RHO,RHOS
+<       COMMON/WORK1/  RHO(NMAX)
+---
+>       REAL*8  RLIST(LMAX),RHO,RHOS
+>       DATA RHOM/1.0D0/
+16a17
+> *       Initialize neighbour densities of all singles and c.m.
+18a20
+>           RHO(I) = 0.D0
+26a29
+> 
+37c40
+< *       Skip and set density to zero if there are no neighbours.
+---
+> *       Skip and set density to zero of there are no neighbours
+39,41c42,43
+<               RHO(I) = 0.0
+<               GO TO 50
+<           END IF 
+---
+>           RHO(I) = 0.0D0
+>           ELSE
+87,89c89,96
+<           RHO(I) = XMASS/(RLIST(I6)*SQRT(RLIST(I6)))
+< *       Define particle number density (not used).
+< *         RHON = RHO(I)/ZMASS
+---
+>           IF (RLIST(I6).GT.0.0D0) THEN
+>               RINV32 = 1.0D0/(RLIST(I6)*SQRT(RLIST(I6)))
+>           ELSE
+>               RINV32 = 0.0D0
+>           END IF
+>           RHO(I) = XMASS*RINV32
+> *       For multi-mass store also five neighbour particle density
+>           XNDBL(I) = RINV32
+92a100
+>           END IF
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//cputim.f does not exist
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//data.f does not exist
+1,2c1,2
+< 11791 2003-08-25 02:07 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//define.f
+< Ncode//define.f
+---
+> 14336 2005-03-09 21:56 /work/Tux1/spurzem/Nbody/Nbody6/XXX//define.f
+> XXX//define.f
+4c4
+< *       Definition of input parameters, options & counters.
+---
+> *       Definition of input parameters, options & counters. (NB6++)
+6a7,8
+> * ********** NOTE: Contents of [] to be removed with time.*************
+> * ********** Not read by nb6++                            *************
+14,15c16,24
+< *
+< *       N       Total particle number (singles + binary c.m.; < NMAX - 2).
+---
+> *       TCRITp  Termination time in Myrs.
+> *       isernb  Max size of sequential irr blocks on parallel machine 
+> *               for single CPU dummy
+> *       iserreg as isernb for reg blocks
+> *               for single CPU dummy
+> *--------
+> *       N       Total number of centre of masses (<NMAX - 2).
+> *               e.g: N=100 binaries = NBIN0=NBIN below for f=1
+> *                    N=100, and NBIN0=NBIN=50 for f=0.5
+18,19c27,29
+< *       NRAND   Random number sequence skip.
+< *       NNBMAX  Maximum number of neighbours (< LMAX - 2).
+---
+> *       NRAND   Random number seed; any positive integer
+> *               [ NNBMAX  Maximum neighb.numb. (= MIN(N/2,LMAX-3) set in input.F].
+> *       NNBOPT  Desired optimal neighbour number (R.Sp.)
+21c31
+< *
+---
+> *--------
+25,27c35,39
+< *       DTADJ   Time interval for parameter adjustment (N-body units).
+< *       DELTAT  Output time interval (N-body units).
+< *       TCRIT   Termination time (N-body units).
+---
+> *       DTADJ   Time interval for parameter adjustment.
+> *       DELTAT  Output time interval.
+> *->             NFIX=1 and DTADJ=DELTAT => OUT3 written every adjust time
+> *       TCRIT   Termination time.
+> *->             The _earlier_ termination criterion becomes active
+31,33c43,46
+< *
+< *       KZ(J)   Non-zero options for alternative paths (see table).
+< *
+---
+> *--------
+> *       KZ(J)   Non-zero options for alternative paths (see table below).
+> *       BK(J)   Non-zero options for binpop_4new routine (see table below).
+> *--------
+40c53
+< *
+---
+> *--------
+44c57
+< *
+---
+> *--------
+47,48c60,61
+< *       BODYN   Minimum particle mass before scaling.
+< *       NBIN0   Number of primordial binaries (for IMF2 with KZ(20) > 1).
+---
+> *       BODYN   Minimum particle mass before scaling (KZ(20): solar mass).
+> *       NBIN0   Number of primordial binaries (for IMF2 with KZ(20) > 2).
+51c64
+< *
+---
+> *--------
+56c69,76
+< *
+---
+> *--------
+> *       NCL     Number of interstellar clouds (routine CLOUD0; option 13).
+> *       RB2     Radius of cloud boundary in pc (square is saved).
+> *       VCL     Mean cloud velocity in km/sec.
+> *       SIGMA   Gaussian velocity dispersion of clouds in km/sec.
+> *       CLM     Individual cloud masses in solar masses (maximum is MCL).
+> *       RCL2    Half-mass radii of clouds in pc (square is saved).
+> *--------
+58,64c78,92
+< *
+< *       NBIN    Number of primordial binaries (routine BINPOP; option 8).
+< *       SEMI    Semi-major axis in model units (all equal if RANGE = 0).
+< *       ECC     Initial eccentricity (< 0 for thermal distribution).
+< *       RATIO   Mass ratio M1/(M1 + M2); (= 1.0: M1 = M2 = <M>; not #20 > 1).
+< *       RANGE   Range in SEMI for uniform logarithmic distribution (> 0).
+< *       NSKIP   Binary frequency of mass spectrum (#20 < 2; body #1 first).
+---
+> *--------
+> *       NBIN    Number of initial binaries (routine BINPOP; option 8).
+> *       SEMI    Initial semi-major axis (= 0 for range of energies).
+> *       ECC     Initial eccentricity (for BINPOP_4NEW)
+> *               <=1 AND >=0 for one particular fixed ecc. for all systems
+> *               < 0 for thermal distribution,
+> *               =20 for uniform distribution,
+> *               =30 for f(e)=0.1765/(e*e)
+> *               =40 for general f(e)=a*e^b, e0<=e<=1 with a=(1+b)/(1-e0^(1+b))
+> *                   e0 and b must be defined in binpop routine
+> *       RATIO   Mass ratio M1/(M1 + M2); (= 1.0: M1 = M2 = <M>).
+> *       NBGR    Number of binaries in fixed energy groups.
+> *       REDUCE  Reduction factor in semi-major axis for each group.
+> *       RANGE   Energy range for uniform logarithmic distribution.
+> *       NSKIP   Binary frequency of mass spectrum (starting from body #1).
+67c95
+< *
+---
+> *--------
+74c102
+< *
+---
+> *--------
+76c104
+< *       IMS     # idealized main-sequence stars.
+---
+> *       IMS     # idealized main-sequence stars (routine INTIDE; option 27).
+80,86d107
+< *
+< *       NCL     Number of interstellar clouds (routine CLOUD0; option 13).
+< *       RB2     Radius of cloud boundary in pc (square is saved).
+< *       VCL     Mean cloud velocity in km/sec.
+< *       SIGMA   Gaussian velocity dispersion of clouds in km/sec.
+< *       CLM     Individual cloud masses in solar masses (maximum is MCL).
+< *       RCL2    Half-mass radii of clouds in pc (square is saved).
+101c122
+< *       8  Primordial binaries (=1 & >=3; >0: BINOUT; >2: BINDAT; >3: HIDAT).
+---
+> *       8  Primordial binaries (=1 & 3; >0: BINOUT; >2: BINDAT; >3: HIDAT).
+112,113c133,136
+< *      19  Mass loss (=1: old supernova scheme; =3: Eggleton, Tout & Hurley).
+< *      20  Initial mass function (=1: Scalo; =2,4,6: Kroupa; =3,5: Eggleton).
+---
+> *      19  Mass loss (=1: supernova scheme; =3: Eggleton, Tout & Hurley).
+> *      20  Initial mass function (=1: Tout; =2,4: Kroupa; =3,5: Eggleton).
+> *          >3 => mass ratio distr. as defined in imf2.f
+> *          =2 for KTG93 IMF with random pairing (imf2.f)
+116,117c139,142
+< *      23  Escaper removal (>1: diagnostics in file ESC; >2: angles unit #6).
+< *      24  Initial conditions for subsystem (routine SCALE; KZ(24) = #).
+---
+> *                               (=4: starlab input format)
+> *      23  Removal of escapers (=1: isolated cluster; =2: diag; 
+> *                               =3: tidal cut       ; =4: diag).
+> *      24  Initial conditions for subsystems (routine SCALE and input from dat.10).
+119a145
+> *      27  Two-body tidal interaction (n = 1.5: type 3 & 5; n = 3: others).
+128c154
+< *      35  Time offset (global time from TTOT = TIME + TOFF).
+---
+> *      35  Time offset (global time from TTOT = TIME + DTOFF).
+132,133c158,180
+< *      39  No unique density centre (skips velocity modification of RS(I)).
+< *      40  Increase of neighbour numbers if <NNB> < NNBMAX/2.
+---
+> *      39  shape analysis by routine ellan (=2) with Ch. Theis
+> *      40  adjust neighbour number to optimal neighbour number.
+> *       ---------------------------------------------------------------------
+> *
+> *
+> *       Options BK(J)   (for binpop_4new.f)
+> *       *************
+> *
+> *       ---------------------------------------------------------------------
+> *       1  =0: no proto-star evolution                                       
+> *          =1:"proto-star" evol. of ecc,period in binpop_4new.f           
+> *       2  = -1: use NBGR and REDUCE in binpop_pk.f
+> *          =0:flat distr. in semi-major axis                                 
+> *          =1:f=0.034388logP                                                 
+> *          =2:f=3.5logP/[100+(logP)**2]                                      
+> *             KZ(40)=1,2 are 1st and 2nd iterations                          
+> *          =3:f=2.3(logP-1)/[45+(logP-1)**2]                                 
+> *          =4:f=2.5(logP-1)/[45+(logP-1)**2] -- derived in K2
+> *               NOTE: in routine adjust.f KZ(40)>0 is used to adjust         
+> *                     neighbour number                                       
+> *          =5:f = Duquennoy&Mayor (1991), i.e. Gaussian in logP 
+> *       4  =1: file peri_hyperbol.dat opened and written to (see ksint.f)
+> *          =0: not opened
+157,159c204,208
+< *       NFAST   Fast particles included in LISTV (option 18).
+< *       NBFAST  Fast particles included in neighbour list (option 18).
+< *       NBLOCK  Number of blocks (block-step version).
+---
+> *       NFAST   Fast particle included in LISTV (option 18).
+> *       NBFAST  Fast particle included in neighbour list (option 18).
+> *       NBREF   Boundary reflections (option 29; suppressed).
+> *       NBLOCK  Number of irregular blocks (block-step version).
+> *       NBLCKR  Number of regular blocks (block-step version) (R.Sp.)
+174d222
+< *       NEWHI   New hierarchical systems (counted by routine HIARCH).
+178c226
+< *       NDISS   Tidal dissipations at pericentre (option 27).
+---
+> *       NDISS   Tidal dissipation at pericentre (option 27).
+180c228
+< *       NSYNC   Number of synchronous binaries (option 27).
+---
+> *       NSYNC   Number of synchronous binaries (a < RSYNC; option 27).
+185,192d232
+< *       NRG     Red giants.
+< *       NHE     Helium stars.
+< *       NRS     Red supergiants.
+< *       NNH     Naked Helium stars.
+< *       NWD     White dwarfs.
+< *       NSN     Neutron stars.
+< *       NBH     Black holes.
+< *       NBS     Blue stragglers.
+216,219c256
+< *      19       Circularizing binary (c.m. value).
+< *      20       Circularized binary.
+< *      21       First Roche stage (inactive).
+< *      22       Second Roche stage.
+---
+> *      20       Circularized binary (c.m. value).
+1,2c1,2
+< 2054 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//delay.f
+< Ncode//delay.f
+---
+> 1937 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//delay.f
+> XXX//delay.f
+27,31c27,28
+< *      Preserve contents of KSAVE during chain regularization.
+<           IF (NCH.EQ.0) THEN
+<               KSAVE(1) = 0
+<               KSAVE(2) = 0
+<           END IF
+---
+>           KSAVE(1) = 0
+>           KSAVE(2) = 0
+1,2c1,2
+< 7314 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//derqp3.f
+< Ncode//derqp3.f
+---
+> 7314 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//derqp3.f
+> XXX//derqp3.f
+1,2c1,2
+< 9994 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//derqp4.f
+< Ncode//derqp4.f
+---
+> 9994 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//derqp4.f
+> XXX//derqp4.f
+1,2c1,2
+< 3180 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//difsy3.f
+< Ncode//difsy3.f
+---
+> 3180 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//difsy3.f
+> XXX//difsy3.f
+1,2c1,2
+< 3165 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//difsy4.f
+< Ncode//difsy4.f
+---
+> 3165 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//difsy4.f
+> XXX//difsy4.f
+1,2c1,2
+< 1503 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//efac2.f
+< Ncode//efac2.f
+---
+> 1504 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//efac2.f
+> XXX//efac2.f
+51a52
+> 
+1,2c1,2
+< 1510 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//efac3.f
+< Ncode//efac3.f
+---
+> 1511 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//efac3.f
+> XXX//efac3.f
+51a52
+> 
+1,2c1,2
+< 2484 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//endreg.f
+< Ncode//endreg.f
+---
+> 2484 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//endreg.f
+> XXX//endreg.f
+1,2c1,2
+< 1873 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//energy.f
+< Ncode//energy.f
+---
+> 2327 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//energy.f
+> XXX//energy.f
+9d8
+< *
+25,26c24,26
+<       I = 1
+<    20 JMIN = I + 1
+---
+> *
+>       DO 20 I = 1,NTOT
+>       JMIN = I + 1
+31a32,38
+> *
+>       IPAIR = 0
+>       IF (I.GT.N)  THEN
+> *       Binding energy at center of mass position without binary members
+>           IPAIR = I - N
+>       END IF
+> *
+32a40,41
+>       POTI = 0.D00
+> *       POTI contains potential at particles position to be stored later (R.Sp.)
+34,35c43,45
+<       DO 30 J = JMIN,N
+<           IF (BODY(J).EQ.0.0D0) GO TO 30
+---
+>       DO 30 J = 1,N
+>       IF (J.EQ.I .OR. J.EQ.2*IPAIR-1 .OR. J.EQ.2*IPAIR .OR.
+>      *    BODY(J).EQ.0.0D0 .OR. BODY(I).EQ.0.0D0)  GO TO 30
+39c49,52
+<           POTJ = POTJ + BODY(J)/SQRT(A1*A1 + A2*A2 + A3*A3)
+---
+>       A4 = BODY(J)/DSQRT (A1*A1 + A2*A2 + A3*A3)
+>       POTI = POTI - A4
+> *  also J.LT.N?
+>       IF(J.GE.JMIN)POTJ = POTJ + A4
+41c54,55
+< *
+---
+> *       Store potential in shared vector first (R.Sp.)
+>       PHIDBL(I) = POTI
+43,44c57
+<       I = I + 1
+<       IF (I.LT.N) GO TO 20
+---
+>    20 CONTINUE
+50a64
+> *
+53c67
+< *       Obtain the tidal potential if external field is present. 
+---
+> *       Obtain the tidal potential if external field is present.
+1,2c1,2
+< 1715 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//erel3.f
+< Ncode//erel3.f
+---
+> 1715 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//erel3.f
+> XXX//erel3.f
+1,2c1,2
+< 1451 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//erel4.f
+< Ncode//erel4.f
+---
+> 1451 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//erel4.f
+> XXX//erel4.f
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//escape.f does not exist
+1,2c1,2
+< 2021 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//events.f
+< Ncode//events.f
+---
+> 2106 2005-03-11 19:58 /work/Tux1/spurzem/Nbody/Nbody6/XXX//events.f
+> XXX//events.f
+28c28
+<           WRITE (6,15)
+---
+>           if(rank.eq.0)WRITE (6,15)
+32c32,33
+<           WRITE (6,20)  NMDOT, NRG, NHE, NRS, NNH, NWD, NSN, NBH, NBS,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,20)  NMDOT, NRG, NHE, NRS, NNH, NWD, NSN, NBH, NBS,
+42c43
+<           TPHYS = TIME*TSTAR
+---
+>           TPHYS = (TIME + TOFF)*TSTAR
+57c58
+<           WRITE (6,30)
+---
+>           if(rank.eq.0)WRITE (6,30)
+60c61,62
+<           WRITE (6,35)  NDISS, NTIDE, NSYNC, NCOLL, EBIN, ECOLL,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,35)  NDISS, NTIDE, NSYNC, NCOLL, EBIN, ECOLL,
+67a70,71
+> 
+> 
+1,2c1,2
+< 8664 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//evolve.f
+< Ncode//evolve.f
+---
+> 8856 2005-03-11 23:10 /work/Tux1/spurzem/Nbody/Nbody6/XXX//evolve.f
+> XXX//evolve.f
+7a8
+> *
+54a56
+>       if(rank.eq.0)then
+62a65
+>       end if
+103c106,107
+<               WRITE (4,100)  NAME(J), EB, SEMIJ, ECCJ, RIJ, GEFF, P,RDOT
+---
+>               if(rank.eq.0)
+>      &        WRITE (4,100)  NAME(J), EB, SEMIJ, ECCJ, RIJ, GEFF, P,RDOT
+125c129
+<           WRITE (4,100)  NAME(JMIN), (WORK(K),K=1,7)
+---
+>           if(rank.eq.0)WRITE (4,100)  NAME(JMIN), (WORK(K),K=1,7)
+224c228,229
+<               WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+---
+>               if(rank.eq.0)
+>      &        WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+230c235,236
+<               WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+---
+>               if(rank.eq.0)
+>      &        WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+236c242,243
+<               WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+---
+>               if(rank.eq.0)
+>      &        WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+244c251,252
+<               WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+---
+>               if(rank.eq.0)
+>      &        WRITE (4,50)  LEVEL, TIME, NAME(I), NAME(J2), EB, SEMI,
+1,2c1,2
+< 1858 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//expand.f
+< Ncode//expand.f
+---
+> 1859 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//expand.f
+> XXX//expand.f
+60a61
+> 
+1,2c1,2
+< 2378 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//extend.f
+< Ncode//extend.f
+---
+> 2378 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//extend.f
+> XXX//extend.f
+1,2c1,2
+< 1132 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//fclose.f
+< Ncode//fclose.f
+---
+> 1132 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//fclose.f
+> XXX//fclose.f
+1,2c1,2
+< 1939 2003-08-27 02:22 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//fcloud.f
+< Ncode//fcloud.f
+---
+> 1929 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//fcloud.f
+> XXX//fcloud.f
+28c28
+<               A9 = 3.0*(A(1)*A(4) + A(2)*A(5) + A(3)*A(6))/RIJ2
+---
+>               A9 = 3.0*(A(1)*A(4) + A(2)*A(5) + A(3)*A(6))
+47c47
+<               A9 = 3.0*(A(1)*A(4) + A(2)*A(5) + A(3)*A(6))/RIJ2
+---
+>               A9 = 3.0*(A(1)*A(4) + A(2)*A(5) + A(3)*A(6))
+1,2c1,2
+< 4231 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//fcorr.f
+< Ncode//fcorr.f
+---
+> 4229 2000-04-14 02:22 /work/Tux1/spurzem/Nbody/Nbody6/XXX//fcorr.f
+> XXX//fcorr.f
+4,5c4,5
+< *       Total force corrections due to masss loss.
+< *       ------------------------------------------
+---
+> *       Total force corrections due to mass loss.
+> *       -----------------------------------------
+1,2c1,2
+< 1862 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ficorr.f
+< Ncode//ficorr.f
+---
+> 1862 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ficorr.f
+> XXX//ficorr.f
+1,2c1,2
+< 1583 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//findj.f
+< Ncode//findj.f
+---
+> 1583 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//findj.f
+> XXX//findj.f
+1,2c1,2
+< 3932 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//flyby.f
+< Ncode//flyby.f
+---
+> 3422 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//flyby.f
+> XXX//flyby.f
+13c13
+<       RJMIN2 = 1000.0
+---
+>       RJMIN2 = 1.0
+76,77d75
+<       RJJ = 0.0
+<       VJJ = 0.0
+80,81d77
+<           RJJ = RJJ + (X(K,JCOMP) - X(K,J))**2
+<           VJJ = VJJ + (XDOT(K,JCOMP) - XDOT(K,J))**2
+98,106d93
+< *
+< *       Increase the cross section for quadruples.
+<       IF (JCOMP.GT.N) THEN
+<           SEMI2 = -0.5*BODY(JCOMP)/H(JCOMP-N)
+<           APO = APO + ABS(SEMI2)
+<       END IF
+< *
+<       SEMIJ = 2.0/SQRT(RJJ) - VJJ/(BODY(JCOMP) + BODY(J))
+<       SEMIJ = 1.0/SEMIJ
+109,112d95
+<           IF (SEMI.LT.0.0.AND.GAMMA(IPAIR).LT.0.5) THEN
+<               ITERM = 0
+<               GO TO 20
+<           END IF
+120a104
+> 
+1,2c1,2
+< 4071 2001-08-09 01:12 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//fpcorr.f
+< Ncode//fpcorr.f
+---
+> 4610 2001-08-15 22:39 /work/Tux1/spurzem/Nbody/Nbody6/XXX//fpcorr.f
+> XXX//fpcorr.f
+1c1
+<       SUBROUTINE FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT)
+---
+>       SUBROUTINE FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT,FIRR,FREG,FD,FDR,KLIST)
+9c9,10
+<      &        A(12),F2DOT(3),F3DOT(4)
+---
+>      &        A(12),F1DOT(3),F2DOT(3),F3DOT(4)
+>       REAL*8 FIRR(3),FREG(3),FD(3),FDR(3),FMPI(3),FDMPI(3)
+10a12
+>       INTEGER KLIST(LMAX)
+12a15,16
+>       NNB0 = KLIST(1)
+> *
+20a25,26
+>           FMPI(K) = 0.5D0*(FREG(K) + FIRR(K))
+>           FDMPI(K) = ONE6*(FDR(K) + FD(K))
+24d29
+<       NNB0 = LIST(1,I)
+34,35d38
+< *
+< *       Use c.m. values of XDOT, F & FDOT for single KS components.
+36a40
+> *       Use c.m. values of XDOT, F & FDOT for single KS components.
+38c42
+< *         STEPJ = STEP(JCM)
+---
+>           STEPJ = STEP(JCM)
+40c44,45
+< *
+---
+>           S3 = 3.0*S
+> *       Predict because we are in parallel section (R.Sp.)
+42,45c47,52
+<               A(K) = X(K,J) - XI(K)
+<               A(K+3) = XDOT(K,J) - XIDOT(K)
+<               A(K+6) = 2.0*(F(K,JCM) - F(K,I))
+<               A(K+9) = 6.0*(FDOT(K,JCM) - FDOT(K,I))
+---
+>               A(K) = ((FDOT(K,JCM)*S + F(K,JCM))*S + X0DOT(K,JCM))*S +
+>      &                                                 X0(K,JCM) - XI(K)
+>               A(K+3) = (FDOT(K,JCM)*S3 + 2.0*F(K,JCM))*S + X0DOT(K,JCM)-
+>      &                                                         XIDOT(K)
+>               A(K+6) = 2.0*(F(K,JCM) - FMPI(K))
+>               A(K+9) = 6.0*(FDOT(K,JCM) - FDMPI(K))
+50c57
+< *         STEPJ = STEP(J)
+---
+>           STEPJ = STEP(J)
+53,54c60
+< *
+< *       Predict F & FDOT of body #J to order FDOT.
+---
+> *       Predict because we are in parallel section (R.Sp.)
+56c62,63
+<               A(K) = X(K,J) - XI(K)
+---
+>               A(K) = ((FDOT(K,J)*S + F(K,J))*S + X0DOT(K,J))*S +
+>      &                                                 X0(K,J) - XI(K)
+59,60c66,67
+<               A(K+6) = 2.0*(FDOT(K,J)*S3 + F(K,J) - F(K,I))
+<               A(K+9) = 6.0*(FDOT(K,J) - FDOT(K,I))
+---
+>               A(K+6) = 2.0*(FDOT(K,J)*S3 + F(K,J) - FMPI(K))
+>               A(K+9) = 6.0*(FDOT(K,J) - FDMPI(K))
+82,83c89
+< *       Suppress F1DOT terms (already done in REGINT).
+< *         F1DOT(K) = F1DOTK*A14
+---
+>           F1DOT(K) = F1DOTK*A14
+102c108
+< *             F1DOT(K) = -F1DOT(K)
+---
+>               F1DOT(K) = -F1DOT(K)
+110c116
+< *         SAVE1(K) = SAVE1(K) + F1DOT(K)
+---
+>           SAVE1(K) = SAVE1(K) + F1DOT(K)
+122,123c128
+< *       Note that corrected value of D1 & D1R already set in routine REGINT.
+< *         D1(K,I) = D1(K,I) + SAVE1(K)
+---
+>           D1(K,I) = D1(K,I) + SAVE1(K)
+125a131
+> *       No correction of D1R because it is actually correct from regint.
+1,2c1,2
+< 896 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//fpert.f
+< Ncode//fpert.f
+---
+> 896 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//fpert.f
+> XXX//fpert.f
+1,2c1,2
+< 4267 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//fpoly1.f
+< Ncode//fpoly1.f
+---
+> 4271 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//fpoly1.f
+> XXX//fpoly1.f
+10d9
+< *
+49a49
+> *
+94a95
+> *
+108a110
+> *
+1,2c1,2
+< 4475 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//fpoly2.f
+< Ncode//fpoly2.f
+---
+> 4474 2002-02-20 20:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//fpoly2.f
+> XXX//fpoly2.f
+10d9
+< *
+15a15,17
+> *       Include an initial skip for primordial binaries (large derivatives).
+> *     IF (NBIN0.GT.0.AND.TIME.EQ.0.0D0) GO TO 80
+> *
+27,29d28
+< *       Include an initial skip for primordial binaries (large derivatives).
+<       IF (NBIN0.GT.0.AND.TIME.EQ.0.0D0) GO TO 80
+< *
+119c118
+< *       Advance the neighbour list until last member is identified. 
+---
+> *       Advance the neighbour list until last member is identified.
+125a125
+> *
+1,2c1,2
+< 3429 2001-08-13 22:20 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//freeze.f
+< Ncode//freeze.f
+---
+> 3430 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//freeze.f
+> XXX//freeze.f
+30c30
+< *       Specify regularized time (based on Baumgarte & Stielel, 1974).
+---
+> *       Specify regularized time (based on Stiefel & Scheifele, p. 85).
+1,2c1,2
+< 6787 2002-04-03 21:36 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//gntage.f
+< Ncode//gntage.f
+---
+> 6789 2003-06-26 07:43 /work/Tux1/spurzem/Nbody/Nbody6/XXX//gntage.f
+> XXX//gntage.f
+228a229,230
+> 
+> 
+1,2c1,2
+< 1717 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hcorr.f
+< Ncode//hcorr.f
+---
+> 1718 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hcorr.f
+> XXX//hcorr.f
+55a56
+> 
+1,2c1,2
+< 9811 2002-03-30 01:56 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hiarch.f
+< Ncode//hiarch.f
+---
+> 9678 2002-06-15 05:09 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hiarch.f
+> XXX//hiarch.f
+17,21d16
+< *       Open unit #10 the first time.
+<       IF (FIRST) THEN
+<           OPEN (UNIT=10,STATUS='NEW',FORM='FORMATTED',FILE='HIARCH')
+<           FIRST = .FALSE.
+< *
+22a18
+>       IF (FIRST) THEN
+24c20
+<               WRITE (10,1)  RBAR, BODYM*ZMBAR, BODY1*ZMBAR, TSCALE,
+---
+>               WRITE (12,1)  RBAR, BODYM*ZMBAR, BODY1*ZMBAR, TSCALE,
+37c33
+<           WRITE (10,2)
+---
+>           WRITE (12,2)
+41c37
+<           WRITE (10,3)
+---
+>           WRITE (12,3)
+200c196
+<           WRITE (10,10)  TTOT, SEMI, SEMI1, ECC1, PMIN, TK1, Q,
+---
+>           WRITE (12,10)  TTOT, SEMI, SEMI1, ECC1, PMIN, TK1, Q,
+251c247
+<           WRITE (10,20)  TTOT, SQRT(RI)/RC, SEMI, ECC, PMIN, TK1,
+---
+>           WRITE (12,20)  TTOT, SQRT(RI)/RC, SEMI, ECC, PMIN, TK1,
+255c251
+<           CALL FLUSH(10)
+---
+>           CALL FLUSH(12)
+280a277,278
+> 
+> 
+1,2c1,2
+< 9223 2003-05-10 22:38 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hidat.f
+< Ncode//hidat.f
+---
+> 8391 2002-07-31 13:17 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hidat.f
+> XXX//hidat.f
+14c14
+<       SAVE  FIRST
+---
+>       SAVE  FIRST 
+17,18c17
+< *
+< *       Write formatted data bank on unit 87.
+---
+> *       Write formatted data bank on unit 13.
+20d18
+<           OPEN (UNIT=87,STATUS='NEW',FORM='FORMATTED',FILE='HIDAT')
+22c20
+<           WRITE (87,1)
+---
+>           if(rank.eq.0)WRITE (13,1)
+30d27
+<           ZMM = 0.0
+33d29
+<               IF (NAME(I).LT.0) ZMM = ZMM + BODY(I)
+35,38c31,33
+<           ZMM = ZMM*ZMBAR/FLOAT(NMERGE - MMULT)
+<           WRITE (87,3)  NPAIRS, NRUN, N, NC, NMERGE, MULT, NEWHI, TTOT,
+<      &                  ZMM
+<     3     FORMAT (/,I6,I4,I6,3I4,I6,F9.1,F6.2)
+---
+>           if(rank.eq.0)
+>      &    WRITE (13,3)  NPAIRS, NRUN, N, NC, NMERGE, MULT, NEWHI, TIME
+>     3     FORMAT (/,I6,I4,I6,3I4,I6,F9.1)
+51d45
+<           KCM = KSTARM(IM)
+135c129,130
+<                   WRITE (6,20)  NAME(J1), NAME(J), ANGLE, E1, PMIN,
+---
+>                   if(rank.eq.0)
+>      &            WRITE (6,20)  NAME(J1), NAME(J), ANGLE, E1, PMIN,
+149d143
+<               KCM = KSTAR(ICM)
+151,152c145,146
+< *       Locate the first KS component (former c.m. hence subtract NZERO).
+<               DO 23 K = 1,IFIRST
+---
+> *       Locate the massive KS component (former c.m. hence subtract NZERO).
+>               DO 24 K = 1,IFIRST
+154c148
+<    23         CONTINUE
+---
+>    24         CONTINUE
+156,171d149
+< *       Include the case of [[B,S],[B,S]] which requires more work.
+<               IF (BODY(J).EQ.0.0D0) THEN
+<                   JM = 0
+<                   DO 24 K = 1,NMERGE
+<                       IF (NAMEM(IM).EQ.NAMEG(K)) JM = K
+<    24             CONTINUE
+<                   IF (JM.EQ.0) GO TO 30
+<                   J = 0
+< *       Employ new ghost identification to find the corresponding c.m index.
+<                   DO 25 K = N+1,NTOT
+<                       IF (NAME(K).EQ.NAMEM(JM)) J = K
+<    25             CONTINUE
+<                   IF (J.EQ.0) GO TO 30
+<                   J = 2*(J - N)
+< *       Note that both the triple masses (M1,M2) are saved in CM(1->4,JM).
+<               END IF
+199c177
+< *       Evaluate the potential energy of c.m.
+---
+> *       Evaluate the potential energy of c.m..
+201,202c179,180
+<           DO 26 K = IFIRST,NTOT
+<               IF (K.EQ.ICM) GO TO 26
+---
+>           DO 25 K = IFIRST,NTOT
+>               IF (K.EQ.ICM) GO TO 25
+206c184
+<    26     CONTINUE
+---
+>    25     CONTINUE
+220,221c198,201
+<           WRITE (87,28)  NAME(J1), NAM2, NAME(J2), KSTAR(J1), KSTAR(J),
+<      &                   KCM, M1, M2, M3, RI, EMAX, E0, E1, P0, P1
+---
+>           if(rank.eq.0)
+>      &    WRITE (13,28)  NAME(J1), NAM2, NAME(J2), KSTAR(J1), KSTAR(J),
+>      &                   KSTARM(IM), M1, M2, M3, RI, EMAX, E0, E1,
+>      &                   P0, P1
+224c204
+<       CALL FLUSH(87)
+---
+>       CALL FLUSH(13)
+235a216
+> 
+1,2c1,2
+< 4180 2003-06-26 16:38 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//himax2.f
+< Ncode//himax2.f
+---
+> 4174 2001-05-20 22:20 /work/Tux1/spurzem/Nbody/Nbody6/XXX//himax2.f
+> XXX//himax2.f
+4c4
+< *       Maximum eccentricity of inner hierarchical binary.
+---
+> *       Maximum eccentricity of outer hierarchical binary.
+30c30
+<       A12 = 0.0
+---
+>     4 A12 = 0.0
+58c58
+< *       Construct the Runge-Lenz vector (Heggie & Rasio 1995, IAU174, Eq.5).
+---
+> *       Construct the Runge-Lenz vector (Heggie & Rasio 1995, Eq.(5)).
+1,2c1,2
+< 4284 2003-06-26 16:38 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//himax.f
+< Ncode//himax.f
+---
+> 4303 1999-12-23 20:14 /work/Tux1/spurzem/Nbody/Nbody6/XXX//himax.f
+> XXX//himax.f
+9,10c9,10
+<      &                HM(MMAX),UM(4,MMAX),UMDOT(4,MMAX),
+<      &                NAMEM(MMAX),NAMEG(MMAX),KSTARM(MMAX)
+---
+>      &                HM(MMAX),UM(4,MMAX),UMDOT(4,MMAX),TMDIS(MMAX),
+>      &                NAMEM(MMAX),NAMEG(MMAX),KSTARM(MMAX),IFLAGM(MMAX)
+32c32
+<       A12 = 0.0
+---
+>     4 A12 = 0.0
+63c63
+< *       Construct the Runge-Lenz vector (Heggie & Rasio 1995, IAU174, Eq.5).
+---
+> *       Construct the Runge-Lenz vector (Heggie & Rasio 1995, Eq.(5)).
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//hipop.f does not exist
+1,2c1,2
+< 2788 2003-05-19 02:02 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//histab.f
+< Ncode//histab.f
+---
+> 2790 2003-06-24 01:31 /work/Tux1/spurzem/Nbody/Nbody6/XXX//histab.f
+> XXX//histab.f
+96a97,98
+> 
+> 
+1,2c1,2
+< 5553 2001-12-08 04:19 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hivel.f
+< Ncode//hivel.f
+---
+> 3618 2001-08-06 22:36 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hivel.f
+> XXX//hivel.f
+10c10
+< *       Copy membership and add 1 for analogy with HARP/GRAPE.
+---
+> *       Copy membership and add 1 for analogy with HARP.
+12a13,15
+> *       Specify square velocity limit in terms of current state.
+>       VMAX2 = 16.0*ECLOSE
+> *
+31c34,35
+<               WRITE (29,3)  LI, NAME(LI), SQRT(RL2), SQRT(VL2)
+---
+>               if(rank.eq.0)
+>      &        WRITE (29,3)  LI, NAME(LI), SQRT(RL2), SQRT(VL2)
+33d36
+<               CALL FLUSH(29)
+43,45d45
+< *       Specify square velocity limit in terms of current state.
+<       VMAX2 = 16.0*ECLOSE
+< *
+71,72c71
+< *       Add any new high-velocity particles (save F**2 > N & STEP < DTMIN).
+<       NHV = 0
+---
+> *       Add any new high-velocity particles (skip F**2 > N & STEP < DTMIN).
+74a74,76
+> *       Adopt geometric mean of close encounter and core mass force.
+>           IF (FI2.GT.FLOAT(N).OR.STEP(I).LT.DTMIN.OR.
+>      &        STEPR(I).LT.20.0*DTMIN) GO TO 10
+78,86d79
+< *       Form a list of recently ejected candidates.
+<           IF (FI2.GT.FLOAT(N).OR.STEP(I).LT.DTMIN.OR.
+<      &        STEPR(I).LT.20.0*DTMIN) THEN
+<               IF (VI2.GT.VMAX2) THEN
+<                   NHV = NHV + 1
+<                   JLIST(NHV) = I
+<               END IF
+<               GO TO 10
+<           END IF
+97c90,91
+<               WRITE (29,9)  TIME+TOFF, NHI-1, I, NAME(I), KSTAR(I),
+---
+>               if(rank.eq.0)
+>      &        WRITE (29,9)  TIME+TOFF, NHI, I, NAME(I), KSTAR(I),
+101d94
+<               CALL FLUSH(29)
+105,151d97
+< *       Consider single fast particle or hyperbolic two-body motion.
+<       IF (NHV.EQ.1.OR.NHV.EQ.2) THEN
+< *       Compare any candidates with existing members.
+<           DO 20 K = 1,NHV
+<               DO 15 L = 2,NHI
+<                   IF (JLIST(K).EQ.LISTV(L)) GO TO 30
+<    15         CONTINUE
+<    20     CONTINUE
+<           I1 = JLIST(1)
+< *       Include single particles without further tests.
+<           IF (NHV.EQ.1) THEN
+<               NHI = NHI + 1
+<               LISTV(1) = LISTV(1) + 1
+<               NFAST = NFAST + 1
+<               LISTV(NHI) = I1
+<               WRITE (29,22)  TTOT, NHI-1, NAME(I1), IPHASE, STEP(I1)
+<    22         FORMAT (' HIVEL ADD    T NHI NM IPH DT ',
+<      &                               F10.4,I4,I6,I4,1P,E10.2)
+<               GO TO 30
+<           END IF
+< *       Evaluate two-body energy.
+<           I2 = JLIST(2)
+<           RIJ2 = 0.0
+<           VIJ2 = 0.0
+<           RDOT = 0.0
+<           DO 25 K = 1,3
+<               RIJ2 = RIJ2 + (X(K,I1) - X(K,I2))**2
+<               VIJ2 = VIJ2 + (XDOT(K,I1) - XDOT(K,I2))**2
+<               RDOT = RDOT + (X(K,I1) - X(K,I2))*(XDOT(K,I1)-XDOT(K,I2))
+<    25     CONTINUE
+<           RIJ = SQRT(RIJ2)
+<           SEMI = 2.0/RIJ - VIJ2/(BODY(I1) + BODY(I2))
+< *       Accept outwards hyperbolic motion arising from recent interaction.
+<           IF (SEMI.LT.0.0.AND.RIJ.LT.10.0*RMIN.AND.RDOT.GT.0.0) THEN
+<               NHI = NHI + 1
+<               LISTV(NHI) = I1
+<               NHI = NHI + 1
+<               LISTV(NHI) = I2
+<               LISTV(1) = LISTV(1) + 2
+<               NFAST = NFAST + 2
+<               WRITE (29,28) TTOT, NHI-1, NAME(I1), NAME(I2), IPHASE, RIJ
+<    28         FORMAT (' HIVEL ADD    T NHI NM IPH RIJ ',
+<      &                               F10.4,I4,2I6,I4,1P,E10.2)
+<           END IF
+<       END IF
+< *
+<    30 CONTINUE
+159a106
+> 
+1,2c1,2
+< 5031 2002-04-03 17:16 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hmdot2.f
+< Ncode//hmdot2.f
+---
+> 5081 2002-06-13 05:18 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hmdot2.f
+> XXX//hmdot2.f
+97c97,98
+<           WRITE (6,15)  NAME(J), KSTAR(J), KSTAR(IGHOST), SQRT(ECC2),
+---
+>           if(rank.eq.0)
+>      *    WRITE (6,15)  NAME(J), KSTAR(J), KSTAR(IGHOST), SQRT(ECC2),
+140c141,142
+<           WRITE (6,30)  NAME(J), KSTAR(J), IMERGE, KM, M1, DMS, PMIN,
+---
+>           if(rank.eq.0)
+>      *    WRITE (6,30)  NAME(J), KSTAR(J), IMERGE, KM, M1, DMS, PMIN,
+148a151,152
+> 
+> 
+1,2c1,2
+< 4763 2003-04-11 00:02 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hmdot.f
+< Ncode//hmdot.f
+---
+> 4634 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hmdot.f
+> XXX//hmdot.f
+28c28
+<       IF (KSTARM(IMERGE).LT.0.OR.BODY(ICM).EQ.0.0D0) IQUIT = .TRUE.
+---
+>       IF (KSTARM(IMERGE).LT.0) IQUIT = .TRUE.
+30c30
+< *       Quit for mis-identification, tidal evolution or double merger.
+---
+> *       Quit for mis-identification or advanced evolution.
+84c84
+< *       Check condition for sequential circularization.
+---
+> *       Check condition for likely tidal dissipation (TCIRC not possible).
+87,88c87
+<       DR = ABS(RP - 4.0*RADIUS(J))
+<       IF (KZ(27).GT.0.AND.DR.GT.0.01*RP.AND.
+---
+>       IF (KZ(27).GT.1.AND.RP.LT.3.0*RADIUS(J).AND.
+130,136c129,133
+< *       Print some diagnostics on significant mass loss.
+<       IF (DMS.GT.0.005*M1) THEN
+<           WRITE (6,30)  NAME(J), KSTAR(J), IMERGE, KM, M1, DMS, PMIN,
+<      &                  PCRIT, SEMI2, SEMI1, DECORR
+<    30     FORMAT (' HMDOT    NAM K* IM KM M1 DM PM PC A A1 DE ',
+<      &                       I6,3I4,2F6.2,1P,4E10.2,0P,F10.6)
+<       END IF
+---
+> *       Print some diagnostics.
+>       WRITE (6,30)  NAME(J), KSTAR(J), IMERGE, KM, M1, DMS, PMIN, PCRIT,
+>      &              SEMI2, SEMI1, DECORR
+>    30 FORMAT (' HMDOT    NAM K* IM KM M1 DM PM PC A A1 DE ',
+>      &                   I6,3I4,2F6.2,1P,4E10.2,0P,F10.6)
+140a138
+> 
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//hotsys.f does not exist
+1,2c1,2
+< 19188 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hrdiag.f
+< Ncode//hrdiag.f
+---
+> 19188 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hrdiag.f
+> XXX//hrdiag.f
+1,2c1,2
+< 5602 2002-04-03 22:41 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//hrplot.f
+< Ncode//hrplot.f
+---
+> 6870 2006-06-20 10:22 /work/Tux1/spurzem/Nbody/Nbody6/XXX//hrplot.f
+> XXX//hrplot.f
+15c15
+<       WRITE (82,1)  NPAIRS, TPHYS
+---
+>       if(rank.eq.0) WRITE (82,1)  NPAIRS, TPHYS
+19c19
+<       WRITE (83,1)  NS, TPHYS
+---
+>       if(rank.eq.0) WRITE (83,1)  NS, TPHYS
+35c35
+<                   WRITE (6,3)  I, NCH
+---
+>                   if(rank.eq.0) WRITE (6,3)  I, NCH
+45a46,57
+> * 1. Patch by Jarrod against fpe's (A. Ernst)
+> *        IF((KW.LE.1.OR.KW.EQ.7).AND.AGE.GT.TM)THEN
+> *           AGE = 0.999D0*TM
+> *        ELSEIF(KW.LE.9.AND.AGE.GT.TN)THEN
+> *           IF(KW.LE.6)THEN
+> *              AGE = MIN(AGE,0.9999D0*TSCLS(11))
+> *           ELSE
+> *              AGE = MIN(AGE,0.9999D0*TSCLS(5))
+> *              AGE = MIN(AGE,0.99D0*TN)
+> *           ENDIF
+> *        ENDIF
+> * End patch
+72a85,89
+> * 2. Patch by Jarrod against fpe's (A. Ernst)  
+> *                 IF(AGE.GT.TN)THEN
+> *                   AGE = MIN(0.98D0*TN,TEV0(J)*TSTAR - EPOCH(J))
+> *                 ENDIF
+> * End patch
+80a98,99
+> *       Skip second binary in quadruple.
+>                   IF (NAME(J).GT.NZERO) GO TO 20
+90a110,114
+> * 3. Patch by Jarrod against fpe's (A. Ernst)
+> *                 IF(AGE.GT.TN)THEN
+> *                   AGE = MIN(0.98D0*TN,TEV0(J)*TSTAR - EPOCH(J))
+> *                 ENDIF
+> * End patch
+97a122,133
+> * 4. Patch by Jarrod against fpe's (A. Ernst)
+> *             IF((KW2.LE.1.OR.KW2.EQ.7).AND.AGE.GT.TM)THEN
+> *                AGE = 0.999D0*TM
+> *             ELSEIF(KW2.LE.9.AND.AGE.GT.TN)THEN
+> *                IF(KW2.LE.6)THEN
+> *                   AGE = MIN(AGE,0.9999D0*TSCLS(11))
+> *                ELSE
+> *                   AGE = MIN(AGE,0.9999D0*TSCLS(5))
+> *                   AGE = MIN(AGE,0.99D0*TN)
+> *                ENDIF
+> *             ENDIF
+> * End patch              
+118,120c154,157
+<               WRITE (82,5)  NAME(J1), NAME(J2), KW, KW2, KSTAR(ICM),
+<      &                      RI, ECC, PB, SEMI, M1, M2, ZL1, ZL2, R1, R2
+<     5         FORMAT (2I6,2I3,I4,F6.1,F6.3,8F7.3)
+---
+>               if(rank.eq.0)
+>      &        WRITE (82,5)TTOT, NAME(J1), NAME(J2), KW, KW2, KSTAR(ICM),
+>      &                    RI, ECC, PB, SEMI, M1, M2, ZL1, ZL2, R1, R2
+>     5         FORMAT (1X,1P,D15.7,2I8,3I5,10D15.5)
+130,131c167,171
+<               WRITE (83,10)  NAME(I), KW, RI, M1, ZL1, R1
+<    10         FORMAT (I6,I3,F6.1,3F7.3)
+---
+> *       Form LOG(Te) using L = 4*pi*R**2*\sigma*T**4 and solar value 3.7.
+>               TE = 0.25*(ZL1 - 2.0*R1) + 3.7
+>               if(rank.eq.0) 
+>      &    WRITE (83,10)  TTOT, NAME(I), KW, RI, M1, ZL1, R1, TE
+>    10         FORMAT (1X,1P,D15.7,I8,I5,5D15.5)
+135,143d174
+< *       Update plot interval (10 Myr initially) and next output time.
+<       IF (TIME.EQ.0.0D0) THEN
+<           DTPLOT = 10.0
+<           TPLOT = TPLOT + DTPLOT/TSTAR
+<       ELSE
+< *         DTPLOT = SQRT(2.0)*DTPLOT
+<           TPLOT = 2.0*TIME/TSTAR
+<       END IF
+< *     TPLOT = TPLOT + DTPLOT/TSTAR
+149a181,182
+> 
+> 
+1,2c1,2
+< 390 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//iblock.f
+< Ncode//iblock.f
+---
+> 390 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//iblock.f
+> XXX//iblock.f
+12c12
+<       DO 1 K = 2,40
+---
+>       DO 1 K = 2,64
+1,2c1,2
+< 1903 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ichain.f
+< Ncode//ichain.f
+---
+> 1903 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ichain.f
+> XXX//ichain.f
+1,2c1,2
+< 3628 2001-05-06 17:00 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//imf2.f
+< Ncode//imf2.f
+---
+> 3730 2005-03-09 21:24 /work/Tux1/spurzem/Nbody/Nbody6/XXX//imf2.f
+> XXX//imf2.f
+6d5
+< *       BODY10,BODYN are in M_sun.
+9,11c8,10
+<       REAL*4  BCM,RAN2
+<       REAL*8  IMFBD
+<       REAL*8  LM,UM
+---
+>       REAL*4 RAN2
+>       REAL*8  BTMP(NMAX)
+>       REAL*8  LM,UM,ZM,IMFBD
+13d11
+<       COMMON/WORK1/  BCM(NMAX)
+15c13
+< *=========================  if KZ(20)=2:
+---
+> *=========================
+22c20
+< *       Generate initial mass function (N-NBIN0 singles & 2*NBIN0 binaries).
+---
+> * recover random number sequence from COMMON variable IDUM1.
+23a22,23
+> *
+> *       Generate initial mass function (KZ(20) = 2 or > 2).
+40c40
+<           IF (ZM.GE.BODYN.AND.ZM.LE.BODY10) THEN
+---
+>           IF (ZM.GT.BODYN.AND.ZM.LT.BODY10) THEN
+53c53
+<           BCM(I) = BODY(2*I-1) + BODY(2*I)
+---
+>           BTMP(I) = BODY(2*I-1) + BODY(2*I)
+59c59
+<           CALL SORT1(NBIN0,BCM,JLIST)
+---
+>           CALL SORT1(NBIN0,BTMP,JLIST)
+79,80c79,80
+<           BODY(NBIN0-I+1) = BCM(I)
+<           ZMB = ZMB + BCM(I)
+---
+>           BODY(NBIN0-I+1) = BTMP(I)
+>           ZMB = ZMB + BTMP(I)
+83,85c83,87
+<       WRITE (6,45)  NBIN0, BODY(1), BODY(NBIN0), ZMB/FLOAT(NBIN0)
+<    45 FORMAT (//,12X,'BINARY STAR IMF:    NB =',I5,
+<      &               '  RANGE =',1P,2E10.2,'  <MB> =',E9.2)
+---
+>       if(rank.eq.0)then
+>       WRITE (6,45)  NBIN0, BODY(1), BODY(NBIN0), ZMB, ZMB/FLOAT(NBIN0)
+>    45 FORMAT (/,12X,'BINARY STAR IMF:   NB =',I5,'  RANGE =',1P,2E10.2,
+>      &     ' ZMB =',E9.2,'  <MB> =',E9.2)
+>       end if
+93c95
+<           BCM(NS) = BODY(NBIN0+L)
+---
+>           BTMP(NS) = BODY(NBIN0+L)
+98c100
+<       CALL SORT1(NS,BCM,JLIST)
+---
+>       CALL SORT1(NS,BTMP,JLIST)
+103,104c105,106
+<           BODY(N-I+1) = BCM(I)
+<           ZMS = ZMS + BCM(I)
+---
+>           BODY(N-I+1) = BTMP(I)
+>           ZMS = ZMS + BTMP(I)
+107,109c109,112
+<       WRITE (6,80)  N-NBIN0, BODY(NBIN0+1), BODY(N), ZMS/FLOAT(N-NBIN0)
+<    80 FORMAT (/,12X,'SINGLE STAR IMF:    NS =',I5,'  RANGE =',1P,2E10.2,
+<      &                                            '  <MS> =',E9.2)
+---
+>       if(rank.eq.0)
+>      &WRITE (6,80)N-NBIN0,BODY(NBIN0+1),BODY(N),ZMS,ZMS/FLOAT(N-NBIN0)
+>    80 FORMAT (/,12X,'SINGLE STAR IMF:   NS =',I5,'  RANGE =',1P,2E10.2,
+>      &     ' ZMS =',E9.2,'  <MS> =',E9.2)
+112c115,119
+<    90 ZMBAR = ZMASS/FLOAT(N)
+---
+>    90 CONTINUE
+> *       Save random number sequence in COMMON for future use.
+>       IDUM1 = KDUM
+> *
+>       RETURN
+1,2c1,2
+< 19164 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//imfbd.f
+< Ncode//imfbd.f
+---
+> 19400 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//imfbd.f
+> XXX//imfbd.f
+32c32
+<      &      0.01D0, 0.08D0, 0.5D0,  1.0D0,   8.0D0, 500.0D0/
+---
+>      &      0.01D0, 0.08D0, 0.5D0,  1.0D0,   5.0D0, 100.0D0/
+34c34,41
+<      &          0.3D0,  1.3D0,  2.2D0,   2.7D0,  2.7D0/
+---
+>      &          1.3D0,  1.3D0,  2.2D0,   2.7D0,  2.7D0/
+> *
+> *
+> *
+> c      DATA    ML,     MH,    M0,      M1,      M2,    MU/
+> c     &      2.D0, 2.D0, 2.D0,  2.0D0,   5.0D0, 500.0D0/
+> c      DATA      ALPHA0, ALPHA1, ALPHA2, ALPHA3, ALPHA4/
+> c     &          1.3D0,  -0.3D0,  2.2D0,   -.7D0,  7.D0/
+1,2c1,2
+< 1773 2001-05-06 17:10 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//imf.f
+< Ncode//imf.f
+---
+> 1692 2005-03-09 21:16 /work/Tux1/spurzem/Nbody/Nbody6/XXX//imf.f
+> XXX//imf.f
+10,11d9
+< *       Generate Scalo IMF (Eggleton, Fitchett & Tout, Ap.J. 347, 998).
+<       ITER = 1
+14a13,14
+> *       Generate Scalo IMF (Eggleton, Fitchett & Tout, Ap.J. 347, 998).
+>       ITER = 1
+49c49
+<       WRITE (6,20)  BODY(1), BODY(N), ZMASS/FLOAT(N)
+---
+>       if(rank.eq.0)WRITE (6,20) BODY(1), BODY(N), ZMASS, ZMASS/FLOAT(N)
+51,54c51
+<      &                                '  BODY(N) =',E9.2,'  <M> =',E9.2)
+< *
+< *       Replace input value by actual mean mass in solar units.
+<       ZMBAR = ZMASS/FLOAT(N)
+---
+>      &           '  BODY(N) =',E9.2,' ZMASS =',E9.2,'  <M> =',E9.2)
+1,2c1,2
+< 24392 2003-05-13 18:23 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//impact.f
+< Ncode//impact.f
+---
+> 24880 2003-06-26 07:12 /work/Tux1/spurzem/Nbody/Nbody6/XXX//impact.f
+> XXX//impact.f
+207c207
+<               IF (NWARN.LT.50) WRITE (6,19)  RPERT
+---
+>               IF (NWARN.LT.50.and.rank.eq.0) WRITE (6,19)  RPERT
+217c217,218
+<           WRITE (6,18)  I, JCOMP, ECC, ECC1, SEMI1, RIJ, GAMMA(IPAIR)
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,18)  I, JCOMP, ECC, ECC1, SEMI1, RIJ, GAMMA(IPAIR)
+223c224,225
+<           WRITE (6,20)  WHICH1, IPAIR, TIME+TOFF, H(IPAIR), R(IPAIR),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,20)  WHICH1, IPAIR, TIME+TOFF, H(IPAIR), R(IPAIR),
+236c238,239
+<           WRITE (6,22)  NAME(JCOMP), NAME(JMAX), RSUM, SQRT(RMAX2)
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,22)  NAME(JCOMP), NAME(JMAX), RSUM, SQRT(RMAX2)
+254c257,258
+<           WRITE (6,24)  NAME(I1), NAME(I2), NAME(K1), NAME(K1+1),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,24)  NAME(I1), NAME(I2), NAME(K1), NAME(K1+1),
+271c275,276
+<                   WRITE (6,25)  SEMI0, RIJ, R(JPAIR), GAMMA(JPAIR)
+---
+>                   if(rank.eq.0)
+>      &            WRITE (6,25)  SEMI0, RIJ, R(JPAIR), GAMMA(JPAIR)
+316c321,322
+<           WRITE (6,28)  NAME(I), NAME(JCOMP), NAME(JG), ECC1, PMIN, RIJ
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,28)  NAME(I), NAME(JCOMP), NAME(JG), ECC1, PMIN, RIJ
+401c407,408
+<               WRITE (6,35)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,35)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+527c534,535
+< *         WRITE (6,44)  NMARG, ANGLE, YF, PMIN, YF*PCRIT, TK
+---
+> *         if(rank.eq.0)
+> *    &    WRITE (6,44)  NMARG, ANGLE, YF, PMIN, YF*PCRIT, TK
+535c543,544
+<               WRITE (6,45)  NMARG, NAME(I), NAME(JCOMP), ANGLE, Q,
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,45)  NMARG, NAME(I), NAME(JCOMP), ANGLE, Q,
+541c550,551
+<               WRITE (6,46)  ECC1, PERT, RP, RSI, TK1
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,46)  ECC1, PERT, RP, RSI, TK1
+553c563,564
+<               WRITE (6,48)  TIME+TOFF, Q, ECC, ECC1, SEMI, PMIN, PCRIT,
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,48)  TIME+TOFF, Q, ECC, ECC1, SEMI, PMIN, PCRIT,
+559c570,571
+<           WRITE (73,49)  TIME+TOFF, Q, ECC, ECC1, SEMI, PMIN, PCRIT,
+---
+>           if(rank.eq.0)
+>      &    WRITE (73,49)  TIME+TOFF, Q, ECC, ECC1, SEMI, PMIN, PCRIT,
+570c582,583
+<           WRITE (6,50)  NMERGE
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,50)  NMERGE
+599c612,613
+<               WRITE (6,58)  ECC1, EMAX, YFAC, PM, PCRIT, YFAC*PCRIT2, TG
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,58)  ECC1, EMAX, YFAC, PM, PCRIT, YFAC*PCRIT2, TG
+604c618,619
+<               WRITE (6,59)  ECC1, EMAX, YFAC, PM, PCRIT, YFAC*PCRIT2, TG
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,59)  ECC1, EMAX, YFAC, PM, PCRIT, YFAC*PCRIT2, TG
+614c629,630
+<               WRITE (6,20)  WHICH1, IPAIR, TIME+TOFF, H(IPAIR),R(IPAIR),
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,20)  WHICH1, IPAIR, TIME+TOFF, H(IPAIR),R(IPAIR),
+623c639,640
+<               WRITE (6,60)  NAME(JI), NAME(JJ), ECC, ECC1, R(JPAIR)
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,60)  NAME(JI), NAME(JJ), ECC, ECC1, R(JPAIR)
+628c645,646
+<           WRITE (6,20)  WHICH1, IPAIR, TIME+TOFF, H(IPAIR), R(IPAIR),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,20)  WHICH1, IPAIR, TIME+TOFF, H(IPAIR), R(IPAIR),
+645a664,665
+> 
+> 
+1,2c1,2
+< 449 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//inext.f
+< Ncode//inext.f
+---
+> 449 2001-08-15 01:20 /work/Tux1/spurzem/Nbody/Nbody6/XXX//inext.f
+> XXX//inext.f
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//input.f does not exist
+1,2c1,2
+< 2499 2003-07-28 00:00 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//insert.f
+< Ncode//insert.f
+---
+> 2515 2001-10-01 01:50 /work/Tux1/spurzem/Nbody/Nbody6/XXX//insert.f
+> XXX//insert.f
+39a40,42
+>       IF (LSTAR.GT.NNTB) THEN
+>           LSTAR = (LI + NNTB)/2
+>       END IF
+64,68c67
+<           IF (J.EQ.I) THEN
+<               LI = LI - 1
+<               GO TO 50
+<           END IF
+<           IF (TI.LT.T0(J) + STEP(J)) GO TO 20
+---
+>           IF (LSTAR.GT.LI.AND.TI.LT.T0(J) + STEP(J)) GO TO 20
+83c82,84
+<    50 RETURN
+---
+>    50 CONTINUE
+> *
+>       RETURN
+85a87
+> 
+1,2c1,2
+< 2203 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//instar.f
+< Ncode//instar.f
+---
+> 1980 2006-06-20 08:33 /work/Tux1/spurzem/Nbody/Nbody6/XXX//instar.f
+> XXX//instar.f
+8,10c8,9
+<       REAL*8  LUMS(10),TSCLS(20),GB(10)
+<       REAL*8  M0,M1,LUM,MC
+<       EXTERNAL  RZAMSF
+---
+>       REAL*8  LUMS(10),TSCLS(20),GB(10),TM,TN
+>       REAL*8  M0,M1,RM,LUM,AGE,MC,RCC
+15c14
+<       TPLOT = 0.0
+---
+>       TPLOT = 0.0D0
+29d27
+<       NBH = 0
+32,34c30
+<       NKICK = 0
+<       NBKICK = 0
+<       AGE = 0.D0
+---
+>       AGE = 0.d0
+40c36,37
+< *       Set the Hydrogen & Helium abundances.
+---
+> *     Set the Hydrogen & Helium abundances.
+> *
+44c41,42
+< *       Set evolution parameters which depend solely on metallicity.
+---
+> *     Set evolution parameters which depend solely on metallicity.
+> *
+52,64c50,54
+<           IF (M1.GT.0.1) THEN
+<               KW = 1
+<               AGE = 0.0
+<               CALL STAR(KW,M0,M1,TM,TN,TSCLS,LUMS,GB,ZPARS)
+<               CALL HRDIAG(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+<      &                    RM,LUM,KW,MC,RCC)
+< *       Set initial look-up time 0.05 of main sequence time (but < 10**7 yrs).
+<               TEV(I) = MIN(0.05*TM,10.0D0)/TSTAR
+<           ELSE
+<               KW = 0
+<               RM = RZAMSF(M1)
+<               TEV(I) = 1.0D+10/TSTAR
+<           END IF
+---
+>           KW = 1
+>           AGE = 0.0
+>           CALL STAR(KW,M0,M1,TM,TN,TSCLS,LUMS,GB,ZPARS)
+>           CALL HRDIAG(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+>      &                RM,LUM,KW,MC,RCC)
+67a58,60
+> *
+> *       Set initial look-up time 0.05 of main sequence time (but < 10**7 yrs).
+>           TEV(I) = MIN(0.05*TM,10.0D0)/TSTAR
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//intgrt.f does not exist
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//intide.f does not exist
+1,2c1,2
+< 2932 2002-07-24 19:09 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kepler.f
+< Ncode//kepler.f
+---
+> 2934 2003-06-24 01:34 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kepler.f
+> XXX//kepler.f
+95a96,97
+> 
+> 
+1,2c1,2
+< 4694 2003-05-17 21:51 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kick.f
+< Ncode//kick.f
+---
+> 4942 2003-06-26 02:44 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kick.f
+> XXX//kick.f
+12a13,14
+> * recover random number sequence from COMMON variable IDUM1.
+>       KDUM = IDUM1
+42c44,45
+<           WRITE (6,1)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2), ZM1,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,1)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2), ZM1,
+54,55c57,58
+< *   2 VT = VCUT/V0*RAN2(IDUM1)
+< *     VP = VT*(2.0*RAN2(IDUM1) - 1.0)
+---
+> *   2 VT = VCUT/V0*RAN2(KDUM)
+> *     VP = VT*(2.0*RAN2(KDUM) - 1.0)
+58c61
+< *     IF (FAC.LT.RAN2(IDUM1).AND.IT.LT.10) GO TO 2
+---
+> *     IF (FAC.LT.RAN2(KDUM).AND.IT.LT.10) GO TO 2
+65,66c68,69
+<           X1 = RAN2(IDUM1)
+<           X2 = RAN2(IDUM1)
+---
+>           X1 = RAN2(KDUM)
+>           X2 = RAN2(KDUM)
+88c91
+< *         A(K) = 2.0*RAN2(IDUM1) - 1.0
+---
+> *         A(K) = 2.0*RAN2(KDUM) - 1.0
+124c127,128
+<           WRITE (6,20)  I, NAME(I), KSTAR(I), KC, BODY0(I)*ZMBAR, ZM,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,20)  I, NAME(I), KSTAR(I), KC, BODY0(I)*ZMBAR, ZM,
+133c137,138
+<           WRITE (6,25)  I, NAME(I), VKICK*VSTAR, SQRT(VF2)*VSTAR
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,25)  I, NAME(I), VKICK*VSTAR, SQRT(VF2)*VSTAR
+142c147,152
+<    30 RETURN
+---
+>    30 CONTINUE
+> *
+> *       Save random number sequence in COMMON for future use.
+>       IDUM1 = KDUM
+> *
+>       RETURN
+144a155,156
+> 
+> 
+1,2c1,2
+< 1960 2003-04-09 01:08 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksapo.f
+< Ncode//ksapo.f
+---
+> 2125 2003-06-26 02:49 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksapo.f
+> XXX//ksapo.f
+9a10,11
+> * recover random number sequence from COMMON variable IDUM1.
+>       KDUM = IDUM1
+59a62,64
+> *       Save random number sequence in COMMON for future use.
+>       IDUM1 = KDUM
+> *
+62a68,69
+> 
+> 
+1,2c1,2
+< 6846 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kscorr.f
+< Ncode//kscorr.f
+---
+> 6846 2001-08-25 04:40 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kscorr.f
+> XXX//kscorr.f
+1,2c1,2
+< 7086 2003-07-27 22:07 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksin2.f
+< Ncode//ksin2.f
+---
+> 7154 2003-08-02 03:49 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksin2.f
+> XXX//ksin2.f
+157c157,158
+<           WRITE (6,60)  WHICH1, TIME+TOFF, NAME(ICOMP), NAME(JCOMP),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,60)  WHICH1, TIME+TOFF, NAME(ICOMP), NAME(JCOMP),
+180c181
+<       IF (KZ(8).GT.0.AND.K.EQ.0) THEN
+---
+>       IF ((KZ(8).GT.0 .OR. NBIN0.GT.0) .AND.K.EQ.0) THEN
+187c188,189
+<           WRITE (8,90)  TIME+TOFF, NAME(ICOMP), NAME(JCOMP), K,
+---
+>           if(rank.eq.0)
+>      &    WRITE (8,90)  TIME+TOFF, NAME(ICOMP), NAME(JCOMP), K,
+197a200
+> 
+1,2c1,2
+< 8821 2003-07-27 22:06 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksinit.f
+< Ncode//ksinit.f
+---
+> 8910 2003-07-05 01:04 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksinit.f
+> XXX//ksinit.f
+53a54
+> *
+177c178,179
+<           WRITE (6,60)  TIME+TOFF, NAME(ICOMP), NAME(JCOMP),DTAU(IPAIR),
+---
+>           if (rank.eq.0)
+>      &    WRITE (6,60)  TIME+TOFF, NAME(ICOMP), NAME(JCOMP),DTAU(IPAIR),
+180c182
+<    60     FORMAT (/,' NEW KSREG    TIME =',F7.2,2I6,F12.3,1PE10.1,
+---
+>    60     FORMAT (/,' NEW KSREG    TIME =',1PE10.2,2I6,0PF12.3,1PE10.1,
+187c189
+<       IF (NPAIRS.EQ.KMAX) WRITE (6,70)  NPAIRS, TIME+TOFF
+---
+>       IF (NPAIRS.EQ.KMAX.and.rank.eq.0) WRITE (6,70)  NPAIRS, TIME+TOFF
+223c225
+<       IF (KZ(8).GT.0.AND.K.EQ.0) THEN
+---
+>       IF ((KZ(8).GT.0.OR.NBIN0.GT.0).AND.K.EQ.0) THEN
+230,231c232,234
+<           WRITE (8,90)  TIME+TOFF, NAME(ICOMP), NAME(JCOMP), K,
+<      &                  BODY(ICOMP),BODY(JCOMP), EB, SEMI, R(IPAIR),
+---
+>           if(rank.eq.0)
+>      &    WRITE (8,90)  TIME+TOFF, NAME(ICOMP), NAME(JCOMP), K,
+>      &                  BODY(ICOMP), BODY(JCOMP), EB, SEMI, R(IPAIR),
+240a244,245
+> 
+> 
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksint.f does not exist
+1,2c1,2
+< 3831 2002-07-29 20:01 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kslist.f
+< Ncode//kslist.f
+---
+> 3827 2002-06-13 05:24 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kslist.f
+> XXX//kslist.f
+45c45
+< *       Select new perturbers from the neighbour list.
+---
+> *       Select new perturbers from all particles.
+110a111
+> 
+1,2c1,2
+< 3606 2001-08-15 17:10 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksmod.f
+< Ncode//ksmod.f
+---
+> 3926 2001-08-04 23:07 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksmod.f
+> XXX//ksmod.f
+60,61c60,61
+< *       Determine the eccentric anomaly with respect to pericentre (-PI,PI).
+<       THETA = ATAN2(PSI/SQRT(SEMI),ZETA)
+---
+> *       Determine the eccentric anomaly with respect to pericentre (0,PI).
+>       THETA = ATAN2(ABS(PSI)/SQRT(SEMI),ZETA)
+64,65c64,65
+<       DT = SEMI*SQRT(SEMI/BODY(ICM))*(THETA - PSI/SQRT(SEMI))
+<       DT = 0.5D0*TK + DT
+---
+>       DT = SEMI*SQRT(SEMI/BODY(ICM))*(THETA - ABS(PSI)/SQRT(SEMI))
+>       DT = 0.5D0*TK - DT
+68,69c68,76
+< *       Evaluate regularized apocentre time (Baumgarte & Stiefel, 1974).
+< *     DTU = -2.0D0*(H(IPAIR)*DT + TDOT2(IPAIR))/BODY(ICM)
+---
+> *       Evaluate regularized apocentre time (Stiefel & Scheifele, p. 85).
+> *     DTU = -2.0D0*(H(IPAIR)*DT + 0.5D0*TDOT2(IPAIR))/BODY(ICM)
+> *
+> *       See whether the time interval should be modified by KSLOW procedure.
+>       IF (IMOD.GT.1) THEN
+>           ZMOD = FLOAT(ISLOW(IMOD))
+>       ELSE
+>           ZMOD = 1.0
+>       END IF
+73c80
+<       DTU = DT/R(IPAIR)
+---
+>       DTU = DT/(R(IPAIR)*ZMOD)
+75,76c82
+< *       Note: explicit relation agrees with iterated value (bug fix 9/99).
+<    40 Y0 = DT - ((ONE6*TDOT3(IPAIR)*DTU +
+---
+>    40 Y0 = DT - ZMOD*((ONE6*TDOT3(IPAIR)*DTU +
+78a85
+>       YPR = ZMOD*YPR
+81a89
+>       DT1 = ZMOD*DT1
+96,97c104,110
+< *       Predict current coordinates & velocities of ICM.
+<       CALL XVPRED(ICM,0)
+---
+> *       Predict current coordinates & velocities for perturbers, ICM & IPAIR.
+>       NNB2 = LIST(1,I1) + 2
+>       LIST(NNB2,I1) = ICM
+>       DO 60 L = 2,NNB2
+>           J = LIST(L,I1)
+>           CALL XVPRED(J,0)
+>    60 CONTINUE
+1,2c1,2
+< 5876 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksperi.f
+< Ncode//ksperi.f
+---
+> 2705 2002-07-31 13:19 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksperi.f
+> XXX//ksperi.f
+8d7
+<       COMMON/SLOW0/  RANGE,ISLOW(10)
+11,14c10
+< *       Save current time and initialize integration indicator.
+<       TIME0 = TIME
+<       ITIME = 0
+<       I1 = 2*IPAIR - 1
+---
+> *       Set c.m. index & semi-major axis.
+16,22c12
+< *
+< *       Re-calculate TDOT2 which may have misleading value.
+<     1 TD2 = 0.0D0
+<       DO 5 K = 1,4
+<           TD2 = TD2 + U0(K,IPAIR)*UDOT(K,IPAIR)
+<     5 CONTINUE
+<       TD2 = 2.0*TD2
+---
+>       SEMI = -0.5D0*BODY(ICM)/H(IPAIR)
+25d14
+<       SEMI = -0.5D0*BODY(ICM)/H(IPAIR)
+27c16
+<       PSI = TD2/SQRT(BODY(ICM))
+---
+>       PSI = TDOT2(IPAIR)/SQRT(BODY(ICM))
+31c20
+<       IF (ECC.LT.0.0001) GO TO 30
+---
+>       IF (ECC.LT.0.0001) GO TO 20
+40c29
+<           DO 8 IT = 1,10
+---
+>           DO 1 IT = 1,10
+43c32
+<     8     CONTINUE
+---
+>     1     CONTINUE
+49a39
+> *
+52a43
+> *       Hyperbolic case.
+62,136c53,55
+< *       Re-define current time (NB! not quantized; T0(I1) may be << TIME).
+<       TIME = TIME - DT
+< *
+< *       Integrate backwards for perturbed motion (reflection gives errors).
+<       IF (LIST(1,I1).GT.0.AND.ITIME.EQ.0.AND.DT.GT.STEP(I1)) THEN
+<           TIME = TIME0
+<           IMOD = KSLOW(IPAIR)
+<           ZMOD = FLOAT(ISLOW(IMOD))
+<           IPH = IPHASE
+<           IPHASE = -1
+< *
+< *       Integrate step by step if interval is too large (note IPHASE < 0).
+<    10     IF (DT.GT.STEP(I1)) THEN
+<               TIME = TIME - STEP(I1)
+<               DT = DT - STEP(I1)
+<               H0(IPAIR) = H(IPAIR)
+<               Z = -0.5D0*H(IPAIR)*DTAU(IPAIR)**2
+<               CALL STUMPF(IPAIR,Z)
+<               DTAU(IPAIR) = -ABS(DTAU(IPAIR))
+<               CALL KSINT(I1)
+<               DTU = DTAU(IPAIR)
+< *       Use negative DTU and treat STEP as positive (not used elsewhere).
+<               STEP(I1) = ((ONE6*TDOT3(IPAIR)*DTU + 0.5*TDOT2(IPAIR))*DTU
+<      &                                                   + R(IPAIR))*DTU
+<               STEP(I1) = -ZMOD*STEP(I1)
+<               ITIME = ITIME + 1
+<               IF (ITIME.LT.200) GO TO 10
+<           END IF
+< *
+<           ITIME = ITIME + 1
+<           DTU = DT/(R(IPAIR)*ZMOD)
+<           DTU0 = DTAU(IPAIR)
+<           ITER = 0
+< *       Determine the regularized step by Newton-Raphson iteration (DT > 0).
+<    20     Y0 = DT - ZMOD*((ONE6*TDOT3(IPAIR)*DTU +
+<      &                             0.5*TDOT2(IPAIR))*DTU + R(IPAIR))*DTU
+<           YPR = -((0.5*TDOT3(IPAIR)*DTU + TDOT2(IPAIR))*DTU + R(IPAIR))
+<           YPR = ZMOD*YPR
+<           DTU = DTU - Y0/YPR
+<           DT1 = ((ONE6*TDOT3(IPAIR)*DTU + 0.5*TDOT2(IPAIR))*DTU +
+<      &                                                     R(IPAIR))*DTU
+<           DT1 = ZMOD*DT1
+<           ITER = ITER + 1
+<           IF (ABS(DT - DT1).GT.1.0D-10*STEP(I1).AND.ITER.LT.5) GO TO 20
+< *
+< *       Integrate back to pericentre using temporary indicator < 0 for exit.
+<           TIME = TIME - DT
+<           DTAU(IPAIR) = -DTU
+< *       Re-initialize Stumpff functions.
+<           H0(IPAIR) = H(IPAIR)
+<           Z = -0.5D0*H(IPAIR)*DTAU(IPAIR)**2
+<           CALL STUMPF(IPAIR,Z)
+<           CALL KSINT(I1)
+< *       Update energy and set positive step in case no KS initialization.
+<           H0(IPAIR) = H(IPAIR)
+<           DTAU(IPAIR) = ABS(DTU0)
+<           STEP(I1) = ZMOD*DT
+<           IPHASE = IPH
+< *       Use reflection procedure to improve provisional pericentre.
+<           GO TO 1
+< *       Note: typically 2 iterations and final TDOT2 > 0.
+<       END IF
+< *
+< *       Specify transformation coefficients (Seppo Mikkola's procedure).
+<       IF (ZETA.GE.0.0) THEN
+<           XC = SQRT(0.5D0 + 0.5D0*ZETA/ECC)
+<           YS = PSI/(ECC*XC*SQRT(BODY(ICM)))
+<       ELSE
+< *       Employ well behaved expressions for R > A (SM 29/5/97).
+<           XC = 0.5*ABS(PSI)/(SQRT(SEMI)*ECC)/SQRT(0.5D0-0.5D0*ZETA/ECC)
+< *       Avoid division by small XC near apocentre (ZETA < 0 only).
+<           YS = 2.0*SQRT(SEMI/BODY(ICM)*(0.5D0 - 0.5D0*ZETA/ECC))
+<           IF (PSI.LT.0.0) YS = -YS
+<       END IF
+< *
+---
+> *       Specify transformation coefficients (Mikkola's procedure).
+>       XC = SQRT(0.5D0 + 0.5D0*ZETA/ECC)
+>       YS = PSI/(ECC*XC*SQRT(BODY(ICM)))
+142,143c61
+<       T0(I1) = TIME
+<       DO 25 K = 1,4
+---
+>       DO 10 K = 1,4
+149c67
+<    25 CONTINUE
+---
+>    10 CONTINUE
+156,159c74,76
+< *       Predict c.m. coordinates & velocities.
+<       IF (ABS(DT).LT.STEP(ICM).AND.TIME.GT.0.0) THEN
+<           CALL XVPRED(ICM,0)
+<       END IF
+---
+> *       Set pericentre time and predict c.m. coordinates & velocities.
+>       TIME = TIME - DT
+>       CALL XVPRED(ICM,0)
+161c78
+<    30 RETURN
+---
+>    20 RETURN
+1,2c1,2
+< 5301 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kspert.f
+< Ncode//kspert.f
+---
+> 5330 2001-08-24 19:46 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kspert.f
+> XXX//kspert.f
+88c88,89
+<           CALL KSRES2(J,J1,J2,RIJ2)
+---
+>           IZZ = KVEC(I1)
+>           CALL KSRES2(J,J1,J2,RIJ2,IZZ)
+1,2c1,2
+< 9285 2002-09-27 01:46 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kspoly.f
+< Ncode//kspoly.f
+---
+> 9287 2003-06-23 01:44 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kspoly.f
+> XXX//kspoly.f
+259a260,261
+> 
+> 
+1,2c1,2
+< 2841 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kspred.f
+< Ncode//kspred.f
+---
+> 2858 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kspred.f
+> XXX//kspred.f
+8c8
+<       PARAMETER  (ONE24=1.0/24.0D0,ONE120=1.0/120.0D0)
+---
+>       PARAMETER  (ONE18=1.0/18.0D0,ONE24=1.0/24.0D0,ONE120=1.0/120.0D0)
+1,2c1,2
+< 3228 2001-04-09 00:43 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksrect.f
+< Ncode//ksrect.f
+---
+> 3564 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksrect.f
+> XXX//ksrect.f
+12c12
+<       DO 1 K = 1,4
+---
+>       DO 5 K = 1,4
+14c14
+<     1 CONTINUE
+---
+>     5 CONTINUE
+16a17
+>       EB = BODY(2*IPAIR-1)*BODY(2*IPAIR)*HI/BODY(N+IPAIR)
+19a21,28
+>       IF (ABS(ERR).GT.0.01) THEN
+>       I1 = 2*IPAIR - 1
+>       SEMI = -0.5*BODY(N+IPAIR)/H(IPAIR)
+>       AF = -0.5*BODY(N+IPAIR)/HI
+>       WRITE (6,4)  NAME(I1), LIST(1,I1), SEMI, AF, DB, ERR
+>     4 FORMAT (' WARNING!   KSRECT    NM NP A0 AF DB DH/H  ',
+>      &                               I5,I4,1P,4E10.2)
+>       END IF
+21,28c30,37
+<           SEMI = -0.5*BODY(N+IPAIR)/H(IPAIR)
+<           RA = R(IPAIR)/SEMI
+<           IF (SEMI.LT.0.0) RA = R(IPAIR)
+<           WRITE (16,3)  TIME+TOFF, IPAIR, RA, H(IPAIR), GAMMA(IPAIR),
+<      &                  DB, ERR
+<     3     FORMAT (' KSRECT:   T # R/A H G DB DH/H ',
+<      &                        F8.2,I4,F8.4,F8.1,F7.3,1P,2E10.1)
+<           CALL FLUSH(16)
+---
+>       SEMI = -0.5*BODY(N+IPAIR)/H(IPAIR)
+>       RA = R(IPAIR)/SEMI
+>       IF (SEMI.LT.0.0) RA = R(IPAIR)
+>       WRITE (16,3)  TIME, IPAIR, RA, H(IPAIR),
+>      &              GAMMA(IPAIR), DB, ERR
+>     3 FORMAT (' KSRECT:   T # R/A H G DB DH/H ',
+>      &                    F8.2,I4,F8.4,F7.1,F7.3,1P,2E10.1)
+>       CALL FLUSH(16)
+30d38
+< *
+1,2c1,2
+< 4351 2001-08-28 18:37 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksreg.f
+< Ncode//ksreg.f
+---
+> 4327 2001-09-09 01:14 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksreg.f
+> XXX//ksreg.f
+136c136
+< *       Copy neighbour list for second component & c.m. (NNB1 = LIST(1,I)+1).
+---
+> *       Copy neighbour list for second component & c.m.
+141d140
+< *
+1,2c1,2
+< 3105 2002-10-01 22:41 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksres2.f
+< Ncode//ksres2.f
+---
+> 3121 2001-10-01 01:44 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksres2.f
+> XXX//ksres2.f
+1c1
+<       SUBROUTINE KSRES2(J,J1,J2,RIJ2)
+---
+>       SUBROUTINE KSRES2(J,J1,J2,RIJ2,IZZ)
+45c45
+<           DTU1 = DTU/24.0D0
+---
+>           DTU1 = 0.0416666666666667*DTU
+1,2c1,2
+< 2134 2003-01-06 20:58 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksres.f
+< Ncode//ksres.f
+---
+> 2148 2003-06-24 01:32 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksres.f
+> XXX//ksres.f
+42c42
+<           DTU1 = DTU/24.0D0
+---
+>           DTU1 = 0.0416666666666667*DTU
+68a69,70
+> 
+> 
+1,2c1,2
+< 12697 2003-06-26 16:40 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ksterm.f
+< Ncode//ksterm.f
+---
+> 12802 2003-06-26 03:13 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ksterm.f
+> XXX//ksterm.f
+118c118
+<       IF (KZ(8).EQ.0) GO TO 10
+---
+>       IF (KZ(8).EQ.0.OR.NBIN0.GT.0) GO TO 10
+132c132,133
+<           WRITE (8,8)  TIME+TOFF, NAME(I1), NAME(I2), K, NAME(JCOMP),
+---
+>           if(rank.eq.0)
+>      &    WRITE (8,8)  TIME+TOFF, NAME(I1), NAME(I2), K, NAME(JCOMP),
+143c144,145
+<           WRITE (6,15)  TIME+TOFF, BODY(I1), BODY(I1+1), DTAU(IPAIR),
+---
+>           if (rank.eq.0)
+>      &    WRITE (6,15)  TIME+TOFF, BODY(I1), BODY(I1+1), DTAU(IPAIR),
+146c148
+<    15     FORMAT (/,' END KSREG    TIME =',F7.2,2F8.4,F8.3,1PE10.1,
+---
+>    15     FORMAT (/,' END KSREG    TIME =',1PE10.2,0P2F8.4,F8.3,1PE10.1,
+158c160,161
+< *     IF (ABS(POT1-POT2).GT.0.0001) WRITE (6,16)  POT1,BE(3),POT1-POT2
+---
+> *     IF (ABS(POT1-POT2).GT.0.0001.and.rank.eq.0) 
+> *    &                WRITE (6,16)  POT1,BE(3),POT1-POT2
+1,2c1,2
+< 8565 2003-04-09 23:57 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//kstide.f
+< Ncode//kstide.f
+---
+> 8746 2003-06-26 02:59 /work/Tux1/spurzem/Nbody/Nbody6/XXX//kstide.f
+> XXX//kstide.f
+25c25,26
+<           WRITE (6,1)  NAME(I1), QPERI, RX
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,1)  NAME(I1), QPERI, RX
+121c122,123
+<           WRITE (6,5)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,5)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+185c187,188
+<                   WRITE (6,28)  IPAIR, H(IPAIR), SEMI, A1, RP,
+---
+>                   if(rank.eq.0)
+>      &            WRITE (6,28)  IPAIR, H(IPAIR), SEMI, A1, RP,
+209c212,213
+<           WRITE (6,35)  TIME+TOFF, NAME(I1), NAME(I2), ECC, ECC1, QPS
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,35)  TIME+TOFF, NAME(I1), NAME(I2), ECC, ECC1, QPS
+224,225c228,230
+<           WRITE (6,40)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+<      &                  TIME+TOFF, ECC, ECC1, P, SEMI2, RX
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,40)  NAME(I1), NAME(I2), KSTAR(I1), KSTAR(I2),
+>      &                  TIME+TOFF, ECC, ECC1, P, SEMI1, RX
+233c238,239
+<               WRITE (6,45)  ECC1, SEMI1, R(IPAIR), RCOLL
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,45)  ECC1, SEMI1, R(IPAIR), RCOLL
+241c247,248
+<           WRITE (12,48)  TIME+TOFF, IPAIR, ECC2, ECC, R(IPAIR), SEMI1
+---
+>           if(rank.eq.0)
+>      &    WRITE (12,48)  TIME+TOFF, IPAIR, ECC2, ECC, R(IPAIR), SEMI1
+249a257
+> 
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//lagr.f does not exist
+1,2c1,2
+< 1080 2002-03-28 23:26 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//levels.f
+< Ncode//levels.f
+---
+> 4095 2003-06-24 03:03 /work/Tux1/spurzem/Nbody/Nbody6/XXX//levels.f
+> XXX//levels.f
+5a6
+> *       plus estimation of parallel speed-up (R.Sp.)
+8c9,14
+<       INTEGER  IHIST(32),IHISTR(32)
+---
+>       INTEGER JHIST,JHISTR,JHISTU
+>       COMMON/BLKLVL/JHIST(0:NMAX),JHISTR(0:NMAX),JHISTU(0:NMAX)
+>       INTEGER  IHIST(NMAX),IHISTR(NMAX),IHISTU(NMAX)
+>       INTEGER IPES,IPROC(9),IY(1024),IYR(1024)
+>       REAL*8 XSPEED(9),XSPEDR(9)
+>       DATA IPROC/4,8,16,32,64,128,256,512,1024/
+12c18
+<       DO 10 J = 1,32
+---
+>       DO 10 J = 1,NMAX
+14a21
+>           IHISTU(J) = 0
+18c25
+<       JMAX = 0
+---
+>       JMAXI = 0
+22d28
+<           IF (BODY(I).EQ.0.0D0) GO TO 20
+23a30
+>           IF(J.GT.NMAX)J = NMAX
+25c32
+<           JMAX = MAX(J,JMAX)
+---
+>           JMAXI = MAX(J,JMAXI)
+26a34
+>           IF(J.GT.NMAX)J = NMAX
+30a39,48
+>       JMAXU = 0
+> *       Loop over KS binaries
+>       DO 25 IPAIR = 1,NPAIRS
+>           I1 = 2*IPAIR - 1
+>           J = 1 - LOG(STEP(I1))*FAC
+>           IF(J.GT.NMAX)J = NMAX
+>           IHISTU(J) = IHISTU(J) + 1
+>           JMAXU = MAX(J,JMAXU)
+>    25 CONTINUE
+> *
+32,40c50,131
+<       JMAX = MIN(JMAX,27)
+<       WRITE (6,30)  (IHIST(J),J=1,JMAX)
+<    30 FORMAT (' #6  STEP   ',3I4,9I5,15I4)
+< *
+<       IF (KZ(33).GT.1) THEN
+<           JMAXR = MIN(JMAXR,27)
+<           WRITE (6,35)  (IHISTR(J),J=1,JMAXR)
+<    35     FORMAT (' #7  STEPR  ',3I4,9I5,15I4)
+<       END IF
+---
+>       JMAXI=MIN(JMAXI,NMAX)
+>       JMAXR=MIN(JMAXR,NMAX)
+>       JMAXU=MIN(JMAXU,NMAX)
+>       if(rank.eq.0)then
+> 	  WRITE (6,30)  (IHIST(J),J=1,JMAXI)
+>    30 FORMAT (' STEP I ',22I5,(/,24I5))
+>       IF (KZ(33).GT.1)WRITE (6,301)  (IHISTR(J),J=1,JMAXR)
+>   301 FORMAT (' STEP R ',50I5,(/,24I5))
+>       IF (KZ(8).GT.0 .OR. NBIN0.GT.0 )WRITE (6,3001)
+>      *     (IHISTU(J),J=1,JMAXU)
+>  3001 FORMAT (' STEP U ',50I5,(/,24I5))
+>       end if
+> *
+> *       IPROC contains a list of possible processor numbers,
+> *       presently   4 to 1024 in powers of 2.
+> *
+>       DO 35 NN = 1,9
+>       IPES = IPROC(NN)
+>       DO 36 I = 1,IPES
+>       IY(I) = 0
+>  36   IYR(I) = 0
+> *
+> *       JHIST contains accumulated frequencies from INTGRT for irr. steps. 
+> *       JHIST(80) = 5 e.g. means that it occurred 5 times since the last
+> *                   call of LEVELS that 80 force calculations had
+> *                   to be done in parallel
+> *       IY maps this information to a certain number of processors,
+> *       e.g. in the above case for 64 processors it would mean that
+> *       five times 64 processors could be fully used, and five times
+> *       only 16 processors (to get the remaining forces).
+> *       JHIST(80) = 5 results in incrementing IY(64) and IY(16) by 5.
+> *
+> *       (IYE, JHISTR do the same for the regular steps)
+> *
+>       DO 37 I = 1,NMAX
+>       IF(JHIST(I).EQ.0)GOTO 37
+>       J = MOD(I,IPES)
+>       K = I/IPES
+>       IF(J.GT.0)IY(J)=IY(J)+JHIST(I)
+>       IF(K.GT.0)IY(IPES)=IY(IPES)+K*JHIST(I)
+>  37   CONTINUE
+> *
+>       DO 371 I = 1,NMAX
+>       IF(JHISTR(I).EQ.0)GOTO 371
+>       J = MOD(I,IPES)
+>       K = I/IPES
+>       IF(J.GT.0)IYR(J)=IYR(J)+JHISTR(I)
+>       IF(K.GT.0)IYR(IPES)=IYR(IPES)+K*JHISTR(I)
+>  371  CONTINUE
+> *
+>       ISPEED = 0
+>       ISPEDR = 0
+>       ITOT = 0
+>       ITOTR = 0
+>       DO 38 I = 1,IPES
+>       ISPEED = ISPEED + I*IY(I)
+>       ISPEDR = ISPEDR + I*IYR(I)
+>       ITOT = ITOT + IY(I)
+>       ITOTR = ITOTR + IYR(I)
+>  38   CONTINUE
+> *
+> *       Estimate theoretical speedup by (sum I*IY) / (sum IY);
+> *       enumerator is the total number of force calculations necessary;
+> *       denominator is the number of force calculation `cycles' necessary
+> *       on a parallel machine. Separately done for regular/irregular
+> *       steps. Communication not yet included in any way.
+> *
+>       IF(ITOT.NE.0)XSPEED(NN) = REAL(ISPEED)/REAL(ITOT)
+>       IF(ITOTR.NE.0)XSPEDR(NN) = REAL(ISPEDR)/REAL(ITOTR)
+>  35   CONTINUE
+> *
+> 	  if(rank.eq.0)then
+>       WRITE (6,40)  (IPROC(J),XSPEED(J),J=1,9)
+>  40   FORMAT (' Max Speedup Irr: ',1P,9(I5,D9.2))
+>       WRITE (6,41)  (IPROC(J),XSPEDR(J),J=1,9)
+>  41   FORMAT (' Max Speedup Reg: ',1P,9(I5,D9.2))
+>       end if
+> *
+>       DO 50 J = 1,NMAX
+>           JHIST(J) = 0
+>           JHISTR(J) = 0
+>    50 CONTINUE
+1,2c1,2
+< 443 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//matrix.f
+< Ncode//matrix.f
+---
+> 443 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//matrix.f
+> XXX//matrix.f
+1,2c1,2
+< 19350 2003-06-26 20:58 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//mdot.f
+< Ncode//mdot.f
+---
+> 19504 2006-06-18 14:32 /work/Tux1/spurzem/Nbody/Nbody6/XXX//mdot.f
+> XXX//mdot.f
+1d0
+< 
+95c94,95
+<                   WRITE (6,22)  IGHOST, I0, I, NAME(I), KSTAR(I), TEV(I)
+---
+>                   if(rank.eq.0)
+>      &            WRITE (6,22)  IGHOST, I0, I, NAME(I), KSTAR(I), TEV(I)
+149c149,150
+<               WRITE (6,30)  I, NAME(I), KSTAR(I1), KSTAR(I2), KSTAR(I),
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,30)  I, NAME(I), KSTAR(I1), KSTAR(I2), KSTAR(I),
+240,242c241,243
+<           WRITE (6,35)  NAME(I), KW, DM, AGE, TN
+<    35     FORMAT (' WARNING!    AGE > TN    NM KW DMS AGE TN ',
+<      &                                      I6,I4,F7.3,1P,2E9.1)
+---
+> *         if(rank.eq.0) WRITE (6,35)  NAME(I), KW, DM, AGE, TN
+> *  35     FORMAT (' WARNING!    AGE > TN    NM KW DMS AGE TN ',
+> *    &                                      I6,I4,F7.3,1P,2E9.1)
+406c407,408
+<               WRITE (6,40)  I, NAME(I), KW, KSTAR(I), BODY(I)*ZMBAR,
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,40)  I, NAME(I), KW, KSTAR(I), BODY(I)*ZMBAR,
+531c533,534
+<           WRITE (6,65)  WHICH1, TPHYS, I, NAME(I), DMR, KW0, KW,
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,65)  WHICH1, TPHYS, I, NAME(I), DMR, KW0, KW,
+534c537
+<      &                        F7.1,2I5,F6.2,2I3,2F6.1,1P,E9.1,0P,F10.5)
+---
+>      &            F7.1,2I8,1P,E10.2,2I3,0P,2F6.1,1P,E9.1,0P,F10.5)
+553c556,557
+<                   WRITE (6,66)  KW, SQRT(ECC2), RA, SEMI*SU, STEP(J),
+---
+>                   if(rank.eq.0)
+>      &            WRITE (6,66)  KW, SQRT(ECC2), RA, SEMI*SU, STEP(J),
+593a598,599
+> 
+> 
+1,2c1,2
+< 9288 2002-09-20 17:35 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//merge2.f
+< Ncode//merge2.f
+---
+> 9317 2003-06-26 03:22 /work/Tux1/spurzem/Nbody/Nbody6/XXX//merge2.f
+> XXX//merge2.f
+47,48d46
+<       ECC2 = (1.0 - R(IPAIR)/SEMI)**2 + TDOT2(IPAIR)**2/(BODY(I)*SEMI)
+<       ECC = SQRT(ECC2)
+50c48
+< *       Produce diagnostics for [[B,S],B] quintuplet or sextuplet system.
+---
+> *       Produce diagnostics for quintuplet or sextuplet system.
+55a54,55
+>           E2 = (1.0 - R(IPAIR)/SEMI)**2 + TDOT2(IPAIR)**2/(BODY(I)*SEMI)
+>           ECC = SQRT(E2)
+64c64,65
+<           WRITE (6,5)  WHICH1, TIME+TOFF, ZM, NAME(I1), NAME(I2),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,5)  WHICH1, TIME+TOFF, ZM, NAME(I1), NAME(I2),
+70c71
+< *       Check formation of [[B,S],S] quartet or [[B,B],S] quintuplet.
+---
+> *       Check formation of [[B,S],S} quartet or [[B,B],S] quintuplet.
+75,78c76,80
+<               WRITE (6,7)  TIME+TOFF, ZM, NAME(I2), NAME(JG),
+<      &                     NAME(JCOMP), ECC, SEMI, PCRIT, GAMMA(IPAIR)
+<     7         FORMAT (/,' NEW QUARTET    T MT NM1 NMG NM3 E0 A0 PC G0 ',
+<      &                                   F9.2,F6.2,3I6,F6.2,1P,3E10.2)
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,7)  TIME+TOFF, ZM, NAME(I2), NAME(JG),
+>      &                     NAME(JCOMP), SEMI, PCRIT, GAMMA(IPAIR)
+>     7         FORMAT (/,' NEW QUARTET    T MT NM1 NMG NM3 A0 PC G0 ',
+>      &                                   F9.2,F6.2,3I6,1P,3E10.2)
+80,83c82,86
+<               WRITE (6,8)  TIME+TOFF, ZM, NAME(I2), NAME(JG),
+<      &                     NAME(JCOMP), ECC, SEMI, PCRIT, GAMMA(IPAIR)
+<     8         FORMAT (/,' NEW QUINTUP2    T MT NM1 NMG NM3 E0 A0 PC G0',
+<      &                                    F10.2,F6.2,3I6,F6.2,1P,3E10.2)
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,8)  TIME+TOFF, ZM, NAME(I2), NAME(JG),
+>      &                     NAME(JCOMP), SEMI, PCRIT, GAMMA(IPAIR)
+>     8         FORMAT (/,' NEW QUINTUP2    T MT NM1 NMG NM3 A0 PC G0 ',
+>      &                                    F9.2,F6.2,3I6,1P,3E10.2)
+87c90
+< *       Include diagnostics for double triple as [[B,S],[B,S]].
+---
+> *       Include diagnostics for double triple ([[B,S],[B,S]]).
+97,98c100,102
+<           WRITE (6,10)  TIME+TOFF, ZM, NAME(I1), NAME(I2), NAME(J1),
+<      &                  NAME(2*JPAIR), ECC, AI, AJ, R(IPAIR), R(JPAIR),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,10)  TIME+TOFF, ZM, NAME(I1), NAME(I2), NAME(J1),
+>      &                  NAME(2*JPAIR), AI, AJ, R(IPAIR), R(JPAIR),
+100,101c104,105
+<    10     FORMAT (/,' NEW HITRIP    T MT NM E0 AI AJ RI RJ PC GX ',
+<      &                              F9.2,F6.2,4I6,F6.2,1P,6E10.2)
+---
+>    10     FORMAT (/,' NEW HITRIP    T MT NM AI AJ RI RJ PC GX ',
+>      &                              F9.2,F6.2,4I6,1P,6E10.2)
+135a140,144
+> *       Update the primary velocity of body #JCOMP.
+>       DO 15 K = 1,3
+>           X0DOT(K,JCOMP) = XDOT(K,JCOMP)
+>    15 CONTINUE
+> *
+153,157d161
+< *       Predict outer component to highest order if not on the block.
+<       IF (TIME - T0(JCOMP1).GT.0.0D0) THEN
+<           CALL XVPRED(JCOMP1,-1)
+<       END IF
+< *
+269a274,275
+> 
+> 
+1,2c1,2
+< 9109 2002-09-20 17:30 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//merge.f
+< Ncode//merge.f
+---
+> 9106 2003-06-25 23:29 /work/Tux1/spurzem/Nbody/Nbody6/XXX//merge.f
+> XXX//merge.f
+249d248
+< 
+254d252
+< *
+1,2c1,2
+< 6352 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//mloss.f
+< Ncode//mloss.f
+---
+> 6392 2005-03-09 23:25 /work/Tux1/spurzem/Nbody/Nbody6/XXX//mloss.f
+> XXX//mloss.f
+154c154,155
+<       WRITE (6,30)  NAME(IMAX), BMAX, BMAX*ZMBAR, ZMDOT, DE, BE(3),
+---
+>       if(rank.eq.0)
+>      &WRITE (6,30)  NAME(IMAX), BMAX, BMAX*ZMBAR, ZMDOT, DE, BE(3),
+167c168,169
+<       WRITE (6,45)  IMAX, DE, TEV1, A0, SQRT(VI2), BE(3)
+---
+>       if(rank.eq.0)
+>      &WRITE (6,45)  IMAX, DE, TEV1, A0, SQRT(VI2), BE(3)
+1,2c1,2
+< 1785 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//mlwind.f
+< Ncode//mlwind.f
+---
+> 1785 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//mlwind.f
+> XXX//mlwind.f
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//modify.f does not exist
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//mydump.f does not exist
+1,2c1,2
+< 9526 2002-10-25 21:36 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nbint.f
+< Ncode//nbint.f
+---
+> 8753 2005-03-10 01:57 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nbint.f
+> XXX//nbint.f
+1c1
+<       SUBROUTINE NBINT(I,IKS,IR,XI,XIDOT)
+---
+>       SUBROUTINE NBINT(I,NBFLAG)
+9a10,11
+> *       Calculate potential with little extra cost.
+>       COMMON/POTENT/PHII(NMAX),PHIR(NMAX),PHIR1(NMAX)
+11a14,35
+>           IF(NBFLAG.EQ.0)THEN
+> *       Predict current state vector of body #I to order FDOT.
+>           S = TIME - T0(I)
+>           DO 11 K = 1,3
+>            X(K,I) = ((FDOT(K,I)*S + F(K,I))*S + X0DOT(K,I))*S + X0(K,I)
+>            XDOT(K,I) = (3.0*FDOT(K,I)*S + 2.0*F(K,I))*S + X0DOT(K,I)
+>    11     CONTINUE
+> *       Predict coordinates & velocities of neighbours to order FDOT (R.Sp.).
+>           NNB1 = LIST(1,I) + 1
+> *
+>           DO 1 L = 2,NNB1
+>               J = LIST(L,I)
+>               S = TIME - T0(J)
+>               S1 = 1.5*S
+>               S2 = 2.0*S
+>               X(1,J) = ((FDOT(1,J)*S + F(1,J))*S +X0DOT(1,J))*S +X0(1,J)
+>               X(2,J) = ((FDOT(2,J)*S + F(2,J))*S +X0DOT(2,J))*S +X0(2,J)
+>               X(3,J) = ((FDOT(3,J)*S + F(3,J))*S +X0DOT(3,J))*S +X0(3,J)
+>               XDOT(1,J) = (FDOT(1,J)*S1 + F(1,J))*S2 + X0DOT(1,J)
+>               XDOT(2,J) = (FDOT(2,J)*S1 + F(2,J))*S2 + X0DOT(2,J)
+>               XDOT(3,J) = (FDOT(3,J)*S1 + F(3,J))*S2 + X0DOT(3,J)
+>    1      CONTINUE
+13,17d36
+< *       Check regularization criterion for single particles.
+<       IF (STEP(I).LT.DTMIN.AND.I.LE.N) THEN
+< *       See whether dominant body can be regularized.
+<           IF (IKS.EQ.0) THEN
+<               CALL SEARCH(I,IKS)
+19,44c38,40
+<       END IF
+< *
+< *       Include close encounter search for low-eccentric massive binaries.
+<       IF (IKS.EQ.0.AND.STEP(I).LT.4.0*DTMIN) THEN
+< *       Consider massive single bodies in absence of subsystems. 
+<           IF (I.LE.N.AND.BODY(I).GT.2.0*BODYM.AND.NSUB.EQ.0) THEN
+< *
+< *       Obtain two-body elements and relative perturbation.
+<               JMIN = 0
+<               CALL ORBIT(I,JMIN,SEMI,ECC,GI)
+< *
+<               EB = -0.5*BODY(I)*BODY(JMIN)/SEMI
+<               IF (EB.LT.EBH.AND.GI.LT.0.25.AND.JMIN.GE.IFIRST) THEN
+<                   APO = SEMI*(1.0 + ECC)
+< *       Check eccentricity (cf. max perturbation) and neighbour radius.
+<                   IF (ECC.LT.0.5.AND.APO.LT.0.02*RS(I)) THEN
+< *                     WRITE (6,3)  NAME(I), NAME(JMIN), ECC, SEMI, EB
+< *   3                 FORMAT (' KS TRY:    NAM E A EB ',
+< *    &                                     2I6,F7.3,1P,2E10.2)
+<                       IKS = IKS + 1
+<                       ICOMP = I
+<                       JCOMP = JMIN
+<                   END IF
+<               END IF
+<           END IF
+<       END IF
+---
+> *         call cputim(tt2)
+> *         ttpre = ttpre + (tt2-tt1)*60.
+> *         ttnbp = ttnbp + (tt2-tt1)*60.
+46c42
+< *       Obtain total force & first derivative.
+---
+> *       Obtain irregular force & first derivative.
+52a49,50
+>           PHII(I) = 0.D0
+>           NNB0 = LIST(1,I)
+55d52
+<       NNB0 = LIST(1,I)
+82,91d78
+< *       Copy c.m. coordinates & velocities for rare unperturbed intruder.
+<       I2 = 2*IPAIR
+<       I1 = I2 - 1
+<       DO 15 K = 1,3
+<           X(K,I1) = XI(K)
+<           X(K,I2) = XI(K)
+<           XDOT(K,I1) = XIDOT(K)
+<           XDOT(K,I2) = XIDOT(K)
+<    15 CONTINUE
+< *
+115d101
+< *
+118a105
+>           PHII(I) = PHII(I) - DR3I*RIJ2
+147d133
+< *         KDUM = 2*J - 1
+177a164,165
+> *       Note: in NBODY6++ CHFIRR and FCHAIN are called with IR=1 since
+> *             chain prediction and perturber list are updated in integrator.
+179c167
+<               CALL CHFIRR(I,0,XI,XIDOT,FIRR,FD)
+---
+>               CALL CHFIRR(I,1,XI,XIDOT,FIRR,FD)
+186c174
+<                       CALL FCHAIN(I,0,XI,XIDOT,FIRR,FD)
+---
+>                       CALL FCHAIN(I,1,XI,XIDOT,FIRR,FD)
+190c178
+<       END IF 
+---
+>       END IF
+197c185
+<           CALL XTRNLF(XI,XIDOT,FIRR,FREG,FD,FDUM,0)
+---
+>           CALL XTRNLF(I,XI,XIDOT,FIRR,FREG,FD,FDUM,0)
+200c188
+< *       Include the corrector and set new T0, F, FDOT, D1, D2 & D3.
+---
+> *       Include the corrector and set new F, FDOT, D1, D2 & D3.
+207d194
+<       T0(I) = TIME
+214a202,204
+> *       Use here new variables for consistency in parallel execution (R.Sp.)
+>           XN(K,I) = XI(K) + (0.6*AT3 + BT2)*DTSQ12
+>           XNDOT(K,I) = XIDOT(K) + (0.75*AT3 + BT2)*DT13
+216,223c206,207
+< 	  X0(K,I) = XI(K) + (0.6*AT3 + BT2)*DTSQ12
+< 	  X0DOT(K,I) = XIDOT(K) + (0.75*AT3 + BT2)*DT13
+< *
+< *         X0(K,I) = X(K,I)
+< *         X0DOT(K,I) = XDOT(K,I)
+< *
+< 	  FI(K,I) = FIRR(K)
+< 	  FIDOT(K,I) = FD(K)
+---
+>       FI(K,I) = FIRR(K)
+>       FIDOT(K,I) = FD(K)
+227,230c211,212
+<           D0(K,I) = FIRR(K)
+<           D1(K,I) = FD(K)
+< 	  D2(K,I) = (3.0*AT3 + BT2)*DT2
+< 	  D3(K,I) = AT3*DT6
+---
+>           D2(K,I) = (3.0*AT3 + BT2)*DT2
+>           D3(K,I) = AT3*DT6
+232c214
+<    80 CONTINUE
+---
+>    80 continue
+235c217
+<       IF (KZ(37).EQ.0) THEN
+---
+>         IF (KZ(37).EQ.0) THEN
+237c219
+<       ELSE
+---
+>         ELSE
+239c221
+<       END IF
+---
+>         END IF
+241a224,243
+> *       Winston Sweatman's suggestion
+> *     DVV = (XDOT(1,I)-X0DOT(1,I))**2 + (XDOT(2,I)-X0DOT(2,I))**2 +
+> *    &     (XDOT(3,I)-X0DOT(3,I))**2
+> *     FFD = FIRR(1)**2 + FIRR(2)**2 + FIRR(3)**2
+> *     ETAIW = ETAI
+> *     TTMPW = ETAIW*DVV*BODY(I)/FFD
+> *
+> *     PRINT*,' irr I=',I,' TTMP,TTMPW,RATIO=',
+> *    &  TTMP,TTMPW,TTMP/TTMPW
+> *
+> *     IF(TTMP.GT.TTMPW)THEN
+> *     IGT = IGT + 1
+> *     ELSE
+> *     ILE = ILE + 1
+> *     END IF
+> *     IF(MOD(IGT+ILE,100).EQ.0)PRINT*,' irr IGT,ILE=',IGT,ILE
+> *
+> *     TTMP = MAX(TTMPW,TTMP)
+> *     DT0 = TTMP
+> *
+254,255c256,257
+<           IF (DMOD(TIME,2.0*STEP(I)).EQ.0.0D0) THEN 
+<               TTMP = MIN(2.0*STEP(I),1.0D0)
+---
+>           IF (DMOD(TIME,2.0*STEP(I)).EQ.0.0D0) THEN
+>               TTMP = MIN(2.0*STEP(I),1.D0)
+257c259
+<               TTMP = STEP(I) 
+---
+>               TTMP = STEP(I)
+261,262c263,264
+<           IF (TTMP.GT.DT0) THEN
+<               TTMP = 0.5*TTMP
+---
+>             IF (TTMP.GT.DT0) THEN
+>                 TTMP = 0.5*TTMP
+268d269
+< *       Set new block step and update next time.
+270,300d270
+<       TIMENW(I) = STEP(I) + T0(I)
+< *
+< *       See whether any KS candidates are in the same block as body #I.
+<       IF (IKS.GT.0.AND.I.EQ.ICOMP) THEN
+< *       Accept same time, otherwise reduce STEP(ICOMP) and/or delay.
+<           IF (T0(JCOMP).EQ.T0(ICOMP)) THEN
+<               ICOMP = MIN(ICOMP,JCOMP)
+<               JCOMP = MAX(I,JCOMP)
+<           ELSE IF (T0(JCOMP) + STEP(JCOMP).LT.T0(ICOMP)) THEN
+<               STEP(ICOMP) = 0.5D0*STEP(ICOMP)
+<               TIMENW(ICOMP) = STEP(ICOMP) + T0(ICOMP)
+<               IKS = 0
+<           ELSE
+<               IKS = 0
+<           END IF
+<       END IF
+< *
+< *       See whether total force & derivative needs updating.
+<       IF (IR.EQ.0) THEN
+< *       Extrapolate regular force & first derivatives to obtain F & FDOT.
+<           DTR = TIME - T0R(I)
+<           DO 90 K = 1,3
+<               F(K,I) = 0.5*(FRDOT(K,I)*DTR + FR(K,I) + FIRR(K))
+<               FDOT(K,I) = ONE6*(FRDOT(K,I) + FD(K))
+<    90     CONTINUE
+<       END IF
+< *
+<       NSTEPI = NSTEPI + 1
+<       IF (I.GT.N) THEN
+<           IF (LIST(1,2*IPAIR-1).GT.0) NSTEPB = NSTEPB + 1
+<       END IF
+1,2c1,2
+< 3120 2003-06-26 21:55 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nblist.f
+< Ncode//nblist.f
+---
+> 3173 2003-06-24 09:52 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nblist.f
+> XXX//nblist.f
+39c39,40
+<               IF (TIME.LE.0.0D0.AND.J.LE.2*NBIN0) GO TO 6
+---
+>               IF (TIME.LE.0.0D0.AND.(KZ(8).GT.0 .OR. NBIN0.GT.0).AND.
+>      &            J.LE.2*NBIN0) GO TO 6
+100a102
+> 
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//nbody6.f does not exist
+1,2c1,2
+< 1565 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nbpot.f
+< Ncode//nbpot.f
+---
+> 1565 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nbpot.f
+> XXX//nbpot.f
+1,2c1,2
+< 1773 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nbrem.f
+< Ncode//nbrem.f
+---
+> 1772 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nbrem.f
+> XXX//nbrem.f
+12c12
+<           I = JPERT(LL) 
+---
+>           I = JPERT(LL)
+1,2c1,2
+< 1699 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nbrest.f
+< Ncode//nbrest.f
+---
+> 1698 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nbrest.f
+> XXX//nbrest.f
+12c12
+<           I = JPERT(LL) 
+---
+>           I = JPERT(LL)
+1,2c1,2
+< 3451 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nbsort.f
+< Ncode//nbsort.f
+---
+> 3689 2000-08-01 20:02 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nbsort.f
+> XXX//nbsort.f
+8c8
+<       INTEGER  IBL(LMAX),NBLIST(NMAX),LP(NMAX)
+---
+>       INTEGER  IBL(NMAX),NBLIST(NMAX),LP(NMAX)
+53a54,59
+> *     IF(NNB.EQ.0)THEN
+> *     PRINT*,' NBLIST L, IBL(1), IBL(L), NBL=',
+> *    *   L, IBL(1), IBL(L), NBL
+> *     PRINT*,' IFIRST,N,LIST(1,I),STEP=',IFIRST,N,LIST(1,I),STEP(I)
+> *     PRINT*,' N,M,X=',NAME(I),BODY(I),(X(K,I),K=1,3)
+> *     END IF
+1,2c1,2
+< 3044 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nbtide.f
+< Ncode//nbtide.f
+---
+> 3044 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nbtide.f
+> XXX//nbtide.f
+1,2c1,2
+< 2957 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//newreg.f
+< Ncode//newreg.f
+---
+> 2957 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//newreg.f
+> XXX//newreg.f
+1,2c1,2
+< 891 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//newsys.f
+< Ncode//newsys.f
+---
+> 891 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//newsys.f
+> XXX//newsys.f
+1,2c1,2
+< 1311 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//nlmod.f
+< Ncode//nlmod.f
+---
+> 1312 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//nlmod.f
+> XXX//nlmod.f
+0a1
+> 
+1,2c1,2
+< 1160 2001-08-24 04:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//offset.f
+< Ncode//offset.f
+---
+> 1160 2001-08-24 04:24 /work/Tux1/spurzem/Nbody/Nbody6/XXX//offset.f
+> XXX//offset.f
+1,2c1,2
+< 1430 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//orbit.f
+< Ncode//orbit.f
+---
+> 2422 2005-03-09 22:28 /work/Tux1/spurzem/Nbody/Nbody6/XXX//orbit.f
+> XXX//orbit.f
+8a9,15
+> *       Predict current state vector of body #I to order FDOT. (R.Sp.)
+>           S = TIME - T0(I)
+>           DO 11 K = 1,3
+>               X(K,I) = ((FDOT(K,I)*S + F(K,I))*S + X0DOT(K,I))*S +
+>      &                                                           X0(K,I)
+>               XDOT(K,I) = (3.0*FDOT(K,I)*S + 2.0*F(K,I))*S + X0DOT(K,I)
+>    11     CONTINUE
+20a28,31
+> *        Predict coordinate (R.Sp.)
+>           S = TIME - T0(JJ)
+>           X(K,JJ) = ((FDOT(K,JJ)*S + F(K,JJ))*S + X0DOT(K,JJ))*S +
+>      &                                                         X0(K,JJ)
+24c35
+< *       Exclude any c.m. bodies from dominant motion.
+---
+> *       Exclude any c.m. bodies from dominant motion (
+41a53,57
+> *       Prediction (R.Sp.)
+>           S = TIME - T0(J)
+>           X(K,J) = ((FDOT(K,J)*S + F(K,J))*S + X0DOT(K,J))*S +
+>      &                                                         X0(K,J)
+>           XDOT(K,J) = (3.0*FDOT(K,J)*S + 2.0*F(K,J))*S + X0DOT(K,J)
+51a68,72
+>       IF (J.LT.IFIRST.AND.TIME.GT.0.D0) THEN
+>       WRITE (6,10)  I,J,IFIRST,N,(LIST(K,I),K=2,NNB+1)
+>    10 FORMAT (' DANGER!   I J I* N LIST   ',4I5,2X,20(15I5,/))
+>       END IF
+> *
+54a76
+> 
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//output.f does not exist
+1,2c1,2
+< 1893 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//peri.f
+< Ncode//peri.f
+---
+> 1893 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//peri.f
+> XXX//peri.f
+1,2c1,2
+< 910 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//permit.f
+< Ncode//permit.f
+---
+> 912 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//permit.f
+> XXX//permit.f
+4,5c4,5
+< *       Permission for new triple, quad or chain.
+< *       -----------------------------------------
+---
+> *       Permission for unperturbed triple or quad.
+> *       ------------------------------------------
+1,2c1,2
+< 1313 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//pfac.f
+< Ncode//pfac.f
+---
+> 1313 1999-12-23 20:25 /work/Tux1/spurzem/Nbody/Nbody6/XXX//pfac.f
+> XXX//pfac.f
+1,2c1,2
+< 5176 2002-10-01 22:44 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//qpmod3.f
+< Ncode//qpmod3.f
+---
+> 5177 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//qpmod3.f
+> XXX//qpmod3.f
+143c143
+<      &                              2I5,1P,E10.2,0P,2F8.3,F9.1,1P,E10.2)
+---
+>      &                                 2I5,1PE10.2,0P2F8.3,F9.1,1PE10.2)
+149a150
+> 
+1,2c1,2
+< 4205 2002-10-01 22:45 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//qpmod4.f
+< Ncode//qpmod4.f
+---
+> 4206 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//qpmod4.f
+> XXX//qpmod4.f
+127c127
+<      &                              2I5,1P,E10.2,0P,2F8.3,F9.1,1P,E10.2)
+---
+>      &                                 2I5,1PE10.2,0P2F8.3,F9.1,1PE10.2)
+132a133
+> 
+1,2c1,2
+< 11909 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//quad.f
+< Ncode//quad.f
+---
+> 11909 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//quad.f
+> XXX//quad.f
+1,2c1,2
+< 749 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//ran2.f
+< Ncode//ran2.f
+---
+> 1059 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//ran2.f
+> XXX//ran2.f
+1,32c1,34
+<       FUNCTION RAN2(IDUM)
+< *
+< *
+< *       Random number generator (Press p. 195).
+< *       ---------------------------------------
+< *
+<       PARAMETER (M=714025,IA=1366,IC=150889,RM=1./M)
+<       COMMON/RAND2/  IY,IFF,IR(97) 
+< *     DATA  IFF /0/
+< *
+< *
+<       IF (IDUM.LT.0.OR.IFF.EQ.0) THEN
+<           IFF = 1
+<           IDUM = MOD(IC-IDUM,M)
+<           DO 11 J = 1,97
+<               IDUM = MOD(IA*IDUM+IC,M)
+<               IR(J) = IDUM
+<    11     CONTINUE
+<           IDUM = MOD(IA*IDUM+IC,M)
+<           IY = IDUM
+<       END IF
+<       J = 1 + (97*IY)/M
+<       IF (J.GT.97.OR.J.LT.1) WRITE (6,12)  J, IDUM
+<    12 FORMAT (/,'  TROUBLES IN RAN2   J IDUM ',2I12)
+<       IY = IR(J)
+<       RAN2 = IY*RM
+<       IDUM = MOD(IA*IDUM+IC,M)
+<       IR(J) = IDUM
+< *
+<       RETURN
+< *
+<       END 
+---
+>       FUNCTION ran2(idum)
+>       INTEGER idum,IM1,IM2,IMM1,IA1,IA2,IQ1,IQ2,IR1,IR2,NTAB,NDIV
+>       REAL ran2,AM,EPS,RNMX
+>       PARAMETER (IM1=2147483563,IM2=2147483399,AM=1./IM1,IMM1=IM1-1,
+>      *IA1=40014,IA2=40692,IQ1=53668,IQ2=52774,IR1=12211,IR2=3791,
+>      *NTAB=32,NDIV=1+IMM1/NTAB,EPS=1.2e-7,RNMX=1.-EPS)
+>       INTEGER idum2,j,k,iv(NTAB),iy
+>       SAVE iv,iy,idum2
+>       DATA idum2/123456789/, iv/NTAB*0/, iy/0/
+>       if (idum.le.0) then
+>         idum=max(-idum,1)
+>         idum2=idum
+>         do 11 j=NTAB+8,1,-1
+>           k=idum/IQ1
+>           idum=IA1*(idum-k*IQ1)-k*IR1
+>           if (idum.lt.0) idum=idum+IM1
+>           if (j.le.NTAB) iv(j)=idum
+> 11      continue
+>         iy=iv(1)
+>       endif
+>       k=idum/IQ1
+>       idum=IA1*(idum-k*IQ1)-k*IR1
+>       if (idum.lt.0) idum=idum+IM1
+>       k=idum2/IQ2
+>       idum2=IA2*(idum2-k*IQ2)-k*IR2
+>       if (idum2.lt.0) idum2=idum2+IM2
+>       j=1+iy/NDIV
+>       iy=iv(j)-idum2
+>       iv(j)=idum
+>       if(iy.lt.1)iy=iy+IMM1
+>       ran2=min(AM*iy,RNMX)
+>       return
+>       END
+> C  (C) Copr. 1986-92 Numerical Recipes Software >).
+1,2c1,2
+< 4165 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//rchain.f
+< Ncode//rchain.f
+---
+> 4190 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//rchain.f
+> XXX//rchain.f
+30d29
+<       JC = 0
+31a31
+>       JC = 0
+66a67
+>               DTAU0 = DS
+1,2c1,2
+< 1006 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//reflct.f
+< Ncode//reflct.f
+---
+> 1039 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//reflct.f
+> XXX//reflct.f
+15c15
+< *       Obtain radial velocity with respect to the inertial centre.
+---
+> *       Obtain radial velocity assuming small density centre displacement.
+37a38,39
+> *
+> *     NBREF = NBREF + 1
+1,2c1,2
+< 20034 2002-10-02 01:30 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//regint.f
+< Ncode//regint.f
+---
+> 21522 2005-04-13 22:11 /work/Tux1/spurzem/Nbody/Nbody6/XXX//regint.f
+> XXX//regint.f
+1,2c1
+<       SUBROUTINE REGINT(I,XI,XIDOT)
+< *
+---
+>       SUBROUTINE REGINT(I,KLIST)
+9a9,10
+> *       Calculate potential with little extra cost.
+>       COMMON/POTENT/PHII(NMAX),PHIR(NMAX),PHIR1(NMAX)
+11a13,15
+>       INTEGER ESCFLG(NMAX)
+> *
+>       INTEGER KLIST(LMAX)
+12a17,20
+>       DO 6 K = 1,3
+>           XI(K) = X(K,I)
+>           XIDOT(K) = XDOT(K,I)
+>    6  CONTINUE
+14,15c22,23
+< *       Set neighbour number, time-step & central distance.
+<       NNB0 = LIST(1,I)
+---
+> *       Copy uncorrected X and set time-step & central distance.
+>       NNB0 = KLIST(1)
+37a46,48
+>       PHII(I) = 0.D0
+>       PHIR(I) = 0.D0
+>       PHIR1(I) = 0.D0
+49a61
+>           call cputim(tt1)
+50a63,65
+> *RSP
+>           IF (J.EQ.I) GO TO 10
+> *RSP
+59a75,76
+>           DR2I = 1.0/RIJ2
+>           DR3I = BODY(J)*DR2I*SQRT(DR2I)
+60a78
+>           DRDP = 3.0*DRDV*DR2I
+62c80
+< *       First see whether the distance exceeds the outer shell radius.
+---
+> *       See whether the distance exceeds the outer shell radius.
+69,70d86
+<           ELSE
+<               IF (J.EQ.I) GO TO 10
+76,78d91
+<           DR2I = 1.0/RIJ2
+<           DRDV = 3.0*DRDV*DR2I
+<           DR3I = BODY(J)*DR2I*SQRT(DR2I)
+82,84c95,99
+<           FD(1) = FD(1) + (DV(1) - A1*DRDV)*DR3I
+<           FD(2) = FD(2) + (DV(2) - A2*DRDV)*DR3I
+<           FD(3) = FD(3) + (DV(3) - A3*DRDV)*DR3I
+---
+>           FD(1) = FD(1) + (DV(1) - A1*DRDP)*DR3I
+>           FD(2) = FD(2) + (DV(2) - A2*DRDP)*DR3I
+>           FD(3) = FD(3) + (DV(3) - A3*DRDP)*DR3I
+> *       Obtain potential.
+>           PHII(I) = PHII(I) - DR3I*RIJ2
+88,91c103
+<     8     DR2I = 1.0/RIJ2
+<           DRDV = 3.0*DRDV*DR2I
+<           DR3I = BODY(J)*DR2I*SQRT(DR2I)
+<           FREG(1) = FREG(1) + A1*DR3I
+---
+>     8     FREG(1) = FREG(1) + A1*DR3I
+94,96c106,111
+<           FDR(1) = FDR(1) + (DV(1) - A1*DRDV)*DR3I
+<           FDR(2) = FDR(2) + (DV(2) - A2*DRDV)*DR3I
+<           FDR(3) = FDR(3) + (DV(3) - A3*DRDV)*DR3I
+---
+>           FDR(1) = FDR(1) + (DV(1) - A1*DRDP)*DR3I
+>           FDR(2) = FDR(2) + (DV(2) - A2*DRDP)*DR3I
+>           FDR(3) = FDR(3) + (DV(3) - A3*DRDP)*DR3I
+> *       Obtain potential and derivative.
+>           PHIR(I) = PHIR(I) - DR3I*RIJ2
+>           PHIR1(I) = PHIR1(I) + DRDV*DR3I
+97a113,114
+>           call cputim(tt2)
+>           ttfrc = ttfrc + (tt2-tt1)*60.
+98a116,127
+> *       Check total energy
+>           VI2 = XIDOT(1)**2 + XIDOT(2)**2 + XIDOT(3)**2
+>           EI = VI2/2.D0 + PHIR(I) + PHII(I)
+>           ETIDAL = -ZMASS/RTIDE
+>           IF(EI.GT.ETIDAL)THEN
+>               IF(ESCFLG(NAME(I)).NE.1)
+>      *        WRITE(95,1001) TIME,I,NAME(I),BODY(I),DSQRT(RI2),
+>      *                       DSQRT(VI2),EI,ETIDAL
+>               ESCFLG(NAME(I)) = 1
+>  1001     FORMAT(1X,' T=',1P,D15.7,' I,N=',2I6,' m,r,v=',3D15.7,
+>      *        ' e,et=',2D15.7)
+>           END IF
+117c146
+<       END IF 
+---
+>       END IF
+120,121c149,152
+<    20 IF (KZ(14).GT.0) THEN
+<           CALL XTRNLF(XI,XIDOT,FIRR,FREG,FD,FDR,1)
+---
+>    20 CONTINUE
+> *
+>       IF (KZ(14).GT.0) THEN
+>           CALL XTRNLF(I,XI,XIDOT,FIRR,FREG,FD,FDR,1)
+133,134c164,165
+< *       Double the neighbour sphere and try again unless RI > 10*RSCALE.
+<           IF (RI2.GT.100.0*RH2.OR.LIST(1,I).EQ.0) THEN
+---
+> *       Double the neighbour sphere and try again unless RI > 30*RSCALE.
+>           IF (RI2.GT.100.0*RH2.OR.KLIST(1).EQ.0) THEN
+151c182
+<                   LIST(1,I) = 0
+---
+>                   KLIST(1) = 0
+193a225
+>           DRDP = 3.0*DRDV*DR2I
+206,207c238
+<    34     DRDV = 3.0*DRDV*DR2I
+<           FIRR(1) = FIRR(1) - A1*DR3I
+---
+>    34     FIRR(1) = FIRR(1) - A1*DR3I
+210,212c241,243
+<           FD(1) = FD(1) - (DV(1) - A1*DRDV)*DR3I
+<           FD(2) = FD(2) - (DV(2) - A2*DRDV)*DR3I
+<           FD(3) = FD(3) - (DV(3) - A3*DRDV)*DR3I
+---
+>           FD(1) = FD(1) - (DV(1) - A1*DRDP)*DR3I
+>           FD(2) = FD(2) - (DV(2) - A2*DRDP)*DR3I
+>           FD(3) = FD(3) - (DV(3) - A3*DRDP)*DR3I
+216,218c247,253
+<           FDR(1) = FDR(1) + (DV(1) - A1*DRDV)*DR3I
+<           FDR(2) = FDR(2) + (DV(2) - A2*DRDV)*DR3I
+<           FDR(3) = FDR(3) + (DV(3) - A3*DRDV)*DR3I
+---
+>           FDR(1) = FDR(1) + (DV(1) - A1*DRDP)*DR3I
+>           FDR(2) = FDR(2) + (DV(2) - A2*DRDP)*DR3I
+>           FDR(3) = FDR(3) + (DV(3) - A3*DRDP)*DR3I
+> *       Obtain potential and derivative.
+>           PHII(I) = PHII(I) - DR3I*RIJ2
+>           PHIR(I) = PHIR(I) - DR3I*RIJ2
+>           PHIR1(I) = PHIR1(I) + DRDV*DR3I
+230,231c265,278
+<    40 A3 = ALPHA*SQRT(FLOAT(NNB)*RS(I))/RS2
+<       A3 = MIN(A3,ZNBMAX) 
+---
+> *       Include optional stabilization to increase neighbour number.
+> *       Take input parameter NNBOPT as optimal neighbour number (R.Sp.)
+> *       Note that it substitutes input parameter NNBMAX, which
+> *       is now a parameter NNBMAX=LMAX-3
+>    40 CONTINUE
+> *
+>       FAC = 1.D0
+>       IF (KZ(40).GT.0) THEN
+>           FAC = 1.0 + 0.1*(FLOAT(NNBOPT) - FLOAT(NNB))/FLOAT(NNB)
+>       END IF
+> *
+> *     A3 = ALPHA*FAC*SQRT(FLOAT(NNB)*RS(I))/RS2
+>       A3 = FLOAT(NNB)*FAC
+>       A3 = MIN(A3,0.9*ZNBMAX)
+238a286
+> *
+243c291
+<       IF (RI2.GT.RC2.AND.KZ(39).EQ.0.AND.RI2.LT.9.0*RH2) THEN
+---
+>       IF (RI2.GT.RC2.AND.RI2.LT.100.0*RH2) THEN
+285c333
+<       IF (NNB.LE.3.AND.RI2.LT.9.0*RH2) THEN
+---
+>       IF (NNB.LE.3.AND.RI2.LT.100.0*RH2) THEN
+303,305d350
+< *       Check minimum neighbour sphere since last output (skip NNB = 0).
+<       IF (LIST(1,I).GT.0) RSMIN = MIN(RSMIN,RS(I))
+< *
+318c363
+<           LIST(2,I) = 0
+---
+>           KLIST(2) = 0
+326c371
+<       ILIST(1) = LIST(NNB0+1,I)
+---
+>       ILIST(1) = KLIST(NNB0+1)
+329c374
+<    56 IF (LIST(L,I).EQ.ILIST(LG)) GO TO 58
+---
+>    56 IF (KLIST(L).EQ.ILIST(LG)) GO TO 58
+332c377
+<       IF (LIST(L,I).GE.ILIST(LG)) THEN
+---
+>       IF (KLIST(L).GE.ILIST(LG)) THEN
+340c385
+<           J = LIST(L,I)
+---
+>           J = KLIST(L)
+355c400
+<           LIST(L,I) = NTOT + 1
+---
+>           KLIST(L) = NTOT + 1
+384c429
+<       LIST(NNB0+1,I) = ILIST(1)
+---
+>       KLIST(NNB0+1) = ILIST(1)
+398c443,444
+<       DRDV = 3.0*(A1*DV(1) + A2*DV(2) + A3*DV(3))*DR2I
+---
+>       DRDV = A1*DV(1) + A2*DV(2) + A3*DV(3)
+>       DRDP = 3.0*DRDV*DR2I
+403,405c449,451
+<       FD(1) = FD(1) + (DV(1) - A1*DRDV)*DR3I
+<       FD(2) = FD(2) + (DV(2) - A2*DRDV)*DR3I
+<       FD(3) = FD(3) + (DV(3) - A3*DRDV)*DR3I
+---
+>       FD(1) = FD(1) + (DV(1) - A1*DRDP)*DR3I
+>       FD(2) = FD(2) + (DV(2) - A2*DRDP)*DR3I
+>       FD(3) = FD(3) + (DV(3) - A3*DRDP)*DR3I
+409,411c455,461
+<       FDR(1) = FDR(1) - (DV(1) - A1*DRDV)*DR3I
+<       FDR(2) = FDR(2) - (DV(2) - A2*DRDV)*DR3I
+<       FDR(3) = FDR(3) - (DV(3) - A3*DRDV)*DR3I
+---
+>       FDR(1) = FDR(1) - (DV(1) - A1*DRDP)*DR3I
+>       FDR(2) = FDR(2) - (DV(2) - A2*DRDP)*DR3I
+>       FDR(3) = FDR(3) - (DV(3) - A3*DRDP)*DR3I
+> *       Obtain potential and derivative.
+>       PHII(I) = PHII(I) - DR3I*RIJ2
+>       PHIR(I) = PHIR(I) - DR3I*RIJ2
+>       PHIR1(I) = PHIR1(I) + DRDV*DR3I
+426c476,478
+<    70 DTSQ = DTR**2
+---
+>    70 CONTINUE
+> *
+>       DTSQ = DTR**2
+449,454c501,503
+< *
+< 	  X0(K,I) = X0(K,I) + (0.6*AT3 + BT2)*DTSQ12
+< 	  X0DOT(K,I) = X0DOT(K,I) + (0.75*AT3 + BT2)*DTR13
+< *
+< *         X0(K,I) = X(K,I)
+< *         X0DOT(K,I) = XDOT(K,I)
+---
+> *       Use here new variables for consistency in parallel execution (R.Sp.)
+>           XN(K,I) = X0(K,I) + (0.6*AT3 + BT2)*DTSQ12
+>           XNDOT(K,I) = X0DOT(K,I) + (0.75*AT3 + BT2)*DTR13
+457,458c506
+< 	  FR(K,I) = FREG(K)
+<           F(K,I) = 0.5D0*(FREG(K) + FIRR(K))
+---
+>           FR(K,I) = FREG(K)
+460,461c508
+< 	  FRDOT(K,I) = FDR(K)
+<           FDOT(K,I) = ONE6*(FDR(K) + FD(K))
+---
+>           FRDOT(K,I) = FDR(K)
+465,468d511
+< *         D0R(K,I) = FREG(K) - (FI(K,I) - FIRR(K))
+< *         D1R(K,I) = FDR0
+< *       Use actual first derivatives (2nd derivs only consistent in FPCORR).
+<           D1(K,I) = FD(K)
+470,472c513,514
+< *       Set second & third derivatives based on old neighbours (cf. FPCORR).
+< 	  D2R(K,I) = (3.0*AT3 + BT2)*DT2
+< 	  D3R(K,I) = AT3*DT6
+---
+>           D3R(K,I) = AT3*DT6
+>           D2R(K,I) = (3.0*AT3 + BT2)*DT2
+474a517
+>       NBFLUX = NBFLUX + NBLOSS + NBGAIN
+477c520
+<           CALL FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT)
+---
+>           CALL FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT,FIRR,FREG,FD,FDR,KLIST)
+480c523
+<               CALL FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT)
+---
+>           CALL FPCORR(I,NBLOSS,NBGAIN,XI,XIDOT,FIRR,FREG,FD,FDR,KLIST)
+486c529
+<           LIST(1,I) = NNB
+---
+>           KLIST(1) = NNB
+488c531
+<               LIST(L,I) = ILIST(L)
+---
+>               KLIST(L) = ILIST(L)
+490d532
+<           NBFLUX = NBFLUX + NBLOSS + NBGAIN
+494,499c536,538
+< *     IF (KZ(29).GT.0) THEN
+< *         RI2 = X(1,I)**2 + X(2,I)**2 + X(3,I)**2
+< *         IF (RI2.GT.RSPH2) THEN
+< *             CALL REFLCT(I,RI2)
+< *             IF (RI2.LT.0.0) GO TO 120
+< *         END IF
+---
+> *     IF (KZ(29).GT.0.AND.RI2.GT.RS2) THEN
+> *         CALL REFLCT(I,RI2)
+> *         IF (RI2.LT.0.0) GO TO 120
+525c564,572
+<       DT0 = TTMP
+---
+> *       Winston Sweatman's suggestion
+> *     DVV = (XDOT(1,I)-X0DOT(1,I))**2 + (XDOT(2,I)-X0DOT(2,I))**2 +
+> *    &     (XDOT(3,I)-X0DOT(3,I))**2
+> *     FFD = FREG(1)**2 + FREG(2)**2 + FREG(3)**2
+> *     ETARW = ETAR
+> *     TTMPW = ETARW*DVV*BODY(I)/FFD
+> *
+> *     PRINT*,' Reg I=',I,' TTMP,TTMPW,RATIO=',
+> *    &  TTMP,TTMPW,TTMP/TTMPW
+527,529c574,575
+< *       Determine new regular step (standard criterion or fast expression).
+< *     IF (KZ(37).EQ.0) THEN
+< *         TTMP = TSTEP(FREG,FDR,D2R(1,I),D3R(1,I),ETAR)
+---
+> *     IF(TTMP.GT.TTMPW)THEN
+> *     IGT = IGT + 1
+531c577
+< *         TTMP = STEPI(FREG,FDR,D2R(1,I),D3R(1,I),ETAR)
+---
+> *     ILE = ILE + 1
+532a579,582
+> *     IF(MOD(IGT+ILE,100).EQ.0)PRINT*,' irr IGT,ILE=',IGT,ILE
+> *
+> *     TTMP = MAX(TTMPW,TTMP)
+> *     TTR = TSTEP(FREG,FDR,D2R(1,I),D3R(1,I),ETAR)
+538c588
+<           W0(4) = FAC**2*MIN(W0(4),FI2)
+---
+>           W0(4) = FAC**2*MIN(DBLE(W0(4)),FI2)
+564d613
+< *     DTR1 = TTMP
+567,569c616,618
+<       IF (TTMP .GT. 2.0*STEPR(I)) THEN
+<           IF (DMOD(TIME,2.0*STEPR(I)) .EQ. 0.0D0) THEN 
+<               TTMP = MIN(2.0*STEPR(I),1.0D0)
+---
+> 		IF (TTMP .GT. 2.0*STEPR(I)) THEN
+> 			IF (DMOD(TIME,2.0*STEPR(I)) .EQ. 0.0D0) THEN
+>               TTMP = MIN(2.0*STEPR(I),1.D0)
+571c620
+<               TTMP = STEPR(I) 
+---
+>               TTMP = STEPR(I)
+575,578d623
+< *       Allow a second reduction to prevent spurious contributions.
+<           IF (TTMP.GT.DT0) THEN
+<               TTMP = 0.5*TTMP
+<           END IF
+583a629
+> *     PRINT*,' New Step = ',TTMP,' Old ',STEPR(I),' Quot ',TTMP/STEPR(I)
+584a631,632
+> *     STEPR(I) = MIN(1.4*STEPR(I),DTR1)
+> *
+591d638
+<       NSTEPR = NSTEPR + 1
+593c640
+<       RETURN
+---
+>   120 RETURN
+1,2c1,2
+< 3645 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//remove.f
+< Ncode//remove.f
+---
+> 3645 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//remove.f
+> XXX//remove.f
+1,2c1,2
+< 7719 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//rename.f
+< Ncode//rename.f
+---
+> 7720 2001-08-04 23:19 /work/Tux1/spurzem/Nbody/Nbody6/XXX//rename.f
+> XXX//rename.f
+213a214
+> 
+1,2c1,2
+< 13375 2003-01-02 17:05 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//reset2.f
+< Ncode//reset2.f
+---
+> 13553 2003-06-26 03:09 /work/Tux1/spurzem/Nbody/Nbody6/XXX//reset2.f
+> XXX//reset2.f
+53c53,54
+<           WRITE (6,5)  WHICH1, TIME+TOFF, ZM, NAME(2*IPAIR-1),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,5)  WHICH1, TIME+TOFF, ZM, NAME(2*IPAIR-1),
+67c68,69
+<               WRITE (6,9)  TIME+TOFF, ZM, NAME(I1), NAME(JG), NAME(I2),
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,9)  TIME+TOFF, ZM, NAME(I1), NAME(JG), NAME(I2),
+72c74,75
+<               WRITE (6,11)  TIME+TOFF, ZM, NAME(I1), NAME(JG), NAME(I2),
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,11)  TIME+TOFF, ZM, NAME(I1), NAME(JG), NAME(I2),
+96c99,100
+<           WRITE (6,18)  TIME+TOFF, ZM, NAME(I1), NAMEG(IM), -NAMEM(JM),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,18)  TIME+TOFF, ZM, NAME(I1), NAMEG(IM), -NAMEM(JM),
+153c157,158
+<           WRITE (6,12)  IMERGE, NAMEG(IMERGE), JCOMP
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,12)  IMERGE, NAMEG(IMERGE), JCOMP
+327c332,333
+<           WRITE (6,48)  JPAIR, H(JPAIR), BODY(2*JPAIR-1),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,48)  JPAIR, H(JPAIR), BODY(2*JPAIR-1),
+358c364,365
+<           WRITE (6,65)  IMERGE, TIME+TOFF, BODY(2*IPAIR-1),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,65)  IMERGE, TIME+TOFF, BODY(2*IPAIR-1),
+403a411,412
+> 
+> 
+1,2c1,2
+< 10487 2002-07-24 22:33 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//reset.f
+< Ncode//reset.f
+---
+> 10592 2003-06-25 23:29 /work/Tux1/spurzem/Nbody/Nbody6/XXX//reset.f
+> XXX//reset.f
+103c103,104
+<           WRITE (6,12)  NAMEG(IMERGE)
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,12)  NAMEG(IMERGE)
+213a215
+> *
+216a219
+> *
+225c228,229
+<           WRITE (6,45)  JPAIR, H(JPAIR), BODY(2*JPAIR-1),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,45)  JPAIR, H(JPAIR), BODY(2*JPAIR-1),
+228c232
+<    45     FORMAT (' END QUAD',I4,'  H =',F7.1,'  M =',2F7.4,
+---
+>    45     FORMAT (' END QUAD ',I4,'  H =',F7.1,'  M =',2F7.4,
+257c261,262
+<           WRITE (6,65)  IMERGE, TIME+TOFF, BODY(2*NPAIRS-1),
+---
+>           if(rank.eq.0)
+>      &    WRITE (6,65)  IMERGE, TIME+TOFF, BODY(2*NPAIRS-1),
+306c311,312
+<               WRITE (6,95)  I, NAME(I), (NAMEM(L),L=1,NMERGE)
+---
+>               if(rank.eq.0)
+>      &        WRITE (6,95)  I, NAME(I), (NAMEM(L),L=1,NMERGE)
+1,2c1,2
+< 4368 2002-10-10 23:53 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//resolv.f
+< Ncode//resolv.f
+---
+> 4310 2003-06-24 01:32 /work/Tux1/spurzem/Nbody/Nbody6/XXX//resolv.f
+> XXX//resolv.f
+47c47
+<       DTU2 = DTU/24.0D0
+---
+>       DTU2 = 0.0416666666666667*DTU
+95d94
+< *       Note: Update X0 for call from KSTERM after RESOLV call in MDOT.
+127a127,128
+> 
+> 
+1,2c1,2
+< 707 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//resort.f
+< Ncode//resort.f
+---
+> 707 2001-08-15 01:21 /work/Tux1/spurzem/Nbody/Nbody6/XXX//resort.f
+> XXX//resort.f
+1,2c1,2
+< 607 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//rsort.f
+< Ncode//rsort.f
+---
+> 607 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//rsort.f
+> XXX//rsort.f
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//scale.f does not exist
+1,2c1,2
+< 3774 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//search.f
+< Ncode//search.f
+---
+> 4334 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//search.f
+> XXX//search.f
+15,16c15
+< *       Predict current state vector of body #I to order FDOT (only Hermite).
+<       IF (TPREV.LE.0.0) THEN
+---
+> *       Predict current state vector of body #I to order FDOT.
+23d21
+<       END IF
+36a35,41
+> *       Prediction (R.Sp.)
+>           S = TIME - T0(J)
+>           DO 25 K = 1,3
+>               X(K,J) = ((FDOT(K,J)*S + F(K,J))*S + X0DOT(K,J))*S +
+>      &                                                           X0(K,J)
+>               XDOT(K,J) = (3.0*FDOT(K,J)*S + 2.0*F(K,J))*S + X0DOT(K,J)
+>    25     CONTINUE
+59a65,71
+> *       Prediction (R.Sp.)
+>           S = TIME - T0(J)
+>           DO 65 KK = 1,3
+>           X(KK,J) = ((FDOT(KK,J)*S + F(KK,J))*S + X0DOT(KK,J))*S +
+>      &                                                         X0(KK,J)
+>           XDOT(KK,J) = (3.0*FDOT(KK,J)*S + 2.0*F(KK,J))*S + X0DOT(KK,J)
+>    65     CONTINUE
+88c100
+<       IF (RDOT.GT.0.02*SQRT((BODY(I) + BODY(JCOMP))*RIJMIN)) GO TO 10
+---
+>       IF (RDOT.GT.0.1*SQRT((BODY(I) + BODY(JCOMP))*RIJMIN)) GO TO 10
+1,2c1,2
+< 2801 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//setup.f
+< Ncode//setup.f
+---
+> 2801 2002-08-17 21:15 /work/Tux1/spurzem/Nbody/Nbody6/XXX//setup.f
+> XXX//setup.f
+1,2c1,2
+< 2406 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//shrink.f
+< Ncode//shrink.f
+---
+> 2407 2000-05-05 03:24 /work/Tux1/spurzem/Nbody/Nbody6/XXX//shrink.f
+> XXX//shrink.f
+73a74
+> 
+1,2c1,2
+< 800 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//sort1.f
+< Ncode//sort1.f
+---
+> 817 2001-08-26 07:41 /work/Tux1/spurzem/Nbody/Nbody6/XXX//sort1.f
+> XXX//sort1.f
+8c8,9
+<       DIMENSION  RA(N),RB(N)
+---
+>       REAL*8 RA(N),RRA
+>       DIMENSION  RB(N)
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//sort2.f does not exist
+1,2c1,2
+< 2855 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//stabl3.f
+< Ncode//stabl3.f
+---
+> 2855 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//stabl3.f
+> XXX//stabl3.f
+1,2c1,2
+< 3706 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//stabl4.f
+< Ncode//stabl4.f
+---
+> 3706 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//stabl4.f
+> XXX//stabl4.f
+1,2c1,2
+< 2172 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//stablz.f
+< Ncode//stablz.f
+---
+> 2172 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//stablz.f
+> XXX//stablz.f
+1,2c1,2
+< 11965 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//star.f
+< Ncode//star.f
+---
+> 12006 2006-06-18 09:51 /work/Tux1/spurzem/Nbody/Nbody6/XXX//star.f
+> XXX//star.f
+13c13
+<       real*8 tgb,tbagb,mch,mcmax,mc1,mc2,mcbagb,dx,am
+---
+>       real*8 tgb,tbagb,mch,mcmax,mc1,mc2,mcbagb,dx,me,am
+121a122
+>             me = MAX(mass - mc1,0.d0)
+1,2c1,2
+< 10764 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//start3.f
+< Ncode//start3.f
+---
+> 10764 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//start3.f
+> XXX//start3.f
+1,2c1,2
+< 11282 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//start4.f
+< Ncode//start4.f
+---
+> 11282 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//start4.f
+> XXX//start4.f
+file /work/Tux1/spurzem/Nbody/Nbody6/XXX//start.f does not exist
+1,2c1,2
+< 1768 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//status.f
+< Ncode//status.f
+---
+> 1768 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//status.f
+> XXX//status.f
+1,2c1,2
+< 773 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//stepi.f
+< Ncode//stepi.f
+---
+> 762 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//stepi.f
+> XXX//stepi.f
+19c19
+< *       Obtain time-step by simplified relative criterion.           
+---
+> *       Obtain time-step by simplified relative criterion.
+1,2c1,2
+< 780 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//stepk.f
+< Ncode//stepk.f
+---
+> 752 2000-04-13 08:52 /work/Tux1/spurzem/Nbody/Nbody6/XXX//stepk.f
+> XXX//stepk.f
+8,9c8
+<       DATA  ONE32 /0.03125/
+< *     DATA  ONE16,ONE32 /0.0625D0,0.03125/
+---
+>       DATA  ONE16,ONE32 /0.0625D0,0.03125/
+1,2c1,2
+< 3324 2003-06-23 15:54 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//steps.f
+< Ncode//steps.f
+---
+> 3325 2003-06-26 09:20 /work/Tux1/spurzem/Nbody/Nbody6/XXX//steps.f
+> XXX//steps.f
+9d8
+< *
+18c17
+<           DT = 0.5*ETAI*SQRT(FI2/FD2)
+---
+>           DT = ETAI*SQRT(FI2/FD2)
+20,23c19,21
+<           FD2 = D1R(1,I)**2 + D1R(2,I)**2 + D1R(3,I)**2
+<           IF (FD2.LT.FR2) FD2 = FR2/TCR0**2
+<           DTR = ETAR*SQRT(FR2/FD2)
+<  
+---
+>           FDR2 = D1R(1,I)**2 + D1R(2,I)**2 + D1R(3,I)**2
+>           IF (FDR2.LT.FR2) FDR2 = FR2/TCR0**2
+>           DTR = ETAR*SQRT(FR2/FDR2)
+37a36
+> *
+49,50c48
+<                   IF (ITER.LT.16.OR.STEP(I).GT.DTK(40)) GO TO 10
+<                   STEP(I) = DTK(40)
+---
+>                   IF (ITER.LT.40.OR.STEP(I).GT.DTK(40)) GO TO 10
+53a52
+>                   STEP(I) = DTK(40)
+59,60c58
+<                   IF (ITER.LT.16.OR.STEPR(I).GT.DTK(40)) GO TO 18
+<                   STEPR(I) = DTK(40)
+---
+>                   IF (ITER.LT.40.OR.STEPR(I).GT.DTK(40)) GO TO 18
+63a62
+>                   STEPR(I) = DTK(40)
+76c75
+< *             WRITE (7,28)  I, NAME(I), TIME, DT, STEP(I), STEPR(I)
+---
+> *             WRITE (77,28)  I, NAME(I), TIME, DT, STEP(I), STEPR(I)
+79c78
+< *             CALL FLUSH(7)
+---
+> *             CALL FLUSH(77)
+92a92
+> 
+1,2c1,2
+< 1088 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//stumpf.f
+< Ncode//stumpf.f
+---
+> 1088 2001-08-25 05:08 /work/Tux1/spurzem/Nbody/Nbody6/XXX//stumpf.f
+> XXX//stumpf.f
+1,2c1,2
+< 6165 2002-10-10 23:50 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//subint.f
+< Ncode//subint.f
+---
+> 6216 2003-06-25 23:26 /work/Tux1/spurzem/Nbody/Nbody6/XXX//subint.f
+> XXX//subint.f
+10c10
+<       REAL*8  TSLIST(KMAX)
+---
+>       REAL*8  TSLIST(10*KMAX)
+38c38
+<               IF (DTB.EQ.0.0D0.OR.DTB.GT.1.0D+06) THEN
+---
+>               IF (DTB.EQ.0.0D0.OR.DTB.GT.1.0D0) THEN
+41c41,43
+<     2         TBLIST = TPREV + DTB
+---
+>     2         CONTINUE
+> *
+>               TBLIST = TPREV + DTB
+53c55
+<               IF (NNTB.EQ.0) THEN
+---
+>               IF (NNTB.EQ.0.AND.DTB.LT.1.0D0) THEN
+63c65
+<                   CALL SORT2(NNTB,TSLIST,KBLIST)
+---
+>                   CALL SORT1(NNTB,TSLIST,KBLIST)
+96,97c98
+<                   IF (NNTB.GE.KMAX-5) THEN
+<                       TBLIST = TIME
+---
+>                   IF (NNTB.GE.10*(KMAX-5)) THEN
+103a105
+>                       TBLIST = TIME
+187a190,192
+> 
+> 
+> 
+1,2c1,2
+< 2591 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//subsys.f
+< Ncode//subsys.f
+---
+> 2591 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//subsys.f
+> XXX//subsys.f
+1,2c1,2
+< 2511 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//tcirc.f
+< Ncode//tcirc.f
+---
+> 2511 1999-11-29 00:12 /work/Tux1/spurzem/Nbody/Nbody6/XXX//tcirc.f
+> XXX//tcirc.f
+1,2c1,2
+< 1471 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//tides.f
+< Ncode//tides.f
+---
+> 1460 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//tides.f
+> XXX//tides.f
+21c21
+<           IF (KST.EQ.3.OR.KST.EQ.5.OR.KST.EQ.6) THEN
+---
+>           IF (KST.EQ.3.OR.KST.EQ.5) THEN
+54a55
+> 
+1,2c1,2
+< 2436 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//tperi.f
+< Ncode//tperi.f
+---
+> 2450 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//tperi.f
+> XXX//tperi.f
+13c13
+< *       DT = pericentre time interval (DT < 0 before peri).
+---
+> *       DT = pericentre time interval (DT > 0 after peri).
+51,52c51,53
+< *       Determine the eccentric anomaly with respect to pericentre (-PI,PI).
+<           THETA = DATAN2(PSI/SQRT(SEMI),ZETA)
+---
+> *       Determine the eccentric anomaly with respect to pericentre (0,PI).
+>           THETA = DATAN2(ABS(PSI)/SQRT(SEMI),ZETA)
+> *
+54c55
+<           DT = SEMI*SQRT(SEMI/MB)*(THETA - PSI/SQRT(SEMI))
+---
+>           DT = SEMI*SQRT(SEMI/MB)*(THETA - ABS(PSI)/SQRT(SEMI))
+63c64
+<           DT = A0*SQRT(A0/MB)*(PSI/SQRT(A0) - THETA)
+---
+>           DT = A0*SQRT(A0/MB)*(ABS(PSI)/SQRT(A0) - THETA)
+1,2c1,2
+< 2338 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//tpert.f
+< Ncode//tpert.f
+---
+> 2315 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//tpert.f
+> XXX//tpert.f
+14d13
+<       JCLOSE = 0
+47c46
+<               JCLOSE = J
+---
+>               JMIN = J
+72c71
+<       IF (JCRIT.NE.JCLOSE) THEN
+---
+>       IF (JCRIT.NE.JMIN) THEN
+74c73
+<           DR = SQRT(RJMIN2) - RI*(BODY(JCLOSE)*A1)**0.3333
+---
+>           DR = SQRT(RJMIN2) - RI*(BODY(JMIN)*A1)**0.3333
+1,2c1,2
+< 6353 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//trans3.f
+< Ncode//trans3.f
+---
+> 6353 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//trans3.f
+> XXX//trans3.f
+1,2c1,2
+< 2221 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//trans4.f
+< Ncode//trans4.f
+---
+> 2221 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//trans4.f
+> XXX//trans4.f
+1,2c1,2
+< 16601 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//triple.f
+< Ncode//triple.f
+---
+> 16215 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//triple.f
+> XXX//triple.f
+16c16
+<       COMMON/CLOSE/  RIJ(4,4),RCOLL,QPERI,SIZE(4),ECOLL3,IP(4)
+---
+>       COMMON/CLOSE/  RIJ(4,4),RCOLL,QPERI,SIZE(4),ECOLL3
+38d37
+< *       IP      Polytropic index (=1: n = 3/2; =2: n = 2; =3: n = 3).
+106a106
+>       IQ = 0
+143,153d142
+< *       Determine the smallest two-body time-scale from parabolic orbit.
+<       IM = 1
+<       RM = R1
+<       IF (R2.LT.R1) THEN
+<           IM = 2
+<           RM = R2
+<       END IF
+<       VP2 = 2.0*(M(IM) + M(3))/RM
+<       TP = RM/SQRT(VP2)
+<       TSTAR = MIN(TP,TSTAR)
+< *
+241c230
+<       NEXT = NSTEP3 + 2 
+---
+>       NEXT = NSTEP3 + 2
+246c235
+<       IF (QPERI.LT.4.0*MAX(SIZE(IM),SIZE(3))) THEN
+---
+>       IF (QPERI.LT.2.7*MAX(SIZE(IM),SIZE(3))) THEN
+311,313d299
+<       I3 = IP(3)
+<       IP(3) = IP(IMIN)
+<       IP(IMIN) = I3
+397c383
+<           RDOT = RDOT + 
+---
+>           RDOT = RDOT +
+1,2c1,2
+< 678 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//tstep.f
+< Ncode//tstep.f
+---
+> 678 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//tstep.f
+> XXX//tstep.f
+1,2c1,2
+< 1616 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//units.f
+< Ncode//units.f
+---
+> 1786 2003-08-12 10:29 /work/Tux1/spurzem/Nbody/Nbody6/XXX//units.f
+> XXX//units.f
+15a16
+>       IF(ZMBAR.GT.0.D0)THEN
+17a19,22
+>       ELSE
+>       YRS = 0.D0
+>       DAYS = 0.D0
+>       END IF
+45,48c50,55
+<       WRITE (6,10)  RBAR, ZMBAR, VSTAR, TSTAR, BODYM*ZMBAR, SU
+<    10 FORMAT (/,12X,'PHYSICAL SCALING:    R* =',F4.1,'  M* =',F8.1,
+<      &              '  V* =',F6.3,'  T* =',F6.3,'  <M> =',F5.2,
+<      &              '  SU =',1P,E8.1,/)
+---
+>       if(rank.eq.0)then
+>       WRITE (6,10) RBAR, ZMBAR, VSTAR, TSTAR, BODYM*ZMBAR, SU, RAU, YRS
+>    10 FORMAT (/,5X,'PHYSICAL SCALING:    R* =',1PE11.4,'  M* =',E11.4,
+>      &              '  V* =',E11.4,'  T* =',E11.4,'  <M> =',E11.4,/,
+>      &           26X, 'SU =',E11.4,'  AU =',E11.4,'  YRS =',E11.4,/)
+>       end if
+1,2c1,2
+< 6156 2002-12-19 22:43 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//unpert.f
+< Ncode//unpert.f
+---
+> 6158 2003-06-24 01:33 /work/Tux1/spurzem/Nbody/Nbody6/XXX//unpert.f
+> XXX//unpert.f
+174a175,176
+> 
+> 
+1,2c1,2
+< 6687 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//update.f
+< Ncode//update.f
+---
+> 6213 2002-02-21 03:28 /work/Tux1/spurzem/Nbody/Nbody6/XXX//update.f
+> XXX//update.f
+69c69
+<               LIST(L,J) = LIST(L+1,J) 
+---
+>               LIST(L,J) = LIST(L+1,J)
+100c100
+<           IF (KCASE.EQ.1) WRITE (6,78)  NNB, J, JCOMP
+---
+>           IF (rank.eq.0.and.KCASE.EQ.1) WRITE (6,78)  NNB, J, JCOMP
+161c161,162
+<       IF (IFLAG.NE.-1) WRITE (8,104)  IPAIR, IFLAG, JLIST(1), JLIST(2)
+---
+>       IF (rank.eq.0.and.IFLAG.NE.-1) 
+>      &   WRITE (8,104)  IPAIR, IFLAG, JLIST(1), JLIST(2)
+179,194d179
+< *
+< *       Update list of high velocity particles containing c.m. members.
+<       NNB = LISTV(1)
+<       DO 130 L = 2,NNB+1
+<           IF (LISTV(L).EQ.ICM) THEN
+< *       Remove old c.m. and reduce the membership.
+<               DO 125 K = L,NNB
+<                   LISTV(K) = LISTV(K+1)
+<   125         CONTINUE
+<               LISTV(1) = LISTV(1) - 1
+<           END IF
+< *       Reduce higher particle locations by one.
+<           IF (LISTV(L).GT.ICM) THEN
+<               LISTV(L) = LISTV(L) - 1
+<           END IF
+<   130 CONTINUE
+1,2c1,2
+< 1698 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//verify.f
+< Ncode//verify.f
+---
+> 1732 2001-08-06 05:17 /work/Tux1/spurzem/Nbody/Nbody6/XXX//verify.f
+> XXX//verify.f
+9d8
+< *
+11,14c10,13
+<       IF (N.GE.NMAX - 2.OR.NNBMAX.GT.LMAX - 3) THEN
+<           WRITE (6,10)  N, NNBMAX
+<    10     FORMAT (/,5X,'FATAL ERROR!   BAD INPUT   N =',I5,
+<      &                                                  '  NNBMAX =',I4)
+---
+>       IF (N.GE.NMAX - 2.OR.NNBMAX.GT.LMAX - 3.OR.NNBOPT.GT.NNBMAX) THEN
+>           WRITE (6,10)  N, NNBMAX, NNBOPT
+>    10     FORMAT (/,5X,'FATAL ERROR!   BAD INPUT   N =',I5,' NNBMAX =',
+>      &                                           I5,'  NNBOPT =',I5)
+33,34c32,33
+<       IF (N.LE.0.OR.NNBMAX.LE.0.OR.ETAI.LE.0.0.OR.ETAR.LE.0.0) THEN
+<           WRITE (6,40)  N, NNBMAX, ETAI, ETAR
+---
+>       IF (N.LE.0.OR.NNBOPT.LE.0.OR.ETAI.LE.0.0.OR.ETAR.LE.0.0) THEN
+>           WRITE (6,40)  N, NNBOPT, ETAI, ETAR
+36c35
+<      &                  '  NNBMAX =',I4,'  ETAI =',F6.2,'  ETAR =',F6.2)
+---
+>      &                  '  NNBOPT =',I4,'  ETAI =',F6.2,'  ETAR =',F6.2)
+1,2c1,2
+< 2053 2002-10-02 01:27 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//xtrnl0.f
+< Ncode//xtrnl0.f
+---
+> 2042 2003-06-26 08:49 /work/Tux1/spurzem/Nbody/Nbody6/XXX//xtrnl0.f
+> XXX//xtrnl0.f
+17c17
+<       RHO = 0.11
+---
+>       RHON = 0.11
+33,38c33
+<       TIDAL(3) = -(2.0*TWOPI*RHO + 2.0*(A - B)*(A + B)*(PC/GM))
+< *
+<       FAC = 1.0E-10/(PC/GM)
+<       WRITE (6,5)  ZMBAR*ZMASS, FAC*TIDAL(1), FAC*TIDAL(3), PC/GM
+<     5 FORMAT (/,12X,'TOTAL MASS =',F7.1,'  TIDAL(1&3) =',1P,2E10.2,
+<      &              '  PC/GM =',E10.2)
+---
+>       TIDAL(3) = -(2.0*TWOPI*RHON + 2.0*(A - B)*(A + B)*(PC/GM))
+43c38,39
+< *       Define time scale in seconds and velocity scale in km/sec.
+---
+> *       Define time scale in seconds using pc as length unit.
+> *          and velocity scale in km/sec (Aug.1998, P.Kroupa)
+45,46d40
+<       VSTAR = 1.0E-05*SQRT(GM/PC)
+< *
+49a44,47
+> *       Ensure ZMBAR & RBAR > 0 (=0: assume <M>/Sun = 1, RBAR = 1 pc).
+>       IF (ZMBAR.LE.0.0D0) ZMBAR = FLOAT(N)/ZMASS
+>       IF (RBAR.LE.0.0D0) RBAR = 1.0
+> *
+56d53
+<       VSTAR = VSTAR*SQRT(ZMASS*ZMBAR/RBAR)
+61,63c58,61
+<       WRITE (6,15)  (TIDAL(K),K=1,4), TSCALE, RTIDE
+<    15 FORMAT (/,12X,'TIDAL PARAMETERS:  ',1P,4E10.2,'  TSCALE =',E9.2,
+<      &                             ' (10**6 YRS)','  RTIDE =',0P,F6.2,/)
+---
+>       if(rank.eq.0) WRITE (6,15)  (TIDAL(K),K=1,4), TSCALE, RTIDE
+>    15 FORMAT (/,12X,'TIDAL PARAMETERS:  ',1P4E10.2,'  TSCALE =',E9.2,
+>      &                               ' (10**6 YRS)','  RTIDE =',
+>      &                                  0PF6.2,/)
+1,2c1,2
+< 1478 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//xtrnld.f
+< Ncode//xtrnld.f
+---
+> 1478 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//xtrnld.f
+> XXX//xtrnld.f
+1,2c1,2
+< 891 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//xtrnlf.f
+< Ncode//xtrnlf.f
+---
+> 893 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//xtrnlf.f
+> XXX//xtrnlf.f
+1c1
+<       SUBROUTINE XTRNLF(XI,XIDOT,FIRR,FREG,FD,FDR,KCASE)
+---
+>       SUBROUTINE XTRNLF(I,XI,XIDOT,FIRR,FREG,FD,FDR,KCASE)
+1,2c1,2
+< 501 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//xtrnlp.f
+< Ncode//xtrnlp.f
+---
+> 501 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//xtrnlp.f
+> XXX//xtrnlp.f
+1,2c1,2
+< 590 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//xtrnlv.f
+< Ncode//xtrnlv.f
+---
+> 590 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//xtrnlv.f
+> XXX//xtrnlv.f
+1,2c1,2
+< 3364 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//xvpred.f
+< Ncode//xvpred.f
+---
+> 3375 2000-04-14 22:35 /work/Tux1/spurzem/Nbody/Nbody6/XXX//xvpred.f
+> XXX//xvpred.f
+9d8
+< *
+63c62
+<       IF ((DT.EQ.0.0D0.AND.IPHASE.LT.4).OR.BODY(I).EQ.0.0D0) GO TO 35
+---
+>       IF (DT.EQ.0.0D0.OR.BODY(I).EQ.0.0D0) GO TO 35
+77c76
+<      &                   X0(K,I)
+---
+>      &                                                  X0(K,I)
+1,2c1,2
+< 3427 2002-10-02 01:31 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//zare.f
+< Ncode//zare.f
+---
+> 3317 1999-12-15 23:43 /work/Tux1/spurzem/Nbody/Nbody6/XXX//zare.f
+> XXX//zare.f
+27a28,33
+> *       Predict unperturbed KS to avoid identical coordinates (cf. NBINT).
+> *     IF (LIST(1,I1).EQ.0) THEN
+> *         IPAIR = KVEC(I1)
+> *         CALL KSRES(IPAIR,J1,J2,0.0D0)
+> *     END IF
+> *
+76,78c82
+< *     A(4) = - A(3)
+< *       Note bug fix by Douglas Heggie 1/11/2000.
+<       A(4) = - (3.0D0*M2 + M1)
+---
+>       A(4) = - A(3)
+85,94c89,94
+< *  50 F1 = A(1)
+< *     FP1 = F1*5.0D0
+< *     DO 60 I = 2,5
+< *         F1 = F1*S + A(I)
+< *         FP1 = FP1*S + (6-I)*A(I)
+< *  60 CONTINUE
+< *
+< *       Replace by iteration of f(s)/s**2 = 0 for faster convergence (DCH).
+<    50 F1 = ((A(1)*S + A(2))*S + A(3))*S + A(4) + A(5)/S + A(6)/S**2
+<       FP1 = (3.0*A(1)*S + 2.0*A(2))*S + A(3) - (2.0*A(6)/S + A(5))/S**2
+---
+>    50 F1 = A(1)
+>       FP1 = F1*5.0D0
+>       DO 60 I = 2,5
+>           F1 = F1*S + A(I)
+>           FP1 = FP1*S + (6-I)*A(I)
+>    60 CONTINUE
+96c96
+< *     F1 = F1*S + A(6)
+---
+>       F1 = F1*S + A(6)
+1,2c1,2
+< 16217 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//zcnsts.f
+< Ncode//zcnsts.f
+---
+> 16217 2006-06-20 08:34 /work/Tux1/spurzem/Nbody/Nbody6/XXX//zcnsts.f
+> XXX//zcnsts.f
+1,2c1,2
+< 10298 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//zdata.f
+< Ncode//zdata.f
+---
+> 10298 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//zdata.f
+> XXX//zdata.f
+1,2c1,2
+< 2102 2003-06-26 02:10 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//zero.f
+< Ncode//zero.f
+---
+> 2222 2003-06-26 03:20 /work/Tux1/spurzem/Nbody/Nbody6/XXX//zero.f
+> XXX//zero.f
+50,51d49
+<       NBPREV = 0
+<       NNTB = 0
+57a56,57
+>       NBPREV = 0
+>       NNTB = 0
+74c74,75
+< *
+---
+> *         small value should be smaller than 1/(4*KMAX), plus security (RS)
+>       TINY = MIN(1.D-4,0.01D0/FLOAT(KMAX))
+77c78
+<           KVEC(J) = 0.50001*FLOAT(J + 1)
+---
+>           KVEC(J) = (0.5+TINY)*FLOAT(J + 1)
+1,2c1,2
+< 23212 2001-04-07 19:24 /work/Tux1/spurzem/Nbody/Nbody6/Ncode//zfuncs.f
+< Ncode//zfuncs.f
+---
+> 21334 2000-04-11 21:30 /work/Tux1/spurzem/Nbody/Nbody6/XXX//zfuncs.f
+> XXX//zfuncs.f
+1d0
+< 
+5c4
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+20c19
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+36c35
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+51c50
+<       real*8 m,f,df,g,dg,a(200)
+---
+>       real*8 m,f,df,g,dg,a(100)
+54,55c53,54
+< * A function to evaluate the derivative of the lifetime to the BGB
+< * (or to Helium ignition if no FGB exists) wrt mass.
+---
+> * A function to evaluate the derivitive lifetime to the BGB
+> * or to Helium ignition if no FGB exists.
+67,84d65
+<       real*8 FUNCTION tbgdzf(m)
+<       implicit none
+<       real*8 m,f,df,g,dg,a(200)
+<       common /MSCFF/ a
+< *
+< * A function to evaluate the derivative of the lifetime to the BGB
+< * (or to Helium ignition if no FGB exists) wrt Z.
+< * (JH 14/12/98)
+< *
+<       f = a(17) + a(18)*m**4 + a(19)*m**5.5 + m**7
+<       df = a(117) + a(118)*m**4 + a(119)*m**5.5
+<       g = a(20)*m**2 + a(21)*m**7
+<       dg = a(120)*m**2
+<       tbgdzf = (df*g - f*dg)/(g*g)
+< *
+<       return
+<       end
+< ***
+87c68
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+104c85
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+118c99
+<       real*8 m,mcut,a(200)
+---
+>       real*8 m,mcut,a(100)
+146c127
+<       real*8 m,a1,a(200)
+---
+>       real*8 m,a1,a(100)
+165c146
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+185c166
+<       real*8 m,mhook,a2,a(200)
+---
+>       real*8 m,mhook,a2,a(100)
+207c188
+<       real*8 m,m2,rchk,a(200)
+---
+>       real*8 m,m2,a(100)
+209,210d189
+<       real*8 rzamsf
+<       external rzamsf
+213,214d191
+< * Note that a safety check is added to ensure Rtms > Rzams
+< * when extrapolating the function to low masses. 
+219,220c196
+<          rchk = 1.5d0*rzamsf(m)
+<          rtmsf = MAX(rchk,(a(52) + a(53)*m**a(55))/(a(54) + m**a(56)))
+---
+>          rtmsf = (a(52) + a(53)*m**a(55))/(a(54) + m**a(56))
+233c209
+<       real*8 m,a5,a(200)
+---
+>       real*8 m,a5,xx,a(100)
+251c227,228
+<          ralphf = a5 + a(69)*(m - a(72))
+---
+>          xx = a5 - a(69)*a(72)
+>          ralphf = xx + a(69)*m
+259c236
+<       real*8 m,m2,m3,b2,b3,a(200)
+---
+>       real*8 m,m2,m3,b2,b3,xx,a(100)
+278c255,256
+<          rbetaf = b3 + a(80)*(m - m3)
+---
+>          xx = b3 - a(80)*m3
+>          rbetaf = xx + a(80)*m
+287c265
+<       real*8 m,m1,b1,a(200)
+---
+>       real*8 m,m1,b1,a(100)
+314c292
+<       real*8 m,mhook,m2,b2,a(200)
+---
+>       real*8 m,mhook,m2,b2,a(100)
+338c316
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+353c331
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+357c335
+< * A function to evaluate the derivative of the Lbgb function.
+---
+> * A function to evaluate the derivitive of the Lbgb function.
+373c351
+<       real*8 m,mhefl,a4,a(200)
+---
+>       real*8 m,mhefl,a4,a(100)
+393c371
+<       real*8 m,lum,a1,a(200)
+---
+>       real*8 m,lum,a1,a(100)
+405,419d382
+<       real*8 FUNCTION rgbdf(m,lum)
+<       implicit none
+<       real*8 m,lum,a1,a(200)
+<       common /GBCFF/ a
+< *
+< * A function to evaluate radius derivative on the GB (as f(L)).
+< * (JH 24/11/97)
+< *
+<       a1 = MIN(a(20)/m**a(21),a(22)/m**a(23))
+<       rgbdf = a1*(a(18)*lum**(a(18)-1.d0) + 
+<      &            a(17)*a(19)*lum**(a(19)-1.d0))
+< *
+<       return
+<       end
+< ***
+422c385
+<       real*8 m,lum,mhelf,m1,a1,a4,xx,a(200)
+---
+>       real*8 m,lum,mhelf,m1,a1,a4,xx,a(100)
+450,480d412
+<       real*8 FUNCTION ragbdf(m,lum,mhelf)
+<       implicit none
+<       real*8 m,lum,mhelf,m1,a1,a4,xx,a(200)
+<       common /GBCFF/ a
+< *
+< * A function to evaluate radius derivative on the AGB (as f(L)).
+< * (JH 24/11/97)
+< *
+<       m1 = mhelf - 0.2d0
+<       if(m.ge.mhelf)then
+<          xx = a(24)
+<       elseif(m.ge.m1)then
+<          xx = 1.d0 + 5.d0*(a(24)-1.d0)*(m-m1)
+<       else
+<          xx = 1.d0
+<       endif
+<       a4 = xx*a(19)
+<       if(m.le.m1)then
+<          a1 = a(29) + a(30)*m
+<       elseif(m.ge.mhelf)then
+<          a1 = MIN(a(25)/m**a(26),a(27)/m**a(28))
+<       else
+<          a1 = a(31) + 5.d0*(a(32)-a(31))*(m-m1)
+<       endif
+< *
+<       ragbdf = a1*(a(18)*lum**(a(18)-1.d0) + 
+<      &             a(17)*a4*lum**(a4-1.d0))
+< *
+<       return
+<       end
+< ***
+483c415
+<       real*8 m,mhefl,mchefl,mcbagb,a3,a(200)
+---
+>       real*8 m,mhefl,mchefl,mcbagb,a3,a(100)
+500c432
+<       real*8 mc,mhefl,mchefl,m1,m2,a3,a(200)
+---
+>       real*8 mc,mhefl,mchefl,m1,m2,a3,a(100)
+519c451
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+531c463
+<       real*8 mc,mc4,a(200)
+---
+>       real*8 mc,mc4,a(100)
+612c544
+<       real*8 m,mhefl,a(200)
+---
+>       real*8 m,mhefl,a(100)
+630c562
+<       real*8 m,a(200)
+---
+>       real*8 m,a(100)
+644c576
+<       real*8 m,mx,a(200)
+---
+>       real*8 m,mx,a(100)
+658c590
+<       real*8 m,mc,mhefl,mm,a(200)
+---
+>       real*8 m,mc,mhefl,mm,a(100)
+682c614
+<       real*8 m,mhefl,mfgb,mr,m1,m2,r1,a(200)
+---
+>       real*8 m,mhefl,mfgb,mr,m1,m2,r1,a(100)
+709c641
+<       real*8 m,mc,mhefl,mm,a4,a5,a(200)
+---
+>       real*8 m,mc,mhefl,mm,a4,a5,a(100)
+730c662
+<       real*8 m,mc,mhefl,rx,ry,mm,f,a(200)
+---
+>       real*8 m,mc,mhefl,rx,ry,mm,f,a(100)
+839c771
+<       real*8 mx,rx,rzams,rtms,gamma,tau,xx,a(200)
+---
+>       real*8 mx,rx,rzams,rtms,gamma,tau,xx,a(100)
+908,918d839
+<       real*8 FUNCTION vrotf(m)
+<       implicit none
+<       real*8 m
+< *
+<       vrotf = 330.d0*m**3.3/(15.d0 + m**3.45)
+< *
+<       return
+<       end
+< ***
+< 
+< 
