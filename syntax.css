@@ -1,0 +1,16 @@
+/* this is a stylesheet for Fortran source files 
+converted into .html by fortran2html program 
+  Copyright Alexey A. Mints (2006)
+*/
+
+.source { font-size:120%}
+.source A:link { color:red;
+                 background-color: #CCCCCC }
+.source A:visited { color:#9D0379;
+                 background-color: #CCCCCC  }
+.str{ color:green }
+.comm { color:red }
+.kw { color:blue }
+.io { color:#5D005D }
+.dtype { color:#940094 }
+.prep { color:#005300 }
