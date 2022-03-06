@@ -1,0 +1,38 @@
+
+
+  Oct 2006   < routines new in new unpublished nbody6 
+             > routines which changed or went away
+             > nlmod.f
+             > zdata.f  (became zdata.h)
+
+< aking6.f < binev.f
+< brake2.f < bsetid.f
+< chaos0.f < chaos2.f
+< chaos.f < chpert.f
+< chrect.f < coal.f
+< comenv.f < corerd.f
+< decide.f < deform.f
+< degen.f < dgcore.f
+< dtchck.f < eccmod.f
+< ecirc.f < edot.f
+< expel2.f < expel.f
+< findm.f < giant2.f
+< giant3.f < giant.f
+< grrad.f < hicirc.f
+< higrow.f < himod.f
+< hirect.f < hut2.f
+< hut.f < induce.f
+< jacobi.f < kick2.f
+< magbrk.f < mix.f
+< mrenv.f < mtrace.f
+< newtev.f < poti.f
+< proto_star.f < qtides.f
+< rkint.f < rl.f
+< roche.f < rpmax2.f
+< spiral.f < stability.f
+< synch.f < tides3.f
+< touch.f < trdot2.f
+< trdot.f < trflow.f
+< tstab.f
+
+< zdata.h      (was zdata.f)

@@ -1,0 +1,33 @@
+
+
+
+  Check nb6 public against nbody6++
+
+                 < routines new in nbody6 public oct 2006
+                 > routines only in nbody6++
+
+
+< fnuc.f
+< fdisk.f
+< fhalo.f
+< ntint.f
+< gcinit.f
+< gcint.f
+< lagr2.f
+< rpmax.f
+< rpmin.f
+< tail0.f
+< tides2.f
+< xtrnlt.f
+
+
+> eigenvalue.f
+> ellan.f
+> energy_mpi.f
+> file_init.f
+> flush.f
+> fpoly1_mpi.f
+> fpoly2_mpi.f
+> indexx.f
+> mpif.h
+> short.f

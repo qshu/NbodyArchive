@@ -1,0 +1,45 @@
+
+
+
+ List of routines to check
+
+ Routines which ONLY exist in nbody6++
+
+> eigenvalue.f > ellan.f > energy_mpi.f > file_init.f
+> flush.f > fpoly1_mpi.f > fpoly2_mpi.f > indexx.f
+> mpif.h > short.f
+
+
+ Following routines were in the public nbody6 oct 2006
+ but NOT YET in nbody6++
+
+< fnuc.f < fdisk.f < fhalo.f < ntint.f
+< gcinit.f < gcint.f < lagr2.f < rpmax.f
+< rpmin.f < tail0.f < tides2.f < xtrnlt.f
+
+
+ New Routines in Oct 2006 unpublished nbody6 version
+
+  Oct 2006   < routines new in new unpublished nbody6 
+             > routines which changed or went away
+
+             > nlmod.f
+             > zdata.f  (became zdata.h)
+
+< aking6.f < binev.f < brake2.f < bsetid.f
+< chaos0.f < chaos2.f < chaos.f < chpert.f
+< chrect.f < coal.f < comenv.f < corerd.f
+< decide.f < deform.f < degen.f < dgcore.f
+< dtchck.f < eccmod.f < ecirc.f < edot.f
+< expel2.f < expel.f < findm.f < giant2.f
+< giant3.f < giant.f < grrad.f < hicirc.f
+< higrow.f < himod.f < hirect.f < hut2.f
+< hut.f < induce.f < jacobi.f < kick2.f
+< magbrk.f < mix.f < mrenv.f < mtrace.f
+< newtev.f < poti.f < proto_star.f < qtides.f
+< rkint.f < rl.f < roche.f < rpmax2.f
+< spiral.f < stability.f < synch.f < tides3.f
+< touch.f < trdot2.f < trdot.f < trflow.f
+< tstab.f
+
+< zdata.h      (was zdata.f)

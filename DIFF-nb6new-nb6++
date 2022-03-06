@@ -1,0 +1,148 @@
+3d2
+< aking6.f
+5d3
+< binev.f
+10d7
+< brake2.f
+12d8
+< bsetid.f
+15,17d10
+< chaos0.f
+< chaos2.f
+< chaos.f
+26d18
+< chpert.f
+28d19
+< chrect.f
+38,39d28
+< coal.f
+< comenv.f
+45d33
+< corerd.f
+52d39
+< decide.f
+54,55d40
+< deform.f
+< degen.f
+60d44
+< dgcore.f
+64,67d47
+< dtchck.f
+< eccmod.f
+< ecirc.f
+< edot.f
+69a50,51
+> eigenvalue.f
+> ellan.f
+71a54
+> energy_mpi.f
+79,80d61
+< expel2.f
+< expel.f
+86,87d66
+< fdisk.f
+< fhalo.f
+88a68
+> file_init.f
+90c70,71
+< findm.f
+---
+> flush.f
+> flush.t3e.f
+92d72
+< fnuc.f
+95a76
+> fpoly1_mpi.f
+96a78
+> fpoly2_mpi.f
+98,99d79
+< gcinit.f
+< gcint.f
+101,103d80
+< giant2.f
+< giant3.f
+< giant.f
+105d81
+< grrad.f
+108d83
+< hicirc.f
+110d84
+< higrow.f
+113d86
+< himod.f
+115d87
+< hirect.f
+124,125d95
+< hut2.f
+< hut.f
+133c103
+< induce.f
+---
+> indexx.f
+141d110
+< jacobi.f
+144d112
+< kick2.f
+164d131
+< lagr2.f
+167c134
+< magbrk.f
+---
+> Makefile
+172d138
+< mix.f
+176,177c142
+< mrenv.f
+< mtrace.f
+---
+> mpif.h
+189,190c154
+< newtev.f
+< ntint.f
+---
+> nlmod.f
+199,200d162
+< poti.f
+< proto_star.f
+205d166
+< qtides.f
+222,227c183
+< rkint.f
+< rl.f
+< roche.f
+< rpmax2.f
+< rpmax.f
+< rpmin.f
+---
+> resort.f
+228a185
+> rssort.f
+233a191
+> short.f
+237,238c195
+< spiral.f
+< stability.f
+---
+> sort3.f
+256,257d212
+< synch.f
+< tail0.f
+260,261d214
+< tides2.f
+< tides3.f
+263d215
+< touch.f
+271,273d222
+< trdot2.f
+< trdot.f
+< trflow.f
+275d223
+< tstab.f
+289d236
+< xtrnlt.f
+292a240
+> xx
+297c245
+< zdata.h
+---
+> zdata.f

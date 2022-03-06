@@ -1,0 +1,111 @@
+
+
+
+ (not needed) = not to be ported to NBODY6++
+ (ok)         = to be ported to NBODY6++
+ (ok,check)   = porting to NBODY6++ with some care for later
+ (sverre)     = some changes to be coordinated with Sverre
+ (SSE)        = single stellar evolution routines Jarrod
+ (BSE)        = binary  "                        Jarrod
+ (Roche)      = interacting stars Sverre
+ (Hierarch)   = Hierarchical Systems Sverre
+ (RM)         = R. Mardling Tidal Capture Theory
+
+
+
+ List of routines to check
+
+ Routines which ONLY exist in nbody6++
+
+> eigenvalue.f > ellan.f > energy_mpi.f > file_init.f
+> flush.f > fpoly1_mpi.f > fpoly2_mpi.f > indexx.f
+> mpif.h > short.f
+
+
+ Following routines were in the public nbody6 oct 2006
+ but NOT YET in nbody6++
+
+< fnuc.f  Galaxy point-mass force  (not needed)
+< fdisk.f  Miyamoto disk force (not needed)
+< fhalo.f  Logarithmic halo force (not needed)
+< ntint.f  tidal tail member integration (not needed)
+                (call in intgrt not needed)
+< gcinit.f Initialization of 3D cluster orbit (not needed)
+< gcint.f  Integration of 3D cluster orbit (not needed)
+< lagr2.f  Mass distribution for two mass groups. (not needed)
+< rpmax.f  Maximum periastron distance for GR capture (from ksint KZ(27).GT.2) 
+                                            (Melvyn)  (not needed)
+< rpmin.f  Minimum pericentre distance for energy change (H < 0)   (ok)
+< tail0.f   Initialization of tidal tail member (not needed)
+< tides2.f  Tidal energy loss for interacting bodies (ok) (from kstide, qpmod old
+                                                           from chaos,chaos2 new)
+< xtrnlt.f  Galactic force & first derivative (not needed)    
+
+
+ New Routines in Oct 2006 unpublished nbody6 version
+
+  Oct 2006   < routines new in new unpublished nbody6 
+             > routines which changed or went away
+
+             > nlmod.f  > stepi.f
+             > zdata.f  (became zdata.h)
+
+< binev.f                Binary evolution            (BSE)               (ok)
+< brake2.f         GR of hierarchical binary          (Hierach?)        (ok, check)
+< bsetid.f                                           (BSE)               (ok)
+< chaos0.f         Initial chaos boundary parameters. (RM)               (ok)
+< chaos2.f         Chain chaotic treatment of tidal capture (RM)         (ok)
+< chaos.f          Chaotic tidal interactions. (RM)                      (ok)
+< chpert.f         Improved chain perturber selection                    (ok)
+< chrect.f         Rectification of chaotic orbit       (Roche?)         (ok)     ?
+< coal.f           Coalescence of Roche/CE binary       (Roche?)         (ok)
+< comenv.f         Common Envelope Evolution            (BSE)            (ok)
+< corerd.f         core of a giant-like star.           (BSE)            (ok)
+< decide.f                Merger decision               (Roche?)         (ok)
+< deform.f               Deformation of elliptic orbit. (Roche?)         (ok)
+< degen.f                  Binary output for degenerate stars  (ok, needs check, WRITES)
+< dgcore.f          outcome of a collision or coalescence (BSE)          (ok)
+< dtchck.f          dt check                           (SSE, BSE, from mdot)  (ok, check)
+< eccmod.f         Eccentricity modulation of hierarchical binary. (Hierarch) (ok)
+< ecirc.f          Eccentricity for given circularization time (RM)      (ok)
+< edot.f           Eccentricity derivative due to perturber (Roche?)     (ok)
+< expel2.f         Common envelope stage for chain system (Roche?)       (ok)
+< expel.f          Common envelope stage of interacting stars. (Roche?)  (ok)
+< findm.f                Find ghost mass                   (Hierarch)    (ok)
+< giant2.f         Structure constants of giant star (chain version)  (RM)  (ok)
+< giant3.f                Structure constants of giant star (RM)         (ok)
+< giant.f                 Structure constants of giant star (RM)         (ok)
+< grrad.f          Grav. Radiation ang. mom. change for  BSE  (BSE)   (ok, check)
+< hicirc.f         Eccentricity for given circularization time.   (RM)   (ok)
+< higrow.f         Induced change of hierarchical binary  (Hierarch)     (ok)
+< himod.f          Modification of hierarchical binary    (RM)           (ok)
+< hirect.f         Rectification of hierarchical binary.  (Hierarch)     (ok)
+< hut2.f           Spin evolution of circular binary  (BSE)              (ok)
+< hut.f            Spin evolution of circular binary  (BSE)              (ok)
+< induce.f         Induced eccentricity of hierarchical binary (Hierarch) (ok)
+< jacobi.f         Jacobi escape criterion            (???  Sverre, check, X1=0.05?)
+< kick2.f          Velocity kick for Roche NS & BH stars (Roche)          (ok)
+< magbrk.f         spin changes owing to magnetic braking  (BSE)          (ok)
+< mix.f            Evolution parameters for mixed star.    (BSE)          (ok)
+< mrenv.f          mass and radius of the convective envelope (BSE)         (ok)
+< mtrace.f         Orbit diagnostics for mass loss.                          (ok)
+< newtev.f         New look-up time of hierarchy                             (ok)
+< poti.f           Potential of one particle                            (not needed)
+< proto_star.f     Pre-mainsequence binary evolution   (Pavel, binpop.f)   (ok)
+< qtides.f         Quadrupole and tidal terms for hierarchical binary   (RM) (ok)
+< rkint.f          Runge-Kutta integrator                     (RM)           (ok)
+< rl.f             A function to evaluate R_L/a(q), Eggleton 1983    (BSE)   (ok)
+< roche.f          Roche lobe overflow                        (BSE)          (ok)
+< rpmax2.f Maximum periastron distance for capture (KZ(27).LE.2) (RM)     (ok)
+< spiral.f         Tidal circularization of binary orbit (Roche)             (ok)
+< stability.f      Three-body stability test             (RM)                (ok)
+< synch.f          Spin synchronization of circularized orbit (Roche)        (ok)
+< tides3.f         GR tidal energy loss for interacting stars  
+                                                        (KZ(27.GT.2) Melvyn, not needed)
+< touch.f          Collision detector for KS pairs      (check, strange?  ok)
+< trdot2.f         Time-scale for expansion of radius     (BSE)       (ok)
+< trdot.f          Time-scale for expansion of radius    (BSE)       (ok)
+< trflow.f         Time until Roche overflow            (Roche)             (ok)
+< tstab.f          Hierarchical stability time              (Roche)         (ok)
+
+< zdata.h      (was zdata.f)                              (BSE) (SSE)         (ok)
