@@ -1,0 +1,911 @@
+%!PS-Adobe-3.0
+%%Title: gcint.f
+%%For: Rainer Spurzem
+%%Creator: a2ps version 4.13
+%%CreationDate: Thu Nov  8 15:52:02 2001
+%%BoundingBox: 24 24 571 818
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 2
+%%PageOrder: Ascend
+%%DocumentMedia: a4 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 595 def
+/sw 842 def
+/llx 24 def
+/urx 818 def
+/ury 571 def
+/lly 24 def
+/#copies 1 def
+/th 15.000000 def
+/fnfs 11 def
+/bfs 8.005733 def
+/cw 4.803440 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 81.400000 mul
+def
+/ph
+   501.959430 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1-2) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(SUBROUTINE) K
+( ) p
+(GCINT) L n
+(*) c n
+(*      Galactic Centre and Bulge Forces) N
+(*      Dynamical Friction) N
+(*      R.Sp./ O.G. Nov. 2001) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common6.h) str
+(') p n
+(      ) S
+(COMMON) K
+( /GC/ XG0\(3\),VG0\(3\),AG0\(3\),ADOTG0\(3\),) p n
+(     *      XG\(3\),VG\(3\),AG\(3\),ADOTG\(3\),AG2\(3\),AG3\(3\),) N
+(     *      XGI\(3\),VGI\(3\),AGI\(3\),ADOTGI\(3\),) N
+(     *      ADF0\(3\),ADOTF0\(3\),ADF\(3\),ADOTF\(3\),) N
+(     *      XMBH,CC,XCOUL,XMCL,TCEN0,STEPCC,IMEM\(NMAX\)) N
+(      ) S
+(REAL) K
+(*8  W0\(4\),W1\(4\),W2\(4\),W3\(4\)) p n
+(*) c n
+(*     Predictor for galactic centre) N
+(*) N
+(      S = TIME - TCEN0) p n
+(      S1 = 1.5D0*S) N
+(      S2 = 2.0D0*S) N
+(      ) S
+(DO) K
+( 1 K = 1,3) p n
+(      FTOT = AG0\(K\) + ADF0\(K\)) N
+(      FDTOT = ADOTG0\(K\) + ADOTF0\(K\)) N
+(      XG\(K\) = \(\(FDTOT*S + FTOT\)*S +VG0\(K\)\)*S + XG0\(K\)) N
+(      VG\(K\) = \(FDTOT*S1 + FTOT\)*S2 + VG0\(K\)) N
+(      AG\(K\) = ADOTG0\(K\)*S + AG0\(K\)) N
+(      ADOTG\(K\) = ADOTG0\(K\)) N
+(      ADF\(K\) = ADOTF0\(K\)*S + ADF0\(K\)) N
+(      ADOTF\(K\) = ADOTF0\(K\)) N
+( 1    ) S
+(CONTINUE) K n
+(*) c n
+(      ) p
+(IF) K
+(\(TIME) p
+(.LE.) K
+(TCEN0+STEPCC\) ) p
+(GO TO) K
+( 100) p n
+(*) c n
+(       RIJ2 = XG\(1\)**2 + XG\(2\)**2 + XG\(3\)**2) p n
+(       DR2I = 1.0/RIJ2) N
+(       DRDV = XG\(1\)*VG\(1\) + XG\(2\)*VG\(2\) + XG\(3\)*VG\(3\)) N
+(*) c n
+(*      First: central black hole) N
+(*) N
+(       DR3I = XMBH*DR2I*) p
+(SQRT) K
+(\(DR2I\)) p n
+(       DRDP = 3.0D0*DRDV*DR2I) N
+(*) c n
+(*      Force and derivative at particle position due to g.c.) N
+(*) N
+(       ) p
+(DO) K
+( 2 K = 1,3) p n
+(          AG\(K\) = XG\(1\)*DR3I) N
+(          ADOTG\(K\) = \(VG\(K\) - XG\(K\)*DRDP\)*DR3I) N
+( 2     ) S
+(CONTINUE) K n
+(*) c n
+(*      Second: bulge) N
+(*) N
+(       DR3I = CC*DR2I) p n
+(       DRDP = 2.0D0*DRDV*DR2I) N
+(*) c n
+(*      Force and derivative at particle position due to g.c.) N
+(*) N
+(      DTR = TIME - TCEN0) p n
+(      DTSQ = DTR**2) N
+(      DT6 = 6.0/\(DTR*DTSQ\)) N
+(      DT2 = 2.0/DTSQ) N
+(      DTSQ12 = ONE12*DTSQ) N
+(      DTR13 = ONE3*DTR) N
+(*) c n
+(gcint.f) (Page 1/3) (Nov 08, 01 13:35) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(       ) p
+(DO) K
+( 3 K = 1,3) p n
+(          AG\(K\) = AG\(K\) + XG\(1\)*DR3I) N
+(          ADOTG\(K\) = ADOTG\(K\) + \(VG\(K\) - XG\(K\)*DRDP\)*DR3I) N
+(*) c n
+(          DFR = AG0\(K\) + ADF0\(K\) - AG\(K\) - ADF\(K\)) p n
+(          FDR0 = ADOTG\(K\) + ADOTF\(K\)) N
+(          FRD = ADOTG0\(K\) + ADOTF0\(K\)) N
+(      ) S
+(SUM) K
+( = FRD + FDR0) p n
+(      AT3 = 2.0*DFR + DTR*) S
+(SUM) K n
+(      BT2 = -3.0*DFR - DTR*\() p
+(SUM) K
+( + FRD\)) p n
+(*       Use here new variables for consistency in parallel execution \(R.Sp.\)) c n
+(          XG0\(K\) = XG0\(K\) + \(0.6*AT3 + BT2\)*DTSQ12) p n
+(          VG0\(K\) = VG0\(K\) + \(0.75*AT3 + BT2\)*DTR13) N
+(*) c n
+(          AG2\(K\) = AG2\(K\) + AT3*DT6) p n
+(          AG3\(K\) = AG3\(K\) + \(3.0*AT3 + BT2\)*DT2) N
+(          XG\(K\) = XG0\(K\)) N
+(          VG\(K\) = VG0\(K\)) N
+( 3    ) S
+(CONTINUE) K n
+(*) c n
+(*       Third: Dynamical Friction) N
+(*) N
+(        DFF = -0.428D0*XCOUL*...) p n
+(*) c n
+(        ) p
+(DO) K
+( 4 K = 1,3) p n
+(*) c n
+() p n
+(  ) N
+(      TCEN0 = TIME) N
+(*) c n
+(*       Obtain new regular integration step using composite expression.) N
+(      ) p
+(DO) K
+( 100 K = 1,3) p n
+(          W1\(K\) = ADOTG\(K\) + ADOTF\(K\)) N
+(          W2\(K\) = AG2\(K\)) N
+(          W3\(K\) = AG3\(K\)) N
+(  100 ) S
+(CONTINUE) K n
+(*) c n
+(      W0\(4\) = AG\(1\)**2 + AG\(2\)**2 + AG\(3\)**2 +) p n
+(     *        ADF\(1\)**2 + ADF\(2\)**2 + ADF\(3\)**2) N
+(      W1\(4\) = W1\(1\)**2 + W1\(2\)**2 + W1\(3\)**2) N
+(      W2\(4\) = W2\(1\)**2 + W2\(2\)**2 + W2\(3\)**2) N
+(      W3\(4\) = W3\(1\)**2 + W3\(2\)**2 + W3\(3\)**2) N
+(*) c n
+(*       Form new step by relative criterion \(extra SQRT for large F3DOT\).) N
+(      ) p
+(IF) K
+( \(W3\(4\)) p
+(.LT.) K
+(1.0E+20\) ) p
+(THEN) K n
+(          W0\(1\) = \() p
+(SQRT) K
+(\(W0\(4\)*W2\(4\)\) + W1\(4\)\)/) p n
+(     &                                       \() S
+(SQRT) K
+(\(W1\(4\)*W3\(4\)\) + W2\(4\)\)) p n
+(      ) S
+(ELSE) K n
+(          W0\(1\) = \() p
+(SQRT) K
+(\(W0\(4\)*W2\(4\)\) + W1\(4\)\)/) p n
+(     &                                 \() S
+(SQRT) K
+(\(W1\(4\)\)*) p
+(SQRT) K
+(\(W3\(4\)\) + W2\(4\)\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(      W0\(1\) = ETAR*W0\(1\)) p n
+(      TTMP = ) S
+(SQRT) K
+(\(W0\(1\)\)) p n
+(*       Obtain regular force change using twice the predicted step.) c n
+(      DTC = 2.0*TTMP) p n
+(      S2 = 0.5*DTC) N
+(      S3 = ONE3*DTC) N
+(      W0\(1\) = 0.0) N
+(      ) S
+(DO) K
+( 105 K = 1,3) p n
+(          W0\(2\) = \(\(W3\(K\)*S3 + W2\(K\)\)*S2 + W1\(K\)\)*DTC) N
+(          W0\(1\) = W0\(1\) + W0\(2\)**2) N
+(  105 ) S
+(CONTINUE) K n
+(gcint.f) (Page 2/3) (Nov 08, 01 13:35) title
+border
+grestore
+(Printed by Rainer Spurzem) rhead
+(gcint.f) (1/2) (Thursday November 08, 2001) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*) c n
+(*       See whether regular step can be increased by factor 2.) N
+(      ) p
+(IF) K
+( \(W0\(1\)) p
+(.LT.) K
+(W0\(4\)\) ) p
+(THEN) K n
+(          TTMP = DTC) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Select discrete value \(increased by 2, decreased by 2 or unchanged\).) N
+(        ) p
+(IF) K
+( \(TTMP ) p
+(.GT.) K
+( 2.0*STEPCC\) ) p
+(THEN) K n
+(            ) p
+(IF) K
+( \() p
+(DMOD) K
+(\(TIME,2.0*STEPCC\) ) p
+(.EQ.) K
+( 0.0D0\) ) p
+(THEN) K n
+(              TTMP = ) p
+(MIN) K
+(\(2.0*STEPCC,1.D0\)) p n
+(          ) S
+(ELSE) K n
+(              TTMP = STEPCC) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(ELSE) K
+( ) p
+(IF) K
+( \(TTMP ) p
+(.LT.) K
+( STEPCC\) ) p
+(THEN) K n
+(          TTMP = 0.5*STEPCC) p n
+(      ) S
+(ELSE) K n
+(          TTMP = STEPCC) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(      STEPCC = TTMP) p n
+(*) c n
+( 100  ) p
+(CONTINUE) K n
+(*) c n
+(      ) p
+(RETURN) K n
+(*) c n
+(      ) p
+(END) K n
+() p n
+() N
+(gcint.f) (Page 3/3) (Nov 08, 01 13:35) title
+border
+grestore
+(Printed by Rainer Spurzem) rhead
+(gcint.f) (2/2) (Thursday November 08, 2001) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

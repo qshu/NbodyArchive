@@ -1,0 +1,120 @@
+# directories and tools
+SHELL=/bin/sh
+srcdir = .
+
+# installation directories of visit
+prefix  = /home/Hya/frings/visit/visit20
+exec_prefix = ${prefix}
+bindir     = ${exec_prefix}/bin
+includedir = ${prefix}/include
+libdir     = ${exec_prefix}/lib
+sysconfdir = ${prefix}/etc
+datadir    = ${prefix}/share
+demodir    = ${prefix}/demo
+
+# installation directories of lvisit
+lvisitdir     = /home/Hya/frings/visit/lvisit/include
+lvisitlib     = /home/Hya/frings/visit/lvisit/lib/
+
+dataset = nbody
+lvisitdsources = ./lvisit_$(dataset).c
+lvisitdobjects = ./lvisit_$(dataset).o
+lvisitdheaders = ./lvisit_$(dataset).h
+
+
+lvisitdsourcesf = ./lvisit_$(dataset)_fortran.c
+lvisitdobjectsf = ./lvisit_$(dataset)_fortran.o
+lvisitdheadersf = ./lvisit_$(dataset)_fortran.h
+
+#CC      = pgcc
+#CC      = insure gcc
+#CC      = gcc
+CC      = gcc
+
+# for gprof
+#  -pg -a -Wall
+# pgcc: problems with -Wall 
+# Fortran: -D_FORTRANUNDERSCORE 
+CFLAGS  = -g -O3 -h inline4,aggress,nojump,pipeline1   -I$(includedir) -I. -I$(lvisitdir) -DWFNORECONSTRUCT
+## Fortran: -D_FORTRANUNDERSCORE -DWFNORECONSTRUCT
+#CFLAGS  = -g -O3  -I$(includedir) -I. -I$(lvisitdir) 
+# SUN
+#LDFLAGS = -lsocket -lnsl -g -O3
+# LINUX
+# for gprof
+#  -pg -a
+LDFLAGS = -g -O3
+F77     = f77
+FC      = f77
+FFLAGS  = -g -O2 -I$(includedir)
+RANLIB  = ranlib
+LIBS    =  -L$(lvisitlib) -llvisit -L$(libdir) -lvisit  -lm $(LDFLAGS) 
+FLIBS   = $(LIBS) -lgcc
+
+
+SERVERSRC  = nbodysim_srv.c 
+SERVEREXE  = nbodysim_srv 
+
+PROXYSRC  = nbodysim_proxy.c 
+PROXYEXE  = nbodysim_proxy 
+
+
+CLIENTSRC  = nbodysim.c 
+CLIENTOBJ  = nbodysim.o 
+CLIENTEXE  = nbodysim 
+#CLIENTCC   = gcc
+CLIENTCC   = gcc
+#CLIENTCC   = insure cc
+lvisitdsourcesmpi = 
+lvisitdobjectsmpi = 
+lvisitdheadersmpi = 
+lvisitdsourcesmpif = 
+lvisitdobjectsmpif = 
+lvisitdheadersmpif = 
+
+
+SOURCES    = $(CLIENTSRC) $(SERVERSRC) $(PROXYSRC)
+     ALL        = $(CLIENTEXE) $(SERVEREXE) $(PROXYEXE)
+EXTRAS  =
+
+all:  $(ALL) liblvisit_nbody.a 
+
+clean:
+	rm -f *.o *~ $(ALL) 
+
+# a dummy simple server
+#
+$(CLIENTEXE): $(CLIENTOBJ)  $(lvisitobjects) $(lvisitdobjects) $(lvisitdobjectsmpi) $(lvisitdobjectsf) $(lvisitdobjectsmpif)
+	$(CLIENTCC) -o $(CLIENTEXE) $(CLIENTOBJ) $(lvisitobjects) $(lvisitdobjects) $(lvisitdobjectsmpi) $(LIBS)
+
+$(CLIENTOBJ): $(CLIENTSRC)
+	$(CLIENTCC) $(CFLAGS) -c $(CLIENTSRC)
+
+nbodysim_srv: nbodysim_srv.o $(lvisitobjects) $(lvisitdobjects) 
+	$(CC) -o nbodysim_srv nbodysim_srv.o $(lvisitobjects) $(lvisitdobjects) $(LIBS)
+
+nbodysim_srv.o: nbodysim_srv.c
+
+nbodysim_proxy: nbodysim_proxy.o $(lvisitobjects) $(lvisitdobjects) 
+	$(CC) -o nbodysim_proxy nbodysim_proxy.o $(lvisitobjects) $(lvisitdobjects) $(LIBS)
+
+nbodysim_proxy.o: nbodysim_proxy.c
+
+$(lvisitobjects): $(lvisitsources) $(lvisitheaders)
+
+$(lvisitdobjects): $(lvisitdsources) $(lvisitdheaders)
+
+$(lvisitdobjectsmpi): $(lvisitdsourcesmpi) $(lvisitdheadersmpi)
+	$(CLIENTCC) $(CFLAGS) -c $(lvisitdsourcesmpi)
+
+$(lvisitdobjectsmpif): $(lvisitdsourcesmpif) $(lvisitdheadersmpif)
+	$(CLIENTCC) $(CFLAGS) -c $(lvisitdsourcesmpif)
+
+$(lvisitdobjectsf): $(lvisitdsourcesf) $(lvisitdheadersf)
+	$(CLIENTCC) $(CFLAGS) -c $(lvisitdsourcesf)
+
+liblvisit_nbody.a: $(lvisitobjects) $(lvisitdobjects) $(lvisitdobjects) $(lvisitdobjectsf) $(lvisitdobjectsmpi) $(lvisitdobjectsmpif)
+	rm -f liblvisit_nbody.a
+	ar q liblvisit_nbody.a $(lvisitobjects) $(lvisitdobjects) $(lvisitdobjectsmpi) $(lvisitdobjectsf) $(lvisitdobjectsmpif)
+	$(RANLIB) liblvisit_nbody.a
+
