@@ -1,0 +1,5 @@
+Please ignore a few routines of the type *.f.* and also
+some extra Makefiles used for another purpose.
+Option #11 is reserved for NBODY7.
+Note: for GPU with MacAir, Makefile_gpu should be ... -L /usr/local
+(space after L is required on Mac).

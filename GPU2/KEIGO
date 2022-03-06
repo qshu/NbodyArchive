@@ -1,0 +1,176 @@
+========================================
+ GPU extension for NBODY6 ver. 0.9
+                           19 Aug. 2010
+ Keigo Nitadori (keigo@riken.jp) 
+               and
+ Sverre Aarseth (sverre@ast.cam.ac.uk)
+========================================
+
+1. About
+
+2. System requirement
+ This module is intended for the use on a Linux x86_64 PC with CUDA enabled GPU.
+Although, one can try to run it on Macintosh/Linux-32bit/Windows.
+
+ 2-1. Hardware
+  CPU : x86_64 with SSE3 support (from the 90nm generation for Intel/AMD).
+  GPU : NVIDA GeForce/Tesla/Quadro with CUDA support. GT200 or Fermi generation.
+ 2-2. Software
+  OS       : Any Linux for x86_64 which you can install CUDA environment.
+  Compiler : GCC 4.1.2 or later with OpenMP enabled. 
+             C++ and FORTRAN support is required.
+  CUDA     : Toolkit and SDK 3.0 or later. SDK is only reffered for 'cutil.h'.
+
+For a reference, we list the environment on which we have developed.
+ CPU      : Core i7 920
+ GPU      : Tow GeForce GTX 470
+ OS       : CentOS 5.5 for x86_64
+ Compiler : GCC 4.1.2 (with C++ and FORTRAN)
+ CUDA     : Toolkit and SDK 3.1
+
+ Note that one (4 or 6 cores) CPU socket for one (Fermi generation) GPU looks a 
+well balanced combination, since not only the regular force part that is easily 
+accelerated with GPU, the irregular force part that is hardly accelerated and 
+performed on the host with a help of SSE and OpenMP in the current version
+takes a fraction of execution time.
+So, some suggestions for the hardware configuration are,
+ Value ( $1,000) course : One Core i7 870 (Lynfield)    + one GeForce GTX 460 (GF104)
+ Rich  ($10,000) course : Two Xeon X5680  (Westmere-EP) + two Tesla C2050     (GF100)
+
+3. Installation
+ Extract the file 'gpu.tar.gz' in the directory NBODY6.
+After extracting, the directory structure would look like as follows:
+
+Nbody6 +
+       |-Ncode            : Original NBODY6
+       |-GPU   +          : Makefile and FORTRAN files
+       |       |-lib      : Regular-force library (in CUDA)
+       |       |-irrlib   : Irregular-force library (in C++)
+       |       |-run
+       |-Nchain
+       |-...
+
+Go to the directory 'GPU',
+ > cd GPU
+and execute the shell script
+ > ./install.sh
+to make symbolic links of 'params.h' and 'common6.h'.
+Then, just make it
+ > make gpu
+to obtain the execution 'nbody6.gpu' in the directory 'run'.
+
+4. GPU dependent parameters
+ Some parameteres need to be given at the compiling time to adjust the number of
+thread blocks to the physical number of processors of the GPU used.
+These values are defined in a file 'GPU/lib/gpunb.reduce.cu', and some examples
+are:
+ for GeForce GTX 460/470 or Tesla C2050,
+  #define NJBLOCK  14
+  #define NXREDUCE 16
+ or,
+  #define NJBLOCK  28
+  #define NXREDUCE 32
+ for GeForce GTX 280 or Tesla C1060,
+  #define NJBLOCK  30
+  #define NXREDUCE 32
+ etc...
+
+5. Environment variables
+ By default, the library automatically finds and uses all the GPUs installed in
+the system and all the CPU threads. In case you want to run multiple jobs in one
+PC with multiple GPUs, you need to specify the list of GPU to use and the number
+of CPU threads. For example, if 2 GPUs and 8 host threads are available, to run
+2 jobs,
+ > GPU_LIST="0" OMP_NUM_THREADS=4 ../nbody6.gpu < in1 > out1 &
+ > GPU_LIST="1" OMP_NUM_THREADS=4 ../nbody6.gpu < in2 > out2 &
+The default is equivalent to,
+ > GPU_LIST="0 1" OMP_NUM_THREADS=8 ../nbody6.gpu < in > out &
+
+6. Outputs
+Each or regular or irregular library outputs some message to the screen (stderr)
+when it is opened and closed. At the close time, both of the libraryes gives
+some profiling inforamation. An example of the output to the screen is as
+follows:
+
+***********************
+Initializing NBODY6/GPU library
+#CPU 8, #GPU 2
+ device: 0 1
+ device 0: GeForce GTX 470
+ device 1: GeForce GTX 470
+***********************
+***********************
+Opened NBODY6/GPU library
+#CPU 8, #GPU 2
+ device: 0 1
+ 0 32768 65536
+nbmax = 65536
+***********************
+**************************** 
+Opening GPUIRR lib. SSE ver. 
+ nmax = 65546, lmax = 500
+**************************** 
+***********************
+Closed NBODY6/GPU library
+time send   : 1.101684 sec
+time grav   : 17.795590 sec
+time reduce : 0.387609 sec
+1315.947465 Gflops (gravity part only)
+***********************
+**************************** 
+Closing GPUIRR lib. CPU ver. 
+time pred  : 8.766780 sec
+time pact  : 9.664287 sec
+time grav  : 19.304246 sec
+time onep  : 0.000000 sec
+
+perf grav  : 20.604658 Gflops
+perf pred  : 8.123547 nsec
+perf pact  : 125.747625 nsec
+**************************** 
+
+7. Performance tuning using HUGEPAGE
+ The default page size of x86 architecture is 4kB, which sometimes cause a
+performance loss in HPC (high performance compuiting) applications.
+Recent x86 CPUs and Linux kernel supports larger page (huge page) whose size 
+is 2MB.
+ We have seen that the use of huge page improves the performance and note the
+way to use it.
+
+(i)  Install 'libhugetlbfs' package
+ For CentOS 5.5, just to type (as a super user),
+ > yum install libhugetlbfs*
+
+(ii) Allocate huge pages
+ For Nbody6, 512 pages = 1 GB would be enough size to allocate, if N < 100k.
+To allocate, type as a superuser,
+ > echo 512 > /proc/sys/vm/nr_hugepages
+ It is recommended to write it in the boot sequence script (/etc/rc.local)
+for the safe allocation.
+ You can check the allocation status with a command
+ > grep Huge /proc/meminfo
+to obtain, 
+  HugePages_Total:   512
+  HugePages_Free:    512
+  HugePages_Rsvd:      0
+  Hugepagesize:     2048 kB
+
+(iii)Mount the filesystem
+ You need to mount hugetlbfs to some mount point (any mount point will do).
+Here, we just show an example line for 'fstab'.
+  hugetlbfs		/libhugetlbfs		hugetlbfs	mode=0777	0 0
+
+(iv) Compiling Nbody6
+ Nbody6 need to be re-linked to put the common array on huge-page.
+Comment out the following line from 'Makefile_gpu' and link again.
+  #LD_GPU += -B /usr/share/libhugetlbfs -Wl,--hugetlbfs-link=B
+
+(v)  Environment variable
+ The following environment variable should be set to get the dynamically
+allocated memory from huge pages.
+  HUGETLB_MORECORE=yes
+
+(vi) Run and watch
+ While the program is running, you can watch the use of huge pages.
+ > grep Huge /proc/meminfo
+

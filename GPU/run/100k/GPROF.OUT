@@ -1,0 +1,568 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 44.68    373.99   373.99 47652843     0.00     0.00  cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*)
+ 35.76    673.31   299.31    36131     0.01     0.02  instar_
+ 10.24    759.00    85.69     3962     0.02     0.02  rcbrtf
+  6.50    813.41    54.41 43609205     0.00     0.00  nbintp_
+  1.69    827.55    14.14        9     1.57    92.91  intgrt_
+  0.36    830.58     3.03  3551800     0.00     0.00  gpucor_
+  0.31    833.17     2.59    50405     0.00     0.00  nbsort_
+  0.17    834.62     1.45 48373502     0.00     0.00  tstep_
+  0.15    835.86     1.24    67563     0.00     0.00  inext_
+  0.02    836.03     0.17                             tstab_
+  0.02    836.19     0.16        4     0.04     0.04  rename_
+  0.02    836.33     0.14        4     0.04     0.04  update_
+  0.02    836.47     0.14   213750     0.00     0.00  nbint_
+  0.02    836.60     0.13        1     0.13     0.13  core_
+  0.01    836.72     0.12 48061350     0.00     0.00  cnbint_
+  0.01    836.80     0.08        8     0.01     0.01  fpoly2_
+  0.01    836.88     0.08                             cudaPointer<Particle>::allocate(int)
+  0.01    836.95     0.07     3654     0.00     0.00  gpunb_open_
+  0.00    836.98     0.03    67423     0.00     0.00  subint_
+  0.00    837.00     0.02   100000     0.00     0.00  phicor_
+  0.00    837.02     0.02        8     0.00     0.00  fpoly1_
+  0.00    837.03     0.01        4     0.00     0.06  ksreg_
+  0.00    837.04     0.01        1     0.01     0.01  output_
+  0.00    837.04     0.00     3732     0.00     0.02  GPUNB_regf(int, double*, double (*) [3], double (*) [3], double (*) [3], double (*) [3], double*, int, int, int*)
+  0.00    837.04     0.00     3732     0.00     0.00  gpunb_regf_
+  0.00    837.04     0.00     1810     0.00     0.00  fpert_
+  0.00    837.04     0.00     1802     0.00     0.00  orbit_
+  0.00    837.04     0.00     1260     0.00     0.00  search_
+  0.00    837.04     0.00      357     0.00     0.00  matrix_
+  0.00    837.04     0.00      326     0.00     0.02  GPUNB_send(int, double*, double (*) [3], double (*) [3])
+  0.00    837.04     0.00      326     0.00     0.00  gpunb_send_
+  0.00    837.04     0.00       66     0.00     0.00  stumpf_
+  0.00    837.04     0.00       62     0.00     0.00  kscorr_
+  0.00    837.04     0.00       62     0.00     0.00  ksint_
+  0.00    837.04     0.00       62     0.00     0.00  kspert_
+  0.00    837.04     0.00       62     0.00     0.00  kspred_
+  0.00    837.04     0.00       56     0.00     0.00  insert_
+  0.00    837.04     0.00       27     0.00     0.00  cmfirr_
+  0.00    837.04     0.00       27     0.00     0.00  ksres2_
+  0.00    837.04     0.00       24     0.00     0.00  cmfreg_
+  0.00    837.04     0.00       24     0.00     0.00  stepk_
+  0.00    837.04     0.00       13     0.00     0.00  xvpred_
+  0.00    837.04     0.00        8     0.00     0.00  nbpot_
+  0.00    837.04     0.00        8     0.00     0.00  steps_
+  0.00    837.04     0.00        4     0.00     0.01  ksinit_
+  0.00    837.04     0.00        4     0.00     0.00  kslist_
+  0.00    837.04     0.00        4     0.00     0.00  kspoly_
+  0.00    837.04     0.00        4     0.00     0.00  ksrect_
+  0.00    837.04     0.00        4     0.00     0.00  ksres_
+  0.00    837.04     0.00        4     0.00     0.05  ksterm_
+  0.00    837.04     0.00        4     0.00     0.00  resolv_
+  0.00    837.04     0.00        3     0.00     0.00  cputim_
+  0.00    837.04     0.00        3     0.00     0.00  gpunb_close_
+  0.00    837.04     0.00        2     0.00     0.00  mydump_
+  0.00    837.04     0.00        1     0.00   836.79  MAIN__
+  0.00    837.04     0.00        1     0.00     0.00  global constructors keyed to _Z10GPUNB_openi
+  0.00    837.04     0.00        1     0.00     0.00  global constructors keyed to wtime_
+  0.00    837.04     0.00        1     0.00     0.00  GPUNB_open(int)
+  0.00    837.04     0.00        1     0.00     0.00  h4_gravity(int, Iparticle*, Jparticle*, Force (*) [16])
+  0.00    837.04     0.00        1     0.00     0.02  GPUNB_close()
+  0.00    837.04     0.00        1     0.00     0.00  gpupot(int, double*, double (*) [3], double*)
+  0.00    837.04     0.00        1     0.00     0.00  __sti____cudaRegisterAll_45_tmpxft_00000492_00000000_4_gpupot_gpu_cpp1_ii_172cfe43()
+  0.00    837.04     0.00        1     0.00     0.00  __sti____cudaRegisterAll_46_tmpxft_00000468_00000000_4_gpunb_multi_cpp1_ii_ccc09788()
+  0.00    837.04     0.00        1     0.00     0.16  adjust_
+  0.00    837.04     0.00        1     0.00     0.00  check_
+  0.00    837.04     0.00        1     0.00     0.02  energy2_
+  0.00    837.04     0.00        1     0.00     0.00  gpupot_
+  0.00    837.04     0.00        1     0.00     0.00  modify_
+  0.00    837.04     0.00        1     0.00     0.00  verify_
+  0.00    837.04     0.00        1     0.00     0.00  wtime_
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.00% of 837.04 seconds
+
+index % time    self  children    called     name
+                0.00  836.79       1/1           main [2]
+[1]    100.0    0.00  836.79       1         MAIN__ [1]
+               14.14  822.08       9/9           intgrt_ [3]
+                0.01    0.21       4/4           ksreg_ [15]
+                0.00    0.19       4/4           ksterm_ [16]
+                0.00    0.16       1/1           adjust_ [18]
+                0.00    0.00       1/3           cputim_ [57]
+                0.00    0.00       1/2           mydump_ [59]
+                0.00    0.00       1/1           modify_ [62]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]    100.0    0.00  836.79                 main [2]
+                0.00  836.79       1/1           MAIN__ [1]
+-----------------------------------------------
+               14.14  822.08       9/9           MAIN__ [1]
+[3]     99.9   14.14  822.08       9         intgrt_ [3]
+              299.31  400.30   36131/36131       instar_ [4]
+                0.00   78.77    3732/3732        GPUNB_regf(int, double*, double (*) [3], double (*) [3], double (*) [3], double (*) [3], double*, int, int, int*) [8]
+                3.03   27.99 3551800/3551800     gpucor_ [9]
+                0.00    6.96     326/326         GPUNB_send(int, double*, double (*) [3], double (*) [3]) [10]
+                2.59    0.00   50405/50405       nbsort_ [11]
+                0.14    1.68  213750/213750      nbint_ [12]
+                1.24    0.00   67563/67563       inext_ [14]
+                0.03    0.00   67423/67423       subint_ [27]
+                0.00    0.02       1/1           GPUNB_close() [28]
+                0.00    0.00       1/3654        gpunb_open_ [25]
+                0.00    0.00    3732/3732        gpunb_regf_ [38]
+                0.00    0.00     326/326         gpunb_send_ [43]
+                0.00    0.00      27/27          ksres2_ [48]
+                0.00    0.00       1/1           GPUNB_open(int) [412]
+                0.00    0.00       1/3           gpunb_close_ [58]
+-----------------------------------------------
+              299.31  400.30   36131/36131       intgrt_ [3]
+[4]     83.6  299.31  400.30   36131         instar_ [4]
+               54.41  345.89 43609205/43609205     nbintp_ [5]
+-----------------------------------------------
+               54.41  345.89 43609205/43609205     instar_ [4]
+[5]     47.8   54.41  345.89 43609205         nbintp_ [5]
+              344.44    0.00 43887091/47652843     cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [6]
+                1.34    0.00 44607960/48373502     tstep_ [13]
+                0.11    0.00 44295597/48061350     cnbint_ [22]
+                0.00    0.00       5/27          cmfirr_ [36]
+-----------------------------------------------
+                0.00    0.00      52/47652843     cmfirr_ [36]
+                0.00    0.00      72/47652843     cmfreg_ [35]
+                0.00    0.00     124/47652843     kspert_ [34]
+                1.68    0.00  213728/47652843     nbint_ [12]
+               27.88    0.00 3551776/47652843     gpucor_ [9]
+              344.44    0.00 43887091/47652843     nbintp_ [5]
+[6]     44.7  373.99    0.00 47652843         cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [6]
+-----------------------------------------------
+                0.02    0.00       1/3962        GPUNB_close() [28]
+                6.96    0.00     322/3962        GPUNB_send(int, double*, double (*) [3], double (*) [3]) [10]
+               78.70    0.00    3639/3962        GPUNB_regf(int, double*, double (*) [3], double (*) [3], double (*) [3], double (*) [3], double*, int, int, int*) [8]
+[7]     10.2   85.69    0.00    3962         rcbrtf [7]
+-----------------------------------------------
+                0.00   78.77    3732/3732        intgrt_ [3]
+[8]      9.4    0.00   78.77    3732         GPUNB_regf(int, double*, double (*) [3], double (*) [3], double (*) [3], double (*) [3], double*, int, int, int*) [8]
+               78.70    0.00    3639/3962        rcbrtf [7]
+                0.07    0.00    3653/3654        gpunb_open_ [25]
+-----------------------------------------------
+                3.03   27.99 3551800/3551800     intgrt_ [3]
+[9]      3.7    3.03   27.99 3551800         gpucor_ [9]
+               27.88    0.00 3551776/47652843     cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [6]
+                0.11    0.00 3551768/48373502     tstep_ [13]
+                0.01    0.00 3551776/48061350     cnbint_ [22]
+                0.00    0.00      24/24          cmfreg_ [35]
+-----------------------------------------------
+                0.00    6.96     326/326         intgrt_ [3]
+[10]     0.8    0.00    6.96     326         GPUNB_send(int, double*, double (*) [3], double (*) [3]) [10]
+                6.96    0.00     322/3962        rcbrtf [7]
+-----------------------------------------------
+                2.59    0.00   50405/50405       intgrt_ [3]
+[11]     0.3    2.59    0.00   50405         nbsort_ [11]
+-----------------------------------------------
+                0.14    1.68  213750/213750      intgrt_ [3]
+[12]     0.2    0.14    1.68  213750         nbint_ [12]
+                1.68    0.00  213728/47652843     cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [6]
+                0.01    0.00  213750/48373502     tstep_ [13]
+                0.00    0.00  213728/48061350     cnbint_ [22]
+                0.00    0.00      22/27          cmfirr_ [36]
+                0.00    0.00    1802/1802        orbit_ [40]
+                0.00    0.00    1260/1260        search_ [41]
+-----------------------------------------------
+                0.00    0.00      24/48373502     steps_ [37]
+                0.01    0.00  213750/48373502     nbint_ [12]
+                0.11    0.00 3551768/48373502     gpucor_ [9]
+                1.34    0.00 44607960/48373502     nbintp_ [5]
+[13]     0.2    1.45    0.00 48373502         tstep_ [13]
+-----------------------------------------------
+                1.24    0.00   67563/67563       intgrt_ [3]
+[14]     0.1    1.24    0.00   67563         inext_ [14]
+-----------------------------------------------
+                0.01    0.21       4/4           MAIN__ [1]
+[15]     0.0    0.01    0.21       4         ksreg_ [15]
+                0.16    0.00       4/4           rename_ [19]
+                0.00    0.05       4/4           ksinit_ [26]
+-----------------------------------------------
+                0.00    0.19       4/4           MAIN__ [1]
+[16]     0.0    0.00    0.19       4         ksterm_ [16]
+                0.14    0.00       4/4           update_ [20]
+                0.04    0.00       4/8           fpoly2_ [23]
+                0.01    0.00       4/8           fpoly1_ [30]
+                0.00    0.00       4/62          ksint_ [33]
+                0.00    0.00       4/8           steps_ [37]
+                0.00    0.00       8/8           nbpot_ [51]
+                0.00    0.00       4/4           ksres_ [55]
+                0.00    0.00       4/4           ksrect_ [54]
+                0.00    0.00       4/4           resolv_ [56]
+                0.00    0.00       4/13          xvpred_ [50]
+                0.00    0.00       4/66          stumpf_ [44]
+-----------------------------------------------
+                                                 <spontaneous>
+[17]     0.0    0.17    0.00                 tstab_ [17]
+-----------------------------------------------
+                0.00    0.16       1/1           MAIN__ [1]
+[18]     0.0    0.00    0.16       1         adjust_ [18]
+                0.13    0.00       1/1           core_ [21]
+                0.00    0.02       1/1           energy2_ [31]
+                0.01    0.00       1/1           output_ [32]
+                0.00    0.00       1/13          xvpred_ [50]
+                0.00    0.00       1/1           wtime_ [64]
+                0.00    0.00       1/1           check_ [60]
+                0.00    0.00       1/3           cputim_ [57]
+-----------------------------------------------
+                0.16    0.00       4/4           ksreg_ [15]
+[19]     0.0    0.16    0.00       4         rename_ [19]
+-----------------------------------------------
+                0.14    0.00       4/4           ksterm_ [16]
+[20]     0.0    0.14    0.00       4         update_ [20]
+-----------------------------------------------
+                0.13    0.00       1/1           adjust_ [18]
+[21]     0.0    0.13    0.00       1         core_ [21]
+-----------------------------------------------
+                0.00    0.00      53/48061350     cmfirr_ [36]
+                0.00    0.00      72/48061350     cmfreg_ [35]
+                0.00    0.00     124/48061350     kspert_ [34]
+                0.00    0.00  213728/48061350     nbint_ [12]
+                0.01    0.00 3551776/48061350     gpucor_ [9]
+                0.11    0.00 44295597/48061350     nbintp_ [5]
+[22]     0.0    0.12    0.00 48061350         cnbint_ [22]
+-----------------------------------------------
+                0.04    0.00       4/8           ksinit_ [26]
+                0.04    0.00       4/8           ksterm_ [16]
+[23]     0.0    0.08    0.00       8         fpoly2_ [23]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     0.0    0.08    0.00                 cudaPointer<Particle>::allocate(int) [24]
+-----------------------------------------------
+                0.00    0.00       1/3654        intgrt_ [3]
+                0.07    0.00    3653/3654        GPUNB_regf(int, double*, double (*) [3], double (*) [3], double (*) [3], double (*) [3], double*, int, int, int*) [8]
+[25]     0.0    0.07    0.00    3654         gpunb_open_ [25]
+-----------------------------------------------
+                0.00    0.05       4/4           ksreg_ [15]
+[26]     0.0    0.00    0.05       4         ksinit_ [26]
+                0.04    0.00       4/8           fpoly2_ [23]
+                0.01    0.00       4/8           fpoly1_ [30]
+                0.00    0.00       4/8           steps_ [37]
+                0.00    0.00       4/13          xvpred_ [50]
+                0.00    0.00       4/357         matrix_ [42]
+                0.00    0.00       4/4           kslist_ [52]
+                0.00    0.00       4/4           kspoly_ [53]
+-----------------------------------------------
+                0.03    0.00   67423/67423       intgrt_ [3]
+[27]     0.0    0.03    0.00   67423         subint_ [27]
+                0.00    0.00      58/62          ksint_ [33]
+                0.00    0.00      56/56          insert_ [47]
+-----------------------------------------------
+                0.00    0.02       1/1           intgrt_ [3]
+[28]     0.0    0.00    0.02       1         GPUNB_close() [28]
+                0.02    0.00       1/3962        rcbrtf [7]
+-----------------------------------------------
+                0.02    0.00  100000/100000      energy2_ [31]
+[29]     0.0    0.02    0.00  100000         phicor_ [29]
+-----------------------------------------------
+                0.01    0.00       4/8           ksinit_ [26]
+                0.01    0.00       4/8           ksterm_ [16]
+[30]     0.0    0.02    0.00       8         fpoly1_ [30]
+-----------------------------------------------
+                0.00    0.02       1/1           adjust_ [18]
+[31]     0.0    0.00    0.02       1         energy2_ [31]
+                0.02    0.00  100000/100000      phicor_ [29]
+                0.00    0.00       1/1           gpupot(int, double*, double (*) [3], double*) [414]
+                0.00    0.00       1/1           gpupot_ [61]
+-----------------------------------------------
+                0.01    0.00       1/1           adjust_ [18]
+[32]     0.0    0.01    0.00       1         output_ [32]
+                0.00    0.00       1/3           cputim_ [57]
+-----------------------------------------------
+                0.00    0.00       4/62          ksterm_ [16]
+                0.00    0.00      58/62          subint_ [27]
+[33]     0.0    0.00    0.00      62         ksint_ [33]
+                0.00    0.00      62/62          kspert_ [34]
+                0.00    0.00      62/62          kspred_ [46]
+                0.00    0.00      62/62          kscorr_ [45]
+                0.00    0.00      58/66          stumpf_ [44]
+-----------------------------------------------
+                0.00    0.00      62/62          ksint_ [33]
+[34]     0.0    0.00    0.00      62         kspert_ [34]
+                0.00    0.00     124/47652843     cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [6]
+                0.00    0.00     124/48061350     cnbint_ [22]
+-----------------------------------------------
+                0.00    0.00      24/24          gpucor_ [9]
+[35]     0.0    0.00    0.00      24         cmfreg_ [35]
+                0.00    0.00      72/47652843     cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [6]
+                0.00    0.00      72/48061350     cnbint_ [22]
+-----------------------------------------------
+                0.00    0.00       5/27          nbintp_ [5]
+                0.00    0.00      22/27          nbint_ [12]
+[36]     0.0    0.00    0.00      27         cmfirr_ [36]
+                0.00    0.00      52/47652843     cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [6]
+                0.00    0.00      53/48061350     cnbint_ [22]
+-----------------------------------------------
+                0.00    0.00       4/8           ksinit_ [26]
+                0.00    0.00       4/8           ksterm_ [16]
+[37]     0.0    0.00    0.00       8         steps_ [37]
+                0.00    0.00      24/48373502     tstep_ [13]
+                0.00    0.00      24/24          stepk_ [49]
+-----------------------------------------------
+                0.00    0.00    3732/3732        intgrt_ [3]
+[38]     0.0    0.00    0.00    3732         gpunb_regf_ [38]
+-----------------------------------------------
+                0.00    0.00       8/1810        search_ [41]
+                0.00    0.00    1802/1810        orbit_ [40]
+[39]     0.0    0.00    0.00    1810         fpert_ [39]
+-----------------------------------------------
+                0.00    0.00    1802/1802        nbint_ [12]
+[40]     0.0    0.00    0.00    1802         orbit_ [40]
+                0.00    0.00    1802/1810        fpert_ [39]
+-----------------------------------------------
+                0.00    0.00    1260/1260        nbint_ [12]
+[41]     0.0    0.00    0.00    1260         search_ [41]
+                0.00    0.00       8/1810        fpert_ [39]
+-----------------------------------------------
+                0.00    0.00       4/357         ksinit_ [26]
+                0.00    0.00       4/357         resolv_ [56]
+                0.00    0.00      12/357         kspoly_ [53]
+                0.00    0.00      27/357         ksres2_ [48]
+                0.00    0.00      62/357         kspred_ [46]
+                0.00    0.00     248/357         kscorr_ [45]
+[42]     0.0    0.00    0.00     357         matrix_ [42]
+-----------------------------------------------
+                0.00    0.00     326/326         intgrt_ [3]
+[43]     0.0    0.00    0.00     326         gpunb_send_ [43]
+-----------------------------------------------
+                0.00    0.00       4/66          kspoly_ [53]
+                0.00    0.00       4/66          ksterm_ [16]
+                0.00    0.00      58/66          ksint_ [33]
+[44]     0.0    0.00    0.00      66         stumpf_ [44]
+-----------------------------------------------
+                0.00    0.00      62/62          ksint_ [33]
+[45]     0.0    0.00    0.00      62         kscorr_ [45]
+                0.00    0.00     248/357         matrix_ [42]
+-----------------------------------------------
+                0.00    0.00      62/62          ksint_ [33]
+[46]     0.0    0.00    0.00      62         kspred_ [46]
+                0.00    0.00      62/357         matrix_ [42]
+-----------------------------------------------
+                0.00    0.00      56/56          subint_ [27]
+[47]     0.0    0.00    0.00      56         insert_ [47]
+-----------------------------------------------
+                0.00    0.00      27/27          intgrt_ [3]
+[48]     0.0    0.00    0.00      27         ksres2_ [48]
+                0.00    0.00      27/357         matrix_ [42]
+-----------------------------------------------
+                0.00    0.00      24/24          steps_ [37]
+[49]     0.0    0.00    0.00      24         stepk_ [49]
+-----------------------------------------------
+                0.00    0.00       1/13          adjust_ [18]
+                0.00    0.00       4/13          ksinit_ [26]
+                0.00    0.00       4/13          kspoly_ [53]
+                0.00    0.00       4/13          ksterm_ [16]
+[50]     0.0    0.00    0.00      13         xvpred_ [50]
+-----------------------------------------------
+                0.00    0.00       8/8           ksterm_ [16]
+[51]     0.0    0.00    0.00       8         nbpot_ [51]
+-----------------------------------------------
+                0.00    0.00       4/4           ksinit_ [26]
+[52]     0.0    0.00    0.00       4         kslist_ [52]
+-----------------------------------------------
+                0.00    0.00       4/4           ksinit_ [26]
+[53]     0.0    0.00    0.00       4         kspoly_ [53]
+                0.00    0.00      12/357         matrix_ [42]
+                0.00    0.00       4/13          xvpred_ [50]
+                0.00    0.00       4/66          stumpf_ [44]
+-----------------------------------------------
+                0.00    0.00       4/4           ksterm_ [16]
+[54]     0.0    0.00    0.00       4         ksrect_ [54]
+-----------------------------------------------
+                0.00    0.00       4/4           ksterm_ [16]
+[55]     0.0    0.00    0.00       4         ksres_ [55]
+-----------------------------------------------
+                0.00    0.00       4/4           ksterm_ [16]
+[56]     0.0    0.00    0.00       4         resolv_ [56]
+                0.00    0.00       4/357         matrix_ [42]
+-----------------------------------------------
+                0.00    0.00       1/3           MAIN__ [1]
+                0.00    0.00       1/3           adjust_ [18]
+                0.00    0.00       1/3           output_ [32]
+[57]     0.0    0.00    0.00       3         cputim_ [57]
+-----------------------------------------------
+                0.00    0.00       1/3           intgrt_ [3]
+                0.00    0.00       2/3           GPUNB_open(int) [412]
+[58]     0.0    0.00    0.00       3         gpunb_close_ [58]
+-----------------------------------------------
+                0.00    0.00       1/2           MAIN__ [1]
+                0.00    0.00       1/2           modify_ [62]
+[59]     0.0    0.00    0.00       2         mydump_ [59]
+-----------------------------------------------
+                0.00    0.00       1/1           adjust_ [18]
+[60]     0.0    0.00    0.00       1         check_ [60]
+-----------------------------------------------
+                0.00    0.00       1/1           energy2_ [31]
+[61]     0.0    0.00    0.00       1         gpupot_ [61]
+-----------------------------------------------
+                0.00    0.00       1/1           MAIN__ [1]
+[62]     0.0    0.00    0.00       1         modify_ [62]
+                0.00    0.00       1/2           mydump_ [59]
+                0.00    0.00       1/1           verify_ [63]
+-----------------------------------------------
+                0.00    0.00       1/1           modify_ [62]
+[63]     0.0    0.00    0.00       1         verify_ [63]
+-----------------------------------------------
+                0.00    0.00       1/1           adjust_ [18]
+[64]     0.0    0.00    0.00       1         wtime_ [64]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [426]
+[410]    0.0    0.00    0.00       1         global constructors keyed to _Z10GPUNB_openi [410]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [426]
+[411]    0.0    0.00    0.00       1         global constructors keyed to wtime_ [411]
+-----------------------------------------------
+                0.00    0.00       1/1           intgrt_ [3]
+[412]    0.0    0.00    0.00       1         GPUNB_open(int) [412]
+                0.00    0.00       2/3           gpunb_close_ [58]
+                0.00    0.00       1/1           h4_gravity(int, Iparticle*, Jparticle*, Force (*) [16]) [413]
+-----------------------------------------------
+                0.00    0.00       1/1           GPUNB_open(int) [412]
+[413]    0.0    0.00    0.00       1         h4_gravity(int, Iparticle*, Jparticle*, Force (*) [16]) [413]
+-----------------------------------------------
+                0.00    0.00       1/1           energy2_ [31]
+[414]    0.0    0.00    0.00       1         gpupot(int, double*, double (*) [3], double*) [414]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [426]
+[415]    0.0    0.00    0.00       1         __sti____cudaRegisterAll_45_tmpxft_00000492_00000000_4_gpupot_gpu_cpp1_ii_172cfe43() [415]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [426]
+[416]    0.0    0.00    0.00       1         __sti____cudaRegisterAll_46_tmpxft_00000468_00000000_4_gpunb_multi_cpp1_ii_ccc09788() [416]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+   [1] MAIN__                  [9] gpucor_                [59] mydump_
+ [410] global constructors keyed to _Z10GPUNB_openi [58] gpunb_close_ [12] nbint_
+ [411] global constructors keyed to wtime_ [25] gpunb_open_ [5] nbintp_
+ [412] GPUNB_open(int)        [38] gpunb_regf_            [51] nbpot_
+   [8] GPUNB_regf(int, double*, double (*) [3], double (*) [3], double (*) [3], double (*) [3], double*, int, int, int*) [43] gpunb_send_ [11] nbsort_
+  [10] GPUNB_send(int, double*, double (*) [3], double (*) [3]) [61] gpupot_ [40] orbit_
+ [413] h4_gravity(int, Iparticle*, Jparticle*, Force (*) [16]) [14] inext_ [32] output_
+  [28] GPUNB_close()          [47] insert_                [29] phicor_
+   [6] cnbint(int, double const (*) [3], double const (*) [3], double const*, int, int*, double*, double*) [4] instar_ [7] rcbrtf
+ [414] gpupot(int, double*, double (*) [3], double*) [3] intgrt_ [19] rename_
+ [415] __sti____cudaRegisterAll_45_tmpxft_00000492_00000000_4_gpupot_gpu_cpp1_ii_172cfe43() [45] kscorr_ [56] resolv_
+ [416] __sti____cudaRegisterAll_46_tmpxft_00000468_00000000_4_gpunb_multi_cpp1_ii_ccc09788() [26] ksinit_ [41] search_
+  [24] cudaPointer<Particle>::allocate(int) [33] ksint_   [49] stepk_
+  [18] adjust_                [52] kslist_                [37] steps_
+  [60] check_                 [34] kspert_                [44] stumpf_
+  [36] cmfirr_                [53] kspoly_                [27] subint_
+  [35] cmfreg_                [46] kspred_                [17] tstab_
+  [22] cnbint_                [54] ksrect_                [13] tstep_
+  [21] core_                  [15] ksreg_                 [20] update_
+  [57] cputim_                [48] ksres2_                [63] verify_
+  [31] energy2_               [55] ksres_                 [64] wtime_
+  [39] fpert_                 [16] ksterm_                [50] xvpred_
+  [30] fpoly1_                [42] matrix_
+  [23] fpoly2_                [62] modify_
