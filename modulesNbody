@@ -1,0 +1,6 @@
+module load CUDA/10.1.105
+#module load GCC/8.3.0
+#module load ParaStationMPI/5.2.2-1
+module load Intel/2019.5.281-GCC-8.3.0
+module load IntelMPI/2019.6.154
+

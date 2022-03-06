@@ -1,0 +1,4 @@
+make -C ./build
+make[1]: Entering directory `/p/scratch/ccstao/guimaraes1/Nbody/Nbody6++_test/build'
+mpif77 -g -O0 -C -Wextra -Wline-truncation -Wcharacter-truncation -Wsurprising -Waliasing -fbacktrace -fcheck=all -ffpe-trap=zero,invalid -finit-real=nan -ftrapv  -mcmodel=large -fopenmp -I../include -D GPU -D PARALLEL -D PUREMPI -D SIMD -D OMP   -c -o binpop.o ../src/Main/binpop.F
+mpif77 -g -O0 -C -Wextra -Wline-truncation -Wcharacter-truncation -Wsurprising -Waliasing -fbacktrace -fcheck=all -ffpe-trap=zero,invalid -finit-real=nan -ftrapv  -mcmodel=large -fopenmp -I../include -D GPU -D PARALLEL -D PUREMPI -D SIMD -D OMP  -c -o cmfreg.o ../src/Main/cmfreg.f
