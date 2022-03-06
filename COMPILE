@@ -1,0 +1,77 @@
+Warning: bindat.f:132: Illegal preprocessor directive
+Warning: bindat.f:134: Illegal preprocessor directive
+Warning: bindat.f:155: Illegal preprocessor directive
+Warning: bindat.f:157: Illegal preprocessor directive
+binpop_pk.f:639.15:
+
+        if(rank.eq.0)then                                               
+               1
+Error: Symbol 'rank' at (1) has no IMPLICIT type
+energy_mpi.f:73.72:
+
+      PHIDBL(I) = POTI                                                  
+                                                                        1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+energy_mpi.f:9.19:
+
+      integer inum(maxpe),ista(maxpe)                                   
+                   1
+Error: Variable 'maxpe' cannot appear in the expression at (1)
+energy_mpi.f:9.31:
+
+      integer inum(maxpe),ista(maxpe)                                   
+                               1
+Error: Variable 'maxpe' cannot appear in the expression at (1)
+Warning: escape.f:212: Illegal preprocessor directive
+Warning: escape.f:214: Illegal preprocessor directive
+Warning: escape.f:217: Illegal preprocessor directive
+Warning: escape.f:219: Illegal preprocessor directive
+fpoly1_mpi.f:9.19:
+
+      integer inum(maxpe),ista(maxpe)                                   
+                   1
+Error: Variable 'maxpe' cannot appear in the expression at (1)
+fpoly1_mpi.f:9.31:
+
+      integer inum(maxpe),ista(maxpe)                                   
+                               1
+Error: Variable 'maxpe' cannot appear in the expression at (1)
+fpoly2_mpi.f:9.19:
+
+      integer inum(maxpe),ista(maxpe)                                   
+                   1
+Error: Variable 'maxpe' cannot appear in the expression at (1)
+fpoly2_mpi.f:9.31:
+
+      integer inum(maxpe),ista(maxpe)                                   
+                               1
+Error: Variable 'maxpe' cannot appear in the expression at (1)
+Warning: lagr.f:221: Illegal preprocessor directive
+Warning: lagr.f:223: Illegal preprocessor directive
+Warning: lagr.f:229: Illegal preprocessor directive
+Warning: lagr.f:231: Illegal preprocessor directive
+short.f:18.26:
+
+              LSHORT(K) = LSHORT(K+K1)                                  
+                          1
+Error: Statement function at (1) is recursive
+short.f:29.24:
+
+                  LSHORT(NNB+1) = J                                     
+                        1
+Error: 'lshort' at (1) is not a variable
+short.f:32.16:
+
+          LSHORT(1) = NNB                                               
+                1
+Error: 'lshort' at (1) is not a variable
+short.f:42.24:
+
+                  LSHORT(NNB+1) = J                                     
+                        1
+Error: 'lshort' at (1) is not a variable
+short.f:46.16:
+
+          LSHORT(1) = NNB                                               
+                1
+Error: 'lshort' at (1) is not a variable
