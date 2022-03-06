@@ -1,0 +1,189 @@
+#.KEEP_STATE:
+FFLAGS = -O3
+#FFLAGS = -g -fnonstd
+FC = g77
+
+CHAIN  = ../Chain
+NCHAIN = ../Nchain
+
+SOURCE = \
+nbody6.f adjust.f bindat.f binout.f binpop.f block.f bodies.f \
+brake.f check.f checkl.f clint.f cloud.f cloud0.f cmbody.f \
+cmcorr.f cmfirr.f cmfreg.f core.f cputim.f data.f define.f \
+delay.f efac2.f efac3.f energy.f escape.f events.f evolve.f \
+expand.f fclose.f fcloud.f fcorr.f ficorr.f findj.f flyby.f \
+fpcorr.f fpert.f fpoly1.f fpoly2.f freeze.f hcorr.f hiarch.f \
+hidat.f himax.f hipop.f histab.f hmdot.f hmdot2.f hotsys.f \
+hrdiag.f hrplot.f iblock.f imf.f imfbd.f imf2.f impact.f inext.f \
+input.f instar.f intgrt.f \x intide.f kepler.f kick.f ksapo.f \
+kscorr.f ksin2.f ksinit.f ksint.f kslist.f ksmod.f ksperi.f \
+kspert.f kspoly.f kspred.f ksrect.f ksreg.f ksres.f ksres2.f \
+ksterm.f kstide.f lagr.f levels.f matrix.f merge.f merge2.f \
+mdot.f mloss.f mlwind.f modify.f mydump.f nbint.f nblist.f \
+nbpot.f nbrem.f nbrest.f nbtide.f nbsort.f nlmod.f output.f \
+orbit.f peri.f permit.f pfac.f ran2.f reflct.f regint.f remove.f \
+rename.f reset.f reset2.f resolv.f scale.f search.f setup.f \
+shrink.f sort1.f star.f start.f stepi.f stepk.f steps.f stumpf.f \
+subint.f tcirc.f tides.f tstep.f tpert.f units.f unpert.f \
+update.f verify.f xtrnl0.f xtrnld.f xtrnlf.f xtrnlp.f xtrnlv.f \
+xvpred.f zare.f zcnsts.f zdata.f zfuncs.f zero.f \
+triple.f derqp3.f difsy3.f erel3.f extend.f qpmod3.f stabl3.f \
+stablz.f start3.f subsys.f tperi.f trans3.f \
+quad.f derqp4.f difsy4.f endreg.f erel4.f ichain.f newreg.f newsys.f \
+qpmod4.f rchain.f rsort.f stabl4.f start4.f status.f trans4.f
+
+OBJECTS = \
+nbody6.o adjust.o bindat.o binout.o binpop.o block.o bodies.o \
+brake.o check.o checkl.o clint.o cloud.o cloud0.o cmbody.o \
+cmcorr.o cmfirr.o cmfreg.o core.o cputim.o data.o define.o \
+delay.o efac2.o efac3.o energy.o escape.o events.o evolve.o \
+expand.o fclose.o fcloud.o fcorr.o ficorr.o findj.o flyby.o \
+fpcorr.o fpert.o fpoly1.o fpoly2.o freeze.o hcorr.o hiarch.o \
+hidat.o himax.o hipop.o histab.o hmdot.o hmdot2.o hotsys.o \
+hrdiag.o hrplot.o iblock.o imf.o imfbd.o imf2.o impact.o inext.o \
+input.o instar.o intgrt.o intide.o kepler.o kick.o ksapo.o \
+kscorr.o ksin2.o ksinit.o ksint.o kslist.o ksmod.o ksperi.o \
+kspert.o kspoly.o kspred.o ksrect.o ksreg.o ksres.o ksres2.o \
+ksterm.o kstide.o lagr.o levels.o matrix.o merge.o merge2.o \
+mdot.o mloss.o mlwind.o modify.o mydump.o nbint.o nblist.o \
+nbpot.o nbrem.o nbrest.o nbtide.o nbsort.o nlmod.o output.o \
+orbit.o peri.o pfac.o permit.o ran2.o reflct.o regint.o remove.o \
+rename.o reset.o reset2.o resolv.o scale.o search.o setup.o \
+shrink.o sort1.o star.o start.o stepi.o stepk.o steps.o stumpf.o \
+subint.o tcirc.o tides.o tstep.o tpert.o units.o unpert.o \
+update.o verify.o xtrnl0.o xtrnld.o xtrnlf.o xtrnlp.o xtrnlv.o \
+xvpred.o zare.o zcnsts.o zdata.o zfuncs.o zero.o \
+triple.o derqp3.o difsy3.o erel3.o extend.o qpmod3.o stabl3.o \
+stablz.o start3.o subsys.o tperi.o trans3.o \
+quad.o derqp4.o difsy4.o endreg.o erel4.o ichain.o newreg.o newsys.o \
+qpmod4.o rchain.o rsort.o stabl4.o start4.o status.o trans4.o \
+cfuncs.o chain.o chstab.o const.o cstab2.o cstab3.o cstab4.o cstab5.o \
+derqp.o difsy1.o erel.o hpsort.o inclin.o invert.o ksphys.o physks.o \
+qforce.o qpmod.o r2sort.o recoil.o redraw.o select.o slow.o stablc.o \
+swcond.o switch.o transk.o transq.o transx.o vector.o xtf.o xtrnlu.o \
+ycopy.o ysave.o \
+absorb.o chfind.o chfirr.o chinit.o chlist.o chmod.o chpot.o chterm.o \
+fchain.o ghost.o kcpert.o reduce.o reinit.o renew.o setsys.o \
+tchain.o xcpred.o xtpert.o
+
+nbody6:	$(OBJECTS)
+	$(FC) $(FFLAGS) $(OBJECTS) -o nbody6
+
+printh:
+	@- \rm -f NBODY6.TEXT
+	@cath $(SOURCE) > NBODY6.TEXT
+#
+# Chain stuff
+#
+
+cfuncs.o:  $(CHAIN)/cfuncs.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+chain.o:  $(CHAIN)/chain.f 
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+chstab.o: $(CHAIN)/chstab.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+cstab2.o: $(CHAIN)/cstab2.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+cstab3.o: $(CHAIN)/cstab3.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+cstab4.o: $(CHAIN)/cstab4.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+cstab5.o: $(CHAIN)/cstab5.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+const.o:  $(CHAIN)/const.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+derqp.o:  $(CHAIN)/derqp.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+difsy1.o: $(CHAIN)/difsy1.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+erel.o:   $(CHAIN)/erel.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+hpsort.o: $(CHAIN)/hpsort.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+inclin.o: $(CHAIN)/inclin.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+invert.o:  $(CHAIN)/invert.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+ksphys.o: $(CHAIN)/ksphys.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+physks.o: $(CHAIN)/physks.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+qforce.o: $(CHAIN)/qforce.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+qpmod.o:  $(CHAIN)/qpmod.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+r2sort.o: $(CHAIN)/r2sort.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+recoil.o: $(CHAIN)/recoil.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+redraw.o: $(CHAIN)/redraw.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+select.o: $(CHAIN)/select.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+slow.o: $(CHAIN)/slow.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+stablc.o: $(CHAIN)/stablc.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+swcond.o: $(CHAIN)/swcond.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+switch.o: $(CHAIN)/switch.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+transk.o: $(CHAIN)/transk.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+transq.o: $(CHAIN)/transq.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+transx.o: $(CHAIN)/transx.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+vector.o: $(CHAIN)/vector.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+xtf.o:    $(CHAIN)/xtf.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+xtrnlu.o: $(CHAIN)/xtrnlu.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+ycopy.o:  $(CHAIN)/ycopy.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+ysave.o:  $(CHAIN)/ysave.f
+	$(FC) -c $(FFLAGS) -I$(CHAIN) $?
+
+#
+# Nchain stuff
+#
+
+absorb.o :$(NCHAIN)/absorb.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+chfirr.o :$(NCHAIN)/chfirr.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+chfind.o :$(NCHAIN)/chfind.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+chinit.o :$(NCHAIN)/chinit.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+chlist.o :$(NCHAIN)/chlist.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+chmod.o  :$(NCHAIN)/chmod.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+chpot.o  :$(NCHAIN)/chpot.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+chterm.o :$(NCHAIN)/chterm.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+cmlist.o :$(NCHAIN)/cmlist.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+fchain.o :$(NCHAIN)/fchain.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+ghost.o  :$(NCHAIN)/ghost.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+kcpert.o :$(NCHAIN)/kcpert.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+reduce.o :$(NCHAIN)/reduce.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+reinit.o :$(NCHAIN)/reinit.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+renew.o  :$(NCHAIN)/renew.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+setsys.o :$(NCHAIN)/setsys.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+tchain.o :$(NCHAIN)/tchain.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+xcpred.o :$(NCHAIN)/xcpred.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?
+xtpert.o :$(NCHAIN)/xtpert.f
+	$(FC) -c $(FFLAGS) -I$(NCHAIN) $?

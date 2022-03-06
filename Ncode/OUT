@@ -1,0 +1,44 @@
+1,2c1,2
+< 10329 Feb 19 15:18
+< Nbody6++/adjust.F
+---
+> 10347 Apr 28 19:28
+> Nbody6tid/adjust.F
+13d12
+< *
+61a61,62
+> *
+>       CALL GCHECK
+1,2c1,2
+< 30343 May 4 11:05
+< Nbody6++/intgrt.F
+---
+> 30406 Apr 29 19:41
+> Nbody6tid/intgrt.F
+284a285,287
+> *       Predict and correct galactic centre
+>       CALL GCINT
+> *
+1,2c1,2
+< 20824 May 4 10:56
+< Nbody6++/regint.f
+---
+> 20856 May 4 11:07
+> Nbody6tid/regint.f
+460a461,462
+>       CALL GALCEN(I,FREG,FDR)
+> *
+1,2c1,2
+< 5437 May 4 11:17
+< Nbody6++/start.F
+---
+> 5499 May 4 11:18
+> Nbody6tid/start.F
+93d92
+< *
+118a118,120
+> *       Initialize galactic centre parameters
+>       CALL GCINIT
+> *
+133d134
+< *
