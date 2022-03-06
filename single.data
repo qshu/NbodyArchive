@@ -1,0 +1,70 @@
+*                           single star evolution
+*                           ^^^^^^^^^^^^^^^^^^^^^
+*
+*                            before
+*
+*   1  - itype1   - first binary (0 - single star evolution or binary
+*                  evolution or formation or collision, 1 - binary-single,
+*                  2 - binary-binary, 3 - merger evolution, 4 - binary-single
+*                  merger, 5 - binary-binary merger, 6 - dsruption evolution,
+*                  7 - disruption binary-binary, 8 - disruption binary-single,
+*                  9 - binary-single exchange, 10 - binary-binary exchange
+*                  13- merger after binary-single exchange, 15 - merger after
+*                  binary-binary exchange, 17 - merger after binary formation)
+*   2  - id1i      - star id (ids = names(im1))
+*   3  - im1i      - star name (im1 = iname(i))
+*   4  - timevo   - time
+*   5  - sm1i     - mass of the star
+*   6  - rad1i       - radius of the star
+*   7  - xlum1i   - luminosity of the star
+*   8  - r1       - position of the star in the cluster - r(i)
+*   9  - ik1i     - star type
+*   10 - ibstra1i  - for first star - info about blue stargglers and chanels
+*                   of its formation: 0 - ms, 1 - binary evolution merger,
+*                   2 - collision between stras, 3 - merger because
+*                   binary-single interaction, 4 - merger because
+*                   binary-binary interaction, 5 - exchange in binary-single
+*                   interaction, 6 - exchange in binary-binary interaction,
+*                   7 - dissolution in binary-single interaction,
+*                   8 - dissolution in binary-binary interaction,
+*                   9 - binary evolution mass transfer, 10 - binary evolution
+*                   binary dissolution
+*   11 - iinter1i  - for first star - info about collision/merger chanels of
+*                   their formation: 0 - ordinary star, 1 - binary evolution
+*                   merger, 2 - collisions between stars, 3 -  merger
+*                   because binary-single interaction, 4 - merger because
+*                   binary-binary interaction
+*   12 - ikind1i   - first star - type of objects: 1 - single star,
+*                   2 - binary, 3 - binary mergger, 4 - single stars
+*                   collision merger
+*
+*                        after interaction
+*
+*   13 - id1f      - star id (ids = names(im1))
+*   14 - im1f      - star name (im1 = iname(i))
+*   15 - sm1f     - mass of the star
+*   16 - rad1f       - radius of the star
+*   17 - xlum1f     - luminosity of the star
+*   18 - ik1f      - type of the star
+*   19 - ibstra1f   - for collide object - info about blue stargglers and chanels
+*                   of its formation: 0 - ms, 1 - binary evolution merger,
+*                   2 - collision between stras, 3 - merger because
+*                   binary-single interaction, 4 - merger because
+*                   binary-binary interaction, 5 - exchange in binary-single
+*                   interaction, 6 - exchange in binary-binary interaction,
+*                   7 - dissolution in binary-single interaction,
+*                   8 - dissolution in binary-binary interaction,
+*                   9 - binary evolution mass transfer, 10 - binary evolution
+*                   binary dissolution
+*   20 - iinter1f   - for collide object - info about collision/merger chanels
+*                   of their formation: 0 - ordinary star, 1 - binary
+*                   evolution merger, 2 - collisions between stars, 3 -
+*                   merger because binary-single interaction, 4 - merger
+*                   because binary-binary interaction
+*                   interactions, 0 - ordinary star
+*   21 - ikind1f    - collide object - type of objects: 1 - single star,
+*                   2 - binary, 3 - binary mergger, 4 - single stars
+*                   collision merger
+*  ##END
+*
+
