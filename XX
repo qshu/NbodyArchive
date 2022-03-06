@@ -1,0 +1,34 @@
+
+ Also Makefile   change all  mpif.h  to mpif.rainer.h
+
+
+cfuncs.f:      INCLUDE 'mpif.rainer.h'
+chain.f:      INCLUDE 'mpif.rainer.h'
+chstab.f:      INCLUDE 'mpif.rainer.h'
+common6.h:      INCLUDE 'mpif.rainer.h'
+cstab2.f:      INCLUDE 'mpif.rainer.h'
+cstab3.f:      INCLUDE 'mpif.rainer.h'
+cstab4.f:      INCLUDE 'mpif.rainer.h'
+cstab5.f:      INCLUDE 'mpif.rainer.h'
+derqp.f:      INCLUDE 'mpif.rainer.h'
+invert.f:      INCLUDE 'mpif.rainer.h'
+mydump.F:      INCLUDE 'mpif.rainer.h'
+proto_star.f:      INCLUDE 'mpif.rainer.h'
+qpmod3.f:      INCLUDE 'mpif.rainer.h'
+qpmod4.f:      INCLUDE 'mpif.rainer.h'
+qpmod.f:      INCLUDE 'mpif.rainer.h'
+recoil.f:      INCLUDE 'mpif.rainer.h'
+
+
+
+xtrnl0.F after line 240:
+
+
+
+*       Note that QVIR = Q is saved in routine SCALE and VIR < 0 with GPU.
+#ifdef PARALLEL
+              CALL ENERGY_MPI
+#else
+              CALL ENERGY
+#endif
+
