@@ -1,0 +1,76 @@
+      SUBROUTINE XTRNLF(XI,XIDOT,FIRR,FREG,FD,FDR,KCASE)
+*
+*
+*       External force & first derivative.
+*       ----------------------------------
+*
+      INCLUDE 'common6.h'
+      COMMON/GALAXY/ GMG,RG(3),VG(3),FG(3),FGD(3),TG,
+     &               OMEGA,DISK,A,B,V02,RL2
+      REAL*8  XI(3),XIDOT(3),FIRR(3),FREG(3),FD(3),FDR(3),
+     &        XG(3),XGDOT(3),FM(3),FMD(3),FS(3),FSD(3)
+*
+*
+*       See whether to include a linearized galactic tidal force (two cases).
+      IF (KZ(14).LE.2) THEN
+          FIRR(1) = FIRR(1) + TIDAL(4)*XIDOT(2)
+          FIRR(2) = FIRR(2) - TIDAL(4)*XIDOT(1)
+          FD(1) = FD(1) + TIDAL(4)*(FIRR(2) + FREG(2))
+          FD(2) = FD(2) - TIDAL(4)*(FIRR(1) + FREG(1))
+*       Add smooth part to the regular components (KCASE = 1 in REGINT).
+          IF (KCASE.GT.0) THEN
+              FREG(1) = FREG(1) + TIDAL(1)*XI(1)
+              FREG(3) = FREG(3) + TIDAL(3)*XI(3)
+              FDR(1) = FDR(1) + TIDAL(1)*XIDOT(1)
+              FDR(3) = FDR(3) + TIDAL(3)*XIDOT(3)
+          END IF
+      END IF
+*
+*       Consider point-mass, disk and/or logarithmic halo model.
+      IF (KZ(14).EQ.3.AND.KCASE.GT.0) THEN
+*       Employ differential instead of linearized forms for better accuracy.
+          IF (GMG.GT.0.0D0) THEN
+              CALL FNUC(RG,VG,FS,FSD)
+              DO 5 K = 1,3
+                  XG(K) = RG(K) + XI(K)
+                  XGDOT(K) = VG(K) + XIDOT(K)
+    5         CONTINUE
+              CALL FNUC(XG,XGDOT,FM,FMD)
+              DO 10 K = 1,3
+                  FREG(K) = FREG(K) + (FM(K) - FS(K))
+                  FDR(K) = FDR(K) + (FMD(K) - FSD(K))
+   10         CONTINUE
+          END IF
+*
+*       Include Miyamoto disk for positive disk mass.
+          IF (DISK.GT.0.0D0) THEN
+              CALL FDISK(RG,VG,FS,FSD)
+              DO 15 K = 1,3
+                  XG(K) = RG(K) + XI(K)
+                  XGDOT(K) = VG(K) + XIDOT(K)
+   15         CONTINUE
+              CALL FDISK(XG,XGDOT,FM,FMD)
+              DO 20 K = 1,3
+                  FREG(K) = FREG(K) + (FM(K) - FS(K))
+                  FDR(K) = FDR(K) + (FMD(K) - FSD(K))
+   20         CONTINUE
+          END IF
+*
+*       Check addition of logarithmic halo potential to regular force.
+          IF (V02.GT.0.0D0) THEN
+              CALL FHALO(RG,VG,FS,FSD)
+              DO 25 K = 1,3
+                  XG(K) = RG(K) + XI(K)
+                  XGDOT(K) = VG(K) + XIDOT(K)
+   25         CONTINUE
+              CALL FHALO(XG,XGDOT,FM,FMD)
+              DO 30 K = 1,3
+                  FREG(K) = FREG(K) + (FM(K) - FS(K))
+                  FDR(K) = FDR(K) + (FMD(K) - FSD(K))
+   30         CONTINUE
+          END IF
+      END IF
+*
+      RETURN
+*
+      END

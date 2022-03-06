@@ -1,0 +1,57 @@
+This is TeX, Version 3.14159 (Web2C 7.3.1) (format=tex 2001.6.23)  21 NOV 2003 16:07
+**nbody6.tex
+(nbody6.tex [1]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(542.025+2.5)x420.50082
+.\glue(\topskip) 2.5
+.\hbox(7.5+2.5)x373.66747
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x0.0
+...\hbox(0.0+0.0)x0.0 []
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x57.77791
+...\hbox(6.83331+0.0)x57.77791, glue set 17.43065fil []
+..\glue(\tabskip) 0.0
+..etc.
+.\glue(\baselineskip) 2.0
+.\hbox(7.5+2.5)x341.72293
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x0.0
+...\hbox(0.0+0.0)x0.0 []
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x57.77791
+...\hbox(6.83331+0.0)x57.77791, glue set 21.04176fil []
+..\glue(\tabskip) 0.0
+..etc.
+.\glue(\baselineskip) 2.0
+.etc.
+
+ [2]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(542.025+2.5)x430.86198
+.\glue(\topskip) 2.5
+.\hbox(7.5+2.5)x361.69522
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x0.0
+...\hbox(0.0+0.0)x0.0 []
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x57.77791
+...\hbox(6.83331+0.0)x57.77791, glue set 15.27782fil []
+..\glue(\tabskip) 0.0
+..etc.
+.\glue(\baselineskip) 2.0
+.\hbox(7.5+2.5)x421.19531
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x0.0
+...\hbox(0.0+0.0)x0.0 []
+..\glue(\tabskip) 0.0
+..\hbox(7.5+2.5)x57.77791
+...\hbox(6.83331+0.0)x57.77791, glue set 12.91675fil []
+..\glue(\tabskip) 0.0
+..etc.
+.\glue(\baselineskip) 2.0
+.etc.
+
+ [3]
+[4] [5] )
+Output written on nbody6.dvi (5 pages, 17504 bytes).

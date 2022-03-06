@@ -1,0 +1,211 @@
+\magnification=1200
+\nopagenumbers
+\hsize=6.0truein
+\vsize=9.0truein
+\font\big=cmr10 scaled \magstep1
+\noindent
+\centerline { NBODY6 ROUTINES}
+\bigskip
+\settabs\+&XXXXXXXx&xXXXXXXXXXXXXX&XXXXXXX  \cr
+\+&Routine &Called by &Description  \cr
+\medskip
+\hrule
+\medskip
+\+&ADJUST &NBODY4  &Parameter adjustment \& energy check. \cr
+\+&BINDAT &OUTPUT &Binary data bank on unit 9 (option 8 $>=$ 3). \cr
+\+&BINOUT &OUTPUT &Binary analysis \& output (option 8 $>$ 0). \cr
+\+&BINPOP &DATA &Initial binary distribution (option 8). \cr
+\+&BLOCK &        &Block data initialization of local labelled COMMON. \cr
+\+&BODIES &OUTPUT &Output of single particles \& binaries (options 9 \& 6). \cr
+\+&BRAKE  &UNPERT &Magnetic braking and gravitational radiation (\#28). \cr
+\+&CHECK  &ADJUST &Error check \& restart (options 2 \& 17). \cr
+\+&CHECKL &REGINT &Addition of neighbours during regular step (option 18). \cr
+\+&CLINT &INTGRT  &Integration of interstellar cloud (option 13). \cr
+\+&CLOUD0 &START &Initialization of cloud parameters (option 13). \cr
+\+&CLOUD  &CLOUD0 \& NBINT &Generation of interstellar cloud (option 13). \cr
+\+&CMBODY &KSINT \& TRIPLE &Formation of c.m. body by collision (also by QUAD). \cr
+\+&CMCORR &ADJUST &Correction of c.m. coordinates \& velocities (option 31). \cr
+\+&CMFIRR &NBINT &Irregular force on c.m. particle. \cr
+\+&CMFREG &REGINT &Regular \& irregular force on c.m. particle. \cr
+\+&CORE   &ADJUST \& OUTPUT &Density centre \& core radius. \cr
+\+&CPUTIM &ADJUST \& INTGRT &Elapsed CPU time in minutes (initialized in NBODY4). \cr
+\+&DATA   &START  &Generation of initial conditions. \cr
+\+&DEFINE &INPUT &Definition of input parameters, options \& counters. \cr
+\+&DELAY  &IMPACT \& INTGRT &Delay of multiple reqularization \& merger (\#15). \cr
+\+&EFAC2 &TIDES  &Tidal capture efficiency factor for second harmonic. \cr
+\+&EFAC3 &TIDES  &Tidal capture efficiency factor for third harmonic. \cr
+\+&ENERGY &ADJUST \& SCALE &Total energy (including binaries \& tidal field). \cr
+\+&ESCAPE &ADJUST &Removal of escaping particles (option 23). \cr
+\+&EVENTS &OUTPUT &Output of mass loss \& tidal capture events (\#19 \& 27). \cr
+\+&EVOLVE &INTGRT \& KSINT &Diagnostic output of interacting binaries (option 4). \cr
+\+&EXPAND &HCORR  &Expansion or contraction of KS orbit (\#19). \cr
+\+&FCLOSE &CMBODY \& RESET &Force \& first derivative of close bodies (START3 \& 4). \cr
+\+&FCLOUD &REGINT \& FPOLY1 &Force \& derivative from interstellar clouds (option 13). \cr
+\+&FCORR  &MDOT  &Global corrections due to mass loss from evolving stars. \cr
+\+&FDISK  &XTRNLF \& GCINT &Tidal force due to Miyamoto disk (\#14 = 3). \cr
+\+&FHALO  &XTRNLF \& GCINT &Tidal force due to logarithmic halo (\#14 = 3). \cr
+\+&FICORR &MDOT  &Local corrections due to mass loss. \cr
+\+&FINDJ &BINDAT \& HRPLOT &Find merger and ghost index (also MDOT). \cr
+\+&FLYBY  &KSINT &Termination check of perturbed KS orbit. \cr
+\+&FNUC  &XTRNLF \& GCINT &Tidal force due to point-mass (\#14 = 3). \cr
+\+&FPCORR &REGINT &Force polynomial derivative corrections (option 38). \cr
+\+&FPERT &SEARCH \& IMPACT &Perturbing force on dominant components. \cr
+\+&FPOLY1 &START \& KSINIT &Total force \& first derivative (also START3 \& 4). \cr
+\+&FPOLY2 &START \& KSINIT &Second \& third force derivatives (also START3 \& 4). \cr
+\+&FREEZE &KSINT &Partial reflection of KS orbit (option 25; suppressed). \cr
+\+&GCINIT &XTRNL0 &Initialization of guiding centre orbit (\#14 = 3). \cr
+\+&GCNIT &INTGRT &Integration of guiding centre (\#14 = 3). \cr
+\+&HCORR  &MDOT  &Mass loss correction of KS orbit (\#19). \cr
+\+&HIARCH  &MERGE \& RESET &Diagnostics of hierarchical systems (\#11; also ESCAPE). \cr
+\+&HIDAT  &OUTPUT &Hierarchical data bank on unit \#87 (\#8 $>$ 3). \cr
+\+&HIMAX  &HIDAT  &Maximum eccentricity of hierarchy. \cr
+\+&HIPOP  &START  &Primordial hierarchical triples (\#11 = 2). \cr
+\+&HISTAB &UNPERT &Hierarchical stability criterion. \cr
+\+&HIVEL  &INTGRT &High-velocity particle search (\# 18 $>$ 0). \cr
+\+&HMDOT  &MDOT  &Mass loss from inner hierarchical binary (\#19). \cr
+\+&HMDOT2 &MDOT  &Mass loss from outer hierarchical binary (\#19). \cr
+\+&HOTSYS  &START  &Hot initial system (option 29; suppressed). \cr
+\+&HRDIAG  &INSTAR \& MDOT &H-R diagram for stellar evolution (\#19 \& 27). \cr
+\+&HRPLOT  &OUTPUT &HR diagram of evolving stars (\#12). \cr
+\+&IBLOCK  &START  &Initialization of hierarchical block-steps (40 levels). \cr
+\+&IMF  &DATA  &Initial mass function (option 20 = 1; iteration method). \cr
+\+&IMF2 &DATA  &Initial mass function (option 20 $>$ 1; binaries \& singles). \cr
+\+&IMFBD &IMF2 &IMF with brown dwarfs (\#20 = 6; Pavel Kroupa version). \cr
+\+&IMPACT &KSINT \& UNPERT &Search for multiple encounters or merger (option 15). \cr
+\+&INEXT  &INTGRT &Determination of next particles. \cr
+\+&INPUT  &START  &Main input. \cr
+\+&INSERT &SUBINT &Insertion of particle index in KS time-step list. \cr
+\+&INSTAR &START &Initialization of stellar evolution parameters (\#19). \cr
+\+&INTGRT &NBODY4   &Decision-making \& control of integration paths. \cr
+\+&INTIDE  &START  &Input \& scaling for tidal capture (option 27). \cr
+\+&KEPLER &NBINT &Step reduction of binary c.m. \& close perturber (\#36). \cr
+\+&KICK   &KSAPO \& FCORR &Velocity kick for neutron stars (\#19). \cr
+\+&KSAPO  &UNPERT &Transformation of KS variables by PI/2 or at random. \cr
+\+&KSCORR &KSINT &Corrector for KS regularization. \cr
+\+&KSIN2  &MERGE2 \& RESET2 &Initialization of hierarchical KS. \cr
+\+&KSINIT &KSREG &Initialization of KS regularization. \cr
+\+&KSINT  &INTGRT &Regularized two-body integration. \cr
+\+&KSLIST &KSINT \& RESET &Selection of KS perturbers (also KSINIT \& KSTIDE). \cr
+\+&KSMOD &KSINT &KS motion modified by slow-down (option 26). \cr
+\+&KSPERI  &KSINT \& KSTIDE &KS variables at pericentre. \cr
+\+&KSPERT &KSINT  &Perturbation on KS pair. \cr
+\+&KSPOLY &KSINIT \& KSINT &New KS polynomials (also KSMOD \& RESET). \cr
+\+&KSPRED &KSINT &Prediction for KS regularization. \cr
+\+&KSRECT &KSTERM &Rectification of KS orbit. \cr
+\+&KSREG &NBODY4 \& MERGE  &Preparation of new KS regularization (also RESET). \cr
+\+&KSRES  &MERGE \& XTPERT &Interpolation \& coordinate transformation of KS pair. \cr
+\+&KSRES2 &INTGRT \& CMFIRR &Coordinates \& velocities of KS pair. \cr
+\+&KSTERM &NBODY4 \& MERGE &Termination of KS regularization (RESET \& IMPACT). \cr
+\+&KSTIDE &KSINT  &Tidal interaction of KS pair (option 27). \cr
+\+&LAGR   &ADJUST \& OUTPUT &Lagrangian radii \& half-mass radius (option 7). \cr
+\+&LEVELS &OUTPUT &Diagnostic output of block-steps (option 33). \cr
+\+&MATRIX &KSINIT \& KSPOLY &Levi-Civita matrix (also KSCORR, KSRES2 \& RESOLV). \cr
+\+&MDOT   &INTGRT &Mass loss from evolving stars (\#19 = 3). \cr
+\+&MERGE  &NBODY4   &Merging of hierarchical triple or quadrupole. \cr
+\+&MERGE2 &MERGE  &Merging of double hierarchy. \cr
+\+&MLOSS  &INTGRT &Mass loss from evolving stars (old version; \#19 = 1). \cr
+\+&MLWIND &MDOT &Reimers mass loss from stellar wind (\#19 $>=$ 3). \cr
+\+&MODIFY &NBODY4 &Modified input parameters at restart. \cr
+\+&MYDUMP &ADJUST \& INTGRT &COMMON save or restart (also NBODY4; options 1 \& 2). \cr
+\+&NBINT  &INTGRT &Irregular integration. \cr
+\+&NBLIST &START &Initialization of neighbour list (also START3 \& 4). \cr
+\+&NBODY4  &        &Master control flow. \cr
+\+&NBPOT &MERGE \& RESET &Potential energy of subsystem (also TRIPLE \& QUAD). \cr
+\+&NBREM &MERGE &Ghost removal from neighbour lists (also START3 \& 4). \cr
+\+&NBREST &RESET &Restoring ghosts in neighbour lists (also START3 \& 4). \cr
+\+&NBSORT &INTGRT &Neighbour list sorting. \cr
+\+&NBTIDE &NBINT  &Tidal two-body interaction (option 27 $<$ 0; suppressed). \cr
+\+&NLMOD &ESCAPE \& KSINIT &Modification of time-step list (also MERGE \& RESET). \cr
+\+&OFFSET &ADJUST &Offset of global times (\#35). \cr
+\+&ORBIT &NBINT &Close encounter search for small eccentricity. \cr
+\+&OUTPUT &ADJUST \& INTGRT   &Main output \& optional data save. \cr
+\+&PERI &KSINT &Pericentre of two-body motion (also TRIPLE \& QUAD). \cr
+\+&PERMIT &IMPACT &Decision-making for new triple, quad or chain. \cr
+\+&PFAC &HIMAX  &Precession factor for hierarchy. \cr
+\+&RAN2  &DATA \& BINPOP &Portable random number generator (also CLOUD). \cr
+\+&REFLCT &REGINT &Boundary reflection (option 29; suppressed). \cr
+\+&REGINT &INTGRT &Regular integration. \cr
+\+&REMOVE &KSTERM \& ESCAPE &Removal of particle or KS pair from COMMON tables. \cr
+\+&RENAME &KSREG &Renaming of COMMON tables for new KS pair. \cr
+\+&RESET  &NBODY4 &Termination of hierarchical merger. \cr
+\+&RESET2 &RESET &Termination of double hierarchy. \cr
+\+&RESOLV &ENERGY \& XVPRED &Coordinates \& velocities of KS pair (also KSTERM). \cr
+\+&SCALE  &START &Scaling to new units. \cr
+\+&SEARCH &NBINT &Close encounter search for KS regularization. \cr
+\+&SETUP  &DATA &Initial coordinates \& velocities (\#22 = 0; Plummer). \cr
+\+&SORT1  &LAGR &Sequential sorting of array (Numerical Recipes). \cr
+\+&SORT2  &LAGR &Sequential sorting of array (Real*8 version). \cr
+\+&SHRINK &INTGRT &Shrinking of regular steps in high-velocity encounters. \cr
+\+&STAR   &INSTAR \& MDOT &Stellar luminosity \& evolution time (also CMBODY). \cr
+\+&START  &NBODY4  &Initial setup \& force polynomials. \cr
+\+&STEPI  &NBINT  &Fast expression for standard time-step (\#37 = 1). \cr
+\+&STEPK  &STEPS \& NBINT &Selection of block-steps (also in multiple regularizations). \cr
+\+&STEPS  &FPOLY2 &Initialization of time-steps \& differences. \cr
+\+&STUMPF &KSINT \& KSMOD &Modified Stumpff functions (also KSTERM). \cr
+\+&SUBINT &INTGRT &Subsystem decision-making (KS, TRIPLE, QUAD, CHAIN). \cr
+\+&TCIRC  &BINPOP &Pre-main sequence circularization. \cr
+\+&TIDES  &KSTIDE \& TRIPLE  &Tidal energy loss of interacting stars (also QUAD). \cr
+\+&TPERT &KSMOD \& UNPERT &Perturbation time-scale. \cr
+\+&TSTEP &NBINT \& STEPS  &Standard time-step expression. \cr
+\+&UNITS  &START  &Initialization of units \& scaling factors. \cr
+\+&UNPERT &KSINT &Unperturbed two-body motion (KS regularization). \cr
+\+&UPDATE &KSTERM &Modification of COMMON tables after KS termination. \cr
+\+&VERIFY &INPUT \& MODIFY  &Validation of main input and restart parameters. \cr
+\+&XTRNL0 &START &Initialization of external force (\#14 = 1,2,3). \cr
+\+&XTRNLD &FPOLY1 \& FPOLY2 &External force and higher derivatives on single particle. \cr
+\+&XTRNLF &NBINT &External force \& first derivative on single particle. \cr
+\+&XTRNLP &KSINT \& KSPOLY &External perturbation on KS pair. \cr
+\+&XTRNLV &ENERGY \& NBPOT &External potential (also ESCAPE \& BODIES). \cr
+\+&XVPRED &ADJUST \& MERGE &Prediction of coordinates \& velocities (also KSINIT). \cr
+\+&ZARE  &IMPACT &Zare exchange stability criterion for hierarchies. \cr
+\+&ZCNSTS &INSTAR \& NBODY4 &Initialization of metallicity parameters for ZFUNCS. \cr
+\+&ZDATA &ZCNSTS &Metallicity block data for ZCNSTS. \cr
+\+&ZERO &START &Initialization of global scalars. \cr
+\+&ZFUNCS &STAR \& HRDIAG &Fitting functions for stellar evolution. \cr
+\medskip
+\hrule
+\bigskip
+\bigskip
+\vfill\eject
+\centerline {Three-body regularization}
+\bigskip
+\hrule
+\medskip
+\+&DERQP3 &DIFSY3 &Derivatives for AZ regularization. \cr
+\+&DIFSY3 &TRIPLE &Bulirsch-Stoer integrator for AZ. \cr
+\+&EREL3  &DERQP3 \& TRIPLE &Dominant two-body energy in triple system. \cr
+\+&EXTEND &SUBSYS \& INTGRT &Size of unperturbed triple or quad. \cr
+\+&QPMOD3 &TRIPLE &Modification of AZ variables for tidal dissipation. \cr
+\+&STABL3 &QPMOD3 \& TRIPLE &Stability test of triple system. \cr
+\+&STABLZ &STABL3 &Zare stability parameter. \cr
+\+&START3 &TRIPLE &Initialization \& restart of triple configuration. \cr
+\+&SUBSYS &START3 \& START4 &Initialization of subsystem (TRIPLE, QUAD \& CHAIN). \cr
+\+&TPERI  &DERQP3 \& DERQP4 &Pericentre time for KS motion (also KSINIT). \cr
+\+&TRANS3 &TRIPLE &Transformation of physical \& KS variables. \cr
+\+&TRIPLE &NBODY4 \& INTGRT &Main routine for triple regularization. \cr
+\medskip
+\hrule
+\bigskip
+\bigskip
+\centerline {Four-body regularization}
+\bigskip
+\hrule
+\medskip
+\+&DERQP4 &DIFSY4 &Derivatives for four-body chain regularization. \cr
+\+&DIFSY4 &QUAD   &Bulirsch-Stoer integrator for chain regularization. \cr
+\+&ENDREG &QUAD \& RCHAIN &Transformation to physical variables. \cr
+\+&EREL4  &DERQP4 \& QUAD &Dominant two-body energy in four-body system. \cr
+\+&ICHAIN &STATUS &Determination of regularized chain. \cr
+\+&NEWREG &QUAD \& RCHAIN &Initialization of four-body regularization. \cr
+\+&NEWSYS &QUAD &Total energy of four-body configuration. \cr
+\+&QPMOD4 &QUAD &Modification of quad variables for tidal dissipation. \cr
+\+&QUAD   &NBODY4 \& INTGRT &Main routine for four-body regularization. \cr
+\+&RCHAIN &QUAD &Decision-making for quad regularization. \cr
+\+&RSORT  &RCHAIN \& STATUS &Sorting of four-body distances. \cr
+\+&STABL4 &QPMOD4 &Stability test of four-body system. \cr
+\+&START4 &QUAD &Initialization \& restart of four-body configuration. \cr
+\+&STATUS &QUAD \& NEWREG &Sorting of square distances \& closest pair indices. \cr
+\+&TRANS4 &EREL4  &Transformation to physical momenta. \cr
+\medskip
+\hrule
+\bye
