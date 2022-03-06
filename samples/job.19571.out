@@ -1,0 +1,1 @@
+1 mpirun -np 1 ./nbody6++.sse.gpu.mpi.b1m

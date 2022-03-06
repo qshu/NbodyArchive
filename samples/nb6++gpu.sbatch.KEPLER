@@ -1,0 +1,52 @@
+#!/bin/bash
+
+###Jobanme
+#SBATCH -J stardisk
+
+###Queue
+#SBATCH -p GTX2080
+
+###Number of nodes requested; 1 <= nodes <= 12
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:1
+
+###Number of tasks per node; 1 <= ntasks-per-node <= 16
+#SBATCH --ntasks-per-node=1
+
+###Number of threads per task; ntasks-per-node * ntasks-per-node <= 16
+#SBATCH --cpus-per-task=4
+
+###Maximum runtime <= 72:00:00
+#SBATCH --time=24:00:00
+
+###Names for error and output files, %J job number, change as you like
+#SBATCH --error=job.%J.err
+#SBATCH --output=job.%J.out
+
+###By default sets to OpenMP threads to cpus-per-task; Change or remove
+###this to fit your needs, has to match with ntasks-per-node and 
+###cpus-per-task omp_threads != cpus-per-task, cpus-per-task * ntasks-per-node <= 16
+
+if [ -n "$SLURM_CPUS_PER_TASK" ]; then
+  omp_threads=$SLURM_CPUS_PER_TASK
+else
+  omp_threads=1
+fi
+
+export OMP_NUM_THREADS=$omp_threads
+
+module unload cuda
+module load cuda/7.5
+module list
+###You can put here some initialisation steps or similar
+###Followed by the running command for the program, adjust n(Number of
+###MPI processes to your desired value, n = ntasks-per-node * nodes)
+###Calculated here by for you by default
+
+mpiprocs=$(($SLURM_NTASKS_PER_NODE * $SLURM_NNODES))
+
+exec="mpirun -np "$mpiprocs" ./nbody6++.sse.gpu.mpi.b1m"
+
+echo $mpiprocs $exec
+$exec < N16k.inp 1> N16k.$SLURM_JOB_ID.out 2> N16k.$SLURM_JOB_ID.err
+#$exec < N100k.inp 1> N100k.$SLURM_JOB_ID.out 2> N100k.$SLURM_JOB_ID.err

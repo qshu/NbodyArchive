@@ -1,0 +1,13 @@
+# GPU initialization - rank: 0; HOST wn14.titan.ari; NGPU 1; device: 0 GeForce RTX 2080 Ti
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.684034
+# Open GPU regular force - rank: 0; nbmax: 16010
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.003425
+[R.0 GPU Reg.F ] Nsend 1  Ngrav 53  <Ni> 53120   send(s) 0.000323 grav(s) 0.015445  nb(s) 0.008369  out(s) 0.000000  Perf.(Gflops) 3301.730003
+# Open GPU regular force - rank: 0; nbmax: 16010
+# Opening IRR_simd lib. SSE ver. - rank: 0; nmax: 16100, lmax: 600
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.001547
+[R.0 GPU Reg.F ] Nsend 5059  Ngrav 6047  <Ni> 268   send(s) 1.009663 grav(s) 0.965521  nb(s) 0.374196  out(s) 0.000000  Perf.(Gflops) 1349.179342
+[R.0 SSE Irr.F ] Ncall: 51235 <NI>: 9870 <NB>: 91.021036 grav: 5.611006 s, 5.407963 Gflops, 109.515107 usec
+[R.0 GPU Pot.A] Ni 16000  NTOT 16000  pot(s) 0.001548
+[R.0 GPU Reg.F ] Nsend 5054  Ngrav 6186  <Ni> 301   send(s) 1.011528 grav(s) 1.015606  nb(s) 0.402628  out(s) 0.000000  Perf.(Gflops) 1440.926448
+[R.0 SSE Irr.F ] Ncall: 58210 <NI>: 12168 <NB>: 101.276703 grav: 7.556441 s, 5.624161 Gflops, 129.813452 usec

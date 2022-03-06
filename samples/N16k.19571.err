@@ -1,0 +1,2 @@
+At line 29 of file ../src/Main/input.F (unit = 5, file = 'stdin')
+Fortran runtime error: Bad integer for item 41 in list input

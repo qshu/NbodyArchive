@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------
+[[15982,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: wn14
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+MPI-initial: This is rank=     0 size=     1 group=          2
+ RANK:            0  OpenMP Number of Threads:            4
+  MPI: iserreg,isernb,iserks,ithread=         160         160         640           8
+-------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code.. Per user-direction, the job has been aborted.
+-------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[15982,1],0]
+  Exit code:    2
+--------------------------------------------------------------------------
