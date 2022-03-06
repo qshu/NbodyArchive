@@ -1,0 +1,41 @@
+
+/ptmp/mpa/naab/DRAGON/R7_B5_solar/2rs/job.out.660837.45
+
+ ADJUST:  TIME    6.77100D+03  T[Myr] 4214.10  Q 0.50  DE  -5.850E-06 DELTA  -4.935E-07 DETOT  -1.543E-03 E  
+-8.435E-02 EKIN   8.386E-02 POT   1.678E-01 ETIDE  -3.912E-04 ETOT  -3.914E-01 EBIN  -9.384E-02 EMERGE   6.22
+4E-05 ESUB   0.000E+00 ECOLL   7.697E-03 EMDOT  -1.418E-01 ECDOT  -7.919E-02
+
+  RMIN = 5.0E-06  DTMIN = 2.0E-07 RHOM = 1.3E+03 RSCALE = 1.2E+00 RSMIN = 3.9E-02  ECLOSE = 1.00  TC = 2393
+  PE       N        Total     Inti.    Intgrt      Reg.      Irr.     Pred.   Init.B.      Mdot      Move   C
+omm.I.   Comm.R.   Send.I.   Send.R.        KS    Adjust     Barr.   Barr.I.   Barr.R. Reg.GPU.S Reg.GPU.P Co
+mm.Adj.   IBLOCK Mdot.Fic.  Mdot.Fc. Mdot.Pot.  Mdot.EC. KS.Init.B  KS.Int.S  KS.Int.P  KS.Comm.  KS.Barr.   
+KS.Move   KS.Cmb. KS.Insert  KS.Init.  KS.Term.     Hiar.       xtsub1       xtsub2
+   8 1006932   1797.06331     25.24   1765.60     85.32    236.00     46.19    393.25      8.49     99.10    
+ 28.48     20.99     41.20     39.68    737.87      0.00     25.04     21.25      3.70     26.17     59.11   
+   0.00    388.59      3.54      0.00      0.00      0.00    214.83    517.44      0.00      0.00      0.00  
+    0.00      0.00      1.16      0.73      0.67      0.10  1.95349D+11  1.36930D+11
+
+ ADJUST:  TIME    6.77200D+03  T[Myr] 4214.72  Q 0.50  DE  -1.215E-05 DELTA  -1.025E-06 DETOT  -1.544E-03 E  
+-8.435E-02 EKIN   8.370E-02 POT   1.677E-01 ETIDE  -3.916E-04 ETOT  -3.914E-01 EBIN  -9.384E-02 EMERGE   6.22
+4E-05 ESUB   0.000E+00 ECOLL   7.699E-03 EMDOT  -1.418E-01 ECDOT  -7.919E-02
+
+  RMIN = 5.0E-06  DTMIN = 2.0E-07 RHOM = 8.6E+02 RSCALE = 1.2E+00 RSMIN = 4.0E-02  ECLOSE = 1.00  TC = 2394
+  PE       N        Total     Inti.    Intgrt      Reg.      Irr.     Pred.   Init.B.      Mdot      Move   C
+omm.I.   Comm.R.   Send.I.   Send.R.        KS    Adjust     Barr.   Barr.I.   Barr.R. Reg.GPU.S Reg.GPU.P Co
+mm.Adj.   IBLOCK Mdot.Fic.  Mdot.Fc. Mdot.Pot.  Mdot.EC. KS.Init.B  KS.Int.S  KS.Int.P  KS.Comm.  KS.Barr.   
+KS.Move   KS.Cmb. KS.Insert  KS.Init.  KS.Term.     Hiar.       xtsub1       xtsub2
+   8 1006924   3645.38620     25.24   3578.67    173.60    474.99     97.63    795.79     17.21    198.31    
+ 56.90     39.40     88.31     84.35   1496.83     31.19     48.49     42.93      5.47     55.55    117.96   
+   0.01    785.76      7.10      0.00      0.00      0.00    447.88   1034.30      0.00      0.00      0.00  
+    0.00      0.00      2.31      2.99      1.63      0.22  3.90650D+11  2.73759D+11
+
+ 
+cf. jusuf today, 
+ ADJUST:  TIME    5.40000E+00  T[Myr]    0.33  Q 0.50  DE   2.785E-07 DELTA   7.007E-08 DETOT   1.827E-06 E  -2.500E-01 EKIN   2.517E-01 POT   5.016E-01 ETIDE  -1.047E-09 ETOT  -4.707E-01 EBIN  -2.206E-01 EMERGE   3.884E-14 ESUB   0.000E+00 ECOLL  -3.744E-05 EMDOT  -6.258E-05 ECDOT   1.485E-20
+
+  RMIN = 1.5E-04  DTMIN = 1.5E-04 RHOM = 2.4E+02 RSCALE = 8.3E-01 RSMIN = 2.7E-02  ECLOSE = 1.00  TC =    1
+
+  PE       N        Total     Inti.    Intgrt      Reg.      Irr.     Pred.   Init.B.      Mdot      Move   Comm.I.   Comm.R.   Send.I.   Send.R.        KS    Adjust     OUT      Barr.   Barr.I.   Barr.R. Reg.GPU.S Reg.GPU.P Comm.Adj. Mdot.Fic.  Mdot.Fc. Mdot.Pot.  Mdot.EC.   Sort.B.    HighV  KS.Init.B  KS.Int.S  KS.Int.P  KS.Comm.  KS.Barr.   KS.Move   KS.Cmb. KS.Insert  KS.Init.  KS.Term.     Hiar.     KS.UP   KS.TP      xtsub1       xtsub2
+   1 1100000  55323.32437     72.00  44319.01   7309.29   5326.07   1693.17    353.78  17148.30    866.37      0.00      0.00   4171.83   1508.29  16337.34    437.33     67.07      0.28      0.27      0.00    827.07   6480.61      0.00     25.24      0.58      0.00      0.00     85.90      0.00    296.76   5269.18    138.64      0.38      0.00      6.87      0.05     41.20   6740.78   3425.38     66.60   2162.98    201.20  0.00000E+00  0.00000E+00
+
+

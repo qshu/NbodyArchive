@@ -1,0 +1,20 @@
+
+T=3
+
+
+  PE       N        Total     Inti.    Intgrt      Reg.      Irr.     Pred.   Init.B.      Mdot      Move   Comm.I.   Comm.R.   Send.I.   Send.R.        KS    Adjust     OUT      Barr.   Barr.I.   Barr.R. Reg.GPU.S Reg.GPU.P Comm.Adj. Mdot.Fic.  Mdot.Fc. Mdot.Pot.  Mdot.EC.   Sort.B.    HighV  KS.Init.B  KS.Int.S  KS.Int.P  KS.Comm.  KS.Barr.   KS.Move   KS.Cmb. KS.Insert  KS.Init.  KS.Term.     Hiar.     KS.UP   KS.TP      xtsub1       xtsub2
+   4 1100000  70106.17770     73.08  62274.18   4294.41   2957.75   2116.56    377.76  27330.50   2195.26    281.68    279.73  16675.33   1924.53  11453.29     60.66     40.74     44.34     24.29     19.29   1728.74   2565.39      0.13     94.87      3.04      0.00      0.00     53.93      0.00    181.46   3412.53     24.00      4.26      0.75     12.09      0.37     39.56   4667.95   2809.24     49.23   1534.04    117.04  1.29535E+12  1.09275E+12
+
+
+T=4
+
+  PE       N        Total     Inti.    Intgrt      Reg.      Irr.     Pred.   Init.B.      Mdot      Move   Comm.I.   Comm.R.   Send.I.   Send.R.        KS    Adjust     OUT      Barr.   Barr.I.   Barr.R. Reg.GPU.S Reg.GPU.P Comm.Adj. Mdot.Fic.  Mdot.Fc. Mdot.Pot.  Mdot.EC.   Sort.B.    HighV  KS.Init.B  KS.Int.S  KS.Int.P  KS.Comm.  KS.Barr.   KS.Move   KS.Cmb. KS.Insert  KS.Init.  KS.Term.     Hiar.     KS.UP   KS.TP      xtsub1       xtsub2
+   4 1100000  83345.34243     73.08  73132.12   5683.36   3933.24   2769.75    499.48  27335.45   2933.68    376.39    368.37  21575.70   2520.62  15072.36     78.46     54.31     59.45     32.37     26.10   2264.85   3418.14      0.14     96.77      3.04      0.00      0.00     72.04      0.00    241.02   4565.09     30.81      5.53      0.97     15.75      0.48     52.82   6052.36   3698.37     63.64   2039.47    156.61  1.73142E+12  1.45829E+12
+
+
+Total:   13.000                 3.6 hrs per N-Body time unit ; 10 hours per crossing time
+Reg/Irr:  2.300
+Send.I.(simd irr)   5.000                 1.4 hrs
+Prediction: 650
+KS:       3.550  KS.Init: 1300 KS.Term: 900   1 hours per N-body time unit ; 2.8 hours per crossing time
+

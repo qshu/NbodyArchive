@@ -1,0 +1,175 @@
+
+ jusuf, Aug/Sep 2020
+
+ ./configure --with-par=b1m --enable-simd=avx --enable-mcmodel=large
+ ./configure --with-par=b1m --enable-simd=sse  --enable-mcmodel=large
+
+ /p/home/jusers/spurzem2/jusuf/Nbody/Nbody6++GPU-Dec2019-kepler
+
+ Runs:
+
+ /p/scratch/boosterea/spurzem2/Nbody6++GPU-Dec2019-kepler/NGC3201/
+ /p/scratch/boosterea/spurzem2/Nbody6++GPU-Dec2019-kepler/NGC3201/sana_1m_avx/
+ /p/scratch/boosterea/spurzem2/Nbody6++GPU-Dec2019-kepler/NGC3201/sana_1m_sse/
+
+
+ Results:
+
+ Aug. 17: 2231, 2232, 2233
+ Aug. 18: 2274, 2275, 2276  
+
+ #run #ranks #threads/rank #GPU/rank OMP_STACKSIZE/GOMP_STACKSIZE
+
+ 2231	4	12	1	5G   stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated, error stack:
+ 2232	4	12	1	0    stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated, error stack: libgomp: Stack size less than minimum of 16k
+ 2274	4	6	1	0    stops after ADJUST T=0 at BINARIES: Fatal error in MPI_Sendrecv: Message truncated, error stack: libgomp: Stack size less than minimum of 16k
+ 2275	4	2	1	0    stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT srun: Job step aborted: Waiting up to 6 seconds for job step to finish. after IRR_SIMD libgomp: Stack size less than minimum of 16k
+ 3716	1	12	1	0  -fno-automatic fails with NaN ; libgomp: Stack size less than minimum of 16k
+ 3646	4	6	1	512M  stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated
+ 3647	4	6	1	512M/512M stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated
+ 3648	4	6 	1	52M/52M  stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated
+ 3649	4	6	1	5M/5M stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated
+ 3651	4	6	1	5M/5M/ulimit -s 1000 stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated
+ 3652   4 	6	1	1M/1M/ulimit -s 1000 stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated
+ 3653	4	2	1	1M/1M/ulimit -s 1000 stops after ADJUST T=0 at CUSTOM OUTPUT: TTOT Fatal error in MPI_Sendrecv: Message truncated
+ 
+ 3656 	4	1	1	5M/5M/ulimit -s 1000 long run   works well until  T=5.3 24 hrs.
+  Sep. 5: compiled with -fno-automatic
+ 3655	4	6	1	5M/5M/ulimit -s 1000 no output after ADJUST T=0 at CUSTOM OUTPUT
+
+ 3978   1	12	1	512M/512M/ulimit -s 8192
+
+On the contrary, it has lots to do with OpenMP. Most Fortran compilers implement automatic heap allocation for large arrays and that feature gets turned off when OpenMP is enabled, even when no actual OpenMP directives are present.
+
+
+works well short:
+
+ 2233   4       1       1       0    works well until END KSREG   TIME[NB] 2.1484375000E-02 CANCELLED DUE TO TIME LIMIT ***
+
+ 2276   1       1       1       0    works well until END KSREG   TIME[NB] 2.1484375000E-02 CANCELLED DUE TO TIME LIMIT ***
+
+  3978   1       12      1       512M/512M/ulimit -s 8192 works well until END KSREG   TIME[NB] 2.1484375000E-02 CANCELLED DUE TO TIME LIMIT ***
+
+
+
+works well long:
+
+ 3615   1       12      1       50G   works well until  T=5.4 24 hrs.
+ 3656   4       1       1       5M/5M/ulimit -s 1000 long run   works well until  T=5.3 24 hrs.
+ 4305   1	12	1	512M/512M/ulimit -s 8192   -fmax-stack-var-size=700000 -fstack-protect-all Total CPU = 1432
+ 4306   2	4	1	512M/512M/ulimit -s 999999 -fmax-stack-var-size=700000 -fstack-protect-all fails T=0
+ 4307   2	12	1	2nodes 512M/512M/ulimit -s 999999 -fmax-stack-var-size=700000 -fstack-protect-all fails T=0
+ 4309	2	6	1	1M/ulimit -s 999999 -fmax-stack-var-size=50000 -fstack-protect-all
+
+ 4359   1	12	1	5G/ulimit -s unlimited all stack options - fails in CUDA  (Segmentation fault: .... GPUNB_devinit
+ 4366   2	12	0	5G/ulimit -s unlimited
+
+
+-fstack-usage -fstack-check -fstack-protector-strong -fconserve-stack -Wstack-protector -Wstack-usage=200000
+-fstack-arrays
+-fsplit-stack
+
+
+ ADJUST:  TIME    5.40000E+00  
+
+3615     1 MPI/GPU   12 OpenMP
+  PE       N        Total     Inti.    Intgrt      Reg.      Irr.     Pred.   Init.B.      Mdot      Move   Comm.I.   Comm.R.   Send.I.   Send.R.        KS    Adjust     OUT      Barr.   Barr.I.   Barr.R. Reg.GPU.S Reg.GPU.P Comm.Adj. Mdot.Fic.  Mdot.Fc. Mdot.Pot.  Mdot.EC.   Sort.B.    HighV  KS.Init.B  KS.Int.S  KS.Int.P  KS.Comm.  KS.Barr.   KS.Move   KS.Cmb. KS.Insert  KS.Init.  KS.Term.     Hiar.     KS.UP   KS.TP      xtsub1       xtsub2
+   1 1100000  55323.32437     72.00  44319.01   7309.29   5326.07   1693.17    353.78  17148.30    866.37      0.00      0.00   4171.83   1508.29  16337.34    437.33     67.07      0.28      0.27      0.00    827.07   6480.61      0.00     25.24      0.58      0.00      0.00     85.90      0.00    296.76   5269.18    138.64      0.38      0.00      6.87      0.05     41.20   6740.78   3425.38     66.60   2162.98    201.20  0.00000E+00  0.00000E+00
+
+ ADJUST:  TIME    5.40000E+00  
+
+3656    4 MPI/GPU    1 OpenMP
+  PE       N        Total     Inti.    Intgrt      Reg.      Irr.     Pred.   Init.B.      Mdot      Move   Comm.I.   Comm.R.   Send.I.   Send.R.        KS    Adjust     OUT      Barr.   Barr.I.   Barr.R. Reg.GPU.S Reg.GPU.P Comm.Adj. Mdot.Fic.  Mdot.Fc. Mdot.Pot.  Mdot.EC.   Sort.B.    HighV  KS.Init.B  KS.Int.S  KS.Int.P  KS.Comm.  KS.Barr.   KS.Move   KS.Cmb. KS.Insert  KS.Init.  KS.Term.     Hiar.     KS.UP   KS.TP      xtsub1       xtsub2
+   4 1100000  85561.62867     69.00  74226.54   8320.35   6229.58   3087.81    452.58  17860.16   2238.50    863.91    703.18  23237.52   3425.65  18360.70    501.51     67.59   1327.88    114.79      8.99   3234.67   5085.34      0.88    106.50      2.75      0.00      0.00    105.45      0.00    366.49   5818.60     37.88     13.00   1204.05     10.01      0.80     47.90   6902.52   3533.46     68.33   2384.12    232.20  2.34504E+12  1.97318E+12
+
+
+mpif77 -g -fbounds-check -fbacktrace -fstack-usage -fstack-check -fstack-protector-strong -fconserve-stack -fstack-arrays -Wstack-protector -Wstack-usage=200000 
+../src/Main/binpop.F:1:0:
+Warning: stack usage is 265888112 bytes [-Wstack-usage=]
+../src/Main/ellan.f:5:0:
+Warning: stack usage is 18129920 bytes [-Wstack-usage=]
+../src/Main/bindat.f:1:0:
+Warning: stack usage is 16386048 bytes [-Wstack-usage=]
+../src/Main/lagr2.f:1:0:
+Warning: stack usage is 12086672 bytes [-Wstack-usage=]
+../src/Main/degen.f:1:0:
+Warning: stack usage is 8193168 bytes [-Wstack-usage=]
+../src/Main/lagr.f:1:0:
+Warning: stack usage is 96689824 bytes [-Wstack-usage=]
+../src/Main/levels.f:1:0:
+Warning: stack usage is 18137744 bytes [-Wstack-usage=]
+../src/Main/imf2.f:1:0:
+Warning: stack usage is 78558224 bytes [-Wstack-usage=]
+../src/Main/output.F:2:0:
+Warning: stack usage is 60430784 bytes [-Wstack-usage=]
+../src/Main/subint.F:1:0:
+Warning: stack usage might be 2752565920 bytes [-Wstack-usage=]
+../src/Main/intgrt.F:1:0:
+Warning: stack protector not protecting local variables: variable length buffer [-Wstack-protector]
+../src/Main/intgrt.F:1:0: Warning: stack usage might be unbounded [-Wstack-usage=]
+../src/Main/util_gpu.F:1:0:
+Warning: stack usage might be 2581536 bytes [-Wstack-usage=]
+../src/Main/ksparmpi.F:1:0:
+Warning: stack usage might be 12305248 bytes [-Wstack-usage=]
+../src/Main/mdot.F:1:0:
+Warning: stack usage might be 6045248 bytes [-Wstack-usage=]
+../src/Main/global_output.F:1:0:
+Warning: stack usage might be 48357200 bytes [-Wstack-usage=]
+
+
+mpif77 -g -fbounds-check -fbacktrace -fstack-usage -fstack-check -fstack-protector-strong -fconserve-stack -Wstack-protector -Wstack-usage=200000
+
+
+../src/Main/bindat.f:1:0:
+Warning: stack usage is 16386048 bytes [-Wstack-usage=]
+../src/Main/binpop.F:1:0:
+Warning: stack usage is 265888112 bytes [-Wstack-usage=]
+../src/Main/lagr2.f:1:0:
+Warning: stack usage is 12086672 bytes [-Wstack-usage=]
+../src/Main/degen.f:1:0:
+Warning: stack usage is 8193168 bytes [-Wstack-usage=]
+../src/Main/mdot.F:1:0:
+rning: stack usage might be 6045248 bytes [-Wstack-usage=]
+../src/Main/levels.f:1:0:
+Warning: stack usage is 18137744 bytes [-Wstack-usage=]
+../src/Main/imf2.f:1:0:
+Warning: stack usage is 78558224 bytes [-Wstack-usage=]
+../src/Main/lagr.f:1:0:
+Warning: stack usage is 96689824 bytes [-Wstack-usage=]
+../src/Main/subint.F:1:0:
+Warning: stack usage might be 2752565920 bytes [-Wstack-usage=]
+../src/Main/output.F:2:0:
+Warning: stack usage is 60430784 bytes [-Wstack-usage=]
+../src/Main/intgrt.F:1:0:
+Warning: stack usage might be 4453659616 bytes [-Wstack-usage=]
+../src/Main/ksparmpi.F:1:0:
+Warning: stack usage might be 12305248 bytes [-Wstack-usage=]
+../src/Main/util_gpu.F:1:0:
+Warning: stack usage might be 2581536 bytes [-Wstack-usage=]
+../src/Main/global_output.F:1:0:
+Warning: stack usage might be 48357200 bytes [-Wstack-usage=]
+
+
+ 9148:  with OMP_STACKSIZE=128M
+=================================
+ NEW KSREG   TIME[NB] 2.2386312485E-03 
+nbody6++.sse.gpu.mpi.b1m: ../src/Main/gpunb.velocity.cu:72: Jparticle::Jparticle(double, double*, double*): Assertion `(xj[0]) == (xj[0])' failed.
+
+Program received signal SIGABRT: Process abort signal.
+
+Backtrace for this error:
+[...] #6  0x2b1647aecf3e in GOMP_parallel at ../../../libgomp/parallel.c:168
+
+ 9149: 
+
+without OMP_STACKSIZE=128M
+===========================
+  NEW KSREG   TIME[NB] 1.0285258293E-02
+ Fatal error in MPI_Sendrecv: Message truncated, error stack:
+
+
+ 9150: without OMP_STACKSIZE=128M   printout, KSRECT NaN
+=========================================================
+
+ 9151: with OMP_STACKSIZE=512M
+==================================
