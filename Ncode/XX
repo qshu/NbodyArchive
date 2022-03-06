@@ -1,0 +1,112 @@
+comenv.f:      REAL*8 CONST,DELY,DERI,DELMF,MC3,FAGE1,FAGE2
+comenv.f:               FAGE1 = 0.D0
+comenv.f:               FAGE1 = 1.D0
+comenv.f:               FAGE1 = (AJ1 - TSCLS1(2))/(TSCLS1(13) - TSCLS1(2))
+comenv.f:               FAGE2 = 0.D0
+comenv.f:               FAGE2 = AJ2/TM2
+comenv.f:               FAGE2 = 1.D0
+comenv.f:               FAGE2 = (AJ2 - TSCLS2(2))/(TSCLS2(13) - TSCLS2(2))
+comenv.f:            AJ1 = TM1*(FAGE1*MC1 + FAGE2*MC22)/(MC1 + MC22)
+comenv.f:            IF(KW.EQ.4) AJ1 = (FAGE1*MC1 + FAGE2*MC22)/(MC1 + MC22)
+expel.f:      AGE2 = AJ2
+hrplot.f:          AGE = MAX(TPLOT,TEV0(I))*TSTAR - EPOCH(I)
+hrplot.f:          CALL HRDIAG(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+hrplot.f:                  AGE = MAX(TPLOT,TEV0(J1))*TSTAR - EPOCH(J1)
+hrplot.f:                  CALL HRDIAG(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+hrplot.f:                  AGE = MAX(TPLOT,TEV0(J1))*TSTAR - EPOCH(J1)
+hrplot.f:                  CALL HRDIAG(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+hrplot.f:              AGE = MAX(TPLOT,TEV0(J2))*TSTAR - EPOCH(J2)
+hrplot.f:              CALL HRDIAG(M0,AGE,M2,TM,TN,TSCLS,LUMS,GB,ZPARS,
+instar.f:      REAL*8 M0,M1,RM,LUM,AGE,MC,RCC
+instar.f:          AGE = TIME*TSTAR - EPOCH1
+instar.f:*       Define preMS EPOCH & AGE if relevant.
+instar.f:              AGE = TIME*TSTAR - EPOCH(I)
+instar.f:          CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+instar.f:          EPOCH(I) = TIME*TSTAR - AGE
+lagr.f:*  75     FORMAT ('  AVERAGE MASS (T =',F7.1,'): ',13F7.3)
+lagr.f:   75     FORMAT ('  AVERAGE MASS T ',F7.1,13F7.3)
+mdot.f:      REAL*8 AGE0(2),TM0(2),TBGB(2),MENV(2),RENV(2),K2STR(2)
+mdot.f:      REAL*8 M0,M1,RM,AGE,LUM,MC,RCC,ME,RE,RNEW,LNEW,MCH
+mdot.f:         AGE = TEV0(I)*TSTAR - EPOCH(I)
+mdot.f:         AGE = MAX(AGE,0.D0)
+mdot.f:         AGE0(K) = AGE
+mdot.f:         CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+mdot.f:                     EPCH0(K) = TM + (TSCLS(1)-TM)*(AGE0(K)-TM0(K))/
+mdot.f:                  EPCH0(K) = TEV0(I)*TSTAR - AGE0(K)*TM/TM0(K)
+mdot.f:         AGE = TEVK*TSTAR - EPCH0(K)
+mdot.f:         AGE0(K) = AGE
+mdot.f:         IF((AGE-TN).GT.1.0d-02)THEN
+mdot.f:               WRITE(6,994)NAME(I), KW, DMS(K), AGE, TN
+mdot.f: 994        FORMAT(' MDOT WARNING! AGE > TN   NM KW DMS AGE TN ',
+mdot.f:               AGE = MIN(AGE,0.9999D0*TSCLS(11))
+mdot.f:               AGE = MIN(AGE,0.9999D0*TSCLS(5))
+mdot.f:               AGE = MIN(AGE,1.0001D0*TN)
+mdot.f:         CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+mdot.f: 915           FORMAT (' MDOT WARNING! SN KW=15   I NM M0 KSTAR AGE ',
+mdot.f:            IF((KW.EQ.KSTAR(I).AND.AGE.GE.0.99*TN).OR.
+mdot.f:            WRITE(6,920) I, NAME(I), KW, TPHYS, AGE, M1, M0
+mdot.f: 920        FORMAT(' END BS:    I NAM KW TP AGE M1 M0 ',
+mdot.f:*           EPOCH(I) = AGE0(K) + EPCH0(K) - AGE
+mdot.f:               WRITE(6,925)I,NAME(I),KW0,KW,M10,M1,DMS(K),RM,AGE
+mdot.f: 925           FORMAT(' MDOT CHANGE: I NM K* M0 M1 DM R AGE',
+mdot.f:         EPOCH(I) = AGE0(K) + EPCH0(K) - AGE
+mdot.f:*        TEV(I) = (AGE0(K) + EPCH0(K))/TSTAR
+mix.f:      REAL*8 M01,M02,M03,M1,M2,M3,AGE1,AGE2,AGE3,MC3,LUM,RM,RCC
+mix.f:      AGE1 = TEV1*TSTAR - EPOCH(I1)
+mix.f:      AGE2 = TEV1*TSTAR - EPOCH(I2)
+mix.f:            AGE1 = 0.D0
+mix.f:            AGE2 = 0.D0
+mix.f:      AGE3 = 0.d0
+mix.f:            AGE3 = 0.0D0
+mix.f: 103     AGE3 = -TPREMS*XX            
+mix.f:      IF (M3.GT.2.0) WRITE (6,720)  M3, RZAMS, XX, TPREMS, AGE3
+mix.f:  720 FORMAT (' WATCH!   M3 RZAMS XX TP AGE3 ',F7.2,1P,4E10.2)
+mix.f:         AGE3 = 0.1d0*TMS3*(AGE1*M01/TMS1 + AGE2*M02/TMS2)/M03
+mix.f:         CALL gntage(MC3,M3,KW,ZPARS,M03,AGE3)
+mix.f:         AGE3 = AGE1/TMS1
+mix.f:         IF(AGE3.GT.1.D0)THEN
+mix.f:            WRITE(6,*)' WARNING! MIX AGE WRONG FOR KW=4 ',age1,tms1
+mix.f:            AGE3 = 0.99D0
+mix.f:         CALL gntage(MC3,M3,KW,ZPARS,M03,AGE3)
+mix.f:         AGE3 = TMS3*(AGE2*M2/TMS2)/M3
+mix.f:         AGE3 = AGE1
+mix.f:         CALL hrdiag(M03,AGE3,M3,TMS3,TN,TSCLS,LUMS,GB,ZPARS,
+mix.f:      EPOCH(I1) = TEV1*TSTAR - AGE3
+mix.f:          WRITE (6,8)  NAME(I1), M3, TMS3, TPHYS, AGE3
+mix.f:    8     FORMAT (' NEW BS (MIX):    NAM M3 TM TP AGE ',
+newtev.f:      AGE = TEV0(IX)*TSTAR - EPOCH(IX)
+newtev.f:      CALL trdot2(KW,AGE,TM,TN,TSCLS,DTM,DTR)
+roche.f:      REAL*8 M01,M1,AGE,R1,LUM,MC,RCC,SEP,M1CE,M2CE,RCE,KM0,KM,M2,MCX
+roche.f:             AGE = TEV0(J)*TSTAR - EPOCH(J)
+roche.f:             CALL hrdiag(M01,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+roche.f:             AJ(K) = AGE
+roche.f:             AGE = TPHYS0 - EPOCH(J)
+roche.f:             IF((AGE-TN).GT.1.0D-02)THEN
+roche.f:                   AGE = MIN(AGE,0.9999*TSCLS(11))
+roche.f:                   AGE = MIN(AGE,0.9999*TSCLS(8))
+roche.f:                EPOCH(J) = TPHYS0 - AGE
+roche.f:   94            FORMAT (/,' NAM1  NAM2  K1 K2   TPHYS     AGE1     ',
+roche.f:     &                     ' AGE2     M01    M02    M1     M2     Z ',
+roche.f:   16          FORMAT(' NEW BS (ROCHE):  NAM M3 TM TP AGE ',
+roche.f:         AGE = TPHYS0 - EPOCH(J)
+roche.f:         CALL hrdiag(M01,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+roche.f:         CALL trdot2(KW,AGE,TM,TN,TSCLS,DTMI(K),DTR)
+roche.f:         AJ(K) = AGE
+roche.f:            EPOCH(J) = TPHYS0 - AGE
+synch.f:          AGE = TIME*TSTAR - EPOCH(J1)
+synch.f:          CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+trdot2.f:      SUBROUTINE TRDOT2(KW,AGE,TM,TN,TSCLS,DTM,DTR)
+trdot2.f:      REAL*8 AGE,TM,TN,TSCLS(20),DTM,DTR
+trdot.f:      REAL*8 M0,M1,RM,LUM,AGE,MC,MC1,RCC,RM0,AGE0,M10
+trdot.f:      AGE = TEV0(I)*TSTAR - EPOCH(I)
+trdot.f:      CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+trdot.f:         CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+trdot.f:      CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+trflow.f:      REAL*8  M0,M1,AGE,LUM,MC,RCC,Q,RL1,RL2
+trflow.f:      AGE = TEV0(J1)*TSTAR - EPOCH(J1)
+trflow.f:      CALL hrdiag(M0,AGE,M1,TM,TN,TSCLS,LUMS,GB,ZPARS,
+trflow.f:         IF(RHIGH.GT.RLS.AND.AJ.GT.AGE)THEN
+trflow.f:            TLOW = AGE
+trflow.f:         IF(RHIGH.GT.RLS.AND.AJ.GT.AGE)THEN
+trflow.f:            T = MAX(TSCLS(2),AGE)
+trflow.f:         TLOW = AGE
