@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Simple Shell Script to allow easy comparison of same files in
+# different subdirs for all files, R.Sp. May 2002
+#
+# Usage: @compall path dir1 dir2 extensions
+# Used: @comp
+#
+LOC=$1
+DIR1=$2
+DIR2=$3
+EEE=$4
+cd $LOC/$DIR1
+ls -la *.[$EEE] |  awk '{print $9}' > /tmp/$DIR1.$$
+
+
+test -f /tmp/$DIR1.$$
+cat /tmp/$DIR1.$$ | while read line ; do
+@comp $LOC $DIR1 $DIR2 $line
+done
+\rm /tmp/$DIR1.$$
+exit
+
