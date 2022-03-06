@@ -1,0 +1,475 @@
+.MAKE_VERSION:	VERSION-1.0
+rsort.o:
+	f77 -O3  -c  rsort.f
+hmdot2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hmdot2.f
+units.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  units.f
+transx.o:	../Chain/transx.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/transx.f
+ycopy.o:	../Chain/ycopy.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/ycopy.f
+steps.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  steps.f
+energy.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  energy.f
+transq.o:	../Chain/transq.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/transq.f
+subint.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  subint.f
+escape.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  escape.f
+transk.o:	../Chain/transk.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/transk.f
+stepk.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  stepk.f
+stepi.o:
+	f77 -O3  -c  stepi.f
+cstab5.o:	../Chain/cstab5.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/cstab5.f
+start.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  start.f
+tpert.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  tpert.f
+cstab4.o:	../Chain/cstab4.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/cstab4.f
+cstab3.o:	../Chain/cstab3.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/cstab3.f
+cstab2.o:	../Chain/cstab2.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/cstab2.f
+xcpred.o:	../Nchain/xcpred.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/xcpred.f
+tperi.o:
+	f77 -O3  -c  tperi.f
+himax2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  himax2.f
+endreg.o:
+	f77 -O3  -c  endreg.f
+update.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  update.f
+hiarch.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hiarch.f
+zdata.o:
+	f77 -O3  -c  zdata.f
+iblock.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  iblock.f
+start4.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  start4.f
+start3.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  start3.f
+sort2.o:
+	f77 -O3  -c  sort2.f
+sort1.o:
+	f77 -O3  -c  sort1.f
+verify.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  verify.f
+qpmod.o:	../Chain/qpmod.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/qpmod.f
+setup.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  setup.f
+stablz.o:
+	f77 -O3  -c  stablz.f
+setsys.o:	../Nchain/setsys.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/setsys.f
+ficorr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ficorr.f
+trans4.o:
+	f77 -O3  -c  trans4.f
+trans3.o:
+	f77 -O3  -c  trans3.f
+mydump.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  mydump.f
+chstab.o:	../Chain/chstab.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/chstab.f
+stablc.o:	../Chain/stablc.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/stablc.f
+chterm.o:	../Nchain/chterm.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chterm.f
+cloud0.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  cloud0.f
+physks.o:	../Chain/physks.f 
+	f77 -O3  -c  ../Chain/physks.f
+shrink.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  shrink.f
+binout.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  binout.f
+cmcorr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  cmcorr.f
+cmfirr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  cmfirr.f
+fcloud.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  fcloud.f
+cmfreg.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  cmfreg.f
+cfuncs.o:	../Chain/cfuncs.f 
+	f77 -O3  -c  ../Chain/cfuncs.f
+fclose.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  fclose.f
+gcinit.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  gcinit.f
+tides.o:
+	f77 -O3  -c  tides.f
+ichain.o:
+	f77 -O3  -c  ichain.f
+reset.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  reset.f
+orbit.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  orbit.f
+binpop.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  binpop.f
+ksres.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksres.f
+vector.o:	../Chain/vector.f 
+	f77 -O3  -c  ../Chain/vector.f
+mloss.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  mloss.f
+tcirc.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  tcirc.f
+ksreg.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksreg.f
+renew.o:	../Nchain/renew.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/renew.f
+qpmod4.o:
+	f77 -O3  -c  qpmod4.f
+qpmod3.o:
+	f77 -O3  -c  qpmod3.f
+ksmod.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksmod.f
+chlist.o:	../Nchain/chlist.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chlist.f
+cmbody.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  cmbody.f
+ksint.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksint.f
+stabl4.o:
+	f77 -O3  -c  stabl4.f
+stabl3.o:
+	f77 -O3  -c  stabl3.f
+derqp4.o:
+	f77 -O3  -c  derqp4.f
+derqp3.o:
+	f77 -O3  -c  derqp3.f
+nlmod.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nlmod.f
+resolv.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  resolv.f
+difsy4.o:
+	f77 -O3  -c  difsy4.f
+bodies.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  bodies.f
+difsy3.o:
+	f77 -O3  -c  difsy3.f
+difsy1.o:	../Chain/difsy1.f 
+	f77 -O3  -c  ../Chain/difsy1.f
+xtf.o:	../Chain/xtf.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h 
+	f77 -O3  -c  ../Chain/xtf.f
+chinit.o:	../Nchain/chinit.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chinit.f
+input.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  input.f
+kspoly.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kspoly.f
+ksapo.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksapo.f
+ksterm.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksterm.f
+ksphys.o:	../Chain/ksphys.f 
+	f77 -O3  -c  ../Chain/ksphys.f
+chfirr.o:	../Nchain/chfirr.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chfirr.f
+scale.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  scale.f
+bindat.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  bindat.f
+kspred.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kspred.f
+remove.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  remove.f
+nbpot.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbpot.f
+kstide.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kstide.f
+kspert.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kspert.f
+mlwind.o:
+	f77 -O3  -c  mlwind.f
+ksin2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksin2.f
+newsys.o:
+	f77 -O3  -c  newsys.f
+inext.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  inext.f
+chfind.o:	../Nchain/chfind.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chfind.f
+fchain.o:	../Nchain/fchain.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/fchain.f
+merge.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  merge.f
+ksperi.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksperi.f
+nbrem.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbrem.f
+kslist.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kslist.f
+ksrect.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksrect.f
+qforce.o:	../Chain/qforce.f 
+	f77 -O3  -c  ../Chain/qforce.f
+define.o:
+	f77 -O3  -c  define.f
+imf.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  imf.f
+nbint.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbint.f
+flyby.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  flyby.f
+adjust.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  adjust.f
+select.o:	../Chain/select.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/select.f
+permit.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  permit.f
+absorb.o:	../Nchain/absorb.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/absorb.f
+hipop.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hipop.f
+hivel.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hivel.f
+checkl.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  checkl.f
+ksinit.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksinit.f
+reset2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  reset2.f
+xtrnlv.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  xtrnlv.f
+xvpred.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  xvpred.f
+reinit.o:	../Nchain/reinit.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/reinit.f
+xtrnlu.o:	../Chain/xtrnlu.f 
+	f77 -O3  -c  ../Chain/xtrnlu.f
+xtrnlp.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  xtrnlp.f
+chdata.o:	../Nchain/chdata.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chdata.f
+fpert.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  fpert.f
+ksres2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  ksres2.f
+hmdot.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hmdot.f
+ghost.o:	../Nchain/ghost.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/ghost.f
+xtrnlf.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  xtrnlf.f
+xtrnld.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  xtrnld.f
+rename.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  rename.f
+hotsys.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hotsys.f
+newreg.o:
+	f77 -O3  -c  newreg.f
+regint.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  regint.f
+const.o:	../Chain/const.f 
+	f77 -O3  -c  ../Chain/const.f
+kscorr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kscorr.f
+imfbd.o:
+	f77 -O3  -c  imfbd.f
+zero.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  zero.f
+himax.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  himax.f
+tchain.o:	../Nchain/tchain.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/tchain.f
+redraw.o:	../Chain/redraw.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/redraw.f
+reduce.o:	../Nchain/reduce.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/reduce.f
+search.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  search.f
+hpsort.o:	../Chain/hpsort.f 
+	f77 -O3  -c  ../Chain/hpsort.f
+xtpert.o:	../Nchain/xtpert.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/xtpert.f
+hcorr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hcorr.f
+reflct.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  reflct.f
+hrplot.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hrplot.f
+recoil.o:	../Chain/recoil.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/recoil.f
+zare.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  zare.f
+.BUILT_LAST_MAKE_RUN:
+slow.o:	../Chain/slow.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/slow.f
+star.o:
+	f77 -O3  -c  star.f
+instar.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  instar.f
+invert.o:	../Chain/invert.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/invert.f
+cloud.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  cloud.f
+modify.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  modify.f
+intgrt.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  intgrt.f
+extend.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  extend.f
+findj.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  findj.f
+xtrnl0.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  xtrnl0.f
+hidat.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  hidat.f
+nbsort.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbsort.f
+fcorr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  fcorr.f
+clint.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  clint.f
+insert.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  insert.f
+quad.o:
+	f77 -O3  -c  quad.f
+derqp.o:	../Chain/derqp.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h 
+	f77 -O3  -c  ../Chain/derqp.f
+chpot.o:	../Nchain/chpot.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chpot.f
+erel4.o:
+	f77 -O3  -c  erel4.f
+erel3.o:
+	f77 -O3  -c  erel3.f
+gcint.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  gcint.f
+offset.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  offset.f
+evolve.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  evolve.f
+fdisk.o:
+	f77 -O3  -c  fdisk.f
+rchain.o:
+	f77 -O3  -c  rchain.f
+intide.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  intide.f
+brake.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  brake.f
+block.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  block.f
+fhalo.o:
+	f77 -O3  -c  fhalo.f
+chmod.o:	../Nchain/chmod.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/chmod.f
+expand.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  expand.f
+matrix.o:
+	f77 -O3  -c  matrix.f
+peri.o:
+	f77 -O3  -c  peri.f
+levels.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  levels.f
+nbrest.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbrest.f
+delay.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  delay.f
+.BUILT_LAST_MAKE_RUN:
+nbody6:	/usr/lib/libdl.so.1 /usr/lib/libc.so /usr/lib/libm.so /opt/SUNWspro/lib/libsunmath.so /opt/SUNWspro/prod/lib/libompstubs.a /opt/SUNWspro/lib/libfsu.so /opt/SUNWspro/lib/libfmaxvai.so /opt/SUNWspro/lib/libfminvai.so /opt/SUNWspro/lib/libfmaxlai.so /opt/SUNWspro/lib/libfminlai.so /opt/SUNWspro/lib/libfprodai.so /opt/SUNWspro/lib/libfsumai.so /opt/SUNWspro/lib/libfai2.so /opt/SUNWspro/lib/libfai.so /opt/SUNWspro/lib/libfui.so /opt/SUNWspro/lib/libf77compat.so
+.BUILT_LAST_MAKE_RUN:
+nbody6:	
+	f77 -O3 nbody6.o adjust.o bindat.o binout.o binpop.o block.o bodies.o  brake.o check.o checkl.o clint.o cloud.o cloud0.o cmbody.o  cmcorr.o cmfirr.o cmfreg.o core.o cputim.o data.o define.o  delay.o efac2.o efac3.o energy.o escape.o events.o evolve.o  expand.o fclose.o fcloud.o fcorr.o fdisk.o fhalo.o ficorr.o  findj.o flyby.o fnuc.o fpcorr.o fpert.o fpoly1.o fpoly2.o  freeze.o gcinit.o gcint.o gntage.o hcorr.o hiarch.o hidat.o  himax.o himax2.o hipop.o histab.o hivel.o hmdot.o hmdot2.o  hotsys.o hrdiag.o hrplot.o iblock.o imf.o imfbd.o imf2.o impact.o  inext.o input.o insert.o instar.o intgrt.o intide.o kepler.o kick.o  ksapo.o kscorr.o ksin2.o ksinit.o ksint.o kslist.o ksmod.o  ksperi.o kspert.o kspoly.o kspred.o ksrect.o ksreg.o ksres.o  ksres2.o ksterm.o kstide.o lagr.o levels.o matrix.o merge.o  merge2.o mdot.o mloss.o mlwind.o modify.o mydump.o nbint.o nblist.o  nbpot.o nbrem.o nbrest.o nbtide.o nbsort.o nlmod.o offset.o output.o  orbit.o peri.o permit.o pfac.o ran2.o reflct.o regint.o remove.o  rename.o reset.o reset2.o resolv.o scale.o search.o setup.o  shrink.o sort1.o star.o start.o stepi.o stepk.o steps.o  stumpf.o subint.o tcirc.o tides.o tstep.o tpert.o units.o unpert.o  update.o verify.o xtrnl0.o xtrnld.o xtrnlf.o xtrnlp.o xtrnlv.o  xvpred.o zare.o zcnsts.o zdata.o zfuncs.o zero.o  triple.o derqp3.o difsy3.o erel3.o extend.o qpmod3.o stabl3.o  stablz.o start3.o subsys.o tperi.o trans3.o  quad.o derqp4.o difsy4.o endreg.o erel4.o ichain.o newreg.o newsys.o  qpmod4.o rchain.o rsort.o stabl4.o start4.o status.o trans4.o  cfuncs.o chain.o chstab.o const.o cstab2.o cstab3.o cstab4.o cstab5.o  derqp.o difsy1.o erel.o hpsort.o inclin.o invert.o ksphys.o physks.o  qforce.o qpmod.o r2sort.o recoil.o redraw.o select.o slow.o stablc.o  swcond.o switch.o transk.o transq.o transx.o vector.o xtf.o xtrnlu.o  ycopy.o ysave.o  absorb.o chdata.o chfind.o chfirr.o chinit.o chlist.o chmod.o chpot.o  chterm.o fchain.o ghost.o kcpert.o reduce.o reinit.o renew.o setsys.o  tchain.o xcpred.o xtpert.o -o nbody6
+nbtide.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbtide.f
+mdot.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  mdot.f
+stumpf.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  stumpf.f
+nblist.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nblist.f
+pfac.o:
+	f77 -O3  -c  pfac.f
+events.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  events.f
+zfuncs.o:
+	f77 -O3  -c  zfuncs.f
+fnuc.o:
+	f77 -O3  -c  fnuc.f
+check.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  check.f
+chain.o:	../Chain/chain.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/chain.f
+impact.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  impact.f
+kick.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kick.f
+erel.o:	../Chain/erel.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/erel.f
+lagr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  lagr.f
+ran2.o:
+	f77 -O3  -c  ran2.f
+core.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  core.f
+histab.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  histab.f
+kepler.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  kepler.f
+merge2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  merge2.f
+cputim.o:
+	f77 -O3  -c  cputim.f
+gntage.o:
+	f77 -O3  -c  gntage.f
+switch.o:	../Chain/switch.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/switch.f
+nbody6.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbody6.f
+nbrem2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  nbrem2.f
+hrdiag.o:
+	f77 -O3  -c  hrdiag.f
+fpoly2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  fpoly2.f
+r2sort.o:	../Chain/r2sort.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h 
+	f77 -O3  -c  ../Chain/r2sort.f
+fpoly1.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  fpoly1.f
+inclin.o:	../Chain/inclin.f 
+	f77 -O3  -c  ../Chain/inclin.f
+zcnsts.o:
+	f77 -O3  -c  zcnsts.f
+efac3.o:
+	f77 -O3  -c  efac3.f
+ysave.o:	../Chain/ysave.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h /data/cass100a/sverre/Runs/Chaos/New6/Chain/common2.h 
+	f77 -O3  -c  ../Chain/ysave.f
+efac2.o:
+	f77 -O3  -c  efac2.f
+kcpert.o:	../Nchain/kcpert.f /data/cass100a/sverre/Runs/Chaos/New6/Nchain/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Nchain/params.h 
+	f77 -O3  -c  ../Nchain/kcpert.f
+imf2.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  imf2.f
+freeze.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  freeze.f
+subsys.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  subsys.f
+output.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  output.f
+data.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  data.f
+unpert.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  unpert.f
+fpcorr.o:	/data/cass100a/sverre/Runs/Chaos/New6/Ncode/common6.h /data/cass100a/sverre/Runs/Chaos/New6/Ncode/params.h 
+	f77 -O3  -c  fpcorr.f
+triple.o:
+	f77 -O3  -c  triple.f
+swcond.o:	../Chain/swcond.f /data/cass100a/sverre/Runs/Chaos/New6/Chain/commonc.h 
+	f77 -O3  -c  ../Chain/swcond.f
+tstep.o:
+	f77 -O3  -c  tstep.f
+status.o:
+	f77 -O3  -c  status.f
