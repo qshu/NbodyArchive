@@ -1,0 +1,92 @@
+
+
+
+      Patch of NBODY6++ / Version June 2003  nb6mpi-june2003.tar.gz
+     ===============================================================
+
+    TWO CRUCIAL BUGS DETECTED, please changed asap. A few smaller improvements.
+
+    CRUCIAL:
+
+    Item 1):
+   ==========
+
+    start.F   input.F        NNBMAX was erroneously determined, and too small.
+                             It should be MIN(N/2,LMAX), in order to allow in
+                             critical cases for a neighbour number to be significantly
+                             larger than NNBOPT. Erroneously NNBMAX was set to NNBOPT.
+                     This error led to energy errors in high density phases with
+                     strong binary activity (too small neighbour number).
+
+
+    Item 2:
+   =========
+
+    data.F scale.F
+
+     Confusion arose about the use of option KZ(23). It is used to
+   determine removal of escaper procedure. I used it badly in scale.F
+    to enforce scaling of an input model read from file. Now I have
+    changed it: use KZ(22) = 2,3,4   for reading input files from unit
+    10 (Nbody, Tree, Starlab format) WITHOUT scaling as before, and
+                use KZ(22) = 6,7,8   for reading input files from
+    unit 10 WITH scaling. Option KZ(23) is now back again to be exclusively
+    used for the treatment of escapers. Watch out that KZ(23)=3 is an
+    incomplete implementation for tidal cutoff, it does NOT WORK yet.
+
+    This error could have led to spurious reports of large DE (energy
+    error und unjustified run terminations).
+
+
+--------------------------------------------------------------------------
+
+ The following small bug fixes or changes are not severe:
+
+    Item 3):
+=============
+
+    ksin2.f    ksinit.f    Added line    STEPR(JCOMP) = 1.0E+06
+    cmbody.f               Added line    STEPR(I2) = 1.0D+06
+
+     Explanation: for so-called ghost particles (c.m.'s of merged
+     hierarchical binaries the steps must be set to a large
+     value to avoid them being integrated. That was not done for
+     the regular step (only irregular). It had no serious consequences,
+     other than a wrong number showing up in the regular timestep histograms
+     in the output. Now it is corrected.
+
+
+    Item 4:
+============
+
+    nbody6.F
+
+    If at a restart KZ(2) = 1 (while in the first run KZ(2) = 0) the
+    opening of file unit 2 (comm.2) via routine file_init.F was in
+    error. The line
+
+              CALL FILE_INIT(2)
+
+    in nbody6.F had to be moved down a few lines such that the new KZ(2)
+     is known after the call of modify.F, so unit 2 can be properly opened.
+
+
+    Item 5:
+============
+
+
+     lagr.F
+
+    This is just a little service added in lagr.F for those who study rotating
+    systems, routine computes the mass weighted average rotational velocity
+    in the x,y-coordinate plane in the Lagrangian mass shells and prints it.
+
+
+    Item 6:
+============
+
+    modify.F    TOFF has to be subtracted from input values TA, TN (=new TADJ,TNEXT)
+                which was missing before.
+
+
+

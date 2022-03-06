@@ -1,0 +1,55 @@
+
+
+
+ January 2007
+
+
+                         NBODY6++
+                         --------
+
+    This is a source code plus Makefile package of the massively parallel
+ variant NBODY6++ (by R. Spurzem) of NBODY6 from Sverre Aarseth. It is provided here freely for
+ everybody to test, but for any serious use I would require you to
+ inform me about it. No warranty of any kind is taken for the proper
+ function of the code. To use it, untar and unpack, check the Makefile
+ which hardware you want (good luck that you find yours...), say make xxx
+ where xxx is your selection according to hardware, and run by  ./nbody6 < in1000.
+
+ For further details, input parameters etc please contact Rainer Spurzem
+ (spurzem@ari.uni-heidelberg.de), also if you are interested to be included
+ in the informal NBODY6++ mailing list, receiving messages about updates
+ and bug fixes which occur several times a year. 
+
+ Note added in January 2007: an updated version of NBODY6++ is already in
+ preparation for quite some time. The package  nb6mpi-new.tar.gz
+ contains an intermediate snapshot, used at the cambody summer school in
+ August 2007. It is more consistent with the already updated Manual
+ at  nb6++manual-new.pdf , but still does NOT contain all of Sverre's
+ updates.
+
+    Have fun and good luck
+
+    Rainer Spurzem
+
+ Recommended readings: 
+
+Spurzem R.: 1999, ``Direct $N$-body Simulations'', in Riffert H., Werner K. (eds),
+ Computational Astrophysics, The Journal of Computational and Applied Mathematics
+ (JCAM) 109, Elsevier Press, Amsterdam, pp. 407-432.
+ (Preprint available via   http://xxx.uni-augsburg.de/abs/astro-ph/9906154 
+
+Spurzem, R., Baumgardt H.: 2003, A parallel implementation of a direct N-body
+ integrator in general and special purpose supercomputers, Preprint
+ available via ftp://ftp.ari.uni-heidelberg.de/pub/staff/spurzem/edinpaper.ps.gz .
+ (Note: though the formal status of this paper is subm. to MNRAS we have neglected
+ its final brush-up and resubmission for long time, but still it is the best
+ detailed source of information what is going on in NBODY6++).
+
+Other Papers which use NBODY6++ include:
+
+Milosavljevic, M. , Merritt D., 2001, ApJ 563, 34
+Hemsendorf, M., Sigurdsson, S., Spurzem, R., 2002, ApJ 581, 1256
+Baumgardt, H., 2001, MNRAS 325, 1323
+Baumgardt, H., Hut, P., Heggie D.C., 2002, MNRAS in press (astro-ph/0206258 )
+
+    

@@ -1,0 +1,88 @@
+
+
+
+   DO NOT USE july2002 version anymore!
+
+
+                                              September 2002
+
+
+
+   Dear all,
+
+
+   I have to change the July 2002 version of NBODY6++ slightly, there were
+ two bugs:
+
+  i) the restart (KSTART.ge.2) did not work properly due to a miscount
+     of common variables in COMMON PAIRS (thanks to Kap-Soo for finding this!)
+
+  ii) some special application programs (binpop.f, hipop.f, intide.f,
+      hotsys.f, cloud0.f) read input parameters but not for all cases of runs.
+      Therefore it went unnoticed all the time that in these routines input
+      parameters will NOT be distributed in parallel execution. Therefore
+      now these routines have been moved from .f to .F and they contain
+      proper MPI_BROADCASTs to send the read variables (thanks to Tim for
+      helping me to find this in a long session...). In particular primordial
+      binaries would NOT have been worked with the July2002 version!!!
+
+  iii) in some routines which are not always used the random number sequence
+       was not properly continued, instead it was reinitialized. That also
+       happened in case of primordial binaries, and is relevant to
+       routines  binpop.F cloud.f kick.f hipop.F
+
+  iv) all other changes are relatively minor and summarized in the following.
+
+  Due to i) - iii) which are real bugs I do not recommend to use july2002
+  version any more.
+
+  Note that more small changes due to Sverres updates will come, but since
+  the aforementioned bugs are rather important I did not want to delay
+  their update anymore.
+
+
+  With best wishes,
+
+  Rainer
+
+
+ =============================================================================
+  Routine changed   Comment
+  -------------------------
+
+  adjust.F   new output of communication speed for MPI xtsub1 xtsub2
+  
+  binpop.F   
+  cloud.f    use kdum instead of idum1 everywhere!!! For these routines
+  kick.f     the random number sequence was not properly continued
+  hipop.F
+
+  data.F     unnecessary save of random number sequence taken out
+
+  imf2.f     (only comments changed) 
+
+  binpop.F
+  hipop.F
+  intide.F   these routines changed from  .f into .F because input data
+  hotsys.F   were not properly distributed in case of parallel execution
+  cloud0.f
+
+  lagr.F     dimension of NPARTC(11) was wrong before 
+
+  hidat.f   use FIRST as before to obtain only output at first call
+
+ intgrt.F  take out one redundant output line from "MANUAL TERMINATION"
+           improve timing measurement values tt* for printout
+
+ absorb.f 
+ reduce.f   use TPREV instead of TBLOCK for chain termination
+            (this is a construction place and new updates from Sverre expected)
+
+ mydump.F   NB = 65*KMAX+4    (hope this is properly counted now...)
+
+ bindat.F   
+ escape.F   some changes included from Sverre
+ ksint.F
+
+ common6.h   DTBMIN taken out of common, xtsub1, xtsub2 added
+
