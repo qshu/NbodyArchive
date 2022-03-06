@@ -1,0 +1,31 @@
+
+
+
+   DTNEW, XPREV not necessary
+
+
+   energy_mpi - same changes as in energy.f necessary
+ 
+
+   nbint.f   COMMON BLACKFORCE not necessary anymore
+
+ 
+
+   nbint.f   COMMON BLACKFORCE not necessary anymore
+             and check FRR,FDD,FBL
+ 
+   setup.f what about initial adaptation of X,XDOT to black hole?
+           seems to be switched off.
+
+   steps.f  initial start with very small STEP
+
+
+   watch out for 0.01 in R2DENS / dragforce.f dragforce1.f
+         this is VERY dangereous! not dimensionless number
+
+   go from 1,N for EBLCKHL in energy.f energy_mpi.f
+
+   one superfluous output line in intgrt.f removed at manual termination
+
+
+   
