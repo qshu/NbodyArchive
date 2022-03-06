@@ -1,0 +1,11 @@
+apt-get install libhdf5-openmpi-dev
+apt-get install libhdf5-dev
+
+./configure --enable-simd=sse --enable-hdf5 --disable-mpi
+./configure --enable-simd=avx --with-par=512k
+./configure --with-par=1m --enable-hdf5 --disable-mpi --enable-tools -fmax-stack-var-size=700000
+./configure --disable-mpi --disable-simd --with-par=128k --enable-openmp --disable-gpu
+--enable-hdf5
+
+./configure --enable-simd=avx --with-par=512k --enable-openmp
+

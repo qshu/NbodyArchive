@@ -1,0 +1,28 @@
+# @ shell=/bin/bash
+#
+# Sample script for LoadLeveler
+
+# @ error = job.err.$(jobid)
+# @ output = job.out.$(jobid)
+# @ job_type = parallel
+# @ requirements = (Feature=="gpu")
+# @ node_usage= not_shared
+# @ node = 1
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+
+export OMP_NUM_THREADS=20
+export CUDA_PATH=${CUDA_HOME}
+module load gcc
+module load cuda
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/opt/hdf5-1.8.14/lib
+export LD_RUN_PATH=$LD_RUN_PATH:~/opt/hdf5-1.8.14/lib
+
+# run the program
+poe ~/bin/nbody6++.avx.gpu.mpi.hdf5 <input
+

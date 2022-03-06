@@ -1,0 +1,34 @@
+
+
+  very tight binary, member gets kick, regularised with high positive energy, then MPI trouble
+
+chewbacca Nov. 3, after boundscheck switched on; related to regcor_gpu - omp issue?
+ It seems LISTV(1).GT.0 , but no element in LISTV(2) ..
+
+ restart with KZ(37) = 0
+
+
+problems with bound check:
+At line 248 of file ../src/Main/checkl.F Fortran runtime error: Index '0' of dimension 2 of array 'x' below lower bound of 1
+At line 58 of file ../src/Main/rmesc_tlist.f
+Fortran runtime error: Index '0' of dimension 1 of array 'ndtk' below lower bound of 1
+
+
+withouy bound check but -g on luke:
+
+Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+Backtrace for this error:
+#0  0x14DAE9DE9E08
+#1  0x14DAE9DE8F90
+#2  0x14DAE92F84AF
+#3  0x439C60 in fpcorr_ at fpcorr.F:55
+#4  0x52F233 in regcor_gpu_ at regcor_gpu.F:593
+#5  0x52D9EF in calc_reg_on_gpu_ at util_gpu.F:175
+#6  0x463AF4 in intgrt_ at intgrt.F:932
+#7  0x4068D8 in MAIN__ at nbody6.F:165
+
+
+
+================================================================================================
+
