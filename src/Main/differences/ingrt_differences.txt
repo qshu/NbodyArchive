@@ -1,0 +1,120 @@
+23c23
+<       INTEGER IREG(NMAX),IMINR_TMP(NMAX)
+---
+>       INTEGER IREG(NMAX),IMINR(NMAX),IMINR_TMP(NMAX)
+64,68c64
+< *            DTOUT = DTK(64)
+<             DTOUT = DTK(1)
+<             DO I=KZ(47),-1
+<                DTOUT = DTOUT*2.0D0
+<             END DO
+---
+>             DTOUT = DTK(64)
+100c96
+< *
+---
+> 
+107c103
+<      &                 'with time interval ',DTOUT
+---
+>      &                 'with time interval ',DTK(KZ(47)+1)
+110c106
+<      &                 'with time interval ',DTOUT
+---
+>      &                 'with time interval ',DTK(KZ(47)+1)
+114c110
+<      &                 'with time interval ',DTOUT
+---
+>      &                 'with time interval ',DTK(KZ(47)+1)
+117c113
+<      &                 'with time interval ',DTOUT
+---
+>      &                 'with time interval ',DTK(KZ(47)+1)
+120c116
+<      &                 'with time interval ',DTOUT
+---
+>      &                 'with time interval ',DTK(KZ(47)+1)
+123c119
+<      &                 'with time interval ',DTOUT
+---
+>      &                 'with time interval ',DTK(KZ(47)+1)
+125c121
+<                   IF(KZ(46).GE.3.AND.KZ(46).LE.4.AND.HDFMAX.GT.
+---
+>                   IF(KZ(46).GE.3.AND.KZ(46).LE.4.AND.SMAX.GT.
+127c123
+<                      write(6,*) 'Warning!: Maximum time step ',HDFMAX,
+---
+>                      write(6,*) 'Warning!: Maximum time step ',SMAX,
+129c125
+<      &                    ' Wide binaries cannot be detected for ',
+---
+>      &                    ' Wide bianries cannot be detected for ',
+141c137
+<      &              NXTLIMIT,NGHOSTS)
+---
+>      &              NXTLIMIT,NGHOSTS,IMINR)
+274a271
+> 
+419c416
+<      &           I.GE.IFIRST) THEN
+---
+>      &           I.GE.IFIRST.AND.nomass(i).eq.0) THEN
+466,467c463
+< *     if(time.lt.0.01)write(6,*)rank,' irr ',time,nxtlen,
+< *    &(nxtlst(k),name(nxtlst(k)),step(nxtlst(k)),k=1,min(5,nxtlen))
+---
+> *     write(6,*)' irr ',time,nxtlen,(nxtlst(k),step(k),k=1,5)
+508a505
+> 
+523,524c520
+<           ttime = TIME
+<           CALL JPRED_int(ICH,ttime)
+---
+>           CALL JPRED_int(ICH,TIME)
+526a523
+> 
+545,553d541
+< *         print*,' before nbint,t,nxtlen,lst=',time,nxtlen,
+< *    &                              (nxtlst(k),k=1,nxtlen)
+< *         print*,' step(lst)=',(step(nxtlst(k)),k=1,nxtlen)
+< *         print*,' x(1,lst)=',(x(1,nxtlst(k)),k=1,nxtlen)
+< *         print*,' x0(1,lst)=',(x0(1,nxtlst(k)),k=1,nxtlen)
+< *         print*,' xdot(1,lst)=',(xdot(1,nxtlst(k)),k=1,nxtlen)
+< *         print*,' x0dot(1,lst)=',(x0dot(1,nxtlst(k)),k=1,nxtlen)
+< 
+< *         print*,' before nbint 108 ',(x(k,108),k=1,3)
+555,556d542
+< *           print*,' intgrt i,n,npairs=',i,n,npairs
+< *        CALL NBINT(FIRR_SIMD,FD_SIMD)
+559,562d544
+< *         print*,' after nbint =',time
+< *         print*,' firr,fd_simd=',
+< *    &   ((firr_simd(k,l),fd_simd(k,l),k=1,3),l=1,nxtlen)
+< 
+821a804
+> 
+872,874c855,856
+<               ttime = time
+<               call jpred_int(icomp,ttime)
+<               call jpred_int(jcomp,ttime)
+---
+>               call jpred_int(icomp,time)
+>               call jpred_int(jcomp,time)
+899,900d880
+< *     if(time.lt.0.01)write(6,*)rank,' reg ',
+< *    & time,nreg,(ireg(k),name(ireg(k)),stepr(ireg(k)),k=1,min(5,nreg))
+920a901
+> 
+924a906
+> 
+1132,1137d1113
+< c          print*,' before do nreg=',time
+< c          print*,' x(1,1-10)=',(x(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' x0(1,1-10)=',(x0(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' xdot(1,1-10)=',(xdot(1,nxtlst(k)),k=1,nxtlen)
+< c          print*,' x0dot(1,1-10)=',(x0dot(1,nxtlst(k)),k=1,nxtlen)
+< 
+1262a1239,1240
+> 
+> 

@@ -1,0 +1,2 @@
+47a48
+>         if(nomass(j).eq.1) go to 60

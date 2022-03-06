@@ -1,0 +1,26 @@
+33a34,36
+> #ifdef ENSEMBLE
+> #define MPIINIT 1
+> #else
+35a39
+> #endif
+113a118,126
+> *     Output collision detection during generation
+>       OPEN (UNIT=42,STATUS='UNKNOWN',FORM='FORMATTED',FILE='ibcoll.42')
+> 
+> *     For eigen-evolution, output diagnostics for generation parameters
+>       IF (KZ(42).EQ.6.and.rank.eq.0)
+>      &     OPEN (UNIT=23,STATUS='UNKNOWN',FORM='FORMATTED',
+>      &     FILE='ibeigen.23')
+> 
+> *=========================================================
+369d381
+< *     Output collision detection during generation
+493a506,512
+>       END IF
+> *       This only for massless code! (RSP)
+>       IF (KZ(22).EQ.2) THEN
+>           N = N + NBIN
+>           NZERO = N
+>           NTOT = N
+>           BODYM = ZMASS/FLOAT(N-nmass)

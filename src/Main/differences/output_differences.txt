@@ -1,0 +1,79 @@
+25c25
+<       CHARACTER*28 OUTTAIL
+---
+>       CHARACTER*27 OUTTAIL
+27a28,30
+> *     Call Computation of Moments of Inertia (with Chr. Theis)
+>       IF(KZ(49).GT.0) CALL ELLAN
+> 
+64a68
+>           CALL lagrNomass(RDENS)
+66,67d69
+< *     Call Computation of Moments of Inertia (with Chr. Theis)
+<       IF(KZ(49).GT.0) CALL ELLAN
+97a100
+>       NSPL = 0
+106,107c109,111
+<           IF (I.LE.N.AND.BODY(I).GT.0.0D0) NS = NS + 1
+<           SUM = SUM + BODY(I)**2
+---
+>           IF(I.LE.N.AND.BODY(I).GT.smallMass) NS = NS + 1
+>           IF(I.LE.N.and.body(i).lt.smallMass) NSPL = NSPL + 1
+>           IF(nomass(i).eq.0)SUM = SUM + BODY(I)**2
+140a145,149
+>       imass = 0 
+>       do 1111 i=ifirst,n
+>       if(nomass(i).eq.1)imass=imass+1
+>  1111 continue
+> 
+142,143c151,152
+<       WRITE (6,40) TTOT, N, NNB, NPAIRS, NMERGE, MULT, NS, NSTEPI,
+<      &         NSTEPB,NSTEPR, NSTEPU, ERROR, BE(3),ZMASS
+---
+>       WRITE (6,40) TTOT, N, NNB, NPAIRS, NMERGE, MULT, NS, NSPL, NSTEPI,
+>      &         NSTEPB,NSTEPR, NSTEPU, ERROR, BE(3)
+146,147c155,156
+<      &     '  NSTEP(I,B,R,U) ',4I13,'  DE ',E15.6,'  E ',F17.6,
+<      &     ' M ',F12.8)
+---
+>      &     ' NSPL=',I6,
+>      &     '  NSTEP(I,B,R,U) ',4I13,'  DE ',E15.6,'  E ',F17.6)
+161,162c170,171
+<  45          FORMAT (/,' NRUN =',I3,'  M# =',I3,'  CPU =',1P,E12.5,
+<      &            '  TRC =',E12.5, '  DMIN =',0P,4E8.1,'  AMIN =',E8.1,
+---
+>  45          FORMAT (/,' NRUN =',I3,'  M# =',I3,'  CPU =',1P,E12.5,0P,
+>      &            '  TRC =',F5.1, '  DMIN =',1P,4E8.1,'  AMIN =',E8.1,
+189c198
+<    65 FORMAT (' #2',11I12,2I7,2I12,I10)
+---
+>    65 FORMAT (' #2',2I12,9I8,2I7,2I12,I10)
+206,207c215,216
+<      &           'RSCALE[PC] RTIDE[PC] RDENS[PC] RC[PC]  RHOD[M*] ',
+<      &           'RHOM[M*] MC[M*] CMAX <Cn> Ir/R RCM VCM AZ ',
+---
+>      &           'RSCALE[PC] RTIDE[PC] RDENS[PC] RC[PC]  RHOD[PC] ',
+>      &           'RHOM[PC] MC[M*] CMAX <Cn> Ir/R RCM VCM AZ ',
+219,221c228,230
+<      &        RSCALE*RBAR,RTIDE*RBAR,RD*RBAR,RC*RBAR,RHOD*ZMBAR/RBAR**3,
+<      &        RHOM*ZMBAR/RBAR**3,ZMC*ZMBAR,CMAX,CNNB,COST,CMR(4),
+<      &        CMRDOT(4),AZ,EB,EM,VRMS,
+---
+>      &        RSCALE*RBAR,RTIDE*RBAR,RD*RBAR,RC*RBAR,RHOD*RBAR,
+>      &        RHOM*RBAR,ZMC*ZMBAR,CMAX,CNNB,COST,CMR(4),CMRDOT(4),AZ,
+>      &        EB,EM,VRMS,
+319a329,333
+> *       Call Binary Data Bank for planets 
+> 
+>       if (nmass.gt.0.and.npairs.gt.0) then
+>           call plndat
+>       end if
+517,518d530
+<             if(rank.eq.0.AND.TTOT.EQ.0.AND.KZ(40).EQ.0)
+<      &     PRINT*,' Warning no higher derivs initially in custom output'
+540,541c552,553
+<  119        format('tail.50_',A20)
+<             OPEN (UNIT=50,STATUS='UNKNOWN',FILE=OUTTAIL)
+---
+>  119        format('tail.5_',A20)
+>             OPEN (UNIT=5,STATUS='UNKNOWN',FILE=OUTTAIL)

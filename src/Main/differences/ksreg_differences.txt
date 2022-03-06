@@ -1,0 +1,9 @@
+48,49d47
+<         if(rank.eq.0)print*,' ksreg/exc iph,t,i,ni,j,nj,steps=',iphase,
+<      &    time+toff,i,name(i),j,name(j),step(i),step(j)
+74a73
+>           nomsi = nomass(i)
+111a111
+>           nomass(i) = nomass(j)
+132a133
+>           nomass(j) = nomsi

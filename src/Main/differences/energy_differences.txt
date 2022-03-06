@@ -1,0 +1,9 @@
+29d28
+<       VIR = 0.0
+67a67
+>          if(nomass(i).eq.1) goto 20
+86c86,87
+<      *           BODY(J).EQ.0.0D0 .OR. BODY(I).EQ.0.0D0)  GO TO 30
+---
+>      *           BODY(J).EQ.0.0D0 .OR. BODY(I).EQ.0.0D0 .OR.
+>      *      nomass(j).eq.1.or.nomass(i).eq.1)  GO TO 30

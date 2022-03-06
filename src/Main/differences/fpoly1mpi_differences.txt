@@ -1,0 +1,2 @@
+57a58
+>           if(nomass(jdum).eq.1) go to 30

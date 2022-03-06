@@ -1,0 +1,1340 @@
+21,23c21,22
+<       INTEGER(HID_T) :: h5_file_id, h5_step, h5_group_id
+<       INTEGER(HID_T), DIMENSION(1) :: h5_dset_ids(256)
+<       INTEGER(HID_T) :: h5_vec_len
+---
+>       INTEGER :: h5_file_id, h5_step, h5_group_id, h5_dset_ids(256)
+>       INTEGER :: h5_vec_len
+29c28
+<       INTEGER*4 :: ERROR
+---
+>       INTEGER ERROR
+66,68c65,66
+<       INTEGER(HID_T) :: h5_file_id, h5_step, h5_group_id
+<       INTEGER(HID_T), DIMENSION(1) :: h5_dset_ids(256)
+<       INTEGER(HID_T) :: h5_vec_len
+---
+>       INTEGER :: h5_file_id, h5_step, h5_group_id, h5_dset_ids(256)
+>       INTEGER :: h5_vec_len
+73c71
+<       INTEGER*4 :: ERROR
+---
+>       INTEGER ERROR
+85,86d82
+<       print*, 'HDF5 CloseID:',h5_file_id,' Snapshot file: ',h5_file_name
+< *
+97c93
+<       INTEGER(HID_T) :: group_id ! the group ID to be written upon
+---
+>       INTEGER :: group_id ! the group ID to be written upon
+99c95
+<       INTEGER*4 :: vec_len ! the data array
+---
+>       INTEGER :: vec_len ! the data array
+101,104c97,100
+<       REAL*4  :: vec_written(vec_len)   ! the data actually written
+<       INTEGER*4 :: offset  ! offset of vec (by default, start from 1)
+<       INTEGER(HID_T) :: dset_id ! IF not 0, write to that dset; otherwise create new
+<       INTEGER*4 :: original_dset_len ! The original dset length, if expanding
+---
+>       REAL  :: vec_written(vec_len)   ! the data actually written
+>       INTEGER :: offset  ! offset of vec (by default, start from 1)
+>       INTEGER :: dset_id ! IF not 0, write to that dset; otherwise create new
+>       INTEGER :: original_dset_len ! The original dset length, if expanding
+106,115c102,111
+<       INTEGER(HID_T) :: I ! Loop variable
+<       INTEGER*4 :: error
+<       INTEGER(HID_T) :: dspace_id
+<       INTEGER(HID_T) :: memspace_id
+<       INTEGER(HID_T) :: crp_list ! Dataset creation property identifier
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_dims
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_maxdims
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_chunkdims
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_start
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_count
+---
+>       INTEGER :: I ! Loop variable
+>       INTEGER :: error
+>       INTEGER :: dspace_id
+>       INTEGER :: memspace_id
+>       INTEGER :: crp_list ! Dataset creation property identifier
+>       INTEGER(8), DIMENSION(2) :: data_dims
+>       INTEGER(8), DIMENSION(2) :: data_maxdims
+>       INTEGER(8), DIMENSION(2) :: data_chunkdims
+>       INTEGER(8), DIMENSION(2) :: data_start
+>       INTEGER(8), DIMENSION(2) :: data_count
+137,138d132
+< *           CALL h5pset_link_creation_order_f( crp_list, 
+< *    &   IOR(H5P_CRT_ORDER_TRACKED_F,H5P_CRT_ORDER_INDEXED_F),error)
+149,152d142
+< 
+< cccH5_DLL herr_t H5Dwrite(hid_t dset_id, hid_t mem_type_id, hid_t mem_space_id,
+< ccc                         hid_t file_space_id, hid_t plist_id, const void *buf);
+< 
+204c194
+<       INTEGER(HID_T) :: group_id ! the group ID to be written upon
+---
+>       INTEGER :: group_id ! the group ID to be written upon
+206,210c196,200
+<       INTEGER*4 :: vec_len ! the data array
+<       INTEGER*4 :: offset  ! offset of vec (by default, start from 1)
+<       INTEGER*4 :: vec(vec_len+offset-1)     ! the data array
+<       INTEGER(HID_T) :: dset_id ! IF not 0, write to that dset; otherwise create new
+<       INTEGER*4 :: original_dset_len ! The original dset length, before expanding
+---
+>       INTEGER :: vec_len ! the data array
+>       INTEGER :: offset  ! offset of vec (by default, start from 1)
+>       INTEGER :: vec(vec_len+offset-1)     ! the data array
+>       INTEGER :: dset_id ! IF not 0, write to that dset; otherwise create new
+>       INTEGER :: original_dset_len ! The original dset length, before expanding
+212,222c202,212
+<       INTEGER*4  :: vec_written(vec_len+offset-1)   !if vec starts not from 1, use this
+<       INTEGER(HID_T) :: I ! Loop variable
+<       INTEGER*4 :: error
+<       INTEGER(HID_T) :: dspace_id
+<       INTEGER(HID_T) :: memspace_id
+<       INTEGER(HID_T) :: crp_list ! Dataset creation property identifier
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_dims
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_maxdims
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_chunkdims
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_start
+<       INTEGER(HSIZE_T), DIMENSION(2) :: data_count
+---
+>       INTEGER  :: vec_written(vec_len+offset-1)   !if vec starts not from 1, use this
+>       INTEGER :: I ! Loop variable
+>       INTEGER :: error
+>       INTEGER :: dspace_id
+>       INTEGER :: memspace_id
+>       INTEGER :: crp_list ! Dataset creation property identifier
+>       INTEGER(8), DIMENSION(2) :: data_dims
+>       INTEGER(8), DIMENSION(2) :: data_maxdims
+>       INTEGER(8), DIMENSION(2) :: data_chunkdims
+>       INTEGER(8), DIMENSION(2) :: data_start
+>       INTEGER(8), DIMENSION(2) :: data_count
+244,245d233
+< *           CALL h5pset_link_creation_order_f( crp_list,
+< *    &   IOR(H5P_CRT_ORDER_TRACKED_F,H5P_CRT_ORDER_INDEXED_F),error)
+302,306c290,294
+<       REAL*4 :: val
+<       INTEGER(HID_T) :: loc_id
+<       INTEGER(HID_T) :: attrib_space_id
+<       INTEGER(HID_T) :: attrib_id
+<       INTEGER*4 :: error
+---
+>       REAL*8 :: val
+>       INTEGER :: loc_id
+>       INTEGER :: attrib_space_id
+>       INTEGER :: attrib_id
+>       INTEGER :: error
+314c302
+<       CALL H5Acreate_f(loc_id, TRIM(att_name), H5T_NATIVE_REAL,
+---
+>       CALL H5Acreate_f(loc_id, TRIM(att_name), H5T_NATIVE_DOUBLE,
+317,347c305
+<       CALL H5Awrite_f(attrib_id, H5T_NATIVE_REAL, val, data_dims,
+<      &      error)
+<       CALL H5Aclose_f(attrib_id, error)
+<       CALL H5Sclose_f(attrib_space_id, error)
+< 
+< #endif
+<       END
+< 
+<       SUBROUTINE HDF5_write_attribute_simple_real(loc_id, att_name, 
+<      &    vec, vec_len)
+< #ifdef H5OUTPUT
+<       USE HDF5
+<       IMPLICIT NONE
+<       CHARACTER(LEN=*) :: att_name
+<       INTEGER*4 :: vec_len ! the data array
+<       REAL*4  :: vec(vec_len)     ! the data array
+<       INTEGER(HID_T) :: loc_id
+<       INTEGER(HID_T) :: attrib_space_id
+<       INTEGER(HID_T) :: attrib_id
+<       INTEGER*4 :: error
+< 
+<       INTEGER(8), DIMENSION(2) :: data_dims
+<       data_dims(1) = vec_len
+<       data_dims(2) = 1
+< 
+< *       Write attributes to the group
+<       CALL H5Screate_f(H5S_SIMPLE_F, attrib_space_id, error)
+<       CALL H5Acreate_f(loc_id, TRIM(att_name), H5T_NATIVE_REAL,
+<      &     attrib_space_id, attrib_id, error, H5P_DEFAULT_F,
+<      &     H5P_DEFAULT_F)
+<       CALL H5Awrite_f(attrib_id, H5T_NATIVE_REAL, vec, data_dims,
+---
+>       CALL H5Awrite_f(attrib_id, H5T_NATIVE_DOUBLE, val, data_dims,
+362,366c320,324
+<       INTEGER*4 :: val
+<       INTEGER(HID_T) :: loc_id
+<       INTEGER(HID_T) :: attrib_space_id
+<       INTEGER(HID_T) :: attrib_id
+<       INTEGER*4 :: error
+---
+>       INTEGER :: val
+>       INTEGER :: loc_id
+>       INTEGER :: attrib_space_id
+>       INTEGER :: attrib_id
+>       INTEGER :: error
+388d345
+<       USE HDF5
+390,393d346
+<       REAL*8 :: h5_current_time
+<       INTEGER(HID_T) :: h5_file_id, h5_step, h5_group_id
+<       INTEGER(HID_T), DIMENSION(1) :: h5_dset_ids(256)
+<       INTEGER(HID_T) :: h5_vec_len
+397a351,353
+>       INTEGER :: h5_file_id, h5_step, h5_group_id, h5_dset_ids(256)
+>       INTEGER :: h5_vec_len
+>       REAL*8 :: h5_current_time
+413,414d368
+< *
+< *     Note that N_SINGLE is now NTOT = N + NPAIRS, all members and c.m. of binaries include (R.Sp. Aug. 2021)
+420,424c374,375
+<       INCLUDE 'output_single.h'
+<       INTEGER(HID_T) :: h5_file_id, h5_step, h5_group_id
+<       INTEGER(HID_T) :: h5_subgroup_id ! ID for the Step#i groups
+<       INTEGER(HID_T), DIMENSION(1) :: h5_dset_ids(256)
+<       INTEGER(HID_T) :: h5_vec_len
+---
+>       INTEGER :: h5_file_id, h5_step, h5_group_id, h5_dset_ids(256)
+>       INTEGER :: h5_vec_len
+427,428c378
+<       REAL*4 :: S_TTOT
+<       INTEGER*4 :: N_SINGLE,KSEV,KMODE
+---
+>       INTEGER :: N_SINGLE,KSEV,KMODE
+434,435c384,385
+<       INTEGER*4 :: ERROR
+<       INTEGER*4 :: original_vec_len
+---
+>       INTEGER ERROR
+>       INTEGER :: original_vec_len
+437c387,399
+< *
+---
+> 
+> *     single
+>       COMMON/OUTSINGLE/ S_M(NMAX),S_X1(NMAX), S_X2(NMAX), S_X3(NMAX),
+>      &                  S_V1(NMAX), S_V2(NMAX), S_V3(NMAX),
+> C     &                  S_F1(NMAX), S_F2(NMAX), S_F3(NMAX),
+>      &                  S_RS(NMAX), S_L(NMAX), S_TE(NMAX),
+>      &                  S_RC(NMAX), S_MC(NMAX),
+>      &                  NS_KW(NMAX),NS_NAM(NMAX)
+>       REAL*4 S_M, S_X1, S_X2, S_X3, S_V1, S_V2, S_V3
+> C      REAL*4 S_F1, S_F2, S_F3
+>       REAL*4 S_RS, S_L, S_TE, S_RC, S_MC
+>       INTEGER NS_KW,NS_NAM
+> 
+449,452c411
+< *
+<           WRITE (h5_step_name, 5051) h5_step
+<  5051  FORMAT(I4)
+< *
+---
+>           WRITE (h5_step_name, *), h5_step
+456,458d414
+< *       Create subgroup for systems
+< *         CALL h5gcreate_f(h5_group_id, 'Systems',
+< *    &       h5_subgroup_id, error) ! Create the subgroup
+467d422
+<           S_TTOT = REAL(TTOT)
+470c425
+<      &        S_TTOT) ! Write attribute to the group
+---
+>      &        TTOT) ! Write attribute to the group
+473c428
+<      &    'N_SYSTEM', N_SINGLE) ! Write attribute to the group
+---
+>      &    'N_SINGLE', N_SINGLE) ! Write attribute to the group
+478,482c433
+< 
+< cc          WRITE (h5_step_name, *), h5_step
+<           WRITE (h5_step_name, 5052) h5_step
+< 5052  FORMAT(I4)
+< 
+---
+>           WRITE (h5_step_name, *), h5_step
+486,490d436
+< *       Create subgroup for singles in the opened group
+< *         CALL h5gcreate_f(h5_group_id, 'Singles',
+< *    &       h5_subgroup_id, error) ! Create the subgroup
+< *         CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+< *    &    'N_SINGLE', N_SINGLE) ! Write attribute to the group
+494d439
+< *
+496,502d440
+< *
+< *     Write datasets
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '000 Scalars',
+<      &     S_AS, 100, 1, h5_dset_ids(1),
+<      &     original_vec_len,finalize)
+< *     CALL HDF5_write_attribute_simple_real(h5_group_id, 'Scalars',
+< *    &        S_AS,100)
+504c442,443
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '001 Sys X1',
+---
+> *     Write datasets
+>       CALL HDF5_write_real_vector_as_dset(h5_group_id, 'X1',
+507,510c446
+< *     CALL HDF5_write_attribute_simple_real(h5_group_id,
+< *    &     'Pos X1',S_X1,N_SINGLE)
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '002 Sys X2',
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_group_id, 'X2',
+513c449
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '003 Sys X3',
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_group_id, 'X3',
+517c453
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '004 Sys V1',
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_group_id, 'V1',
+520c456
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '005 Sys V2',
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_group_id, 'V2',
+523c459
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '006 Sys V3',
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_group_id, 'V3',
+527,554c463,464
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '007 Sys A1',
+<      &     S_F1, N_SINGLE, 1, h5_dset_ids(8),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '008 Sys A2',
+<      &     S_F2, N_SINGLE, 1, h5_dset_ids(9),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '009 Sys A3',
+<      &     S_F3, N_SINGLE, 1, h5_dset_ids(10),
+<      &     original_vec_len,finalize)
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '010 Sys AD1',
+<      &     S_FD1, N_SINGLE, 1, h5_dset_ids(11),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '011 Sys AD2',
+<      &     S_FD2, N_SINGLE, 1, h5_dset_ids(12),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '012 Sys AD3',
+<      &     S_FD3, N_SINGLE, 1, h5_dset_ids(13),
+<      &     original_vec_len,finalize)
+< *
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '013 Sys D21',
+<      &     S_D21, N_SINGLE, 1, h5_dset_ids(14),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '014 Sys D22',
+<      &     S_D22, N_SINGLE, 1, h5_dset_ids(15),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '015 Sys D23',
+<      &     S_D23, N_SINGLE, 1, h5_dset_ids(16),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_group_id, 'M',
+>      &     S_M, N_SINGLE, 1, h5_dset_ids(8),
+557,594d466
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '016 Sys D31',
+<      &     S_D31, N_SINGLE, 1, h5_dset_ids(17),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '017 Sys D32',
+<      &     S_D32, N_SINGLE, 1, h5_dset_ids(18),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '018 Sys D33',
+<      &     S_D33, N_SINGLE, 1, h5_dset_ids(19),
+<      &     original_vec_len,finalize)
+< *
+< *     if(rank.eq.0)print*,' out_single d21,d31=',
+< *    &  (s_d21(k),k=1,n_single,100),(s_d31(k),k=1,n_single,100)
+< *
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '019 Sys STEP',
+<      &     S_STEP, N_SINGLE, 1, h5_dset_ids(20),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '020 Sys STEPR',
+<      &     S_STEPR, N_SINGLE, 1, h5_dset_ids(21),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '021 Sys T0',
+<      &     S_T0, N_SINGLE, 1, h5_dset_ids(22),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '022 Sys T0R',
+<      &     S_T0R, N_SINGLE, 1, h5_dset_ids(23),
+<      &     original_vec_len,finalize)
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '023 Sys M',
+<      &     S_M, N_SINGLE, 1, h5_dset_ids(24),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '024 Sys NB-Sph',
+<      &     S_RSN, N_SINGLE, 1, h5_dset_ids(25),
+<      &     original_vec_len,finalize)
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '025 Sys POT',
+<      &     S_POT, N_SINGLE, 1, h5_dset_ids(26),
+<      &     original_vec_len,finalize)
+< 
+<       
+597,598c469,470
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '026 Sys R*',
+<      &        S_RS, N_SINGLE, 1, h5_dset_ids(27),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_group_id, 'RS',
+>      &        S_RS, N_SINGLE, 1, h5_dset_ids(9),
+600,601c472,473
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '027 Sys L*',
+<      &        S_L, N_SINGLE, 1, h5_dset_ids(28),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_group_id, 'L',
+>      &        S_L, N_SINGLE, 1, h5_dset_ids(10),
+603,604c475,476
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,
+<      &        '028 Sys Teff*', S_TE, N_SINGLE, 1, h5_dset_ids(29),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_group_id, 'TE',
+>      &        S_TE, N_SINGLE, 1, h5_dset_ids(11),
+606,607c478,479
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '029 Sys RC*',
+<      &        S_RC, N_SINGLE, 1, h5_dset_ids(30),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_group_id, 'RC',
+>      &        S_RC, N_SINGLE, 1, h5_dset_ids(12),
+609,610c481,482
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '030 Sys MC*',
+<      &        S_MC, N_SINGLE, 1, h5_dset_ids(31),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_group_id, 'MC',
+>      &        S_MC, N_SINGLE, 1, h5_dset_ids(13),
+612,613c484,485
+<          CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &        '031 Sys KW', NS_KW, N_SINGLE, 1, h5_dset_ids(32),
+---
+>          CALL HDF5_write_integer_vector_as_dset(h5_group_id, 'KW',
+>      &        NS_KW, N_SINGLE, 1, h5_dset_ids(14),
+617,618c489,490
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,'032 Sys Name',
+<      &     NS_NAM, N_SINGLE, 1, h5_dset_ids(33),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_group_id, 'NAM',
+>      &     NS_NAM, N_SINGLE, 1, h5_dset_ids(15),
+620,623c492
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &     '033 Sys Type', NS_LAB, N_SINGLE, 1, h5_dset_ids(34),
+<      &     original_vec_len,finalize)
+< *
+---
+> 
+628c497,503
+<       INCLUDE 'output_single.h'
+---
+> *     single
+>       COMMON/OUTSINGLE/ S_M(NMAX),S_X1(NMAX), S_X2(NMAX), S_X3(NMAX),
+>      &                  S_V1(NMAX), S_V2(NMAX), S_V3(NMAX),
+> C     &                  S_F1(NMAX), S_F2(NMAX), S_F3(NMAX),
+>      &                  S_RS(NMAX), S_L(NMAX), S_TE(NMAX),
+>      &                  S_RC(NMAX), S_MC(NMAX),
+>      &                  NS_KW(NMAX),NS_NAM(NMAX)
+631c506,509
+<       INTEGER N_SINGLE,KSEV,KMODE
+---
+>       REAL*4 S_M, S_X1, S_X2, S_X3, S_V1, S_V2, S_V3
+> C      REAL*4 S_F1, S_F2, S_F3
+>       REAL*4 S_RS, S_L, S_TE, S_RC, S_MC
+>       INTEGER NS_KW,NS_NAM,N_SINGLE,KSEV,KMODE
+638,640c516
+<        WRITE(40) (S_AS(K),K=1,100)
+<        WRITE (40) N_SINGLE, NS_NAM(1:N_SINGLE), NS_LAB(1:N_SINGLE),
+<      &      S_M(1:N_SINGLE), S_RSN(1:N_SINGLE),
+---
+>        WRITE (40) N_SINGLE, NS_NAM(1:N_SINGLE), S_M(1:N_SINGLE),
+642,647c518
+<      &      S_V1(1:N_SINGLE), S_V2(1:N_SINGLE), S_V3(1:N_SINGLE), 
+<      &      S_POT(1:N_SINGLE), S_F1(1:N_SINGLE), S_F2(1:N_SINGLE),
+<      &      S_POT(1:N_SINGLE), S_F1(1:N_SINGLE), S_F2(1:N_SINGLE),
+<      &      S_F3(1:N_SINGLE), S_FD1(1:N_SINGLE), S_FD2(1:N_SINGLE),
+<      &      S_FD3(1:N_SINGLE), S_STEP(1:N_SINGLE), S_STEPR(1:N_SINGLE),
+<      &      S_T0(1:N_SINGLE), S_T0R(1:N_SINGLE)
+---
+>      &      S_V1(1:N_SINGLE), S_V2(1:N_SINGLE), S_V3(1:N_SINGLE)
+654,655c525
+<        WRITE(40,*) '## N_SYSTEM ',N_SINGLE,' Time[NB]',TTOT
+<        WRITE(40,*) (S_AS(K),K=1,100)
+---
+>        WRITE(40,*) '## N_SINGLE ',N_SINGLE,' Time[NB]',TTOT
+658c528
+<              WRITE (40,*) NS_NAM(K), NS_LAB(K), S_M(K), S_RSN(K),
+---
+>              WRITE (40,*) NS_NAM(K), S_M(K),
+660,663c530
+<      &            S_V1(K), S_V2(K), S_V3(K), S_POT(K),
+<      &            S_F1(K), S_F2(K), S_F3(K), 
+<      &            S_FD1(K),S_FD2(K), S_FD3(K),
+<      &            S_STEP(K), S_STEPR(K), S_T0(K), S_T0R(K),
+---
+>      &            S_V1(K), S_V2(K), S_V3(K),
+669c536
+<              WRITE (40,*) NS_NAM(K), NS_LAB(K), S_M(K), S_RSN(K),
+---
+>              WRITE (40,*) NS_NAM(K), S_M(K),
+671,674c538
+<      &            S_V1(K), S_V2(K), S_V3(K), S_POT(K),
+<      &            S_F1(K), S_F2(K), S_F3(K),
+<      &            S_FD1(K),S_FD2(K), S_FD3(K),
+<      &            S_STEP(K), S_STEPR(K), S_T0(K), S_T0R(K)
+---
+>      &            S_V1(K), S_V2(K), S_V3(K)
+690,694c554,556
+<       INCLUDE 'output_binary.h'
+<       INTEGER(HID_T) :: h5_file_id, h5_step, h5_group_id
+<       INTEGER(HID_T), DIMENSION(1) :: h5_dset_ids(256)
+<       INTEGER(HID_T) :: h5_subgroup_id ! ID for the Step#i groups
+<       INTEGER(HID_T) :: h5_vec_len
+---
+>       INTEGER :: h5_file_id, h5_step, h5_group_id, h5_dset_ids(256)
+>       INTEGER :: h5_subgroup_id ! ID for the Step#i groups
+>       INTEGER :: h5_vec_len
+696d557
+<       REAL*4 :: S_TTOT
+703,704c564,565
+<       INTEGER*4 :: ERROR
+<       INTEGER*4 :: original_vec_len
+---
+>       INTEGER ERROR
+>       INTEGER :: original_vec_len
+706c567,587
+< *
+---
+> 
+> *     Binary
+>       COMMON/OUTBINARY/ B_M1(KMAX), B_M2(KMAX),
+>      &                  B_XC1(KMAX), B_XC2(KMAX), B_XC3(KMAX),
+>      &                  B_VC1(KMAX), B_VC2(KMAX), B_VC3(KMAX), 
+>      &                  B_XR1(KMAX), B_XR2(KMAX), B_XR3(KMAX), 
+>      &                  B_VR1(KMAX), B_VR2(KMAX), B_VR3(KMAX), 
+> C     &                  B_FC1(KMAX), B_FC2(KMAX), B_FC3(KMAX), 
+>      &                  B_RS1(KMAX), B_L1(KMAX), B_TE1(KMAX),
+>      &                  B_RS2(KMAX), B_L2(KMAX), B_TE2(KMAX),
+>      &                  B_RC1(KMAX), B_MC1(KMAX), B_RC2(KMAX), 
+>      &                  B_MC2(KMAX), B_A(KMAX), B_ECC(KMAX), B_P(KMAX),
+>      &                  NB_KW1(KMAX), NB_NAM1(KMAX), NB_KW2(KMAX), 
+>      &                  NB_NAM2(KMAX), NB_KWC(KMAX), NB_NAMC(KMAX)
+>       REAL*4 B_M1, B_M2, B_XC1, B_XC2, B_XC3, B_VC1, B_VC2, B_VC3
+>       REAL*4 B_XR1, B_XR2, B_XR3, B_VR1, B_VR2, B_VR3
+> C      REAL*4 B_FC1, B_FC2, B_FC3
+>       REAL*4 B_RS1, B_L1, B_TE1, B_RS2, B_L2, B_TE2
+>       REAL*4 B_RC1, B_MC1, B_RC2, B_MC2,B_A, B_ECC, B_P
+>       INTEGER NB_KW1, NB_NAM1, NB_KW2, NB_NAM2, NB_KWC, NB_NAMC
+> 
+717,721c598
+< 
+< cc          WRITE (h5_step_name, *), h5_step
+<           WRITE (h5_step_name, 5053) h5_step
+< 5053  FORMAT(I4)
+< 
+---
+>           WRITE (h5_step_name, *), h5_step
+727,728c604,605
+< *         CALL h5gcreate_f(h5_group_id, 'Binaries',
+< *    &       h5_subgroup_id, error) ! Create the subgroup
+---
+>           CALL h5gcreate_f(h5_group_id, 'Binaries',
+>      &       h5_subgroup_id, error) ! Create the subgroup
+740d616
+<           S_TTOT = REAL(TTOT)
+743c619
+<      &        S_TTOT) ! Write attribute to the group
+---
+>      &        TTOT) ! Write attribute to the group
+745,746c621,622
+< *         CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+< *    &    'N_BINARY', N_BINARY) ! Write attribute to the subgroup
+---
+>           CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+>      &    'N_BINARY', N_BINARY) ! Write attribute to the subgroup
+751,755c627
+< 
+< cc          WRITE (h5_step_name, *), h5_step
+<           WRITE (h5_step_name, 5054) h5_step
+< 5054  FORMAT(I4)
+< 
+---
+>           WRITE (h5_step_name, *), h5_step
+761,764c633,636
+< *         CALL h5gcreate_f(h5_group_id, 'Binaries',
+< *    &       h5_subgroup_id, error) ! Create the subgroup
+< *         CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+< *    &    'N_BINARY', N_BINARY) ! Write attribute to the group
+---
+>           CALL h5gcreate_f(h5_group_id, 'Binaries',
+>      &       h5_subgroup_id, error) ! Create the subgroup
+>           CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+>      &    'N_BINARY', N_BINARY) ! Write attribute to the group
+772,789c644,645
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '101 Bin cm X1',
+<      &     B_XC1, N_BINARY, 1, h5_dset_ids(64),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '102 Bin cm X2',
+<      &     B_XC2, N_BINARY, 1, h5_dset_ids(65),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '103 Bin cm X3',
+<      &     B_XC3, N_BINARY, 1, h5_dset_ids(66),
+<      &     original_vec_len,finalize)
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '104 Bin cm V1',
+<      &     B_VC1, N_BINARY, 1, h5_dset_ids(67),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '105 Bin cm V2',
+<      &     B_VC2, N_BINARY, 1, h5_dset_ids(68),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '106 Bin cm V3',
+<      &     B_VC3, N_BINARY, 1, h5_dset_ids(69),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XC1',
+>      &     B_XC1, N_BINARY, 1, h5_dset_ids(32),
+791,809c647,648
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '107 Bin cm A1',
+<      &     B_FC1, N_BINARY, 1, h5_dset_ids(70),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '108 Bin cm A2',
+<      &     B_FC2, N_BINARY, 1, h5_dset_ids(71),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '109 Bin cm A3',
+<      &     B_FC3, N_BINARY, 1, h5_dset_ids(72),
+<      &     original_vec_len,finalize)
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '110 Bin cm AD1',
+<      &     B_FDC1, N_BINARY, 1, h5_dset_ids(73),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '111 Bin cm AD2',
+<      &     B_FDC2, N_BINARY, 1, h5_dset_ids(74),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '112 Bin cm AD3',
+<      &     B_FDC3, N_BINARY, 1, h5_dset_ids(75),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XC2',
+>      &     B_XC2, N_BINARY, 1, h5_dset_ids(33),
+811,828c650,651
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '113 Bin cm D21',
+<      &     B_D21, N_BINARY, 1, h5_dset_ids(76),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '114 Bin cm D22',
+<      &     B_D22, N_BINARY, 1, h5_dset_ids(77),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '115 Bin cm D23',
+<      &     B_D23, N_BINARY, 1, h5_dset_ids(78),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '116 Bin cm D31',
+<      &     B_D31, N_BINARY, 1, h5_dset_ids(79),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '117 Bin cm D32',
+<      &     B_D32, N_BINARY, 1, h5_dset_ids(80),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '118 Bin cm D33',
+<      &     B_D33, N_BINARY, 1, h5_dset_ids(81),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XC3',
+>      &     B_XC3, N_BINARY, 1, h5_dset_ids(34),
+831,835c654,655
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, 
+<      &     '119 Bin cm STEP', B_STEP, N_BINARY, 1, h5_dset_ids(82),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, 
+<      &     '120 Bin cm STEPR', B_STEPR, N_BINARY, 1, h5_dset_ids(83),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VC1',
+>      &     B_VC1, N_BINARY, 1, h5_dset_ids(35),
+837,838c657,658
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '121 Bin cm T0',
+<      &     B_T0, N_BINARY, 1, h5_dset_ids(84),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VC2',
+>      &     B_VC2, N_BINARY, 1, h5_dset_ids(36),
+840,841c660,661
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '122 Bin cm T0R',
+<      &     B_T0R, N_BINARY, 1, h5_dset_ids(85),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VC3',
+>      &     B_VC3, N_BINARY, 1, h5_dset_ids(37),
+844,845c664,665
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '123 Bin M1*',
+<      &     B_M1, N_BINARY, 1, h5_dset_ids(86),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'M1',
+>      &     B_M1, N_BINARY, 1, h5_dset_ids(38),
+847,848c667,668
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '124 Bin M2*',
+<      &     B_M2, N_BINARY, 1, h5_dset_ids(87),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'M2',
+>      &     B_M2, N_BINARY, 1, h5_dset_ids(39),
+851,852c671,672
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id,'125 Bin rel XR1',
+<      &     B_XR1, N_BINARY, 1, h5_dset_ids(88),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR1',
+>      &     B_XR1, N_BINARY, 1, h5_dset_ids(40),
+854,855c674,675
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id,'126 Bin rel XR2',
+<      &     B_XR2, N_BINARY, 1, h5_dset_ids(89),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR2',
+>      &     B_XR2, N_BINARY, 1, h5_dset_ids(41),
+857,858c677,678
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id,'127 Bin rel XR3',
+<      &     B_XR3, N_BINARY, 1, h5_dset_ids(90),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR3',
+>      &     B_XR3, N_BINARY, 1, h5_dset_ids(42),
+861,862c681,682
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id,'128 Bin rel VR1',
+<      &     B_VR1, N_BINARY, 1, h5_dset_ids(90),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR1',
+>      &     B_VR1, N_BINARY, 1, h5_dset_ids(43),
+864,865c684,685
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id,'129 Bin rel VR2',
+<      &     B_VR2, N_BINARY, 1, h5_dset_ids(91),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR2',
+>      &     B_VR2, N_BINARY, 1, h5_dset_ids(44),
+867,868c687,688
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id,'130 Bin rel VR3',
+<      &     B_VR3, N_BINARY, 1, h5_dset_ids(92),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR3',
+>      &     B_VR3, N_BINARY, 1, h5_dset_ids(45),
+871,874d690
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '131 Bin POT',
+<      &     B_POT, N_BINARY, 1, h5_dset_ids(93),
+<      &     original_vec_len,finalize)
+<       
+877,878c693,694
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,'132 Bin RS1*',
+<      &        B_RS1, N_BINARY, 1, h5_dset_ids(94),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RS1',
+>      &        B_RS1, N_BINARY, 1, h5_dset_ids(46),
+880,881c696,697
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '133 Bin L1*',
+<      &        B_L1, N_BINARY, 1, h5_dset_ids(95),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'L1',
+>      &        B_L1, N_BINARY, 1, h5_dset_ids(47),
+883,884c699,700
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,
+<      &        '134 Bin Teff1*', B_TE1, N_BINARY, 1, h5_dset_ids(96),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'TE1',
+>      &        B_TE1, N_BINARY, 1, h5_dset_ids(48),
+886,887c702,703
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,'135 Bin RS2*',
+<      &        B_RS2, N_BINARY, 1, h5_dset_ids(97),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RS2',
+>      &        B_RS2, N_BINARY, 1, h5_dset_ids(49),
+889,890c705,706
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '136 Bin L2*',
+<      &        B_L2, N_BINARY, 1, h5_dset_ids(98),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'L2',
+>      &        B_L2, N_BINARY, 1, h5_dset_ids(50),
+892,893c708,709
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,
+<      &        '137 Bin Teff2*', B_TE2, N_BINARY, 1, h5_dset_ids(99),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'TE2',
+>      &        B_TE2, N_BINARY, 1, h5_dset_ids(51),
+896,897c712,713
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,'138 Bin RC1*',
+<      &        B_RC1, N_BINARY, 1, h5_dset_ids(100),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RC1',
+>      &        B_RC1, N_BINARY, 1, h5_dset_ids(52),
+899,900c715,716
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,'139 Bin MC1*',
+<      &        B_MC1, N_BINARY, 1, h5_dset_ids(101),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'MC1',
+>      &        B_MC1, N_BINARY, 1, h5_dset_ids(53),
+902,903c718,719
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,'140 Bin RC2*',
+<      &        B_RC2, N_BINARY, 1, h5_dset_ids(102),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RC2',
+>      &        B_RC2, N_BINARY, 1, h5_dset_ids(54),
+905,906c721,722
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id,'141 Bin MC2*',
+<      &        B_MC2, N_BINARY, 1, h5_dset_ids(103),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'MC2',
+>      &        B_MC2, N_BINARY, 1, h5_dset_ids(55),
+910,911c726,727
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '142 Bin A[au]',
+<      &     B_A, N_BINARY, 1, h5_dset_ids(104),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'A',
+>      &     B_A, N_BINARY, 1, h5_dset_ids(56),
+913,914c729,730
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '143 Bin ECC',
+<      &     B_ECC, N_BINARY, 1, h5_dset_ids(105),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'ECC',
+>      &     B_ECC, N_BINARY, 1, h5_dset_ids(57),
+916,920c732,733
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '144 Bin P[d]',
+<      &     B_P, N_BINARY, 1, h5_dset_ids(106),
+<      &     original_vec_len,finalize)
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '145 Bin G',
+<      &     B_G, N_BINARY, 1, h5_dset_ids(107),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'P',
+>      &     B_P, N_BINARY, 1, h5_dset_ids(58),
+925,926c738,739
+<          CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &        '146 Bin KW1', NB_KW1, N_BINARY, 1, h5_dset_ids(108),
+---
+>          CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'KW1',
+>      &        NB_KW1, N_BINARY, 1, h5_dset_ids(59),
+928,929c741,742
+<          CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &        '147 Bin KW2', NB_KW2, N_BINARY, 1, h5_dset_ids(109),
+---
+>          CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'KW2',
+>      &        NB_KW2, N_BINARY, 1, h5_dset_ids(61),
+933,934c746,747
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &     '148 Bin cm KW', NB_KWC, N_BINARY, 1, h5_dset_ids(110),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'KWC',
+>      &     NB_KWC, N_BINARY, 1, h5_dset_ids(63),
+937,938c750,751
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &     '149 Bin Name1', NB_NAM1, N_BINARY, 1, h5_dset_ids(111),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'NAM1',
+>      &     NB_NAM1, N_BINARY, 1, h5_dset_ids(60),
+940,941c753,754
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &     '150 Bin Name2', NB_NAM2, N_BINARY, 1, h5_dset_ids(112),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'NAM2',
+>      &     NB_NAM2, N_BINARY, 1, h5_dset_ids(62),
+943,944c756,757
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &     '151 Bin cm Name', NB_NAMC, N_BINARY, 1, h5_dset_ids(113),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'NAMC',
+>      &     NB_NAMC, N_BINARY, 1, h5_dset_ids(64),
+946a760
+>       CALL h5fflush_f(h5_subgroup_id, H5F_SCOPE_LOCAL_F, error)
+947a762
+>       CALL h5gclose_f(h5_subgroup_id, error) 
+951d765
+<       INCLUDE 'output_binary.h'
+952a767,778
+>       COMMON/OUTBINARY/ B_M1(KMAX), B_M2(KMAX),
+>      &                  B_XC1(KMAX), B_XC2(KMAX), B_XC3(KMAX),
+>      &                  B_VC1(KMAX), B_VC2(KMAX), B_VC3(KMAX), 
+>      &                  B_XR1(KMAX), B_XR2(KMAX), B_XR3(KMAX), 
+>      &                  B_VR1(KMAX), B_VR2(KMAX), B_VR3(KMAX), 
+> C     &                  B_FC1(KMAX), B_FC2(KMAX), B_FC3(KMAX), 
+>      &                  B_RS1(KMAX), B_L1(KMAX), B_TE1(KMAX),
+>      &                  B_RS2(KMAX), B_L2(KMAX), B_TE2(KMAX),
+>      &                  B_RC1(KMAX), B_MC1(KMAX), B_RC2(KMAX), 
+>      &                  B_MC2(KMAX), B_A(KMAX), B_ECC(KMAX), B_P(KMAX),
+>      &                  NB_KW1(KMAX), NB_NAM1(KMAX), NB_KW2(KMAX), 
+>      &                  NB_NAM2(KMAX), NB_KWC(KMAX), NB_NAMC(KMAX)
+955a782,787
+>       REAL*4 B_M1, B_M2, B_XC1, B_XC2, B_XC3, B_VC1, B_VC2, B_VC3
+>       REAL*4 B_XR1, B_XR2, B_XR3, B_VR1, B_VR2, B_VR3
+> C      REAL*4 B_FC1, B_FC2, B_FC3
+>       REAL*4 B_RS1, B_L1, B_TE1, B_RS2, B_L2, B_TE2
+>       REAL*4 B_RC1, B_MC1, B_RC2, B_MC2,B_A, B_ECC, B_P
+>       INTEGER NB_KW1, NB_NAM1, NB_KW2, NB_NAM2, NB_KWC, NB_NAMC
+970,973d801
+<      &     B_FC1(1:N_BINARY), B_FC2(1:N_BINARY), B_FC3(1:N_BINARY),
+<      &     B_FDC1(1:N_BINARY), B_FDC2(1:N_BINARY), B_FDC3(1:N_BINARY),
+<      &     B_STEP(1:N_BINARY), B_STEPR(1:N_BINARY), B_T0(1:N_BINARY),
+<      &     B_T0R(1:N_BINARY),
+975,978c803,804
+<      &     B_VR1(1:N_BINARY), B_VR2(1:N_BINARY), B_VR3(1:N_BINARY), 
+<      &     B_POT(1:N_BINARY),
+<      &     B_A(1:N_BINARY), B_ECC(1:N_BINARY), B_P(1:N_BINARY),
+<      &     B_G(1:N_BINARY)
+---
+>      &     B_VR1(1:N_BINARY), B_VR2(1:N_BINARY), B_VR3(1:N_BINARY),
+>      &     B_A(1:N_BINARY), B_ECC(1:N_BINARY), B_P(1:N_BINARY)
+996,998d821
+<      &         B_FC1(K), B_FC2(K), B_FC3(K),
+<      &         B_FDC1(K), B_FDC2(K), B_FDC3(K),
+<      &         B_STEP(K), B_STEPR(K), B_T0(K), B_T0R(K),
+1000,1001c823,824
+<      &         B_VR1(K), B_VR2(K), B_VR3(K), B_POT(K),
+<      &         B_A(K), B_ECC(K), B_P(K), B_G(K),
+---
+>      &         B_VR1(K), B_VR2(K), B_VR3(K),
+>      &         B_A(K), B_ECC(K), B_P(K),
+1015,1017d837
+<      &          B_FC1(K), B_FC2(K), B_FC3(K),
+<      &          B_FDC1(K), B_FDC2(K), B_FDC3(K),
+<      &          B_STEP(K), B_STEPR(K), B_T0(K), B_T0R(K),
+1019c839
+<      &          B_VR1(K), B_VR2(K), B_VR3(K), B_POT(K),
+---
+>      &          B_VR1(K), B_VR2(K), B_VR3(K),
+1039,1043c859,861
+<       INCLUDE 'output_merger.h'
+<       INTEGER(HID_T) :: h5_file_id, h5_step, h5_group_id
+<       INTEGER(HID_T), DIMENSION(1) :: h5_dset_ids(256)
+<       INTEGER(HID_T) :: h5_subgroup_id
+<       INTEGER(HID_T) :: h5_vec_len
+---
+>       INTEGER :: h5_file_id, h5_step, h5_group_id, h5_dset_ids(256)
+>       INTEGER :: h5_subgroup_id
+>       INTEGER :: h5_vec_len
+1045d862
+<       REAL*4 :: S_TTOT
+1052,1053c869,870
+<       INTEGER*4 :: ERROR
+<       INTEGER*4 :: original_vec_len
+---
+>       INTEGER ERROR
+>       INTEGER :: original_vec_len
+1056c873,901
+< C*     Merger
+---
+> *     Merger
+>       COMMON/OUTMERGER/ M_M1(MMAX), M_M2(MMAX), M_M3(MMAX),
+>      &                  M_XC1(MMAX), M_XC2(MMAX), M_XC3(MMAX),
+>      &                  M_VC1(MMAX), M_VC2(MMAX), M_VC3(MMAX),
+>      &                  M_XR01(MMAX), M_XR02(MMAX), M_XR03(MMAX), 
+>      &                  M_VR01(MMAX), M_VR02(MMAX), M_VR03(MMAX), 
+>      &                  M_XR11(MMAX), M_XR12(MMAX), M_XR13(MMAX), 
+>      &                  M_VR11(MMAX), M_VR12(MMAX), M_VR13(MMAX), 
+> C     &                  M_FC1(MMAX), M_FC2(MMAX), M_FC3(MMAX),
+>      &                  M_RS1(MMAX), M_L1(MMAX), M_TE1(MMAX), 
+>      &                  M_RS2(MMAX), M_L2(MMAX), M_TE2(MMAX), 
+>      &                  M_RS3(MMAX), M_L3(MMAX), M_TE3(MMAX), 
+>      &                  M_RC1(MMAX), M_MC1(MMAX), M_RC2(MMAX), 
+>      &                  M_MC2(MMAX), M_RC3(MMAX), M_MC3(MMAX),
+>      &                  M_A0(MMAX), M_ECC0(MMAX), M_P0(MMAX),
+>      &                  M_A1(MMAX), M_ECC1(MMAX), M_P1(MMAX),
+>      &                  NM_KW1(MMAX), NM_NAM1(MMAX), NM_KW2(MMAX),
+>      &                  NM_NAM2(MMAX), NM_KW3(MMAX), NM_NAM3(MMAX),
+>      &                  NM_KWC(MMAX), NM_NAMC(MMAX)
+>       REAL*4 M_M1, M_M2, M_M3, M_XC1, M_XC2, M_XC3, M_VC1, M_VC2, M_VC3
+>       REAL*4 M_XR01, M_XR02, M_XR03, M_VR01, M_VR02, M_VR03
+>       REAL*4 M_XR11, M_XR12, M_XR13, M_VR11, M_VR12, M_VR13
+> C      REAL*4 M_FC1, M_FC2, M_FC3
+>       REAL*4 M_RS1, M_L1, M_TE1, M_RS2, M_L2, M_TE2, M_RS3, M_L3, M_TE3
+>       REAL*4 M_RC1, M_MC1, M_RC2, M_MC2, M_RC3, M_MC3
+>       REAL*4 M_A0, M_ECC0, M_P0, M_A1, M_ECC1, M_P1
+>       INTEGER NM_KW1, NM_NAM1, NM_KW2, NM_NAM2
+>       INTEGER NM_KW3, NM_NAM3, NM_KWC, NM_NAMC
+> 
+1068,1072c913
+< 
+< cc          WRITE (h5_step_name, *), h5_step
+<           WRITE (h5_step_name, 5055) h5_step
+< 5055  FORMAT(I4)
+< 
+---
+>           WRITE (h5_step_name, *), h5_step
+1078,1079c919,920
+< *         CALL h5gcreate_f(h5_group_id, 'Mergers',
+< *    &       h5_subgroup_id, error) ! Create the subgroup
+---
+>           CALL h5gcreate_f(h5_group_id, 'Mergers',
+>      &       h5_subgroup_id, error) ! Create the subgroup
+1090d930
+<          S_TTOT = REAL(TTOT)
+1093c933
+<      &        S_TTOT) ! Write attribute to the group
+---
+>      &        TTOT) ! Write attribute to the group
+1095,1096c935,936
+< *         CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+< *    &    'N_MERGER', N_MERGER) ! Write attribute to the group
+---
+>           CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+>      &    'N_MERGER', N_MERGER) ! Write attribute to the group
+1102,1107c942
+< 
+< cc          WRITE (h5_step_name, *), h5_step
+<           WRITE (h5_step_name, 5056) h5_step
+< 5056  FORMAT(I4)
+< 
+< 
+---
+>           WRITE (h5_step_name, *), h5_step
+1112,1116c947,951
+< *       Create subgroup for mergers in the opened group
+< *         CALL h5gcreate_f(h5_group_id, 'Mergers',
+< *    &       h5_subgroup_id, error)  ! Create the subgroup
+< *         CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+< *    &    'N_MERGER', N_MERGER) ! Write attribute to the group
+---
+> *       Create subgroup for binaries in the opened group
+>           CALL h5gcreate_f(h5_group_id, 'Mergers',
+>      &       h5_subgroup_id, error)  ! Create the subgroup
+>           CALL HDF5_write_attribute_scalar_integer(h5_subgroup_id,
+>      &    'N_MERGER', N_MERGER) ! Write attribute to the group
+1124,1125c959,960
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '201 Mer XC1',
+<      &     M_XC1, N_MERGER, 1, h5_dset_ids(182),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XC1',
+>      &     M_XC1, N_MERGER, 1, h5_dset_ids(82),
+1127,1128c962,963
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '202 Mer XC2',
+<      &     M_XC2, N_MERGER, 1, h5_dset_ids(183),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XC2',
+>      &     M_XC2, N_MERGER, 1, h5_dset_ids(83),
+1130,1131c965,966
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '203 Mer XC3',
+<      &     M_XC3, N_MERGER, 1, h5_dset_ids(184),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XC3',
+>      &     M_XC3, N_MERGER, 1, h5_dset_ids(84),
+1134,1135c969,970
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '204 Mer VC1',
+<      &     M_VC1, N_MERGER, 1, h5_dset_ids(185),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VC1',
+>      &     M_VC1, N_MERGER, 1, h5_dset_ids(85),
+1137,1138c972,973
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '205 Mer VC2',
+<      &     M_VC2, N_MERGER, 1, h5_dset_ids(186),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VC2',
+>      &     M_VC2, N_MERGER, 1, h5_dset_ids(86),
+1140,1141c975,976
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '206 Mer VC3',
+<      &     M_VC3, N_MERGER, 1, h5_dset_ids(187),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VC3',
+>      &     M_VC3, N_MERGER, 1, h5_dset_ids(87),
+1144,1145c979,980
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '207 Mer M1',
+<      &     M_M1, N_MERGER, 1, h5_dset_ids(188),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'M1',
+>      &     M_M1, N_MERGER, 1, h5_dset_ids(88),
+1147,1148c982,983
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '208 Mer M2',
+<      &     M_M2, N_MERGER, 1, h5_dset_ids(189),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'M2',
+>      &     M_M2, N_MERGER, 1, h5_dset_ids(89),
+1150,1151c985,986
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '209 Mer M3',
+<      &     M_M3, N_MERGER, 1, h5_dset_ids(190),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'M3',
+>      &     M_M3, N_MERGER, 1, h5_dset_ids(90),
+1154,1155c989,990
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '210 Mer XR01',
+<      &     M_XR01, N_MERGER, 1, h5_dset_ids(191),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR01',
+>      &     M_XR01, N_MERGER, 1, h5_dset_ids(91),
+1157,1158c992,993
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '211 Mer XR02',
+<      &     M_XR02, N_MERGER, 1, h5_dset_ids(192),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR02',
+>      &     M_XR02, N_MERGER, 1, h5_dset_ids(92),
+1160,1161c995,996
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '212 Mer XR03',
+<      &     M_XR03, N_MERGER, 1, h5_dset_ids(193),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR03',
+>      &     M_XR03, N_MERGER, 1, h5_dset_ids(93),
+1164,1165c999,1000
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '213 Mer VR01',
+<      &     M_VR01, N_MERGER, 1, h5_dset_ids(194),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR01',
+>      &     M_VR01, N_MERGER, 1, h5_dset_ids(94),
+1167,1168c1002,1003
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '214 Mer VR02',
+<      &     M_VR02, N_MERGER, 1, h5_dset_ids(195),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR02',
+>      &     M_VR02, N_MERGER, 1, h5_dset_ids(95),
+1170,1171c1005,1006
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '215 Mer VR03',
+<      &     M_VR03, N_MERGER, 1, h5_dset_ids(196),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR03',
+>      &     M_VR03, N_MERGER, 1, h5_dset_ids(96),
+1174,1175c1009,1010
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '216 Mer XR11',
+<      &     M_XR11, N_MERGER, 1, h5_dset_ids(197),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR11',
+>      &     M_XR11, N_MERGER, 1, h5_dset_ids(97),
+1177,1178c1012,1013
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '217 Mer XR12',
+<      &     M_XR12, N_MERGER, 1, h5_dset_ids(198),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR12',
+>      &     M_XR12, N_MERGER, 1, h5_dset_ids(98),
+1180,1181c1015,1016
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '218 Mer XR13',
+<      &     M_XR13, N_MERGER, 1, h5_dset_ids(199),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'XR13',
+>      &     M_XR13, N_MERGER, 1, h5_dset_ids(99),
+1184,1185c1019,1020
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '219 Mer VR11',
+<      &     M_VR11, N_MERGER, 1, h5_dset_ids(200),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR11',
+>      &     M_VR11, N_MERGER, 1, h5_dset_ids(100),
+1187,1188c1022,1023
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '220 Mer VR12',
+<      &     M_VR12, N_MERGER, 1, h5_dset_ids(201),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR12',
+>      &     M_VR12, N_MERGER, 1, h5_dset_ids(101),
+1190,1195c1025,1026
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '221 Mer VR13',
+<      &     M_VR13, N_MERGER, 1, h5_dset_ids(202),
+<      &     original_vec_len,finalize)
+< 
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '222 Mer POT',
+<      &     M_POT, N_MERGER, 1, h5_dset_ids(203),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'VR13',
+>      &     M_VR13, N_MERGER, 1, h5_dset_ids(102),
+1200,1201c1031,1032
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '223 Mer RS1',
+<      &        M_RS1, N_MERGER, 1, h5_dset_ids(204),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RS1',
+>      &        M_RS1, N_MERGER, 1, h5_dset_ids(103),
+1203,1204c1034,1035
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '224 Mer L1',
+<      &        M_L1, N_MERGER, 1, h5_dset_ids(205),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'L1',
+>      &        M_L1, N_MERGER, 1, h5_dset_ids(104),
+1206,1207c1037,1038
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '225 Mer TE1',
+<      &        M_TE1, N_MERGER, 1, h5_dset_ids(206),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'TE1',
+>      &        M_TE1, N_MERGER, 1, h5_dset_ids(105),
+1209,1210c1040,1041
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '226 Mer RS2',
+<      &        M_RS2, N_MERGER, 1, h5_dset_ids(207),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RS2',
+>      &        M_RS2, N_MERGER, 1, h5_dset_ids(106),
+1212,1213c1043,1044
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '227 Mer L2',
+<      &        M_L2, N_MERGER, 1, h5_dset_ids(208),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'L2',
+>      &        M_L2, N_MERGER, 1, h5_dset_ids(107),
+1215,1216c1046,1047
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '228 Mer TE2',
+<      &        M_TE2, N_MERGER, 1, h5_dset_ids(209),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'TE2',
+>      &        M_TE2, N_MERGER, 1, h5_dset_ids(108),
+1218,1219c1049,1050
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '229 Mer RS3',
+<      &        M_RS3, N_MERGER, 1, h5_dset_ids(210),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RS3',
+>      &        M_RS3, N_MERGER, 1, h5_dset_ids(109),
+1221,1222c1052,1053
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '230 Mer L3',
+<      &        M_L3, N_MERGER, 1, h5_dset_ids(211),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'L3',
+>      &        M_L3, N_MERGER, 1, h5_dset_ids(110),
+1224,1225c1055,1056
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '231 Mer TE3',
+<      &        M_TE3, N_MERGER, 1, h5_dset_ids(212),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'TE3',
+>      &        M_TE3, N_MERGER, 1, h5_dset_ids(111),
+1228,1229c1059,1060
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '232 Mer RC1',
+<      &        M_RC1, N_MERGER, 1, h5_dset_ids(213),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RC1',
+>      &        M_RC1, N_MERGER, 1, h5_dset_ids(112),
+1231,1232c1062,1063
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '233 Mer MC1',
+<      &        M_MC1, N_MERGER, 1, h5_dset_ids(214),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'MC1',
+>      &        M_MC1, N_MERGER, 1, h5_dset_ids(113),
+1234,1235c1065,1066
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '234 Mer RC2',
+<      &        M_RC2, N_MERGER, 1, h5_dset_ids(215),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RC2',
+>      &        M_RC2, N_MERGER, 1, h5_dset_ids(114),
+1237,1238c1068,1069
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '235 Mer MC2',
+<      &        M_MC2, N_MERGER, 1, h5_dset_ids(216),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'MC2',
+>      &        M_MC2, N_MERGER, 1, h5_dset_ids(115),
+1240,1241c1071,1072
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '236 Mer RC3',
+<      &        M_RC3, N_MERGER, 1, h5_dset_ids(217),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'RC3',
+>      &        M_RC3, N_MERGER, 1, h5_dset_ids(116),
+1243,1244c1074,1075
+<          CALL HDF5_write_real_vector_as_dset(h5_group_id, '237 Mer MC3',
+<      &        M_MC3, N_MERGER, 1, h5_dset_ids(218),
+---
+>          CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'MC3',
+>      &        M_MC3, N_MERGER, 1, h5_dset_ids(117),
+1248,1249c1079,1080
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '238 Mer A0[au]',
+<      &     M_A0, N_MERGER, 1, h5_dset_ids(219),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'A0',
+>      &     M_A0, N_MERGER, 1, h5_dset_ids(118),
+1251,1252c1082,1083
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '239 Mer ECC0',
+<      &     M_ECC0, N_MERGER, 1, h5_dset_ids(220),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'ECC0',
+>      &     M_ECC0, N_MERGER, 1, h5_dset_ids(119),
+1254,1255c1085,1086
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '240 Mer P0[d]',
+<      &     M_P0, N_MERGER, 1, h5_dset_ids(221),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'P0',
+>      &     M_P0, N_MERGER, 1, h5_dset_ids(120),
+1257,1258c1088,1089
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '241 Mer A1[au]',
+<      &     M_A1, N_MERGER, 1, h5_dset_ids(222),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'A1',
+>      &     M_A1, N_MERGER, 1, h5_dset_ids(121),
+1260,1261c1091,1092
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '242 Mer ECC1',
+<      &     M_ECC1, N_MERGER, 1, h5_dset_ids(223),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'ECC1',
+>      &     M_ECC1, N_MERGER, 1, h5_dset_ids(122),
+1263,1264c1094,1095
+<       CALL HDF5_write_real_vector_as_dset(h5_group_id, '243 Mer P1[d]',
+<      &     M_P1, N_MERGER, 1, h5_dset_ids(224),
+---
+>       CALL HDF5_write_real_vector_as_dset(h5_subgroup_id, 'P1',
+>      &     M_P1, N_MERGER, 1, h5_dset_ids(123),
+1269,1270c1100,1101
+<          CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &        '244 Mer KW1', NM_KW1, N_MERGER, 1, h5_dset_ids(225),
+---
+>          CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'KW1',
+>      &        NM_KW1, N_MERGER, 1, h5_dset_ids(124),
+1272,1273c1103,1104
+<          CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &        '245 Mer KW2', NM_KW2, N_MERGER, 1, h5_dset_ids(226),
+---
+>          CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'KW2',
+>      &        NM_KW2, N_MERGER, 1, h5_dset_ids(126),
+1275,1276c1106,1107
+<          CALL HDF5_write_integer_vector_as_dset(h5_group_id,
+<      &        '246 Mer KW3', NM_KW3, N_MERGER, 1, h5_dset_ids(227),
+---
+>          CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'KW3',
+>      &        NM_KW3, N_MERGER, 1, h5_dset_ids(128),
+1280,1281c1111,1112
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id, '247 Mer KWC',
+<      &     NM_KWC, N_MERGER, 1, h5_dset_ids(228),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'KWC',
+>      &     NM_KWC, N_MERGER, 1, h5_dset_ids(130),
+1283,1284c1114,1115
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,'248 Mer NAM1',
+<      &     NM_NAM1, N_MERGER, 1, h5_dset_ids(229),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'NAM1',
+>      &     NM_NAM1, N_MERGER, 1, h5_dset_ids(125),
+1286,1287c1117,1118
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,'249 Mer NAM2',
+<      &     NM_NAM2, N_MERGER, 1, h5_dset_ids(230),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'NAM2',
+>      &     NM_NAM2, N_MERGER, 1, h5_dset_ids(127),
+1289,1290c1120,1121
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,'250 Mer NAM3',
+<      &     NM_NAM3, N_MERGER, 1, h5_dset_ids(231),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'NAM3',
+>      &     NM_NAM3, N_MERGER, 1, h5_dset_ids(129),
+1292,1293c1123,1124
+<       CALL HDF5_write_integer_vector_as_dset(h5_group_id,'251 Mer NAMC',
+<      &     NM_NAMC, N_MERGER, 1, h5_dset_ids(232),
+---
+>       CALL HDF5_write_integer_vector_as_dset(h5_subgroup_id, 'NAMC',
+>      &     NM_NAMC, N_MERGER, 1, h5_dset_ids(131),
+1295a1127
+>       CALL h5fflush_f(h5_subgroup_id, H5F_SCOPE_LOCAL_F, error)
+1296a1129
+>       CALL h5gclose_f(h5_subgroup_id, error) 
+1301c1134,1152
+<       INCLUDE 'output_merger.h'
+---
+> *     Merger
+>       COMMON/OUTMERGER/ M_M1(MMAX), M_M2(MMAX), M_M3(MMAX),
+>      &                  M_XC1(MMAX), M_XC2(MMAX), M_XC3(MMAX),
+>      &                  M_VC1(MMAX), M_VC2(MMAX), M_VC3(MMAX),
+>      &                  M_XR01(MMAX), M_XR02(MMAX), M_XR03(MMAX), 
+>      &                  M_VR01(MMAX), M_VR02(MMAX), M_VR03(MMAX), 
+>      &                  M_XR11(MMAX), M_XR12(MMAX), M_XR13(MMAX), 
+>      &                  M_VR11(MMAX), M_VR12(MMAX), M_VR13(MMAX), 
+> C     &                  M_FC1(MMAX), M_FC2(MMAX), M_FC3(MMAX),
+>      &                  M_RS1(MMAX), M_L1(MMAX), M_TE1(MMAX), 
+>      &                  M_RS2(MMAX), M_L2(MMAX), M_TE2(MMAX), 
+>      &                  M_RS3(MMAX), M_L3(MMAX), M_TE3(MMAX), 
+>      &                  M_RC1(MMAX), M_MC1(MMAX), M_RC2(MMAX), 
+>      &                  M_MC2(MMAX), M_RC3(MMAX), M_MC3(MMAX),
+>      &                  M_A0(MMAX), M_ECC0(MMAX), M_P0(MMAX),
+>      &                  M_A1(MMAX), M_ECC1(MMAX), M_P1(MMAX),
+>      &                  NM_KW1(MMAX), NM_NAM1(MMAX), NM_KW2(MMAX),
+>      &                  NM_NAM2(MMAX), NM_KW3(MMAX), NM_NAM3(MMAX),
+>      &                  NM_KWC(MMAX), NM_NAMC(MMAX)
+1304a1156,1164
+>       REAL*4 M_M1, M_M2, M_M3, M_XC1, M_XC2, M_XC3, M_VC1, M_VC2, M_VC3
+>       REAL*4 M_XR01, M_XR02, M_XR03, M_VR01, M_VR02, M_VR03
+>       REAL*4 M_XR11, M_XR12, M_XR13, M_VR11, M_VR12, M_VR13
+> C      REAL*4 M_FC1, M_FC2, M_FC3
+>       REAL*4 M_RS1, M_L1, M_TE1, M_RS2, M_L2, M_TE2, M_RS3, M_L3, M_TE3
+>       REAL*4 M_RC1, M_MC1, M_RC2, M_MC2, M_RC3, M_MC3
+>       REAL*4 M_A0, M_ECC0, M_P0, M_A1, M_ECC1, M_P1
+>       INTEGER NM_KW1, NM_NAM1, NM_KW2, NM_NAM2
+>       INTEGER NM_KW3, NM_NAM3, NM_KWC, NM_NAMC
+1323,1324c1183
+<      &     M_VR11(1:N_MERGER), M_VR12(1:N_MERGER), M_VR13(1:N_MERGER),
+<      &     M_POT(1:N_MERGER)
+---
+>      &     M_VR11(1:N_MERGER), M_VR12(1:N_MERGER), M_VR13(1:N_MERGER)
+1349c1208
+<      &            M_VR11(K), M_VR12(K), M_VR13(K), M_POT(K),
+---
+>      &            M_VR11(K), M_VR12(K), M_VR13(K),
+1351a1211,1212
+>      &            NM_KW1(K), NM_KW2(K),
+>      &            NM_KW3(K), NM_KWC(K),
+1356,1358c1217
+<      &            M_RC1(K), M_RC2(K), M_RC3(K),
+<      &            NM_KW1(K), NM_KW2(K),
+<      &            NM_KW3(K), NM_KWC(K)
+---
+>      &            M_RC1(K), M_RC2(K), M_RC3(K)
+1370c1229
+<      &            M_VR11(K), M_VR12(K), M_VR13(K), M_POT(K),
+---
+>      &            M_VR11(K), M_VR12(K), M_VR13(K),

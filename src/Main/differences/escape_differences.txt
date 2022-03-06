@@ -1,0 +1,64 @@
+74c74
+<                IF (J.EQ.I) GO TO 8
+---
+>                IF (nomass(j).eq.1.or.J.EQ.I) GO TO 8
+84a85
+> 
+144c145
+<    18 FORMAT (/,' ESCAPE   N =',2I10,I6,F8.4,F12.6,2F7.2,F7.3,F7.2,F9.5,
+---
+>    18 FORMAT (/,' ESCAPE    N =',2I6,I4,F8.4,F12.6,2F7.2,F7.3,F7.2,F9.5,
+201d201
+< *           PRINT*,' ESCAPE Check POTI PHIDBL=',POTI,PHIDBL(I)
+251d250
+<       ESESC = ESESC + EI
+285c284
+<       if(rank.eq.0)WRITE (11,*)  TESC, BESC, EESC, VKM, KSTARI, NAMEI
+---
+>              WRITE (11,*)  TESC, BESC, EESC, VKM, KSTARI, NAMEI
+392,395c391
+<           I1 = 2*IPAIR - 1
+<           I2 = 2*IPAIR
+<           NAME1 = NAME(I1)
+<           NAME2 = NAME(I2)
+---
+>           NAME1 = NAME(2*IPAIR-1)
+410d405
+<           EMESC = EMESC + EB1
+417d411
+<       EBESC = EBESC + EB
+430a425
+>           NAME2 = NAME(2*IPAIR)
+465,470c460,465
+<           WRITE (6,200)  IPAIR,NAME1,NAME2,KSTAR(I1),KSTAR(I2),KSTARI,
+<      &                   LIST(2,I2), BODY(2*IPAIR-1)*ZMBAR,
+<      &                   BODY(2*IPAIR)*ZMBAR,EB,RATIO,VI,ECC,EI,PB,
+<      &              RADIUS(I1)*SU,RADIUS(I2)*SU
+<   200     FORMAT (/,' BINARY ESCAPE    KS =',I5,'  NM1,2=',2I10,
+<      &           '  KW1,2,S,LS=',4I4,'  M =',1P,2E9.1,'  EB =',0P,F8.4,
+---
+>           WRITE (6,200)  IPAIR, NAME(2*IPAIR-1), NAME2,
+>      &                   KSTAR(2*IPAIR-1), KSTAR(2*IPAIR), KSTARI,
+>      &                   LIST(2,2*IPAIR), BODY(2*IPAIR-1)*ZMBAR,
+>      &                   BODY(2*IPAIR)*ZMBAR, EB, RATIO, VI, ECC, EI, PB
+>   200     FORMAT (/,' BINARY ESCAPE    KS =',I5,'  NM =',2I6,
+>      &                '  K* =',4I3,'  M =',2F5.1,'  EB =',F8.4,
+472,473c467
+<      &                '  EI =',F8.5,'  P =',1P,E8.1,
+<      &                '  RAD1,2[*]',1P,2E9.1)
+---
+>      &                '  EI =',F8.5,'  P =',1P,E8.1)
+477,478c471,473
+<      &    WRITE (6,202)  IPAIR,NAME1,NAME2,LIST(2,2*IPAIR),KSTAR(JM),
+<      &                   CM(3,IM)*ZMBAR,CM(4,IM)*ZMBAR,EB1,ECC,SEMI,PB
+---
+>      &    WRITE (6,202)  IPAIR, NAME(2*IPAIR-1), NAME(2*IPAIR),
+>      &                   LIST(2,2*IPAIR), KSTAR(JM), CM(3,IM)*ZMBAR,
+>      &                   CM(4,IM)*ZMBAR, EB1, ECC, SEMI, PB
+507,508d501
+< *       Initialize NNTB correctly
+<       IF (NPAIRS.EQ.0) NNTB = 0 
+626d618
+<           EMESC = EMESC + EB
+633d624
+<               EMESC = EMESC + EB2

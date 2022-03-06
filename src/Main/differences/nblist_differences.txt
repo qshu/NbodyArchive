@@ -1,0 +1,3 @@
+40a41,42
+> *       Skip neighbour search for massless particles (RSDL).
+>          if (nomass(j).eq.1) goto 10

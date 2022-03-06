@@ -1,0 +1,58 @@
+13a14,17
+> *     --16/05/15 21:02-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+>       integer qsi
+> *     --16/05/15 21:02-qishu-end------------------------------*
+16a21,23
+> #ifdef ENSEMBLE
+> #define MPIINIT 1
+> #else
+18a26
+> #endif
+21c29,32
+<       ZMASS = FLOAT(N)
+---
+> *     --16/05/15 20:58-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+>       ZMASS = FLOAT(N-nmass)
+> *     --16/05/15 20:58-qishu-end------------------------------*
+25a37
+>           ZMASS = 0.0D0
+27,28c39
+<       IF (KZ(22).EQ.2.OR.KZ(22).EQ.6.OR.
+<      &     KZ(22).EQ.9.OR.KZ(22).EQ.10) THEN
+---
+>       IF (KZ(22).EQ.2.OR.KZ(22).EQ.6.OR.KZ(22).EQ.9) THEN
+30a42
+>               ZMASS = ZMASS + BODY(I)
+89a102,113
+> *     --16/05/15 21:00-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+> c          Check whether there are some massless particles in input
+>       nmass = 0
+>       do 1000 qsi=1,n
+> c be careful here, 1d-9 may be not suitable for every case.
+>       if(body(qsi).lt.1d-9)then
+>           nmass = nmass + 1
+>       end if
+>  1000 continue
+> *     --16/05/15 21:06-qishu-end------------------------------*
+> 
+184c208,211
+<    30 ZMBAR1 = ZMASS/FLOAT(N)
+---
+> *     --16/05/15 21:07-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+>    30 ZMBAR1 = ZMASS/FLOAT(N-nmass)
+> *     --16/05/15 21:07-qishu-end------------------------------*
+188c215,218
+<       ZMASS = FLOAT(N)
+---
+> *     --16/05/15 21:08-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+>       ZMASS = FLOAT(N-nmass)
+> *     --16/05/15 21:08-qishu-end------------------------------*
+202c232
+<      &    ' NBIN0 =',I8,' NHI0 =',I5,' ZMET =',F7.4,' EPOCH0 =',F5.2)
+---
+>      &    ' NBIN0 =',I5,' NHI0 =',I5,' ZMET =',F7.4,' EPOCH0 =',F5.2)

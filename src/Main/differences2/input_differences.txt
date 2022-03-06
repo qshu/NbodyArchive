@@ -1,0 +1,56 @@
+12a13,15
+> #ifdef ENSEMBLE
+> #define MPIINIT 1
+> #else
+14a18
+> #endif
+21c25
+<          READ (5,*)  N, NFIX, NCRIT, NRAND, NNBOPT, NRUN, NCOMM
+---
+>          READ (5,*)  N, NFIX, NCRIT, NRAND, NNBOPT, NRUN, nmass
+27,33d30
+< *       Keep tidal circularization together with GR (RS March 2019)
+<       KZ273 = 0
+<       IF(KZ(27).GT.2) THEN
+<          KZ273 = 3
+<          KZ(27) = KZ(27) - 2
+<       END IF
+< *
+35,36c32
+< *     Allow step for HDF5 files to be larger than one. (R.Sp. Sep. 2021)
+<       HDFMAX = SMAX
+---
+> 
+60c56,59
+<       CALL MPI_BCAST(NCOMM,1,MPI_INTEGER,0,MPI_COMM_WORLD,ierr)
+---
+> *     --16/05/15 16:21-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+>       CALL MPI_BCAST(nmass,1,MPI_INTEGER,0,MPI_COMM_WORLD,ierr)
+> *     --16/05/15 16:21-qishu-end------------------------------*
+63d61
+<       CALL MPI_BCAST(KZ273,1,MPI_INTEGER,0,MPI_COMM_WORLD,ierr)
+83a82,91
+> 
+> #ifdef ENSEMBLE
+>       NRAND = NRAND + 17*rank
+>       WRITE (6,11)rank,NRAND
+>    11 FORMAT (//,' Run configured for ensemble average PE ',I5,
+>      *   ' NRAND=',I9)
+> #endif
+> 
+> *     --16/05/15 16:20-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+86,88c94,97
+<    10    FORMAT (/////,15X,'N  NFIX  NCRIT  NRAND  NNBOPT  NRUN NCOMM')
+<          WRITE (6,12)  N, NFIX, NCRIT, NRAND, NNBOPT, NRUN, NCOMM
+<    12    FORMAT (/,I16,I6,2I7,I8,2I6)
+---
+>    10    FORMAT (/////,15X,'N  NFIX  NCRIT  NRAND  NNBOPT  NRUN nmass')
+>          WRITE (6,12)  N, NFIX, NCRIT, NRAND, NNBOPT, NRUN, nmass
+>    12    FORMAT (/,I16,I6,2I7,I8,I6,I6)
+> *     --16/05/15 16:20-qishu-end------------------------------*
+118c127
+<       NNBMAX = MIN(N/2,LMAX - 50)
+---
+>       NNBMAX = MIN(N/2,LMAX - 3)

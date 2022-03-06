@@ -1,0 +1,10 @@
+81d80
+<       TTIME = TIME
+90c89
+<               CALL KSRES2(JPAIR,J1,J2,ZZ,TTIME)
+---
+>               CALL KSRES2(JPAIR,J1,J2,ZZ,TIME)
+117c116
+<       IF (BODY(I).EQ.0.0D0) GO TO 35
+---
+>       IF (BODY(I).EQ.0.0D0.and.nomass(i).eq.0) GO TO 35

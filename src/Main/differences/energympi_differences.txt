@@ -1,0 +1,2 @@
+105a106
+>       if(nomass(i).eq.1) goto 220

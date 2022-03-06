@@ -1,0 +1,14 @@
+43,45c43,45
+< !!$omp parallel do 
+< !!$omp& private(i,k,nnb,rcrit2,L,NAMEJ,A,J,RIJ2,DT,DT1,
+< !!$omp&  DTR,DT1R,F1DOTk,F2DOT,F3DOT)
+---
+> !$omp parallel do 
+> !$omp& private(i,k,nnb,rcrit2,L,NAMEJ,A,J,RIJ2,DT,DT1,
+> !$omp&  DTR,DT1R,F1DOTk,F2DOT,F3DOT)
+64a65
+>         if(nomass(j).eq.1) go to 60
+154c155
+< !!$omp end parallel do      
+---
+> !$omp end parallel do      

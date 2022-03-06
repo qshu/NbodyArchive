@@ -1,0 +1,94 @@
+14a15,17
+> #ifdef ENSEMBLE
+> #define MPIINIT 1
+> #else
+16a20
+> #endif
+52a57,62
+> *     --16/05/17 22:45-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+> *default(if no mass scaling): smallMass = smallMassSolarUnit
+>        smallMass = smallMassSolarUnit * 1.01
+> *       smallMass = smallMassSolarUnit * 1000.01
+> *     --16/05/17 22:45-qishu-end------------------------------*
+63a74,76
+> *     --16/05/15 22:07-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+> *            DO 50 I = 1,N-nmass
+64a78
+> *     --16/05/15 22:07-qishu-end------------------------------*
+66a81,86
+> *     --16/05/17 22:35-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+> *      set scaled mass of MLP as smallMass
+>              smallMass = smallMassSolarUnit / ZMASS * 1.01
+> *             smallMass = smallMassSolarUnit / ZMASS * 1000.01
+> *     --16/05/17 22:35-qishu-end------------------------------*
+68,72c88
+< *
+< *     Determine astronomical scale from original data
+< *     Assume Mass use the unit of M_sun 
+<          IF(KZ(22).EQ.10) ZMBAR = ZMASS/FLOAT(N)
+<          
+---
+> *     
+77,80d92
+<       GRAV = 1.0D0
+< *     Astronomical unit in non-scaled input data
+<       IF (LSCALE) GRAV = 4.30145D-3*ZMBAR*FLOAT(N)
+<       
+82a95
+> *      GRAV = GRAV*SUNM/PARSEC/1.D10*ZMBAR*FLOAT(N)
+83a97
+>          GRAV = 4.30145D-3*ZMBAR*FLOAT(N)
+129,130c143,144
+< *111  FORMAT(1X,I5,1P,12E15.5)
+< *112  FORMAT(1X,I5,1P,12E15.5)
+---
+> *111  FORMAT(1X,I5,1P,12D15.5)
+> *112  FORMAT(1X,I5,1P,12D15.5)
+205,210d218
+< *     Determine Q from original data and initialize VSTAR
+<          IF (KZ(22).EQ.10) THEN
+<             Q = ZKIN/(GRAV*VIR)
+<             QVIR = Q
+<             VSTAR = 1.0D0
+<          END IF
+218d225
+<             IF (KZ(22).EQ.10) VSTAR = 1.0D0/QV
+231,238d237
+< 
+< *     Safe check
+<          IF (SX.LE.0) then
+<             print*, 'Error!: Scaling factor <= 0. Virial ratio Q >= 1.',
+<      &           ' Scaled energy E0 = ',E0,
+<      &           ' Original energy ETOT = ',ETOT
+<             call abort()
+<          END IF
+247,253d245
+< *     Determine astronomical scale from original data
+< *     Assume original data use M_sun, PC and km/s as units
+<          IF (KZ(22).EQ.10) THEN
+<             VSTAR = VSTAR/SQRT(SX)
+<             RBAR = SX
+<          END IF
+<          
+261,265c253,259
+<      *     WRITE (6,65)  SX, ETOT, BODY(1), BODY(N), ZMASS/FLOAT(N),
+<      &     Q
+<  65   FORMAT (//,12X,'SCALING:   SX =',1P,E13.5,'  E =',E10.2,
+<      &     '  M(1) =',E9.2,'  M(N) =',E9.2,'  <M> =',E9.2,
+<      &     '  Q =',0P,F10.5)
+---
+> *     --16/05/15 22:10-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+>      *     WRITE (6,65)  SX, ETOT, BODY(1), BODY(N),
+>      *     ZMASS/FLOAT(N-nmass)
+> *     --16/05/15 22:10-qishu-end------------------------------*
+>  65   FORMAT (//,12X,'SCALING:   SX =',1P,D13.5,'  E =',E10.2,
+>      &     '  M(1) =',E9.2,'  M(N) =',E9.2,'  <M> =',E9.2)
+311a306,307
+> *     --16/05/15 22:11-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+312a309
+> *     --16/05/15 22:11-qishu-end------------------------------*

@@ -1,0 +1,39 @@
+138a139
+> *       Only for particles with mass (RSDL).
+141a143
+>          if(nomass(i).eq.1) goto 40
+167a170
+>          call lagrNomass(RDENS)
+169,170d171
+< *     Call Computation of Moments of Inertia (with Chr. Theis)
+<       IF(KZ(49).GT.0) CALL ELLAN
+201a203
+> c         print *, '~~~~!! ECLOSE,ZKIN,POT,ZMASS:',ECLOSE,ZKIN,POT,ZMASS
+274a277,278
+> c$$$         WRITE(6,50) rank, TTOT, ttot*tscale, Q, DE, DELTA1, BE(3)-EBIN,
+> c$$$     &        EBIN,EMERGE
+278c282
+<  50      FORMAT (/,' ADJUST:  TIME',1P,E15.5,0P,'  T[Myr]',
+---
+>  50      FORMAT (/,' ADJUST:  TIME',1P,D15.5,0P,'  T[Myr]',
+300c304
+<      &        '     KS.UP   KS.TP      xtsub1       xtsub2')
+---
+>      &        '     KS.UP       xtsub1       xtsub2')
+306,308c310,311
+<      &        ttkscmb,ttksins,ttksinit,ttksterm,tttq,ttup,tttp,
+<      &        xtsub1,xtsub2
+<  56      FORMAT(1X,I3,I8,F13.5,40F10.2,1P,2E13.5)
+---
+>      &        ttkscmb,ttksins,ttksinit,ttksterm,tttq,ttup,xtsub1,xtsub2
+>  56      FORMAT(1X,I3,I8,F13.5,39F10.2,1P,2D13.5)
+359,360c362
+<                if(rank.eq.0)
+<      &         WRITE (39,62)  TTOT, NAME(I1), NAME(I2), KSTAR(N+IP),
+---
+>                WRITE (39,62)  TTOT, NAME(I1), NAME(I2), KSTAR(N+IP),
+389a392,395
+> *            do k=0,nmax
+> *               write (666,555) K, JHISTR(k)
+> * 555           format(1X,2I8)
+> *            end do

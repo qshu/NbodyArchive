@@ -1,0 +1,15 @@
+10a11
+>       integer*4 nma
+20a22
+>       nma = 0
+21a24,28
+>           IF (nomass(i).eq.0) then
+>               nma = nma+1
+>           else
+>               go to 10
+>           end if
+32c39,40
+<       IF (NC.LT.N/5) THEN
+---
+> c      IF (NC.LT.N/5) THEN
+>       IF (NC.LT.nma/5.0) THEN

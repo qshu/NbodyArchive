@@ -1,0 +1,19 @@
+10a11,14
+> *     --16/05/15 21:22-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+>       integer qsi
+> *     --16/05/15 21:22-qishu-end------------------------------*
+13a18,20
+> #ifdef ENSEMBLE
+> #define MPIINIT 1
+> #else
+15a23
+> #endif
+18a27,33
+> *     --16/05/15 21:21-qishu-debug----------------------------*
+> ***** Note:--------------------------------------------------**
+> *       Define massless particles if any (RSDL).
+>       DO 500 qsi = 1,N
+>       if(qsi.gt.n-nmass) body(qsi) = smallMassSolarUnit * 0.9
+>  500  continue
+> *     --16/05/15 21:25-qishu-end------------------------------*

@@ -1,0 +1,39 @@
+1c1
+<       SUBROUTINE REGINT(IOFF,NI,IREG,IFIRST,N,X,XDOT,BODY,
+---
+>       SUBROUTINE REGINT(NOMASS,IOFF,NI,IREG,IFIRST,N,X,XDOT,BODY,
+9,10c9
+< *     POT: positive potential value
+< 
+---
+> *
+22,24c21,23
+< *!$omp parallel do 
+< *!$omp& private(II,I,RS2,NNB,J,A1,A2,A3,DV,RIJ2,DR2I,DR3I,
+< *!$omp&  DRDV,DRDP,DP,RIJP,RSM,RI)
+---
+> !$omp parallel do 
+> !$omp& private(II,I,RS2,NNB,J,A1,A2,A3,DV,RIJ2,DR2I,DR3I,
+> !$omp&  DRDV,DRDP,DP,RIJP,RSM,RI)
+26a26
+>          
+39a40,42
+> *       Skip force calculation for massless particles (RSDL).
+>          if (nomass(j).eq.1) goto 1
+> *RSP
+50c53
+< *     Velocity criterion
+---
+> *     Velocity crterion
+78c81,85
+<             POT(I) = POT(I) + DR3I*RIJ2
+---
+> c copy change from Long Wang's last version 2017.12.21
+> c    but not understand
+> 
+> c            POT(I) = POT(I) - DR3I*RIJ2
+>              POT(I) = POT(I) + DR3I*RIJ2
+98c105
+< *!$omp end parallel do
+---
+> !$omp end parallel do
