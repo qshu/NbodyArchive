@@ -1,0 +1,6 @@
+apt-get install libhdf5-openmpi-dev
+apt-get install libhdf5-dev
+
+./configure --enable-simd=avx 
+
+--enable-hdf5 --disable-mpi --enable-tools
