@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Simple Shell Script to allow easy comparison of same files in
+# different subdirs, R.Sp. May 2002
+#
+# Usage: @comp path dir1 dir2 filename
+#
+ls -la *.f | awk '{print "sed '\''s/WRITE(3/WRITE(6/'\'' " $9 " > nbodytest/"$9 }' > CHK
+exit
+

@@ -1,0 +1,1944 @@
+%!PS-Adobe-3.0
+%%Title: intgrt.F
+%%For: Rainer Spurzem
+%%Creator: a2ps version 4.13
+%%CreationDate: Wed Jun 12 13:25:41 2002
+%%BoundingBox: 42 40 564 828
+%%DocumentData: Clean7Bit
+%%Orientation: Portrait
+%%Pages: 7
+%%PageOrder: Ascend
+%%DocumentMedia: A4kyo 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 842 def
+/sw 595 def
+/llx 42 def
+/urx 564 def
+/ury 828 def
+/lly 40 def
+/#copies 1 def
+/th 20.000000 def
+/fnfs 15 def
+/bfs 10.000000 def
+/cw 6.000000 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   767.000000 th add
+def
+/pmw 0 def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+] def
+/y [
+  pmh ph add 0 mul ph add
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(***) c n
+(      ) p
+(SUBROUTINE) K
+( ) p
+(INTGRT) L n
+(*) c n
+(*) N
+(*       N-body integrator flow control.) N
+(*       -------------------------------) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common4.h) str
+(') p n
+(      ) S
+(INCLUDE) K
+( ') p
+(grape6.h) str
+(') p n
+(*) c n
+(      ) p
+(INTEGER) K
+( i,j,k,l,ii,kk,i10,j1,j2,kp1,kp2) p n
+(      ) S
+(INTEGER) K
+( nxtlen,next,ncpert,nlsum,ierr) p n
+(      ) S
+(INTEGER) K
+( nxtlst\(nmax\),icpert\(kmax\),icblk\(kmax\),listq\(nmax\),nl\(20\)) p n
+(      ) S
+(INTEGER) K
+( nn,np,np0,jnext,kcorr,jp,jpair,lp,ls) p n
+(      ) S
+(INTEGER) K
+( io,ireg,iq,icall,lq) p n
+(*) c n
+(      ) p
+(REAL) K
+(*8 xgp\(3,nmax\),vgp\(3,nmax\)) p n
+(      ) S
+(REAL) K
+(*8 fgp\(3,nmax\),f1gp\(3,nmax\),phgp\(nmax\)) p n
+(      ) S
+(REAL) K
+(*8 a\(3,200\),adot\(3,200\),potz\(200\)) p n
+(      ) S
+(REAL) K
+(*8 eps2,stepm,tcomp0,tcomp,share,ration) p n
+(*) c n
+(      ) p
+(DATA) K
+( iq,icall,lq /0,0,12/) p n
+(      ) S
+(DATA) K
+( eps2,stepm,tcomp0 /0.d0,0.03125d0,0.d0/) p n
+(      ) S
+(SAVE) K
+( iq,icall,lq,nq,eps2,stepm,tcomp0) p n
+(      ) S
+(PARAMETER) K
+( \(ration=5.d0\)) p n
+(      ) S
+(COMMON) K
+( /CLOUDS/ xcl\(3,mcl\),xdotcl\(3,mcl\),bodycl\(mcl\),rcl2\(mcl\),) p n
+(     &                clm\(mcl\),clmdot\(mcl\),vcl,sigma,rb2,rb3,pcl2,) N
+(     &                tcl,stepcl,tbig,dtbig,ncl,newcl) N
+(      ) S
+(INTEGER) K
+( G6_PRINT_CHIP_STATUS,G6_CHANGED_INDEX) p n
+(      ) S
+(EXTERNAL) K
+( G6_PRINT_CHIP_STATUS) p n
+(      ) S
+(EXTERNAL) K
+( short) p n
+() N
+(*) c n
+(*       Initialize GRAPE and obtain current number of pipes.) N
+( 1    ) p
+(if) K
+(\(iphase) p
+(\243) sy
+(-2) p
+(\331) sy
+(gpstat) p
+(\272) sy
+(0\)) p
+(then) K n
+(         ) p
+(CALL) K
+( ) p
+(gpinit) l
+(\(gpid\)) p n
+(         gpstat = 1) N
+(*        do k = 1,48) c n
+(*           gph2\(i\) = 0.d0) N
+(*        enddo) N
+(      ) p
+(endif) K n
+(      npipe = g6_npipes\(\)) p n
+(*) c n
+(*       Search for high velocities after escape or KS/chain termination.) N
+( 5    ) p
+(if) K
+(\(kz\(37\)>0) p
+(\331) sy
+(\(iphase<0) p
+(\332) sy
+(iphase) p
+(\263) sy
+(2\)\)) p
+(then) K n
+(          ) p
+(CALL) K
+( ) p
+(hivel) l
+(\(0\)) p n
+(      ) S
+(endif) K n
+(*) c n
+(*       Reset regularization index and total block length on each return.) N
+( 6    ireg = 0) p n
+(      ) S
+(if) K
+(\(iq<0\) icall = 0) p n
+(      iphase = 0) N
+(      iq = 0) N
+(*       Enforce new block step search on significant changes.) c n
+(      tlistq = time) p n
+(*) c n
+(*       Check whether to send all single particles and c.m. to GRAPE.) N
+(      ) p
+(if) K
+(\(isend) p
+(\271) sy
+(0\)) p
+(then) K n
+(         ) p
+(CALL) K
+( ) p
+(gpsend) l n
+(      ) p
+(endif) K n
+(*) c n
+(*       Form new list of active c.m. with zero mass on GRAPE.) N
+(      ncpert = 0) p n
+(      j1 = -1) N
+(      ) S
+(do) K
+( jpair = 1,npairs) p n
+(         j1 = j1 + 2) N
+(         ) S
+(if) K
+(\(list\(1,j1\)>0\)) p
+(then) K n
+(            ncpert = ncpert + 1) p n
+(            icpert\(ncpert\) = n + jpair) N
+(         ) S
+(endif) K n
+(      ) p
+(enddo) K n
+(*) c n
+(* Find next block to be advanced and set new time \(restore nxtlen\).) N
+( 10   icall = icall + 1) p n
+(      nn = ntot - ifirst + 1) N
+(* Reset TMIN second & third time after change to catch new chain step.) c n
+(intgrt.F) (Page 1/7) (May 16, 02 23:25) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (2) 2
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(if) K
+(\(time) p
+(\263) sy
+(tlistq) p
+(\332) sy
+(icall) p
+(\243) sy
+(3\)) p
+(then) K n
+(* Update interval by optimization at major times \(square root of N\).) c n
+(         ) p
+(if) K
+(\() p
+(DMOD) K
+(\(tlistq,1.d0\)) p
+(\272) sy
+(0.d0\)) p
+(then) K n
+(            ) p
+(do) K
+( l = 1,20) p n
+(               nl\(l\) = 0) N
+(            ) S
+(enddo) K n
+(            ) p
+(do) K
+( i = ifirst,ntot) p n
+(* Count steps at different levels for small values.) c n
+(               ) p
+(do) K
+( l = 10,16) p n
+(                  ) S
+(if) K
+(\(step\(i\)<dtk\(l\)\) nl\(l\) = nl\(l\) + 1) p n
+(               ) S
+(enddo) K n
+(            ) p
+(enddo) K n
+(            nlsum = 0) p n
+(* Determine interval by summing smallest steps until near sqrt\(N\).) c n
+(            nsq = ) p
+(SQRT) K
+(\() p
+(float) K
+(\(n - npairs\)\)) p n
+(            ) S
+(do) K
+( l = 16,10,-1) p n
+(               nlsum = nlsum + nl\(l\)) N
+(               ) S
+(if) K
+(\(nlsum) p
+(\243) sy
+(nsq\) lq = l) p n
+(            ) S
+(enddo) K n
+(         ) p
+(endif) K n
+(*) c n
+(* Increase interval by optimized value.) N
+(         nq = 0) p n
+(         tmin = 1.0d+10) N
+( 18      tlistq = tlistq + dtk\(lq\)) N
+(         ) S
+(do) K
+( i = ifirst,ntot) p n
+(            ) S
+(if) K
+(\(tnext\(i\)) p
+(\243) sy
+(tlistq\)) p
+(then) K n
+(               nq = nq + 1) p n
+(               listq\(nq\) = i) N
+(               tmin = ) S
+(MIN) K
+(\(tnext\(i\),tmin\)) p n
+(            ) S
+(endif) K n
+(         ) p
+(enddo) K n
+(* Increase interval in rare case of zero membership.) c n
+(         ) p
+(if) K
+(\(nq) p
+(\272) sy
+(0\) ) p
+(goto) K
+( 18) p n
+(      ) S
+(endif) K n
+(*) c n
+(      ) p
+(CALL) K
+( ) p
+(inext) l
+(\(nq,listq,tmin,nxtlen,nxtlst\)) p n
+(      i = nxtlst\(1\)) N
+(      time = t0\(i\) + step\(i\)) N
+(      ierr = 0) N
+(*     IF \(TIME.GT.10.975\) THEN) c n
+(*     WRITE \(3,17\) I, NXTLEN, NSTEPU, TIME, STEP\(I\)) N
+(*  17 FORMAT \(' INT   I LEN # T DT ',I6,I4,I9,F12.6,1P,E10.2\)) N
+(*     CALL FLUSH\(3\)) N
+(*     END IF) N
+(*) N
+(* Re-determine list if current time exceeds the boundary.) N
+(      ) p
+(if) K
+(\(time>tlistq\) ) p
+(goto) K
+( 10) p n
+(      ) S
+(if) K
+(\(step\(i\)<1.0d-14\)) p
+(then) K n
+(         ) p
+(WRITE) K
+(\(3,*\)') p
+( BAD STEP ) str
+(',i,step\(i\),t0\(i\)/step\(i\)) p n
+(         ) S
+(CALL) K
+( ) p
+(gpfree) l n
+(         ) p
+(STOP) K n
+(      ) p
+(endif) K n
+(*) c n
+(* Check new KS & output, advance KS/chain and predict at end of block.) N
+(      ) p
+(if) K
+(\(tprev) p
+(\271) sy
+(time\)) p
+(then) K n
+(* Save current block time \(used for termination of regularizations\).) c n
+(         tblock = time) p n
+(         ) S
+(if) K
+(\(ireg>0\)) p
+(then) K n
+(            time = tprev) p n
+(            iphase = 1) N
+(            ) S
+(goto) K
+( 200) p n
+(         ) S
+(endif) K n
+(* Check next adjust time at the end of each integration cycle.) c n
+(         ) p
+(if) K
+(\(time>tadj\)) p
+(then) K n
+(            time = tadj) p n
+(            iphase = 3) N
+(            ) S
+(goto) K
+( 200) p n
+(         ) S
+(endif) K n
+(*) c n
+(         nblock = nblock + 1) p n
+(*) c n
+(* See whether to advance any close encounters at first new time.) N
+(         ) p
+(if) K
+(\(time>tprev\)) p
+(then) K n
+(            ) p
+(CALL) K
+( ) p
+(subint) l
+(\(iq,ncpert,icpert,i10\)) p n
+(            ) S
+(if) K
+(\(iq<0\) ) p
+(goto) K
+( 5) p n
+(intgrt.F) (Page 2/7) (May 16, 02 23:25) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 3
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(         ) p
+(endif) K n
+(*) c n
+(* Predict the first block of particles to be integrated \(order FDOT or D2\). ) N
+(         next = ) p
+(MIN) K
+(\(nxtlen,npipe\)) p n
+(         ) S
+(do) K
+( ii = 1,next) p n
+(            j = nxtlst\(ii\)) N
+(            s = time - t0\(j\)) N
+(            s1 = 1.5d0*s) N
+(            s2 = 2.d0*s) N
+(            s3 = s1*s2*s) N
+(            s4 = 0.75d0*s**4) N
+(            ) S
+(do) K
+( kk = 1,3) p n
+(               x\(kk,j\) = \(\(fdot\(kk,j\)*s + f\(kk,j\)\)*s + x0dot\(kk,j\)\)*s) N
+(     &                                               + x0\(kk,j\)) N
+(               xdot\(kk,j\) = \(fdot\(kk,j\)*s1 + f\(kk,j\)\)*s2 + x0dot\(kk,j\)) N
+(               xgp\(kk,ii\) = d2\(kk,j\)*s4 + x\(kk,j\)) N
+(               vgp\(kk,ii\) = d2\(kk,j\)*s3 + xdot\(kk,j\)) N
+(            ) S
+(enddo) K n
+(         ) p
+(enddo) K n
+(      ) p
+(endif) K n
+(*) c n
+(* Define indices for updating next and correcting previous block.) N
+( 40   kp1 = 1) p n
+(      kp2 = next) N
+(      kcorr = 0) N
+(      nspert = 0) N
+(      jnext = 0) N
+(      np = 0) N
+(      ) S
+(CALL) K
+( ) p
+(g6_set_ti) l
+(\(gpid,time\)) p n
+(      tmin = 1.0d+10) N
+(*) c n
+(* Set pointers and copy all block values of F, FDOT & PHI to GRAPE variables.) N
+(      ) p
+(do) K
+( k = 1,nxtlen) p n
+(         j = nxtlst\(k\)) N
+(         gpaddr\(k\) = j - ifirst) N
+(         gpindx\(k\) = j) N
+(         ) S
+(do) K
+( kk = 1,3) p n
+(            fgp\(kk,k\) = 2.d0*f\(kk,j\)) N
+(            f1gp\(kk,k\) = 6.d0*fdot\(kk,j\)) N
+(         ) S
+(enddo) K n
+(         phgp\(k\) = phi\(j\)) p n
+(      ) S
+(enddo) K n
+(*) c n
+(* Loop over new block \(calculate first, predict next & correct previous\).) N
+(      ) p
+(do) K
+( ii = 1,nxtlen,npipe) p n
+(*) c n
+(         nn = n - npairs) p n
+(         np0 = np) N
+(         np = nxtlen - ii + 1) N
+(         np = ) S
+(MIN) K
+(\(np,npipe\)) p n
+(*) c n
+(         ) p
+(CALL) K
+( ) p
+(g6calc_firsthalf) l
+(\(gpid,nn,np,gpindx\(ii\),) p n
+(     &                         xgp\(1,ii\),vgp\(1,ii\),) N
+(     &                         fgp\(1,ii\),f1gp\(1,ii\),phgp\(ii\),) N
+(     &                         eps2,gph2\)) N
+(*) c n
+(* Predict next block \(if any\) while GRAPE is busy \(order FDOT or D2\).) N
+(         ) p
+(if) K
+(\(kp2) p
+(\263) sy
+(nxtlen\) ) p
+(goto) K
+( 70) p n
+(         kp1 = kp2 + 1) N
+(         kp2 = kp2 + ) S
+(MIN) K
+(\(nxtlen-kp2,npipe\)) p n
+(         ) S
+(do) K
+( k = kp1,kp2) p n
+(            j = nxtlst\(k\)) N
+(            s = time - t0\(j\)) N
+(            s1 = 1.5d0*s) N
+(            s2 = 2.d0*s) N
+(            s3 = s1*s2*s) N
+(            s4 = 0.75d0*s**4) N
+(            ) S
+(do) K
+( kk = 1,3) p n
+(               x\(kk,j\) = \(\(fdot\(kk,j\)*s + f\(kk,j\)\)*s + x0dot\(kk,j\)\)*s) N
+(     &                                               + x0\(kk,j\)) N
+(               xdot\(kk,j\) = \(fdot\(kk,j\)*s1 + f\(kk,j\)\)*s2 + x0dot\(kk,j\)) N
+(               xgp\(kk,k\) = d2\(kk,j\)*s4 + x\(kk,j\)) N
+(               vgp\(kk,k\) = d2\(kk,j\)*s3 + xdot\(kk,j\)) N
+(            ) S
+(enddo) K n
+(         ) p
+(enddo) K n
+(*) c n
+(intgrt.F) (Page 3/7) (May 16, 02 23:25) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (4) 4
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(* Predict X & XDOT of active c.m. & KS components during first loop.) c n
+( 70      ) p
+(if) K
+(\(kcorr) p
+(\272) sy
+(0\)) p
+(then) K n
+(            ) p
+(do) K
+( l = 1,ncpert) p n
+(               j = icpert\(l\)) N
+(               ) S
+(CALL) K
+( ) p
+(xvpred) l
+(\(j,-2\)) p n
+(               zz = 1.d0) N
+(* Distinguish between low and high-order prediction of U & UDOT.) c n
+(               ) p
+(if) K
+(\(gamma\(j-n\)>1.0d-04\) zz = 0.d0) p n
+(               ) S
+(CALL) K
+( ) p
+(ksres2) l
+(\(j-n,j1,j2,zz\)) p n
+(            ) S
+(enddo) K n
+(*) c n
+(* See whether short time-step list needs updating \(skip block > 32\).) N
+(            ) p
+(if) K
+(\(nxtlen) p
+(\243) sy
+(32\)) p
+(then) K n
+(               ) p
+(CALL) K
+( ) p
+(short) l
+(\(nxtlen,nxtlst\)) p n
+(            ) S
+(endif) K n
+(            kcorr = 1) p n
+(         ) S
+(else) K n
+(* Correct previous block and set new steps.) c n
+(            ) p
+(do) K
+( k = 1,np0) p n
+(               jnext = jnext + 1) N
+(               i = nxtlst\(jnext\)) N
+(               s = time - t0\(i\)) N
+(               ) S
+(if) K
+(\(s>0.d0\)) p
+(then) K n
+(                  phi\(i\) = potz\(k\)) p n
+(                  ) S
+(CALL) K
+( ) p
+(nbcorr) l
+(\(i,ireg,ncpert,icpert,a\(1,k\),adot\(1,k\)\)) p n
+(               ) S
+(endif) K n
+(               tmin = ) p
+(MIN) K
+(\(tnext\(i\),tmin\)) p n
+(            ) S
+(enddo) K n
+(         ) p
+(endif) K n
+(*) c n
+(         gperr = g6calc_lasthalf\(gpid,nn,np,gpindx\(ii\),) p n
+(     &                           xgp\(1,ii\),vgp\(1,ii\),) N
+(     &                           eps2,gph2,gpacc,gpjerk,gppot\)) N
+(* --------------------------------) c n
+(      ) p
+(IF) K
+( \(N>10\) ) p
+(GO TO) K
+( 7777) p n
+(         JJ = g6_changed_index\(0\)) N
+(         ) S
+(IF) K
+( \(JJ) p
+(\263) sy
+(0\) ) p
+(THEN) K n
+(         ) p
+(WRITE) K
+( \(3,777\) JJ, NSTEPI) p n
+(  777    ) S
+(FORMAT) K
+( \(') p
+( WATCH!    JJ NSTEPI ) str
+(',I7,I12\)) p n
+(         ) S
+(DO) K
+( 780 LL = 1,np) p n
+(         jnext = jnext + 1) N
+(         j = nxtlst\(jnext\)) N
+(         ) S
+(ERR) k
+( = 0.0) p n
+(         FD2 = 0.0) N
+(         ) S
+(DO) K
+( KK = 1,3) p n
+(         ) S
+(ERR) k
+( = ERR + \(6.0*FDOT\(KK,J\) - gpjerk\(KK,LL\)\)**2) p n
+(         FD2 = FD2 + 36.0*FDOT\(KK,J\)**2) N
+(         ) S
+(ENDDO) K n
+(         ) p
+(ERR) k
+( = ) p
+(SQRT) K
+(\(ERR/FD2\)) p n
+(         ) S
+(IF) K
+( \(ERR>0.1\) ) p
+(THEN) K n
+(         ) p
+(WRITE) K
+( \(3,778\) J,\(6.0*FDOT\(kk,j\),kk=1,3\),\(gpjerk\(kk,ll\),kk=1,3\),) p n
+(     &                 STEP\(J\)) N
+(  778    ) S
+(FORMAT) K
+( \(') p
+( J FD jerk DT ) str
+(',I6,1P,3E10.2,2X,3E10.2,E10.1\)) p n
+(         ) S
+(END) K
+( ) p
+(IF) K n
+(  780    ) p
+(CONTINUE) K n
+(         ) p
+(CALL) K
+( ) p
+(FLUSH) l
+(\(3\)) p n
+(         ) S
+(CALL) K
+( ) p
+(GPFREE) l n
+(         ) p
+(STOP) K n
+(         ) p
+(END) K
+( ) p
+(IF) K n
+( 7777 ) p
+(CONTINUE) K n
+(* --------------------------------) c n
+(*) N
+(* Check for hardware error.) N
+(         ) p
+(if) K
+(\(gperr) p
+(\271) sy
+(0\)) p
+(then) K n
+(            ) p
+(WRITE) K
+(\(3,*\)') p
+(GRAPE HARDWARE ERROR: RESET REQUIRED 1) str
+(',time) p n
+(            ) S
+(WRITE) K
+(\(3,*\)') p
+(g6calc_lasthalf returned ) str
+(',gperr,') p
+( in intgrt) str
+(') p n
+(            ) S
+(WRITE) K
+(\(3,*\)') p
+( II NP NXTLEN ) str
+(',ii,np,nxtlen) p n
+(            NCHIP = G6_PRINT_CHIP_STATUS\(0\)) N
+(            ) S
+(WRITE) K
+(\(3,75\)NCHIP) p n
+(   75       ) S
+(FORMAT) K
+(\(') p
+( NCHIP   ) str
+(',I5\)) p n
+(            ) S
+(CALL) K
+( ) p
+(gpwipe) l
+(\(gpid,time\)) p n
+(            ierr = ierr + 1) N
+(            ) S
+(if) K
+(\(ierr) p
+(\263) sy
+(10\)) p
+(then) K n
+(               ) p
+(WRITE) K
+(\(3,*\)') p
+( TOO MANY RESETS ) str
+(') p n
+(               ) S
+(WRITE) K
+(\(3,*\)') p
+( STOP AT TIME = ) str
+(',time) p n
+(               ) S
+(CALL) K
+( ) p
+(gpfree) l n
+(intgrt.F) (Page 4/7) (May 16, 02 23:25) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5) 5
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(               ) p
+(STOP) K n
+(            ) p
+(endif) K n
+(            ) p
+(CALL) K
+( ) p
+(gpsend) l n
+(            ) p
+(goto) K
+( 40) p n
+(         ) S
+(endif) K n
+(*) c n
+(* Copy results from GRAPE.) N
+(         ) p
+(do) K
+( k = 1,np) p n
+(            ) S
+(do) K
+( kk = 1,3) p n
+(               a\(kk,k\) = gpacc\(kk,k\)) N
+(               adot\(kk,k\) = gpjerk\(kk,k\)) N
+(            ) S
+(enddo) K n
+(            potz\(k\) = gppot\(k\)) p n
+(         ) S
+(enddo) K n
+(      ) p
+(enddo) K n
+(*) c n
+(* Correct last particles in block and set new steps.) N
+(      ) p
+(do) K
+( k = 1,np) p n
+(         jnext = jnext + 1) N
+(         i = nxtlst\(jnext\)) N
+(         phi\(i\) = potz\(k\)) N
+(         ) S
+(CALL) K
+( ) p
+(nbcorr) l
+(\(i,ireg,ncpert,icpert,a\(1,k\),adot\(1,k\)\)) p n
+(         tmin = ) S
+(MIN) K
+(\(tnext\(i\),tmin\)) p n
+(      ) S
+(enddo) K n
+(*) c n
+(* Send corrected X & XDOT and prediction variables & mass to GRAPE.) N
+(      gpt0 = time) p n
+(      ) S
+(do) K
+( ii = 1,nxtlen) p n
+(         i = nxtlst\(ii\)) N
+(         gpaddr\(ii\) = i - ifirst) N
+(         gpindx\(ii\) = i) N
+(* Copy all corrected coordinates & velocities \(only at the end\).) c n
+(         ) p
+(do) K
+( kk = 1,3) p n
+(            x\(kk,i\) = x0\(kk,i\)) N
+(            xdot\(kk,i\) = x0dot\(kk,i\)) N
+(         ) S
+(enddo) K n
+(         ) p
+(CALL) K
+( ) p
+(g6_set_j_particle) l
+(\(gpid,gpaddr\(ii\),gpindx\(ii\),gpt0,step\(i\),) p n
+(     &                          body\(i\),d2\(1,i\),fdot\(1,i\),f\(1,i\),) N
+(     &                          x0dot\(1,i\),x0\(1,i\)\)) N
+(      ) S
+(enddo) K n
+(*) c n
+(*     IF \(TIME.GT.34.775.AND.TIME.LT.34.783\) THEN) N
+(*     WRITE \(3,600\)  NXTLEN, IQ, TBLOCK-TPREV) N
+(* 600 FORMAT \(' WATCH!    NXTL IQ T-TB  ',I5,I4,1P,4E10.2\)) N
+(*     CALL FLUSH\(3\)) N
+(*     END IF) N
+(* Update time of current block at end of cycle.) N
+(      tprev = time) p n
+(*) c n
+(* Check optional histogram for active pipes \(excluding KS\).) N
+(      ) p
+(if) K
+(\(kz\(33\)>1\)) p
+(then) K n
+(         ) p
+(CALL) K
+( ) p
+(pipes) l
+(\(nxtlen\)) p n
+(      ) S
+(endif) K n
+(*) c n
+(* Exit on KS/merger termination, new multiple regularization or merger.) N
+(      ) p
+(if) K
+(\(iq) p
+(\271) sy
+(0\)) p
+(then) K n
+(         nbprev = 0) p n
+(         ) S
+(if) K
+(\(iq) p
+(\263) sy
+(4) p
+(\331) sy
+(iq) p
+(\271) sy
+(7\)) p
+(then) K n
+(            ) p
+(CALL) K
+( ) p
+(delay) l
+(\(iq,-1\)) p n
+(         ) S
+(else) K n
+(* Ensure correct KS index \(KSPAIR may denote second termination\).) c n
+(            kspair = kvec\(i10\)) p n
+(            iphase = iq) N
+(         ) S
+(endif) K n
+(         ) p
+(goto) K
+( 200) p n
+(      ) S
+(endif) K n
+(*) c n
+(* Perform optional high-velocity check on time-steps at major times.) N
+(      ) p
+(if) K
+(\(kz\(37\)>0) p
+(\331) sy
+(nhi>0\)) p
+(then) K n
+(         ) p
+(if) K
+(\() p
+(DMOD) K
+(\(time,stepm\)) p
+(\272) sy
+(0.d0\)) p
+(then) K n
+(            ) p
+(CALL) K
+( ) p
+(shrink) l n
+(            ) p
+(if) K
+(\(nhi>0\)) p
+(then) K n
+(               ) p
+(CALL) K
+( ) p
+(hivel) l
+(\(-1\)) p n
+(            ) S
+(endif) K n
+(         ) p
+(endif) K n
+(      ) p
+(endif) K n
+(intgrt.F) (Page 5/7) (May 16, 02 23:25) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (6) 6
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*) c n
+(* Include optional movie at commensurate times of STEPY.) N
+(*     if\(kz\(40\).gt.1\)then) N
+(*        if\(DMOD\(time,stepy\).eq.0.d0\)then) N
+(*           CALL movie) N
+(*        endif) N
+(*     endif) N
+(*) N
+(* Check integration of interstellar clouds.) N
+(      ) p
+(if) K
+(\(kz\(12\)<0\)) p
+(then) K n
+(         ) p
+(if) K
+(\() p
+(DMOD) K
+(\(time,stepcl\)) p
+(\272) sy
+(0.d0\)) p
+(then) K n
+(            ) p
+(CALL) K
+( ) p
+(clint) l n
+(         ) p
+(endif) K n
+(      ) p
+(endif) K n
+(*) c n
+(* Check optional disk shocking and mass loss time at end of block.) N
+(      ) p
+(if) K
+(\(kz\(19\)) p
+(\271) sy
+(0\)) p
+(then) K n
+(* Delay until time commensurate with 1000-year step \(new polynomials\).) c n
+(         ) p
+(if) K
+(\() p
+(DMOD) K
+(\(time,stepx\)) p
+(\272) sy
+(0.d0\)) p
+(then) K n
+(*) c n
+(* Include optional updating of the astrophysical time scale.) N
+(            ) p
+(if) K
+(\(kz\(13\)) p
+(\271) sy
+(0\)) p
+(then) K n
+(               ) p
+(CALL) K
+( ) p
+(tnew) l n
+(            ) p
+(endif) K n
+(*) c n
+(* Check astrophysical time for optional disk shock \(next integer TIME\).) N
+(            ) p
+(if) K
+(\(kz\(12\)>0) p
+(\331) sy
+(DMOD) K
+(\(time,1.d0\)) p
+(\272) sy
+(0.d0\)) p
+(then) K n
+(               ) p
+(if) K
+(\(\(time+toff\)*tscale>tshock\)) p
+(then) K n
+(                  ) p
+(CALL) K
+( ) p
+(shock) l n
+(                  iq = -1) p n
+(               ) S
+(endif) K n
+(            ) p
+(endif) K n
+(*) c n
+(* Check next time for mass loss.) N
+(            ) p
+(if) K
+(\(time>tmdot\)) p
+(then) K n
+(               ) p
+(if) K
+(\(kz\(19\)>4\)) p
+(then) K n
+(                  ) p
+(CALL) K
+( ) p
+(mdot2) l n
+(               ) p
+(elseif) K
+(\(kz\(19\)>0\)) p
+(then) K n
+(                  ) p
+(CALL) K
+( ) p
+(mloss) l n
+(               ) p
+(endif) K n
+(            ) p
+(endif) K n
+(*) c n
+(* Ensure full sorting after significant changes \(shock or new NPAIRS\).) N
+(            ) p
+(if) K
+(\(iq<0) p
+(\332) sy
+(iphase<0\)) p
+(then) K n
+(               ) p
+(goto) K
+( 6) p n
+(            ) S
+(endif) K n
+(         ) p
+(endif) K n
+(      ) p
+(else) K n
+(         ) p
+(if) K
+(\(kz\(12\)>1) p
+(\331) sy
+(DMOD) K
+(\(time,1.d0\)) p
+(\272) sy
+(0.d0\)) p
+(then) K n
+(            ) p
+(if) K
+(\(\(time+toff\)*tscale>tshock\)) p
+(then) K n
+(               ) p
+(CALL) K
+( ) p
+(shock) l n
+(               ) p
+(goto) K
+( 6) p n
+(            ) S
+(endif) K n
+(         ) p
+(endif) K n
+(      ) p
+(endif) K n
+(*) c n
+(* Advance counters and check timer & optional COMMON save \(NSUB = 0\).) N
+(      ntimer = ntimer + nxtlen) p n
+(      nsteps = nsteps + nxtlen) N
+(*) c n
+(* Check optional time sharing \(release GRAPE if elapsed CPU > RATION\).) N
+(      ) p
+(if) K
+(\(kz\(38\)>0) p
+(\331) sy
+(ntimer>nmax\)) p
+(then) K n
+(         ) p
+(CALL) K
+( ) p
+(cputim) l
+(\(tcomp\)) p n
+(         share = tcomp - tcomp0) N
+(         ) S
+(if) K
+(\(share>ration\)) p
+(then) K n
+(            tcomp0 = tcomp) p n
+(            ) S
+(goto) K
+( 165) p n
+(         ) S
+(else) K n
+(            ) p
+(goto) K
+( 10) p n
+(         ) S
+(endif) K
+( ) p n
+(      ) S
+(endif) K n
+(*) c n
+(      ) p
+(if) K
+(\(n>5000) p
+(\331) sy
+(ntimer<10*nmax\) ) p
+(goto) K
+( 10) p n
+(      ) S
+(if) K
+(\(n) p
+(\243) sy
+(5000) p
+(\331) sy
+(ntimer<nmax\) ) p
+(goto) K
+( 10) p n
+( 165  ntimer = 0) N
+(*) c n
+(intgrt.F) (Page 6/7) (May 16, 02 23:25) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (7) 7
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(* Check optional safety dump on unit #1.) c n
+(      ) p
+(if) K
+(\(nsteps) p
+(\263) sy
+(250*nmax) p
+(\331) sy
+(nsub) p
+(\272) sy
+(0\)) p
+(then) K n
+(         nsteps = 0) p n
+(         ) S
+(if) K
+(\(kz\(1\)>1\) ) p
+(CALL) K
+( ) p
+(mydump) l
+(\(1,1\)) p n
+(      ) S
+(endif) K n
+(*) c n
+(* Include facility for termination of run \(create dummy file STOP\).) N
+(      ) p
+(OPEN) K
+(\(99,file=') p
+(STOP) str
+(',status=') p
+(old) str
+(',form=') p
+(formatted) str
+(',iostat=io\)) p n
+(      ) S
+(if) K
+(\(io) p
+(\272) sy
+(0\)) p
+(then) K n
+(         ) p
+(CLOSE) K
+(\(99\)) p n
+(         ) S
+(if) K
+(\(nsub) p
+(\272) sy
+(0\) ) p
+(WRITE) K
+(\(3,170\)) p n
+( 170     ) S
+(FORMAT) K
+(\(/,9x,') p
+(termination by manual intervention) str
+('\)) p n
+(         cpu = 0.d0) N
+(      ) S
+(endif) K n
+(*) c n
+(* See whether GRAPE should be released for another user \(then wait\).) N
+(      ) p
+(if) K
+(\(kz\(38\)>0\)) p
+(then) K n
+(         ) p
+(CALL) K
+( ) p
+(gpfree) l n
+(         ) p
+(CALL) K
+( ) p
+(mysleep) l
+(\(1\)) p n
+(         gpstat = 0) N
+(         iphase = -2) N
+(         isend = -1) N
+(         ) S
+(if) K
+(\(cpu>0.d0\) ) p
+(goto) K
+( 1) p n
+(      ) S
+(endif) K n
+(*) c n
+(* Repeat cycle until elapsed computing time exceeds the limit.) N
+(      ) p
+(CALL) K
+( ) p
+(cputim) l
+(\(tcomp\)) p n
+(      ) S
+(if) K
+(\(tcomp<cpu\) ) p
+(goto) K
+( 10) p n
+(*) c n
+(* Do not terminate during triple, quad or chain regularization.) N
+(      ) p
+(if) K
+(\(nsub>0\) ) p
+(goto) K
+( 10) p n
+(*) c n
+(* Terminate run with optional COMMON save.) N
+(      ) p
+(if) K
+(\(kz\(1\)>0\)) p
+(then) K n
+(         cputot = cputot + tcomp - cpu0) p n
+(         ) S
+(CALL) K
+( ) p
+(mydump) l
+(\(1,1\)) p n
+(         ) S
+(WRITE) K
+(\(3,190\)time+toff,tcomp,cputot/60.0,errtot,detot) p n
+(  190    ) S
+(FORMAT) K
+(\(//,9x,') p
+(COMMON SAVED AT TIME =) str
+(',f8.2,') p
+(  TCOMP =) str
+(',f7.1,) p n
+(     &                ') S
+(  CPUTOT =) str
+(',f6.1,') p
+(  ERRTOT =) str
+(',f10.6,) p n
+(     &                ') S
+(  DETOT =) str
+(',f10.6\)) p n
+(      ) S
+(endif) K n
+(*) c n
+(* Liberate GRAPE for next run before stopping \(unless done above\).) N
+(      ) p
+(if) K
+(\(kz\(38\)) p
+(\272) sy
+(0) p
+(\332) sy
+(cpu>0.d0\)) p
+(then) K n
+(         ) p
+(CALL) K
+( ) p
+(gpfree) l n
+(      ) p
+(endif) K n
+(      ) p
+(STOP) K n
+(*) c n
+(  200 TTOT = TIME + TOFF) p n
+(      TPHYS = TTOT*TSTAR) N
+(*) c n
+(      ) p
+(RETURN) K n
+(      ) p
+(END) K n
+(***) c n
+(intgrt.F) (Page 7/7) (May 16, 02 23:25) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Simple Shell Script to allow easy comparison of same files in
+# different subdirs, R.Sp. May 2002
+#
+# Usage: @comp path dir1 dir2 filename
+#
+LOC=$1
+DIR1=$2
+DIR2=$3
+FILE=$4
+if test ! -e $LOC/$DIR1/$FILE ;
+        then echo "file $LOC/$DIR1/$FILE does not exist"
+        fi 
+if test ! -e $LOC/$DIR2/$FILE ;
+        then echo "file $LOC/$DIR2/$FILE does not exist"
+        exit
+        fi  
+CHK1=/tmp/$DIR1.$FILE.$$
+CHK2=/tmp/$DIR2.$FILE.$$
+CHK3=/tmp/chk.$FILE.$$
+ls -la $LOC/$DIR1/$FILE | awk '{print $5,$6,$7,$8}' > $CHK1
+ls -la $LOC/$DIR2/$FILE | awk '{print $5,$6,$7,$8}' > $CHK2
+diff $CHK1 $CHK2 > $CHK3
+if test -s $CHK3 ;
+       then echo $DIR1/$FILE >> $CHK1;
+            echo $DIR2/$FILE >> $CHK2;
+            \rm $CHK3;
+            diff $CHK1 $CHK2 
+       fi
+\rm $CHK1 $CHK2
+diff $LOC/$DIR1/$FILE $LOC/$DIR2/$FILE
+exit
+

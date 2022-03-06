@@ -1,0 +1,49 @@
+#
+# G6CONFIG.DAT0 --- GRAPE-6 CLUSTER CONFIGULATION FILE
+# Copyright J. Makino March 6, 2000, ALL rights reserved
+#
+# Sample
+#
+SYSVERSION 200
+IPLINK 0
+FOLINK 0 
+MAXCHIP 32
+# FOCONF is the TTF file for FPGA on the processor board
+FOCONF /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wfifo_pb2.ttf
+FOCONF4 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wfifo_pb2a.ttf
+FOCONF6 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wfifo_pb2a.ttf
+MODFOCONF /usr/local/lib/grape6/grape6board/processor_board/fo_unit_with_fifo_fc2.ttf
+#
+#FOCONF0 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wf_pb2_thru_0.ttf
+#FOCONF1 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wf_pb2_thru_0.ttf
+#FOCONF2 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wf_pb2_thru_0.ttf
+#FOCONF3 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wf_pb2_thru_0.ttf
+#FOCONF5 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wf_pb2_thru_0.ttf
+#FOCONF4 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wf_pb2a_thru_0.ttf
+#FOCONF6 /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wf_pb2a_thru_0.ttf
+#MODFOCONF /usr/local/lib/grape6/grape6board/processor_board/fo_unit_fc_thru.ttf
+#
+# b is for backplane/usr/local/lib/grape6. for FOLINKCONF and CBFOCONFC
+#
+FOLINKCONF /usr/local/lib/grape6/grape6board/pb_jp/foconvert.ttf
+#FOLINKCONF /usr/local/lib/grape6/grape6board/pb_jp/foconvertb.ttf
+#
+CBFOCONFA /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wfifo_cb2.ttf
+#CBFOCONFA /usr/local/lib/grape6/grape6board/processor_board/fo_unit_wfifo_cb2_thru_0.ttf
+# CBFOCONFA is TTF file for the top level FPGA (with internal FIFO) on CB
+#
+CBFOCONFB /usr/local/lib/grape6/grape6board/processor_board/fo_unit_2p_cb2.ttf
+#CBFOCONFB /usr/local/lib/grape6/grape6board/processor_board/fo_unit_2p_cb2_thru_1.ttf
+# CBFOCONFB is TTF file for the second level FPGAs (without internal FIFO) on CB
+#
+#CBFOCONFC /usr/local/lib/grape6/grape6board/pb_jp/cbfin2.ttf
+CBFOCONFC /usr/local/lib/grape6/grape6board/pb_jp/cbfin2b.ttf
+#CBFOCONFC is TTF file for the data receiever FPGAs on CB
+#MBUFTYPE Fairchild-LCX16374A
+#MBUFTYPE TI-ALVCH16374
+#MBUFTYPE Toshiba-LCX16374A
+MBUFTYPE Fairchild-LCX16374A-New
+#MBUFTYPE TEST
+MBUFTYPE Fairchild-LCX16374A-V3
+JPSPACE 12
+IJPDMA 1
