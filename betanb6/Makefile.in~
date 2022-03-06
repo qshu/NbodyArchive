@@ -1,0 +1,26 @@
+#
+# Makefile for NBODY6++ June 2003 R.Sp., Changed by Long Wang on Aug 20, 2014
+#
+# Please use:
+#    make
+#    make install
+#
+# Extra Tools
+#    dump_btoa   (A small routine for transfering between unformatted 
+#                fort.1/2 and formatted dump.dat. dump.dat is very 
+#                useful when you want to restart the simulation in a
+#                different system)
+
+RESULT = nbody6++@RESULT@
+INSTALLDIR = @prefix@
+
+MAIN: 
+	$(MAKE) -C ./build
+
+clean: 
+	rm *.o 
+
+install: ./build/$(RESULT) ./build/dump_btoa
+	@[ -d $(INSTALLDIR)/bin ] || mkdir $(INSTALLDIR)/bin
+	@[ -d $(INSTALLDIR)/share/doc ] || mkdir $(INSTALLDIR)/share/doc
+	mv ./build/$(RESULT) ./build/dump_btoa $(INSTALLDIR)/bin

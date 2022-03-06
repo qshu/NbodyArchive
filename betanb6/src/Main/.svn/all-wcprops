@@ -1,0 +1,1997 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/repos/betanb6/!svn/ver/2/src/Main
+END
+giant.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/giant.f
+END
+gpupot.mdot.cu
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/repos/betanb6/!svn/ver/2/src/Main/gpupot.mdot.cu
+END
+sort_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/sort_tlist.f
+END
+reg.avx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/reg.avx.cpp
+END
+add_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/add_tlist.f
+END
+pfac.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/pfac.f
+END
+recoil.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/recoil.f
+END
+expel.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/expel.f
+END
+unpert.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/unpert.f
+END
+jpred_int.f
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/jpred_int.f
+END
+flush.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/flush.f
+END
+phicor.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/phicor.f
+END
+chdata.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chdata.f
+END
+comenv.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/comenv.f
+END
+kcpert_cor.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/kcpert_cor.f
+END
+merge.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/merge.f
+END
+file_init.F
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/file_init.F
+END
+reg.sse.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/reg.sse.cpp
+END
+kick2.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/kick2.f
+END
+rename_ks.F
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/rename_ks.F
+END
+chstab.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chstab.f
+END
+events.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/events.f
+END
+verify.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/verify.f
+END
+zfuncs.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/zfuncs.f
+END
+fcloud.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/fcloud.f
+END
+gcinit.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/gcinit.f
+END
+tstab.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/tstab.f
+END
+corerd.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/corerd.f
+END
+fpoly1_mpi.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/fpoly1_mpi.f
+END
+cstab4.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cstab4.f
+END
+start3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/start3.f
+END
+string_left.f
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/src/Main/string_left.f
+END
+ksres.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ksres.f
+END
+gpunb.gpu.cu
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/gpunb.gpu.cu
+END
+subsys.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/subsys.f
+END
+util_gpu.F
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/repos/betanb6/!svn/ver/2/src/Main/util_gpu.F
+END
+remove_ks.F
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/remove_ks.F
+END
+ksperi.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ksperi.f
+END
+findm.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/findm.f
+END
+assess.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/assess.f
+END
+difsy3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/difsy3.f
+END
+nbrem.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/nbrem.f
+END
+gcint.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/gcint.f
+END
+gntage.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/gntage.f
+END
+brake2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/brake2.f
+END
+xvpred.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xvpred.f
+END
+bsetid.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/bsetid.f
+END
+chpot.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/chpot.f
+END
+xbpredall.f
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/xbpredall.f
+END
+orbit.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/orbit.f
+END
+qpmod.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/qpmod.f
+END
+ghost.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ghost.f
+END
+mlwind.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/mlwind.f
+END
+eccmod.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/eccmod.f
+END
+swcond.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/swcond.f
+END
+hrdiag.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hrdiag.f
+END
+derqp3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/derqp3.f
+END
+exchange_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/repos/betanb6/!svn/ver/2/src/Main/exchange_tlist.f
+END
+hicirc.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hicirc.f
+END
+imf.f
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/repos/betanb6/!svn/ver/2/src/Main/imf.f
+END
+chaos0.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chaos0.f
+END
+hirect.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hirect.f
+END
+chinit.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chinit.f
+END
+cstab5.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cstab5.f
+END
+start4.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/start4.f
+END
+chterm.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chterm.f
+END
+touch.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/touch.f
+END
+kstide.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/kstide.f
+END
+synch.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/synch.f
+END
+zcnsts.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/zcnsts.f
+END
+irr.avx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/irr.avx.cpp
+END
+stepk.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/stepk.f
+END
+extend.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/extend.f
+END
+quad.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/quad.f
+END
+nbrest.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/nbrest.f
+END
+chaos.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/chaos.f
+END
+steps.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/steps.f
+END
+expel2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/expel2.f
+END
+hut.f
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/repos/betanb6/!svn/ver/2/src/Main/hut.f
+END
+binout.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/binout.f
+END
+nbody6.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/nbody6.F
+END
+difsy4.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/difsy4.f
+END
+reset2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/reset2.f
+END
+cloud.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/cloud.f
+END
+lagr2.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/lagr2.f
+END
+induce.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/induce.f
+END
+brake3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/brake3.f
+END
+data.F
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/data.F
+END
+fpoly0.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/fpoly0.F
+END
+rpmax2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/rpmax2.f
+END
+irr.sse.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/irr.sse.cpp
+END
+delay_add_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/repos/betanb6/!svn/ver/2/src/Main/delay_add_tlist.f
+END
+offset.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/offset.f
+END
+ksin2.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ksin2.f
+END
+jacobi.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/jacobi.f
+END
+scale.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/scale.F
+END
+kspred.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/kspred.f
+END
+fchain.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/fchain.f
+END
+fhalo.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/fhalo.f
+END
+levels.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/levels.f
+END
+delay_remove_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/betanb6/!svn/ver/2/src/Main/delay_remove_tlist.f
+END
+ksrect.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ksrect.f
+END
+fpcorr.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/fpcorr.F
+END
+imf2.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/imf2.f
+END
+derqp4.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/derqp4.f
+END
+xtf.f
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/repos/betanb6/!svn/ver/2/src/Main/xtf.f
+END
+mdot.F
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/mdot.F
+END
+fpoly1_ks.f
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/fpoly1_ks.f
+END
+newtev.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/newtev.f
+END
+sort1.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/sort1.f
+END
+cmfirr_ucor.f
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/src/Main/cmfirr_ucor.f
+END
+xtrnld.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xtrnld.f
+END
+coal.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/coal.f
+END
+transx.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/transx.f
+END
+cmfirr.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cmfirr.f
+END
+mrenv.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/mrenv.f
+END
+rmesc_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/src/Main/rmesc_tlist.f
+END
+energy.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/energy.f
+END
+block.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/block.f
+END
+nblist.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/nblist.f
+END
+shift_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/src/Main/shift_tlist.f
+END
+input.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/input.F
+END
+permit.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/permit.f
+END
+zare.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/zare.f
+END
+endreg.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/endreg.f
+END
+star.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/star.f
+END
+nbint.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/nbint.F
+END
+mydump.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/mydump.F
+END
+remove_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/repos/betanb6/!svn/ver/2/src/Main/remove_tlist.f
+END
+ksapo.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ksapo.f
+END
+merge2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/merge2.f
+END
+nbpot.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/nbpot.f
+END
+update.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/update.F
+END
+cmfirr_cor.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/cmfirr_cor.f
+END
+modify.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/modify.F
+END
+rpmax.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/rpmax.f
+END
+dgcore.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/dgcore.f
+END
+ycopy.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ycopy.f
+END
+himax.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/himax.f
+END
+tchain.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/tchain.f
+END
+intgrt.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/intgrt.F
+END
+transq.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/transq.f
+END
+kslist.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/kslist.f
+END
+clint.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/clint.f
+END
+erel3.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/erel3.f
+END
+fpoly1.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/fpoly1.f
+END
+rl.f
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/repos/betanb6/!svn/ver/2/src/Main/rl.f
+END
+chfirr.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chfirr.f
+END
+qforce.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/qforce.f
+END
+chaos2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chaos2.f
+END
+fpoly2_mpi.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/fpoly2_mpi.f
+END
+physks.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/physks.f
+END
+ksphys.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ksphys.f
+END
+chain.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/chain.f
+END
+tperi.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/tperi.f
+END
+brake.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/brake.f
+END
+erel.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/erel.f
+END
+newsys.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/newsys.f
+END
+kcpert.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/kcpert.f
+END
+qtides.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/qtides.f
+END
+checkl.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/checkl.F
+END
+gpupot.gpu.cu
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/src/Main/gpupot.gpu.cu
+END
+short.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/short.f
+END
+roche.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/roche.f
+END
+dtchck.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/dtchck.f
+END
+escape.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/escape.f
+END
+iblock.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/iblock.f
+END
+kspert.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/kspert.f
+END
+ksreg.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ksreg.F
+END
+nbint_cor.f
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/nbint_cor.f
+END
+impact.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/impact.f
+END
+decide.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/decide.f
+END
+hcorr.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/hcorr.f
+END
+trflow.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/trflow.f
+END
+hpsort.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hpsort.f
+END
+kspoly.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/kspoly.f
+END
+kick.F
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/kick.F
+END
+giant2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/giant2.f
+END
+lagr.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/lagr.f
+END
+ysave.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ysave.f
+END
+stabl3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/stabl3.f
+END
+r2sort.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/r2sort.f
+END
+regcor_gpu.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/regcor_gpu.f
+END
+proto_star.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/proto_star.f
+END
+chmod_chain.f
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/src/Main/chmod_chain.f
+END
+mloss.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/mloss.f
+END
+delay.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/delay.f
+END
+stablz.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/stablz.f
+END
+output.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/output.F
+END
+himod.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/himod.f
+END
+cputim.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cputim.F
+END
+rchain.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/rchain.f
+END
+subint.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/subint.F
+END
+rsort.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/rsort.f
+END
+trans3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/trans3.f
+END
+hmdot.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/hmdot.f
+END
+erel4.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/erel4.f
+END
+fpoly2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/fpoly2.f
+END
+xtrnlf.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xtrnlf.f
+END
+fpert.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/fpert.f
+END
+const.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/const.f
+END
+xtpert.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xtpert.f
+END
+bhplot.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/bhplot.f
+END
+ichain.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ichain.f
+END
+xtrnlv.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xtrnlv.f
+END
+hiarch.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hiarch.f
+END
+shrink.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/shrink.f
+END
+indexx.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/indexx.f
+END
+grrad.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/grrad.f
+END
+triple.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/triple.f
+END
+tstep.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/tstep.f
+END
+ran2.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/ran2.f
+END
+insert.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/insert.F
+END
+tcirc.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/tcirc.f
+END
+invert.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/invert.f
+END
+chrect.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chrect.f
+END
+fpoly2_ks.f
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/fpoly2_ks.f
+END
+stablc.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/stablc.f
+END
+histab.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/histab.f
+END
+poti.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/poti.f
+END
+deform.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/deform.f
+END
+shrink_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/repos/betanb6/!svn/ver/2/src/Main/shrink_tlist.f
+END
+select.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/select.f
+END
+zero.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/zero.f
+END
+hut2.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/hut2.f
+END
+degen.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/degen.f
+END
+ficorr.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ficorr.F
+END
+slow.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/slow.f
+END
+giant3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/giant3.f
+END
+rpmin.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/rpmin.f
+END
+xtrnl0.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xtrnl0.F
+END
+ksint.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ksint.f
+END
+core.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/core.f
+END
+hotsys.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hotsys.f
+END
+delay_store_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/betanb6/!svn/ver/2/src/Main/delay_store_tlist.f
+END
+hidat.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/hidat.f
+END
+stabl4.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/stabl4.f
+END
+reinit.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/reinit.f
+END
+fnuc.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/fnuc.f
+END
+trdot.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/trdot.f
+END
+next_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/next_tlist.f
+END
+hmdot2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hmdot2.f
+END
+start.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/start.F
+END
+energy_mpi.F
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/energy_mpi.F
+END
+higrow.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/higrow.f
+END
+bindat.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/bindat.f
+END
+transk.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/transk.f
+END
+qpmod3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/qpmod3.f
+END
+kscorr.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/kscorr.f
+END
+imbhinit.F
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/repos/betanb6/!svn/ver/2/src/Main/imbhinit.F
+END
+bodies.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/bodies.f
+END
+fcorr.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/fcorr.F
+END
+trans4.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/trans4.f
+END
+reset.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/reset.f
+END
+k_step.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/k_step.f
+END
+regint.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/regint.f
+END
+adjust.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/adjust.F
+END
+findj.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/findj.f
+END
+setsys.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/setsys.f
+END
+spiral.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/spiral.f
+END
+tides2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/tides2.f
+END
+ellan.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ellan.f
+END
+remove.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/remove.f
+END
+mix.f
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/repos/betanb6/!svn/ver/2/src/Main/mix.f
+END
+peri.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/peri.f
+END
+switch.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/switch.f
+END
+cmfreg.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cmfreg.f
+END
+hipop.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/hipop.F
+END
+cloud0.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cloud0.f
+END
+chlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chlist.f
+END
+rkint.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/rkint.f
+END
+binpop.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/binpop.F
+END
+setup.F
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/setup.F
+END
+ksinit.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ksinit.F
+END
+qpmod4.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/qpmod4.f
+END
+stability.f
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/stability.f
+END
+ksterm.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ksterm.F
+END
+reduce.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/reduce.f
+END
+nstab.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/nstab.f
+END
+tides.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/tides.f
+END
+fclose.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/fclose.f
+END
+ksmod.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ksmod.f
+END
+cmbody.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cmbody.f
+END
+cstab2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cstab2.f
+END
+stumpf.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/stumpf.f
+END
+trdot2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/trdot2.f
+END
+renew.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/renew.f
+END
+efac2.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/efac2.f
+END
+ksparmpi.F
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/repos/betanb6/!svn/ver/2/src/Main/ksparmpi.F
+END
+xtrnlp.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xtrnlp.f
+END
+replace_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/betanb6/!svn/ver/2/src/Main/replace_tlist.f
+END
+edot.f
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/repos/betanb6/!svn/ver/2/src/Main/edot.f
+END
+tides3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/tides3.f
+END
+tpert.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/tpert.f
+END
+difsy1.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/difsy1.f
+END
+fdisk.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/fdisk.f
+END
+repair_tlist.f
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/repos/betanb6/!svn/ver/2/src/Main/repair_tlist.f
+END
+units.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/units.f
+END
+magbrk.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/magbrk.f
+END
+jpred.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/jpred.f
+END
+absorb.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/absorb.f
+END
+resolv.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/resolv.f
+END
+status.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/status.f
+END
+cmcorr.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cmcorr.f
+END
+newreg.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/newreg.f
+END
+custom_output.F
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/betanb6/!svn/ver/2/src/Main/custom_output.F
+END
+gpunb.velocity.cu
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/repos/betanb6/!svn/ver/2/src/Main/gpunb.velocity.cu
+END
+chfind.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/chfind.f
+END
+pot.avx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/pot.avx.cpp
+END
+instar.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/instar.F
+END
+vector.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/vector.f
+END
+binev.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/binev.f
+END
+matrix.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/matrix.f
+END
+search.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/search.f
+END
+hivel.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/hivel.f
+END
+hrplot.F
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/hrplot.F
+END
+ksres2.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/ksres2.f
+END
+derqp.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/derqp.f
+END
+encorr_mdot.F
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/src/Main/encorr_mdot.F
+END
+inclin.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/inclin.f
+END
+check.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/check.f
+END
+cstab3.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cstab3.f
+END
+expand.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/expand.f
+END
+imfbd.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/imfbd.f
+END
+cfuncs.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/cfuncs.f
+END
+efac3.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/efac3.f
+END
+redraw.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/redraw.f
+END
+eigenvalue.f
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repos/betanb6/!svn/ver/2/src/Main/eigenvalue.f
+END
+ecirc.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/ecirc.f
+END
+flyby.f
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/repos/betanb6/!svn/ver/2/src/Main/flyby.f
+END
+xcpred.f
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/betanb6/!svn/ver/2/src/Main/xcpred.f
+END
+pot.sse.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/repos/betanb6/!svn/ver/2/src/Main/pot.sse.cpp
+END

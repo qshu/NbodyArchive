@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/repos/betanb6/!svn/ver/2/samples
+END
+N10k_B1k.input
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/repos/betanb6/!svn/ver/2/samples/N10k_B1k.input
+END
+N2k_B500_T30.input
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/repos/betanb6/!svn/ver/2/samples/N2k_B500_T30.input
+END
+N16k.input
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/repos/betanb6/!svn/ver/2/samples/N16k.input
+END

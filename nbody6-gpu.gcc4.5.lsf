@@ -1,0 +1,8 @@
+#!/bin/sh
+#BSUB -q gpu_8
+#BSUB -a openmpi-qlc
+#BSUB -R 'select[type==any] span[ptile=1] rusage[ngpus=1]' 
+#BSUB -oo nbody6.job
+#BSUB -n 2
+mpirun.lsf --prefix "/usr/mpi/gcc/openmpi-1.3.2-qlc" -x "LD_LIBRARY_PATH=/export/cuda5/lib64:/export/gnucompile/gcc4.5/lib64:/export/gnucompile/gmp/lib:/export/gnucompile/mpc/lib:/export/gnucompile/mpfr/lib:/export/gnucompile/python/2.7.2/lib:/usr/mpi/gcc/openmpi-1.3.2-qlc/lib64" -x "OMP_NUM_THREADS=1" ~/bin/nbody6++.mpi.gpu < input 1> nbody6.out.$LSB_JOBID 2> nbody6.err.$LSB_JOBID
+exit

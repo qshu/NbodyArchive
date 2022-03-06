@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 25
+/repos/betanb6/!svn/ver/1
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/repos/betanb6/!svn/ver/2/configure
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/repos/betanb6/!svn/ver/3/Makefile.in
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/repos/betanb6/!svn/ver/2/configure.ac
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/repos/betanb6/!svn/ver/2/README
+END
