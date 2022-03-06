@@ -1,0 +1,1126 @@
+# @ shell=/bin/bash
+#
+# Sample script for LoadLeveler
+#
+# @ error = job.err.$(jobid).$(stepid)
+# @ output = job.out.$(jobid).$(stepid)
+# @ job_type = parallel
+# @ requirements = (Feature=="gpu")
+# @ node_usage= not_shared
+#
+# @ step_name = rs1
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs2
+# @ dependency = (rs1 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs3
+# @ dependency = (rs2 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs4
+# @ dependency = (rs3 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs5
+# @ dependency = (rs4 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs6
+# @ dependency = (rs5 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs7
+# @ dependency = (rs6 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs8
+# @ dependency = (rs7 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs9
+# @ dependency = (rs8 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs10
+# @ dependency = (rs9 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs11
+# @ dependency = (rs10 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs12
+# @ dependency = (rs11 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs13
+# @ dependency = (rs12 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs14
+# @ dependency = (rs13 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs15
+# @ dependency = (rs14 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs16
+# @ dependency = (rs15 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs17
+# @ dependency = (rs16 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs18
+# @ dependency = (rs17 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs19
+# @ dependency = (rs18 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs20
+# @ dependency = (rs19 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs21
+# @ dependency = (rs20 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs22
+# @ dependency = (rs21 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs23
+# @ dependency = (rs22 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs24
+# @ dependency = (rs23 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs25
+# @ dependency = (rs24 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs26
+# @ dependency = (rs25 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs27
+# @ dependency = (rs26 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs28
+# @ dependency = (rs27 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs29
+# @ dependency = (rs28 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs30
+# @ dependency = (rs29 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs31
+# @ dependency = (rs30 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs32
+# @ dependency = (rs31 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs33
+# @ dependency = (rs32 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs34
+# @ dependency = (rs33 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs35
+# @ dependency = (rs34 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs36
+# @ dependency = (rs35 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs37
+# @ dependency = (rs36 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs38
+# @ dependency = (rs37 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs39
+# @ dependency = (rs38 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs40
+# @ dependency = (rs39 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs41
+# @ dependency = (rs40 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs42
+# @ dependency = (rs41 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs43
+# @ dependency = (rs42 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs44
+# @ dependency = (rs43 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs45
+# @ dependency = (rs44 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs46
+# @ dependency = (rs45 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs47
+# @ dependency = (rs46 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs48
+# @ dependency = (rs47 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs49
+# @ dependency = (rs48 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs50
+# @ dependency = (rs49 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs51
+# @ dependency = (rs50 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs52
+# @ dependency = (rs51 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs53
+# @ dependency = (rs52 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs54
+# @ dependency = (rs53 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs55
+# @ dependency = (rs54 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs56
+# @ dependency = (rs55 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs57
+# @ dependency = (rs56 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs58
+# @ dependency = (rs57 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs59
+# @ dependency = (rs58 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs60
+# @ dependency = (rs59 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs61
+# @ dependency = (rs60 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs62
+# @ dependency = (rs61 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs63
+# @ dependency = (rs62 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs64
+# @ dependency = (rs63 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs65
+# @ dependency = (rs64 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs66
+# @ dependency = (rs65 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs67
+# @ dependency = (rs66 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs68
+# @ dependency = (rs67 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs69
+# @ dependency = (rs68 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs70
+# @ dependency = (rs69 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs71
+# @ dependency = (rs70 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs72
+# @ dependency = (rs71 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs73
+# @ dependency = (rs72 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs74
+# @ dependency = (rs73 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs75
+# @ dependency = (rs74 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs76
+# @ dependency = (rs75 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs77
+# @ dependency = (rs76 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs78
+# @ dependency = (rs77 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs79
+# @ dependency = (rs78 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs80
+# @ dependency = (rs79 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs81
+# @ dependency = (rs80 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs82
+# @ dependency = (rs81 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs83
+# @ dependency = (rs82 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs84
+# @ dependency = (rs83 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs85
+# @ dependency = (rs84 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs86
+# @ dependency = (rs85 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs87
+# @ dependency = (rs86 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs88
+# @ dependency = (rs87 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs89
+# @ dependency = (rs88 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs90
+# @ dependency = (rs89 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs91
+# @ dependency = (rs90 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs92
+# @ dependency = (rs91 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs93
+# @ dependency = (rs92 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs94
+# @ dependency = (rs93 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs95
+# @ dependency = (rs94 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs96
+# @ dependency = (rs95 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs97
+# @ dependency = (rs96 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs98
+# @ dependency = (rs97 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs99
+# @ dependency = (rs98 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+# @ step_name = rs100
+# @ dependency = (rs99 >= 0)
+# @ node = 8
+# @ tasks_per_node = 1
+# @ resources = ConsumableCpus(20)
+# @ network.MPI = sn_all,not_shared,us
+# @ wall_clock_limit = 24:00:00
+# @ notification = complete
+# @ notify_user = $(user)@rzg.mpg.de
+# @ queue
+#
+export OMP_NUM_THREADS=20
+export CUDA_PATH=${CUDA_HOME}
+module load gcc
+module load cuda
+module unload mpi.ibm
+module load mpi.ibm/1.3.0
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/opt/hdf5-1.8.14/lib
+export LD_RUN_PATH=$LD_RUN_PATH:~/opt/hdf5-1.8.14/lib
+
+cd ~/ptmp/R7_IMF2001_RG7.1/rs_thijsb
+mkdir rs$LOADL_STEP_ID
+cp rs fort.1 rs$LOADL_STEP_ID
+ln -sf rs$LOADL_STEP_ID/fort.2 fort.1
+cd rs$LOADL_STEP_ID
+
+# run the program
+poe ~/bin/nbody6++.avx.gpu.mpi.hdf5 <rs
