@@ -1,0 +1,6 @@
+--------------------------------------------------------------------------
+mpirun has exited due to process rank 1 with PID 24224 on
+node c0504 exiting without calling "finalize". This may
+have caused other processes in the application to be
+terminated by signals sent by mpirun (as reported here).
+--------------------------------------------------------------------------

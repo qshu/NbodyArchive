@@ -1,0 +1,46 @@
+Sender: LSF System <lsfadmin@c0904>
+Subject: Job 26607: <YohaiTest> Exited
+
+Job <YohaiTest> was submitted from host <laohu.bao.ac.cn> by user <yohai> in cluster <naoc_hpc>.
+Job was executed on host(s) <1*c0904>, in queue <gpu_8>, as user <yohai> in cluster <naoc_hpc>.
+                            <1*c0806>
+                            <1*c0506>
+                            <1*c1004>
+                            <1*c0608>
+                            <1*c1101>
+                            <1*c0603>
+                            <1*c0207>
+</ifs/home/yohai> was used as the home directory.
+</ifs/home/yohai/nb6/Run> was used as the working directory.
+Started at Sat Jan 26 01:52:15 2013
+Results reported at Sat Jan 26 03:52:23 2013
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J YohaiTest
+#BSUB -q gpu_8
+#BSUB -a openmpi-qlc
+#BSUB -R 'select[type==any] span[ptile=1] rusage[ngpus=1]' 
+#BSUB -oo nbody6-%J.job
+#BSUB -n 8
+mpirun.lsf --prefix "/usr/mpi/gcc/openmpi-1.3.2-qlc" -x "LD_LIBRARY_PATH=/export/CUDA/4.0/lib64:/usr/mpi/gcc/openmpi-1.3.2-qlc/lib64" ./nbody6.gpu < in-yohai-test.comment 1> nbody6-$LSB_JOBID.err 2>&1> nbody6-$LSB_JOBID.out
+exit
+
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :  57347.66 sec.
+    Max Memory :      1880 MB
+    Max Swap   :      7023 MB
+
+    Max Processes  :        17
+    Max Threads    :        37
+
+The output (if any) follows:
+

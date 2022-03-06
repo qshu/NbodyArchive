@@ -1,0 +1,79 @@
+
+    JOB 26505
+    ^^^^^^^^^
+Files:
+  nbody6-26505.out                     stdout
+  nbody6-26505.err                     stderr
+  nbody6-26505.job                     LSF output
+  dehnen-100-b1-50k.asc                input data on unit 10
+
+Runtime:
+  1h 00m 59s
+
+Status:
+  Killed
+
+Description:
+This run was 50k Dehnen model. Here are the its parameters, which I calculated
+with my own code:
+  Total mass = 0.998003
+  Half mass radius = 2.427408
+  Total energy = -0.082924
+So it's not scaled to the usual units, but it is in good virial equilibrium
+(Ekin = 0.0825); I ran it with KZ(22)=6 so this is supposed to fix the scaling
+issues.
+Note the VERY small eta, 1e-3 (both reg. and irr.), and VERY small adjustment
+and diagnosis time, 1e-4.
+The simulation got stuck stopped generating output after a few minutes. It did
+not respond to creating a STOP file and had to be killed manually.
+
+
+
+    JOB 26585
+    ^^^^^^^^^
+Files:
+  nbody6-26585.out                     stdout
+  nbody6-26585.err                     stderr
+  nbody6-26585.job                     LSF output
+  dehnen-100-b1-50k-flatcore.asc       input data on unit 10
+
+Runtime:
+  47m 41s
+
+Status:
+  Reached T = 0.0212402
+  Stopped using a STOP file
+  The word OVERFLOW appeared in the output 184,109 times.
+
+Description:
+This is a similar model with the innermost region (Rc = 0.1 * Rs) is replaced by
+a CONSTANT DENSITY core. This means removing 1914 stars and replacing them with
+the same number of stars, drawn from a uniform density. For the x-, y-, and
+z-velocities of the new stars were drawn from a normal distribution with the
+same dispersion as the original, removed, stars. This isn't the smartest thing
+but good enough and could be done quickly. Another difference is that I used the
+gpu_8 queue with n=8.
+
+
+
+    JOB 26607
+    ^^^^^^^^^
+Files:
+  nbody6-26607.out                     stdout
+  nbody6-26607.err                     stderr
+  nbody6-26607.job                     LSF output
+  dehnen-100-b1-50k-flatcore.asc       input data on unit 10
+
+Runtime:
+  2h 00m 08s
+
+Status:
+  Reached T = 4.91016
+  Stopped due to reaching TCOMP
+  The word OVERFLOW appeared in the output 309,151 times.
+
+Description:
+I used the same Dehnen model with flat core as job 26585, but reset some
+parameters in the input file to their more `usual' values:
+ETAI = ETAR = 0.01
+DTADJ = DELTAT = 0.01
