@@ -1,0 +1,36 @@
+
+
+   Jul 24, Manuel
+
+ $ ./configure --with-par=512k --enable-mcmodel=large
+
+ gcc version 5.5.0 (GCC)
+
+ /gpfs/software/juwels/stages/2018a/software/GCCcore/5.5.0/bin/gcc
+
+ /gpfs/software/juwels/stages/2018a/software/psmpi/5.2.1-1-GCC-7.3.0/bin/mpif77
+
+ /gpfs/software/juwels/stages/2018a/software/CUDA/9.1.85/bin
+
+CFLAGS='-g -O2'
+CPPFLAGS=''
+CUFLAGS=' -O3 -D CUDA_5 -I /gpfs/software/juwels/stages/2018a/software/CUDA/9.1.85/samples/common/inc'
+CXXFLAGS=' -O3 -fopenmp -I../include -march=native -fPIC -mcmodel=large -mavx ${OMP_FLAGS}'
+FCFLAGS=' -O3 -fPIC -mcmodel=large -fopenmp -I../include $(GPU_FLAGS) $(MPI_FLAGS) ${SIMD_FLAGS} ${OMP_FLAGS}'
+LDFLAGS=' -L'
+OPENMP_CXXFLAGS='-fopenmp'
+OPENMP_FCFLAGS='-fopenmp'
+[spurzem2@juwels01 Nbody6++GPU-Dec2019-bugfix]$ grep "FLAGS\=" config.log 
+CFLAGS='-g -O2'
+CPPFLAGS=''
+CUFLAGS=' -O3 -D CUDA_5 -I /gpfs/software/juwels/stages/2018a/software/CUDA/9.1.85/samples/common/inc'
+CXXFLAGS=' -O3 -fopenmp -I../include -march=native -fPIC -mcmodel=large -mavx ${OMP_FLAGS}'
+FCFLAGS=' -O3 -fPIC -mcmodel=large -fopenmp -I../include $(GPU_FLAGS) $(MPI_FLAGS) ${SIMD_FLAGS} ${OMP_FLAGS}'
+LDFLAGS=' -L'
+OPENMP_CXXFLAGS='-fopenmp'
+OPENMP_FCFLAGS='-fopenmp'
+
+
+Now choose PATH:
+
+/gpfs/software/juwels/stages/2018a/software/binutils/2.30-GCCcore-5.5.0/bin:/gpfs/software/juwels/stages/2018a/software/GCCcore/5.5.0/bin:/gpfs/software/juwels/stages/2018a/software/psmpi/5.2.1-1-GCC-7.3.0/bin:/gpfs/software/juwels/stages/2018a/software/CUDA/9.1.85/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/opt/ddn/ime/bin:/p/software/global/modules/opt/jsctools/0.1/bin
