@@ -1,0 +1,2567 @@
+%!PS-Adobe-3.0
+%%Title: intgrt.F
+%%For: Rainer Spurzem
+%%Creator: a2ps version 4.13
+%%CreationDate: Thu Mar 18 16:57:20 2004
+%%BoundingBox: 42 40 564 828
+%%DocumentData: Clean7Bit
+%%Orientation: Portrait
+%%Pages: 11
+%%PageOrder: Ascend
+%%DocumentMedia: A4kyo 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 842 def
+/sw 595 def
+/llx 42 def
+/urx 564 def
+/ury 828 def
+/lly 40 def
+/#copies 1 def
+/th 20.000000 def
+/fnfs 15 def
+/bfs 10.000000 def
+/cw 6.000000 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   767.000000 th add
+def
+/pmw 0 def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+] def
+/y [
+  pmh ph add 0 mul ph add
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(c#define HARP3DEBUG 1) p n
+(c#define HARP2TEST 1      ) N
+(c) c n
+(c   NOTE : precent code DOES NOT work on HARP2 at all...) N
+(c) N
+() p n
+(/*#define PEC2*/) N
+(#ifdef HARP2) N
+(#    undef HARP2) N
+(#    define HARP2 1) N
+(#) S
+(else) K n
+(#    define HARP2 0) p n
+(#) S
+(endif) K n
+(#ifdef HARP3) p n
+(#    undef HARP3) N
+(#    define HARP3 1) N
+(#) S
+(else) K n
+(#    define HARP3 0) p n
+(#) S
+(endif) K n
+(#ifdef GRAPE6) p n
+(#    undef GRAPE6) N
+(#    define GRAPE6 1) N
+(#) S
+(else) K n
+(#    define GRAPE6 0) p n
+(#) S
+(endif) K n
+() p n
+() N
+(#) S
+(if) K
+( \(HARP2 || HARP3 || GRAPE6\)) p n
+(#define USE_GRAPE 1      ) N
+(#   ifdef HARP2TEST) N
+(#      define HOST_FORCE 1) N
+(#   ) S
+(else) K n
+(#      define HOST_FORCE 0) p n
+(#   ) S
+(endif) K
+(      ) p n
+(#) S
+(else) K n
+(#   define USE_GRAPE 0      ) p n
+(#   define HOST_FORCE 1) N
+(#) S
+(endif) K
+(      ) p n
+(      ) S
+(SUBROUTINE) K
+( ) p
+(accel) L
+(\(i, acc, adot, phii\)) p n
+(*) c n
+(*) N
+(*       ------------------) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(      ) S
+(integer) K
+( i) p n
+(      ) S
+(integer) K
+( j,  k) p n
+(c     automatic j,  k) c n
+(      ) p
+(real) K
+(*8 acc\(3\), adot\(3\), phii) p n
+(      ) S
+(real) K
+(*8  dr2, dx\(3\), dv\(3\)) p n
+(      ) S
+(real) K
+(*8 drdv, dr2i, dr3i,dri) p n
+(c     automatic  dr2, dx, dv) c n
+(c     automatic drdv, dr2i, dr3i) N
+(      ) p n
+(            ) S
+(DO) K
+( 10 K = 1,3) p n
+(               acc\(k\) = 0.0) N
+(               adot\(k\) = 0.) N
+( 10         ) S
+(CONTINUE) K n
+(            phii = 0.0) p n
+(            ) S
+(DO) K
+( 15 J = 1,N) p n
+(               ) S
+(IF) K
+( \(J) p
+(\271) sy
+(I\) ) p
+(THEN) K n
+(*              ) c n
+() p 8 T (       ) S
+(if) K
+(\(j) p
+(\243) sy
+(nbh ) p
+(\331) sy
+( i) p
+(\243) sy
+(nbh\) ) p
+(then) K n
+(                   dr2 = 0) p n
+(               ) S
+(else) K
+( ) p
+(if) K
+(\(j) p
+(\243) sy
+(nbh ) p
+(\332) sy
+( i) p
+(\243) sy
+(nbh\) ) p
+(then) K n
+(                   dr2 = meps2) p n
+(               ) S
+(else) K n
+(                   dr2 = EPS2) p n
+(               ) S
+(endif) K n
+(               drdv = 0.) p n
+(               ) S
+(DO) K
+( 11 K = 1,3) p n
+(                  dx\(K\) = X\(K,J\) - X\(K,I\)) N
+(                  dv\(K\) = XDOT\(K,J\) - XDOT\(K,I\)) N
+(                  dr2 = dr2 + dx\(k\)**2) N
+(                  drdv = drdv + dx\(k\)*dv\(k\)) N
+( 11            ) S
+(CONTINUE) K n
+(*              ) c n
+(intgrt.F) (Page 1/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (2) 2
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(               dr2i = 1.0/dr2) p n
+(               dri =  body\(j\)*) S
+(sqrt) K
+(\(dr2i\)) p n
+(               phii = phii - dri) N
+(               dr3i = dr2i*dri) N
+(               drdv = 3.*drdv*dr2i) N
+(*              ) c n
+(               ) p
+(DO) K
+( 12 K = 1,3) p n
+(                  acc\(k\) = acc\(k\) + dx\(K\)*dr3i) N
+(                  adot\(k\) =adot\(k\) + \(dv\(K\) - dx\(K\)*drdv\)*dr3i) N
+( 12            ) S
+(CONTINUE) K n
+(               ) p
+(endif) K n
+( 15         ) p
+(CONTINUE) K n
+(      ) p
+(end) K n
+() p n
+(      ) S
+(SUBROUTINE) K
+( ) p
+(accel0) L
+(\(i, acc, adot, phii, jend\)) p n
+(*) c n
+(*) N
+(*       ------------------) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(      ) S
+(integer) K
+( i, jend) p n
+(      ) S
+(integer) K
+( j,  k) p n
+(c     automatic j,  k) c n
+(      ) p
+(real) K
+(*8 acc\(3\), adot\(3\), phii) p n
+(      ) S
+(real) K
+(*8  dr2, dx\(3\), dv\(3\)) p n
+(      ) S
+(real) K
+(*8 drdv, dr2i, dr3i,dri) p n
+(c     automatic  dr2, dx, dv) c n
+(c     automatic drdv, dr2i, dr3i) N
+(            ) p
+(DO) K
+( 15 J = 1, jend) p n
+(               ) S
+(IF) K
+( \(J) p
+(\271) sy
+(I\) ) p
+(THEN) K n
+() p 8 T (       ) S
+(if) K
+(\(j) p
+(\243) sy
+(nbh ) p
+(\331) sy
+( i) p
+(\243) sy
+(nbh\) ) p
+(then) K n
+(                   dr2 = 0) p n
+(               ) S
+(else) K
+( ) p
+(if) K
+(\(j) p
+(\243) sy
+(nbh ) p
+(\332) sy
+( i) p
+(\243) sy
+(nbh\) ) p
+(then) K n
+(                   dr2 = meps2) p n
+(               ) S
+(else) K n
+(                   dr2 = EPS2) p n
+(               ) S
+(endif) K n
+(               drdv = 0.) p n
+(               ) S
+(DO) K
+( 11 K = 1,3) p n
+(                  dx\(K\) = X\(K,J\) - X\(K,I\)) N
+(                  dv\(K\) = XDOT\(K,J\) - XDOT\(K,I\)) N
+(                  dr2 = dr2 + dx\(k\)**2) N
+(                  drdv = drdv + dx\(k\)*dv\(k\)) N
+( 11            ) S
+(CONTINUE) K n
+(*              ) c n
+(               dr2i = 1.0/dr2) p n
+(               dri =  BODY\(J\)*) S
+(SQRT) K
+(\(dr2i\)) p n
+(               phii = phii - dri) N
+(               dr3i = dr2i*dri) N
+(               drdv = 3.*drdv*dr2i) N
+(*              ) c n
+(               ) p
+(DO) K
+( 12 K = 1,3) p n
+(                  acc\(k\) = acc\(k\) + dx\(K\)*dr3i) N
+(                  adot\(k\) =adot\(k\) + \(dv\(K\) - dx\(K\)*drdv\)*dr3i) N
+( 12            ) S
+(CONTINUE) K n
+(               ) p
+(endif) K n
+( 15         ) p
+(CONTINUE) K n
+(      ) p
+(end) K n
+() p n
+(      ) S
+(SUBROUTINE) K
+( ) p
+(accel2) L
+(\(i, acc, adot, phii, jfirst,jend\)) p n
+(*) c n
+(*) N
+(*       ------------------) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(      ) S
+(integer) K
+( i, jend,jfirst) p n
+(      ) S
+(integer) K
+( j,  k) p n
+(c     automatic j,  k) c n
+(      ) p
+(real) K
+(*8 acc\(3\), adot\(3\), phii) p n
+(      ) S
+(real) K
+(*8  dr2, dx\(3\), dv\(3\)) p n
+(      ) S
+(real) K
+(*8 drdv, dr2i, dr3i,dri) p n
+(c     automatic  dr2, dx, dv) c n
+(c     automatic drdv, dr2i, dr3i) N
+(            ) p
+(DO) K
+( 15 J = jfirst, jend) p n
+(               ) S
+(IF) K
+( \(J) p
+(\271) sy
+(I\) ) p
+(THEN) K n
+() p 8 T (       ) S
+(if) K
+(\(j) p
+(\243) sy
+(nbh ) p
+(\331) sy
+( i) p
+(\243) sy
+(nbh\) ) p
+(then) K n
+(intgrt.F) (Page 2/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 3
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(                   dr2 = 0) p n
+(               ) S
+(else) K
+( ) p
+(if) K
+(\(j) p
+(\243) sy
+(nbh ) p
+(\332) sy
+( i) p
+(\243) sy
+(nbh\) ) p
+(then) K n
+(                   dr2 = meps2) p n
+(               ) S
+(else) K n
+(                   dr2 = EPS2) p n
+(               ) S
+(endif) K n
+(               drdv = 0.) p n
+(               ) S
+(DO) K
+( 11 K = 1,3) p n
+(                  dx\(K\) = X\(K,J\) - X\(K,I\)) N
+(                  dv\(K\) = XDOT\(K,J\) - XDOT\(K,I\)) N
+(                  dr2 = dr2 + dx\(k\)**2) N
+(                  drdv = drdv + dx\(k\)*dv\(k\)) N
+( 11            ) S
+(CONTINUE) K n
+(*              ) c n
+(               dr2i = 1.0/dr2) p n
+(               dri =  BODY\(J\)*) S
+(SQRT) K
+(\(dr2i\)) p n
+(               phii = phii - dri) N
+(               dr3i = dr2i*dri) N
+(               drdv = 3.*drdv*dr2i) N
+(*              ) c n
+(               ) p
+(DO) K
+( 12 K = 1,3) p n
+(                  acc\(k\) = acc\(k\) + dx\(K\)*dr3i) N
+(                  adot\(k\) =adot\(k\) + \(dv\(K\) - dx\(K\)*drdv\)*dr3i) N
+( 12            ) S
+(CONTINUE) K n
+(               ) p
+(endif) K n
+( 15         ) p
+(CONTINUE) K n
+(      ) p
+(end) K n
+() p n
+(      ) S
+(SUBROUTINE) K
+( ) p
+(PREDICT) L
+(\(npred\)) p n
+(*) c n
+(*) N
+(*       N-body integrator.) N
+(*       ------------------) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(       ) S
+(real) K
+(*8  s, s1, s2) p n
+(      ) S
+(integer) K
+( j, npred) p n
+(c$par doall) N
+(         ) S
+(DO) K
+( 5 J = 1,Npred) p n
+(            S = TIME - T0\(J\)) N
+(            S1 = 1.5*S) N
+(            S2 = 2.0*S) N
+(            X\(1,J\) = \(\(FDOT\(1,J\)*S + F\(1,J\)\)*S + X0DOT\(1,J\)\)*S + X0\(1,J\)) N
+(            X\(2,J\) = \(\(FDOT\(2,J\)*S + F\(2,J\)\)*S + X0DOT\(2,J\)\)*S + X0\(2,J\)) N
+(            X\(3,J\) = \(\(FDOT\(3,J\)*S + F\(3,J\)\)*S + X0DOT\(3,J\)\)*S + X0\(3,J\)) N
+(            XDOT\(1,J\) = \(FDOT\(1,J\)*S1 + F\(1,J\)\)*S2 + X0DOT\(1,J\)) N
+(            XDOT\(2,J\) = \(FDOT\(2,J\)*S1 + F\(2,J\)\)*S2 + X0DOT\(2,J\)) N
+(            XDOT\(3,J\) = \(FDOT\(3,J\)*S1 + F\(3,J\)\)*S2 + X0DOT\(3,J\)) N
+(#) S
+(if) K
+( HARP2TEST) p n
+(            ) S
+(write) K
+(\(6,*\)') p
+(i,x,v) str
+(', j, X\(1,J\),X\(2,J\),X\(3,J\)) p n
+(            ) S
+(write) K
+(\(6,*\)') p
+(     ) str
+(', XDOT\(1,J\),XDOT\(2,J\),XDOT\(3,J\)) p n
+(#) S
+(endif) K n
+(    5    ) p
+(CONTINUE) K n
+() p n
+(      ) S
+(end) K n
+(*) c n
+(#) p
+(if) K
+( USE_GRAPE) p n
+(      ) S
+(subroutine) K
+( ) p
+(predict_for_harp) L
+(\(nxtlen,nxtlst, xharp, vharp,) p n
+(     $                   aharp,jharp,pharp, tharp, mharp, jpmax\)) N
+(      ) S
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(      ) S
+(INTEGER) K
+(  NXTLEN,NXTLST\(nmax\), ii, j, ip, jpfirst) p n
+(       ) S
+(real) K
+(*8  s, s1, s2, ssq, scu) p n
+(      ) S
+(integer) K
+(  npipemax, jpmax, k) p n
+(      ) S
+(parameter) K
+( \(npipemax=nmax\)) p n
+(      ) S
+(real) K
+( * 8 xharp\(3,npipemax\),vharp\(3,npipemax\)) p n
+(      ) S
+(real) K
+( * 8 aharp\(3,npipemax\),jharp\(3,npipemax\)) p n
+() N
+(#) S
+(if) K
+( USE_GRAPE) p n
+(      ) S
+(real) K
+( * 8 mharp\(npipemax\),tharp\(npipemax\)) p n
+(      ) S
+(integer) K
+(  pharp\(npipemax\)) p n
+(#) S
+(endif) K n
+(         ip = 0) p n
+(         jpfirst = 1) N
+(         ) S
+(DO) K
+( 1100 ii = 1, nxtlen) p n
+(            ip = ip + 1) N
+(            j = nxtlst\(ii\)) N
+(intgrt.F) (Page 3/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (4) 4
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(            S = TIME - T0\(J\)) p n
+(            ssq = s*s) N
+(            scu = ssq*s) N
+(            S1 = 3.0*Ssq) N
+(            S2 = 2.0*S) N
+(            ) S
+(do) K
+( 1120 k = 1, 3) p n
+(            X\(k,j\) = FDOT\(k,J\)*scu+F\(k,J\)*ssq+X0DOT\(k,J\)*S) N
+(     $              +X0\(k,J\)) N
+(            xdot\(k,j\) = FDOT\(k,J\)*S1 + F\(k,J\)*S2 + X0DOT\(k,J\)) N
+( 1120       ) S
+(continue) K n
+(            j = nxtlst\(ii\)) p n
+(            xharp\(1,ii\)=x\(1,j\)) N
+(            xharp\(2,ii\)=x\(2,j\)) N
+(            xharp\(3,ii\)=x\(3,j\)) N
+(            vharp\(1,ii\)=xdot\(1,j\)) N
+(            vharp\(2,ii\)=xdot\(2,j\)) N
+(            vharp\(3,ii\)=xdot\(3,j\)) N
+(c            write\(6,*\)ii,vharp\(1,ii\),vharp\(2,ii\),vharp\(3,ii\)) c n
+(#) p
+(if) K
+( HARP2            ) p n
+(            ) S
+(call) K
+( ) p
+(h2setxvt) l
+(\(j-1,x\(1,j\),xdot\(1,j\),time\)) p n
+(#) S
+(endif) K n
+(#) p
+(if) K
+( HARP3) p n
+(            tharp\(j\)=time) N
+(            ) S
+(if) K
+(\(ip ) p
+(\272) sy
+( jpmax ) p
+(\332) sy
+( ii ) p
+(\272) sy
+( nxtlen\) ) p
+(then) K n
+(                ) p
+(call) K
+( ) p
+(h3mjpdma_indirect) l
+(\(ip,nxtlst\(jpfirst\),) p n
+(     $                     x,xdot,f,fdot,mharp,tharp,1,0\)) N
+(                ) S
+(call) K
+( ) p
+(h3mjpdma_start) l
+(\(0\)) p n
+(                ) S
+(call) K
+( ) p
+(h3wait) l n
+(                ip = 0) p n
+(                jpfirst = ii+1) N
+(            ) S
+(endif) K n
+(#) p
+(endif) K
+(            ) p n
+( 1100    ) S
+(CONTINUE) K n
+(      ) p
+(end) K n
+(#) p
+(endif) K n
+() p n
+() N
+(      ) S
+(subroutine) K
+( ) p
+(corrector) L
+(\(nxtlen,nxtlst, xpred, vpred,firr, fd,ph,) p n
+(     $                    mharp,jpmax,stepmin,) N
+(     $                    ierror\)) N
+(      ) S
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(      ) S
+(INTEGER) K
+(  NXTLEN,NXTLST\(nmax\), ii,  k, i,jpmax,ip, jpfirst) p n
+(      ) S
+(real) K
+(*8   dt, dtold, dtsq, dt2, dt6,stepmin) p n
+(      ) S
+(real) K
+(*8   at3xc, bt2xc, at3vc, bt2vc) p n
+(      ) S
+(real) K
+(*8   fd6, ) p
+(sum) K
+(, at3, bt2, df) p n
+(      ) S
+(real) K
+(*8 step2, step4, ttmp, dt0, tstep) p n
+(      ) S
+(REAL) K
+(*8  FIRR\(3,nmax\),fd\(3,nmax\),ph\(nmax\), d2t\(3\),d3t\(3\)) p n
+(      ) S
+(real) K
+( * 8 xpred\(3,nmax\), vpred\(3,nmax\)) p n
+(      ) S
+(integer) K
+( ierror) p n
+(c     automatic   dt, dtold, dtsq, dt2, dt6) c n
+(c     automatic  at3xc, bt2xc, at3vc, bt2vc) N
+(c     automatic   fd6, sum, at3, bt2, df) N
+(c     automatic step2, step4, ttmp, dt0) N
+(      ) p
+(real) K
+( * 8 j2\(3\)) p n
+(      ) N
+(#) S
+(if) K
+( USE_GRAPE) p n
+(      ) S
+(integer) K
+(  npipemax, id) p n
+(      ) S
+(parameter) K
+( \(npipemax=nmax\)) p n
+(#) S
+(if) K
+( \(HARP3 || GRAPE6\)) p n
+(      ) S
+(real) K
+( * 8 mharp\(npipemax\)) p n
+(#) S
+(endif) K n
+(#) p
+(else) K n
+(      ) p
+(real) K
+( *8 mharp) p n
+(#) S
+(endif) K n
+(      ) p
+(integer) K
+( nsmall) p n
+(      ) S
+(data) K
+( nsmall /0/) p n
+(      ) S
+(data) K
+( j2 /0.0,0.0,0.0/) p n
+(      dtold = 0.0) N
+(      ip = 0) N
+(      ierror = 0) N
+(      jpfirst = 1) N
+(      ) S
+(do) K
+( 1010 ii = 1, nxtlen) p n
+(         ip = ip + 1) N
+(         i = nxtlst\(ii\)) N
+(         dt = time - t0\(i\)) N
+(         ) S
+(if) K
+(\(dtold ) p
+(\271) sy
+( dt\) ) p
+(then) K n
+(intgrt.F) (Page 4/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5) 5
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(            dtsq = dt**2) p n
+(            dt6 = 6.0/\(dt*dtsq\)) N
+(            dt2 = 2.0/dtsq) N
+(*           ) c n
+(            at3xc = 0.05*dtsq) p n
+(            bt2xc = one12*dtsq) N
+(            at3vc = 0.25*dt) N
+(            bt2vc = one3*dt) N
+(         ) S
+(endif) K n
+(         t0\(i\) = time) p n
+(         ) S
+(do) K
+( 20 k = 1,3) p n
+(            df = 2.0*f\(k,i\) - firr\(k,ii\)) N
+(            ) N
+(            fd6 = 6.0*fdot\(k,i\)) N
+(            ) S
+(sum) K
+( = fd6 + fd\(k,ii\)) p n
+(            ) N
+(            at3 = 2.0*df + dt*) S
+(sum) K n
+(            bt2 = -3.0*df - dt*\() p
+(sum) K
+( + fd6\)) p n
+(*           ) c n
+(            x\(k,i\) = xpred\(k,i\) + at3xc*at3 + bt2xc*bt2) p n
+(            xdot\(k,i\) = vpred\(k,i\) + at3vc*at3 + bt2vc*bt2) N
+(*           ) c n
+(            x0\(k,i\) = x\(k,i\)) p n
+(            x0dot\(k,i\) = xdot\(k,i\)) N
+(*           ) c n
+(            f\(k,i\) = 0.5*firr\(k,ii\)) p n
+(            fdot\(k,i\) = one6*fd\(k,ii\)) N
+(            phi\(i\)=ph\(ii\)) N
+(*           ) c n
+(c            d3\(k,i\) = at3*dt6) N
+(c            d2\(k,i\) = bt2*dt2 + dt*d3\(k,i\)) N
+(            d3t\(k\) = at3*dt6) p n
+(            d2t\(k\) = bt2*dt2 + dt*d3t\(k\)) N
+(*           NOTE: These are real derivatives!) c n
+( 20      ) p
+(continue) K n
+(#define USE_INDIRECT_JPDMA               ) p n
+() N
+(*              ) c n
+(*        Specify new time-step \(use fast function instead of routine STEPI\).) N
+(c         TTMP = TSTEP\(FIRR\(1,ii\),FD\(1,ii\),D2\(1,I\),D3\(1,I\),ETA\)) N
+(         TTMP = TSTEP\(FIRR\(1,ii\),FD\(1,ii\),D2t,D3t,ETA\)) p n
+(         ) S
+(if) K
+(\(i) p
+(\243) sy
+(nbh\) ttmp = ttmp*0.33) p n
+(         DT0 = TTMP) N
+(         ) S
+(if) K
+(\(ttmp < stepmin*stepmin*256\) ) p
+(then) K n
+(c           very small timestep - see what is going on) c n
+(            ) p
+(write) K
+(\(6,*\)') p
+(small step, i, t, dt = ) str
+(', i, t0\(i\),) p n
+(     $           step\(i\),ttmp) N
+(            ) S
+(write) K
+(\(6,*\)') p
+(F :) str
+(',FIRR\(1,ii\),FIRR\(2,ii\),FIRR\(3,ii\)) p n
+(            ) S
+(write) K
+(\(6,*\)') p
+(F1:) str
+(',Fd\(1,ii\),Fd\(2,ii\),Fd\(3,ii\)) p n
+(c           write\(6,*\)'d2:',d2\(1,i\),d2\(2,i\),d2\(3,i\)) c n
+(c           write\(6,*\)'d3:',d3\(1,i\),d3\(2,i\),d3\(3,i\)) N
+(            nsmall = nsmall + 1) p n
+(            ) S
+(if) K
+(\(nsmall > 200\) ) p
+(then) K n
+(#) p
+(if) K
+( HARP2      ) p n
+(               ) S
+(call) K
+( ) p
+(h2free) l n
+(#) p
+(endif) K
+(         ) p n
+(#) S
+(if) K
+( HARP3      ) p n
+(               ) S
+(call) K
+( ) p
+(h3close) l n
+(#) p
+(endif) K
+(         ) p n
+(#) S
+(if) K
+( GRAPE6     ) p n
+(               ) S
+(call) K
+( ) p
+(g6_close) l
+(\(0\)) p n
+(#) S
+(endif) K
+(         ) p n
+(               ) S
+(write) K
+(\(6,*\)') p
+(Small steps : restart at ) str
+(',time) p n
+(               ) S
+(call) K
+( ) p
+(mydump) l
+(\(0,2\)) p n
+(               ) S
+(write) K
+(\(6,*\)') p
+(Small steps : new time ) str
+(',time) p n
+(               ierror = 1) N
+(               ) S
+(return) K n
+(            ) p
+(endif) K n
+(            ) p n
+(         ) S
+(endif) K n
+(         step2 = step\(i\)**2) p n
+(         step4 = step2**2) N
+(*        ) c n
+(*        Select discrete value .) N
+(         ) p
+(if) K
+( \(ttmp > 4.0*step2\) ) p
+(then) K n
+(            ) p
+(if) K
+( \() p
+(dmod) K
+(\(time,2.0*step\(i\)\) ) p
+(\272) sy
+( 0d0\) ) p
+(then) K
+( ) p n
+(intgrt.F) (Page 5/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (6) 6
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(               ttmp = ) p
+(MIN) K
+(\(2.0*step\(i\),1.0d0\)) p n
+(            ) S
+(else) K n
+(               ttmp = step\(i\) ) p n
+(            ) S
+(end) K
+( ) p
+(if) K n
+(         ) p
+(else) K
+( ) p
+(if) K
+( \(ttmp < step2 ) p n
+(     $           ) S
+(\331) sy
+(ttmp>stepmin*stepmin\) ) p
+(then) K n
+(            dt0 = ) p
+(sqrt) K
+(\(dt0\)) p n
+(            ) S
+(call) K
+( ) p
+(stepk) l
+(\(dt0,ttmp\)) p n
+(         ) S
+(else) K n
+(            ttmp = step\(i\)) p n
+(         ) S
+(end) K
+( ) p
+(if) K n
+(         ) p n
+(*        ) c n
+(*        Set new block step, update next time and save current time.) N
+(         ) p
+(if) K
+(\(ttmp > deltat\) ttmp = ttmp * 0.5) p n
+(         step\(i\) = ttmp) N
+(         timenw\(i\) = step\(i\) + t0\(i\)) N
+(         NSTEPN = NSTEPN + 1) N
+(         ) S
+(if) K
+(\(i ) p
+(\243) sy
+( nbh\) nstepbh = nstepbh + 1) p n
+(#) S
+(if) K
+( GRAPE6) p n
+(         id = i  - 1) N
+(         ) S
+(call) K
+( ) p
+(g6_set_j_particle) l
+(\(0,id, i,) p n
+(     $        t0\(i\), step\(i\), mharp\(i\), j2, fdot\(1,i\),) N
+(     $        f\(1,i\), x0dot\(1,i\), x0\(1,i \)\)) N
+(#) S
+(endif) K
+(   ) p n
+(#) S
+(if) K
+( HARP3) p n
+(         ) S
+(if) K
+(\(ip ) p
+(\272) sy
+( jpmax ) p
+(\332) sy
+( ii ) p
+(\272) sy
+( nxtlen\) ) p
+(then) K n
+(            ) p
+(call) K
+( ) p
+(h3mjpdma_indirect) l
+(\(ip,nxtlst\(jpfirst\),) p n
+(     $           x0,x0dot,f,fdot,mharp,t0,1,0\)) N
+(            ) S
+(call) K
+( ) p
+(h3mjpdma_start) l
+(\(0\)) p n
+(            ) S
+(call) K
+( ) p
+(h3wait) l n
+(            ip = 0) p n
+(            jpfirst = ii+1) N
+(         ) S
+(endif) K n
+(#) p
+(endif) K
+(   ) p n
+( 1010 ) S
+(continue) K n
+(      ) p
+(end) K
+(      ) p n
+(*) c n
+(      ) p
+(SUBROUTINE) K
+( ) p
+(INTGRT) L n
+(*) c n
+(*) N
+(*       N-body integrator.) N
+(*       ------------------) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(      ) S
+(REAL) K
+(*8  FIRR\(3,nmax\),fd\(3,nmax\)) p n
+(      ) S
+(INTEGER) K
+(  NXTLEN,ILOC,NXTLST\(nmax\)) p n
+(       ) S
+(integer) K
+( li,i,j,k,ii,iii) p n
+(       ) S
+(real) K
+(*8 tmin) p n
+(       ) S
+(real) K
+( * 8 xpred\(3,nmax\), vpred\(3,nmax\),ph\(nmax\), epsinv) p n
+(       ) S
+(real) K
+(*8 stepmin) p n
+(      ) S
+(integer) K
+( ierror) p n
+(      ) S
+(real) K
+( *8 j2\(3\)) p n
+(      ) S
+(integer) K
+( nfield, jpmax, npipemax) p n
+(      ) S
+(parameter) K
+( \(npipemax=nmax\)) p n
+(      ) S
+(real) K
+( * 8 mharp\(npipemax\),tharp\(npipemax\)) p n
+(#) S
+(if) K
+( USE_GRAPE) p n
+(      ) S
+(integer) K
+( npipe, np, ip,itmp, id, nf, ipmove) p n
+(      ) S
+(real) K
+( * 8 xharp\(3,npipemax\),vharp\(3,npipemax\)) p n
+(      ) S
+(integer) K
+( h2getnpipe) p n
+(      ) S
+(REAL) K
+(*8 fh\(3,npipemax\),ptmp\(npipemax\),) p n
+(     $     fdh\(3,npipemax\), demax, fe, fdemax, fde) N
+(      ) S
+(REAL) K
+(*8 zeroeps2\(npipemax\)) p n
+(      ) S
+(real) K
+( * 8 aharp\(3,npipemax\),jharp\(3,npipemax\)) p n
+(      ) S
+(real) K
+( * 8 eps2harp\(npipemax\),h2harp\(npipemax\)) p n
+(      ) S
+(integer) K
+(  pharp\(npipemax\)) p n
+(      ) S
+(integer) K
+( h3npipe, h3jpmax,  nj, ifirst,ncalc) p n
+(      ) S
+(integer) K
+( calldum) p n
+(#) S
+(if) K
+( GRAPE6) p n
+(      ) S
+(REAL) K
+(*8 fg6old\(3,n\), jg6old\(3,n\)) p n
+(#) S
+(endif) K n
+(#) p
+(endif) K n
+(*) c n
+(      ) p
+(do) K
+( k = 1, 3) p n
+(         j2\(k\) = 0) N
+(      ) S
+(enddo) K n
+(intgrt.F) (Page 6/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (7) 7
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      nfield = n - nbh) p n
+( 2000 ) S
+(call) K
+( ) p
+(printcpu) l n
+(      epsinv = 1.0d0/) p
+(sqrt) K
+(\(eps2\)) p n
+(      stepmin = 2.0**\(-50\)/) S
+(sqrt) K
+(\(body\(1\)\)) p n
+(#) S
+(if) K
+( USE_GRAPE) p n
+(#ifdef HARP3DEBUG) N
+(      ) S
+(write) K
+(\(6,*\)') p
+(call h3open) str
+(') p n
+(      ) S
+(call) K
+( ) p
+(flush) l
+(\(6\)) p n
+(#) S
+(endif) K n
+(#) p
+(if) K
+( HARP3      ) p n
+(      ) S
+(call) K
+( ) p
+(h3open) l n
+(      ) p
+(call) K
+( ) p
+(h3setmode) l
+(\(255,15\)) p n
+(      npipe = h3npipe\(\)) N
+(#) S
+(endif) K n
+(#) p
+(if) K
+( GRAPE6) p n
+(      ) S
+(call) K
+( ) p
+(g6_open) l
+(\(0\)) p n
+(      npipe = 48) N
+(#) S
+(endif) K
+(      ) p n
+(      ifirst = 1) N
+(#ifdef HARP3DEBUG) N
+(      ) S
+(write) K
+(\(6,*\)') p
+(call h3setmode) str
+(') p n
+(      ) S
+(call) K
+( ) p
+(flush) l
+(\(6\)) p n
+(#) S
+(endif) K n
+(#ifdef HARP3DEBUG) p n
+(      ) S
+(write) K
+(\(6,*\)') p
+( return h3setmode) str
+(') p n
+(      ) S
+(call) K
+( ) p
+(flush) l
+(\(6\)) p n
+(#) S
+(endif) K n
+(      ) p
+(write) K
+(\(6,*\)') p
+(Number of pipes = ) str
+(', npipe) p n
+(#ifdef HARP2TEST) N
+(      ) S
+(write) K
+(\(6,*\)') p
+(Number of pipes = ) str
+(', npipe) p n
+(#) S
+(endif) K n
+(      ) p
+(do) K
+( 1042 i = 1,n) p n
+(         h2harp\(i\) =0.0) N
+(         eps2harp\(i\) =eps2*0.5) N
+(         pharp\(i\) = i) N
+(         aharp\(1,i\)=f\(1,i\)) N
+(         aharp\(2,i\)=f\(2,i\)) N
+(         aharp\(3,i\)=f\(3,i\)) N
+(         jharp\(1,i\)=fdot\(1,i\)) N
+(         jharp\(2,i\)=fdot\(2,i\)) N
+(         jharp\(3,i\)=fdot\(3,i\)) N
+(         mharp\(i\) = body\(i\)) N
+(         ) S
+(if) K
+( \(i ) p
+(\243) sy
+( nbh\)          mharp\(i\) = 0.0) p n
+( 1042 ) S
+(continue) K n
+(#) p
+(if) K
+( HARP3) p n
+() N
+(      ) S
+(do) K
+( 1041 i = n,n+npipe) p n
+(         h2harp\(i\) =0.0) N
+(         eps2harp\(i\) =eps2*0.5) N
+(         zeroeps2\(i\) =meps2*0.5) N
+( 1041 ) S
+(continue) K n
+(      ) p n
+(      jpmax = h3jpmax\(\)) N
+(      ) S
+(do) K
+( 1044 iii = 1, 2) p n
+(      ) S
+(do) K
+( 1040 i = 1, n, jpmax) p n
+(         nj = ) S
+(min) K
+(\(jpmax,n-i+1\)) p n
+(         ) S
+(call) K
+( ) p
+(h3mjpdma_indirect) l
+(\(nj,pharp\(i\),x0,x0dot,f,fdot,) p n
+(     $        mharp,t0, 1,0\)) N
+(         ) S
+(call) K
+( ) p
+(h3mjpdma_start) l
+(\(0\)) p n
+(         ) S
+(call) K
+( ) p
+(h3wait) l n
+( 1040 ) p
+(continue) K n
+( 1044 ) p
+(continue) K n
+(#) p
+(endif) K
+(      ) p n
+(#) S
+(if) K
+( GRAPE6) p n
+(      ) S
+(do) K
+( i = 1, n) p n
+(         ) S
+(call) K
+( ) p
+(g6_set_j_particle) l
+(\(0,i-1, i,) p n
+(     $        t0\(i\), step\(i\), mharp\(i\), j2, fdot\(1,i\),) N
+(     $        f\(1,i\), x0dot\(1,i\), x0\(1,i\)\)) N
+(      ) S
+(enddo) K n
+(#) p
+(endif) K n
+(#) p
+(endif) K n
+(*     Initialize block times.) c n
+(      ) p
+(IF) K
+( \(TIME) p
+(\272) sy
+(0D0\) ) p
+(THEN) K n
+(          ) p
+(DO) K
+( 1000 I = 1,N) p n
+(              TIMENW\(I\) = T0\(I\) + STEP\(I\)) N
+( 1000     ) S
+(CONTINUE) K n
+(intgrt.F) (Page 7/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (8) 8
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(      NXTLEN = 0) p n
+(      TMIN = TPREV) N
+(*) c n
+(*       Determine all particles due at next block time.) N
+( 1001 LI = 0) p n
+(    1) S 8 T () S
+(continue) K n
+() p 8 T () S
+(if) K
+(\(nxtlen > 0\) nxtlen = - nxtlen) p n
+(c) c n
+(c       i gives the first particle to move, nxtlen gives) N
+(c       the number of particles to be moved.) N
+(c      write\(6,*\) 'before: i,nxtlen = ', i, nxtlen, ipos) N
+( ) p 8 T () S
+(call) K
+( ) p
+(inext) l
+(\(i,nxtlen,iloc,nxtlst,timenw,tmin\)) p n
+(c      write\(6,*\) 'after:i,nxtlen = ', i, nxtlen, ipos) c n
+(      TIME = T0\(I\) + STEP\(I\)) p n
+(c      write\(6,*\) i, time, t0\(i\), step\(i\)) c n
+(*) N
+(*       Check next output time before beginning a new block.) N
+(      ) p
+(IF) K
+( \(TIME>TNEXT\) ) p
+(THEN) K n
+(         ) p
+(write) K
+(\(6,*\) ') p
+(intgrt, ) str
+(', time, tnext) p n
+(         TIME = TPREV) N
+(         ) S
+(GO TO) K
+( 30) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Predict all coordinates and velocities to first order.) N
+(         NBLOCK = NBLOCK + 1) p n
+(#) S
+(if) K
+( HOST_FORCE         ) p n
+(         ) S
+(call) K
+( ) p
+(predict) l
+(\(n\)) p n
+(#) S
+(endif) K
+(         ) p n
+(#) S
+(if) K
+( USE_GRAPE) p n
+(         ) S
+(call) K
+( ) p
+(predict_for_harp) l
+(\(nxtlen,nxtlst, xharp, vharp,) p n
+(     $         aharp,jharp, pharp, tharp, mharp, jpmax\)) N
+(#) S
+(if) K
+( GRAPE6) p n
+(c        set fh, fdh and ph ...) c n
+(         ) p
+(do) K
+( ii = 1, nxtlen) p n
+(            j = nxtlst\(ii\)) N
+(            ) S
+(do) K
+( k = 1, 3) p n
+(               fh\(k,ii\) = f\(k,j\)) N
+(               fdh\(k,ii\) = fdot\(k,j\)) N
+(            ) S
+(enddo) K n
+(            ph\(ii\) = phi\(j\)) p n
+(            eps2harp\(ii\) = eps2) N
+(            ) S
+(if) K
+( \(j ) p
+(\243) sy
+( nbh\) eps2harp\(ii\) = meps2) p n
+(         ) S
+(enddo) K n
+(#) p
+(endif) K
+(   ) p n
+(c        ) c n
+(c        prdict the point-mass particles anyway...) N
+(c) N
+(             ) p
+(call) K
+( ) p
+(predict) l
+(\(nbh\)) p n
+(#) S
+(endif) K n
+(         ) p
+(DO) K
+( 1110 ii = 1, nxtlen) p n
+(            j = nxtlst\(ii\)) N
+(            ) S
+(do) K
+( 1120 k = 1, 3) p n
+(               xpred\(k,j\)=x\(k,j\)) N
+(               vpred\(k,j\)=xdot\(k,j\)) N
+( 1120       ) S
+(continue) K n
+( 1110    ) p
+(CONTINUE) K n
+(         ) p n
+( 1500    ) S
+(continue) K n
+(C        in the case of hardware error, redo the force calculation) c n
+(*        ) N
+() p n
+(*       Obtain the current force and derivative.) c n
+(c         ) N
+(#) p
+(if) K
+( HOST_FORCE      ) p n
+(c$par doall) N
+(         ) S
+(do) K
+( 1053 ii = 1, nxtlen) p n
+(            i = nxtlst\(ii\)) N
+(            ) S
+(call) K
+( ) p
+(accel) l
+(\(i, firr\(1,ii\), fd\(1,ii\),ph\(ii\)\)) p n
+( 1053    ) S
+(continue) K n
+(#) p
+(endif) K
+(      ) p n
+(#) S
+(if) K
+( USE_GRAPE) p n
+(#) S
+(if) K
+( HARP3         ) p n
+(            ) S
+(call) K
+( ) p
+(h3wait) l n
+(#ifdef HARP3DEBUG) p n
+(intgrt.F) (Page 8/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (9) 9
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(write) K
+(\(6,*\)') p
+(call h3setti ) str
+(', time) p n
+(      ) S
+(call) K
+( ) p
+(flush) l
+(\(6\)) p n
+(#) S
+(endif) K n
+(            ) p
+(call) K
+( ) p
+(h3setti) l
+(\(time\)) p n
+(            ) S
+(call) K
+( ) p
+(h3wait) l n
+(c           write\(6,*\)'before h3calc', ii, xharp\(1,ii\), npipe ) c n
+(#) p
+(endif) K
+(         ) p n
+(#) S
+(if) K
+( GRAPE6) p n
+(            ) S
+(call) K
+( ) p
+(g6_set_ti) l
+(\(0,time\)) p n
+(c           write\(6,*\)'before h3calc', ii, xharp\(1,ii\), npipe ) c n
+(#) p
+(endif) K
+(         ) p n
+(         ) S
+(do) K
+( 1050 ii = 1, nxtlen, npipe) p n
+(            np = nxtlen - ii + 1) N
+(            ) S
+(if) K
+(\(np > npipe\) np = npipe) p n
+(#) S
+(if) K
+( HARP3) p n
+(#ifdef HARP3DEBUG) N
+(      ) S
+(write) K
+(\(6,*\)') p
+(call h3calc ) str
+(', npipe) p n
+(      ) S
+(call) K
+( ) p
+(flush) l
+(\(6\)) p n
+(#) S
+(endif) K n
+(c      ncalc = \(\(np+5\)/6\)*6) c n
+(      ncalc = npipe) p n
+(            ) S
+(call) K
+( ) p
+(h3calc) l
+(\(n,ncalc, xharp\(1,ii\),vharp\(1,ii\),eps2harp\(ii\),) p n
+(     $                  h2harp\(ii\),) N
+(     $           fh\(1,ii\),fdh\(1,ii\),ph\(ii\)\)) N
+(            ) S
+(if) K
+( \(ifirst ) p
+(\272) sy
+( 1\) ) p
+(then) K n
+(               ifirst = 0) p n
+(               ) S
+(call) K
+( ) p
+(h3calc) l
+(\(n,npipe, xharp\(1,ii\),vharp\(1,ii\),) p n
+(     $              eps2harp\(ii\),) N
+(     $              h2harp\(ii\),) N
+(     $              fh\(1,ii\),fdh\(1,ii\),ph\(ii\)\)) N
+(            ) S
+(endif) K n
+(#) p
+(endif) K n
+(#) p
+(if) K
+( GRAPE6) p n
+(#ifdef HARP3DEBUG) N
+(            ) S
+(write) K
+(\(6,*\)') p
+(call h3calc ) str
+(', npipe) p n
+(            ) S
+(call) K
+( ) p
+(flush) l
+(\(6\)) p n
+(#) S
+(endif) K n
+(            ncalc = np) p n
+(            ) S
+(if) K
+( \(ncalc < 48\) ncalc = 48) p n
+(C) c n
+(C     The above is to see if the hardware error reduces...) N
+(C     actually, it does not look effective, though) N
+(C            ) N
+(            ) p
+(call) K
+( ) p
+(g6calc_firsthalf0) l
+(\(0,n, ncalc, nxtlst\(ii\),) p n
+(     $           xharp\(1,ii\),) N
+(     $           vharp\(1,ii\), fh\(1,ii\), fdh\(1,ii\), ph\(ii\),) N
+(     $           eps2harp\(ii\), h2harp\(ii\),0\)) N
+(            ) S
+(call) K
+( ) p
+(g6calc_lasthalf) l
+(\(0, n, ncalc,nxtlst\(ii\),) p n
+(     $           xharp\(1,ii\),) N
+(     $           vharp\(1,ii\), eps2harp\(ii\), h2harp\(ii\), fh\(1,ii\),) N
+(     $           fdh\(1,ii\), ph\(ii\)\)) N
+(*              write\(6,*\) 'GRAPE-6 hardware error') c n
+(*              call g6_reset\(0\)) N
+(*              call g6_reset_fofpga\(0\)) N
+(*              call g6_close\(0\)) N
+(*              call g6_open\(0\)) N
+(*              call g6_set_ti\(0,time\)) N
+(*              do i = 1, n) N
+(*                 call g6_set_j_particle\(0,i-1, i,) N
+(*    $                 t0\(i\), step\(i\), mharp\(i\), j2,) N
+(*    $                 fdot\(1,i\), f\(1,i\), x0dot\(1,i\), x0\(1,i\)\)) N
+(*              enddo) N
+(*              ) N
+(*              goto 1500) N
+(*              write\(6,*\) 'error recovery not implemented yet') N
+(*              stop) N
+(*           endif) N
+(#) p
+(endif) K n
+() p n
+(            ) S
+(do) K
+( 1060 ip=1,np) p n
+(               i=ii+ip-1) N
+(#ifdef HARP2TEST            ) N
+(               ) S
+(write) K
+(\(6,600\) i,\(firr\(k,i\),k=1,3\),) p n
+(     $            \(fh\(k,i\),k=1,3\),) N
+(     $    \(fd\(k,i\),k=1,3\),) N
+(     $    \(fdh\(k,i\),k=1,3\)) N
+(intgrt.F) (Page 9/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (10) 10
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+( 600           ) p
+(format) K
+(\(') p
+(Particle ) str
+(', i5, /,) p n
+(     $              ') S
+(host a:) str
+(', 3g20.10,/,') p
+(harp a:) str
+(',3g20.10,/,) p n
+(     $              ') S
+(host j:) str
+(', 3g20.10,/,') p
+(harp j:) str
+(',3g20.10\)) p n
+(               fe = \(\(fh\(1,i\)-firr\(1,i\)\)**2) N
+(     $              +\(fh\(2,i\)-firr\(2,i\)\)**2) N
+(     $              +\(fh\(3,i\)-firr\(3,i\)\)**2\)) N
+(     $              /\(fh\(1,i\)**2+fh\(2,i\)**2+fh\(3,i\)**2\)) N
+(               fde = \(\(fdh\(1,i\)-fd\(1,i\)\)**2) N
+(     $              +\(fdh\(2,i\)-fd\(2,i\)\)**2) N
+(     $              +\(fdh\(3,i\)-fd\(3,i\)\)**2\)) N
+(     $              /\(fdh\(1,i\)**2+fdh\(2,i\)**2+fdh\(3,i\)**2\)) N
+(               ) S
+(write) K
+(\(6,601\) ) p
+(sqrt) K
+(\(fe\), ) p
+(sqrt) K
+(\(fde\)) p n
+( 601           ) S
+(format) K
+(\(') p
+(Rel errors = ) str
+(', 2g15.6\)) p n
+(#) S
+(endif) K
+(            ) p n
+(               ) S
+(do) K
+( 1070 k = 1, 3) p n
+(                  firr\(k,i\) = fh\(k,i\)) N
+(                  fd\(k,i\) = fdh\(k,i\)) N
+( 1070          ) S
+(continue) K n
+( 1060       ) p
+(continue) K n
+( 1050    ) p
+(continue) K n
+(#) p
+(if) K
+( HARP3) p n
+(         ) S
+(do) K
+( ii = 1, nxtlen) p n
+(            i = nxtlst\(ii\)) N
+(            ) S
+(if) K
+(\(i ) p
+(\243) sy
+( nbh\) ) p
+(then) K n
+(               ) p
+(if) K
+(\(step\(i\) > 1e-11\) ) p
+(then) K n
+(#) p
+(if) K
+( HARP3         ) p n
+(                  ) S
+(call) K
+( ) p
+(h3wait) l n
+(                  ) p
+(call) K
+( ) p
+(h3calc) l
+(\(n,npipe, xharp\(1,ii\),vharp\(1,ii\),) p n
+(     $                 zeroeps2\(1\),) N
+(     $                 h2harp\(ii\),) N
+(     $                 fh\(1,1\),fdh\(1,1\),ptmp\)) N
+() N
+(                  ) S
+(do) K
+( 1058 k = 1, 3) p n
+(                     firr\(k,ii\) = fh\(k,1\)) N
+(                     fd\(k,ii\) = fdh\(k,1\)) N
+( 1058             ) S
+(continue) K n
+(                  ph\(ii\) = ptmp\(1\)) p n
+(#) S
+(endif) K n
+(#) p
+(if) K
+( GRAPE6                  ) p n
+(                  ) S
+(do) K
+( 1058 k = 1, 3) p n
+(                     firr\(k,ii\) = fh\(k,ii\)) N
+(                     fd\(k,ii\) = fdh\(k,ii\)) N
+( 1058             ) S
+(continue) K n
+(#) p
+(endif) K n
+(               ) p
+(else) K n
+(                  ) p
+(write) K
+(\(6,*\)') p
+(BH force on host) str
+(', i, time) p n
+() N
+(                  ) S
+(call) K
+( ) p
+(predict) l
+(\(n\)) p n
+(                  ) S
+(call) K
+( ) p
+(accel2) l
+(\(i, firr\(1,ii\), fd\(1,ii\),ph\(ii\),) p n
+(     $                 nbh+1,n\)) N
+(               ) S
+(endif) K n
+(            ) p
+(else) K n
+(#) p
+(if) K
+( HARP3) p n
+(               ph\(ii\) = ph\(ii\)+ body\(i\)*epsinv) N
+(#) S
+(endif) K n
+(            ) p
+(endif) K n
+(         ) p
+(enddo) K n
+(#) p
+(endif) K
+(   ) p n
+(c        ) c n
+(c        include the contribution of point-mass particles) N
+(c        $par doall) N
+(         ) p
+(do) K
+( 1052 ii = 1, nxtlen) p n
+(            i = nxtlst\(ii\)) N
+(            nf = nbh) N
+(c            if \(i .eq. 3\) then) c n
+(c               write\(6,666\)'after h3ca', i,ii,) N
+(c     $              \(firr\(k,ii\),k=1,3\),\(fd\(k,ii\),k=1,3\)) N
+( 666           ) p
+(format) K
+(\(A, 2i5, 6e15.6\)) p n
+(c            endif) c n
+(            ) p
+(call) K
+( ) p
+(accel0) l
+(\(i, firr\(1,ii\), fd\(1,ii\),ph\(ii\),nf\)) p n
+(c            if \(i.eq.3\) then) c n
+(c               write\(6,666\)'after acc0', i,ii,) N
+(c     $              \(firr\(k,ii\),k=1,3\),\(fd\(k,ii\),k=1,3\)) N
+(c              call predict\(n\)) N
+(c              call accel\(i, firr\(1,ii\), fd\(1,ii\),ph\(ii\)\)) N
+(c              write\(6,666\)'after acc ', i,ii,) N
+(intgrt.F) (Page 10/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (11) 11
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(c              $              \(firr\(k,ii\),k=1,3\),\(fd\(k,ii\),k=1,3\)) c n
+(c            endif) N
+( 1052    ) p
+(continue) K n
+(         ) p n
+(#) S
+(endif) K
+(   ) p n
+(*        ) c n
+(*        Include the corrector and set new T0, F, FDOT, D2 & D3.) N
+(         ) p
+(call) K
+( ) p
+(corrector) l
+(\(nxtlen,nxtlst, xpred, vpred,firr, fd,ph,) p n
+(     $          mharp,jpmax,stepmin,  ierror\)) N
+(         ) S
+(if) K
+(\(ierror ) p
+(\271) sy
+( 0\) ) p
+(goto) K
+( 2000) p n
+(         tprev = time) N
+(         ) S
+(GO TO) K
+( 1) p n
+(*        ) c n
+( 30      ) p
+(continue) K n
+(         ) p
+(call) K
+( ) p
+(printcpu) l n
+(#) p
+(if) K
+( HARP2) p n
+(         ) S
+(call) K
+( ) p
+(h2free) l n
+(#) p
+(endif) K
+(   ) p n
+(#) S
+(if) K
+( GRAPE6) p n
+(         ) S
+(call) K
+( ) p
+(g6_close) l
+(\(0\)) p n
+(#) S
+(endif) K
+(   ) p n
+(#) S
+(if) K
+( HARP3) p n
+(         ) S
+(call) K
+( ) p
+(h3close) l n
+(#) p
+(endif) K
+(   ) p n
+(         ) S
+(RETURN) K n
+(*        ) c n
+(         ) p
+(end) K n
+(#ifdef AHO) p n
+(      ) S
+(subroutine) K
+( ) p
+(touch_dummy) L n
+(      ) p
+(INCLUDE) K
+( ') p
+(common1.h) str
+(') p n
+(      ) S
+(integer) K
+( i) p n
+(      ) S
+(do) K
+( i = 1, nmax) p n
+(        zzzzdummy\(i\) = i) N
+(      ) S
+(end) K
+( ) p
+(do) K n
+(      ) p
+(end) K n
+(      ) p n
+(#) S
+(endif) K n
+() p n
+(intgrt.F) (Page 11/11) (Mar 04, 04 22:33) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

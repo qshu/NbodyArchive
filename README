@@ -1,0 +1,115 @@
+README for bhnbody1  Copyright J. Makino 2003-
+
+This file describes how to compile and make test run for nbody1
+
+0. Getting the file
+
+Look at http://grape.astron.s.u-tokyo.ac.jp/~makino/softwares
+
+1. Copyright:
+
+I follow the MIT license:
+
+http://www.opensource.org/licenses/mit-license
+--------------------------------------------------------------
+
+The MIT License
+
+Copyright (c) 2003 Jun Makino
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions: 
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software. 
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+--------------------------------------------------------------
+
+2. Platform
+
+The current version is tested ONLY on a linux (kernel 2.4.18) on Intel
+x86 using GCC 3.2.
+
+3. Installing
+
+After extracted the source files, you will need to edit makefiles
+
+(Makefile.g77 and Makefile.g6lx) to set correct path for g77 fortran
+compiler and grape6 library. 
+
+make -f Makefile.g77
+
+will make nbody1_s, which is a host-only version
+
+make -f Makefile.g6lx
+
+will make nbody1_g6lx, a GRAPE-6 version
+
+4. Testing
+
+I provide one test input parameter file, testin
+
+nbody1_g6lx < testin
+
+should create something like:
+
+
+ T =    0.000  Q = 0.50  STEPS =          0          0          0
+  DE=  0.000E+00  0.000E+00  E = -0.25066
+ CM  :   -0.130498E-07  -0.978288E-08  -0.265915E-07
+ CMV :    0.510450E-08  -0.886712E-09  -0.433698E-09
+ AM  :   -0.838052E-02  -0.543369E-03   0.823090E-02
+ new eta =   0.0220000005
+CPU min =           0.220167
+allocate jp buffer of size 2176
+ Number of pipes =  48
+ end sending j
+ intgrt,   0.0626220703  0.0625
+CPU min =           0.224667
+
+ T =    0.062  Q = 0.50  STEPS =      30789        304          0
+  DE=  8.657E-09 -1.723E-08  E = -0.25066
+ CM  :    0.195401E-07  -0.213285E-07  -0.644017E-08
+ CMV :    0.558996E-08  -0.377818E-08   0.122131E-08
+ AM  :   -0.838053E-02  -0.543362E-03   0.823091E-02
+ new eta =   0.024200001
+CPU min =           0.224667
+ Number of pipes =  48
+ end sending j
+ intgrt,   0.125244141  0.125
+CPU min =           0.228167
+
+ T =    0.125  Q = 0.50  STEPS =      54300        748          0
+  DE=  1.873E-08 -5.454E-08  E = -0.25066
+ CM  :    0.196886E-08  -0.462849E-08  -0.218573E-08
+ CMV :    0.632836E-08  -0.251430E-09  -0.264418E-08
+ AM  :   -0.838052E-02  -0.543364E-03   0.823092E-02
+ new eta =   0.0266200017
+CPU min =           0.228167
+ Number of pipes =  48
+ end sending j
+ intgrt,   0.187744141  0.1875
+CPU min =           0.231667
+
+ T =    0.188  Q = 0.50  STEPS =      77255       1153          0
+  DE= -7.362E-09 -3.987E-08  E = -0.25066
+ CM  :   -0.103841E-07  -0.143163E-07  -0.344985E-08
+ CMV :   -0.107694E-08   0.913786E-10  -0.812838E-10
+ AM  :   -0.838053E-02  -0.543362E-03   0.823092E-02
+ new eta =   0.0292820025
+
+         TIME =   0.19  TCOMP =    0.23  KZ(1) = 0
+

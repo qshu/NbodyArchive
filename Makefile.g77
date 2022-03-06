@@ -1,0 +1,81 @@
+FFLAGS =  -u -O3 -fno-second-underscore -ffast-math -funroll-loops -static
+#FFLAGS =  -O3 -u -autopar  -reduction -explicitpar  -vpara 
+#FFLAGS =   -u  -g
+F77 = /usr/bin/g77
+FC = /usr/bin/g77
+SOURCE = \
+nbody1.F block.f bodies.f \
+cputim.f data.f energy.F \
+fpoly1.f  iblock.f \
+inext.f input.f intgrt.f  lagr.F \
+mydump.f resort.f output.f ran2.f \
+scale.f sort1.f sort3.f start.f stepk.f steps.f tstep.f diagbh.f
+
+SOBJECTS = \
+nbody1.o block.o bodies.o \
+cputim.o data.o energy.o \
+fpoly1.o  iblock.o \
+inext.o input.o intgrt.o  lagr.o\
+mydump.o resort.o output.o ran2.o \
+scale.o sort1.o sort3.o start.o stepk.o steps.o tstep.o diagbh.o c_mydump.o
+
+FILES = Makefile.g77 \
+Makefile.g6lx \
+README \
+block.f \
+bodies.f \
+c_mydump.c \
+common1.h \
+cputim.f \
+data.f \
+diagbh.f \
+energy.F \
+fpoly1.f \
+harp3.h \
+iblock.f \
+inbody \
+inext.f \
+input.f \
+intgrt.F \
+intgrt_g6.F \
+lagr.F \
+mydump.f \
+nbody1.F \
+newsort3.f \
+output.f \
+params.h \
+ran2.f \
+resort.f \
+samplein.ascii \
+scale.f \
+sort1.f \
+sort3.f \
+start.F \
+start_parallel.F \
+stepk.f \
+steps.f \
+testin \
+tstep.f
+
+OBJECTS = $(SOBJECTS)
+nbody1_s:	$(SOBJECTS)
+	$(F77) $(FFLAGS) $(SOBJECTS) -o nbody1_s
+
+nbody1:	$(OBJECTS)
+	$(F77) -static   $(FFLAGS) $(OBJECTS) -o nbody1
+
+bhnbody1.tar.Z : $(FILES)
+	tar cvf - $(FILES) |compress > bhnbody1.tar.Z
+intgrt.o : intgrt.F common1.h
+	$(F77) -c $(FFLAGS) intgrt.F
+intgrt_s.o : intgrt.F common1.h
+	$(F77) -c $(FFLAGS) -DSINGLETEST intgrt.F
+	mv intgrt.o intgrt_s.o
+
+c_mydump.o : c_mydump.c
+	cc -c c_mydump.c
+
+start.o : start.F common1.h 
+	$(F77) -c   $(FFLAGS)   start.F
+lagr.o : lagr.F common1.h 
+	$(F77) -c   $(FFLAGS)   lagr.F

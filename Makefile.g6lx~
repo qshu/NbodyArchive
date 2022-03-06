@@ -1,0 +1,28 @@
+FFLAGS =  -static -u -O3 -fno-second-underscore -ffast-math -funroll-loops -DGRAPE6
+#FFLAGS =  -O3 -u -autopar  -reduction -explicitpar  -vpara 
+#FFLAGS =   -u  -g
+F77 = /usr/local/gcc-3.2/bin/g77
+FC = $(F77)
+
+G6SRC = \
+nbody1.F block.f bodies.f \
+cputim.f data.f energy.f \
+fpoly1.f  iblock.f \
+inext.f input.f intgrt_g6.F  \
+mydump.f resort.f output.f ran2.f \
+scale.f newsort3.f start_parallel.F stepk.f steps.f tstep.f diagbh.f \
+sort1.f lagr.F
+
+OBJECTS = $(G6SRC:.f=.o)  c_mydump.o
+
+LDFLGS =  -L/usr2/makino/src/g6hib-x86/ -lg6lx  -L/usr2/makino/src/grape6-x86 -lg6lxsim2
+
+nbody1_g6lx:	$(OBJECTS) 
+	$(FC)   $(FFLAGS) $(OBJECTS) -o nbody1_g6lx $(LDFLGS)
+
+c_mydump.o : c_mydump.c
+	cc -c -g  c_mydump.c
+bhmovie: movie.f filebodies.f movie.c
+	$(FC) -p -o bhmovie movie.f  filebodies.f movie.c  -L../XTc -lplot -lX11
+analyzetriple: analyzetriple.f filebodies.f
+	$(FC) -u -o analyzetriple analyzetriple.f  filebodies.f 
