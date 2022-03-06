@@ -1,0 +1,2799 @@
+%!PS-Adobe-3.0
+%%Title: intgrt.F
+%%For: Rainer Spurzem
+%%Creator: a2ps version 4.13
+%%CreationDate: Wed May 22 14:00:08 2002
+%%BoundingBox: 42 40 564 828
+%%DocumentData: Clean7Bit
+%%Orientation: Portrait
+%%Pages: 13
+%%PageOrder: Ascend
+%%DocumentMedia: A4kyo 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 842 def
+/sw 595 def
+/llx 42 def
+/urx 564 def
+/ury 828 def
+/lly 40 def
+/#copies 1 def
+/th 20.000000 def
+/fnfs 15 def
+/bfs 10.000000 def
+/cw 6.000000 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   767.000000 th add
+def
+/pmw 0 def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+] def
+/y [
+  pmh ph add 0 mul ph add
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      ) p
+(SUBROUTINE) K
+( ) p
+(INTGRT) L n
+(*) c n
+(*) N
+(*       N-body integrator flow control.) N
+(*       -------------------------------) N
+(*) N
+(      ) p
+(INCLUDE) K
+( ') p
+(common6.h) str
+(') p n
+(      ) S
+(COMMON) K
+(/CLUMP/   BODYS\(NCMAX,5\),T0S\(5\),TS\(5\),STEPS\(5\),RMAXS\(5\),) p n
+(     &                NAMES\(NCMAX,5\),ISYS\(5\)) N
+(      ) S
+(INTEGER) K
+( JHIST,JHISTR) p n
+(      ) S
+(LOGICAL) K
+( LSHRNK) p n
+(      ) S
+(EXTERNAL) K
+( SHORT) p n
+(      ) S
+(COMMON) K
+(/BLKLVL/JHIST\(0:NMAX\),JHISTR\(0:NMAX\)) p n
+(      ) S
+(INTEGER) K
+(  NXTLST\(NMAX\),IREG\(NMAX\),NBLIST\(NMAX\),IBL\(LMAX\)) p n
+(      ) S
+(real) K
+(*8 r2\(nmax\)) p n
+(      ) S
+(COMMON) K
+(/CPERT/  RGRAV,GPERT,IPERT,NPERT) p n
+(      ) S
+(COMMON) K
+(/CHAINC/  DF1\(3*NCMAX\),DF2\(3*NCMAX\),BODYC\(NCMAX\),ICH,) p n
+(     &                LISTC\(LMAX\)) N
+(      ) S
+(LOGICAL) K
+( UPDATEF\(0:MAXPE-1\)) p n
+(      ) S
+(COMMON) K
+(/XCUPD/  UPDATEF) p n
+(      ) S
+(COMMON) K
+(/STSTAT/  TINIT,NIR,NIB,NRGL,NKS) p n
+(*) c n
+(#ifdef PARALLEL) p n
+(      ) S
+(integer) K
+( inum\(maxpe\),ista\(maxpe\)) p n
+(      ) S
+(REAL) K
+(*8 XMPI\(19,NMAX\),YMPI\(41,NMAX\)) p n
+(#) S
+(endif) K n
+(      ) p
+(INTEGER) K
+( IMPI\(LMAX,NMAX\),JMPI\(11,maxpe\)) p n
+(*) c n
+(      ) p
+(SAVE) K
+( IQ,ICALL,STEPM) p n
+(      ) S
+(DATA) K
+( IQ,ICALL,STEPM /0,2,0.03125/) p n
+(*) c n
+(      ixxxx = 0) p n
+(      ) S
+(if) K
+(\(iq) p
+(\271) sy
+(0\)ixxxx=1) p n
+(      ) S
+(if) K
+(\(iq) p
+(\272) sy
+(2\)step\(ifirst\) = step\(ifirst\)/2.d0) p n
+(*     PRINT*,' Here is INTGRT: IQ,ICALL,IPHASE=',) c n
+(*    *   IQ,ICALL,IPHASE) N
+(*       Search for high velocities after escape or KS/chain termination.) N
+(  999 ) p
+(IF) K
+( \(KZ\(18\)>0) p
+(\331) sy
+(\(IPHASE) p
+(\272) sy
+(-1) p
+(\332) sy
+(IPHASE) p
+(\263) sy
+(2\)\) ) p
+(THEN) K n
+(          ) p
+(CALL) K
+( ) p
+(HIVEL) l
+(\(0\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Reset control & regularization indicators.) N
+(      IPHASE = 0) p n
+(      IKS = 0) N
+(*       Initialize end-point of integration times and set TMIN.) c n
+(      TMIN = 1.0D+10) p n
+(*       Initialize end-point of integration times and set TMIN and DTM.) c n
+(      ) p
+(DO) K
+( 1000 I = IFIRST,NTOT) p n
+(         TIMENW\(I\) = T0\(I\) + STEP\(I\)) N
+(          ) S
+(IF) K
+(\(TIMENW\(I\)<TMIN\)) p
+(THEN) K n
+(             TMIN = TIMENW\(I\)) p n
+(             IMIN = I) N
+(          ) S
+(END) K
+( ) p
+(IF) K n
+( 1000 ) p
+(CONTINUE) K n
+(*) c n
+(      ) p
+(IF) K
+( \(IQ<0\) ICALL = 0) p n
+(      IQ = 0) N
+(*) c n
+(*       Find all particles due at next block time.) N
+(    1 ) p
+(CONTINUE) K n
+(*) c n
+(*     if\(ixxxx.gt.0\)then) N
+(*     ixxxx = ixxxx + 1) N
+(*     print*,' time,iq,icall,ifirst=',time,iq,icall,ifirst,ifirst+1) N
+(*     print*,' steps=',step\(ifirst\),step\(ifirst+1\)) N
+(*     print*,' timenw=',timenw\(ifirst\),timenw\(ifirst+1\)) N
+(*     end if) N
+(*) N
+(      NXTLEN = 0) p n
+(*) c n
+(*       Reset TSMALL second time after main change to catch new small steps.) N
+(      ICALL = ICALL + 1) p n
+(      ) S
+(IF) K
+( \(ICALL) p
+(\272) sy
+(2\) ) p
+(GO TO) K
+( 999) p n
+(*) c n
+(*     determine next block particles without assuming) N
+(*     sorted time step list \(R.Sp.\)) N
+(intgrt.F) (Page 1/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (2) 2
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*) c n
+(      ) p
+(DO) K
+( 5 J = IFIRST, NTOT) p n
+(         ) S
+(IF) K
+(\() p
+(DABS) K
+(\(TIMENW\(J\)-TMIN\)<DTK\(40\)\) ) p
+(THEN) K n
+(            NXTLEN = NXTLEN + 1) p n
+(            NXTLST\(NXTLEN\) = J) N
+(         ) S
+(END) K
+( ) p
+(IF) K n
+(  5   ) p
+(CONTINUE) K n
+(*) c n
+(*     if\(ixxxx.gt.0\)then) N
+(*     print*,' nxtlen,block=',nxtlen,\(nxtlst\(k\),k=1,nxtlen\)) N
+(*     if\(ixxxx.gt.3\)ixxxx=0) N
+(*     end if) N
+(*) N
+(*       Update short timestep list for regularization search.) N
+(      ) p
+(CALL) K
+( ) p
+(SHORT) l
+(\(NXTLEN,NXTLST\)) p n
+(*) c n
+(*       Set new time and save block time \(for regularization terminations\).) N
+(      TIME = TMIN) p n
+(      TBLOCK = TIME) N
+(*) c n
+(*       Check option for advancing interstellar clouds.) N
+(      ) p
+(IF) K
+( \(KZ\(13\)>0\) ) p
+(THEN) K n
+(          ) p
+(CALL) K
+( ) p
+(CLINT) l n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Include commensurability test \(may be suppressed if no problems\).) N
+(*     IF \(STEP\(IMIN\).LT.1.0E-15.OR.DMOD\(TIME,STEP\(IMIN\)\).NE.0.0D0\) THEN) N
+(*         WRITE \(6,1005\) IMIN, NAME\(IMIN\), NSTEPI, TIME, STEP\(IMIN\), ) N
+(*    &                   TIME/STEP\(IMIN\)) N
+(*1005     ) p
+(FORMAT) K
+( \(') p
+( DANGER!   I NM # TIME STEP T/DT ) str
+(',) p n
+(*    &                        2I5,I11,F12.5,1P,E9.1,0P,F16.4\)) c n
+(*         CALL ABORT) N
+(*     END IF) N
+(*) N
+(*       Check for new regularization at end of block.) N
+(      ) p
+(IF) K
+( \(IKS>0\) ) p
+(THEN) K n
+(          TIME = TPREV) p n
+(          IPHASE = 1) N
+(          ) S
+(GO TO) K
+( 100) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Check next adjust time before beginning a new block.) N
+(      ) p
+(IF) K
+( \(TIME>TADJ\) ) p
+(THEN) K n
+(          TIME = TPREV) p n
+(          IPHASE = 3) N
+(          ) S
+(GO TO) K
+( 100) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Also check output time in case DTADJ & DELTAT not commensurate.) N
+(      ) p
+(IF) K
+( \(TIME>TNEXT\) ) p
+(THEN) K n
+(          TIME = TPREV) p n
+(          ) S
+(CALL) K
+( ) p
+(OUTPUT) l n
+(          ) p
+(GO TO) K
+( 1) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       See whether to advance any close encounters at first new time.) N
+(      ) p
+(IF) K
+( \(TIME>TPREV\) ) p
+(THEN) K n
+(            ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt5\)) p n
+(          ) S
+(CALL) K
+( ) p
+(SUBINT) l
+(\(IQ,I10\)) p n
+(            ) S
+(call) K
+( ) p
+(cputim) l
+(\(tt6\)) p n
+(            ttks = ttks + \(tt6-tt5\)*60.) N
+(*) c n
+(          ) p
+(IF) K
+( \(IQ<0\) ) p
+(GO TO) K
+( 999) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Check regularization criterion for single particles.) N
+(      IKS = 0) p n
+(      ISMIN = 0) N
+(      DSMIN = DTMIN) N
+(*       Search only in prepared list of short-step particles. \(R.Sp.\)) c n
+(      ISHORT = LSHORT\(1\)) p n
+(      ) S
+(DO) K
+( 50 L = 2,ISHORT+1) p n
+(          I = LSHORT\(L\)) N
+(*       Search for minimum timestep candidate for not ordered steps \(R.Sp.\)) c n
+(*       Beware that members of LSHORT may be members of KS pair \(R.Sp.\)) N
+(          ) p
+(IF) K
+( \(STEP\(I\)<DTMIN) p
+(\331) sy
+(STEP\(I\)<DSMIN) p
+(\331) sy
+(I) p
+(\243) sy
+(N) p
+(\331) sy n
+(intgrt.F) (Page 2/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 3
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(     &        I) p
+(\263) sy
+(IFIRST\) ) p
+(THEN) K n
+(              DSMIN = STEP\(I\)) p n
+(              ISMIN = I) N
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(   50 ) p
+(CONTINUE) K n
+(*) c n
+(*       See whether dominant body can be regularized.) N
+(      ) p
+(IF) K
+(\(ISMIN>0\) ) p
+(THEN) K n
+(          ) p
+(CALL) K
+( ) p
+(SEARCH) l
+(\(ISMIN,IKS\)) p n
+(*) c n
+(*       Include close encounter search for low-eccentric massive binaries.) N
+(      ) p
+(IF) K
+( \(IKS) p
+(\272) sy
+(0) p
+(\331) sy
+(STEP\(ISMIN\)<4.0*DTMIN\) ) p
+(THEN) K n
+(*       Consider massive single bodies in absence of subsystems.) c n
+(          ) p
+(IF) K
+( \(ISMIN) p
+(\243) sy
+(N) p
+(\331) sy
+(BODY\(I\)>2.0*BODYM) p
+(\331) sy
+(NSUB) p
+(\272) sy
+(0\) ) p
+(THEN) K n
+(*) c n
+(*       Obtain two-body elements and relative perturbation.) N
+(              JMIN = 0) p n
+(              ) S
+(CALL) K
+( ) p
+(ORBIT) l
+(\(ISMIN,JMIN,SEMI,ECC,GI\)) p n
+(*) c n
+(              EB = -0.5*BODY\(ISMIN\)*BODY\(JMIN\)/SEMI) p n
+(              ) S
+(IF) K
+( \(EB<EBH) p
+(\331) sy
+(GI<0.25) p
+(\331) sy
+(JMIN) p
+(\263) sy
+(IFIRST\) ) p
+(THEN) K n
+(                  APO = SEMI*\(1.0 + ECC\)) p n
+(*       Check eccentricity \(cf. max perturbation\) and neighbour radius.) c n
+(                  ) p
+(IF) K
+( \(ECC<0.5) p
+(\331) sy
+(APO<0.02*RS\(ISMIN\)\) ) p
+(THEN) K n
+(*                     PRINT*, ' KS TRY: NAM E A EB ',) c n
+(*    *       NAME\(ISMIN\), NAME\(JMIN\), ECC, SEMI, EB) N
+(*            CALL FLUSH\(6\)) N
+(                      IKS = IKS + 1) p n
+(                      ICOMP = ISMIN) N
+(                      JCOMP = JMIN) N
+(                  ) S
+(END) K
+( ) p
+(IF) K n
+(              ) p
+(END) K
+( ) p
+(IF) K n
+(          ) p
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*         OPEN\(97,STATUS='OLD',ERR=124\)) N
+(*         print*,' last irr block t=',time,' l=',nxtlen,) N
+(*    *    ' n=',n,' npairs=',npairs) N
+(*         ix=min\(nxtlen,10\)) N
+(*         print*,' first parts. in block \(max 10\) =',) N
+(*    *      \(name\(nxtlst\(l\)\),l=1,ix\)) N
+(*         if\(ix.le.3\)then) N
+(*         do 873 ii=1,ix) N
+(*         ik = nxtlst\(ii\)) N
+(*         print*,' i,name,stepi,r=',ik,name\(ik\),step\(ik\),stepr\(ik\)) N
+(*         if\(ik.gt.n\)then) N
+(*         ipair=ik-n) N
+(*         i1=2*ipair-1) N
+(*         i2=2*ipair) N
+(*         print*,' c.m.',ik,' w.members ',i1,i2,' names ',) N
+(*    *     name\(i1\),name\(i2\),' masses ',body\(i1\),body\(i2\)) N
+(*         end if) N
+(*873      ) p
+(continue) K n
+(*         do 876 iy=1,ix) c n
+(*         ipart = nxtlst\(iy\)) N
+(*         nny=list\(1,ipart\)) N
+(*         if\(nny.gt.0\)then) N
+(*         do 875 iz=1,nny) N
+(*         innb = list\(1+iz,ipart\)) N
+(*         r2\(iz\) = \(x\(1,ipart\) - x\(1,innb\)\)**2 +) N
+(*    *     \(x\(2,ipart\) - x\(2,innb\)\)**2 + \(x\(3,ipart\) - x\(3,innb\)\)**2) N
+(*         jlist\(iz\) = innb) N
+(*875      ) p
+(continue) K n
+(*         call sort1\(nny,r2,jlist\)) c n
+(*         print*,' part ',ipart,' name=',name\(ipart\),) N
+(*    *     ' nnb=',nny,'-------------') N
+(*         do 874 k=1,min\(nny,3\)) N
+(*         print*,' part, name, dist, step, mass=',jlist\(k\),) N
+(*    *    name\(jlist\(k\)\),r2\(k\),step\(jlist\(k\)\),body\(jlist\(k\)\)) N
+(*         if\(jlist\(k\).gt.n\)then) N
+(*         ipair=jlist\(k\)-n) N
+(*         i1=2*ipair-1) N
+(*         i2=2*ipair) N
+(*         print*,'       w.members ',name\(i1\),name\(i2\),) N
+(*    *     ' masses ',body\(i1\),body\(i2\)) N
+(intgrt.F) (Page 3/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (4) 4
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*         end if) c n
+(*874      ) p
+(continue) K n
+(*         end if) c n
+(*         print*,'----------------------------------------') N
+(*876      ) p
+(continue) K n
+(*         end if) c n
+(*         call flush\(6\)) N
+(*         CLOSE\(97\)) N
+(*124      ) p
+(CONTINUE) K n
+(*) c n
+(*       Choose between predicting all neighbours or full N.) N
+(*       Warning do not distribute prediction on PE's for consistency) N
+(          ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt1\)) p n
+(      ) S
+(IF) K
+( \(NXTLEN<10\) ) p
+(THEN) K n
+(*) c n
+(*       Initialize pointers for neighbour lists.) N
+(          ) p
+(DO) K
+( 30 L = 1,NXTLEN) p n
+(              IBL\(L\) = NXTLST\(L\)) N
+(   30     ) S
+(CONTINUE) K n
+(*) c n
+(*       Merge all neighbour lists \(with absent members of NXTLST added\).) N
+(          ) p
+(CALL) K
+( ) p
+(NBSORT) l
+(\(NXTLEN,IBL,NNB,NBLIST\)) p n
+(*) c n
+(*       Predict coordinates & velocities of neighbours and #I to order FDOT.) N
+(          NBPRED = NBPRED + NNB) p n
+(          NBFLAG = 1) N
+(          IPRED = 0) N
+(          ) S
+(DO) K
+( 35 L = 1,NNB) p n
+(              J = NBLIST\(L\)) N
+(              S = TIME - T0\(J\)) N
+(              S1 = 1.5*S) N
+(              S2 = 2.0*S) N
+(              X\(1,J\) = \(\(FDOT\(1,J\)*S + F\(1,J\)\)*S +X0DOT\(1,J\)\)*S +X0\(1,J\)) N
+(              X\(2,J\) = \(\(FDOT\(2,J\)*S + F\(2,J\)\)*S +X0DOT\(2,J\)\)*S +X0\(2,J\)) N
+(              X\(3,J\) = \(\(FDOT\(3,J\)*S + F\(3,J\)\)*S +X0DOT\(3,J\)\)*S +X0\(3,J\)) N
+(              XDOT\(1,J\) = \(FDOT\(1,J\)*S1 + F\(1,J\)\)*S2 + X0DOT\(1,J\)) N
+(              XDOT\(2,J\) = \(FDOT\(2,J\)*S1 + F\(2,J\)\)*S2 + X0DOT\(2,J\)) N
+(              XDOT\(3,J\) = \(FDOT\(3,J\)*S1 + F\(3,J\)\)*S2 + X0DOT\(3,J\)) N
+(   35     ) S
+(CONTINUE) K n
+(      ) p
+(ELSE) K n
+(          NNPRED = NNPRED + 1) p n
+(          NBFLAG = 1) N
+(          IPRED = 1) N
+(          ) S
+(DO) K
+( 40 J = IFIRST,NTOT) p n
+(              S = TIME - T0\(J\)) N
+(              S1 = 1.5*S) N
+(              S2 = 2.0*S) N
+(              X\(1,J\) = \(\(FDOT\(1,J\)*S + F\(1,J\)\)*S +X0DOT\(1,J\)\)*S +X0\(1,J\)) N
+(              X\(2,J\) = \(\(FDOT\(2,J\)*S + F\(2,J\)\)*S +X0DOT\(2,J\)\)*S +X0\(2,J\)) N
+(              X\(3,J\) = \(\(FDOT\(3,J\)*S + F\(3,J\)\)*S +X0DOT\(3,J\)\)*S +X0\(3,J\)) N
+(              XDOT\(1,J\) = \(FDOT\(1,J\)*S1 + F\(1,J\)\)*S2 + X0DOT\(1,J\)) N
+(              XDOT\(2,J\) = \(FDOT\(2,J\)*S1 + F\(2,J\)\)*S2 + X0DOT\(2,J\)) N
+(              XDOT\(3,J\) = \(FDOT\(3,J\)*S1 + F\(3,J\)\)*S2 + X0DOT\(3,J\)) N
+( 40       ) S
+(CONTINUE) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Resolve any KS coordinates & velocities using most recent c.m.) N
+(      ) p
+(IF) K
+( \(NPAIRS>0\) ) p
+(THEN) K n
+(*       Resolve perturbed KS pairs with c.m. prediction after NBSORT.) c n
+(      JJ = -1) p n
+(      ) S
+(DO) K
+( 45 JPAIR = 1,NPAIRS) p n
+(      JJ = JJ + 2) N
+(      ) S
+(IF) K
+( \(LIST\(1,JJ\)>0\) ) p
+(THEN) K n
+(*       Ignore c.m. prediction after full N loop \(all active KS needed\).) c n
+(          ) p
+(IF) K
+( \(IPRED) p
+(\272) sy
+(0\) ) p
+(THEN) K n
+(              J = N + JPAIR) p n
+(              S = TIME - T0\(J\)) N
+(              S1 = 1.5*S) N
+(              S2 = 2.0*S) N
+(              X\(1,J\) = \(\(FDOT\(1,J\)*S + F\(1,J\)\)*S +X0DOT\(1,J\)\)*S +X0\(1,J\)) N
+(              X\(2,J\) = \(\(FDOT\(2,J\)*S + F\(2,J\)\)*S +X0DOT\(2,J\)\)*S +X0\(2,J\)) N
+(              X\(3,J\) = \(\(FDOT\(3,J\)*S + F\(3,J\)\)*S +X0DOT\(3,J\)\)*S +X0\(3,J\)) N
+(              XDOT\(1,J\) = \(FDOT\(1,J\)*S1 + F\(1,J\)\)*S2 + X0DOT\(1,J\)) N
+(              XDOT\(2,J\) = \(FDOT\(2,J\)*S1 + F\(2,J\)\)*S2 + X0DOT\(2,J\)) N
+(              XDOT\(3,J\) = \(FDOT\(3,J\)*S1 + F\(3,J\)\)*S2 + X0DOT\(3,J\)) N
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(intgrt.F) (Page 4/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5) 5
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(          ZZ = 1.0) p n
+(          IZZ = -1) N
+(*       Distinguish between low and high-order prediction of U & UDOT.) c n
+(          ) p
+(IF) K
+( \(GAMMA\(JPAIR\)>1.0D-04\) ZZ = 0.0) p n
+(          ) S
+(CALL) K
+( ) p
+(KSRES2) l
+(\(JPAIR,J1,J2,ZZ,IZZ\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(   45 ) p
+(CONTINUE) K n
+(*) c n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Save new time \(output time at TIME> TADJ\) and increase # of blocks.) N
+(      TPREV = TIME) p n
+(      NBLOCK = NBLOCK + 1) N
+(      TMIN = 1.0D+10) N
+(*) c n
+() p 8 T () S 16 T (  ) S
+(call) K
+( ) p
+(cputim) l
+(\(tt2\)) p n
+(          ttnbp = ttnbp + \(tt2-tt1\)*60.) N
+(*) c n
+(*       Initialize counters for irregular & regular integrations.) N
+(      NREG = 0) p n
+(*) c n
+(*       Advance the irregular step for all particles in the current block.) N
+(*       Block-Step Level Diagnostics \(R.Sp. 29.Apr. 1993\)) N
+(          ) p
+(IF) K
+(\(KZ\(33\)>0\)JHIST\(NXTLEN\) = JHIST\(NXTLEN\) + 1) p n
+(*) c n
+(#ifdef PARALLEL) p n
+(      ) S
+(IF) K
+(\(NXTLEN) p
+(\243) sy
+(isernb\)) p
+(THEN) K n
+(#) p
+(endif) K n
+(*) c n
+(      ) p
+(DO) K
+( 701 L = 1,NXTLEN) p n
+(*) c n
+(          I = NXTLST\(L\)) p n
+(*) c n
+(      ) p
+(CALL) K
+( ) p
+(NBINT) l
+(\(I,NBFLAG\)) p n
+(*) c n
+( 701    ) p
+(CONTINUE) K n
+(*) c n
+(#ifdef PARALLEL) p n
+(*       start PARALLEL section for nbint) c n
+(        ) p
+(ELSE) K n
+(*) c n
+(          ) p
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(*) c n
+(      nl = NXTLEN) p n
+(*) c n
+(      inl = nl/isize) p n
+(      jsize = isize*inl) N
+(      idiff = nl - jsize) N
+(      irun = 0) N
+(*) c n
+(      ) p
+(do) K
+( 1003 ix = 1,isize) p n
+(      inum\(ix\)=inl) N
+(      ) S
+(if) K
+(\(ix) p
+(\243) sy
+(idiff\)inum\(ix\) = inum\(ix\) + 1) p n
+(      ista\(ix\) = irun+1) N
+(      ) S
+(if) K
+(\(ista\(ix\)>nl\)inum\(ix\) = 0) p n
+( 1003 irun = irun + inum\(ix\)) N
+(*) c n
+(      istart = ista\(rank+1\)) p n
+(      iend = ista\(rank+1\) + inum\(rank+1\) - 1) N
+(*) c n
+(*     if\(time.lt.0.1d0\)then) N
+(*     print*,' rank ',rank,' NXTLEN ',NXTLEN,TIME,) N
+(*    *    ' istart,iend=',istart,iend) N
+(*     end if) N
+(*) N
+(          ) p
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(*) c n
+(*        Reset updatef to check Chain updates in parallel part.) N
+(      updatef\(rank\)=.false.                         ) p n
+(*) c n
+(      ) p
+(DO) K
+( 70 L = istart,iend) p n
+(*) c n
+(*     if\(time.lt.0.1d0\)then) N
+(*     print*,' rank ',rank,' NXT in DO L ',L,TIME,) N
+(*    *    ' istart,iend=',istart,iend) N
+(*     end if) N
+(intgrt.F) (Page 5/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (6) 6
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(          I = NXTLST\(L\)) p n
+(      ) S
+(CALL) K
+( ) p
+(NBINT) l
+(\(I,NBFLAG\)) p n
+(*) c n
+(          ) p
+(DO) K
+( 69 K = 1,3) p n
+(          XMPI\(K,L\) = XN\(K,I\)) N
+(          XMPI\(K+3,L\) = XNDOT\(K,I\)) N
+(          XMPI\(K+6,L\) = D2\(K,I\)) N
+(          XMPI\(K+9,L\) = D3\(K,I\)) N
+(          XMPI\(K+12,L\) = FI\(K,I\)) N
+(          XMPI\(K+15,L\) = FIDOT\(K,I\)) N
+( 69       ) S
+(CONTINUE) K n
+() p n
+(          XMPI\(19,L\) = STEP\(I\)) N
+(*) c n
+( 70    ) p
+(CONTINUE) K n
+(*) c n
+(          ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt2\)) p n
+(          ttirr = ttirr + \(tt2-tt1\)*60.) N
+(*) c n
+(*        Distribute variables into private vectors again T3E \(R.Sp.\)) N
+(*) N
+(      isend = rank + 1) p n
+(      ) S
+(if) K
+(\(isend) p
+(\272) sy
+(isize\)isend = 0) p n
+(      irecv = rank - 1) N
+(      ) S
+(if) K
+(\(irecv) p
+(\272) sy
+(-1\)irecv = isize - 1) p n
+(*) c n
+(      ) p
+(do) K
+( 1001 ir = 0,isize-2) p n
+(*) c n
+(      irank = rank - ir) p n
+(      ) S
+(if) K
+(\(irank<0\)irank=irank+isize) p n
+(*) c n
+(      istsen=ista\(irank+1\)) p n
+(      icnt = inum\(irank+1\)) N
+(*) c n
+(      ) p
+(if) K
+(\(irank) p
+(\272) sy
+(0\)irank=isize) p n
+(      istrec = ista\(irank\)) N
+(      icnt2 = inum\(irank\)) N
+(*) c n
+(*     if\(time.lt.0.1d0.and.icnt.gt.0\)then) N
+(*     print*,' NXT: rank t',rank,time,' ir ',ir,' send ',istsen,) N
+(*    *    ' thru ',istsen+icnt-1,' to ',isend,' cnt ',icnt,) N
+(*    *    ' istart,iend=',istart,iend) N
+(*     end if) N
+(*     if\(time.lt.0.1d0.and.icnt2.gt.0\)then) N
+(*     print*,' NXT: rank t',rank,time,' ir ',ir,' recv ',istrec,) N
+(*    *    ' thru ',istrec+icnt2-1,' fr ',irecv,' cnt2 ',icnt2,) N
+(*    *    ' istart,iend=',istart,iend) N
+(*     end if) N
+(*) N
+(#ifdef PUREMPI) p n
+(          ) S
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(      ) S
+(CALL) K
+( ) p
+(MPI_SENDRECV) l
+(\(XMPI\(1,istsen\),19*icnt,MPI_REAL,isend,rank,) p n
+(     *                  XMPI\(1,istrec\),19*icnt2,MPI_REAL,irecv,irecv,) N
+(     *                  MPI_COMM_WORLD,status,ierr\)) N
+(#) S
+(endif) K n
+(*) c n
+(#ifdef SHMEM) p n
+(       ) S
+(call) K
+( ) p
+(barrier) l
+(\(\)) p n
+(       ) S
+(call) K
+( ) p
+(shmem_get) l
+(\(XMPI\(1,istrec\),XMPI\(1,istrec\),19*icnt2,irecv\)) p n
+(#) S
+(endif) K n
+(*) c n
+( 1001  ) p
+(continue) K n
+(*) c n
+(          ) p
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(*) c n
+(*       Distribute updatef among all PE's) N
+(      ) p
+(CALL) K
+( ) p
+(MPI_ALLGATHER) l
+(\(updatef\(rank\),1,MPI_LOGICAL,) p n
+(     *  updatef\(0\),1,MPI_LOGICAL,MPI_COMM_WORLD,ierr\)) N
+(*       Has any PE updated Chain-Variables ?) c n
+(      ) p
+(do) K
+( iy=0,isize-1) p n
+(*) c n
+(*         If so, does any PE have not ?) N
+(      ) p
+(if) K
+(\(updatef\(iy\)\) ) p
+(then) K n
+(          ) p
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(*         If so, distribute Chain variables) c n
+(       ) p
+(call) K
+( ) p
+(MPI_BCAST) l
+(\(DF2\(1\),3*NCMAX,MPI_REAL,iy,MPI_COMM_WORLD,ierr\)) p n
+(intgrt.F) (Page 6/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (7) 7
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(       ) p
+(call) K
+( ) p
+(MPI_BCAST) l
+(\(DF1\(1\),3*NCMAX,MPI_REAL,iy,MPI_COMM_WORLD,ierr\)) p n
+(       ) S
+(call) K
+( ) p
+(MPI_BCAST) l
+(\(LISTC\(1\),LMAX,MPI_INTEGER,iy,MPI_COMM_WORLD,ierr\)) p n
+(       ) S
+(call) K
+( ) p
+(MPI_BCAST) l
+(\(GPERT,1,MPI_REAL,iy,MPI_COMM_WORLD,ierr\) ) p n
+(*) c n
+(       ) p
+(end) K
+( ) p
+(if) K n
+(       ) p
+(end) K
+( ) p
+(do) K n
+(*) c n
+(       ) p
+(DO) K
+( 72 L = 1,NXTLEN) p n
+(          I = NXTLST\(L\)) N
+(              ) S
+(DO) K
+( 68 K = 1,3) p n
+(                  XN\(K,I\) = XMPI\(K,L\)) N
+(                  XNDOT\(K,I\) = XMPI\(K+3,L\)) N
+(                  D2\(K,I\) = XMPI\(K+6,L\)) N
+(                  D3\(K,I\) = XMPI\(K+9,L\)) N
+(                  FI\(K,I\) = XMPI\(K+12,L\)) N
+(                  FIDOT\(K,I\) = XMPI\(K+15,L\)) N
+(   68         ) S
+(CONTINUE) K n
+(          STEP\(I\) = XMPI\(19,L\)) p n
+(  72      ) S
+(CONTINUE) K n
+(*) c n
+(            ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt3\)) p n
+(            ttmov = ttmov + \(tt3-tt2\)*60.) N
+(*) c n
+(       ) p
+(END) K
+( ) p
+(IF) K n
+(*          End PARALLEL section for nbint) c n
+(#) p
+(endif) K n
+(*) c n
+(       ) p
+(DO) K
+( 71 L = 1,NXTLEN) p n
+(          I = NXTLST\(L\)) N
+(*       Save new block step and update T0 & next time) c n
+(          T0\(I\) = TIME) p n
+(          TIMENW\(I\) = T0\(I\) + STEP\(I\)) N
+(*) c n
+(*       Set non-zero indicator for new regular force.) N
+(          ) p
+(IF) K
+( \(T0R\(I\) + STEPR\(I\)) p
+(\243) sy
+(TIME\) ) p
+(THEN) K n
+(              NREG = NREG + 1) p n
+(              IREG\(NREG\) = I) N
+(          ) S
+(ELSE) K n
+(*       Extrapolate regular force & first derivatives to obtain F & FDOT.) c n
+(              DTR = TIME - T0R\(I\)) p n
+(              ) S
+(DO) K
+( 65 K = 1,3) p n
+(                  F\(K,I\) = 0.5*\(FRDOT\(K,I\)*DTR + FR\(K,I\) + FI\(K,I\)\)) N
+(                  FDOT\(K,I\) = ONE6*\(FRDOT\(K,I\) + FIDOT\(K,I\)\)) N
+(* Higher order extrapolation?) c n
+(*                 F\(K,I\) = FI\(K,I\) + FR\(K,I\) + DTR*\(FRDOT\(K,I\)) N
+(*    *                + DTR*\(D2R\(K,I\)/2.D0 + DTR*D3R\(K,I\)/6.D0\)\)) N
+(*                 FDOT\(K,I\) = FIDOT\(K,I\) + FRDOT\(K,I\)) N
+(*    *                + DTR*\(D2R\(K,I\) + DTR*D3R\(K,I\)/2.D0\)) N
+(*                 F\(K,I\) = F\(K,I\)/2.D0) N
+(*                 FDOT\(K,I\) = FDOT\(K,I\)/6.D0) N
+(   65         ) p
+(CONTINUE) K n
+(          ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(              ) p
+(DO) K
+( 67 K = 1,3) p n
+(                  X0\(K,I\) = XN\(K,I\)) N
+(                  X0DOT\(K,I\) = XNDOT\(K,I\)) N
+(                  D0\(K,I\) = FI\(K,I\)) N
+(                  D1\(K,I\) = FIDOT\(K,I\)) N
+(   67         ) S
+(CONTINUE) K n
+(*) c n
+( 71     ) p
+(CONTINUE) K n
+(*) c n
+(*           CALL nemo_savestate\(n,3,time,body,x,xdot\)) N
+(*) N
+(*       See whether any KS candidates are in the same block.) N
+(      ) p
+(IF) K
+( \(IKS>0\) ) p
+(THEN) K n
+(*       Accept same time, otherwise reduce STEP\(ICOMP\) and/or delay.) c n
+(          ) p
+(IF) K
+( \(T0\(JCOMP\)) p
+(\272) sy
+(T0\(ICOMP\)\) ) p
+(THEN) K n
+(              I = ICOMP) p n
+(              ICOMP = ) S
+(MIN) K
+(\(ICOMP,JCOMP\)) p n
+(              JCOMP = ) S
+(MAX) K
+(\(I,JCOMP\)) p n
+(          ) S
+(ELSE) K
+( ) p
+(IF) K
+( \(T0\(JCOMP\) + STEP\(JCOMP\)<) p n
+(     &             T0\(ICOMP\) + STEP\(ICOMP\)\) ) S
+(THEN) K n
+(              STEP\(ICOMP\) = 0.5D0*STEP\(ICOMP\)) p n
+(              TIMENW\(ICOMP\) = T0\(ICOMP\) + STEP\(ICOMP\)) N
+(              IKS = 0) N
+(intgrt.F) (Page 7/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (8) 8
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(          ) p
+(ELSE) K n
+(              IKS = 0) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(      NSTEPI = NSTEPI + NXTLEN) p n
+(*) c n
+(*       Obtain total force for all particles due in the current block.) N
+(*) N
+(      ) p
+(IF) K
+(\(NREG>0\)) p
+(THEN) K n
+(*) c n
+(           ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt7\)) p n
+(              ) S
+(DO) K
+( 811 J=IFIRST,NTOT) p n
+(              S = TIME - T0\(J\)) N
+(              S1 = 1.5*S) N
+(              S2 = 2.0*S) N
+(              X\(1,J\) = \(\(FDOT\(1,J\)*S + F\(1,J\)\)*S +X0DOT\(1,J\)\)*S +X0\(1,J\)) N
+(              X\(2,J\) = \(\(FDOT\(2,J\)*S + F\(2,J\)\)*S +X0DOT\(2,J\)\)*S +X0\(2,J\)) N
+(              X\(3,J\) = \(\(FDOT\(3,J\)*S + F\(3,J\)\)*S +X0DOT\(3,J\)\)*S +X0\(3,J\)) N
+(              XDOT\(1,J\) = \(FDOT\(1,J\)*S1 + F\(1,J\)\)*S2 + X0DOT\(1,J\)) N
+(              XDOT\(2,J\) = \(FDOT\(2,J\)*S1 + F\(2,J\)\)*S2 + X0DOT\(2,J\)) N
+(              XDOT\(3,J\) = \(FDOT\(3,J\)*S1 + F\(3,J\)\)*S2 + X0DOT\(3,J\)) N
+( 811      ) S
+(CONTINUE) K n
+(*       Resolve any KS coordinates & velocities using most recent c.m.) c n
+(      ) p
+(IF) K
+( \(NPAIRS>0\) ) p
+(THEN) K n
+(          JJ = -1) p n
+(          ) S
+(DO) K
+( 86 JPAIR = 1,NPAIRS) p n
+(          JJ = JJ + 2) N
+(          ) S
+(IF) K
+( \(LIST\(1,JJ\)>0\) ) p
+(THEN) K n
+(              ZZ = 1.0) p n
+(              IZZ = -2) N
+(*       Distinguish between low and high-order prediction of U & UDOT.) c n
+(              ) p
+(IF) K
+( \(GAMMA\(JPAIR\)>1.0D-04\) ZZ = 0.0) p n
+(              ) S
+(CALL) K
+( ) p
+(KSRES2) l
+(\(JPAIR,J1,J2,ZZ,IZZ\)) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(   86     ) p
+(CONTINUE) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(          ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt8\)) p n
+(          ttpre = ttpre + \(tt8-tt7\)*60.) N
+(*) c n
+(*       Block-Step Level Diagnostics \(R.Sp. 29.Apr. 1993\)) N
+(          ) p
+(IF) K
+(\(KZ\(33\)>1\)JHISTR\(NREG\) = JHISTR\(NREG\) + 1) p n
+(*) c n
+(#ifdef PARALLEL) p n
+(      ) S
+(IF) K
+(\(NREG) p
+(\243) sy
+(iserreg\)) p
+(THEN) K n
+(#) p
+(endif) K n
+(          ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt1\)) p n
+(*) c n
+(      ) p
+(DO) K
+( 801 L = 1,NREG) p n
+(          I = IREG\(L\)) N
+(*) c n
+(          ) p
+(DO) K
+( 655 K = 1,LMAX) p n
+( 655      IMPI\(K,L\) = LIST\(K,I\)) N
+(*) c n
+(          NBSUM = 0) p n
+(*) c n
+(       ) p
+(CALL) K
+( ) p
+(REGINT) l
+(\(I,IMPI\(1,L\)\)) p n
+(*) c n
+(         ) p
+(DO) K
+( 615 K = 1,3) p n
+(              F\(K,I\) = 0.5D0*\(FI\(K,I\) + FR\(K,I\)\)) N
+(              FDOT\(K,I\) = ONE6*\(FIDOT\(K,I\) + FRDOT\(K,I\)\)) N
+(  615    ) S
+(CONTINUE) K n
+(  801 ) p
+(CONTINUE) K n
+(*) c n
+(      ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt2\)) p n
+(      ttreg = ttreg + \(tt2-tt1\)*60.) N
+(#ifdef PARALLEL) N
+(*       Start PARALLEL section for regint) c n
+(      ) p
+(ELSE) K n
+(*) c n
+(          ) p
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(*) c n
+() p 8 T (  ) S
+(call) K
+( ) p
+(cputim) l
+(\(tt1\)) p n
+(      nl = NREG) N
+(*) c n
+(intgrt.F) (Page 8/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (9) 9
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(      inl = nl/isize) p n
+(      jsize = isize*inl) N
+(      idiff = nl - jsize) N
+(      irun = 0) N
+(*) c n
+(      ) p
+(do) K
+( 1103 ix = 1,isize) p n
+(      inum\(ix\)=inl) N
+(      ) S
+(if) K
+(\(ix) p
+(\243) sy
+(idiff\)inum\(ix\) = inum\(ix\) + 1) p n
+(      ista\(ix\) = irun+1) N
+(      ) S
+(if) K
+(\(ista\(ix\)>nl\)inum\(ix\) = 0) p n
+( 1103 irun = irun + inum\(ix\)) N
+(*) c n
+(      istart = ista\(rank+1\)) p n
+(      iend = ista\(rank+1\) + inum\(rank+1\) - 1) N
+(*     PRINT*,' Start reg block rank ',rank,) c n
+(*    * ' TIME=',TIME,' NREG=',NREG) N
+(*     PRINT*,' Start reg block rank ',rank,) N
+(*    * ' istart,iend=',istart,iend) N
+(*) N
+(          NC5 = NBFULL) p n
+(          NC6 = NBVOID) N
+(          NC11 = NBSMIN) N
+(          NC15 = NBDIS2) N
+(          NC18 = NRCONV) N
+(          NC19 = NBDIS) N
+(          NC20 = NLSMIN) N
+(          NC30 = NFAST) N
+(          NCX = NICONV) N
+(          NCY = NBFAST) N
+(          NBSUM = NBFLUX) N
+(*) c n
+(      ) p
+(DO) K
+( 80 L = istart,iend) p n
+(          I = IREG\(L\)) N
+(*) c n
+(          ) p
+(DO) K
+( 656 K = 1,LMAX) p n
+( 656      IMPI\(K,L\) = LIST\(K,I\)) N
+(*) c n
+(       ) p
+(CALL) K
+( ) p
+(REGINT) l
+(\(I,IMPI\(1,L\)\)) p n
+(*) c n
+(          YMPI\(37,L\) = STEPR\(I\)) p n
+(          YMPI\(38,L\) = STEP\(I\)) N
+(          YMPI\(39,L\) = TIMENW\(I\)) N
+(          YMPI\(40,L\) = RS\(I\)) N
+(          YMPI\(41,L\) = T0R\(I\)) N
+(*) c n
+(         ) p
+(DO) K
+( 814 K = 1,3) p n
+(              YMPI\(K,L\) = XN\(K,I\)) N
+(              YMPI\(K+3,L\) = XNDOT\(K,I\)) N
+(              YMPI\(K+6,L\) = FI\(K,I\)) N
+(              YMPI\(K+9,L\) = FR\(K,I\)) N
+(              YMPI\(K+12,L\) = FIDOT\(K,I\)) N
+(              YMPI\(K+15,L\) = FRDOT\(K,I\)) N
+(              YMPI\(K+18,L\) = D1R\(K,I\)) N
+(              YMPI\(K+21,L\) = D2R\(K,I\)) N
+(              YMPI\(K+24,L\) = D3R\(K,I\)) N
+(*       Save corrections of force polynomials from routine fpcorr) c n
+(              ) p
+(IF) K
+( \(KZ\(38\)>0) p
+(\332) sy
+(I>N\) ) p
+(THEN) K n
+(              YMPI\(K+27,L\) = D1\(K,I\)) p n
+(              YMPI\(K+30,L\) = D2\(K,I\)) N
+(              YMPI\(K+33,L\) = D3\(K,I\)) N
+(              ) S
+(END) K
+( ) p
+(IF) K n
+(  814    ) p
+(CONTINUE) K n
+() p n
+(   80 ) S
+(CONTINUE) K n
+(*) c n
+(          j = rank + 1) p n
+(          JMPI\(1,j\) = NBFULL - NC5) N
+(          JMPI\(2,j\) = NBVOID - NC6) N
+(          JMPI\(3,j\) = NBSMIN - NC11) N
+(          JMPI\(4,j\) = NBDIS2 - NC15) N
+(          JMPI\(5,j\) = NRCONV - NC18) N
+(          JMPI\(6,j\) = NBDIS - NC19) N
+(          JMPI\(7,j\) = NLSMIN - NC20) N
+(          JMPI\(8,j\) = NFAST - NC30) N
+(          JMPI\(9,j\) = NICONV - NCX) N
+(          JMPI\(10,j\) = NBFAST - NCY) N
+(intgrt.F) (Page 9/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (10) 10
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(          JMPI\(11,j\) = NBFLUX - NBSUM) p n
+(*) c n
+(          ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt2\)) p n
+(          ttreg = ttreg + \(tt2-tt1\)*60.) N
+(*) c n
+(*        Distribute variables into private vectors again T3E \(R.Sp.\)) N
+(      isend = rank + 1) p n
+(      ) S
+(if) K
+(\(isend) p
+(\272) sy
+(isize\)isend = 0) p n
+(      irecv = rank - 1) N
+(      ) S
+(if) K
+(\(irecv) p
+(\272) sy
+(-1\)irecv = isize - 1) p n
+(*) c n
+(      ) p
+(do) K
+( 1002 ir = 0,isize-2) p n
+(*) c n
+(      irank = rank - ir) p n
+(      ) S
+(if) K
+(\(irank<0\)irank=irank+isize) p n
+(*) c n
+(      istsen=ista\(irank+1\)) p n
+(      icnt = inum\(irank+1\)) N
+(*) c n
+(      ) p
+(if) K
+(\(irank) p
+(\272) sy
+(0\)irank=isize) p n
+(      istrec = ista\(irank\)) N
+(      icnt2 = inum\(irank\)) N
+(*) c n
+(*     print*,' INTGRT-R: rank t',rank,time,' ir ',ir,' send ',istsen,) N
+(*    *    ' thru ',istsen+icnt-1,' to ',isend,' cnt ',icnt) N
+(*     print*,' INTGRT-R: rank t',rank,time,' ir ',ir,' recv ',istrec,) N
+(*    *    ' thru ',istrec+icnt2-1,' fr ',irecv,' cnt2 ',icnt2) N
+(*) N
+(#ifdef PUREMPI) p n
+(          ) S
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(      ) S
+(CALL) K
+( ) p
+(MPI_SENDRECV) l
+(\(YMPI\(1,istsen\),41*icnt,MPI_REAL,isend,) p n
+(     *         rank,YMPI\(1,istrec\),41*icnt2,MPI_REAL,irecv,irecv,) N
+(     *         MPI_COMM_WORLD,status,ierr\)) N
+(*) c n
+(      ) p
+(CALL) K
+( ) p
+(MPI_SENDRECV) l
+(\(IMPI\(1,istsen\),lmax*icnt,MPI_INTEGER,isend,) p n
+(     *         rank,IMPI\(1,istrec\),lmax*icnt2,MPI_INTEGER,irecv,irecv,) N
+(     *         MPI_COMM_WORLD,status,ierr\)) N
+(#) S
+(endif) K n
+(*) c n
+(#ifdef SHMEM) p n
+(*) c n
+(       ) p
+(call) K
+( ) p
+(barrier) l
+(\(\)) p n
+(       ) S
+(call) K
+( ) p
+(shmem_get) l
+(\(YMPI\(1,istrec\),YMPI\(1,istrec\),41*icnt2,irecv\)) p n
+(       ) S
+(call) K
+( ) p
+(shmem_get) l
+(\(IMPI\(1,istrec\),IMPI\(1,istrec\),lmax*icnt2,irecv\)) p n
+(#) S
+(endif) K n
+(*) c n
+( 1002  ) p
+(continue) K n
+(*) c n
+(      ) p
+(CALL) K
+( ) p
+(MPI_BCAST) l
+(\(JMPI\(1,rank+1\),11,MPI_INTEGER,0,) p n
+(     *                                  MPI_COMM_WORLD,ierr\)) N
+(      ) S
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(      ) S
+(DO) K
+( 812 L = 1,NREG) p n
+(          I = IREG\(L\)) N
+(         ) S
+(DO) K
+( 815 K = 1,3) p n
+(              XN\(K,I\) = YMPI\(K,L\)) N
+(              XNDOT\(K,I\) = YMPI\(K+3,L\)) N
+(              FI\(K,I\) = YMPI\(K+6,L\)) N
+(              FR\(K,I\) = YMPI\(K+9,L\)) N
+(              F\(K,I\) = 0.5D0*\(FI\(K,I\) + FR\(K,I\)\)) N
+(              FIDOT\(K,I\) = YMPI\(K+12,L\)) N
+(              FRDOT\(K,I\) = YMPI\(K+15,L\)) N
+(              FDOT\(K,I\) = ONE6*\(FIDOT\(K,I\) + FRDOT\(K,I\)\)) N
+(              D0\(K,I\) = FI\(K,I\)) N
+(              D0R\(K,I\) = FR\(K,I\)) N
+(              D1R\(K,I\) = YMPI\(K+18,L\)) N
+(              D2R\(K,I\) = YMPI\(K+21,L\)) N
+(              D3R\(K,I\) = YMPI\(K+24,L\)) N
+(*       Save corrections of force polynomials from routine fpcorr) c n
+(              ) p
+(IF) K
+( \(KZ\(38\)>0) p
+(\332) sy
+(I>N\) ) p
+(THEN) K n
+(              D1\(K,I\) = YMPI\(K+27,L\)) p n
+(              D2\(K,I\) = YMPI\(K+30,L\)) N
+(              D3\(K,I\) = YMPI\(K+33,L\)) N
+(              ) S
+(END) K
+( ) p
+(IF) K n
+(  815    ) p
+(CONTINUE) K n
+(              STEPR\(I\) = YMPI\(37,L\)) p n
+(              STEP\(I\) = YMPI\(38,L\)) N
+(intgrt.F) (Page 10/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (11) 11
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(              TIMENW\(I\) = YMPI\(39,L\)) p n
+(              RS\(I\) = YMPI\(40,L\)) N
+(              T0R\(I\) = YMPI\(41,L\)) N
+( 812   ) S
+(CONTINUE) K n
+(*) c n
+() p 8 T (  ) S
+(call) K
+( ) p
+(cputim) l
+(\(tt3\)) p n
+(      ttmov = ttmov + \(tt3-tt2\)*60.) N
+(*) c n
+() p 8 T (  ) S
+(call) K
+( ) p
+(cputim) l
+(\(tt1\)) p n
+(       ) S
+(DO) K
+( 83 J = 1,isize) p n
+(              NBFULL = NC5 + JMPI\(1,J\)) N
+(              NBVOID = NC6 + JMPI\(2,J\)) N
+(              NBSMIN = NC11 + JMPI\(3,J\)) N
+(              NBDIS2 = NC15 + JMPI\(4,J\)) N
+(              NRCONV = NC18 + JMPI\(5,J\)) N
+(              NBDIS = NC19 + JMPI\(6,J\)) N
+(              NLSMIN = NC20 + JMPI\(7,J\)) N
+(              NFAST = NC30 + JMPI\(8,J\)) N
+(              NICONV = NCX + JMPI\(9,J\)) N
+(              NBFAST = NCY + JMPI\(10,J\)) N
+(              NBFLUX = NBSUM + JMPI\(11,J\)) N
+(*) c n
+(   83 ) p
+(CONTINUE) K n
+(      ) p
+(call) K
+( ) p
+(cputim) l
+(\(tt2\)) p n
+(      ttsub = ttsub + \(tt2-tt1\)*60.) N
+(*) c n
+(      ) p
+(call) K
+( ) p
+(mpi_barrier) l
+(\(MPI_COMM_WORLD,ierr\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*         End PARALLEL section for regint) c n
+(#) p
+(endif) K n
+(*) c n
+(      NSTEPR = NSTEPR + NREG) p n
+(      NBLCKR = NBLCKR + 1) N
+(      LSHRNK = .FALSE.) N
+(*) c n
+(      ) p
+(DO) K
+( 81 L = 1,NREG) p n
+(          I = IREG\(L\)) N
+(*) c n
+(              ) p
+(DO) K
+( 816 K = 1,LMAX) p n
+( 816          LIST\(K,I\) = IMPI\(K,L\)) N
+(*) c n
+(*       Check minimum neighbor sphere since last output) N
+(              ) p
+(IF) K
+(\(LIST\(1,I\)>0\)RSMIN = ) p
+(MIN) K
+(\(RSMIN,RS\(I\)\)) p n
+(*) c n
+( 81   ) p
+(CONTINUE) K n
+(*) c n
+(*          OPEN\(98,STATUS='OLD',ERR=123\)) N
+(*         print*,' last reg block t=',time,' length=',nreg) N
+(*         print*,' first 10 =',\(name\(ireg\(l\)\),l=1,min\(nreg,10\)\)) N
+(*         call flush\(6\)) N
+(*         CLOSE\(98\)) N
+(*123      ) p
+(CONTINUE) K n
+(*) c n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Copy all corrected coordinates & velocities \(NB! only at the end\).) N
+(      ) p
+(DO) K
+( 85 L = 1,NXTLEN) p n
+(          I = NXTLST\(L\)) N
+(*) c n
+(      ) p
+(IF) K
+( \(I>N\) ) p
+(THEN) K n
+(          IPAIR = I - N) p n
+(          ) S
+(IF) K
+( \(LIST\(1,2*IPAIR-1\)>0\) NSTEPB = NSTEPB + 1) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(          ) p
+(IF) K
+(\(TIMENW\(I\)<TMIN\)) p
+(THEN) K n
+(              TMIN = TIMENW\(I\)) p n
+(              IMIN = I) N
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(          ) p
+(DO) K
+( 82 K = 1,3) p n
+(              X0\(K,I\) = XN\(K,I\)) N
+(              X0DOT\(K,I\) = XNDOT\(K,I\)) N
+(              X\(K,I\) = XN\(K,I\)) N
+(              XDOT\(K,I\) = XNDOT\(K,I\)) N
+(   82     ) S
+(CONTINUE) K n
+(   85 ) p
+(CONTINUE) K n
+(intgrt.F) (Page 11/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (12) 12
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(*) c n
+(*       Exit on KS termination, new multiple regularization or merger.) N
+(      ) p
+(IF) K
+( \(IQ>0\) ) p
+(THEN) K n
+(          NBPREV = 0) p n
+(          ) S
+(IF) K
+( \(IQ) p
+(\263) sy
+(4) p
+(\331) sy
+(IQ) p
+(\271) sy
+(7\) ) p
+(THEN) K n
+(              ) p
+(CALL) K
+( ) p
+(DELAY) l
+(\(IQ,-1\)) p n
+(          ) S
+(ELSE) K n
+(*       Ensure correct KS index \(KSPAIR may denote second termination\).) c n
+(              KSPAIR = KVEC\(I10\)) p n
+(              IPHASE = IQ) N
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(          ) p
+(GO TO) K
+( 100) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Perform optional check on high-velocity particles at major times.) N
+(      ) p
+(IF) K
+( \(KZ\(18\)>0) p
+(\331) sy
+(LISTV\(1\)>0\) ) p
+(THEN) K n
+(          ) p
+(IF) K
+( \() p
+(DMOD) K
+(\(TIME,STEPM\)) p
+(\272) sy
+(0.0D0\) ) p
+(THEN) K n
+(              ) p
+(CALL) K
+( ) p
+(SHRINK) l n
+(              ) p
+(IF) K
+( \(LISTV\(1\)>0\) ) p
+(THEN) K n
+(                  ) p
+(CALL) K
+( ) p
+(HIVEL) l
+(\(-1\)) p n
+(              ) S
+(END) K
+( ) p
+(IF) K n
+(          ) p
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Check optional mass loss time.) N
+(      ) p
+(IF) K
+( \(KZ\(19\)>0\) ) p
+(THEN) K n
+(*       Delay until time commensurate with 1000-year step \(new polynomials\).) c n
+(          ) p
+(IF) K
+( \(TIME>TMDOT) p
+(\331) sy
+(DMOD) K
+(\(TIME,STEPX\)) p
+(\272) sy
+(0.0D0\) ) p
+(THEN) K n
+(              ) p
+(IF) K
+( \(KZ\(19\)) p
+(\263) sy
+(3\) ) p
+(THEN) K n
+(                  ) p
+(CALL) K
+( ) p
+(MDOT) l n
+(              ) p
+(ELSE) K n
+(                  ) p
+(CALL) K
+( ) p
+(MLOSS) l n
+(              ) p
+(END) K
+( ) p
+(IF) K n
+(              ) p
+(IF) K
+( \(IPHASE<0\) ) p
+(GO TO) K
+( 999) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Advance counters and check timer & optional COMMON save \(NSUB = 0\).) N
+(      NTIMER = NTIMER + NXTLEN) p n
+(      ) S
+(IF) K
+( \(NTIMER<NMAX\) ) p
+(GO TO) K
+( 1) p n
+(      NTIMER = 0) N
+(      NSTEPS = NSTEPS + NMAX) N
+(*) c n
+(      ) p
+(IF) K
+( \(NSTEPS) p
+(\263) sy
+(100*NMAX) p
+(\331) sy
+(NSUB) p
+(\272) sy
+(0\) ) p
+(THEN) K n
+(          NSTEPS = 0) p n
+(          ) S
+(IF) K
+( \(KZ\(1\)>1\) ) p
+(CALL) K
+( ) p
+(MYDUMP) l
+(\(1,1\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Check option for general binary search.) N
+(      ) p
+(IF) K
+( \(KZ\(4\)) p
+(\271) sy
+(0) p
+(\331) sy
+(TIME - TLASTS>DELTAS\) ) p
+(THEN) K n
+(          ) p
+(CALL) K
+( ) p
+(EVOLVE) l
+(\(0,0\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Include facility for termination of run \(create dummy file STOP\).) N
+(      ) p
+(IF) K
+(\(rank) p
+(\272) sy
+(0\)) p
+(THEN) K n
+(      ) p
+(OPEN) K
+( \(99,FILE=') p
+(STOP) str
+(',STATUS=') p
+(OLD) str
+(',FORM=') p
+(FORMATTED) str
+(',IOSTAT=IO\)) p n
+(      ) S
+(IF) K
+( \(IO) p
+(\272) sy
+(0\) ) p
+(THEN) K n
+(          ) p
+(CLOSE) K
+( \(99\)) p n
+(          ) S
+(IF) K
+( \(NSUM) p
+(\272) sy
+(0) p
+(\331) sy
+(rank) p
+(\272) sy
+(0\) ) p
+(WRITE) K
+( \(6,90\)) p n
+(   90     ) S
+(FORMAT) K
+(  \(/,9X,') p
+(TERMINATION BY MANUAL INTERVENTION) str
+('\)) p n
+(          CPU = 0.0) N
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Repeat cycle until elapsed computing time exceeds the limit.) N
+(      ) p
+(CALL) K
+( ) p
+(CPUTIM) l
+(\(TCOMP\)) p n
+(          TCOMP = \(TCOMP-TTOTA\)*60.) N
+(*) c n
+(      ) p
+(IF) K
+( \(TCOMP<CPU\) ) p
+(GO TO) K
+( 1) p n
+(*) c n
+(*       Do not terminate during triple, quad or chain regularization.) N
+(      ) p
+(IF) K
+( \(NSUB>0\) ) p
+(THEN) K n
+(*       Specify zero step to enforce termination.) c n
+(          ) p
+(DO) K
+( 95 L = 1,NSUB) p n
+(              STEPS\(L\) = 0.0D0) N
+(   95     ) S
+(CONTINUE) K n
+(intgrt.F) (Page 12/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (13) 13
+%%BeginPageSetup
+/pagesave save def
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 0 add translate
+/v 0 store
+/x0 x v get 4.200000 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(          NTIMER = NMAX) p n
+(          ) S
+(GO TO) K
+( 1) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*       Terminate run with optional COMMON save.) N
+(      ) p
+(IF) K
+( \(KZ\(1\)) p
+(\271) sy
+(0\) ) p
+(THEN) K n
+(          CPUTOT = CPUTOT + TCOMP - CPU0) p n
+(          ) S
+(CALL) K
+( ) p
+(MYDUMP) l
+(\(1,1\)) p n
+(          ) S
+(if) K
+(\(rank) p
+(\272) sy
+(0\)) p n
+(     &    ) S
+(WRITE) K
+( \(6,98\)  TOFF, TIME, TIME+TOFF, TCOMP, CPUTOT/60.0, ) p n
+(     &                  ERRTOT, DETOT) N
+(   98     ) S
+(FORMAT) K
+( \(//,9X,') p
+(COMMON SAVED AT TOFF/TIME/TTOT =) str
+(',3F16.8,) p n
+(     &                  ') S
+(  TCOMP =) str
+(',F7.1,') p
+(  CPUTOT =) str
+(',F6.1,) p n
+(     &                  ') S
+(  ERRTOT =) str
+(',F10.6,') p
+(  DETOT =) str
+(',F10.6\)) p n
+(      ) S
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(*        Determine time interval and step numbers per time unit) N
+(      TIMINT = TIME + TOFF - TINIT) p n
+(*) c n
+(#ifdef PARALLEL) p n
+(          ) S
+(IF) K
+(\(rank) p
+(\272) sy
+(0\)) p
+(THEN) K n
+(#) p
+(endif) K n
+(      ) p
+(WRITE) K
+( \(6,195\)  rank,TIMINT,NSTEPI,NSTEPB,NSTEPR,NSTEPU) p n
+(     &                          NSTEPU) N
+(      ) S
+(WRITE) K
+( \(6,195\)  rank,TIMINT,NSTEPI-NIR,NSTEPB-NIB,NSTEPR-NRGL,) p n
+(     &                          NSTEPU-NKS) N
+(  195 ) S
+(FORMAT) K
+( \(//,I9,') p
+( INTEGRATION INTERVAL =) str
+(',F8.2,3X,') p
+( NIRR=) str
+(',I11,) p n
+(     &     ') S
+( NIRRB=) str
+(',I11,') p
+( NREG=) str
+(',I11,') p
+( NKS=) str
+(',I11\)) p n
+(      ) S
+(WRITE) K
+( \(6,196\)  \(NSTEPI-NIR\)/TIMINT,\(NSTEPB-NIB\)/TIMINT,) p n
+(     &               \(NSTEPR-NRGL\)/TIMINT,\(NSTEPU-NKS\)/TIMINT) N
+(  196 ) S
+(FORMAT) K
+( \(//,9X,') p
+( PER TIME UNIT: NIRR=) str
+(',1P,D12.5,') p
+( NIRRB=) str
+(',) p n
+(     &   D12.5,') S
+( NREG=) str
+(',D12.5,') p
+( NKS=) str
+(',D12.5\)) p n
+(#ifdef PARALLEL) N
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(#) p
+(endif) K n
+(          ) p
+(STOP) K n
+(*) c n
+( 100      ) p
+(CONTINUE) K n
+(*) c n
+(*       Set current global time.) N
+(          TTOT = TIME + TOFF) p n
+(*          Full prediction at end of intgrt to preserve consistency after) c n
+(*          parallel execution) N
+(          ) p
+(DO) K
+( 400 J = IFIRST,NTOT) p n
+(              S = TIME - T0\(J\)) N
+(              S1 = 1.5*S) N
+(              S2 = 2.0*S) N
+(              X\(1,J\) = \(\(FDOT\(1,J\)*S + F\(1,J\)\)*S +X0DOT\(1,J\)\)*S +X0\(1,J\)) N
+(              X\(2,J\) = \(\(FDOT\(2,J\)*S + F\(2,J\)\)*S +X0DOT\(2,J\)\)*S +X0\(2,J\)) N
+(              X\(3,J\) = \(\(FDOT\(3,J\)*S + F\(3,J\)\)*S +X0DOT\(3,J\)\)*S +X0\(3,J\)) N
+(              XDOT\(1,J\) = \(FDOT\(1,J\)*S1 + F\(1,J\)\)*S2 + X0DOT\(1,J\)) N
+(              XDOT\(2,J\) = \(FDOT\(2,J\)*S1 + F\(2,J\)\)*S2 + X0DOT\(2,J\)) N
+(              XDOT\(3,J\) = \(FDOT\(3,J\)*S1 + F\(3,J\)\)*S2 + X0DOT\(3,J\)) N
+( 400      ) S
+(CONTINUE) K n
+(*       Resolve any KS coordinates & velocities using most recent c.m.) c n
+(      ) p
+(IF) K
+( \(NPAIRS>0\) ) p
+(THEN) K n
+(          JJ = -1) p n
+(          ) S
+(DO) K
+( 88 JPAIR = 1,NPAIRS) p n
+(          JJ = JJ + 2) N
+(          ) S
+(IF) K
+( \(LIST\(1,JJ\)>0\) ) p
+(THEN) K n
+(              ZZ = 1.0) p n
+(              IZZ = -3) N
+(*       Distinguish between low and high-order prediction of U & UDOT.) c n
+(              ) p
+(IF) K
+( \(GAMMA\(JPAIR\)>1.0D-04\) ZZ = 0.0) p n
+(              ) S
+(CALL) K
+( ) p
+(KSRES2) l
+(\(JPAIR,J1,J2,ZZ,IZZ\)) p n
+(          ) S
+(END) K
+( ) p
+(IF) K n
+(   88     ) p
+(CONTINUE) K n
+(      ) p
+(END) K
+( ) p
+(IF) K n
+(*) c n
+(       ) p
+(RETURN) K n
+(*) c n
+(      ) p
+(END) K n
+(intgrt.F) (Page 13/13) (May 04, 02 11:05) title
+border
+grestore
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

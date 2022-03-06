@@ -1,0 +1,11 @@
+
+
+
+  reduce.f use also TPREV instead of TBLOCK
+
+  mydump.F    NB=65*KMAX+4
+
+
+  communication if binpop line
+
+  lagr.F  dimension of NPARTC

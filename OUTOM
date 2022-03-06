@@ -1,0 +1,229 @@
+1,2c1,2
+< 10329 Feb 19 2002
+< Nbody6++/adjust.F
+---
+> 10401 Jul 24 01:01
+> Nbody6_omarov_new/adjust.F
+78c78
+<       ETOT = ZKIN - POT + ETIDE
+---
+>       ETOT = ZKIN - POT + ETIDE + EBLCKHL
+86c86,87
+<       ETOT = ETOT + EBIN + ESUB + EMERGE + ECOLL + EMDOT + ECDOT
+---
+>       ETOT = ETOT + EBIN + ESUB + EMERGE + ECOLL + EMDOT + ECDOT -
+>      &       EDISS1
+216c217
+<       WRITE (6,50)  rank, TTOT, ttot*tscale, Q, DE, BE(3)
+---
+>       WRITE (6,50)  rank, TTOT, ttot*tscale, Q, DE, BE(3), EDISS1
+218c219,220
+<      &       '  Q =',F5.2,'  DE =',1P,E15.6,0P,'  E =',F17.6)
+---
+>      &       '  Q =',F5.2,'  DE =',1P,E15.6,0P,'  E =',F17.6,
+>      &       '  EDISS =',E15.6)
+1,2c1,2
+< 3942 Aug 24 22:53
+< Nbody6++/common6.h
+---
+> 4263 Aug 24 23:41
+> Nbody6_omarov_new/common6.h
+12a13,19
+>       COMMON/DRAG/Q_DRAG,C3,HZ,CMBLHOLE,EPS1
+> *
+>       COMMON/DRAG1/ EDISS1,XOLD(ID,NMAX),XOLD1(ID,NMAX),XOLD2(ID,NMAX),
+>      &              VOLD(ID,NMAX),V1T1(NMAX),V2T2(NMAX),V12T(NMAX),
+>      &              COUNTER1(NMAX),RSTARMAX(NMAX),RSTARMIN(NMAX),
+>      &              XINTER(ID,NMAX),VMIN(NMAX),VMAX(NMAX),EBLCKHL
+> *
+1,2c1,2
+< 5021 Aug 17 15:19
+< Nbody6++/data.F
+---
+> 5077 Aug 22 2000
+> Nbody6_omarov_new/data.F
+169c169,170
+<    50 CONTINUE
+---
+> *       Save random number sequence for future use.
+>    50 IDUM1 = KDUM
+1,2c1,2
+< 2327 Apr 11 2000
+< Nbody6++/energy.f
+---
+> 2576 Aug 3 02:00
+> Nbody6_omarov_new/energy.f
+66a67,74
+> *       Accumulation of Black Hole Energy
+>       EBLCKHL=0.0D0
+>       DO 45 I = 1,N
+>       EBLCKHL=EBLCKHL-CMBLHOLE*BODY(I)/DSQRT(X(1,I)**2+
+>      &        X(2,I)**2+X(3,I)**2)
+>    45 CONTINUE
+> *
+>       PRINT*,'BLACK HOLE BINDING ENERGY=',EBLCKHL,ZKIN,POT
+1,2c1,2
+< 3920 Apr 11 2000
+< Nbody6++/energy_mpi.f
+---
+> 4171 Aug 3 02:00
+> Nbody6_omarov_new/energy_mpi.f
+123a124,132
+> *       Accumulation of Black Hole Energy
+>       EBLCKHL=0.0D0
+>       DO 45 I = 1,N
+>       EBLCKHL=EBLCKHL-CMBLHOLE*BODY(I)/DSQRT(X(1,I)**2+
+>      &        X(2,I)**2+X(3,I)**2)
+>    45 CONTINUE
+> *
+>       PRINT*,'BLACK HOLE BINDING ENERGY=',EBLCKHL,ZKIN,POT
+> *
+1,2c1,2
+< 5671 Jul 4 17:14
+< Nbody6++/input.F
+---
+> 6334 Jul 23 23:46
+> Nbody6_omarov_new/input.F
+33a34,44
+>       OPEN(15,FILE='drag.dat',STATUS='OLD',ERR=60)
+>       READ(15,*) Q_DRAG, C3, HZ, CMBLHOLE, EPS1
+>       WRITE (6,31)
+>    31 FORMAT(//,10X,'Q_DRAG,C3,HZ,CMBLHOLE,EPS1')
+>       WRITE (6,32) Q_DRAG,C3,HZ,CMBLHOLE,EPS1
+>    32 FORMAT(/,1P,5E12.5)
+> *     PRINT*, Q_DRAG, C3, HZ, CMBLHOLE, EPS1
+>       GO TO 70
+>    60 PRINT*,'ERROR NO DRAG.DAT FILE!!!'
+>    70 CONTINUE
+> *
+59a71,77
+> *
+>       CALL MPI_BCAST(Q_DRAG,1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+>       CALL MPI_BCAST(C3.1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+>       CALL MPI_BCAST(HZ,1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+>       CALL MPI_BCAST(CMBLHOLE,1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+>       CALL MPI_BCAST(EPS1,1,MPI_REAL,0,MPI_COMM_WORLD,ierr)
+> 
+1,2c1,2
+< 30243 Aug 2 04:29
+< Nbody6++/intgrt.F
+---
+> 30267 Aug 2 04:29
+> Nbody6_omarov_new/intgrt.F
+73c73,75
+<       IF (ICALL.EQ.2) GO TO 999
+---
+>       IF (ICALL.EQ.2) THEN
+>       GO TO 999
+>       END IF
+1,2c1,2
+< 2705 Jul 31 07:19
+< Nbody6++/ksperi.f
+---
+> 2705 Apr 11 2000
+> Nbody6_omarov_new/ksperi.f
+1,2c1,2
+< 5330 Aug 24 2001
+< Nbody6++/kspert.f
+---
+> 5444 Jul 21 16:14
+> Nbody6_omarov_new/kspert.f
+63a64,66
+>       I2=I1+1
+>       CALL DRAGBLCKHL(I1,FP(1),FD(1),XI(1),VI(1))
+>       CALL DRAGBLCKHL(I2,FP(4),FD(4),XI(4),VI(4))
+1,2c1,2
+< 8869 Aug 15 2001
+< Nbody6++/nbint.f
+---
+> 8983 Jul 24 01:54
+> Nbody6_omarov_new/nbint.f
+195a196,199
+> *       Interaction with Black Hole
+>       CALL DRAGBLCKHL(I,FIRR,FD,XI,XIDOT)
+>       CALL DRAGFORCE(I,FIRR,FD,0)
+> *
+1,2c1,2
+< 20856 Jul 12 22:56
+< Nbody6++/regint.f
+---
+> 20936 Jul 24 01:53
+> Nbody6_omarov_new/regint.f
+464a465,468
+> *
+>       CALL DRAGBLCKHL(I,FIRR,FD,XI,XIDOT)
+>       CALL DRAGFORCE(I,FIRR,FD,1)
+> *
+1,2c1,2
+< 5611 Aug 26 2001
+< Nbody6++/scale.F
+---
+> 5680 Jul 24 00:03
+> Nbody6_omarov_new/scale.F
+123a124
+>               XOLD(K,I) = X(K,I)
+124a126
+>               VOLD(K,I) = XDOT(K,I)
+1,2c1,2
+< 2801 Aug 17 15:15
+< Nbody6++/setup.f
+---
+> 3220 Jul 24 01:57
+> Nbody6_omarov_new/setup.f
+10a11,14
+>       REAL*8 RSTAR(NMAX),XMSTAR
+>       INTEGER INDEXVECTOR(NMAX)
+> *
+>       XMSTAR = 0.0D0
+92a97,111
+> *
+>       DO I=1,N
+>       RSTAR(I)=SQRT(X(1,I)*X(1,I)+X(2,I)*X(2,I)+X(3,I)*X(3,I))
+>       INDEXVECTOR(I) = I
+>       END DO
+>       CALL SORT1(N,RSTAR,INDEXVECTOR)
+> *
+>       DO I=1,N
+>       L=INDEXVECTOR(I)
+>       XMSTAR=XMSTAR+BODY(L)/N
+>       SV=SQRT(1.D0+CMBLHOLE/XMSTAR)
+>       DO K=1,3
+>       XDOT(K,L)=XDOT(K,L)*SV
+>       END DO
+>       END DO
+1,2c1,2
+< 5529 Jul 4 17:13
+< Nbody6++/start.F
+---
+> 5625 Jul 24 00:39
+> Nbody6_omarov_new/start.F
+26a27
+>       PRINT*,'BLACK HOLE BINDING ENERGY=',EBLCKHL,ZKIN,POT
+108a110,112
+> *
+>       CALL DRAGMBHINIT(1,N)     
+> *
+1,2c1,2
+< 3320 Feb 20 2002
+< Nbody6++/steps.f
+---
+> 3521 Jul 28 17:33
+> Nbody6_omarov_new/steps.f
+25c25,29
+< *
+---
+> *       Further initial reduction of time steps if black hole/drag present
+>           IF (CMBLHOLE.GT.0.D0.OR.Q_DRAG.GT.0.D0) THEN
+>               DT = ETAI*DT
+>               DTR = ETAR*DTR
+>           END IF
+1,2c1,2
+< 2069 Aug 12 21:56
+< Nbody6++/zero.f
+---
+> 2133 Aug 24 23:42
+> Nbody6_omarov_new/zero.f
+32a33,35
+>       COUNTER1(NMAX)=0
+>       EBLCKHL=0.0D0
+>       EBLCKHL1=0.0D0

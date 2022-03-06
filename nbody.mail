@@ -1,0 +1,127 @@
+
+
+
+
+     Dear all,
+
+     this is finally another mail for all of us - the NBODY6++ community.
+ First of all - a new code variation is now on
+
+ ftp://ftp.ari.uni-heidelberg.de/pub/staff/spurzem/nb6mpi-july2002.tar.gz
+
+ It contains a LOT of small changes, and even some bug corrections, and
+ I am sorry to have delayed this so long time. Please do not hesitate to
+ inform me about any trouble. I am so busy that a thorough testing has not
+ in all cases been done. 
+
+ In the remainder of this e-mail I send you three pieces of information:
+
+ i) short description of basic news in the code
+ ii) some warning for users of parallel code
+ iii) a nice tool to compare different code versions
+ iv) welcome to some new members on our list
+
+ --------------------------------------------------------------------
+
+ i) short description of basic news in the code
+
+
+ + a new program named file_init.F exists, which does all the file openings. 
+   Several files have new reasonable names such as:
+
+   comm.1 comm.2         (old names: fort.1 fort.2)
+   conf.3 bdat.4         (old names: OUT3 OUT4  or fort.3 fort.4)
+   lagr.7                (old name fort.7 )
+   bdat.8 bdat.9         (old names: fort.8 OUT9)
+   dat.10                (old name: fort.10 )
+   esc.11 per.15         (old names: ESC  peri_hyberbol.dat )
+   hia.12 hid.13         (old names: HIARCH HIDAT or fort.10 fort.87 )
+
+   All OPEN statements use the STATUS="UNKNOWN" clause, so you have to make
+   sure yourself to save your data, because the code will NOT stop anymore if
+   OUT3 or OUT9 or so exist.
+
+   The routine file_init.F now also provides different file names if using
+   the ENSEMBLE option the Makefile for each parallel processor. Note that
+   the use of ENSEMBLE is still experimental and not fully tested. Any
+   volunteers? 
+
+ + a new procedure by Sverre to reduce neighbour numbers in the halo (low
+   density) has been implemented. With that procedure we have been going back
+   to the simpler algorithm using an optimal neighbour number NNBOPT 
+   (see previous mailings). NOTE THAT NOW AGAIN NNBOPT input parameter 
+   means NNBOPT! The more complicated neighbour algorithm using the density
+   contrast (as described in Aarseth 1985) is now switched OFF again.
+
+ + a large number of small updates in the KS and chain routines as communicated
+   by Sverre in the last months has been included. A detailed list of the
+   routines which have changed is available on request. Or you can use the
+   new little programs below to find out. Note that in chterm.f and
+   absorb.f we use
+   TPREV instead of TBLOCK. I have to check it with Sverre, but according to
+   my tests it ONLY works with TPREV used here at least in NBODY6++.
+
+ + some routines have become  .F instead of .f  . This was necessary to
+   recognize different ways of writing output files for parallel execution
+   by the use of compiler options. The new .F are:
+
+   bindat.F escape.F ksint.F file_init.F 
+
+ + the printout of Lagrangian radii (KZ(7)) has been much improved, including 
+   computation and printout of average masses, particle numbers in the
+   Lagrangian mass shells, and in case of primordial binaries the Lagrangian
+   radii are separately given for binaries and singles.  (lagr.F  routine)
+
+---------------------------------------------------------------------
+
+ ii) some warnings for users of the parallel code
+
+  the experienced will know already, but this is just to reiterate and have
+  it written down somewhere: 
+
+ + make sure that you copy the correct mpif.h for your parallel environment.
+   Example files mpif.mpich.h  mpif.sun.h  mpif.t3e.h are given for
+   pc clusters, parallel sun, CRAY T3E. Before compiling the relevant 
+   file has to be copied to mpif.h , which is included from common6.h
+
+ + note that a little dummy routine flush.f is given for the case of the
+   CRAY T3E because there the CALL FLUSH causes trouble. The Makefile has
+   been updated such that flush.f is automatically compiled in for the T3E.
+
+---------------------------------------------------------------------
+ iii) a nice tool to compare different code versions
+
+ I enclose two little shell scripts (@comp, @compall) which make it easier
+ for you to find out the differences to previous versions (which routines
+ have changed, and which differences are there).
+ I illustrate the use in an example. The directories
+
+ /work/Her/spurzem/nb6mpi-september2001 
+ /work/Her/spurzem/nb6mpi-june2002
+
+ contain the last and present distributed variants of NBODY6++ . With
+
+ @compall /work/Her/spurzem  nb6mpi-september2001 nb6mpi-june2002 fFh
+
+ you get a list of all differences for those files *.f *.F *.h which differ.
+ If only the dates of the files differ a message is printed. Only if the
+ files are identical and have the same time stamp nothing is printed. 
+ You can redirect the output for careful study onto a file e.g.
+
+ @compall /work/Her/spurzem  nb6mpi-september2001 nb6mpi-june2002 fFh > OUT
+
+ --------------------------------------------------------------------------
+
+  iv) welcome to some new members on our list
+ 
+
+ we have a few new members on our list, welcome! They are:
+
+ Tim Ingo Johann, student here at ARI
+ Chingis Omarov, guest researcher from Kazakhstan, here at ARI
+ Paolo Miocchi, who started at a recent visit here a fight to merge par. TREE
+                and NBODY6++ codes.
+ Christian Zier, MPIfR Bonn who is interested in binary black hole dynamics
+
+ ---------------------------------------------------------------------------
+

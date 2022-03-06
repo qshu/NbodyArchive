@@ -1,0 +1,10 @@
+ Aug. 2006 cambody
+
+ Experimental version of NBODY6++ including central potential
+ and drag force. By Chingis Omarov & Rainer Spurzem
+
+ NBODY6++ used here may be slightly out of synch with most recent
+ one. Check with R. Spurzem before using for production.
+
+ ftpsite ftp://ftp.ari.uni-heidelberg.de/pub/staff/spurzem/nb6mpi/
+

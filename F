@@ -1,0 +1,29 @@
+[24;1HError detected while processing /etc/vimrc:
+line    1:
+Interrupted
+Error detected while processing /home/And/spurzem/.exrc:
+line    1:
+Interrupted
+Interrupt: Press RETURN or enter command to continue[?1h=[1;24r[H[J[24;1H"intgrt" [New File][2;1H[1m~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~[1;1H[24;1Hrecording[m[24;10H[K[1;1H[24;1H[K[24;1H:st
+[?1l>
