@@ -1,0 +1,30 @@
+# Definitions for plattform specific parameters
+#
+# Plattform: Linux Cluster:
+#             * Linux OS
+#             * MPICH or MPICH2
+#             * GNU Compiler Suite
+#
+
+# command for GNU make
+MAKE        = gmake
+
+# Fortran compiler and options
+FC          = mpif77
+FFLAGS      = -I. -O2
+
+# C compiler and options
+CC          = mpicc
+CFLAGS      = 
+
+# C Pre Processor and options
+CPP         = /usr/bin/cpp
+CPPFLAGS    = -P -C -DPUREMPI -DPARALLEL
+
+# Linker and options
+LINKER      = mpif77
+LFLAGS_PRE  = -o $(RESULT)
+LFLAGS_POST =	
+
+# source files for this plattform
+SOURCE		= $(SOURCE_MPI) $(SOURCE_BASE)

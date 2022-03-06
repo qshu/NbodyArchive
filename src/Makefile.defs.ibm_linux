@@ -1,0 +1,30 @@
+# Definitions for plattform specific parameters
+#
+# Plattform: IBM clusters: 
+#             * Linux OS 
+#             * MPICH2 
+#             * IBM compilers
+#
+
+# command for GNU make
+MAKE        = gmake
+
+# Fortran compiler and options
+FC          = mpif90 
+FFLAGS      = -f90=xlf -mpif90_abi=ibmxl -I. -O2 -q64
+
+# C compiler and options
+CC          = mpicc -cc=xlc -q64
+CFLAGS      = 
+
+# C Pre Processor and options
+CPP         = /usr/bin/cpp
+CPPFLAGS    = -P -C -DPUREMPI -DPARALLEL
+
+# Linker and options
+LINKER      = mpif90 
+LFLAGS_PRE  = -f90=xlf -mpif90_abi=ibmxl -o $(RESULT)
+LFLAGS_POST =	
+
+# source files for this plattform
+SOURCE		= $(SOURCE_MPI) $(SOURCE_BASE)

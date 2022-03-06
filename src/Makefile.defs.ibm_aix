@@ -1,0 +1,25 @@
+# Definitions for plattform specific parameters
+#
+# Plattform: JUMP (Jülich)
+#            p690+, AIX, 32-way SMP, 128 GB memory/node
+#
+
+# Fortran compiler and options
+FC          = mpxlf_r
+FFLAGS      = -I. -O5 -qstrict -qsave -q64 -qfixed
+
+# C compiler and options
+CC          = mpxlc_r
+CFLAGS      = -q64
+
+# C Pre Processor and options
+CPP         = /usr/ccs/lib/cpp
+CPPFLAGS    = -DPUREMPI -DPARALLEL
+
+# Linker and options
+LINKER      = mpxlf_r
+LFLAGS_PRE  = -bmaxdata:500000000 -o $(RESULT)
+LFLAGS_POST =	
+
+# source files for this plattform
+SOURCE		= $(SOURCE_MPI) $(SOURCE_BASE)

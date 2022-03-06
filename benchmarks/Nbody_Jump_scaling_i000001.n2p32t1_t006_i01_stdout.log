@@ -1,0 +1,3425 @@
+   0:  iserreg,isernb= 64 64
+   0:
+   0:
+   0:
+   0:
+   0:
+   0:               N  NFIX  NCRIT  NRAND  NNBOPT  NRUN
+   0:
+   0:          262144     1     10    183      50     1
+   0:
+   0:
+   0:             ETAI      ETAR      RS0       DTADJ     DELTAT     TCRITp    TCRIT     QE        RBAR       ZMBAR
+   0:
+   0:             1.0E-02   2.0E-02   3.0E-01   5.0E-01   5.0E-01   1.0E+06   1.0E+01   2.0E-04   1.0E+00   7.0E-01
+   0:
+   0:
+   0:            OPTIONS
+   0:
+   0:           1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+   0:
+   0:           1  1  1  0  1  1  4  0  0  2  1  0  0  0  2  1  0  0  0  0  1  0  2  0  0  2  0  0  0  2  0  0  2  0  1  0  1  1  0  1
+   0:
+   0:
+   0:            OPTIONS BK:
+   0:
+   0:           1  2  3  4  5  6  7  8  9 10
+   0:
+   0:           0  0  0  0  0  0  0  0  0  0
+   0:
+   0:
+   0:            DTMIN     RMIN      ETAU      ECLOSE    GMIN      GMAX
+   0:
+   0:            1.0E-04   1.0E-02   1.0E-01   1.0E+01   1.0E-06   1.0E-01
+   0:
+   0:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   0: ending nbody
+   0: before MPI_FINALIZE
+  25:
+  25:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  25: ending nbody
+  25: before MPI_FINALIZE
+   6:
+   6:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   6: ending nbody
+   6: before MPI_FINALIZE
+  11:
+  11:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  11: ending nbody
+  11: before MPI_FINALIZE
+   2:
+   2:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   2: ending nbody
+   2: before MPI_FINALIZE
+  15:
+  15:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  15: ending nbody
+  15: before MPI_FINALIZE
+  17:
+  17:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  17: ending nbody
+  17: before MPI_FINALIZE
+  30:
+  30:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  30: ending nbody
+  30: before MPI_FINALIZE
+  16:
+  16:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  16: ending nbody
+  16: before MPI_FINALIZE
+  18:
+  18:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  18: ending nbody
+  18: before MPI_FINALIZE
+  23:
+  23:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  23: ending nbody
+  23: before MPI_FINALIZE
+  28:
+  28:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  28: ending nbody
+  28: before MPI_FINALIZE
+   1:
+   1:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   1: ending nbody
+   1: before MPI_FINALIZE
+  12:
+  12:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  12: ending nbody
+  12: before MPI_FINALIZE
+  19:
+  19:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  19: ending nbody
+  19: before MPI_FINALIZE
+  29:
+  29:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  29: ending nbody
+  29: before MPI_FINALIZE
+   3:
+   3:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   3: ending nbody
+   3: before MPI_FINALIZE
+   4:
+   4:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   4: ending nbody
+   4: before MPI_FINALIZE
+   5:
+   5:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   5: ending nbody
+   5: before MPI_FINALIZE
+  20:
+  20:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  20: ending nbody
+  20: before MPI_FINALIZE
+  21:
+  21:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  21: ending nbody
+  21: before MPI_FINALIZE
+  27:
+  27:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  27: ending nbody
+  27: before MPI_FINALIZE
+   9:
+   9:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   9: ending nbody
+   9: before MPI_FINALIZE
+  10:
+  10:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  10: ending nbody
+  10: before MPI_FINALIZE
+  13:
+  13:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  13: ending nbody
+  13: before MPI_FINALIZE
+  14:
+  14:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  14: ending nbody
+  14: before MPI_FINALIZE
+  22:
+  22:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  22: ending nbody
+  22: before MPI_FINALIZE
+  24:
+  24:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  24: ending nbody
+  24: before MPI_FINALIZE
+  26:
+  26:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  26: ending nbody
+  26: before MPI_FINALIZE
+  31:
+  31:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  31: ending nbody
+  31: before MPI_FINALIZE
+   8:
+   8:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   8: ending nbody
+   8: before MPI_FINALIZE
+  32:
+  32:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  32: ending nbody
+  32: before MPI_FINALIZE
+  33:
+  33:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  33: ending nbody
+  33: before MPI_FINALIZE
+  34:
+  34:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  34: ending nbody
+  34: before MPI_FINALIZE
+   7:
+   7:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+   7: ending nbody
+   7: before MPI_FINALIZE
+  35:
+  35:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  35: ending nbody
+  35: before MPI_FINALIZE
+  36:
+  36:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  36: ending nbody
+  36: before MPI_FINALIZE
+  37:
+  37:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  37: ending nbody
+  37: before MPI_FINALIZE
+  38:
+  38:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  38: ending nbody
+  38: before MPI_FINALIZE
+  39:
+  39:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  39: ending nbody
+  39: before MPI_FINALIZE
+  40:
+  40:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  40: ending nbody
+  40: before MPI_FINALIZE
+  41:
+  41:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  41: ending nbody
+  41: before MPI_FINALIZE
+  42:
+  42:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  42: ending nbody
+  42: before MPI_FINALIZE
+  43:
+  43:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  43: ending nbody
+  43: before MPI_FINALIZE
+  44:
+  44:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  44: ending nbody
+  44: before MPI_FINALIZE
+  45:
+  45:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  45: ending nbody
+  45: before MPI_FINALIZE
+  46:
+  46:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  46: ending nbody
+  46: before MPI_FINALIZE
+  47:
+  47:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  47: ending nbody
+  47: before MPI_FINALIZE
+  48:
+  48:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  48: ending nbody
+  48: before MPI_FINALIZE
+  49:
+  49:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  49: ending nbody
+  49: before MPI_FINALIZE
+  50:
+  50:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  50: ending nbody
+  50: before MPI_FINALIZE
+  51:
+  51:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  51: ending nbody
+  51: before MPI_FINALIZE
+  52:
+  52:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  52: ending nbody
+  52: before MPI_FINALIZE
+  53:
+  53:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  53: ending nbody
+  53: before MPI_FINALIZE
+  54:
+  54:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  54: ending nbody
+  54: before MPI_FINALIZE
+  55:
+  55:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  55: ending nbody
+  55: before MPI_FINALIZE
+  56:
+  56:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  56: ending nbody
+  56: before MPI_FINALIZE
+  57:
+  57:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  57: ending nbody
+  57: before MPI_FINALIZE
+  58:
+  58:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  58: ending nbody
+  58: before MPI_FINALIZE
+  59:
+  59:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  59: ending nbody
+  59: before MPI_FINALIZE
+  60:
+  60:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  60: ending nbody
+  60: before MPI_FINALIZE
+  61:
+  61:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  61: ending nbody
+  61: before MPI_FINALIZE
+  62:
+  62:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  62: ending nbody
+  62: before MPI_FINALIZE
+  63:
+  63:     FATAL ERROR!   BAD INPUT   N =***** NNBMAX =  125  NNBOPT =   50
+  63: ending nbody
+  63: before MPI_FINALIZE
+  49:
+  49: hpmcount (V 3.1.0) summary
+  49:
+  49: Execution time (wall clock time): 0.527940988540649 seconds
+  49:
+  49: ########  Resource Usage Statistics  ########  
+  49:
+  49: Total amount of time in user mode            : 0.177480 seconds
+  49: Total amount of time in system mode          : 0.306338 seconds
+  49: Maximum resident set size                    : 10144 Kbytes
+  49: Average shared memory use in text segment    : 12 Kbytes*sec
+  49: Average unshared memory use in data segment  : 898 Kbytes*sec
+  49: Number of page faults without I/O activity   : 2805
+  49: Number of page faults with I/O activity      : 0
+  49: Number of times process was swapped out      : 0
+  49: Number of times file system performed INPUT  : 0
+  49: Number of times file system performed OUTPUT : 0
+  49: Number of IPC messages sent                  : 0
+  49: Number of IPC messages received              : 0
+  49: Number of signals delivered                  : 0
+  49: Number of voluntary context switches         : 70
+  49: Number of involuntary context switches       : 27
+  49:
+  49: #######  End of Resource Statistics  ########
+  49:
+  49:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  49:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  49:  PM_FPU0_FIN (FPU0 produced a result)                      :           95645
+  49:  PM_FPU1_FIN (FPU1 produced a result)                      :           90332
+  49:  PM_CYC (Processor cycles)                                 :       525866007
+  49:  PM_FPU_STF (FPU executed store instruction)               :          184405
+  49:  PM_INST_CMPL (Instructions completed)                     :       104903020
+  49:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2668
+  49:
+  49:  Utilization rate                               :          33.617 %
+  49:  Total FP load and store operations             :           0.187 M
+  49:  MIPS                                           :         198.702 
+  49:  Instructions per cycle                         :           0.199 
+  49:  HW float point instructions (flips)            :           0.186 M
+  49:  HW float point instructions per cycle          :           0.000 
+  49:  HW floating point instr. rate (HW flips / WCT) :           0.352 Mflip/s
+  49:  HW floating point instructions/ user time      :           1.048 Mflip/s
+  49:  Total floating point operations                :           0.002 M
+  49:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  49:  Flops / user time                              :           0.009 Mflop/s
+  49:  FMA percentage                                 :           8.759 %
+  49:  Computation intensity                          :           0.009 
+  49:  % of peak performance                          :           0.000 %
+  49:
+   7:
+   7: hpmcount (V 3.1.0) summary
+   7:
+   7: Execution time (wall clock time): 0.545042991638184 seconds
+   7:
+   7: ########  Resource Usage Statistics  ########  
+   7:
+   7: Total amount of time in user mode            : 0.175772 seconds
+   7: Total amount of time in system mode          : 0.163139 seconds
+   7: Maximum resident set size                    : 10132 Kbytes
+   7: Average shared memory use in text segment    : 19 Kbytes*sec
+   7: Average unshared memory use in data segment  : 1260 Kbytes*sec
+   7: Number of page faults without I/O activity   : 2791
+   7: Number of page faults with I/O activity      : 0
+   7: Number of times process was swapped out      : 0
+   7: Number of times file system performed INPUT  : 0
+   7: Number of times file system performed OUTPUT : 0
+   7: Number of IPC messages sent                  : 0
+   7: Number of IPC messages received              : 0
+   7: Number of signals delivered                  : 0
+   7: Number of voluntary context switches         : 107
+   7: Number of involuntary context switches       : 63
+   7:
+   7: #######  End of Resource Statistics  ########
+   7:
+  15:
+  15: hpmcount (V 3.1.0) summary
+  15:
+  15: Execution time (wall clock time): 0.542145967483521 seconds
+  15:
+  15: ########  Resource Usage Statistics  ########  
+  15:
+  15: Total amount of time in user mode            : 0.183495 seconds
+  15: Total amount of time in system mode          : 0.176117 seconds
+  15: Maximum resident set size                    : 10224 Kbytes
+  15: Average shared memory use in text segment    : 19 Kbytes*sec
+  15: Average unshared memory use in data segment  : 1213 Kbytes*sec
+  15: Number of page faults without I/O activity   : 2788
+  15: Number of page faults with I/O activity      : 0
+  15: Number of times process was swapped out      : 0
+  15: Number of times file system performed INPUT  : 0
+  15: Number of times file system performed OUTPUT : 0
+  15: Number of IPC messages sent                  : 0
+  15: Number of IPC messages received              : 0
+  15: Number of signals delivered                  : 0
+  15: Number of voluntary context switches         : 70
+  15: Number of involuntary context switches       : 28
+  15:
+  15: #######  End of Resource Statistics  ########
+  15:
+   7:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+   7:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              76
+   7:  PM_FPU0_FIN (FPU0 produced a result)                      :           95643
+   7:  PM_FPU1_FIN (FPU1 produced a result)                      :           90326
+   7:  PM_CYC (Processor cycles)                                 :       542724962
+   7:  PM_FPU_STF (FPU executed store instruction)               :          184393
+   7:  PM_INST_CMPL (Instructions completed)                     :        91556855
+   7:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2801
+   7:
+   7:  Utilization rate                               :          32.249 %
+   7:  Total FP load and store operations             :           0.187 M
+   7:  MIPS                                           :         167.981 
+   7:  Instructions per cycle                         :           0.169 
+   7:  HW float point instructions (flips)            :           0.186 M
+  15:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              17
+  15:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  15:  PM_FPU0_FIN (FPU0 produced a result)                      :           95583
+  15:  PM_FPU1_FIN (FPU1 produced a result)                      :           90269
+  15:  PM_CYC (Processor cycles)                                 :       578714465
+  15:  PM_FPU_STF (FPU executed store instruction)               :          184353
+  15:  PM_INST_CMPL (Instructions completed)                     :       100628253
+  15:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2642
+  15:
+  15:  Utilization rate                               :          33.846 %
+  15:  Total FP load and store operations             :           0.187 M
+  15:  MIPS                                           :         185.611 
+  15:  Instructions per cycle                         :           0.174 
+  15:  HW float point instructions (flips)            :           0.186 M
+   7:  HW float point instructions per cycle          :           0.000 
+   7:  HW floating point instr. rate (HW flips / WCT) :           0.341 Mflip/s
+   7:  HW floating point instructions/ user time      :           1.058 Mflip/s
+   7:  Total floating point operations                :           0.002 M
+   7:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   7:  Flops / user time                              :           0.009 Mflop/s
+   7:  FMA percentage                                 :           9.201 %
+   7:  Computation intensity                          :           0.009 
+   7:  % of peak performance                          :           0.000 %
+   7:
+  15:  HW float point instructions per cycle          :           0.000 
+  15:  HW floating point instr. rate (HW flips / WCT) :           0.343 Mflip/s
+  15:  HW floating point instructions/ user time      :           1.013 Mflip/s
+  15:  Total floating point operations                :           0.002 M
+  15:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  15:  Flops / user time                              :           0.009 Mflop/s
+  15:  FMA percentage                                 :           9.045 %
+  15:  Computation intensity                          :           0.008 
+  15:  % of peak performance                          :           0.000 %
+  15:
+   4:
+   4: hpmcount (V 3.1.0) summary
+   4:
+   4: Execution time (wall clock time): 0.548204898834229 seconds
+   4:
+   4: ########  Resource Usage Statistics  ########  
+   4:
+   4: Total amount of time in user mode            : 0.179580 seconds
+   4: Total amount of time in system mode          : 0.340700 seconds
+   4: Maximum resident set size                    : 10132 Kbytes
+   4: Average shared memory use in text segment    : 16 Kbytes*sec
+   4: Average unshared memory use in data segment  : 1021 Kbytes*sec
+   4: Number of page faults without I/O activity   : 2792
+   4: Number of page faults with I/O activity      : 0
+   4: Number of times process was swapped out      : 0
+   4: Number of times file system performed INPUT  : 0
+   4: Number of times file system performed OUTPUT : 0
+   4: Number of IPC messages sent                  : 0
+   4: Number of IPC messages received              : 0
+   4: Number of signals delivered                  : 0
+   4: Number of voluntary context switches         : 73
+   4: Number of involuntary context switches       : 66
+   4:
+   4: #######  End of Resource Statistics  ########
+   4:
+  11:
+  11: hpmcount (V 3.1.0) summary
+  11:
+  11: Execution time (wall clock time): 0.536932945251465 seconds
+  11:
+  11: ########  Resource Usage Statistics  ########  
+  11:
+  11: Total amount of time in user mode            : 0.167354 seconds
+  11: Total amount of time in system mode          : 0.322692 seconds
+  11: Maximum resident set size                    : 10216 Kbytes
+  11: Average shared memory use in text segment    : 18 Kbytes*sec
+  11: Average unshared memory use in data segment  : 1018 Kbytes*sec
+  11: Number of page faults without I/O activity   : 2804
+  11: Number of page faults with I/O activity      : 0
+  11: Number of times process was swapped out      : 0
+  11: Number of times file system performed INPUT  : 0
+  11: Number of times file system performed OUTPUT : 0
+  11: Number of IPC messages sent                  : 0
+  11: Number of IPC messages received              : 0
+  11: Number of signals delivered                  : 0
+  11: Number of voluntary context switches         : 51
+  11: Number of involuntary context switches       : 9
+  11:
+  11: #######  End of Resource Statistics  ########
+  11:
+   4:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+   4:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+   4:  PM_FPU0_FIN (FPU0 produced a result)                      :           95755
+   4:  PM_FPU1_FIN (FPU1 produced a result)                      :           90425
+   4:  PM_CYC (Processor cycles)                                 :       572949997
+   4:  PM_FPU_STF (FPU executed store instruction)               :          184574
+   4:  PM_INST_CMPL (Instructions completed)                     :        94090354
+   4:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2646
+   4:
+   4:  Utilization rate                               :          32.758 %
+   4:  Total FP load and store operations             :           0.187 M
+   4:  MIPS                                           :         171.634 
+   4:  Instructions per cycle                         :           0.164 
+   4:  HW float point instructions (flips)            :           0.186 M
+  11:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              19
+  11:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              75
+  11:  PM_FPU0_FIN (FPU0 produced a result)                      :           95614
+  11:  PM_FPU1_FIN (FPU1 produced a result)                      :           90325
+  11:  PM_CYC (Processor cycles)                                 :       531582137
+  11:  PM_FPU_STF (FPU executed store instruction)               :          184446
+  11:  PM_INST_CMPL (Instructions completed)                     :        83495389
+  11:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2497
+  11:
+  11:  Utilization rate                               :          31.169 %
+  11:  Total FP load and store operations             :           0.187 M
+  11:  MIPS                                           :         155.504 
+  11:  Instructions per cycle                         :           0.157 
+  11:  HW float point instructions (flips)            :           0.186 M
+  11:  HW float point instructions per cycle          :           0.000 
+   4:  HW float point instructions per cycle          :           0.000 
+   4:  HW floating point instr. rate (HW flips / WCT) :           0.340 Mflip/s
+   4:  HW floating point instructions/ user time      :           1.037 Mflip/s
+   4:  Total floating point operations                :           0.002 M
+   4:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   4:  Flops / user time                              :           0.009 Mflop/s
+   4:  FMA percentage                                 :           8.582 %
+   4:  Computation intensity                          :           0.009 
+   4:  % of peak performance                          :           0.000 %
+   4:
+  11:  HW floating point instr. rate (HW flips / WCT) :           0.346 Mflip/s
+  11:  HW floating point instructions/ user time      :           1.111 Mflip/s
+  11:  Total floating point operations                :           0.002 M
+  11:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  11:  Flops / user time                              :           0.009 Mflop/s
+  11:  FMA percentage                                 :           9.566 %
+  11:  Computation intensity                          :           0.008 
+  11:  % of peak performance                          :           0.000 %
+  11:
+  50:
+  50: hpmcount (V 3.1.0) summary
+  50:
+  50: Execution time (wall clock time): 0.537683010101318 seconds
+  50:
+  50: ########  Resource Usage Statistics  ########  
+  50:
+  50: Total amount of time in user mode            : 0.185393 seconds
+  50: Total amount of time in system mode          : 0.151352 seconds
+  50: Maximum resident set size                    : 9980 Kbytes
+  50: Average shared memory use in text segment    : 17 Kbytes*sec
+  50: Average unshared memory use in data segment  : 1254 Kbytes*sec
+  50: Number of page faults without I/O activity   : 2798
+  50: Number of page faults with I/O activity      : 0
+  50: Number of times process was swapped out      : 0
+  50: Number of times file system performed INPUT  : 0
+  50: Number of times file system performed OUTPUT : 0
+  50: Number of IPC messages sent                  : 0
+  50: Number of IPC messages received              : 0
+  50: Number of signals delivered                  : 0
+  50: Number of voluntary context switches         : 70
+  50: Number of involuntary context switches       : 30
+  50:
+  50: #######  End of Resource Statistics  ########
+  50:
+  63:
+  63: hpmcount (V 3.1.0) summary
+  63:
+  63: Execution time (wall clock time): 0.541794061660767 seconds
+  63:
+  63: ########  Resource Usage Statistics  ########  
+  63:
+  63: Total amount of time in user mode            : 0.183500 seconds
+  63: Total amount of time in system mode          : 0.315574 seconds
+  63: Maximum resident set size                    : 10140 Kbytes
+  63: Average shared memory use in text segment    : 15 Kbytes*sec
+  63: Average unshared memory use in data segment  : 1218 Kbytes*sec
+  63: Number of page faults without I/O activity   : 2789
+  63: Number of page faults with I/O activity      : 0
+  63: Number of times process was swapped out      : 0
+  63: Number of times file system performed INPUT  : 0
+  63: Number of times file system performed OUTPUT : 0
+  63: Number of IPC messages sent                  : 0
+  63: Number of IPC messages received              : 0
+  63: Number of signals delivered                  : 0
+  63: Number of voluntary context switches         : 60
+  63: Number of involuntary context switches       : 42
+  63:
+  63: #######  End of Resource Statistics  ########
+  63:
+   0:
+   0: hpmcount (V 3.1.0) summary
+   0:
+   0: Execution time (wall clock time): 0.540352821350098 seconds
+   0:
+   0: ########  Resource Usage Statistics  ########  
+   0:
+   0: Total amount of time in user mode            : 0.168317 seconds
+   0: Total amount of time in system mode          : 0.315781 seconds
+   0: Maximum resident set size                    : 10068 Kbytes
+   0: Average shared memory use in text segment    : 16 Kbytes*sec
+   0: Average unshared memory use in data segment  : 981 Kbytes*sec
+   0: Number of page faults without I/O activity   : 2909
+   0: Number of page faults with I/O activity      : 0
+   0: Number of times process was swapped out      : 0
+   0: Number of times file system performed INPUT  : 0
+   0: Number of times file system performed OUTPUT : 0
+   0: Number of IPC messages sent                  : 0
+   0: Number of IPC messages received              : 0
+   0: Number of signals delivered                  : 0
+   0: Number of voluntary context switches         : 82
+   0: Number of involuntary context switches       : 25
+   0:
+   0: #######  End of Resource Statistics  ########
+   0:
+   1:
+   1: hpmcount (V 3.1.0) summary
+   1:
+   1: Execution time (wall clock time): 0.538370132446289 seconds
+   1:
+   1: ########  Resource Usage Statistics  ########  
+   1:
+   1: Total amount of time in user mode            : 0.174408 seconds
+   1: Total amount of time in system mode          : 0.333840 seconds
+   1: Maximum resident set size                    : 9940 Kbytes
+   1: Average shared memory use in text segment    : 15 Kbytes*sec
+   1: Average unshared memory use in data segment  : 861 Kbytes*sec
+   1: Number of page faults without I/O activity   : 2797
+   1: Number of page faults with I/O activity      : 0
+   1: Number of times process was swapped out      : 0
+   1: Number of times file system performed INPUT  : 0
+   1: Number of times file system performed OUTPUT : 0
+   1: Number of IPC messages sent                  : 0
+   1: Number of IPC messages received              : 0
+   1: Number of signals delivered                  : 0
+   1: Number of voluntary context switches         : 85
+   1: Number of involuntary context switches       : 33
+   1:
+   1: #######  End of Resource Statistics  ########
+   1:
+  50:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  50:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  50:  PM_FPU0_FIN (FPU0 produced a result)                      :           95641
+  50:  PM_FPU1_FIN (FPU1 produced a result)                      :           90305
+  50:  PM_CYC (Processor cycles)                                 :       545450022
+  50:  PM_FPU_STF (FPU executed store instruction)               :          184451
+  50:  PM_INST_CMPL (Instructions completed)                     :        98419349
+  50:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2833
+  50:
+  50:  Utilization rate                               :          34.480 %
+  50:  Total FP load and store operations             :           0.187 M
+  50:  MIPS                                           :         183.043 
+  50:  Instructions per cycle                         :           0.180 
+  50:  HW float point instructions (flips)            :           0.186 M
+  50:  HW float point instructions per cycle          :           0.000 
+   3:
+   3: hpmcount (V 3.1.0) summary
+   3:
+   3: Execution time (wall clock time): 0.541230916976929 seconds
+   3:
+   3: ########  Resource Usage Statistics  ########  
+   3:
+   3: Total amount of time in user mode            : 0.150611 seconds
+   3: Total amount of time in system mode          : 1.512620 seconds
+   3: Maximum resident set size                    : 10252 Kbytes
+   3: Average shared memory use in text segment    : 16 Kbytes*sec
+   3: Average unshared memory use in data segment  : 1004 Kbytes*sec
+   3: Number of page faults without I/O activity   : 2807
+   3: Number of page faults with I/O activity      : 0
+   3: Number of times process was swapped out      : 0
+   3: Number of times file system performed INPUT  : 0
+   3: Number of times file system performed OUTPUT : 0
+   3: Number of IPC messages sent                  : 0
+   3: Number of IPC messages received              : 0
+   3: Number of signals delivered                  : 0
+   3: Number of voluntary context switches         : 98
+   3: Number of involuntary context switches       : 41
+   3:
+   3: #######  End of Resource Statistics  ########
+   3:
+  63:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  63:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  63:  PM_FPU0_FIN (FPU0 produced a result)                      :           95622
+  63:  PM_FPU1_FIN (FPU1 produced a result)                      :           90364
+  63:  PM_CYC (Processor cycles)                                 :       549135001
+  63:  PM_FPU_STF (FPU executed store instruction)               :          184462
+  63:  PM_INST_CMPL (Instructions completed)                     :       113591173
+  63:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2627
+  63:
+  63:  Utilization rate                               :          33.869 %
+  63:  Total FP load and store operations             :           0.187 M
+  63:  MIPS                                           :         209.657 
+  63:  Instructions per cycle                         :           0.207 
+  63:  HW float point instructions (flips)            :           0.186 M
+   6:
+   6: hpmcount (V 3.1.0) summary
+   6:
+   6: Execution time (wall clock time): 0.551286935806274 seconds
+   6:
+   6: ########  Resource Usage Statistics  ########  
+   6:
+   6: Total amount of time in user mode            : 0.177271 seconds
+   6: Total amount of time in system mode          : 0.331309 seconds
+   6: Maximum resident set size                    : 10220 Kbytes
+   6: Average shared memory use in text segment    : 17 Kbytes*sec
+   6: Average unshared memory use in data segment  : 1062 Kbytes*sec
+   6: Number of page faults without I/O activity   : 2794
+   6: Number of page faults with I/O activity      : 0
+   6: Number of times process was swapped out      : 0
+   6: Number of times file system performed INPUT  : 0
+   6: Number of times file system performed OUTPUT : 0
+   6: Number of IPC messages sent                  : 0
+   6: Number of IPC messages received              : 0
+   6: Number of signals delivered                  : 0
+   6: Number of voluntary context switches         : 104
+   6: Number of involuntary context switches       : 42
+   6:
+   6: #######  End of Resource Statistics  ########
+   6:
+   9:
+   9: hpmcount (V 3.1.0) summary
+   9:
+   9: Execution time (wall clock time): 0.540793895721436 seconds
+   9:
+   9: ########  Resource Usage Statistics  ########  
+   9:
+   9: Total amount of time in user mode            : 0.172069 seconds
+   9: Total amount of time in system mode          : 0.343791 seconds
+   9: Maximum resident set size                    : 10248 Kbytes
+   9: Average shared memory use in text segment    : 20 Kbytes*sec
+   9: Average unshared memory use in data segment  : 1288 Kbytes*sec
+   9: Number of page faults without I/O activity   : 2797
+   9: Number of page faults with I/O activity      : 0
+   9: Number of times process was swapped out      : 0
+   9: Number of times file system performed INPUT  : 0
+   9: Number of times file system performed OUTPUT : 0
+   9: Number of IPC messages sent                  : 0
+   9: Number of IPC messages received              : 0
+   9: Number of signals delivered                  : 0
+   9: Number of voluntary context switches         : 59
+   9: Number of involuntary context switches       : 30
+   9:
+   9: #######  End of Resource Statistics  ########
+   9:
+  33:
+  33: hpmcount (V 3.1.0) summary
+  33:
+  33: Execution time (wall clock time): 0.533005952835083 seconds
+  33:
+  33: ########  Resource Usage Statistics  ########  
+  33:
+  33: Total amount of time in user mode            : 0.175870 seconds
+  33: Total amount of time in system mode          : 0.133445 seconds
+  33: Maximum resident set size                    : 10144 Kbytes
+  33: Average shared memory use in text segment    : 15 Kbytes*sec
+  33: Average unshared memory use in data segment  : 1033 Kbytes*sec
+  33: Number of page faults without I/O activity   : 2797
+  33: Number of page faults with I/O activity      : 0
+  33: Number of times process was swapped out      : 0
+  33: Number of times file system performed INPUT  : 0
+  33: Number of times file system performed OUTPUT : 0
+  33: Number of IPC messages sent                  : 0
+  33: Number of IPC messages received              : 0
+  33: Number of signals delivered                  : 0
+  33: Number of voluntary context switches         : 74
+  33: Number of involuntary context switches       : 44
+  33:
+  33: #######  End of Resource Statistics  ########
+  33:
+  13:
+  13: hpmcount (V 3.1.0) summary
+  13:
+  13: Execution time (wall clock time): 0.539255857467651 seconds
+  13:
+  13: ########  Resource Usage Statistics  ########  
+  13:
+  13: Total amount of time in user mode            : 0.161915 seconds
+  13: Total amount of time in system mode          : 0.163904 seconds
+  13: Maximum resident set size                    : 10132 Kbytes
+  13: Average shared memory use in text segment    : 18 Kbytes*sec
+  13: Average unshared memory use in data segment  : 996 Kbytes*sec
+  13: Number of page faults without I/O activity   : 2807
+  13: Number of page faults with I/O activity      : 0
+  13: Number of times process was swapped out      : 0
+  13: Number of times file system performed INPUT  : 0
+  13: Number of times file system performed OUTPUT : 0
+  13: Number of IPC messages sent                  : 0
+  13: Number of IPC messages received              : 0
+  13: Number of signals delivered                  : 0
+  13: Number of voluntary context switches         : 105
+  13: Number of involuntary context switches       : 42
+  13:
+  13: #######  End of Resource Statistics  ########
+  13:
+  50:  HW floating point instr. rate (HW flips / WCT) :           0.346 Mflip/s
+  50:  HW floating point instructions/ user time      :           1.003 Mflip/s
+  50:  Total floating point operations                :           0.002 M
+  50:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  50:  Flops / user time                              :           0.008 Mflop/s
+  50:  FMA percentage                                 :           9.068 %
+  50:  Computation intensity                          :           0.008 
+  50:  % of peak performance                          :           0.000 %
+  50:
+   0:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              50
+   0:  PM_FPU_FMA (FPU executed multiply-add instruction)        :             525
+   0:  PM_FPU0_FIN (FPU0 produced a result)                      :           98318
+   0:  PM_FPU1_FIN (FPU1 produced a result)                      :           92936
+   0:  PM_CYC (Processor cycles)                                 :       536473372
+   0:  PM_FPU_STF (FPU executed store instruction)               :          187202
+   0:  PM_INST_CMPL (Instructions completed)                     :        92431431
+   0:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            5556
+   0:
+   0:  Utilization rate                               :          31.149 %
+   0:  Total FP load and store operations             :           0.193 M
+   0:  MIPS                                           :         171.058 
+   0:  Instructions per cycle                         :           0.172 
+   0:  HW float point instructions (flips)            :           0.191 M
+   0:  HW float point instructions per cycle          :           0.000 
+  53:
+  53: hpmcount (V 3.1.0) summary
+  53:
+  53: Execution time (wall clock time): 0.542777061462402 seconds
+  53:
+  53: ########  Resource Usage Statistics  ########  
+  53:
+  53: Total amount of time in user mode            : 0.133589 seconds
+  53: Total amount of time in system mode          : 0.313856 seconds
+  53: Maximum resident set size                    : 10196 Kbytes
+  53: Average shared memory use in text segment    : 11 Kbytes*sec
+  53: Average unshared memory use in data segment  : 769 Kbytes*sec
+  53: Number of page faults without I/O activity   : 2796
+  53: Number of page faults with I/O activity      : 0
+  53: Number of times process was swapped out      : 0
+  53: Number of times file system performed INPUT  : 0
+  53: Number of times file system performed OUTPUT : 0
+  53: Number of IPC messages sent                  : 0
+  53: Number of IPC messages received              : 0
+  53: Number of signals delivered                  : 0
+  53: Number of voluntary context switches         : 92
+  53: Number of involuntary context switches       : 19
+  53:
+  53: #######  End of Resource Statistics  ########
+  53:
+   1:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              17
+   1:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              75
+   1:  PM_FPU0_FIN (FPU0 produced a result)                      :           95663
+   1:  PM_FPU1_FIN (FPU1 produced a result)                      :           90390
+   1:  PM_CYC (Processor cycles)                                 :       536619160
+   1:  PM_FPU_STF (FPU executed store instruction)               :          184460
+   1:  PM_INST_CMPL (Instructions completed)                     :       105843890
+   1:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2654
+   1:
+   1:  Utilization rate                               :          32.396 %
+   1:  Total FP load and store operations             :           0.187 M
+   1:  MIPS                                           :         196.601 
+   1:  Instructions per cycle                         :           0.197 
+   1:  HW float point instructions (flips)            :           0.186 M
+   1:  HW float point instructions per cycle          :           0.000 
+  63:  HW float point instructions per cycle          :           0.000 
+  63:  HW floating point instr. rate (HW flips / WCT) :           0.343 Mflip/s
+  63:  HW floating point instructions/ user time      :           1.014 Mflip/s
+  63:  Total floating point operations                :           0.002 M
+  63:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  63:  Flops / user time                              :           0.009 Mflop/s
+  63:  FMA percentage                                 :           9.023 %
+  63:  Computation intensity                          :           0.009 
+  63:  % of peak performance                          :           0.000 %
+  63:
+   3:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+   3:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              70
+   3:  PM_FPU0_FIN (FPU0 produced a result)                      :           95675
+   3:  PM_FPU1_FIN (FPU1 produced a result)                      :           90400
+   3:  PM_CYC (Processor cycles)                                 :       498480394
+   3:  PM_FPU_STF (FPU executed store instruction)               :          184444
+   3:  PM_INST_CMPL (Instructions completed)                     :        84818009
+   3:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2708
+   3:
+   3:  Utilization rate                               :          27.827 %
+   3:  Total FP load and store operations             :           0.187 M
+   3:  MIPS                                           :         156.713 
+   3:  Instructions per cycle                         :           0.170 
+   3:  HW float point instructions (flips)            :           0.186 M
+  33:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              17
+  33:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  33:  PM_FPU0_FIN (FPU0 produced a result)                      :           95870
+  33:  PM_FPU1_FIN (FPU1 produced a result)                      :           90624
+  33:  PM_CYC (Processor cycles)                                 :       492769927
+  33:  PM_FPU_STF (FPU executed store instruction)               :          184790
+  33:  PM_INST_CMPL (Instructions completed)                     :       102851379
+  33:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            3125
+  33:
+  33:  Utilization rate                               :          32.996 %
+  33:  Total FP load and store operations             :           0.188 M
+  33:  MIPS                                           :         192.965 
+  33:  Instructions per cycle                         :           0.209 
+  33:  HW float point instructions (flips)            :           0.186 M
+   6:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+   6:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+   6:  PM_FPU0_FIN (FPU0 produced a result)                      :           95596
+   6:  PM_FPU1_FIN (FPU1 produced a result)                      :           90314
+   6:  PM_CYC (Processor cycles)                                 :       564905782
+   6:  PM_FPU_STF (FPU executed store instruction)               :          184426
+   6:  PM_INST_CMPL (Instructions completed)                     :        96968720
+   6:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2638
+   6:
+   6:  Utilization rate                               :          32.156 %
+   6:  Total FP load and store operations             :           0.187 M
+   6:  MIPS                                           :         175.895 
+   6:  Instructions per cycle                         :           0.172 
+   6:  HW float point instructions (flips)            :           0.186 M
+  53:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              18
+  53:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              68
+  53:  PM_FPU0_FIN (FPU0 produced a result)                      :           95780
+  53:  PM_FPU1_FIN (FPU1 produced a result)                      :           90470
+  53:  PM_CYC (Processor cycles)                                 :       440596176
+  53:  PM_FPU_STF (FPU executed store instruction)               :          184624
+  53:  PM_INST_CMPL (Instructions completed)                     :        92717415
+  53:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2483
+  53:
+  53:  Utilization rate                               :          24.612 %
+  53:  Total FP load and store operations             :           0.187 M
+  53:  MIPS                                           :         170.820 
+  53:  Instructions per cycle                         :           0.210 
+  53:  HW float point instructions (flips)            :           0.186 M
+  53:  HW float point instructions per cycle          :           0.000 
+   9:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+   9:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+   9:  PM_FPU0_FIN (FPU0 produced a result)                      :           95630
+   9:  PM_FPU1_FIN (FPU1 produced a result)                      :           90303
+   9:  PM_CYC (Processor cycles)                                 :       545350516
+   9:  PM_FPU_STF (FPU executed store instruction)               :          184404
+   9:  PM_INST_CMPL (Instructions completed)                     :       103050920
+   9:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2706
+   9:
+   9:  Utilization rate                               :          31.818 %
+   9:  Total FP load and store operations             :           0.187 M
+   9:  MIPS                                           :         190.555 
+   9:  Instructions per cycle                         :           0.189 
+   9:  HW float point instructions (flips)            :           0.186 M
+  33:  HW float point instructions per cycle          :           0.000 
+  33:  HW floating point instr. rate (HW flips / WCT) :           0.350 Mflip/s
+  33:  HW floating point instructions/ user time      :           1.060 Mflip/s
+  33:  Total floating point operations                :           0.002 M
+  33:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  33:  Flops / user time                              :           0.010 Mflop/s
+  33:  FMA percentage                                 :           8.000 %
+  33:  Computation intensity                          :           0.009 
+  33:  % of peak performance                          :           0.000 %
+  33:
+  13:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  13:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  13:  PM_FPU0_FIN (FPU0 produced a result)                      :           95598
+  13:  PM_FPU1_FIN (FPU1 produced a result)                      :           90302
+  13:  PM_CYC (Processor cycles)                                 :       521791904
+  13:  PM_FPU_STF (FPU executed store instruction)               :          184407
+  13:  PM_INST_CMPL (Instructions completed)                     :       101114367
+  13:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2601
+  13:
+  13:  Utilization rate                               :          30.026 %
+  13:  Total FP load and store operations             :           0.187 M
+  13:  MIPS                                           :         187.507 
+  13:  Instructions per cycle                         :           0.194 
+  13:  HW float point instructions (flips)            :           0.186 M
+  53:  HW floating point instr. rate (HW flips / WCT) :           0.343 Mflip/s
+  53:  HW floating point instructions/ user time      :           1.394 Mflip/s
+  53:  Total floating point operations                :           0.002 M
+  53:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  53:  Flops / user time                              :           0.013 Mflop/s
+  53:  FMA percentage                                 :           8.028 %
+  53:  Computation intensity                          :           0.009 
+  53:  % of peak performance                          :           0.000 %
+  53:
+   0:  HW floating point instr. rate (HW flips / WCT) :           0.354 Mflip/s
+   0:  HW floating point instructions/ user time      :           1.136 Mflip/s
+   0:  Total floating point operations                :           0.005 M
+   0:  Flop rate (flops / WCT)                        :           0.008 Mflop/s
+   0:  Flops / user time                              :           0.027 Mflop/s
+   0:  FMA percentage                                 :          22.941 %
+   0:  Computation intensity                          :           0.024 
+   0:  % of peak performance                          :           0.000 %
+   0:
+  56:
+  56: hpmcount (V 3.1.0) summary
+  56:
+  56: Execution time (wall clock time): 0.544968128204346 seconds
+  56:
+  56: ########  Resource Usage Statistics  ########  
+  56:
+  56: Total amount of time in user mode            : 0.181284 seconds
+  56: Total amount of time in system mode          : 0.318145 seconds
+  56: Maximum resident set size                    : 10112 Kbytes
+  56: Average shared memory use in text segment    : 14 Kbytes*sec
+  56: Average unshared memory use in data segment  : 1063 Kbytes*sec
+  56: Number of page faults without I/O activity   : 2803
+  56: Number of page faults with I/O activity      : 0
+  56: Number of times process was swapped out      : 0
+  56: Number of times file system performed INPUT  : 0
+  56: Number of times file system performed OUTPUT : 0
+  56: Number of IPC messages sent                  : 0
+  56: Number of IPC messages received              : 0
+  56: Number of signals delivered                  : 0
+  56: Number of voluntary context switches         : 109
+  56: Number of involuntary context switches       : 45
+  56:
+  56: #######  End of Resource Statistics  ########
+  56:
+   1:  HW floating point instr. rate (HW flips / WCT) :           0.346 Mflip/s
+   1:  HW floating point instructions/ user time      :           1.067 Mflip/s
+   1:  Total floating point operations                :           0.002 M
+   1:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   1:  Flops / user time                              :           0.010 Mflop/s
+   1:  FMA percentage                                 :           8.993 %
+   1:  Computation intensity                          :           0.009 
+   1:  % of peak performance                          :           0.000 %
+   1:
+  56:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  56:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  56:  PM_FPU0_FIN (FPU0 produced a result)                      :           95596
+  56:  PM_FPU1_FIN (FPU1 produced a result)                      :           90300
+  56:  PM_CYC (Processor cycles)                                 :       539539628
+  56:  PM_FPU_STF (FPU executed store instruction)               :          184429
+  56:  PM_INST_CMPL (Instructions completed)                     :       121003769
+  56:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2473
+  56:
+  56:  Utilization rate                               :          33.265 %
+  56:  Total FP load and store operations             :           0.187 M
+  56:  MIPS                                           :         222.038 
+  56:  Instructions per cycle                         :           0.224 
+  56:  HW float point instructions (flips)            :           0.186 M
+   3:  HW float point instructions per cycle          :           0.000 
+   3:  HW floating point instr. rate (HW flips / WCT) :           0.344 Mflip/s
+   3:  HW floating point instructions/ user time      :           1.235 Mflip/s
+   3:  Total floating point operations                :           0.002 M
+   3:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   3:  Flops / user time                              :           0.011 Mflop/s
+   3:  FMA percentage                                 :           8.230 %
+   3:  Computation intensity                          :           0.009 
+   3:  % of peak performance                          :           0.000 %
+   3:
+  56:  HW float point instructions per cycle          :           0.000 
+  56:  HW floating point instr. rate (HW flips / WCT) :           0.341 Mflip/s
+  56:  HW floating point instructions/ user time      :           1.025 Mflip/s
+  56:  Total floating point operations                :           0.002 M
+  56:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  56:  Flops / user time                              :           0.008 Mflop/s
+  56:  FMA percentage                                 :           9.481 %
+  56:  Computation intensity                          :           0.008 
+  56:  % of peak performance                          :           0.000 %
+  56:
+   6:  HW float point instructions per cycle          :           0.000 
+   6:  HW floating point instr. rate (HW flips / WCT) :           0.337 Mflip/s
+   6:  HW floating point instructions/ user time      :           1.049 Mflip/s
+   6:  Total floating point operations                :           0.002 M
+   6:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   6:  Flops / user time                              :           0.009 Mflop/s
+   6:  FMA percentage                                 :           9.254 %
+   6:  Computation intensity                          :           0.008 
+   6:  % of peak performance                          :           0.000 %
+   6:
+  34:
+  34: hpmcount (V 3.1.0) summary
+  34:
+  34: Execution time (wall clock time): 0.525699853897095 seconds
+  34:
+  34: ########  Resource Usage Statistics  ########  
+  34:
+  34: Total amount of time in user mode            : 0.151111 seconds
+  34: Total amount of time in system mode          : 0.129791 seconds
+  34: Maximum resident set size                    : 10216 Kbytes
+  34: Average shared memory use in text segment    : 13 Kbytes*sec
+  34: Average unshared memory use in data segment  : 925 Kbytes*sec
+  34: Number of page faults without I/O activity   : 2788
+  34: Number of page faults with I/O activity      : 0
+  34: Number of times process was swapped out      : 0
+  34: Number of times file system performed INPUT  : 0
+  34: Number of times file system performed OUTPUT : 0
+  34: Number of IPC messages sent                  : 0
+  34: Number of IPC messages received              : 0
+  34: Number of signals delivered                  : 0
+  34: Number of voluntary context switches         : 76
+  34: Number of involuntary context switches       : 15
+  34:
+  34: #######  End of Resource Statistics  ########
+  34:
+   9:  HW float point instructions per cycle          :           0.000 
+   9:  HW floating point instr. rate (HW flips / WCT) :           0.344 Mflip/s
+   9:  HW floating point instructions/ user time      :           1.081 Mflip/s
+   9:  Total floating point operations                :           0.002 M
+   9:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   9:  Flops / user time                              :           0.009 Mflop/s
+   9:  FMA percentage                                 :           8.994 %
+   9:  Computation intensity                          :           0.009 
+   9:  % of peak performance                          :           0.000 %
+   9:
+  60:
+  60: hpmcount (V 3.1.0) summary
+  60:
+  60: Execution time (wall clock time): 0.54733419418335 seconds
+  60:
+  60: ########  Resource Usage Statistics  ########  
+  60:
+  60: Total amount of time in user mode            : 0.176385 seconds
+  60: Total amount of time in system mode          : 0.318129 seconds
+  60: Maximum resident set size                    : 9924 Kbytes
+  60: Average shared memory use in text segment    : 17 Kbytes*sec
+  60: Average unshared memory use in data segment  : 1224 Kbytes*sec
+  60: Number of page faults without I/O activity   : 2798
+  60: Number of page faults with I/O activity      : 0
+  60: Number of times process was swapped out      : 0
+  60: Number of times file system performed INPUT  : 0
+  60: Number of times file system performed OUTPUT : 0
+  60: Number of IPC messages sent                  : 0
+  60: Number of IPC messages received              : 0
+  60: Number of signals delivered                  : 0
+  60: Number of voluntary context switches         : 95
+  60: Number of involuntary context switches       : 35
+  60:
+  60: #######  End of Resource Statistics  ########
+  60:
+  13:  HW float point instructions per cycle          :           0.000 
+  13:  HW floating point instr. rate (HW flips / WCT) :           0.345 Mflip/s
+  13:  HW floating point instructions/ user time      :           1.148 Mflip/s
+  13:  Total floating point operations                :           0.002 M
+  13:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  13:  Flops / user time                              :           0.010 Mflop/s
+  13:  FMA percentage                                 :           9.323 %
+  13:  Computation intensity                          :           0.008 
+  13:  % of peak performance                          :           0.000 %
+  13:
+  34:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  34:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              70
+  34:  PM_FPU0_FIN (FPU0 produced a result)                      :           95593
+  34:  PM_FPU1_FIN (FPU1 produced a result)                      :           90334
+  34:  PM_CYC (Processor cycles)                                 :       449116691
+  34:  PM_FPU_STF (FPU executed store instruction)               :          184392
+  34:  PM_INST_CMPL (Instructions completed)                     :        88338639
+  34:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2612
+  34:
+  34:  Utilization rate                               :          28.745 %
+  34:  Total FP load and store operations             :           0.187 M
+  34:  MIPS                                           :         168.040 
+  34:  Instructions per cycle                         :           0.197 
+  34:  HW float point instructions (flips)            :           0.186 M
+  34:  HW float point instructions per cycle          :           0.000 
+  60:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  60:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  60:  PM_FPU0_FIN (FPU0 produced a result)                      :           95671
+  60:  PM_FPU1_FIN (FPU1 produced a result)                      :           90414
+  60:  PM_CYC (Processor cycles)                                 :       532907563
+  60:  PM_FPU_STF (FPU executed store instruction)               :          184469
+  60:  PM_INST_CMPL (Instructions completed)                     :       114053382
+  60:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2585
+  60:
+  60:  Utilization rate                               :          32.226 %
+  60:  Total FP load and store operations             :           0.187 M
+  60:  MIPS                                           :         208.380 
+  60:  Instructions per cycle                         :           0.214 
+  60:  HW float point instructions (flips)            :           0.186 M
+  60:  HW float point instructions per cycle          :           0.000 
+  34:  HW floating point instr. rate (HW flips / WCT) :           0.354 Mflip/s
+  34:  HW floating point instructions/ user time      :           1.230 Mflip/s
+  34:  Total floating point operations                :           0.002 M
+  34:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  34:  Flops / user time                              :           0.011 Mflop/s
+  34:  FMA percentage                                 :           8.723 %
+  34:  Computation intensity                          :           0.009 
+  34:  % of peak performance                          :           0.000 %
+  34:
+  60:  HW floating point instr. rate (HW flips / WCT) :           0.340 Mflip/s
+  60:  HW floating point instructions/ user time      :           1.055 Mflip/s
+  60:  Total floating point operations                :           0.002 M
+  60:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  60:  Flops / user time                              :           0.010 Mflop/s
+  60:  FMA percentage                                 :           8.644 %
+  60:  Computation intensity                          :           0.009 
+  60:  % of peak performance                          :           0.000 %
+  60:
+  32:
+  32: hpmcount (V 3.1.0) summary
+  32:
+  32: Execution time (wall clock time): 0.537229061126709 seconds
+  32:
+  32: ########  Resource Usage Statistics  ########  
+  32:
+  32: Total amount of time in user mode            : 0.174890 seconds
+  32: Total amount of time in system mode          : 0.150199 seconds
+  32: Maximum resident set size                    : 10196 Kbytes
+  32: Average shared memory use in text segment    : 18 Kbytes*sec
+  32: Average unshared memory use in data segment  : 1210 Kbytes*sec
+  32: Number of page faults without I/O activity   : 2888
+  32: Number of page faults with I/O activity      : 0
+  32: Number of times process was swapped out      : 0
+  32: Number of times file system performed INPUT  : 0
+  32: Number of times file system performed OUTPUT : 0
+  32: Number of IPC messages sent                  : 0
+  32: Number of IPC messages received              : 0
+  32: Number of signals delivered                  : 0
+  32: Number of voluntary context switches         : 64
+  32: Number of involuntary context switches       : 28
+  32:
+  32: #######  End of Resource Statistics  ########
+  32:
+  37:
+  37: hpmcount (V 3.1.0) summary
+  37:
+  37: Execution time (wall clock time): 0.538382053375244 seconds
+  37:
+  37: ########  Resource Usage Statistics  ########  
+  37:
+  37: Total amount of time in user mode            : 0.172594 seconds
+  37: Total amount of time in system mode          : 0.160578 seconds
+  37: Maximum resident set size                    : 10236 Kbytes
+  37: Average shared memory use in text segment    : 17 Kbytes*sec
+  37: Average unshared memory use in data segment  : 1263 Kbytes*sec
+  37: Number of page faults without I/O activity   : 2792
+  37: Number of page faults with I/O activity      : 0
+  37: Number of times process was swapped out      : 0
+  37: Number of times file system performed INPUT  : 0
+  37: Number of times file system performed OUTPUT : 0
+  37: Number of IPC messages sent                  : 0
+  37: Number of IPC messages received              : 0
+  37: Number of signals delivered                  : 0
+  37: Number of voluntary context switches         : 74
+  37: Number of involuntary context switches       : 31
+  37:
+  37: #######  End of Resource Statistics  ########
+  37:
+  51:
+  51: hpmcount (V 3.1.0) summary
+  51:
+  51: Execution time (wall clock time): 0.547721862792969 seconds
+  51:
+  51: ########  Resource Usage Statistics  ########  
+  51:
+  51: Total amount of time in user mode            : 0.183116 seconds
+  51: Total amount of time in system mode          : 0.154543 seconds
+  51: Maximum resident set size                    : 10040 Kbytes
+  51: Average shared memory use in text segment    : 15 Kbytes*sec
+  51: Average unshared memory use in data segment  : 1149 Kbytes*sec
+  51: Number of page faults without I/O activity   : 2791
+  51: Number of page faults with I/O activity      : 0
+  51: Number of times process was swapped out      : 0
+  51: Number of times file system performed INPUT  : 0
+  51: Number of times file system performed OUTPUT : 0
+  51: Number of IPC messages sent                  : 0
+  51: Number of IPC messages received              : 0
+  51: Number of signals delivered                  : 0
+  51: Number of voluntary context switches         : 58
+  51: Number of involuntary context switches       : 19
+  51:
+  51: #######  End of Resource Statistics  ########
+  51:
+   8:
+   8: hpmcount (V 3.1.0) summary
+   8:
+   8: Execution time (wall clock time): 0.547866106033325 seconds
+   8:
+   8: ########  Resource Usage Statistics  ########  
+   8:
+   8: Total amount of time in user mode            : 0.165616 seconds
+   8: Total amount of time in system mode          : 0.337615 seconds
+   8: Maximum resident set size                    : 10236 Kbytes
+   8: Average shared memory use in text segment    : 20 Kbytes*sec
+   8: Average unshared memory use in data segment  : 1219 Kbytes*sec
+   8: Number of page faults without I/O activity   : 2801
+   8: Number of page faults with I/O activity      : 0
+   8: Number of times process was swapped out      : 0
+   8: Number of times file system performed INPUT  : 0
+   8: Number of times file system performed OUTPUT : 0
+   8: Number of IPC messages sent                  : 0
+   8: Number of IPC messages received              : 0
+   8: Number of signals delivered                  : 0
+   8: Number of voluntary context switches         : 64
+   8: Number of involuntary context switches       : 34
+   8:
+   8: #######  End of Resource Statistics  ########
+   8:
+  22:
+  22: hpmcount (V 3.1.0) summary
+  22:
+  22: Execution time (wall clock time): 0.556618928909302 seconds
+  22:
+  22: ########  Resource Usage Statistics  ########  
+  22:
+  22: Total amount of time in user mode            : 0.182452 seconds
+  22: Total amount of time in system mode          : 0.177391 seconds
+  22: Maximum resident set size                    : 10248 Kbytes
+  22: Average shared memory use in text segment    : 16 Kbytes*sec
+  22: Average unshared memory use in data segment  : 1069 Kbytes*sec
+  22: Number of page faults without I/O activity   : 2797
+  22: Number of page faults with I/O activity      : 0
+  22: Number of times process was swapped out      : 0
+  22: Number of times file system performed INPUT  : 0
+  22: Number of times file system performed OUTPUT : 0
+  22: Number of IPC messages sent                  : 0
+  22: Number of IPC messages received              : 0
+  22: Number of signals delivered                  : 0
+  22: Number of voluntary context switches         : 104
+  22: Number of involuntary context switches       : 29
+  22:
+  22: #######  End of Resource Statistics  ########
+  22:
+   8:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              19
+   8:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+   8:  PM_FPU0_FIN (FPU0 produced a result)                      :           95611
+   8:  PM_FPU1_FIN (FPU1 produced a result)                      :           90314
+   8:  PM_CYC (Processor cycles)                                 :       529805323
+   8:  PM_FPU_STF (FPU executed store instruction)               :          184376
+   8:  PM_INST_CMPL (Instructions completed)                     :        83442554
+   8:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2717
+   8:
+   8:  Utilization rate                               :          30.229 %
+   8:  Total FP load and store operations             :           0.187 M
+   8:  MIPS                                           :         152.305 
+   8:  Instructions per cycle                         :           0.157 
+   8:  HW float point instructions (flips)            :           0.186 M
+  22:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  22:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  22:  PM_FPU0_FIN (FPU0 produced a result)                      :           95696
+  22:  PM_FPU1_FIN (FPU1 produced a result)                      :           90409
+  22:  PM_CYC (Processor cycles)                                 :       580404090
+  22:  PM_FPU_STF (FPU executed store instruction)               :          184533
+  22:  PM_INST_CMPL (Instructions completed)                     :       101512114
+  22:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2730
+  22:
+  22:  Utilization rate                               :          32.779 %
+  22:  Total FP load and store operations             :           0.187 M
+  22:  MIPS                                           :         182.373 
+  22:  Instructions per cycle                         :           0.175 
+  22:  HW float point instructions (flips)            :           0.186 M
+  26:
+  26: hpmcount (V 3.1.0) summary
+  26:
+  26: Execution time (wall clock time): 0.562927007675171 seconds
+  26:
+  26: ########  Resource Usage Statistics  ########  
+  26:
+  26: Total amount of time in user mode            : 0.197238 seconds
+  26: Total amount of time in system mode          : 0.154131 seconds
+  26: Maximum resident set size                    : 10260 Kbytes
+  26: Average shared memory use in text segment    : 21 Kbytes*sec
+  26: Average unshared memory use in data segment  : 1596 Kbytes*sec
+  26: Number of page faults without I/O activity   : 6990
+  26: Number of page faults with I/O activity      : 0
+  26: Number of times process was swapped out      : 0
+  26: Number of times file system performed INPUT  : 0
+  26: Number of times file system performed OUTPUT : 0
+  26: Number of IPC messages sent                  : 0
+  26: Number of IPC messages received              : 0
+  26: Number of signals delivered                  : 0
+  26: Number of voluntary context switches         : 100
+  26: Number of involuntary context switches       : 30
+  26:
+  26: #######  End of Resource Statistics  ########
+  26:
+   2:
+   2: hpmcount (V 3.1.0) summary
+   2:
+   2: Execution time (wall clock time): 0.550343036651611 seconds
+   2:
+   2: ########  Resource Usage Statistics  ########  
+   2:
+   2: Total amount of time in user mode            : 0.155874 seconds
+   2: Total amount of time in system mode          : 0.170123 seconds
+   2: Maximum resident set size                    : 10024 Kbytes
+   2: Average shared memory use in text segment    : 18 Kbytes*sec
+   2: Average unshared memory use in data segment  : 985 Kbytes*sec
+   2: Number of page faults without I/O activity   : 2807
+   2: Number of page faults with I/O activity      : 0
+   2: Number of times process was swapped out      : 0
+   2: Number of times file system performed INPUT  : 0
+   2: Number of times file system performed OUTPUT : 0
+   2: Number of IPC messages sent                  : 0
+   2: Number of IPC messages received              : 0
+   2: Number of signals delivered                  : 0
+   2: Number of voluntary context switches         : 106
+   2: Number of involuntary context switches       : 25
+   2:
+   2: #######  End of Resource Statistics  ########
+   2:
+   5:
+   5: hpmcount (V 3.1.0) summary
+   5:
+   5: Execution time (wall clock time): 0.554094076156616 seconds
+   5:
+   5: ########  Resource Usage Statistics  ########  
+   5:
+   5: Total amount of time in user mode            : 0.165740 seconds
+   5: Total amount of time in system mode          : 0.163294 seconds
+   5: Maximum resident set size                    : 10156 Kbytes
+   5: Average shared memory use in text segment    : 18 Kbytes*sec
+   5: Average unshared memory use in data segment  : 1217 Kbytes*sec
+   5: Number of page faults without I/O activity   : 2793
+   5: Number of page faults with I/O activity      : 0
+   5: Number of times process was swapped out      : 0
+   5: Number of times file system performed INPUT  : 0
+   5: Number of times file system performed OUTPUT : 0
+   5: Number of IPC messages sent                  : 0
+   5: Number of IPC messages received              : 0
+   5: Number of signals delivered                  : 0
+   5: Number of voluntary context switches         : 106
+   5: Number of involuntary context switches       : 37
+   5:
+   5: #######  End of Resource Statistics  ########
+   5:
+   8:  HW float point instructions per cycle          :           0.000 
+   8:  HW floating point instr. rate (HW flips / WCT) :           0.339 Mflip/s
+   8:  HW floating point instructions/ user time      :           1.123 Mflip/s
+   8:  Total floating point operations                :           0.002 M
+   8:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   8:  Flops / user time                              :           0.010 Mflop/s
+   8:  FMA percentage                                 :           8.765 %
+   8:  Computation intensity                          :           0.009 
+   8:  % of peak performance                          :           0.000 %
+   8:
+  32:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              49
+  32:  PM_FPU_FMA (FPU executed multiply-add instruction)        :             262
+  32:  PM_FPU0_FIN (FPU0 produced a result)                      :           96777
+  32:  PM_FPU1_FIN (FPU1 produced a result)                      :           91765
+  32:  PM_CYC (Processor cycles)                                 :       523793135
+  32:  PM_FPU_STF (FPU executed store instruction)               :          186049
+  32:  PM_INST_CMPL (Instructions completed)                     :        89136672
+  32:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            3832
+  32:
+  32:  Utilization rate                               :          32.554 %
+  32:  Total FP load and store operations             :           0.190 M
+  32:  MIPS                                           :         165.919 
+  32:  Instructions per cycle                         :           0.170 
+  32:  HW float point instructions (flips)            :           0.189 M
+  10:
+  10: hpmcount (V 3.1.0) summary
+  10:
+  10: Execution time (wall clock time): 0.551853895187378 seconds
+  10:
+  10: ########  Resource Usage Statistics  ########  
+  10:
+  10: Total amount of time in user mode            : 0.159121 seconds
+  10: Total amount of time in system mode          : 0.174216 seconds
+  10: Maximum resident set size                    : 10220 Kbytes
+  10: Average shared memory use in text segment    : 16 Kbytes*sec
+  10: Average unshared memory use in data segment  : 869 Kbytes*sec
+  10: Number of page faults without I/O activity   : 2809
+  10: Number of page faults with I/O activity      : 0
+  10: Number of times process was swapped out      : 0
+  10: Number of times file system performed INPUT  : 0
+  10: Number of times file system performed OUTPUT : 0
+  10: Number of IPC messages sent                  : 0
+  10: Number of IPC messages received              : 0
+  10: Number of signals delivered                  : 0
+  10: Number of voluntary context switches         : 115
+  10: Number of involuntary context switches       : 26
+  10:
+  10: #######  End of Resource Statistics  ########
+  10:
+  12:
+  12: hpmcount (V 3.1.0) summary
+  12:
+  12: Execution time (wall clock time): 0.554414033889771 seconds
+  12:
+  12: ########  Resource Usage Statistics  ########  
+  12:
+  12: Total amount of time in user mode            : 0.174681 seconds
+  12: Total amount of time in system mode          : 0.168426 seconds
+  12: Maximum resident set size                    : 10248 Kbytes
+  12: Average shared memory use in text segment    : 20 Kbytes*sec
+  12: Average unshared memory use in data segment  : 1126 Kbytes*sec
+  12: Number of page faults without I/O activity   : 2795
+  12: Number of page faults with I/O activity      : 0
+  12: Number of times process was swapped out      : 0
+  12: Number of times file system performed INPUT  : 0
+  12: Number of times file system performed OUTPUT : 0
+  12: Number of IPC messages sent                  : 0
+  12: Number of IPC messages received              : 0
+  12: Number of signals delivered                  : 0
+  12: Number of voluntary context switches         : 83
+  12: Number of involuntary context switches       : 16
+  12:
+  12: #######  End of Resource Statistics  ########
+  12:
+  35:
+  35: hpmcount (V 3.1.0) summary
+  35:
+  35: Execution time (wall clock time): 0.540898084640503 seconds
+  35:
+  35: ########  Resource Usage Statistics  ########  
+  35:
+  35: Total amount of time in user mode            : 0.176835 seconds
+  35: Total amount of time in system mode          : 0.303624 seconds
+  35: Maximum resident set size                    : 9916 Kbytes
+  35: Average shared memory use in text segment    : 13 Kbytes*sec
+  35: Average unshared memory use in data segment  : 927 Kbytes*sec
+  35: Number of page faults without I/O activity   : 2791
+  35: Number of page faults with I/O activity      : 0
+  35: Number of times process was swapped out      : 0
+  35: Number of times file system performed INPUT  : 0
+  35: Number of times file system performed OUTPUT : 0
+  35: Number of IPC messages sent                  : 0
+  35: Number of IPC messages received              : 0
+  35: Number of signals delivered                  : 0
+  35: Number of voluntary context switches         : 89
+  35: Number of involuntary context switches       : 19
+  35:
+  35: #######  End of Resource Statistics  ########
+  35:
+  36:
+  36: hpmcount (V 3.1.0) summary
+  36:
+  36: Execution time (wall clock time): 0.55444598197937 seconds
+  36:
+  36: ########  Resource Usage Statistics  ########  
+  36:
+  36: Total amount of time in user mode            : 0.182320 seconds
+  36: Total amount of time in system mode          : 0.311191 seconds
+  36: Maximum resident set size                    : 10060 Kbytes
+  36: Average shared memory use in text segment    : 15 Kbytes*sec
+  36: Average unshared memory use in data segment  : 1098 Kbytes*sec
+  36: Number of page faults without I/O activity   : 2800
+  36: Number of page faults with I/O activity      : 0
+  36: Number of times process was swapped out      : 0
+  36: Number of times file system performed INPUT  : 0
+  36: Number of times file system performed OUTPUT : 0
+  36: Number of IPC messages sent                  : 0
+  36: Number of IPC messages received              : 0
+  36: Number of signals delivered                  : 0
+  36: Number of voluntary context switches         : 57
+  36: Number of involuntary context switches       : 27
+  36:
+  36: #######  End of Resource Statistics  ########
+  36:
+  14:
+  14: hpmcount (V 3.1.0) summary
+  14:
+  14: Execution time (wall clock time): 0.554418087005615 seconds
+  14:
+  14: ########  Resource Usage Statistics  ########  
+  14:
+  14: Total amount of time in user mode            : 0.173997 seconds
+  14: Total amount of time in system mode          : 0.165517 seconds
+  14: Maximum resident set size                    : 10136 Kbytes
+  14: Average shared memory use in text segment    : 15 Kbytes*sec
+  14: Average unshared memory use in data segment  : 885 Kbytes*sec
+  14: Number of page faults without I/O activity   : 2802
+  14: Number of page faults with I/O activity      : 0
+  14: Number of times process was swapped out      : 0
+  14: Number of times file system performed INPUT  : 0
+  14: Number of times file system performed OUTPUT : 0
+  14: Number of IPC messages sent                  : 0
+  14: Number of IPC messages received              : 0
+  14: Number of signals delivered                  : 0
+  14: Number of voluntary context switches         : 121
+  14: Number of involuntary context switches       : 40
+  14:
+  14: #######  End of Resource Statistics  ########
+  14:
+  16:
+  16: hpmcount (V 3.1.0) summary
+  16:
+  16: Execution time (wall clock time): 0.554945945739746 seconds
+  16:
+  16: ########  Resource Usage Statistics  ########  
+  16:
+  16: Total amount of time in user mode            : 0.167034 seconds
+  16: Total amount of time in system mode          : 0.321215 seconds
+  16: Maximum resident set size                    : 10216 Kbytes
+  16: Average shared memory use in text segment    : 14 Kbytes*sec
+  16: Average unshared memory use in data segment  : 887 Kbytes*sec
+  16: Number of page faults without I/O activity   : 2815
+  16: Number of page faults with I/O activity      : 0
+  16: Number of times process was swapped out      : 0
+  16: Number of times file system performed INPUT  : 0
+  16: Number of times file system performed OUTPUT : 0
+  16: Number of IPC messages sent                  : 0
+  16: Number of IPC messages received              : 0
+  16: Number of signals delivered                  : 0
+  16: Number of voluntary context switches         : 93
+  16: Number of involuntary context switches       : 27
+  16:
+  16: #######  End of Resource Statistics  ########
+  16:
+  37:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  37:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  37:  PM_FPU0_FIN (FPU0 produced a result)                      :           95585
+  37:  PM_FPU1_FIN (FPU1 produced a result)                      :           90326
+  37:  PM_CYC (Processor cycles)                                 :       531713167
+  37:  PM_FPU_STF (FPU executed store instruction)               :          184389
+  37:  PM_INST_CMPL (Instructions completed)                     :        98930813
+  37:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2514
+  37:
+  37:  Utilization rate                               :          32.058 %
+  37:  Total FP load and store operations             :           0.187 M
+  37:  MIPS                                           :         183.756 
+  37:  Instructions per cycle                         :           0.186 
+  37:  HW float point instructions (flips)            :           0.186 M
+  17:
+  17: hpmcount (V 3.1.0) summary
+  17:
+  17: Execution time (wall clock time): 0.562976837158203 seconds
+  17:
+  17: ########  Resource Usage Statistics  ########  
+  17:
+  17: Total amount of time in user mode            : 0.180593 seconds
+  17: Total amount of time in system mode          : 0.317874 seconds
+  17: Maximum resident set size                    : 10048 Kbytes
+  17: Average shared memory use in text segment    : 15 Kbytes*sec
+  17: Average unshared memory use in data segment  : 943 Kbytes*sec
+  17: Number of page faults without I/O activity   : 2789
+  17: Number of page faults with I/O activity      : 0
+  17: Number of times process was swapped out      : 0
+  17: Number of times file system performed INPUT  : 0
+  17: Number of times file system performed OUTPUT : 0
+  17: Number of IPC messages sent                  : 0
+  17: Number of IPC messages received              : 0
+  17: Number of signals delivered                  : 0
+  17: Number of voluntary context switches         : 104
+  17: Number of involuntary context switches       : 30
+  17:
+  17: #######  End of Resource Statistics  ########
+  17:
+  18:
+  18: hpmcount (V 3.1.0) summary
+  18:
+  18: Execution time (wall clock time): 0.559241056442261 seconds
+  18:
+  18: ########  Resource Usage Statistics  ########  
+  18:
+  18: Total amount of time in user mode            : 0.181261 seconds
+  18: Total amount of time in system mode          : 0.172179 seconds
+  18: Maximum resident set size                    : 9936 Kbytes
+  18: Average shared memory use in text segment    : 18 Kbytes*sec
+  18: Average unshared memory use in data segment  : 1156 Kbytes*sec
+  18: Number of page faults without I/O activity   : 2785
+  18: Number of page faults with I/O activity      : 0
+  18: Number of times process was swapped out      : 0
+  18: Number of times file system performed INPUT  : 0
+  18: Number of times file system performed OUTPUT : 0
+  18: Number of IPC messages sent                  : 0
+  18: Number of IPC messages received              : 0
+  18: Number of signals delivered                  : 0
+  18: Number of voluntary context switches         : 111
+  18: Number of involuntary context switches       : 50
+  18:
+  18: #######  End of Resource Statistics  ########
+  18:
+  38:
+  38: hpmcount (V 3.1.0) summary
+  38:
+  38: Execution time (wall clock time): 0.544481039047241 seconds
+  38:
+  38: ########  Resource Usage Statistics  ########  
+  38:
+  38: Total amount of time in user mode            : 0.186786 seconds
+  38: Total amount of time in system mode          : 0.147448 seconds
+  38: Maximum resident set size                    : 10200 Kbytes
+  38: Average shared memory use in text segment    : 18 Kbytes*sec
+  38: Average unshared memory use in data segment  : 1331 Kbytes*sec
+  38: Number of page faults without I/O activity   : 2785
+  38: Number of page faults with I/O activity      : 0
+  38: Number of times process was swapped out      : 0
+  38: Number of times file system performed INPUT  : 0
+  38: Number of times file system performed OUTPUT : 0
+  38: Number of IPC messages sent                  : 0
+  38: Number of IPC messages received              : 0
+  38: Number of signals delivered                  : 0
+  38: Number of voluntary context switches         : 69
+  38: Number of involuntary context switches       : 36
+  38:
+  38: #######  End of Resource Statistics  ########
+  38:
+  19:
+  19: hpmcount (V 3.1.0) summary
+  19:
+  19: Execution time (wall clock time): 0.562014818191528 seconds
+  19:
+  19: ########  Resource Usage Statistics  ########  
+  19:
+  19: Total amount of time in user mode            : 0.180087 seconds
+  19: Total amount of time in system mode          : 0.176503 seconds
+  19: Maximum resident set size                    : 9936 Kbytes
+  19: Average shared memory use in text segment    : 18 Kbytes*sec
+  19: Average unshared memory use in data segment  : 1012 Kbytes*sec
+  19: Number of page faults without I/O activity   : 2783
+  19: Number of page faults with I/O activity      : 0
+  19: Number of times process was swapped out      : 0
+  19: Number of times file system performed INPUT  : 0
+  19: Number of times file system performed OUTPUT : 0
+  19: Number of IPC messages sent                  : 0
+  19: Number of IPC messages received              : 0
+  19: Number of signals delivered                  : 0
+  19: Number of voluntary context switches         : 85
+  19: Number of involuntary context switches       : 24
+  19:
+  19: #######  End of Resource Statistics  ########
+  19:
+  39:
+  39: hpmcount (V 3.1.0) summary
+  39:
+  39: Execution time (wall clock time): 0.546060800552368 seconds
+  39:
+  39: ########  Resource Usage Statistics  ########  
+  39:
+  39: Total amount of time in user mode            : 0.184038 seconds
+  39: Total amount of time in system mode          : 0.311253 seconds
+  39: Maximum resident set size                    : 10236 Kbytes
+  39: Average shared memory use in text segment    : 18 Kbytes*sec
+  39: Average unshared memory use in data segment  : 1225 Kbytes*sec
+  39: Number of page faults without I/O activity   : 2792
+  39: Number of page faults with I/O activity      : 0
+  39: Number of times process was swapped out      : 0
+  39: Number of times file system performed INPUT  : 0
+  39: Number of times file system performed OUTPUT : 0
+  39: Number of IPC messages sent                  : 0
+  39: Number of IPC messages received              : 0
+  39: Number of signals delivered                  : 0
+  39: Number of voluntary context switches         : 71
+  39: Number of involuntary context switches       : 19
+  39:
+  39: #######  End of Resource Statistics  ########
+  39:
+  20:
+  20: hpmcount (V 3.1.0) summary
+  20:
+  20: Execution time (wall clock time): 0.561686038970947 seconds
+  20:
+  20: ########  Resource Usage Statistics  ########  
+  20:
+  20: Total amount of time in user mode            : 0.180081 seconds
+  20: Total amount of time in system mode          : 0.171351 seconds
+  20: Maximum resident set size                    : 10132 Kbytes
+  20: Average shared memory use in text segment    : 22 Kbytes*sec
+  20: Average unshared memory use in data segment  : 1401 Kbytes*sec
+  20: Number of page faults without I/O activity   : 2793
+  20: Number of page faults with I/O activity      : 0
+  20: Number of times process was swapped out      : 0
+  20: Number of times file system performed INPUT  : 0
+  20: Number of times file system performed OUTPUT : 0
+  20: Number of IPC messages sent                  : 0
+  20: Number of IPC messages received              : 0
+  20: Number of signals delivered                  : 0
+  20: Number of voluntary context switches         : 97
+  20: Number of involuntary context switches       : 20
+  20:
+  20: #######  End of Resource Statistics  ########
+  20:
+  40:
+  40: hpmcount (V 3.1.0) summary
+  40:
+  40: Execution time (wall clock time): 0.553645849227905 seconds
+  40:
+  40: ########  Resource Usage Statistics  ########  
+  40:
+  40: Total amount of time in user mode            : 0.186661 seconds
+  40: Total amount of time in system mode          : 0.159779 seconds
+  40: Maximum resident set size                    : 10144 Kbytes
+  40: Average shared memory use in text segment    : 15 Kbytes*sec
+  40: Average unshared memory use in data segment  : 1213 Kbytes*sec
+  40: Number of page faults without I/O activity   : 2804
+  40: Number of page faults with I/O activity      : 0
+  40: Number of times process was swapped out      : 0
+  40: Number of times file system performed INPUT  : 0
+  40: Number of times file system performed OUTPUT : 0
+  40: Number of IPC messages sent                  : 0
+  40: Number of IPC messages received              : 0
+  40: Number of signals delivered                  : 0
+  40: Number of voluntary context switches         : 81
+  40: Number of involuntary context switches       : 47
+  40:
+  40: #######  End of Resource Statistics  ########
+  40:
+  21:
+  21: hpmcount (V 3.1.0) summary
+  21:
+  21: Execution time (wall clock time): 0.561542987823486 seconds
+  21:
+  21: ########  Resource Usage Statistics  ########  
+  21:
+  21: Total amount of time in user mode            : 0.175680 seconds
+  21: Total amount of time in system mode          : 0.356417 seconds
+  21: Maximum resident set size                    : 9940 Kbytes
+  21: Average shared memory use in text segment    : 17 Kbytes*sec
+  21: Average unshared memory use in data segment  : 1073 Kbytes*sec
+  21: Number of page faults without I/O activity   : 2782
+  21: Number of page faults with I/O activity      : 0
+  21: Number of times process was swapped out      : 0
+  21: Number of times file system performed INPUT  : 0
+  21: Number of times file system performed OUTPUT : 0
+  21: Number of IPC messages sent                  : 0
+  21: Number of IPC messages received              : 0
+  21: Number of signals delivered                  : 0
+  21: Number of voluntary context switches         : 72
+  21: Number of involuntary context switches       : 44
+  21:
+  21: #######  End of Resource Statistics  ########
+  21:
+  22:  HW float point instructions per cycle          :           0.000 
+  22:  HW floating point instr. rate (HW flips / WCT) :           0.334 Mflip/s
+  22:  HW floating point instructions/ user time      :           1.020 Mflip/s
+  22:  Total floating point operations                :           0.002 M
+  22:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  22:  Flops / user time                              :           0.009 Mflop/s
+  22:  FMA percentage                                 :           8.643 %
+  22:  Computation intensity                          :           0.009 
+  22:  % of peak performance                          :           0.000 %
+  22:
+  41:
+  41: hpmcount (V 3.1.0) summary
+  41:
+  41: Execution time (wall clock time): 0.54765510559082 seconds
+  41:
+  41: ########  Resource Usage Statistics  ########  
+  41:
+  41: Total amount of time in user mode            : 0.174125 seconds
+  41: Total amount of time in system mode          : 0.339179 seconds
+  41: Maximum resident set size                    : 10200 Kbytes
+  41: Average shared memory use in text segment    : 17 Kbytes*sec
+  41: Average unshared memory use in data segment  : 1259 Kbytes*sec
+  41: Number of page faults without I/O activity   : 2799
+  41: Number of page faults with I/O activity      : 0
+  41: Number of times process was swapped out      : 0
+  41: Number of times file system performed INPUT  : 0
+  41: Number of times file system performed OUTPUT : 0
+  41: Number of IPC messages sent                  : 0
+  41: Number of IPC messages received              : 0
+  41: Number of signals delivered                  : 0
+  41: Number of voluntary context switches         : 103
+  41: Number of involuntary context switches       : 40
+  41:
+  41: #######  End of Resource Statistics  ########
+  41:
+  23:
+  23: hpmcount (V 3.1.0) summary
+  23:
+  23: Execution time (wall clock time): 0.567349910736084 seconds
+  23:
+  23: ########  Resource Usage Statistics  ########  
+  23:
+  23: Total amount of time in user mode            : 0.173247 seconds
+  23: Total amount of time in system mode          : 0.338514 seconds
+  23: Maximum resident set size                    : 10012 Kbytes
+  23: Average shared memory use in text segment    : 17 Kbytes*sec
+  23: Average unshared memory use in data segment  : 1034 Kbytes*sec
+  23: Number of page faults without I/O activity   : 2789
+  23: Number of page faults with I/O activity      : 0
+  23: Number of times process was swapped out      : 0
+  23: Number of times file system performed INPUT  : 0
+  23: Number of times file system performed OUTPUT : 0
+  23: Number of IPC messages sent                  : 0
+  23: Number of IPC messages received              : 0
+  23: Number of signals delivered                  : 0
+  23: Number of voluntary context switches         : 90
+  23: Number of involuntary context switches       : 32
+  23:
+  23: #######  End of Resource Statistics  ########
+  23:
+  42:
+  42: hpmcount (V 3.1.0) summary
+  42:
+  42: Execution time (wall clock time): 0.544347047805786 seconds
+  42:
+  42: ########  Resource Usage Statistics  ########  
+  42:
+  42: Total amount of time in user mode            : 0.183471 seconds
+  42: Total amount of time in system mode          : 0.152952 seconds
+  42: Maximum resident set size                    : 10232 Kbytes
+  42: Average shared memory use in text segment    : 15 Kbytes*sec
+  42: Average unshared memory use in data segment  : 1018 Kbytes*sec
+  42: Number of page faults without I/O activity   : 2809
+  42: Number of page faults with I/O activity      : 0
+  42: Number of times process was swapped out      : 0
+  42: Number of times file system performed INPUT  : 0
+  42: Number of times file system performed OUTPUT : 0
+  42: Number of IPC messages sent                  : 0
+  42: Number of IPC messages received              : 0
+  42: Number of signals delivered                  : 0
+  42: Number of voluntary context switches         : 94
+  42: Number of involuntary context switches       : 25
+  42:
+  42: #######  End of Resource Statistics  ########
+  42:
+  25:
+  25: hpmcount (V 3.1.0) summary
+  25:
+  25: Execution time (wall clock time): 0.566869020462036 seconds
+  25:
+  25: ########  Resource Usage Statistics  ########  
+  25:
+  25: Total amount of time in user mode            : 0.171303 seconds
+  25: Total amount of time in system mode          : 0.185644 seconds
+  25: Maximum resident set size                    : 9940 Kbytes
+  25: Average shared memory use in text segment    : 16 Kbytes*sec
+  25: Average unshared memory use in data segment  : 1032 Kbytes*sec
+  25: Number of page faults without I/O activity   : 2787
+  25: Number of page faults with I/O activity      : 0
+  25: Number of times process was swapped out      : 0
+  25: Number of times file system performed INPUT  : 0
+  25: Number of times file system performed OUTPUT : 0
+  25: Number of IPC messages sent                  : 0
+  25: Number of IPC messages received              : 0
+  25: Number of signals delivered                  : 0
+  25: Number of voluntary context switches         : 103
+  25: Number of involuntary context switches       : 52
+  25:
+  25: #######  End of Resource Statistics  ########
+  25:
+  26:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  26:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  26:  PM_FPU0_FIN (FPU0 produced a result)                      :           95622
+  26:  PM_FPU1_FIN (FPU1 produced a result)                      :           90343
+  26:  PM_CYC (Processor cycles)                                 :       546682298
+  26:  PM_FPU_STF (FPU executed store instruction)               :          184434
+  26:  PM_INST_CMPL (Instructions completed)                     :       113000877
+  26:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2537
+  26:
+  26:  Utilization rate                               :          35.038 %
+  26:  Total FP load and store operations             :           0.187 M
+  26:  MIPS                                           :         200.738 
+  26:  Instructions per cycle                         :           0.207 
+  26:  HW float point instructions (flips)            :           0.186 M
+  43:
+  43: hpmcount (V 3.1.0) summary
+  43:
+  43: Execution time (wall clock time): 0.544697999954224 seconds
+  43:
+  43: ########  Resource Usage Statistics  ########  
+  43:
+  43: Total amount of time in user mode            : 0.176464 seconds
+  43: Total amount of time in system mode          : 0.320165 seconds
+  43: Maximum resident set size                    : 10204 Kbytes
+  43: Average shared memory use in text segment    : 16 Kbytes*sec
+  43: Average unshared memory use in data segment  : 1174 Kbytes*sec
+  43: Number of page faults without I/O activity   : 2797
+  43: Number of page faults with I/O activity      : 0
+  43: Number of times process was swapped out      : 0
+  43: Number of times file system performed INPUT  : 0
+  43: Number of times file system performed OUTPUT : 0
+  43: Number of IPC messages sent                  : 0
+  43: Number of IPC messages received              : 0
+  43: Number of signals delivered                  : 0
+  43: Number of voluntary context switches         : 87
+  43: Number of involuntary context switches       : 18
+  43:
+  43: #######  End of Resource Statistics  ########
+  43:
+  27:
+  27: hpmcount (V 3.1.0) summary
+  27:
+  27: Execution time (wall clock time): 0.56598687171936 seconds
+  27:
+  27: ########  Resource Usage Statistics  ########  
+  27:
+  27: Total amount of time in user mode            : 0.169805 seconds
+  27: Total amount of time in system mode          : 0.179025 seconds
+  27: Maximum resident set size                    : 9944 Kbytes
+  27: Average shared memory use in text segment    : 12 Kbytes*sec
+  27: Average unshared memory use in data segment  : 792 Kbytes*sec
+  27: Number of page faults without I/O activity   : 2804
+  27: Number of page faults with I/O activity      : 0
+  27: Number of times process was swapped out      : 0
+  27: Number of times file system performed INPUT  : 0
+  27: Number of times file system performed OUTPUT : 0
+  27: Number of IPC messages sent                  : 0
+  27: Number of IPC messages received              : 0
+  27: Number of signals delivered                  : 0
+  27: Number of voluntary context switches         : 124
+  27: Number of involuntary context switches       : 67
+  27:
+  27: #######  End of Resource Statistics  ########
+  27:
+  44:
+  44: hpmcount (V 3.1.0) summary
+  44:
+  44: Execution time (wall clock time): 0.553203105926514 seconds
+  44:
+  44: ########  Resource Usage Statistics  ########  
+  44:
+  44: Total amount of time in user mode            : 0.183992 seconds
+  44: Total amount of time in system mode          : 0.323995 seconds
+  44: Maximum resident set size                    : 10208 Kbytes
+  44: Average shared memory use in text segment    : 16 Kbytes*sec
+  44: Average unshared memory use in data segment  : 1124 Kbytes*sec
+  44: Number of page faults without I/O activity   : 2795
+  44: Number of page faults with I/O activity      : 0
+  44: Number of times process was swapped out      : 0
+  44: Number of times file system performed INPUT  : 0
+  44: Number of times file system performed OUTPUT : 0
+  44: Number of IPC messages sent                  : 0
+  44: Number of IPC messages received              : 0
+  44: Number of signals delivered                  : 0
+  44: Number of voluntary context switches         : 83
+  44: Number of involuntary context switches       : 28
+  44:
+  44: #######  End of Resource Statistics  ########
+  44:
+  28:
+  28: hpmcount (V 3.1.0) summary
+  28:
+  28: Execution time (wall clock time): 0.569127082824707 seconds
+  28:
+  28: ########  Resource Usage Statistics  ########  
+  28:
+  28: Total amount of time in user mode            : 0.176498 seconds
+  28: Total amount of time in system mode          : 0.360658 seconds
+  28: Maximum resident set size                    : 10228 Kbytes
+  28: Average shared memory use in text segment    : 16 Kbytes*sec
+  28: Average unshared memory use in data segment  : 1114 Kbytes*sec
+  28: Number of page faults without I/O activity   : 2796
+  28: Number of page faults with I/O activity      : 0
+  28: Number of times process was swapped out      : 0
+  28: Number of times file system performed INPUT  : 0
+  28: Number of times file system performed OUTPUT : 0
+  28: Number of IPC messages sent                  : 0
+  28: Number of IPC messages received              : 0
+  28: Number of signals delivered                  : 0
+  28: Number of voluntary context switches         : 88
+  28: Number of involuntary context switches       : 54
+  28:
+  28: #######  End of Resource Statistics  ########
+  28:
+  45:
+  45: hpmcount (V 3.1.0) summary
+  45:
+  45: Execution time (wall clock time): 0.536470174789429 seconds
+  45:
+  45: ########  Resource Usage Statistics  ########  
+  45:
+  45: Total amount of time in user mode            : 0.172887 seconds
+  45: Total amount of time in system mode          : 0.315991 seconds
+  45: Maximum resident set size                    : 10132 Kbytes
+  45: Average shared memory use in text segment    : 13 Kbytes*sec
+  45: Average unshared memory use in data segment  : 944 Kbytes*sec
+  45: Number of page faults without I/O activity   : 2813
+  45: Number of page faults with I/O activity      : 0
+  45: Number of times process was swapped out      : 0
+  45: Number of times file system performed INPUT  : 0
+  45: Number of times file system performed OUTPUT : 0
+  45: Number of IPC messages sent                  : 0
+  45: Number of IPC messages received              : 0
+  45: Number of signals delivered                  : 0
+  45: Number of voluntary context switches         : 78
+  45: Number of involuntary context switches       : 29
+  45:
+  45: #######  End of Resource Statistics  ########
+  45:
+  29:
+  29: hpmcount (V 3.1.0) summary
+  29:
+  29: Execution time (wall clock time): 0.564357995986938 seconds
+  29:
+  29: ########  Resource Usage Statistics  ########  
+  29:
+  29: Total amount of time in user mode            : 0.171058 seconds
+  29: Total amount of time in system mode          : 0.190967 seconds
+  29: Maximum resident set size                    : 10256 Kbytes
+  29: Average shared memory use in text segment    : 17 Kbytes*sec
+  29: Average unshared memory use in data segment  : 1010 Kbytes*sec
+  29: Number of page faults without I/O activity   : 2796
+  29: Number of page faults with I/O activity      : 0
+  29: Number of times process was swapped out      : 0
+  29: Number of times file system performed INPUT  : 0
+  29: Number of times file system performed OUTPUT : 0
+  29: Number of IPC messages sent                  : 0
+  29: Number of IPC messages received              : 0
+  29: Number of signals delivered                  : 0
+  29: Number of voluntary context switches         : 86
+  29: Number of involuntary context switches       : 37
+  29:
+  29: #######  End of Resource Statistics  ########
+  29:
+  30:
+  30: hpmcount (V 3.1.0) summary
+  30:
+  30: Execution time (wall clock time): 0.568257093429565 seconds
+  30:
+  30: ########  Resource Usage Statistics  ########  
+  30:
+  30: Total amount of time in user mode            : 0.187233 seconds
+  30: Total amount of time in system mode          : 0.169036 seconds
+  30: Maximum resident set size                    : 10260 Kbytes
+  30: Average shared memory use in text segment    : 15 Kbytes*sec
+  30: Average unshared memory use in data segment  : 1022 Kbytes*sec
+  30: Number of page faults without I/O activity   : 2794
+  30: Number of page faults with I/O activity      : 0
+  30: Number of times process was swapped out      : 0
+  30: Number of times file system performed INPUT  : 0
+  30: Number of times file system performed OUTPUT : 0
+  30: Number of IPC messages sent                  : 0
+  30: Number of IPC messages received              : 0
+  30: Number of signals delivered                  : 0
+  30: Number of voluntary context switches         : 121
+  30: Number of involuntary context switches       : 77
+  30:
+  30: #######  End of Resource Statistics  ########
+  30:
+  46:
+  46: hpmcount (V 3.1.0) summary
+  46:
+  46: Execution time (wall clock time): 0.547208070755005 seconds
+  46:
+  46: ########  Resource Usage Statistics  ########  
+  46:
+  46: Total amount of time in user mode            : 0.178368 seconds
+  46: Total amount of time in system mode          : 0.314643 seconds
+  46: Maximum resident set size                    : 9920 Kbytes
+  46: Average shared memory use in text segment    : 13 Kbytes*sec
+  46: Average unshared memory use in data segment  : 926 Kbytes*sec
+  46: Number of page faults without I/O activity   : 2803
+  46: Number of page faults with I/O activity      : 0
+  46: Number of times process was swapped out      : 0
+  46: Number of times file system performed INPUT  : 0
+  46: Number of times file system performed OUTPUT : 0
+  46: Number of IPC messages sent                  : 0
+  46: Number of IPC messages received              : 0
+  46: Number of signals delivered                  : 0
+  46: Number of voluntary context switches         : 109
+  46: Number of involuntary context switches       : 25
+  46:
+  46: #######  End of Resource Statistics  ########
+  46:
+  31:
+  31: hpmcount (V 3.1.0) summary
+  31:
+  31: Execution time (wall clock time): 0.566322088241577 seconds
+  31:
+  31: ########  Resource Usage Statistics  ########  
+  31:
+  31: Total amount of time in user mode            : 0.172948 seconds
+  31: Total amount of time in system mode          : 0.181075 seconds
+  31: Maximum resident set size                    : 10228 Kbytes
+  31: Average shared memory use in text segment    : 20 Kbytes*sec
+  31: Average unshared memory use in data segment  : 1351 Kbytes*sec
+  31: Number of page faults without I/O activity   : 2798
+  31: Number of page faults with I/O activity      : 0
+  31: Number of times process was swapped out      : 0
+  31: Number of times file system performed INPUT  : 0
+  31: Number of times file system performed OUTPUT : 0
+  31: Number of IPC messages sent                  : 0
+  31: Number of IPC messages received              : 0
+  31: Number of signals delivered                  : 0
+  31: Number of voluntary context switches         : 149
+  31: Number of involuntary context switches       : 35
+  31:
+  31: #######  End of Resource Statistics  ########
+  31:
+  47:
+  47: hpmcount (V 3.1.0) summary
+  47:
+  47: Execution time (wall clock time): 0.54758882522583 seconds
+  47:
+  47: ########  Resource Usage Statistics  ########  
+  47:
+  47: Total amount of time in user mode            : 0.178558 seconds
+  47: Total amount of time in system mode          : 0.306076 seconds
+  47: Maximum resident set size                    : 9916 Kbytes
+  47: Average shared memory use in text segment    : 15 Kbytes*sec
+  47: Average unshared memory use in data segment  : 1047 Kbytes*sec
+  47: Number of page faults without I/O activity   : 2806
+  47: Number of page faults with I/O activity      : 0
+  47: Number of times process was swapped out      : 0
+  47: Number of times file system performed INPUT  : 0
+  47: Number of times file system performed OUTPUT : 0
+  47: Number of IPC messages sent                  : 0
+  47: Number of IPC messages received              : 0
+  47: Number of signals delivered                  : 0
+  47: Number of voluntary context switches         : 65
+  47: Number of involuntary context switches       : 23
+  47:
+  47: #######  End of Resource Statistics  ########
+  47:
+   2:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+   2:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+   2:  PM_FPU0_FIN (FPU0 produced a result)                      :           95688
+   2:  PM_FPU1_FIN (FPU1 produced a result)                      :           90381
+   2:  PM_CYC (Processor cycles)                                 :       525414838
+   2:  PM_FPU_STF (FPU executed store instruction)               :          184583
+   2:  PM_INST_CMPL (Instructions completed)                     :        99753094
+   2:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2747
+   2:
+   2:  Utilization rate                               :          28.323 %
+   2:  Total FP load and store operations             :           0.187 M
+   2:  MIPS                                           :         181.256 
+   2:  Instructions per cycle                         :           0.190 
+   2:  HW float point instructions (flips)            :           0.186 M
+  48:
+  48: hpmcount (V 3.1.0) summary
+  48:
+  48: Execution time (wall clock time): 0.551882982254028 seconds
+  48:
+  48: ########  Resource Usage Statistics  ########  
+  48:
+  48: Total amount of time in user mode            : 0.189521 seconds
+  48: Total amount of time in system mode          : 0.155210 seconds
+  48: Maximum resident set size                    : 10236 Kbytes
+  48: Average shared memory use in text segment    : 16 Kbytes*sec
+  48: Average unshared memory use in data segment  : 1195 Kbytes*sec
+  48: Number of page faults without I/O activity   : 2792
+  48: Number of page faults with I/O activity      : 0
+  48: Number of times process was swapped out      : 0
+  48: Number of times file system performed INPUT  : 0
+  48: Number of times file system performed OUTPUT : 0
+  48: Number of IPC messages sent                  : 0
+  48: Number of IPC messages received              : 0
+  48: Number of signals delivered                  : 0
+  48: Number of voluntary context switches         : 62
+  48: Number of involuntary context switches       : 27
+  48:
+  48: #######  End of Resource Statistics  ########
+  48:
+   5:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+   5:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+   5:  PM_FPU0_FIN (FPU0 produced a result)                      :           95601
+   5:  PM_FPU1_FIN (FPU1 produced a result)                      :           90317
+   5:  PM_CYC (Processor cycles)                                 :       532416845
+   5:  PM_FPU_STF (FPU executed store instruction)               :          184388
+   5:  PM_INST_CMPL (Instructions completed)                     :       102253685
+   5:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2732
+   5:
+   5:  Utilization rate                               :          29.912 %
+   5:  Total FP load and store operations             :           0.187 M
+   5:  MIPS                                           :         184.542 
+   5:  Instructions per cycle                         :           0.192 
+   5:  HW float point instructions (flips)            :           0.186 M
+  51:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  51:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  51:  PM_FPU0_FIN (FPU0 produced a result)                      :           95597
+  51:  PM_FPU1_FIN (FPU1 produced a result)                      :           90294
+  51:  PM_CYC (Processor cycles)                                 :       545364449
+  51:  PM_FPU_STF (FPU executed store instruction)               :          184382
+  51:  PM_INST_CMPL (Instructions completed)                     :        89188486
+  51:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2496
+  51:
+  51:  Utilization rate                               :          33.432 %
+  51:  Total FP load and store operations             :           0.187 M
+  51:  MIPS                                           :         162.835 
+  51:  Instructions per cycle                         :           0.164 
+  51:  HW float point instructions (flips)            :           0.186 M
+  52:
+  52: hpmcount (V 3.1.0) summary
+  52:
+  52: Execution time (wall clock time): 0.55623197555542 seconds
+  52:
+  52: ########  Resource Usage Statistics  ########  
+  52:
+  52: Total amount of time in user mode            : 0.180641 seconds
+  52: Total amount of time in system mode          : 0.322868 seconds
+  52: Maximum resident set size                    : 10208 Kbytes
+  52: Average shared memory use in text segment    : 16 Kbytes*sec
+  52: Average unshared memory use in data segment  : 1318 Kbytes*sec
+  52: Number of page faults without I/O activity   : 2788
+  52: Number of page faults with I/O activity      : 0
+  52: Number of times process was swapped out      : 0
+  52: Number of times file system performed INPUT  : 0
+  52: Number of times file system performed OUTPUT : 0
+  52: Number of IPC messages sent                  : 0
+  52: Number of IPC messages received              : 0
+  52: Number of signals delivered                  : 0
+  52: Number of voluntary context switches         : 89
+  52: Number of involuntary context switches       : 38
+  52:
+  52: #######  End of Resource Statistics  ########
+  52:
+  10:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  10:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  10:  PM_FPU0_FIN (FPU0 produced a result)                      :           95665
+  10:  PM_FPU1_FIN (FPU1 produced a result)                      :           90348
+  10:  PM_CYC (Processor cycles)                                 :       534650471
+  10:  PM_FPU_STF (FPU executed store instruction)               :          184483
+  10:  PM_INST_CMPL (Instructions completed)                     :        93699036
+  10:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2667
+  10:
+  10:  Utilization rate                               :          28.834 %
+  10:  Total FP load and store operations             :           0.187 M
+  10:  MIPS                                           :         169.790 
+  10:  Instructions per cycle                         :           0.175 
+  10:  HW float point instructions (flips)            :           0.186 M
+  12:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  12:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              68
+  12:  PM_FPU0_FIN (FPU0 produced a result)                      :           95554
+  12:  PM_FPU1_FIN (FPU1 produced a result)                      :           90260
+  12:  PM_CYC (Processor cycles)                                 :       554801485
+  12:  PM_FPU_STF (FPU executed store instruction)               :          184335
+  12:  PM_INST_CMPL (Instructions completed)                     :        92753197
+  12:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2469
+  12:
+  12:  Utilization rate                               :          31.507 %
+  12:  Total FP load and store operations             :           0.187 M
+  12:  MIPS                                           :         167.300 
+  12:  Instructions per cycle                         :           0.167 
+  12:  HW float point instructions (flips)            :           0.186 M
+  54:
+  54: hpmcount (V 3.1.0) summary
+  54:
+  54: Execution time (wall clock time): 0.555230140686035 seconds
+  54:
+  54: ########  Resource Usage Statistics  ########  
+  54:
+  54: Total amount of time in user mode            : 0.178355 seconds
+  54: Total amount of time in system mode          : 0.320006 seconds
+  54: Maximum resident set size                    : 10236 Kbytes
+  54: Average shared memory use in text segment    : 14 Kbytes*sec
+  54: Average unshared memory use in data segment  : 1040 Kbytes*sec
+  54: Number of page faults without I/O activity   : 2806
+  54: Number of page faults with I/O activity      : 0
+  54: Number of times process was swapped out      : 0
+  54: Number of times file system performed INPUT  : 0
+  54: Number of times file system performed OUTPUT : 0
+  54: Number of IPC messages sent                  : 0
+  54: Number of IPC messages received              : 0
+  54: Number of signals delivered                  : 0
+  54: Number of voluntary context switches         : 92
+  54: Number of involuntary context switches       : 21
+  54:
+  54: #######  End of Resource Statistics  ########
+  54:
+  14:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  14:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              74
+  14:  PM_FPU0_FIN (FPU0 produced a result)                      :           95698
+  14:  PM_FPU1_FIN (FPU1 produced a result)                      :           90437
+  14:  PM_CYC (Processor cycles)                                 :       547100211
+  14:  PM_FPU_STF (FPU executed store instruction)               :          184455
+  14:  PM_INST_CMPL (Instructions completed)                     :        95856357
+  14:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2697
+  14:
+  14:  Utilization rate                               :          31.384 %
+  14:  Total FP load and store operations             :           0.187 M
+  14:  MIPS                                           :         172.895 
+  14:  Instructions per cycle                         :           0.175 
+  14:  HW float point instructions (flips)            :           0.186 M
+  16:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  16:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  16:  PM_FPU0_FIN (FPU0 produced a result)                      :           95675
+  16:  PM_FPU1_FIN (FPU1 produced a result)                      :           90343
+  16:  PM_CYC (Processor cycles)                                 :       540331010
+  16:  PM_FPU_STF (FPU executed store instruction)               :          184495
+  16:  PM_INST_CMPL (Instructions completed)                     :        89956242
+  16:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2819
+  16:
+  16:  Utilization rate                               :          30.099 %
+  16:  Total FP load and store operations             :           0.187 M
+  16:  MIPS                                           :         162.099 
+  16:  Instructions per cycle                         :           0.166 
+  16:  HW float point instructions (flips)            :           0.186 M
+  16:  HW float point instructions per cycle          :           0.000 
+  55:
+  55: hpmcount (V 3.1.0) summary
+  55:
+  55: Execution time (wall clock time): 0.556239128112793 seconds
+  55:
+  55: ########  Resource Usage Statistics  ########  
+  55:
+  55: Total amount of time in user mode            : 0.191533 seconds
+  55: Total amount of time in system mode          : 0.149597 seconds
+  55: Maximum resident set size                    : 10208 Kbytes
+  55: Average shared memory use in text segment    : 15 Kbytes*sec
+  55: Average unshared memory use in data segment  : 1156 Kbytes*sec
+  55: Number of page faults without I/O activity   : 2788
+  55: Number of page faults with I/O activity      : 0
+  55: Number of times process was swapped out      : 0
+  55: Number of times file system performed INPUT  : 0
+  55: Number of times file system performed OUTPUT : 0
+  55: Number of IPC messages sent                  : 0
+  55: Number of IPC messages received              : 0
+  55: Number of signals delivered                  : 0
+  55: Number of voluntary context switches         : 96
+  55: Number of involuntary context switches       : 28
+  55:
+  55: #######  End of Resource Statistics  ########
+  55:
+  17:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  17:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  17:  PM_FPU0_FIN (FPU0 produced a result)                      :           95609
+  17:  PM_FPU1_FIN (FPU1 produced a result)                      :           90297
+  17:  PM_CYC (Processor cycles)                                 :       532551300
+  17:  PM_FPU_STF (FPU executed store instruction)               :          184407
+  17:  PM_INST_CMPL (Instructions completed)                     :       107617625
+  17:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2752
+  17:
+  17:  Utilization rate                               :          32.078 %
+  17:  Total FP load and store operations             :           0.187 M
+  17:  MIPS                                           :         191.158 
+  17:  Instructions per cycle                         :           0.202 
+  17:  HW float point instructions (flips)            :           0.186 M
+  18:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  18:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  18:  PM_FPU0_FIN (FPU0 produced a result)                      :           95583
+  18:  PM_FPU1_FIN (FPU1 produced a result)                      :           90295
+  18:  PM_CYC (Processor cycles)                                 :       573831992
+  18:  PM_FPU_STF (FPU executed store instruction)               :          184402
+  18:  PM_INST_CMPL (Instructions completed)                     :       109068674
+  18:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2563
+  18:
+  18:  Utilization rate                               :          32.412 %
+  18:  Total FP load and store operations             :           0.187 M
+  18:  MIPS                                           :         195.030 
+  18:  Instructions per cycle                         :           0.190 
+  18:  HW float point instructions (flips)            :           0.186 M
+  19:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  19:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  19:  PM_FPU0_FIN (FPU0 produced a result)                      :           95618
+  19:  PM_FPU1_FIN (FPU1 produced a result)                      :           90326
+  19:  PM_CYC (Processor cycles)                                 :       571605686
+  19:  PM_FPU_STF (FPU executed store instruction)               :          184431
+  19:  PM_INST_CMPL (Instructions completed)                     :        93064021
+  19:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2631
+  19:
+  19:  Utilization rate                               :          32.043 %
+  19:  Total FP load and store operations             :           0.187 M
+  19:  MIPS                                           :         165.590 
+  19:  Instructions per cycle                         :           0.163 
+  19:  HW float point instructions (flips)            :           0.186 M
+  19:  HW float point instructions per cycle          :           0.000 
+  57:
+  57: hpmcount (V 3.1.0) summary
+  57:
+  57: Execution time (wall clock time): 0.556524991989136 seconds
+  57:
+  57: ########  Resource Usage Statistics  ########  
+  57:
+  57: Total amount of time in user mode            : 0.179855 seconds
+  57: Total amount of time in system mode          : 0.153120 seconds
+  57: Maximum resident set size                    : 10120 Kbytes
+  57: Average shared memory use in text segment    : 18 Kbytes*sec
+  57: Average unshared memory use in data segment  : 1278 Kbytes*sec
+  57: Number of page faults without I/O activity   : 2772
+  57: Number of page faults with I/O activity      : 0
+  57: Number of times process was swapped out      : 0
+  57: Number of times file system performed INPUT  : 0
+  57: Number of times file system performed OUTPUT : 0
+  57: Number of IPC messages sent                  : 0
+  57: Number of IPC messages received              : 0
+  57: Number of signals delivered                  : 0
+  57: Number of voluntary context switches         : 84
+  57: Number of involuntary context switches       : 40
+  57:
+  57: #######  End of Resource Statistics  ########
+  57:
+  20:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  20:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  20:  PM_FPU0_FIN (FPU0 produced a result)                      :           95675
+  20:  PM_FPU1_FIN (FPU1 produced a result)                      :           90401
+  20:  PM_CYC (Processor cycles)                                 :       569010988
+  20:  PM_FPU_STF (FPU executed store instruction)               :          184492
+  20:  PM_INST_CMPL (Instructions completed)                     :        96156309
+  20:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2565
+  20:
+  20:  Utilization rate                               :          32.061 %
+  20:  Total FP load and store operations             :           0.187 M
+  20:  MIPS                                           :         171.192 
+  20:  Instructions per cycle                         :           0.169 
+  20:  HW float point instructions (flips)            :           0.186 M
+  59:
+  59: hpmcount (V 3.1.0) summary
+  59:
+  59: Execution time (wall clock time): 0.557064056396484 seconds
+  59:
+  59: ########  Resource Usage Statistics  ########  
+  59:
+  59: Total amount of time in user mode            : 0.184847 seconds
+  59: Total amount of time in system mode          : 0.158200 seconds
+  59: Maximum resident set size                    : 9984 Kbytes
+  59: Average shared memory use in text segment    : 14 Kbytes*sec
+  59: Average unshared memory use in data segment  : 1099 Kbytes*sec
+  59: Number of page faults without I/O activity   : 2790
+  59: Number of page faults with I/O activity      : 0
+  59: Number of times process was swapped out      : 0
+  59: Number of times file system performed INPUT  : 0
+  59: Number of times file system performed OUTPUT : 0
+  59: Number of IPC messages sent                  : 0
+  59: Number of IPC messages received              : 0
+  59: Number of signals delivered                  : 0
+  59: Number of voluntary context switches         : 66
+  59: Number of involuntary context switches       : 44
+  59:
+  59: #######  End of Resource Statistics  ########
+  59:
+  21:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  21:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              69
+  21:  PM_FPU0_FIN (FPU0 produced a result)                      :           95657
+  21:  PM_FPU1_FIN (FPU1 produced a result)                      :           90335
+  21:  PM_CYC (Processor cycles)                                 :       591590999
+  21:  PM_FPU_STF (FPU executed store instruction)               :          184423
+  21:  PM_INST_CMPL (Instructions completed)                     :       110830648
+  21:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2669
+  21:
+  21:  Utilization rate                               :          31.285 %
+  21:  Total FP load and store operations             :           0.187 M
+  21:  MIPS                                           :         197.368 
+  21:  Instructions per cycle                         :           0.187 
+  21:  HW float point instructions (flips)            :           0.186 M
+  21:  HW float point instructions per cycle          :           0.000 
+  61:
+  61: hpmcount (V 3.1.0) summary
+  61:
+  61: Execution time (wall clock time): 0.553350925445557 seconds
+  61:
+  61: ########  Resource Usage Statistics  ########  
+  61:
+  61: Total amount of time in user mode            : 0.176596 seconds
+  61: Total amount of time in system mode          : 0.146993 seconds
+  61: Maximum resident set size                    : 10212 Kbytes
+  61: Average shared memory use in text segment    : 16 Kbytes*sec
+  61: Average unshared memory use in data segment  : 1158 Kbytes*sec
+  61: Number of page faults without I/O activity   : 2793
+  61: Number of page faults with I/O activity      : 0
+  61: Number of times process was swapped out      : 0
+  61: Number of times file system performed INPUT  : 0
+  61: Number of times file system performed OUTPUT : 0
+  61: Number of IPC messages sent                  : 0
+  61: Number of IPC messages received              : 0
+  61: Number of signals delivered                  : 0
+  61: Number of voluntary context switches         : 65
+  61: Number of involuntary context switches       : 18
+  61:
+  61: #######  End of Resource Statistics  ########
+  61:
+  23:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  23:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  23:  PM_FPU0_FIN (FPU0 produced a result)                      :           95586
+  23:  PM_FPU1_FIN (FPU1 produced a result)                      :           90243
+  23:  PM_CYC (Processor cycles)                                 :       537878615
+  23:  PM_FPU_STF (FPU executed store instruction)               :          184358
+  23:  PM_INST_CMPL (Instructions completed)                     :        89537740
+  23:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2651
+  23:
+  23:  Utilization rate                               :          30.536 %
+  23:  Total FP load and store operations             :           0.187 M
+  23:  MIPS                                           :         157.817 
+  23:  Instructions per cycle                         :           0.166 
+  23:  HW float point instructions (flips)            :           0.186 M
+  25:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  25:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              70
+  25:  PM_FPU0_FIN (FPU0 produced a result)                      :           95593
+  25:  PM_FPU1_FIN (FPU1 produced a result)                      :           90299
+  25:  PM_CYC (Processor cycles)                                 :       574685273
+  25:  PM_FPU_STF (FPU executed store instruction)               :          184394
+  25:  PM_INST_CMPL (Instructions completed)                     :       124669435
+  25:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2563
+  25:
+  25:  Utilization rate                               :          30.219 %
+  25:  Total FP load and store operations             :           0.187 M
+  25:  MIPS                                           :         219.926 
+  25:  Instructions per cycle                         :           0.217 
+  25:  HW float point instructions (flips)            :           0.186 M
+  62:
+  62: hpmcount (V 3.1.0) summary
+  62:
+  62: Execution time (wall clock time): 0.557806015014648 seconds
+  62:
+  62: ########  Resource Usage Statistics  ########  
+  62:
+  62: Total amount of time in user mode            : 0.202515 seconds
+  62: Total amount of time in system mode          : 0.309781 seconds
+  62: Maximum resident set size                    : 10244 Kbytes
+  62: Average shared memory use in text segment    : 17 Kbytes*sec
+  62: Average unshared memory use in data segment  : 1420 Kbytes*sec
+  62: Number of page faults without I/O activity   : 6989
+  62: Number of page faults with I/O activity      : 0
+  62: Number of times process was swapped out      : 0
+  62: Number of times file system performed INPUT  : 0
+  62: Number of times file system performed OUTPUT : 0
+  62: Number of IPC messages sent                  : 0
+  62: Number of IPC messages received              : 0
+  62: Number of signals delivered                  : 0
+  62: Number of voluntary context switches         : 98
+  62: Number of involuntary context switches       : 39
+  62:
+  62: #######  End of Resource Statistics  ########
+  62:
+  26:  HW float point instructions per cycle          :           0.000 
+  26:  HW floating point instr. rate (HW flips / WCT) :           0.330 Mflip/s
+  26:  HW floating point instructions/ user time      :           0.943 Mflip/s
+  26:  Total floating point operations                :           0.002 M
+  26:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  26:  Flops / user time                              :           0.008 Mflop/s
+  26:  FMA percentage                                 :           8.864 %
+  26:  Computation intensity                          :           0.009 
+  26:  % of peak performance                          :           0.000 %
+  26:
+  27:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  27:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  27:  PM_FPU0_FIN (FPU0 produced a result)                      :           95667
+  27:  PM_FPU1_FIN (FPU1 produced a result)                      :           90352
+  27:  PM_CYC (Processor cycles)                                 :       562854169
+  27:  PM_FPU_STF (FPU executed store instruction)               :          184499
+  27:  PM_INST_CMPL (Instructions completed)                     :       114389296
+  27:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            3215
+  27:
+  27:  Utilization rate                               :          30.002 %
+  27:  Total FP load and store operations             :           0.188 M
+  27:  MIPS                                           :         202.106 
+  27:  Instructions per cycle                         :           0.203 
+  27:  HW float point instructions (flips)            :           0.186 M
+  27:  HW float point instructions per cycle          :           0.000 
+  32:  HW float point instructions per cycle          :           0.000 
+  32:  HW floating point instr. rate (HW flips / WCT) :           0.351 Mflip/s
+  32:  HW floating point instructions/ user time      :           1.078 Mflip/s
+  32:  Total floating point operations                :           0.003 M
+  32:  Flop rate (flops / WCT)                        :           0.005 Mflop/s
+  32:  Flops / user time                              :           0.016 Mflop/s
+  32:  FMA percentage                                 :          19.020 %
+  32:  Computation intensity                          :           0.015 
+  32:  % of peak performance                          :           0.000 %
+  32:
+  28:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  28:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  28:  PM_FPU0_FIN (FPU0 produced a result)                      :           95779
+  28:  PM_FPU1_FIN (FPU1 produced a result)                      :           90505
+  28:  PM_CYC (Processor cycles)                                 :       580612854
+  28:  PM_FPU_STF (FPU executed store instruction)               :          184625
+  28:  PM_INST_CMPL (Instructions completed)                     :       125990025
+  28:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2675
+  28:
+  28:  Utilization rate                               :          31.012 %
+  28:  Total FP load and store operations             :           0.187 M
+  28:  MIPS                                           :         221.374 
+  28:  Instructions per cycle                         :           0.217 
+  28:  HW float point instructions (flips)            :           0.186 M
+  29:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  29:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              70
+  29:  PM_FPU0_FIN (FPU0 produced a result)                      :           95567
+  29:  PM_FPU1_FIN (FPU1 produced a result)                      :           90269
+  29:  PM_CYC (Processor cycles)                                 :       579854935
+  29:  PM_FPU_STF (FPU executed store instruction)               :          184409
+  29:  PM_INST_CMPL (Instructions completed)                     :       106694132
+  29:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2661
+  29:
+  29:  Utilization rate                               :          30.310 %
+  29:  Total FP load and store operations             :           0.187 M
+  29:  MIPS                                           :         189.054 
+  29:  Instructions per cycle                         :           0.184 
+  29:  HW float point instructions (flips)            :           0.186 M
+  35:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  35:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  35:  PM_FPU0_FIN (FPU0 produced a result)                      :           95622
+  35:  PM_FPU1_FIN (FPU1 produced a result)                      :           90341
+  35:  PM_CYC (Processor cycles)                                 :       520975236
+  35:  PM_FPU_STF (FPU executed store instruction)               :          184529
+  35:  PM_INST_CMPL (Instructions completed)                     :        91800413
+  35:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2650
+  35:
+  35:  Utilization rate                               :          32.693 %
+  35:  Total FP load and store operations             :           0.187 M
+  35:  MIPS                                           :         169.719 
+  35:  Instructions per cycle                         :           0.176 
+  35:  HW float point instructions (flips)            :           0.186 M
+  35:  HW float point instructions per cycle          :           0.000 
+  30:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  30:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  30:  PM_FPU0_FIN (FPU0 produced a result)                      :           95630
+  30:  PM_FPU1_FIN (FPU1 produced a result)                      :           90361
+  30:  PM_CYC (Processor cycles)                                 :       574266993
+  30:  PM_FPU_STF (FPU executed store instruction)               :          184497
+  30:  PM_INST_CMPL (Instructions completed)                     :       129772090
+  30:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2899
+  30:
+  30:  Utilization rate                               :          32.949 %
+  30:  Total FP load and store operations             :           0.187 M
+  30:  MIPS                                           :         228.369 
+  30:  Instructions per cycle                         :           0.226 
+  30:  HW float point instructions (flips)            :           0.186 M
+  31:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  31:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  31:  PM_FPU0_FIN (FPU0 produced a result)                      :           95928
+  31:  PM_FPU1_FIN (FPU1 produced a result)                      :           90711
+  31:  PM_CYC (Processor cycles)                                 :       568924222
+  31:  PM_FPU_STF (FPU executed store instruction)               :          185153
+  31:  PM_INST_CMPL (Instructions completed)                     :       111907045
+  31:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            3269
+  31:
+  31:  Utilization rate                               :          30.539 %
+  31:  Total FP load and store operations             :           0.188 M
+  31:  MIPS                                           :         197.603 
+  31:  Instructions per cycle                         :           0.197 
+  31:  HW float point instructions (flips)            :           0.187 M
+  36:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  36:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              69
+  36:  PM_FPU0_FIN (FPU0 produced a result)                      :           95570
+  36:  PM_FPU1_FIN (FPU1 produced a result)                      :           90264
+  36:  PM_CYC (Processor cycles)                                 :       540873980
+  36:  PM_FPU_STF (FPU executed store instruction)               :          184368
+  36:  PM_INST_CMPL (Instructions completed)                     :       102511602
+  36:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2650
+  36:
+  36:  Utilization rate                               :          32.883 %
+  36:  Total FP load and store operations             :           0.187 M
+  36:  MIPS                                           :         184.890 
+  36:  Instructions per cycle                         :           0.190 
+  36:  HW float point instructions (flips)            :           0.186 M
+  36:  HW float point instructions per cycle          :           0.000 
+  37:  HW float point instructions per cycle          :           0.000 
+  37:  HW floating point instr. rate (HW flips / WCT) :           0.345 Mflip/s
+  37:  HW floating point instructions/ user time      :           1.077 Mflip/s
+  37:  Total floating point operations                :           0.002 M
+  37:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  37:  Flops / user time                              :           0.009 Mflop/s
+  37:  FMA percentage                                 :           9.154 %
+  37:  Computation intensity                          :           0.009 
+  37:  % of peak performance                          :           0.000 %
+  37:
+  38:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  38:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              70
+  38:  PM_FPU0_FIN (FPU0 produced a result)                      :           95741
+  38:  PM_FPU1_FIN (FPU1 produced a result)                      :           90453
+  38:  PM_CYC (Processor cycles)                                 :       532488383
+  38:  PM_FPU_STF (FPU executed store instruction)               :          184688
+  38:  PM_INST_CMPL (Instructions completed)                     :       105003702
+  38:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            3028
+  38:
+  38:  Utilization rate                               :          34.305 %
+  38:  Total FP load and store operations             :           0.188 M
+  38:  MIPS                                           :         192.851 
+  38:  Instructions per cycle                         :           0.197 
+  38:  HW float point instructions (flips)            :           0.186 M
+  39:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  39:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  39:  PM_FPU0_FIN (FPU0 produced a result)                      :           95622
+  39:  PM_FPU1_FIN (FPU1 produced a result)                      :           90335
+  39:  PM_CYC (Processor cycles)                                 :       541103314
+  39:  PM_FPU_STF (FPU executed store instruction)               :          184426
+  39:  PM_INST_CMPL (Instructions completed)                     :        99839350
+  39:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2497
+  39:
+  39:  Utilization rate                               :          33.703 %
+  39:  Total FP load and store operations             :           0.187 M
+  39:  MIPS                                           :         182.836 
+  39:  Instructions per cycle                         :           0.185 
+  39:  HW float point instructions (flips)            :           0.186 M
+  40:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  40:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              74
+  40:  PM_FPU0_FIN (FPU0 produced a result)                      :           95637
+  40:  PM_FPU1_FIN (FPU1 produced a result)                      :           90333
+  40:  PM_CYC (Processor cycles)                                 :       551037853
+  40:  PM_FPU_STF (FPU executed store instruction)               :          184438
+  40:  PM_INST_CMPL (Instructions completed)                     :       103112574
+  40:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2651
+  40:
+  40:  Utilization rate                               :          33.715 %
+  40:  Total FP load and store operations             :           0.187 M
+  40:  MIPS                                           :         186.243 
+  40:  Instructions per cycle                         :           0.187 
+  40:  HW float point instructions (flips)            :           0.186 M
+  41:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              17
+  41:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  41:  PM_FPU0_FIN (FPU0 produced a result)                      :           95571
+  41:  PM_FPU1_FIN (FPU1 produced a result)                      :           90290
+  41:  PM_CYC (Processor cycles)                                 :       542583475
+  41:  PM_FPU_STF (FPU executed store instruction)               :          184323
+  41:  PM_INST_CMPL (Instructions completed)                     :       104019696
+  41:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2467
+  41:
+  41:  Utilization rate                               :          31.795 %
+  41:  Total FP load and store operations             :           0.187 M
+  41:  MIPS                                           :         189.937 
+  41:  Instructions per cycle                         :           0.192 
+  41:  HW float point instructions (flips)            :           0.186 M
+  42:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  42:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  42:  PM_FPU0_FIN (FPU0 produced a result)                      :           95508
+  42:  PM_FPU1_FIN (FPU1 produced a result)                      :           90236
+  42:  PM_CYC (Processor cycles)                                 :       535587830
+  42:  PM_FPU_STF (FPU executed store instruction)               :          184283
+  42:  PM_INST_CMPL (Instructions completed)                     :       107058532
+  42:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2341
+  42:
+  42:  Utilization rate                               :          33.705 %
+  42:  Total FP load and store operations             :           0.187 M
+  42:  MIPS                                           :         196.673 
+  42:  Instructions per cycle                         :           0.200 
+  42:  HW float point instructions (flips)            :           0.186 M
+  43:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  43:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  43:  PM_FPU0_FIN (FPU0 produced a result)                      :           95626
+  43:  PM_FPU1_FIN (FPU1 produced a result)                      :           90359
+  43:  PM_CYC (Processor cycles)                                 :       528017997
+  43:  PM_FPU_STF (FPU executed store instruction)               :          184381
+  43:  PM_INST_CMPL (Instructions completed)                     :        91601691
+  43:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2437
+  43:
+  43:  Utilization rate                               :          32.397 %
+  43:  Total FP load and store operations             :           0.187 M
+  43:  MIPS                                           :         168.170 
+  43:  Instructions per cycle                         :           0.173 
+  43:  HW float point instructions (flips)            :           0.186 M
+   2:  HW float point instructions per cycle          :           0.000 
+   2:  HW floating point instr. rate (HW flips / WCT) :           0.338 Mflip/s
+   2:  HW floating point instructions/ user time      :           1.194 Mflip/s
+   2:  Total floating point operations                :           0.002 M
+   2:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   2:  Flops / user time                              :           0.010 Mflop/s
+   2:  FMA percentage                                 :           9.243 %
+   2:  Computation intensity                          :           0.008 
+   2:  % of peak performance                          :           0.000 %
+   2:
+  44:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  44:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  44:  PM_FPU0_FIN (FPU0 produced a result)                      :           95576
+  44:  PM_FPU1_FIN (FPU1 produced a result)                      :           90284
+  44:  PM_CYC (Processor cycles)                                 :       541753246
+  44:  PM_FPU_STF (FPU executed store instruction)               :          184376
+  44:  PM_INST_CMPL (Instructions completed)                     :       101547218
+  44:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2645
+  44:
+  44:  Utilization rate                               :          33.259 %
+  44:  Total FP load and store operations             :           0.187 M
+  44:  MIPS                                           :         183.562 
+  44:  Instructions per cycle                         :           0.187 
+  44:  HW float point instructions (flips)            :           0.186 M
+   5:  HW float point instructions per cycle          :           0.000 
+   5:  HW floating point instr. rate (HW flips / WCT) :           0.336 Mflip/s
+   5:  HW floating point instructions/ user time      :           1.122 Mflip/s
+   5:  Total floating point operations                :           0.002 M
+   5:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+   5:  Flops / user time                              :           0.010 Mflop/s
+   5:  FMA percentage                                 :           9.108 %
+   5:  Computation intensity                          :           0.009 
+   5:  % of peak performance                          :           0.000 %
+   5:
+  45:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  45:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              69
+  45:  PM_FPU0_FIN (FPU0 produced a result)                      :           95630
+  45:  PM_FPU1_FIN (FPU1 produced a result)                      :           90319
+  45:  PM_CYC (Processor cycles)                                 :       526722471
+  45:  PM_FPU_STF (FPU executed store instruction)               :          184419
+  45:  PM_INST_CMPL (Instructions completed)                     :        99058437
+  45:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2451
+  45:
+  45:  Utilization rate                               :          32.227 %
+  45:  Total FP load and store operations             :           0.187 M
+  45:  MIPS                                           :         184.649 
+  45:  Instructions per cycle                         :           0.188 
+  45:  HW float point instructions (flips)            :           0.186 M
+  45:  HW float point instructions per cycle          :           0.000 
+  10:  HW float point instructions per cycle          :           0.000 
+  10:  HW floating point instr. rate (HW flips / WCT) :           0.337 Mflip/s
+  10:  HW floating point instructions/ user time      :           1.169 Mflip/s
+  10:  Total floating point operations                :           0.002 M
+  10:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  10:  Flops / user time                              :           0.010 Mflop/s
+  10:  FMA percentage                                 :           9.108 %
+  10:  Computation intensity                          :           0.009 
+  10:  % of peak performance                          :           0.000 %
+  10:
+  46:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  46:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  46:  PM_FPU0_FIN (FPU0 produced a result)                      :           95605
+  46:  PM_FPU1_FIN (FPU1 produced a result)                      :           90343
+  46:  PM_CYC (Processor cycles)                                 :       534823866
+  46:  PM_FPU_STF (FPU executed store instruction)               :          184400
+  46:  PM_INST_CMPL (Instructions completed)                     :        98625232
+  46:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2486
+  46:
+  46:  Utilization rate                               :          32.596 %
+  46:  Total FP load and store operations             :           0.187 M
+  46:  MIPS                                           :         180.234 
+  46:  Instructions per cycle                         :           0.184 
+  46:  HW float point instructions (flips)            :           0.186 M
+  46:  HW float point instructions per cycle          :           0.000 
+  12:  HW float point instructions per cycle          :           0.000 
+  12:  HW floating point instr. rate (HW flips / WCT) :           0.335 Mflip/s
+  12:  HW floating point instructions/ user time      :           1.064 Mflip/s
+  12:  Total floating point operations                :           0.002 M
+  12:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  12:  Flops / user time                              :           0.009 Mflop/s
+  12:  FMA percentage                                 :           8.791 %
+  12:  Computation intensity                          :           0.008 
+  12:  % of peak performance                          :           0.000 %
+  12:
+  47:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  47:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  47:  PM_FPU0_FIN (FPU0 produced a result)                      :           95547
+  47:  PM_FPU1_FIN (FPU1 produced a result)                      :           90282
+  47:  PM_CYC (Processor cycles)                                 :       536412671
+  47:  PM_FPU_STF (FPU executed store instruction)               :          184306
+  47:  PM_INST_CMPL (Instructions completed)                     :        92650202
+  47:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2513
+  47:
+  47:  Utilization rate                               :          32.608 %
+  47:  Total FP load and store operations             :           0.187 M
+  47:  MIPS                                           :         169.197 
+  47:  Instructions per cycle                         :           0.173 
+  47:  HW float point instructions (flips)            :           0.186 M
+  47:  HW float point instructions per cycle          :           0.000 
+  14:  HW float point instructions per cycle          :           0.000 
+  14:  HW floating point instr. rate (HW flips / WCT) :           0.336 Mflip/s
+  14:  HW floating point instructions/ user time      :           1.070 Mflip/s
+  14:  Total floating point operations                :           0.002 M
+  14:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  14:  Flops / user time                              :           0.010 Mflop/s
+  14:  FMA percentage                                 :           8.438 %
+  14:  Computation intensity                          :           0.009 
+  14:  % of peak performance                          :           0.000 %
+  14:
+  48:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              18
+  48:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  48:  PM_FPU0_FIN (FPU0 produced a result)                      :           95627
+  48:  PM_FPU1_FIN (FPU1 produced a result)                      :           90290
+  48:  PM_CYC (Processor cycles)                                 :       548771736
+  48:  PM_FPU_STF (FPU executed store instruction)               :          184452
+  48:  PM_INST_CMPL (Instructions completed)                     :       105852428
+  48:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2475
+  48:
+  48:  Utilization rate                               :          34.341 %
+  48:  Total FP load and store operations             :           0.187 M
+  48:  MIPS                                           :         191.802 
+  48:  Instructions per cycle                         :           0.193 
+  48:  HW float point instructions (flips)            :           0.186 M
+  16:  HW floating point instr. rate (HW flips / WCT) :           0.335 Mflip/s
+  16:  HW floating point instructions/ user time      :           1.114 Mflip/s
+  16:  Total floating point operations                :           0.002 M
+  16:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  16:  Flops / user time                              :           0.010 Mflop/s
+  16:  FMA percentage                                 :           9.148 %
+  16:  Computation intensity                          :           0.009 
+  16:  % of peak performance                          :           0.000 %
+  16:
+  51:  HW float point instructions per cycle          :           0.000 
+  51:  HW floating point instr. rate (HW flips / WCT) :           0.339 Mflip/s
+  51:  HW floating point instructions/ user time      :           1.015 Mflip/s
+  51:  Total floating point operations                :           0.002 M
+  51:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  51:  Flops / user time                              :           0.009 Mflop/s
+  51:  FMA percentage                                 :           9.108 %
+  51:  Computation intensity                          :           0.008 
+  51:  % of peak performance                          :           0.000 %
+  51:
+  17:  HW float point instructions per cycle          :           0.000 
+  17:  HW floating point instr. rate (HW flips / WCT) :           0.330 Mflip/s
+  17:  HW floating point instructions/ user time      :           1.029 Mflip/s
+  17:  Total floating point operations                :           0.002 M
+  17:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  17:  Flops / user time                              :           0.009 Mflop/s
+  17:  FMA percentage                                 :           9.166 %
+  17:  Computation intensity                          :           0.008 
+  17:  % of peak performance                          :           0.000 %
+  17:
+  52:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              16
+  52:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  52:  PM_FPU0_FIN (FPU0 produced a result)                      :           95616
+  52:  PM_FPU1_FIN (FPU1 produced a result)                      :           90315
+  52:  PM_CYC (Processor cycles)                                 :       539274903
+  52:  PM_FPU_STF (FPU executed store instruction)               :          184457
+  52:  PM_INST_CMPL (Instructions completed)                     :       104005956
+  52:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2433
+  52:
+  52:  Utilization rate                               :          32.476 %
+  52:  Total FP load and store operations             :           0.187 M
+  52:  MIPS                                           :         186.983 
+  52:  Instructions per cycle                         :           0.193 
+  52:  HW float point instructions (flips)            :           0.186 M
+  52:  HW float point instructions per cycle          :           0.000 
+  18:  HW float point instructions per cycle          :           0.000 
+  18:  HW floating point instr. rate (HW flips / WCT) :           0.332 Mflip/s
+  18:  HW floating point instructions/ user time      :           1.025 Mflip/s
+  18:  Total floating point operations                :           0.002 M
+  18:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  18:  Flops / user time                              :           0.009 Mflop/s
+  18:  FMA percentage                                 :           9.179 %
+  18:  Computation intensity                          :           0.008 
+  18:  % of peak performance                          :           0.000 %
+  18:
+  54:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              17
+  54:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              74
+  54:  PM_FPU0_FIN (FPU0 produced a result)                      :           95603
+  54:  PM_FPU1_FIN (FPU1 produced a result)                      :           90299
+  54:  PM_CYC (Processor cycles)                                 :       531564817
+  54:  PM_FPU_STF (FPU executed store instruction)               :          184386
+  54:  PM_INST_CMPL (Instructions completed)                     :        90014449
+  54:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2597
+  54:
+  54:  Utilization rate                               :          32.123 %
+  54:  Total FP load and store operations             :           0.187 M
+  54:  MIPS                                           :         162.121 
+  54:  Instructions per cycle                         :           0.169 
+  54:  HW float point instructions (flips)            :           0.186 M
+  19:  HW floating point instr. rate (HW flips / WCT) :           0.331 Mflip/s
+  19:  HW floating point instructions/ user time      :           1.033 Mflip/s
+  19:  Total floating point operations                :           0.002 M
+  19:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  19:  Flops / user time                              :           0.009 Mflop/s
+  19:  FMA percentage                                 :           8.965 %
+  19:  Computation intensity                          :           0.008 
+  19:  % of peak performance                          :           0.000 %
+  19:
+  55:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  55:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  55:  PM_FPU0_FIN (FPU0 produced a result)                      :           95588
+  55:  PM_FPU1_FIN (FPU1 produced a result)                      :           90308
+  55:  PM_CYC (Processor cycles)                                 :       542455047
+  55:  PM_FPU_STF (FPU executed store instruction)               :          184359
+  55:  PM_INST_CMPL (Instructions completed)                     :       110448178
+  55:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2411
+  55:
+  55:  Utilization rate                               :          34.434 %
+  55:  Total FP load and store operations             :           0.187 M
+  55:  MIPS                                           :         198.562 
+  55:  Instructions per cycle                         :           0.204 
+  55:  HW float point instructions (flips)            :           0.186 M
+  20:  HW float point instructions per cycle          :           0.000 
+  20:  HW floating point instr. rate (HW flips / WCT) :           0.331 Mflip/s
+  20:  HW floating point instructions/ user time      :           1.033 Mflip/s
+  20:  Total floating point operations                :           0.002 M
+  20:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  20:  Flops / user time                              :           0.009 Mflop/s
+  20:  FMA percentage                                 :           8.811 %
+  20:  Computation intensity                          :           0.009 
+  20:  % of peak performance                          :           0.000 %
+  20:
+  21:  HW floating point instr. rate (HW flips / WCT) :           0.331 Mflip/s
+  21:  HW floating point instructions/ user time      :           1.059 Mflip/s
+  21:  Total floating point operations                :           0.002 M
+  21:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  21:  Flops / user time                              :           0.009 Mflop/s
+  21:  FMA percentage                                 :           8.425 %
+  21:  Computation intensity                          :           0.009 
+  21:  % of peak performance                          :           0.000 %
+  21:
+  57:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  57:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              69
+  57:  PM_FPU0_FIN (FPU0 produced a result)                      :           95553
+  57:  PM_FPU1_FIN (FPU1 produced a result)                      :           90257
+  57:  PM_CYC (Processor cycles)                                 :       538923429
+  57:  PM_FPU_STF (FPU executed store instruction)               :          184338
+  57:  PM_INST_CMPL (Instructions completed)                     :       106308328
+  57:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2564
+  57:
+  57:  Utilization rate                               :          32.318 %
+  57:  Total FP load and store operations             :           0.187 M
+  57:  MIPS                                           :         191.022 
+  57:  Instructions per cycle                         :           0.197 
+  57:  HW float point instructions (flips)            :           0.186 M
+  23:  HW float point instructions per cycle          :           0.000 
+  23:  HW floating point instr. rate (HW flips / WCT) :           0.328 Mflip/s
+  23:  HW floating point instructions/ user time      :           1.073 Mflip/s
+  23:  Total floating point operations                :           0.002 M
+  23:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  23:  Flops / user time                              :           0.009 Mflop/s
+  23:  FMA percentage                                 :           9.209 %
+  23:  Computation intensity                          :           0.008 
+  23:  % of peak performance                          :           0.000 %
+  23:
+  59:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              14
+  59:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              72
+  59:  PM_FPU0_FIN (FPU0 produced a result)                      :           95569
+  59:  PM_FPU1_FIN (FPU1 produced a result)                      :           90294
+  59:  PM_CYC (Processor cycles)                                 :       557744043
+  59:  PM_FPU_STF (FPU executed store instruction)               :          184415
+  59:  PM_INST_CMPL (Instructions completed)                     :       108232267
+  59:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2615
+  59:
+  59:  Utilization rate                               :          33.182 %
+  59:  Total FP load and store operations             :           0.187 M
+  59:  MIPS                                           :         194.291 
+  59:  Instructions per cycle                         :           0.194 
+  59:  HW float point instructions (flips)            :           0.186 M
+  59:  HW float point instructions per cycle          :           0.000 
+  25:  HW float point instructions per cycle          :           0.000 
+  25:  HW floating point instr. rate (HW flips / WCT) :           0.328 Mflip/s
+  25:  HW floating point instructions/ user time      :           1.085 Mflip/s
+  25:  Total floating point operations                :           0.002 M
+  25:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  25:  Flops / user time                              :           0.009 Mflop/s
+  25:  FMA percentage                                 :           8.929 %
+  25:  Computation intensity                          :           0.008 
+  25:  % of peak performance                          :           0.000 %
+  25:
+  61:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  61:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              71
+  61:  PM_FPU0_FIN (FPU0 produced a result)                      :           95568
+  61:  PM_FPU1_FIN (FPU1 produced a result)                      :           90318
+  61:  PM_CYC (Processor cycles)                                 :       514337446
+  61:  PM_FPU_STF (FPU executed store instruction)               :          184393
+  61:  PM_INST_CMPL (Instructions completed)                     :        99555724
+  61:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2528
+  61:
+  61:  Utilization rate                               :          31.914 %
+  61:  Total FP load and store operations             :           0.187 M
+  61:  MIPS                                           :         179.914 
+  61:  Instructions per cycle                         :           0.194 
+  61:  HW float point instructions (flips)            :           0.186 M
+  27:  HW floating point instr. rate (HW flips / WCT) :           0.329 Mflip/s
+  27:  HW floating point instructions/ user time      :           1.095 Mflip/s
+  27:  Total floating point operations                :           0.002 M
+  27:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  27:  Flops / user time                              :           0.009 Mflop/s
+  27:  FMA percentage                                 :           9.165 %
+  27:  Computation intensity                          :           0.008 
+  27:  % of peak performance                          :           0.000 %
+  27:
+  28:  HW float point instructions per cycle          :           0.000 
+  28:  HW floating point instr. rate (HW flips / WCT) :           0.327 Mflip/s
+  28:  HW floating point instructions/ user time      :           1.055 Mflip/s
+  28:  Total floating point operations                :           0.002 M
+  28:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  28:  Flops / user time                              :           0.010 Mflop/s
+  28:  FMA percentage                                 :           8.208 %
+  28:  Computation intensity                          :           0.009 
+  28:  % of peak performance                          :           0.000 %
+  28:
+  62:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  62:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              69
+  62:  PM_FPU0_FIN (FPU0 produced a result)                      :           95589
+  62:  PM_FPU1_FIN (FPU1 produced a result)                      :           90323
+  62:  PM_CYC (Processor cycles)                                 :       536344947
+  62:  PM_FPU_STF (FPU executed store instruction)               :          184449
+  62:  PM_INST_CMPL (Instructions completed)                     :       117452623
+  62:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2450
+  62:
+  62:  Utilization rate                               :          36.306 %
+  62:  Total FP load and store operations             :           0.187 M
+  62:  MIPS                                           :         210.562 
+  62:  Instructions per cycle                         :           0.219 
+  62:  HW float point instructions (flips)            :           0.186 M
+  29:  HW float point instructions per cycle          :           0.000 
+  29:  HW floating point instr. rate (HW flips / WCT) :           0.329 Mflip/s
+  29:  HW floating point instructions/ user time      :           1.086 Mflip/s
+  29:  Total floating point operations                :           0.001 M
+  29:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  29:  Flops / user time                              :           0.009 Mflop/s
+  29:  FMA percentage                                 :           9.352 %
+  29:  Computation intensity                          :           0.008 
+  29:  % of peak performance                          :           0.000 %
+  29:
+  35:  HW floating point instr. rate (HW flips / WCT) :           0.344 Mflip/s
+  35:  HW floating point instructions/ user time      :           1.052 Mflip/s
+  35:  Total floating point operations                :           0.002 M
+  35:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  35:  Flops / user time                              :           0.009 Mflop/s
+  35:  FMA percentage                                 :           9.435 %
+  35:  Computation intensity                          :           0.008 
+  35:  % of peak performance                          :           0.000 %
+  35:
+  30:  HW float point instructions per cycle          :           0.000 
+  30:  HW floating point instr. rate (HW flips / WCT) :           0.327 Mflip/s
+  30:  HW floating point instructions/ user time      :           0.993 Mflip/s
+  30:  Total floating point operations                :           0.002 M
+  30:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  30:  Flops / user time                              :           0.008 Mflop/s
+  30:  FMA percentage                                 :           9.073 %
+  30:  Computation intensity                          :           0.008 
+  30:  % of peak performance                          :           0.000 %
+  30:
+  36:  HW floating point instr. rate (HW flips / WCT) :           0.335 Mflip/s
+  36:  HW floating point instructions/ user time      :           1.019 Mflip/s
+  36:  Total floating point operations                :           0.002 M
+  36:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  36:  Flops / user time                              :           0.008 Mflop/s
+  36:  FMA percentage                                 :           8.990 %
+  36:  Computation intensity                          :           0.008 
+  36:  % of peak performance                          :           0.000 %
+  36:
+  31:  HW float point instructions per cycle          :           0.000 
+  31:  HW floating point instr. rate (HW flips / WCT) :           0.330 Mflip/s
+  31:  HW floating point instructions/ user time      :           1.079 Mflip/s
+  31:  Total floating point operations                :           0.002 M
+  31:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  31:  Flops / user time                              :           0.009 Mflop/s
+  31:  FMA percentage                                 :           9.243 %
+  31:  Computation intensity                          :           0.008 
+  31:  % of peak performance                          :           0.000 %
+  31:
+  38:  HW float point instructions per cycle          :           0.000 
+  38:  HW floating point instr. rate (HW flips / WCT) :           0.342 Mflip/s
+  38:  HW floating point instructions/ user time      :           0.997 Mflip/s
+  38:  Total floating point operations                :           0.002 M
+  38:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  38:  Flops / user time                              :           0.008 Mflop/s
+  38:  FMA percentage                                 :           8.883 %
+  38:  Computation intensity                          :           0.008 
+  38:  % of peak performance                          :           0.000 %
+  38:
+  39:  HW float point instructions per cycle          :           0.000 
+  39:  HW floating point instr. rate (HW flips / WCT) :           0.341 Mflip/s
+  39:  HW floating point instructions/ user time      :           1.010 Mflip/s
+  39:  Total floating point operations                :           0.002 M
+  39:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  39:  Flops / user time                              :           0.009 Mflop/s
+  39:  FMA percentage                                 :           9.102 %
+  39:  Computation intensity                          :           0.009 
+  39:  % of peak performance                          :           0.000 %
+  39:
+  40:  HW float point instructions per cycle          :           0.000 
+  40:  HW floating point instr. rate (HW flips / WCT) :           0.336 Mflip/s
+  40:  HW floating point instructions/ user time      :           0.996 Mflip/s
+  40:  Total floating point operations                :           0.002 M
+  40:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  40:  Flops / user time                              :           0.009 Mflop/s
+  40:  FMA percentage                                 :           9.215 %
+  40:  Computation intensity                          :           0.009 
+  40:  % of peak performance                          :           0.000 %
+  40:
+  41:  HW float point instructions per cycle          :           0.000 
+  41:  HW floating point instr. rate (HW flips / WCT) :           0.339 Mflip/s
+  41:  HW floating point instructions/ user time      :           1.067 Mflip/s
+  41:  Total floating point operations                :           0.002 M
+  41:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  41:  Flops / user time                              :           0.009 Mflop/s
+  41:  FMA percentage                                 :           8.944 %
+  41:  Computation intensity                          :           0.009 
+  41:  % of peak performance                          :           0.000 %
+  41:
+  42:  HW float point instructions per cycle          :           0.000 
+  42:  HW floating point instr. rate (HW flips / WCT) :           0.341 Mflip/s
+  42:  HW floating point instructions/ user time      :           1.012 Mflip/s
+  42:  Total floating point operations                :           0.002 M
+  42:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  42:  Flops / user time                              :           0.008 Mflop/s
+  42:  FMA percentage                                 :           9.269 %
+  42:  Computation intensity                          :           0.008 
+  42:  % of peak performance                          :           0.000 %
+  42:
+  43:  HW float point instructions per cycle          :           0.000 
+  43:  HW floating point instr. rate (HW flips / WCT) :           0.341 Mflip/s
+  43:  HW floating point instructions/ user time      :           1.054 Mflip/s
+  43:  Total floating point operations                :           0.002 M
+  43:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  43:  Flops / user time                              :           0.009 Mflop/s
+  43:  FMA percentage                                 :           8.592 %
+  43:  Computation intensity                          :           0.009 
+  43:  % of peak performance                          :           0.000 %
+  43:
+  44:  HW float point instructions per cycle          :           0.000 
+  44:  HW floating point instr. rate (HW flips / WCT) :           0.336 Mflip/s
+  44:  HW floating point instructions/ user time      :           1.010 Mflip/s
+  44:  Total floating point operations                :           0.002 M
+  44:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  44:  Flops / user time                              :           0.008 Mflop/s
+  44:  FMA percentage                                 :           9.132 %
+  44:  Computation intensity                          :           0.008 
+  44:  % of peak performance                          :           0.000 %
+  44:
+  45:  HW floating point instr. rate (HW flips / WCT) :           0.347 Mflip/s
+  45:  HW floating point instructions/ user time      :           1.076 Mflip/s
+  45:  Total floating point operations                :           0.002 M
+  45:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  45:  Flops / user time                              :           0.009 Mflop/s
+  45:  FMA percentage                                 :           8.630 %
+  45:  Computation intensity                          :           0.009 
+  45:  % of peak performance                          :           0.000 %
+  45:
+  46:  HW floating point instr. rate (HW flips / WCT) :           0.340 Mflip/s
+  46:  HW floating point instructions/ user time      :           1.042 Mflip/s
+  46:  Total floating point operations                :           0.002 M
+  46:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  46:  Flops / user time                              :           0.009 Mflop/s
+  46:  FMA percentage                                 :           8.771 %
+  46:  Computation intensity                          :           0.009 
+  46:  % of peak performance                          :           0.000 %
+  46:
+  47:  HW floating point instr. rate (HW flips / WCT) :           0.339 Mflip/s
+  47:  HW floating point instructions/ user time      :           1.041 Mflip/s
+  47:  Total floating point operations                :           0.002 M
+  47:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  47:  Flops / user time                              :           0.009 Mflop/s
+  47:  FMA percentage                                 :           8.908 %
+  47:  Computation intensity                          :           0.009 
+  47:  % of peak performance                          :           0.000 %
+  47:
+  48:  HW float point instructions per cycle          :           0.000 
+  48:  HW floating point instr. rate (HW flips / WCT) :           0.337 Mflip/s
+  48:  HW floating point instructions/ user time      :           0.981 Mflip/s
+  48:  Total floating point operations                :           0.002 M
+  48:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  48:  Flops / user time                              :           0.008 Mflop/s
+  48:  FMA percentage                                 :           9.493 %
+  48:  Computation intensity                          :           0.008 
+  48:  % of peak performance                          :           0.000 %
+  48:
+  52:  HW floating point instr. rate (HW flips / WCT) :           0.334 Mflip/s
+  52:  HW floating point instructions/ user time      :           1.029 Mflip/s
+  52:  Total floating point operations                :           0.002 M
+  52:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  52:  Flops / user time                              :           0.009 Mflop/s
+  52:  FMA percentage                                 :           9.438 %
+  52:  Computation intensity                          :           0.008 
+  52:  % of peak performance                          :           0.000 %
+  52:
+  54:  HW float point instructions per cycle          :           0.000 
+  54:  HW floating point instr. rate (HW flips / WCT) :           0.335 Mflip/s
+  54:  HW floating point instructions/ user time      :           1.042 Mflip/s
+  54:  Total floating point operations                :           0.002 M
+  54:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  54:  Flops / user time                              :           0.009 Mflop/s
+  54:  FMA percentage                                 :           9.308 %
+  54:  Computation intensity                          :           0.009 
+  54:  % of peak performance                          :           0.000 %
+  54:
+  55:  HW float point instructions per cycle          :           0.000 
+  55:  HW floating point instr. rate (HW flips / WCT) :           0.334 Mflip/s
+  55:  HW floating point instructions/ user time      :           0.971 Mflip/s
+  55:  Total floating point operations                :           0.002 M
+  55:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  55:  Flops / user time                              :           0.008 Mflop/s
+  55:  FMA percentage                                 :           8.831 %
+  55:  Computation intensity                          :           0.009 
+  55:  % of peak performance                          :           0.000 %
+  55:
+  57:  HW float point instructions per cycle          :           0.000 
+  57:  HW floating point instr. rate (HW flips / WCT) :           0.334 Mflip/s
+  57:  HW floating point instructions/ user time      :           1.033 Mflip/s
+  57:  Total floating point operations                :           0.002 M
+  57:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  57:  Flops / user time                              :           0.009 Mflop/s
+  57:  FMA percentage                                 :           8.955 %
+  57:  Computation intensity                          :           0.008 
+  57:  % of peak performance                          :           0.000 %
+  57:
+  59:  HW floating point instr. rate (HW flips / WCT) :           0.334 Mflip/s
+  59:  HW floating point instructions/ user time      :           1.005 Mflip/s
+  59:  Total floating point operations                :           0.002 M
+  59:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  59:  Flops / user time                              :           0.008 Mflop/s
+  59:  FMA percentage                                 :           9.474 %
+  59:  Computation intensity                          :           0.008 
+  59:  % of peak performance                          :           0.000 %
+  59:
+  61:  HW float point instructions per cycle          :           0.000 
+  61:  HW floating point instr. rate (HW flips / WCT) :           0.336 Mflip/s
+  61:  HW floating point instructions/ user time      :           1.053 Mflip/s
+  61:  Total floating point operations                :           0.002 M
+  61:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  61:  Flops / user time                              :           0.009 Mflop/s
+  61:  FMA percentage                                 :           9.079 %
+  61:  Computation intensity                          :           0.008 
+  61:  % of peak performance                          :           0.000 %
+  61:
+  62:  HW float point instructions per cycle          :           0.000 
+  62:  HW floating point instr. rate (HW flips / WCT) :           0.333 Mflip/s
+  62:  HW floating point instructions/ user time      :           0.918 Mflip/s
+  62:  Total floating point operations                :           0.002 M
+  62:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  62:  Flops / user time                              :           0.008 Mflop/s
+  62:  FMA percentage                                 :           9.008 %
+  62:  Computation intensity                          :           0.008 
+  62:  % of peak performance                          :           0.000 %
+  62:
+  24:
+  24: hpmcount (V 3.1.0) summary
+  24:
+  24: Execution time (wall clock time): 0.588343858718872 seconds
+  24:
+  24: ########  Resource Usage Statistics  ########  
+  24:
+  24: Total amount of time in user mode            : 0.169035 seconds
+  24: Total amount of time in system mode          : 0.364328 seconds
+  24: Maximum resident set size                    : 10256 Kbytes
+  24: Average shared memory use in text segment    : 18 Kbytes*sec
+  24: Average unshared memory use in data segment  : 1243 Kbytes*sec
+  24: Number of page faults without I/O activity   : 2791
+  24: Number of page faults with I/O activity      : 0
+  24: Number of times process was swapped out      : 0
+  24: Number of times file system performed INPUT  : 0
+  24: Number of times file system performed OUTPUT : 0
+  24: Number of IPC messages sent                  : 0
+  24: Number of IPC messages received              : 0
+  24: Number of signals delivered                  : 0
+  24: Number of voluntary context switches         : 110
+  24: Number of involuntary context switches       : 47
+  24:
+  24: #######  End of Resource Statistics  ########
+  24:
+  24:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  24:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              73
+  24:  PM_FPU0_FIN (FPU0 produced a result)                      :           95623
+  24:  PM_FPU1_FIN (FPU1 produced a result)                      :           90319
+  24:  PM_CYC (Processor cycles)                                 :       559822381
+  24:  PM_FPU_STF (FPU executed store instruction)               :          184447
+  24:  PM_INST_CMPL (Instructions completed)                     :       103475615
+  24:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2619
+  24:
+  24:  Utilization rate                               :          28.731 %
+  24:  Total FP load and store operations             :           0.187 M
+  24:  MIPS                                           :         175.876 
+  24:  Instructions per cycle                         :           0.185 
+  24:  HW float point instructions (flips)            :           0.186 M
+  24:  HW float point instructions per cycle          :           0.000 
+  24:  HW floating point instr. rate (HW flips / WCT) :           0.316 Mflip/s
+  24:  HW floating point instructions/ user time      :           1.100 Mflip/s
+  24:  Total floating point operations                :           0.002 M
+  24:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  24:  Flops / user time                              :           0.009 Mflop/s
+  24:  FMA percentage                                 :           9.311 %
+  24:  Computation intensity                          :           0.008 
+  24:  % of peak performance                          :           0.000 %
+  24:
+  58:
+  58: hpmcount (V 3.1.0) summary
+  58:
+  58: Execution time (wall clock time): 0.578926086425781 seconds
+  58:
+  58: ########  Resource Usage Statistics  ########  
+  58:
+  58: Total amount of time in user mode            : 0.179279 seconds
+  58: Total amount of time in system mode          : 0.344162 seconds
+  58: Maximum resident set size                    : 9928 Kbytes
+  58: Average shared memory use in text segment    : 18 Kbytes*sec
+  58: Average unshared memory use in data segment  : 1250 Kbytes*sec
+  58: Number of page faults without I/O activity   : 2790
+  58: Number of page faults with I/O activity      : 0
+  58: Number of times process was swapped out      : 0
+  58: Number of times file system performed INPUT  : 0
+  58: Number of times file system performed OUTPUT : 0
+  58: Number of IPC messages sent                  : 0
+  58: Number of IPC messages received              : 0
+  58: Number of signals delivered                  : 0
+  58: Number of voluntary context switches         : 79
+  58: Number of involuntary context switches       : 60
+  58:
+  58: #######  End of Resource Statistics  ########
+  58:
+  58:  PM_FPU_FDIV (FPU executed FDIV instruction)               :              15
+  58:  PM_FPU_FMA (FPU executed multiply-add instruction)        :              69
+  58:  PM_FPU0_FIN (FPU0 produced a result)                      :           95608
+  58:  PM_FPU1_FIN (FPU1 produced a result)                      :           90308
+  58:  PM_CYC (Processor cycles)                                 :       541199579
+  58:  PM_FPU_STF (FPU executed store instruction)               :          184453
+  58:  PM_INST_CMPL (Instructions completed)                     :       131515372
+  58:  PM_LSU_LDF (LSU executed Floating Point load instruction) :            2589
+  58:
+  58:  Utilization rate                               :          30.968 %
+  58:  Total FP load and store operations             :           0.187 M
+  58:  MIPS                                           :         227.171 
+  58:  Instructions per cycle                         :           0.243 
+  58:  HW float point instructions (flips)            :           0.186 M
+  58:  HW float point instructions per cycle          :           0.000 
+  58:  HW floating point instr. rate (HW flips / WCT) :           0.321 Mflip/s
+  58:  HW floating point instructions/ user time      :           1.037 Mflip/s
+  58:  Total floating point operations                :           0.002 M
+  58:  Flop rate (flops / WCT)                        :           0.003 Mflop/s
+  58:  Flops / user time                              :           0.009 Mflop/s
+  58:  FMA percentage                                 :           9.008 %
+  58:  Computation intensity                          :           0.008 
+  58:  % of peak performance                          :           0.000 %
+  58:
