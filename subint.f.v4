@@ -1,0 +1,239 @@
+      SUBROUTINE SUBINT(IQ,I10)
+*
+*
+*       Decision-making for subsystems.
+*       -------------------------------
+*       R. Spurzem / S.J. Aarseth Experimental Version for parallel binaries
+*       Sep 2001/July 2002
+*
+      INCLUDE 'common6.h'
+      COMMON/CLUMP/   BODYS(NCMAX,5),T0S(5),TS(5),STEPS(5),RMAXS(5),
+     &                NAMES(NCMAX,5),ISYS(5)
+      REAL*8  TSLIST(10*KMAX)
+      INTEGER  BSLIST(10*KMAX)
+      SAVE  IRUN,LI
+      DATA  IRUN /0/
+      COMMON/KSSTAT/ISTEPP,ISTEPU,IBINP,IBINU
+*
+      ISTEPP=0
+      ISTEPU=0
+      IBINP=0
+      IBINU=0
+      ICALL = ICALL + 1
+      FAC = 1.0/LOG(1.9999999)
+      JMM = INT(1 - LOG(DTBMIN)*FAC)
+      DTBL = TBLOCK - TPREV
+      JMN = INT(1 - LOG(DTBL)*FAC)
+      KBLOCK = 2**(JMM-JMN)
+      DTBL = DTBL/KBLOCK
+      KBSUM = KBSUM + KBLOCK
+*     IF(MOD(ICALL,100).EQ.0)PRINT*,' SUBINT: Av KBLOCK=',KBSUM/ICALL
+*
+*       Determine correct index after restart (NNTB = 0 initially).
+      IF (IRUN.EQ.0) THEN
+          IRUN = 1
+          TI = 1.0D+10
+*       Find smallest sum by looping backwards (avoids multiple entries).
+          DO 4 K = NNTB,1,-1
+              J = KBLIST(K)
+              TJ = T0(J) + STEP(J)
+              IF (TJ.LT.TI) THEN
+                  TI = TJ
+                  LI = K
+              ELSE
+*       Adopt the previous index (increased by 1 below).
+                  LI = LI - 1
+                  GO TO 1
+              END IF
+    4     CONTINUE
+      END IF
+*
+    1 CONTINUE
+*       See whether to advance any KS solutions at start of block-step.
+      IF (NPAIRS.GT.0) THEN
+*       Obtain list of all KS pairs due in interval DTB.
+          IF (TBLIST.LE.TBLOCK.OR.NPAIRS.NE.NBPREV.OR.
+     *       NNTB.GT.KMAX) THEN
+          call cputim(ttxx1)
+              IF (DTB.EQ.0.0D0) THEN
+                  DTB = MAX(DTMIN,TBLOCK - TPREV)
+              END IF
+    2         TBLIST = TPREV + DTB
+              TBLIST = MAX(TBLOCK,TBLIST)
+              NNTB = 0
+              DO 3 JPAIR = 1,NPAIRS
+                  J1 = 2*JPAIR - 1
+                  IF (T0(J1) + STEP(J1).LE.TBLIST) THEN
+                      NNTB = NNTB + 1
+                      KBLIST(NNTB) = J1
+                      TSLIST(NNTB) = T0(J1) + STEP(J1)
+                  END IF
+    3         CONTINUE
+*       Increase interval on zero membership.
+              IF (NNTB.EQ.0) THEN
+                  DTB = 2.0*DTB
+                  GO TO 2
+              END IF
+*       Stabilize interval on membership of 2*SQRT(NPAIRS).
+              NBTRY = 2*SQRT(FLOAT(NPAIRS))
+              IF (NNTB.GT.NBTRY)  DTB = 0.75*DTB
+              IF (NNTB.LT.NBTRY)  DTB = 1.25*DTB
+*       Sort the time-step list sequentially in KBLIST and reset pointer.
+              IF (NNTB.GT.1) THEN
+                  CALL SORT1(NNTB,TSLIST,KBLIST)
+              END IF
+              LI = 0
+          call cputim(ttxx2)
+          ttkbs = ttkbs + (ttxx2-ttxx1)*60.
+          END IF
+*
+          SPREV = TPREV
+*
+          DO 5 IX = 1,KBLOCK
+*
+          SBLOCK = SPREV + DTBL
+*       Form list of any KS pairs due in the current sub-block-step.
+          call cputim(ttg1)
+          KSB = 0
+          DO 6 LJ = LI+1,NNTB
+              J1 = KBLIST(LJ)
+              TJ = T0(J1) + STEP(J1)
+              IF (T0(J1) + STEP(J1).LE.SBLOCK) THEN
+                  IF(LIST(1,J1).GT.0)THEN
+                     IBINP = IBINP + 1
+                  ELSE
+                     IBINU = IBINU + 1
+                  END IF
+                  KSB = KSB + 1
+                  BSLIST(KSB) = J1
+              ELSE
+*       Stop searching if sub-block level is reached.
+                  GO TO 65
+              END IF
+    6     CONTINUE
+   65     CONTINUE
+          call cputim(ttg2)
+          ttget = ttget + (ttg2-ttg1)*60.
+*
+*       Continue if no binaries to integrate
+          IF (KSB.EQ.0) GO TO 9
+*
+          call cputim(ttxa)
+*       Advance binaries due in the current sub-block-step.
+          DO 7 L = 1,KSB
+*
+              I1 = BSLIST(L)
+              TIME = T0(I1) + STEP(I1)
+*
+   10         CONTINUE
+*
+              CALL KSINT(I1)
+*
+*       Check for multiple calls of #I1 (saves using CALL INSERT).
+              IF (IPHASE.EQ.0) THEN
+                  TI = TIME + STEP(I1)
+                  IF (TI.LE.SBLOCK) THEN
+                      TIME = TI
+                      GO TO 10
+                  END IF
+              END IF
+*
+*       Set KS indicator on termination, multiple regularization or merger.
+              IF (IPHASE.NE.0) THEN
+                  IF (IQ.EQ.0.OR.IPHASE.LT.0) THEN
+                      IQ = IPHASE
+*       Save KS index until exit (collision treated in situ).
+                      IF (IQ.GT.0) THEN
+                          I10 = I1
+                      END IF
+                  END IF
+*
+*       Reset non-zero decision indicator (continue on positive value).
+                  IF (IPHASE.GT.0) THEN
+                      IPHASE = 0
+                  ELSE
+*       Enforce new sorted list on change of KS sequence after collision.
+                      IPHASE = 0
+                      TBLIST = TIME
+                      PRINT*,' WARNING COLLISION '
+                      STOP
+                      GO TO 1
+                  END IF
+              END IF
+ 7         CONTINUE
+              call cputim(ttxb)
+              ttks = ttks + (ttxb-ttxa)*60.
+*
+*       Prepare pointer and time for INSERT routine
+           LI = LI + KSB
+*
+           call cputim(tta1)
+*       See whether current pair is due before new KBLIST loop.
+*       Insert body #I1 in the correct sequential location.
+           DO 8 L = 1,KSB
+*
+           I1 = BSLIST(L)
+*
+              IF (T0(I1) + STEP(I1).LT.TBLIST) THEN
+                  TIME = T0(I1) + STEP(I1)
+                  CALL INSERT(I1,LI)
+              END IF
+*
+ 8         CONTINUE
+           call cputim(tta2)
+           ttins = ttins + (tta2-tta1)*60.
+*
+ 9         SPREV = SBLOCK
+*
+ 5         CONTINUE
+*       Copy original block time at end of KS treatment.
+          TIME = TBLOCK
+          NBPREV = NPAIRS
+      END IF
+*
+*       Check time for advancing any triple, quad or chain regularization.
+      IF (NSUB.GT.0) THEN
+   30     TSUB = 1.0D+10
+          DO 40 L = 1,NSUB
+              IF (TS(L).LT.TSUB) THEN
+                  ISUB = L
+                  TSUB = TS(L)
+              END IF
+   40     CONTINUE
+*
+          IF (TSUB.LE.TBLOCK) THEN
+              TIME = TSUB
+*       Decide between triple, quad or chain.
+              IF (ISYS(ISUB).EQ.1) THEN
+*       Update unperturbed size of subsystem and copy c.m. step.
+                  CALL EXTEND(ISUB)
+                  CALL TRIPLE(ISUB)
+              ELSE IF (ISYS(ISUB).EQ.2) THEN
+                  CALL EXTEND(ISUB)
+                  CALL QUAD(ISUB)
+              ELSE
+                  IF (STEPS(ISUB).LT.0.0D0) THEN
+                      STEPS(ISUB) = 1.0D-10
+                      GO TO 50
+                  END IF
+                  CALL CHAIN(ISUB)
+                  IF (ISUB.GT.0.AND.STEPS(ISUB).LT.0.0D0) THEN
+                      STEPS(ISUB) = 1.0D-10
+                      GO TO 50
+                  END IF
+              END IF
+*
+*       Check for termination (set TPREV < TIME and set IQ < 0).
+              IF (ISUB.LT.0.OR.IPHASE.LT.0) THEN
+                  TPREV = TIME - STEP(NTOT)
+                  IQ = -1
+              END IF
+              GO TO 30
+          END IF
+   50     TIME = TBLOCK
+      END IF
+*
+      RETURN
+*
+      END
+
